@@ -2,6 +2,25 @@ Relavent Terms and Definitions
 ==============================
 
 CARD: Any valid card from the game.
+DECK: The collection of cards a player plays with.
+HAND: The cards that the player has in their possession from their deck.
+DRAW: The act of taking a card from the deck and adding it to the hand.
+SHUFFLE: The act of mixing a pile of cards.
+DISCARD: The act of moving a card from the hand or field to the discard pile.
+DISCARD PILE: The area where used or destroyed cards are placed.
+SEARCH: The ability to look through a deck or discard pile for a specific card.
+MILL: Sending cards from the deck directly to the discard pile.
+RECOVER: The ability to retrieve a card from the discard pile or another out-of-play area.
+FIELD: The area where cards are placed by both players.
+CREATURE ZONE: The top area of a player's field, where creature cards are played.
+MAGIC ZONE: The bottom area of a player's field, where magic cards are played.
+PLAY: The action of placing a card on the field.
+TAP: Switch the position of a card from vertical to horizontal or from horizontal to vertical.
+LEVEL UP: The act of placing a card of one level higher on top of another card.
+UNDER: Refers to all cards that are beneath another card (usually through leveling up cards).
+DESTROY: The act of sending a card and all cards under it to the discard pile.
+TURN: The period of time where only one player can play cards.
+POINT: The unit which keeps track of a player's score.
 CREATURE: Any valid card from the game which has an attack, defense, and non-magic type.
 MAGIC CARD: Any valid card from the game which has a type equal to magic.
 TYPE: One of the primary types of cards within the game - Water, Fire, Earth, Nature, Electric, Light, Dark.
@@ -11,27 +30,11 @@ ATTACK: The attacking potential of a creature card.
 DEFENSE: The defensive potential of a creature card.
 EFFECT: The text written on a card which does some action within the game.
 ACTION: The act of performing an effect of a card.
-TAP: Switch the position of a card from vertical to horizontal or from horizontal to vertical.
-PLAY: The action of placing a card on the field.
-FIELD: The area where cards are placed by both players.
-CREATURE ZONE: The top area of a player's field, where creature cards are played.
-MAGIC ZONE: The bottom area of a player's field, where magic cards are played.
-LEVEL UP: The act of placing a card of one level higher on top of another card.
-UNDER: Refers to all cards that are beneath another card (usually through leveling up cards).
-DESTROY: The act of sending a card and all cards under it to the discard pile.
-DECK: The collection of cards a player plays with.
-HAND: The cards that the player has in their possession from their deck.
-DISCARD PILE: The area where used or destroyed cards are placed.
-TURN: The period of time where only one player can play cards.
-POINT: The unit which keeps track of a player's score.
-SHUFFLE: The act of mixing a pile of cards.
-DRAW: The act of taking a card from the deck and adding it to the hand.
-DISCARD: The act of moving a card from the hand or field to the discard pile.
-SEARCH: The ability to look through a deck or discard pile for a specific card.
-MILL: Sending cards from the deck directly to the discard pile.
-RECOVER: The ability to retrieve a card from the discard pile or another out-of-play area.
 EQUIP: The act of attaching a card to another card for added effects.
 COUNTER: A response action that can negate or modify another action.
 IMMUNE: A status where a card is unaffected by specific effects.
 TRIGGER: A condition that activates an effect automatically.
 CHAIN: A method of resolving multiple effects in order.
+
+
+
