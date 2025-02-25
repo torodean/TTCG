@@ -38,3 +38,48 @@ CHAIN: A method of resolving multiple effects in order.
 
 
 
+Basic Rules
+===========
+
+### Deck Construction
+- Each player must construct a deck with a minimum of 50 cards and maximum of 70 cards.
+- A player can have no more than 2 copies of the same card (across all rarities) in their deck.
+
+### Game Start
+- To decide who goes first, any random method can be used (e.g., coin toss, age, agreement).
+- Each player begins the game by drawing 5 cards.
+- The first player cannot attack on their first turn nor draw at the start of their turn.
+
+### Turn Structure
+Each player's turn consists of three phases:
+1. **Draw Phase**: At the start of every turn (except the first player's first turn), the player draws a card.
+2. **Main Phase**:
+   - A player may play up to two cards to their field (unless a card specifies otherwise).
+   - A card effect that plays a card to the field does not count toward this limit.
+3. **Battle Phase**: Combat and attacks occur.
+
+### Playing Cards
+- A card can be played to the field in either face-up or face-down position.
+- **Magic Cards**:
+  - If played face-down, they can be flipped face-up at any time after that turn during either player's turn.
+- **Creature Cards**:
+  - If played face-down, they can only be changed to face-up when:
+    - They are attacked by an opponent.
+    - The player who played them chooses to flip them during their turn.
+
+### Card Effects
+- Every card has two effects.
+- Most effects can be activated at any time while the card is face-up on the field.
+- **Creature Cards**:
+  - When a creature effect is activated, that card is then tapped.
+  - Tapped cards cannot activate effects.
+  - A creature card can attack whether tapped or not.
+- **Magic Cards**:
+  - When a magic card effect is activated (unless it is a continuous effect), that card is sent to the discard pile.
+- **Effect Conditions**:
+  - If a card effect activates when the card is sent to the discard pile or deck, it can only be activated if the card was initially untapped.
+  - Cards in the hand, deck, and discard pile are considered untapped.
+  - A card effect cannot be activated if it is destroyed (unless a card states otherwise).
+
+
+
