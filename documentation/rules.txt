@@ -44,9 +44,11 @@ Basic Rules
 ### Deck Construction
 - Each player must construct a deck with a minimum of 50 cards and maximum of 70 cards.
 - A player can have no more than 2 copies of the same card (across all rarities) in their deck.
+- A deck may contain any ratio of creature and magic cards.
 
 ### Game Start
 - To decide who goes first, any random method can be used (e.g., coin toss, age, agreement).
+  - The default method for official play should be the roll of a die (assign one player as even, and another as odd).
 - Each player begins the game by drawing 5 cards.
 - The first player cannot attack on their first turn nor draw at the start of their turn.
 
@@ -62,14 +64,19 @@ Each player's turn consists of three phases:
 - A card can be played to the field in either face-up or face-down position.
 - **Magic Cards**:
   - If played face-down, they can be flipped face-up at any time after that turn during either player's turn.
+  - If played face-down, they cannot be activated until at least the next turn.
 - **Creature Cards**:
   - If played face-down, they can only be changed to face-up when:
     - They are attacked by an opponent.
     - The player who played them chooses to flip them during their turn.
+  - When a creature is leveled up, the new creature can also be played in face up or face down position.
 
 ### Card Effects
 - Every card has two effects.
+- All rules and effects are able to be overruled if a card effect explicitely states that it does so.
 - Most effects can be activated at any time while the card is face-up on the field.
+- If multiple effects trigger at the same time, the effects will activate in reverse order of activation.
+  - If an effect is no longer valid because of this order, the effect simply does nothing (but still counts as activated).
 - **Creature Cards**:
   - When a creature effect is activated, that card is then tapped.
   - Tapped cards cannot activate effects.
@@ -84,7 +91,35 @@ Each player's turn consists of three phases:
   - Normal: A Normal effect is one that can be activated during your turn by tapping the card.
   - Continuous: This effect is activated like a normal effect, but stays active while the card is on the field.
   - Counter: This effect can be activated at any time in response to an opponents action.
-  - Equipt: This card is 'equipt' to another card and remains active until the other card or this card is destroyed.
+  - Equip: This card is 'equip' to another card and remains active until the other card or this card is destroyed.
   - Latent: This effect is triggered only when this card is currently untapped and meets some specific trigger condition. 
 
+### Battle Phase
+- The last part of a players turn is the battle phase.
+- Every creature a player owns can attack once during the owner players Battle Phase.
+- If the opponent controls any creatures, the attacker must target one of them..
+- If an opponent has no creatures remaining, a creature can attack the opponent directly.
+- When a creature attacks, the attack value is used to determine its strength.
+- When a creature is defending, the defense value is used to determine its strength.
+- During an attack, whichever creature has the higher power level prevails, and the other is destroyed (unless a card states otherwise).
+
+### Gaining Points
+- Every player starts the game with 20 points.
+- To gain points, you must destroy creatures on your opponents side of the field.
+- When a creature is destroyed, the owner of that creature loses points equal to the level of that creature.
+- During a players battle phase, if there are no creatures on the opponents side of the field, a creature can attack directly and the opposing player loses points equal to the level of the attacking creatures.
+- Players can also gain or lose points based on various card effects.
+
+### Field Limitations
+- A players field is split into two parts (upper for creatures, and lower for magic cards).
+- A players upper field can support a maximum of 5 creature cards.
+- A players lower field can support a maximum of 5 magic cards.
+
+### Hand Size Limit
+- Players may hold a maximum of 10 cards in their hand.
+- At the end of their turn, if a player has more than 10 cards, they must discard down to 10.
+
+### Deck Exhaustion Rule
+- If a player cannot draw a card because their deck is empty, they take 5 points of damage instead.
+- This damage occurs at the start of their Draw Phase each turn that they are unable to draw.
 
