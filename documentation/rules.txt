@@ -80,6 +80,11 @@ Each player's turn consists of three phases:
   - If a card effect activates when the card is sent to the discard pile or deck, it can only be activated if the card was initially untapped.
   - Cards in the hand, deck, and discard pile are considered untapped.
   - A card effect cannot be activated if it is destroyed (unless a card states otherwise).
-
+- **Effect Types**:
+  - Normal: A Normal effect is one that can be activated during your turn by tapping the card.
+  - Continuous: This effect is activated like a normal effect, but stays active while the card is on the field.
+  - Counter: This effect can be activated at any time in response to an opponents action.
+  - Equipt: This card is 'equipt' to another card and remains active until the other card or this card is destroyed.
+  - Latent: This effect is triggered only when this card is currently untapped and meets some specific trigger condition. 
 
 
