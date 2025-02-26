@@ -94,6 +94,13 @@ Each player's turn consists of three phases:
   - Equip: This card is 'equip' to another card and remains active until the other card or this card is destroyed.
   - Latent: This effect is triggered only when this card is currently untapped and meets some specific trigger condition. 
 
+### Leveling Up
+- Any card with a level higher than one can only be played to the field by leveling up another card of the same type.
+- To level up a card, place a card with the same type and one level higher on top of that card.
+- All cards under the card played are considered underneath that card and are immediately untapped.
+- All cards underneat another card remain on the field until the top card of their pile is destroyed.
+- Cards underneath another do not count towards the field creature limit.
+
 ### Battle Phase
 - The last part of a players turn is the battle phase.
 - Every creature a player owns can attack once during the owner players Battle Phase.
