@@ -93,6 +93,7 @@ Each player's turn consists of three phases:
   - Counter: This effect can be activated at any time in response to an opponents action.
   - Equip: This card is 'equip' to another card and remains active until the other card or this card is destroyed.
   - Latent: This effect is triggered only when this card is currently untapped and meets some specific trigger condition. 
+  - Dormant: This is an effect that can only be activated when the card is tapped. These effects cannot be activated the same turn the card was tapped.
 
 ### Leveling Up
 - Any card with a level higher than one can only be played to the field by leveling up another card of the same type.
