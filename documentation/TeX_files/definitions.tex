@@ -1,0 +1,431 @@
+\newcommand{\andspace}[1]{\hspace{#1}\textrm{and}\hspace{#1}}
+
+\numberwithin{equation}{section}
+\setlength{\columnsep}{.5cm}
+\setlength{\columnseprule}{1pt}
+\def\columnseprulecolor{\color{black}}
+
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\inner}[1]{\langle #1 \rangle}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\spanvect}{\textnormal{span}}
+\newcommand{\union}{\cup}
+\newcommand{\Union}{\bigcup}
+
+%create a section without making the section title.
+\newcommand\invisiblesection[1]{%
+	\refstepcounter{section}%
+	\addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+	\sectionmark{#1}}
+
+%Makes a chapter with no title
+\makeatletter
+\newcommand{\unchapter}[1]{%
+	\begingroup
+	\let\@makechapterhead\@gobble % make \@makechapterhead do nothing
+	\chapter{#1}
+	\endgroup
+}
+\makeatother
+
+% Define the questions environment
+\newenvironment{questions}{%
+	\begin{tcolorbox}[
+		colback=orange!10,
+		colframe=orange!50,
+		arc=0pt,
+		boxrule=1pt,
+		title={\faQuestion\ Questions},
+		fonttitle=\bfseries,
+		coltitle=blue!50!black,
+		colbacktitle=yellow!20,
+		attach title to upper={\par},
+		boxsep=0pt,
+		]
+		\begin{itemize}  % Start the itemize environment
+			\BODY  % This will contain the list of questions
+		\end{itemize}  % End the itemize environment
+	\end{tcolorbox}
+}
+
+% define interesting note
+\newenvironment{interestnote}{
+	\begin{tcolorbox}[
+		colback=green!10,  % Very light green background color of the box
+		colframe=green!50,  % Border color of the box
+		arc=0pt,  % Adjust the corner radius of the box
+		boxrule=1pt,  % Border thickness
+		title={\faLightbulb\ Interesting Note},  % The lightbulb icon and title
+		fonttitle=\bfseries,  % Font style for the title
+		coltitle=blue!50!black,  % Color for the title text
+		colbacktitle=yellow!20,  % Background color for the title
+		attach title to upper={\par},
+		boxsep=0pt,  % Adjust the space between the content and the box
+		]
+	}{
+	\end{tcolorbox}
+}
+
+\definecolor{lightpurple}{RGB}{220,180,240}
+
+\newenvironment{quotationbox}{
+	\begin{tcolorbox}[
+		colback=lightpurple!10,  % Very light purple background color of the box
+		colframe=lightpurple!50,  % Border color of the box
+		arc=0pt,  % Adjust the corner radius of the box
+		boxrule=1pt,  % Border thickness
+		title={\faQuoteLeft\ Quotation},  % The quotation icon and title
+		fonttitle=\bfseries,  % Font style for the title
+		coltitle=blue!50!black,  % Color for the title text
+		colbacktitle=yellow!20,  % Background color for the title
+		attach title to upper={\par},
+		boxsep=0pt,  % Adjust the space between the content and the box
+		]
+	}{
+	\end{tcolorbox}
+}
+
+% define a URL
+\newenvironment{urlbox}{
+	\begin{tcolorbox}[
+		colback=blue!10,  % Very light green background color of the box
+		colframe=blue!50,  % Border color of the box
+		arc=0pt,  % Adjust the corner radius of the box
+		boxrule=1pt,  % Border thickness
+		title={URL},  % The lightbulb icon and title
+		fonttitle=\bfseries,  % Font style for the title
+		coltitle=blue!50!black,  % Color for the title text
+		colbacktitle=yellow!20,  % Background color for the title
+		attach title to upper={\par},
+		boxsep=0pt,  % Adjust the space between the content and the box
+		]
+	}{
+	\end{tcolorbox}
+}
+
+\newcommand{\unfinished}{%
+	\par\noindent%
+	\setlength{\fboxsep}{10pt} % Adjust the padding
+	\fcolorbox{red}{red!20}{%
+		\begin{minipage}{\dimexpr\linewidth-2\fboxsep}%
+			\vspace{5pt} % Adjust the vertical spacing
+			\centering
+			\textcolor{red}{\textbf{\faExclamation\ Section in Progress\ \faExclamation}}
+			\vspace{5pt} % Adjust the vertical spacing
+		\end{minipage}%
+	}%
+	\par
+}
+
+% Define the custom terminal style
+\lstdefinestyle{terminalstyle}{
+    language=bash,                   % Set the language to Bash
+    basicstyle=\ttfamily\color{white}, % Use a monospaced font and white text
+    backgroundcolor=\color{black},   % Background color
+    frame=tb,                        % Top and bottom frame lines
+    framerule=0.5pt,                 % Frame rule width
+    xleftmargin=5pt,                 % Left margin
+    xrightmargin=0pt,                % Right margin
+    rulecolor=\color{black!20},      % Frame color
+    showstringspaces=false,          % Don't show spaces in strings
+    upquote=true,                    % Use straight quotes
+    commentstyle=\color{green},      % Comments are green
+    keywordstyle=\color{orange!60},  % Keywords
+    numbers=left,                    % Line numbers on the left
+    numberstyle=\tiny\color{black!90},   % Line number style
+    captionpos=b,                    % Caption position (bottom)
+    breaklines=true,                 % Automatically break long lines
+    postbreak=\mbox{\textcolor{green}{$\hookrightarrow$}\space}, % Line continuation symbol
+}
+
+% Define a bash/shell style.
+\lstdefinestyle{shellstyle}{
+	language=sh,                    % Set the language to Shell
+	basicstyle=\ttfamily,           % Use a monospaced font
+	backgroundcolor=\color{gray!10},% Background color
+	keywordstyle=\color{blue},      % Keywords are blue
+	commentstyle=\color{green!40!black}, % Comments are green
+	stringstyle=\color{red},        % Strings are red
+        rulecolor=\color{black},        % Frame color
+	breakatwhitespace=false,        % Don't break lines at whitespace
+	breaklines=true,                % Automatically break long lines
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, % Line continuation symbol
+	showstringspaces=false,         % Don't show spaces in strings
+	captionpos=b,                   % Caption position (bottom)
+	frame=single,                   % Add a frame around listings
+	numbers=left,                   % Line numbers on the left
+	numberstyle=\tiny\color{gray},  % Line number style
+	stepnumber=1,                   % Line number increments
+	tabsize=4,                      % Tab size
+	xleftmargin=5pt,                % Left margin
+	xrightmargin=0pt                % Right margin
+}
+
+% Define Python style
+\lstdefinestyle{pythonstyle}{
+	language=Python,
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=single,
+	rulecolor=\color{orange},
+        backgroundcolor=\color{orange!05},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!40!black},
+	stringstyle=\color{red},
+	breaklines=true,
+	tabsize=4,
+	captionpos=b,
+	extendedchars=true,
+	inputencoding=utf8,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=5pt,                % Left margin
+	xrightmargin=0pt                % Right margin
+}
+
+
+% Define C++ style
+\lstdefinestyle{cppstyle}{
+	language=C++,
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=single,
+	rulecolor=\color{black!30},
+	backgroundcolor=\color{gray!05},% Background color
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!40!black},
+	stringstyle=\color{red},
+	breaklines=true,
+	tabsize=4,
+	captionpos=b,
+	extendedchars=true,
+	inputencoding=utf8,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=5pt,                % Left margin
+	xrightmargin=0pt                % Right margin
+}
+
+% Define dark green color
+\definecolor{darkgreen}{RGB}{0,100,0}
+
+% Define Makefile style
+\lstdefinestyle{makestyle}{
+	language=make,
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=single,
+	backgroundcolor=\color{darkgreen!05},
+	rulecolor=\color{darkgreen},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!40!black},
+	stringstyle=\color{red},
+	breaklines=true,
+	tabsize=4,
+	captionpos=b,
+	extendedchars=true,
+	inputencoding=utf8,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=5pt,                % Left margin
+	xrightmargin=0pt                % Right margin
+}
+
+% Define Git style
+\lstdefinestyle{gitstyle}{
+	language=bash, % Assuming Git commands are written in a bash-like language
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=single,
+	backgroundcolor=\color{blue!05},
+	rulecolor=\color{blue},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!40!black},
+	stringstyle=\color{red},
+	breaklines=true,
+	tabsize=4,
+	captionpos=b,
+	extendedchars=true,
+	inputencoding=utf8,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=5pt,                % Left margin
+	xrightmargin=0pt                % Right margin
+}
+
+% Define C# style
+\lstdefinestyle{csharpstyle}{
+	language=[Sharp]C,
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=single,
+	rulecolor=\color{purple},
+	backgroundcolor=\color{purple!05},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!40!black},
+	stringstyle=\color{red},
+	breaklines=true,
+	tabsize=4,
+	captionpos=b,
+	extendedchars=true,
+	inputencoding=utf8,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=5pt,                % Left margin
+	xrightmargin=0pt                % Right margin
+}
+
+% Define Java style
+\lstdefinestyle{javastyle}{
+	language=Java,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blue},
+	rulecolor=\color{red!80},
+	backgroundcolor=\color{red!05},
+	commentstyle=\color{green!70!black},
+	stringstyle=\color{red},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	stepnumber=1,
+	breaklines=true,
+	breakatwhitespace=false,
+	tabsize=4,
+	frame=single,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=5pt,                % Left margin
+	xrightmargin=0pt                % Right margin
+}
+
+% Define JavaScript language settings
+\lstdefinelanguage{JavaScript}{
+	keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, default},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywords={class, export, boolean, throw, implements, import, this},
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	sensitive=false,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	morestring=[b]',
+	morestring=[b]",
+}
+
+% Define JavaScript style
+\lstdefinestyle{jsstyle}{
+	language=JavaScript,
+	basicstyle=\ttfamily,
+	rulecolor=\color{red!80},
+	backgroundcolor=\color{red!05},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!70!black},
+	stringstyle=\color{red},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	stepnumber=1,
+	breaklines=true,
+	breakatwhitespace=false,
+	tabsize=4,
+	frame=single,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=5pt,                % Left margin
+	xrightmargin=0pt                % Right margin
+}
+
+% Define HTML style
+\lstdefinestyle{htmlstyle}{
+	language=HTML,
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=single,
+	rulecolor=\color{black},
+	backgroundcolor=\color{yellow!05},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!40!black},
+	stringstyle=\color{red},
+	breaklines=true,
+	tabsize=4,
+	captionpos=b,
+	extendedchars=true,
+	inputencoding=utf8,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=5pt,                % Left margin
+	xrightmargin=0pt                % Right margin
+}
+
+% Define CSS style
+\lstdefinestyle{cssstyle}{
+	language=HTML,
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=single,
+	rulecolor=\color{black},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!40!black},
+	stringstyle=\color{red},
+	breaklines=true,
+	tabsize=4,
+	captionpos=b,
+	extendedchars=true,
+	inputencoding=utf8,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=5pt,                % Left margin
+	xrightmargin=0pt                % Right margin
+}
+
+% Define LaTeX style
+\lstdefinestyle{latexstyle}{
+	language=TeX,
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=single,
+	rulecolor=\color{brown},
+	backgroundcolor=\color{brown!05},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!40!black},
+	stringstyle=\color{red},
+	breaklines=true,
+	tabsize=4,
+	captionpos=b,
+	extendedchars=true,
+	inputencoding=utf8,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=5pt,                % Left margin
+	xrightmargin=0pt                % Right margin
+}
+
+% Define PHP style
+\lstdefinestyle{phpstyle}{
+	language=PHP,
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=single,
+	rulecolor=\color{black},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!40!black},
+	stringstyle=\color{red},
+	breaklines=true,
+	tabsize=4,
+	captionpos=b,
+	extendedchars=true,
+	inputencoding=utf8,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=5pt,                % Left margin
+	xrightmargin=0pt                % Right margin
+}
