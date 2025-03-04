@@ -25,7 +25,7 @@
     \item[CREATURE:] Any valid card from the game which has an attack, defense, and non-magic type.
     \item[MAGIC CARD:] Any valid card from the game which has a type equal to magic.
     \item[TYPE:] One of the primary types of cards within the game - Water, Fire, Earth, Nature, Electric, Light, Dark.
-    \item[SUB-TYPE:] One of the subtype categories of cards within the game - Dragon, Warrior, Beast, Spellcaster, Flying, Insect, Reptile, Humanoid, Machine, Fairy, Ghost, Fish, etc.
+    \item[SUB-TYPE:] One of the subtype categories of cards within the game - Dragon, Warrior, Beast, Spell-caster, Flying, Insect, Reptile, Humanoid, Machine, Fairy, Ghost, Fish, etc.
     \item[LEVEL:] The number of stars on a creature card.
     \item[ATTACK:] The attacking potential of a creature card.
     \item[DEFENSE:] The defensive potential of a creature card.
@@ -40,6 +40,8 @@
     \item[INDESTRUCTIBLE:]  This means a card cannot be \textit{destroyed}.
     \item[IMMORTAL:] This is an alternate term meaning a card is Indestructible.
     \item[EXACTLY:] This term is used when a condition has to be met for a card effect to activate.
+    \item[RANK:] The number of stars on a card.
+    \item[OWNING:] A player is considered the owner or owning player if the card on the field came from their deck.
 \end{description}
 
 
@@ -68,7 +70,7 @@
 \subsection{Game Start}
 \begin{itemize}
     \item To decide who goes first, any random method can be used (e.g., coin toss, age, agreement). The default method for official play should be the roll of a die (assign one player as even, and another as odd).
-    \item Each player begins the game by drawing 5 cards.
+    \item Each player begins the game by drawing 7 cards.
     \item The first player to play cannot attack on their first turn nor draw at the start of their turn.
 \end{itemize}
 
@@ -102,17 +104,16 @@
 
 \subsection{Playing Cards}
 \begin{itemize}
-    \item A card can be played to the field in either face-up or face-down position.
+    \item A card can only be played to the field in face up vertical position.
     \item \textbf{Magic Cards:}
     \begin{itemize}
-        \item If played face-down, they can be flipped face-up at any time after that turn during either player's turn.
-        \item If played face-down, they cannot be activated until at least the next turn.
+        \item A Magic card effect can be used immediately after the card is played.
+        \item Magic card effects can be activated at any point during either players turn once the card is on the field.
     \end{itemize}
     \item \textbf{Creature Cards:}
     \begin{itemize}
-        \item If played face-down, they can only be changed to face-up when attacked or voluntarily flipped by the player during their turn.
-        \item An attacked creature card is always flipped face up by the attack.
-        \item When a creature is leveled up, the new creature can also be played in face up or face down position.
+        \item A creature card effect can be used immediately after the card is played.
+        \item Creature effects can only be activated on the owning players turn.
     \end{itemize}
 \end{itemize}
 
@@ -136,20 +137,24 @@
     \end{itemize}
     \item \textbf{Magic Cards:}
     \begin{itemize}
-        \item When a magic card effect is activated (unless it is a continuous effect), that card is sent to the discard pile.
+        \item When a magic card effect is activated (even if it's is a continuous effect), that card is tapped.
     \end{itemize}
     \item \textbf{Effect Conditions:}
     \begin{itemize}
         \item If a card effect activates when the card is sent to the discard pile or deck, it can only be activated if the card was initially untapped.
-        \item Cards in the hand, deck, and discard pile are considered untapped.
-        \item A card effect cannot be activated if it is destroyed (unless a card states otherwise).
+        \item Cards in the hand, deck, underneath other cards, and in the discard pile are considered untapped.
+        \item A card effect cannot be activated when (in response to) it is destroyed (unless a card states otherwise).
     \end{itemize}
     \item \textbf{Effect Types:}
     \begin{itemize}
         \item Normal: A Normal effect is one that can be activated during your turn by tapping the card.
         \item Continuous: This effect is activated like a normal effect, but stays active while the card is on the field.
 		\item Counter: This effect can be activated at any time in response to an opponents action.
-		\item Equip: This card is 'equip' to another card and remains active until the other card or this card is destroyed. When a card is destroyed, all equip cards connected to that card are destroyed with it.
+		\item Equip: This card is 'equip' to another card and remains active until the other card or this card is destroyed. 
+		\begin{itemize}
+			\item When a card is destroyed, all equip cards connected to that card are destroyed with it.
+			\item If an equip card is leveled up, it is no longer considered active or equip to what it was before leveling up.
+		\end{itemize}
 		\item Latent: This effect is triggered only when this card is currently untapped and meets some specific trigger condition. 
 		\item Dormant: This is an effect that can only be activated when the card is tapped. These effects cannot be activated the same turn the card was tapped.
   		\item Passive: This effect is always active and is triggered whenever the effect conditions are met.
@@ -165,10 +170,11 @@
 
 \subsection{Leveling Up}
 \begin{itemize}
-    \item Any card with a level higher than one can only be played to the field by leveling up another card of the same type.
-    \item To level up a card, place a card with the same type and one level higher on top of that card.
+    \item Any card with a level rank/level than one can only be played to the field by leveling up another card of the same type.
+    \item To rank/level up a card, place a card with the same type and one rank higher on top of that card.
     \item All cards under the card played are considered underneath that card and are immediately untapped.
-    \item All cards underneat another card remain on the field until the top card of their pile is destroyed.
+    \item All cards underneath another card remain on the field.
+    \item Cards underneath another card cannot be tapped or have their effects activated.
     \item Cards underneath another do not count towards the field creature limit.
 \end{itemize}
 
@@ -183,11 +189,11 @@
 \begin{itemize}
     \item The last part of a players turn is the battle phase.
     \item Every creature a player owns can attack once during the owner players Battle Phase.
-    \item If the opponent controls any creatures, the attacker must target one of them..
+    \item If the opponent controls any creatures, the attacker must target one of them.
     \item If an opponent has no creatures remaining, a creature can attack the opponent directly.
     \item When a creature attacks, the attack value is used to determine its strength.
     \item When a creature is defending, the defense value is used to determine its strength.
-    \item During an attack, whichever creature has the higher power level prevails, and the other is destroyed (unless a card states otherwise).
+    \item During an attack, whichever creature has the higher power/attack prevails, and the other is destroyed (unless a card states otherwise) and sent to the discard pile.
 \end{itemize}
 
 
