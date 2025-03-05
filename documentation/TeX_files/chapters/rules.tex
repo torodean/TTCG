@@ -13,8 +13,8 @@
     \item[MILL:] Sending cards from the deck directly to the discard pile.
     \item[RECOVER:] The ability to retrieve a card from the discard pile or another out-of-play area.
     \item[FIELD:] The area where cards are placed by both players.
-    \item[CREATURE ZONE:] The top area of a player's field, where creature cards are played.
-    \item[MAGIC ZONE:] The bottom area of a player's field, where magic cards are played.
+    \item[UNIT ZONE:] The top area of a player's field, where units cards are played.
+    \item[MAGIC ZONE:] The bottom area of a player's field, where spell cards are played.
     \item[PLAY:] The action of placing a card on the field.
     \item[TAP:] Switch the position of a card from vertical to horizontal or from horizontal to vertical.
     \item[LEVEL UP:] The act of placing a card of one level higher on top of another card.
@@ -22,13 +22,13 @@
     \item[DESTROY:] The act of sending a card and all cards under it to the discard pile.
     \item[TURN:] The period of time where only one player can play cards.
     \item[POINT:] The unit which keeps track of a player's score.
-    \item[CREATURE:] Any valid card from the game which has an attack, defense, and non-magic type.
-    \item[MAGIC CARD:] Any valid card from the game which has a type equal to magic.
+    \item[UNIT:] Any valid card from the game which has an attack, defense, and non-spell type.
+    \item[MAGIC CARD:] Any valid card from the game which has a type equal to spell.
     \item[TYPE:] One of the primary types of cards within the game - Water, Fire, Earth, Nature, Electric, Light, Dark.
     \item[SUB-TYPE:] One of the subtype categories of cards within the game - Dragon, Warrior, Beast, Spell-caster, Flying, Insect, Reptile, Humanoid, Machine, Fairy, Ghost, Fish, etc.
-    \item[LEVEL:] The number of stars on a creature card.
-    \item[ATTACK:] The attacking potential of a creature card.
-    \item[DEFENSE:] The defensive potential of a creature card.
+    \item[LEVEL:] The number of stars on a unit card.
+    \item[ATTACK:] The attacking potential of a unit card.
+    \item[DEFENSE:] The defensive potential of a unit card.
     \item[EFFECT:] The text written on a card which does some action within the game.
     \item[ACTION:] The act of performing an effect of a card.
     \item[EQUIP:] The act of attaching a card to another card for added effects.
@@ -60,7 +60,7 @@
 \begin{itemize}
     \item Each player must construct a deck with a minimum of 50 cards and maximum of 70 cards.
     \item A player can have no more than 2 copies of the same card (across all rarities) in their deck.
-    \item A deck may contain any ratio of creature and magic cards.
+    \item A deck may contain any ratio of unit and spell cards.
 \end{itemize}
 
 
@@ -105,15 +105,15 @@
 \subsection{Playing Cards}
 \begin{itemize}
     \item A card can only be played to the field in face up vertical position.
-    \item \textbf{Magic Cards:}
+    \item \textbf{Spell Cards:}
     \begin{itemize}
-        \item A Magic card effect can be used immediately after the card is played.
-        \item Magic card effects can be activated at any point during either players turn once the card is on the field.
+        \item A Spell card effect can be used immediately after the card is played.
+        \item Spell card effects can be activated at any point during either players turn once the card is on the field.
     \end{itemize}
-    \item \textbf{Creature Cards:}
+    \item \textbf{Unit Cards:}
     \begin{itemize}
-        \item A creature card effect can be used immediately after the card is played.
-        \item Creature effects can only be activated on the owning players turn.
+        \item A unit card effect can be used immediately after the card is played.
+        \item Unit effects can only be activated on the owning players turn.
     \end{itemize}
 \end{itemize}
 
@@ -128,16 +128,16 @@
     \item All rules and effects are able to be overruled if a card effect explicitly states that it does so.
     \item Most effects can be activated at any time while the card is face-up on the field.
     \item If multiple effects trigger at the same time, they activate in reverse order of activation. If an effect is no longer valid because of this order, the effect simply does nothing (but still counts as activated).
-    \item Tapped creature cards cannot activate effects.
-    \item \textbf{Creature Cards:}
+    \item Tapped units cards cannot activate effects.
+    \item \textbf{Unit Cards:}
     \begin{itemize}
-        \item When a creature effect is activated, that card is then tapped.
+        \item When a unit effect is activated, that card is then tapped.
         \item Tapped cards cannot activate effects.
-        \item A creature card can attack whether tapped or not.
+        \item A unit card can attack whether tapped or not.
     \end{itemize}
-    \item \textbf{Magic Cards:}
+    \item \textbf{Spell Cards:}
     \begin{itemize}
-        \item When a magic card effect is activated (even if it's is a continuous effect), that card is tapped.
+        \item When a spell card effect is activated (even if it's is a continuous effect), that card is tapped.
     \end{itemize}
     \item \textbf{Effect Conditions:}
     \begin{itemize}
@@ -175,7 +175,7 @@
     \item All cards under the card played are considered underneath that card and are immediately untapped.
     \item All cards underneath another card remain on the field.
     \item Cards underneath another card cannot be tapped or have their effects activated.
-    \item Cards underneath another do not count towards the field creature limit.
+    \item Cards underneath another do not count towards the field unit limit.
 \end{itemize}
 
 
@@ -188,12 +188,12 @@
 \subsection{Battle Phase}
 \begin{itemize}
     \item The last part of a players turn is the battle phase.
-    \item Every creature a player owns can attack once during the owner players Battle Phase.
-    \item If the opponent controls any creatures, the attacker must target one of them.
-    \item If an opponent has no creatures remaining, a creature can attack the opponent directly.
-    \item When a creature attacks, the attack value is used to determine its strength.
-    \item When a creature is defending, the defense value is used to determine its strength.
-    \item During an attack, whichever creature has the higher power/attack prevails, and the other is destroyed (unless a card states otherwise) and sent to the discard pile.
+    \item Every unit a player owns can attack once during the owner players Battle Phase.
+    \item If the opponent controls any units, the attacker must target one of them.
+    \item If an opponent has no units remaining, a unit can attack the opponent directly.
+    \item When a unit attacks, the attack value is used to determine its strength.
+    \item When a unit is defending, the defense value is used to determine its strength.
+    \item During an attack, whichever unit has the higher power/attack prevails, and the other is destroyed (unless a card states otherwise) and sent to the discard pile.
 \end{itemize}
 
 
@@ -206,9 +206,9 @@
 \subsection{Gaining Points}
 \begin{itemize}
     \item Every player starts the game with 20 points.
-    \item To gain points, you must destroy creatures on your opponents side of the field.
-    \item When a creature is destroyed, the owner of that creature loses points equal to the level of that creature.
-    \item During a players battle phase, if there are no creatures on the opponents side of the field, a creature can attack directly and the opposing player loses points equal to the level of the attacking creatures.
+    \item To gain points, you must destroy units on your opponents side of the field.
+    \item When a unit is destroyed, the owner of that unit loses points equal to the level of that unit.
+    \item During a players battle phase, if there are no units on the opponents side of the field, a unit can attack directly and the opposing player loses points equal to the level of the attacking units.
     \item Players can also gain or lose points based on various card effects.
 \end{itemize}
 
@@ -221,9 +221,9 @@
 
 \subsection{Field Limitations}
 \begin{itemize}
-    \item A players field is split into two parts (upper for creatures, and lower for magic cards).
-    \item A players upper field can support a maximum of 5 creature cards.
-    \item A players lower field can support a maximum of 5 magic cards.
+    \item A players field is split into two parts (upper for units, and lower for spell cards).
+    \item A players upper field can support a maximum of 5 unit cards.
+    \item A players lower field can support a maximum of 5 spell cards.
 \end{itemize}
 
 
