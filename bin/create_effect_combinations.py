@@ -354,6 +354,37 @@ def alphabetize_strings(string_list):
     return sorted(string_list)
 
 
+def dedupe_file(file_path):
+    """
+    Reads a file, removes duplicate lines, writes back the unique lines, and exits the program.
+
+    Args:
+        file_path (str): Path to the file to deduplicate.
+    """
+    try:
+        # Read all lines, preserving order, removing duplicates
+        with open(file_path, 'r') as f:
+            lines = f.readlines()
+        
+        # Remove duplicates while preserving order
+        seen = set()
+        unique_lines = [line for line in lines if not (line in seen or seen.add(line))]
+        
+        # Write back to the same file
+        with open(file_path, 'w') as f:
+            f.writelines(unique_lines)
+        
+        print(f"Duplicates removed from '{file_path}'. Exiting.")
+        exit(0)
+    
+    except FileNotFoundError:
+        print(f"Error: File '{file_path}' not found.")
+        exit(1)
+    except Exception as e:
+        print(f"Error processing file: {e}")
+        exit(1)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate all possible combinations for placeholders in a sentence.")
     parser.add_argument('-s', "--sentence", default=None, 
@@ -366,7 +397,13 @@ if __name__ == "__main__":
                         help="The file to output the effects to.")
     parser.add_argument('-t', "--test_mode", default=False, action='store_true', 
                         help="Test mode will only output the combinations to terminal.")
+    parser.add_argument('-d', '--dedupe', nargs='?', const='effects/all_effects.txt', default=None,
+                        help="Remove duplicate lines from the specified file (or 'effects/all_effects.txt' if none given) and exit.")
     args = parser.parse_args()
+    
+    # Run deduplication if -d is specified
+    if args.dedupe:
+        dedupe_file(args.dedupe)
     
     # Custom validation: ensure exactly one of -s or -f is provided
     if (args.sentence is None) == (args.file is None):
