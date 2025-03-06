@@ -1,0 +1,9 @@
+rank <rank> <card>
+rank <rank> <type> card
+rank <rank> <subtype> card
+rank <rank> <comparison> <card>
+rank <rank> <comparison> <type> card
+rank <rank> <comparison> <subtype> card
+<type> card
+<subtype> card
+<card>

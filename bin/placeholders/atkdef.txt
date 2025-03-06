@@ -1,0 +1,14 @@
+25 attack
+25 defense
+50 attack
+50 defense
+100 attack
+100 defense
+200 attack
+200 defense
+300 attack
+300 defense
+400 attack
+400 defense
+500 attack
+500 defense

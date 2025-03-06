@@ -1,0 +1,13 @@
+dragon
+beast
+elemental
+aquatic
+warrior
+spellcaster
+machine
+ghost
+insect
+reptile
+fairy
+undead
+botanic
