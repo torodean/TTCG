@@ -5,85 +5,129 @@
 
 
 
-\section{create_effect_combinations.py}
+\section{Create Effect Combinations}
 \subsection{Overview}
-The \texttt{create_effect_combinations.py} script is a Python-based tool designed to generate all possible combinations of a sentence or set of sentences by replacing placeholders with values defined in external text files. This tool is particularly useful for creating permutations of text templates, such as effects, test cases, or configuration strings, where placeholders represent variable components. It supports nested placeholders, offset calculations (e.g., \texttt{<rank+1>}), and post-processing to clean, filter, and deduplicate the output.
+The \texttt{create\_effect\_combinations.py} script is a Python 3 tool designed to generate all possible combinations of a sentence or set of sentences by replacing placeholders with values defined in external text files. It is ideal for creating permutations of text templates, such as game effects, test cases, or parameterized strings, where placeholders (e.g., \texttt{<rank>}) represent variable elements. The tool supports nested placeholders, numeric offsets (e.g., \texttt{<rank+1>}), and configurable post-processing to clean, filter, and refine the output.
 
-Developed in Python 3, the tool leverages a modular design with command-line arguments for flexibility, making it suitable for both one-off sentence processing and batch operations on files. The output can be written to a file or displayed in the terminal for testing purposes.
+This script automates the generation of exhaustive text combinations, with output that can be written to a file or displayed in the terminal. Configuration files enhance flexibility by allowing users to customize filtering and phrase replacements without modifying the source code.
 
 \subsection{Purpose}
-The primary purpose of the \texttt{create_effect_combinations.py} is to automate the creation of exhaustive text combinations from templates. It eliminates manual effort in scenarios requiring extensive variation, such as:
+The \texttt{create\_effect\_combinations.py} script aims to streamline the creation of text variations from templates. Common use cases include:
 \begin{itemize}
-    \item Generating card effects (e.g., "Draw \texttt{<number>} cards").
+    \item Generating card or spell effects for games (e.g., "Draw \texttt{<number>} cards").
     \item Producing test data for software validation.
     \item Creating parameterized strings for simulations or documentation.
 \end{itemize}
-By handling recursive placeholder resolution and applying customizable filters, it ensures the output is both comprehensive and polished.
+By leveraging recursive placeholder resolution and user-defined configuration files, it ensures comprehensive and polished results with minimal manual effort.
 
 \subsection{Features}
-The tool offers the following key features:
-
+The tool provides the following key features:
 \begin{itemize}
-    \item \textbf{Placeholder Substitution}: Replaces placeholders (e.g., \texttt{<rank>}) in a sentence with values loaded from corresponding text files in a specified directory (default: \texttt{placeholders/}).
-    \item \textbf{Nested Placeholder Support}: Recursively resolves nested placeholders (e.g., \texttt{<effect>} containing \texttt{<number>}) to generate all possible combinations.
-    \item \textbf{Offset Handling}: Supports numeric offsets for placeholders (e.g., \texttt{<rank+1>}, \texttt{<rank-1>}), adjusting values accordingly if they are numeric.
-    \item \textbf{Input Flexibility}: Accepts either a single sentence via the \texttt{-s} flag or a file of sentences via the \texttt{-f} flag (default: \texttt{effects/all\_effect\_templates.txt}).
+    \item \textbf{Placeholder Substitution}: Replaces placeholders (e.g., \texttt{<rank>}) with values from text files in a specified directory (default: \texttt{placeholders/}).
+    \item \textbf{Nested Placeholder Support}: Recursively resolves nested placeholders (e.g., \texttt{<effect>} containing \texttt{<number>}).
+    \item \textbf{Offset Handling}: Adjusts numeric placeholders with offsets (e.g., \texttt{<rank+1>}, \texttt{<rank-1>}).
+    \item \textbf{Input Flexibility}: Processes a single sentence (\texttt{-s}) or a file of sentences (\texttt{-f}, default: \texttt{effects/all\_effect\_templates.txt}).
     \item \textbf{Output Customization}: Writes combinations to a file (default: \texttt{effects/all\_effects.txt}) or outputs to the terminal in test mode (\texttt{-t}).
-    \item \textbf{Post-Processing}: 
+    \item \textbf{Configurable Post-Processing}:
         \begin{itemize}
-            \item Removes duplicates while preserving the order of first appearance.
-            \item Filters out unwanted phrases (e.g., "1 or lower", "rank 6").
-            \item Replaces specific phrases for grammatical consistency (e.g., "one points" to "one point").
+            \item Removes duplicates, preserving the order of first appearance.
+            \item Filters out unwanted phrases defined in a configuration file (default: \texttt{placeholders/combinations\_to\_remove.txt}).
+            \item Replaces phrases with designated alternatives from a configuration file (default: \texttt{placeholders/phrase\_replacements.txt}).
             \item Alphabetizes the final list for readability.
         \end{itemize}
-    \item \textbf{Deduplication Utility}: Provides a standalone deduplication mode (\texttt{-d}) to clean existing files of duplicate lines.
-    \item \textbf{Error Handling}: Gracefully manages missing files, empty inputs, and recursive placeholder cycles.
+    \item \textbf{Deduplication Utility}: Offers a standalone mode (\texttt{-d}) to remove duplicate lines from a file.
+    \item \textbf{Error Handling}: Manages missing files, empty inputs, and recursive placeholder cycles (unresolved as, e.g., \texttt{<rank>}).
 \end{itemize}
 
+\subsection{Configuration Files}
+The script uses two configuration files to customize post-processing, both supporting comments (lines starting with \texttt{\#}) for documentation or disabling rules:
+\begin{itemize}
+    \item \textbf{\texttt{placeholders/combinations\_to\_remove.txt}}:
+        \begin{itemize}
+            \item \textit{Purpose}: Specifies phrases to exclude from the generated combinations, such as invalid or undesirable outputs.
+            \item \textit{Format}: One phrase per line. Empty lines and comments (\texttt{\#}) are ignored.
+            \item \textit{Example}:
+\begin{lstlisting}
+1 or lower
+# Exclude higher ranks for now
+5 or higher
+spell creature
+\end{lstlisting}
+            \item \textit{Effect}: Combinations containing these phrases (e.g., "Draw 1 or lower cards") are filtered out.
+        \end{itemize}
+    \item \textbf{\texttt{placeholders/phrase\_replacements.txt}}:
+        \begin{itemize}
+            \item \textit{Purpose}: Defines phrase replacements to refine grammar or correct errors in the output.
+            \item \textit{Format}: Key-value pairs in the form \texttt{old phrase: new phrase}, one per line. Empty lines and comments (\texttt{\#}) are ignored.
+            \item \textit{Example}:
+\begin{lstlisting}
+# Fix pluralization
+one point(s): one point
+two card(s): two cards
+# Temporary disable this:
+# three spell(s): three spells
+spellscaster: spellcaster
+\end{lstlisting}
+            \item \textit{Effect}: Replaces matching phrases (e.g., "one point(s)" becomes "one point") in all combinations.
+        \end{itemize}
+\end{itemize}
+Both files are optional; if missing, the script proceeds without filtering or replacements, respectively, and issues a warning.
+
 \subsection{Usage}
-The tool is invoked via the command line with the following syntax:
+Invoke the script via the command line:
 \begin{lstlisting}[language=bash]
-python3 generator.py [-s SENTENCE | -f FILE] [-p DIR] [-o OUT] [-t] [-d [FILE]]
+python3 create_effect_combinations.py [-s SENTENCE | -f FILE] [-p DIR] [-o OUT] [-t] [-d [FILE]] [-c CONFIG] [-r REPLACEMENTS]
 \end{lstlisting}
 Key arguments include:
 \begin{itemize}
     \item \texttt{-s/--sentence}: Process a single sentence (e.g., "Draw \texttt{<number>} cards").
     \item \texttt{-f/--file}: Process a file of sentences (default: \texttt{effects/all\_effect\_templates.txt}).
     \item \texttt{-p/--placeholder\_dir}: Directory with placeholder files (default: \texttt{placeholders}).
-    \item \texttt{-o/--output\_file}: Output file for combinations (default: \texttt{effects/all\_effects.txt}).
+    \item \texttt{-o/--output\_file}: Output file (default: \texttt{effects/all\_effects.txt}).
     \item \texttt{-t/--test\_mode}: Display results in terminal instead of writing to a file.
     \item \texttt{-d/--dedupe}: Deduplicate a file and exit (default: \texttt{effects/all\_effects.txt}).
+    \item \texttt{-c/--combinations\_to\_remove}: File listing phrases to remove (default: \texttt{placeholders/combinations\_to\_remove.txt}).
+    \item \texttt{-r/--replacements\_file}: File with phrase replacements (default: \texttt{placeholders/phrase\_replacements.txt}).
 \end{itemize}
 Exactly one of \texttt{-s} or \texttt{-f} must be provided.
 
 \subsection{Example}
-Given a placeholder file \texttt{placeholders/number.txt} with:
+With \texttt{placeholders/number.txt}:
 \begin{lstlisting}
 1
 2
 3
 \end{lstlisting}
+And \texttt{placeholders/combinations\_to\_remove.txt}:
+\begin{lstlisting}
+# Exclude invalid draw
+Draw 1
+\end{lstlisting}
+And \texttt{placeholders/phrase\_replacements.txt}:
+\begin{lstlisting}
+two card: two cards
+\end{lstlisting}
 Running:
 \begin{lstlisting}[language=bash]
-python3 generator.py -s "Draw <number> cards" -t
+python3 create_effect_combinations.py -s "Draw <number> card" -t
 \end{lstlisting}
 Outputs:
 \begin{lstlisting}
-Draw 1 card
 Draw 2 cards
-Draw 3 cards
-Total combinations: 3
+Draw 3 card
+Total combinations: 2
 \end{lstlisting}
 
 \subsection{Requirements}
 \begin{itemize}
     \item Python 3.x
-    \item Placeholder files in the specified directory (e.g., \texttt{rank.txt}, \texttt{number.txt}).
+    \item Placeholder files in the specified directory (e.g., \texttt{number.txt}).
+    \item Optional: Configuration files for filtering and replacements.
 \end{itemize}
 
 \subsection{Limitations}
 \begin{itemize}
-    \item Offset calculations assume numeric values; non-numeric values are passed unchanged.
+    \item Offset calculations assume numeric values; non-numeric values are unchanged.
     \item Recursive placeholder cycles are detected but result in unresolved placeholders (e.g., \texttt{<rank>}).
-    \item Filtering and replacement rules are hardcoded but can be extended by editing the source code.
+    \item Additional grammar fixes beyond configuration files are hardcoded in the script.
 \end{itemize}
