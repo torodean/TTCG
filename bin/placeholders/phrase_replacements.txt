@@ -1,0 +1,81 @@
+# Numbered point(s) cleanup
+one point(s): one point
+two point(s): two points
+three point(s): three points
+four point(s): four points
+five point(s): five points
+one points: one point
+two point: two points
+three point: three points
+four point: four points
+five point: five points
+        
+# Numbered card(s) cleanup
+one card(s): one card
+two card(s): two cards
+three card(s): three cards
+four card(s): four cards
+five card(s): five cards
+one cards: one card
+two card: two cards
+three card: three cards
+four card: four cards
+five card: five cards
+        
+# Numbered target(s) cleanup
+one target(s): one target
+two target(s): two targets
+three target(s): three targets
+four target(s): four targets
+five target(s): five targets
+one targets: one target
+two target: two targets
+three target: three targets
+four target: four targets
+five target: five targets
+                
+# Numbered spell(s) cleanup
+one spell(s): one spell
+two spell(s): two spells
+three spell(s): three spells
+four spell(s): four spells
+five spell(s): five spells
+one spells: one spell
+two spell: two spells
+three spell: three spells
+four spell: four spells
+five spell: five spells
+                
+# Numbered creature(s) cleanup
+one creature(s): one creature
+two creature(s): two creatures
+three creature(s): three creatures
+four creature(s): four creatures
+five creature(s): five creatures
+one creatures: one creature
+two creature: two creatures
+three creature: three creatures
+four creature: four creatures
+five creature: five creatures
+        
+# Remaining non-numbered words to be fixed
+spell(s): spells
+target(s): targets
+point(s): points
+card(s): cards
+creature(s): creatures
+spellss: spells
+targetss: targets
+pointss: points
+cardss: cards
+creaturess: creatures
+        
+# Duplicate card        
+card card: card
+        
+# Other replacements needed
+the top one card: the top card
+four spells cards: four spell cards
+# TODO - Figure out where this "spellscaster" string is coming from in the output...?!
+spellscaster: spellcaster 
+spells cards: spell cards
