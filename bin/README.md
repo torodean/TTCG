@@ -35,14 +35,14 @@ The `bin` directory serves as the central hub for executable scripts used in the
 
 ## Related Directories
 
-### `../placeholders/`
+### `placeholders/`
 - **Purpose**: Contains all placeholder files (e.g., `type.txt`, `number.txt`) and configuration files for `create_effect_combinations.py` (`combinations_to_remove.txt`, `phrase_replacements.txt`).
 - **Contents**: 
   - Placeholder files provide values for substitution/matching (e.g., `number.txt`: `1`, `2`, `3`).
   - Configuration files customize filtering and refinement (see `placeholders/README.md` for details).
 - **Usage**: Referenced by scripts via the `-p/--placeholder_dir` argument (defaults to `placeholders`).
 
-### `../effects/`
+### `effects/`
 - **Purpose**: Houses effect-related data, including templates, generated effect lists, and CSV outputs.
 - **Contents**:
   - **Templates**: Files like `all_effect_templates.txt` with placeholder-based effect patterns (e.g., "Draw <number> cards").
