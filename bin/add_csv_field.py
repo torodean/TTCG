@@ -228,6 +228,7 @@ def main():
     parser.add_argument('-t', '--text',
                         help="Pattern to search for (e.g., 'some text <placeholder> more text').")
     parser.add_argument('-e', '--exact', help="Exact line to match and set the specified column to True.")
+    parser.add_argument('-m', '--match_column', help="An extra identifier for specifying a column which must be true to evaluate as a match.")
     args = parser.parse_args()
 
     # Ensure exactly one of -e or -t is provided
