@@ -1,6 +1,7 @@
 Add <number> <target>(s) from your <pile> to your hand.
 Counter the effect of a <typeslevels> card.
-Destroy <number> <typeslevels> card(s) on the field.
+Destroy up to <number> <typeslevels> card(s) on the field.
+Destroy exactly <number> <typeslevels> card(s) on the field.
 This turn, change one <type> card to any other type.
 This turn, change one <subtype> card to any other subtype.
 While this card is on the field, attack and defense changes are inverted.
@@ -9,7 +10,7 @@ Both players discard their hand and draw the same number of cards they discarded
 Both players lose <number> point(s).
 Both players mill <number> card(s) from their deck.
 Destroy exactly <number> <card>(s) controlled by each player.
-Destroy <number> <typeslevels> card(s) from your side of the field to gain <number> points.
+Destroy <number> <typeslevels> card(s) from your side of the field to gain <number+1> points.
 Destroy one <typeslevels> card you control to destroy one other card on the field.
 Destroy this card to destroy <number> <typeslevels> card(s) on the field.
 While this card is on the field, all <typeslevels> card(s) gain <atkdef>.
@@ -21,6 +22,7 @@ Discard one <typeslevels> card from your hand to play up to two <typeslevels> ca
 Discard one <typeslevels> card from your hand to play one <typeslevels> card from your <pile>.
 Destroy two <typeslevels> cards you own to play one <typeslevels> card from your <pile>.
 Your opponent loses <number> point(s).
+Gain <number> point(s).
 You can send <number> card(s) underneath this card to the discard pile.
 You can play one extra <typeslevels> card this turn.
 You can rank up this creature using a <types> creature from your <pile>.
@@ -38,5 +40,5 @@ While this card is on the field, all <typeslevels> cards gain <atkdef>.
 Your opponent cannot play <types> cards next turn.
 Destroy this card to shuffle your discard pile into your deck.
 Lose <number> point(s) to destroy <number> card(s) on the field.
-Reveal the top <number> card(s) of your deck and play one <typeslevels> card from among them.
+Reveal the top <number+1> card(s) of your deck and play one <typeslevels> card from among them.
 Destroy one rank <rank> <types> card you own to play one rank <rank+1> <types> from your <pile>.

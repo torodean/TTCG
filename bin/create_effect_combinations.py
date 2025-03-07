@@ -182,9 +182,10 @@ def clean_and_filter_combinations(combinations):
         "rank 6",
         "rank 7",
         "rank 8",
-        "Add four"
-        "Add five"
-        "Add three"
+        "Add four",
+        "Add five",
+        "Add three",
+        "Add all",
         # Add more phrases here as needed
     ]
     
@@ -288,6 +289,12 @@ def replace_phrases_in_combinations(combinations):
         
         # duplicate card        
         "card card": "card",
+        
+        # OTher replacements needed
+        "the top one card": "the top card",
+        "four spells cards": "four spell cards",
+        "spellscaster": "spellcaster", # TODO - Figure out where this string is coming from in the output...?!
+        "spells cards": "spell cards",
     }
     
     updated_combinations = []
