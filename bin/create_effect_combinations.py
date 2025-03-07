@@ -148,46 +148,29 @@ def generate_combinations(sentence, placeholder_dir, visited=None):
     return combinations
     
 
-def clean_and_filter_combinations(combinations):
+def clean_and_filter_combinations(combinations, config_file):
     """
-    Processes a list of strings, replaces double spaces with single spaces, and removes strings containing specific phrases.
+    Processes a list of strings, replaces double spaces with single spaces, and removes strings containing specific phrases
+    loaded from a configuration file.
 
     Args:
         combinations (list): List of strings to clean and filter.
+        config_file (str): Path to the configuration file containing phrases to remove (default: 'placeholders/combinations_to_remove.txt').
 
     Returns:
         list: List of cleaned and filtered strings.
     """
-    phrases_to_remove = [
-        "1 or lower",
-        "1 or higher",
-        "5 or lower",
-        "5 or higher",
-        "all point",
-        "spell creature",
-        "rank 4 spell",
-        "rank 5 spell",
-        "Add all rank",
-        "Draw all card",
-        "discard all card",
-        "the top all card",
-        "mill all card",
-        "spell cards gain",
-        "spell card gain",
-        "spell cards lose",
-        "spell card lose",
-        "rank -2",
-        "rank -1",
-        "rank 0",
-        "rank 6",
-        "rank 7",
-        "rank 8",
-        "Add four",
-        "Add five",
-        "Add three",
-        "Add all",
-        # Add more phrases here as needed
-    ]
+    # Load phrases to remove from the configuration file
+    try:
+        with open(config_file, 'r') as f:
+            phrases_to_remove = [line.strip() for line in f if line.strip()]
+    except FileNotFoundError:
+        # If the file doesn't exist, use an empty list or raise a warning
+        phrases_to_remove = []
+        print(f"Warning: Configuration file '{config_file}' not found. No phrases will be filtered.")
+    except Exception as e:
+        phrases_to_remove = []
+        print(f"Error loading configuration file '{config_file}': {e}")
     
     cleaned_combinations = []
     
@@ -203,100 +186,35 @@ def clean_and_filter_combinations(combinations):
     return cleaned_combinations
 
 
-def replace_phrases_in_combinations(combinations):
+def replace_phrases_in_combinations(combinations, replacements_file):
     """
-    Searches a list of strings and replaces specific phrases with their designated replacements.
+    Searches a list of strings and replaces specific phrases with their designated replacements loaded from a configuration file.
+    Lines starting with '#' in the file are treated as comments and ignored.
 
     Args:
         combinations (list): List of strings to process.
+        replacements_file (str): Path to the configuration file containing phrase replacements (default: 'placeholders/phrase_replacements.txt').
 
     Returns:
         list: List of strings with phrases replaced.
     """
-    # Define the dictionary of phrases to replace and their replacements
-    phrase_replacements = {
-        # Numbered point(s) cleanup
-        "one point(s)": "one point",
-        "two point(s)": "two points",
-        "three point(s)": "three points",
-        "four point(s)": "four points",
-        "five point(s)": "five points",
-        "one points": "one point",
-        "two point": "two points",
-        "three point": "three points",
-        "four point": "four points",
-        "five point": "five points",
-        
-        # Numbered card(s) cleanup
-        "one card(s)": "one card",
-        "two card(s)": "two cards",
-        "three card(s)": "three cards",
-        "four card(s)": "four cards",
-        "five card(s)": "five cards",
-        "one cards": "one card",
-        "two card": "two cards",
-        "three card": "three cards",
-        "four card": "four cards",
-        "five card": "five cards",
-        
-        # Numbered target(s) cleanup
-        "one target(s)": "one target",
-        "two target(s)": "two targets",
-        "three target(s)": "three targets",
-        "four target(s)": "four targets",
-        "five target(s)": "five targets",
-        "one targets": "one target",
-        "two target": "two targets",
-        "three target": "three targets",
-        "four target": "four targets",
-        "five target": "five targets",
-                
-        # Numbered spell(s) cleanup
-        "one spell(s)": "one spell",
-        "two spell(s)": "two spells",
-        "three spell(s)": "three spells",
-        "four spell(s)": "four spells",
-        "five spell(s)": "five spells",
-        "one spells": "one spell",
-        "two spell": "two spells",
-        "three spell": "three spells",
-        "four spell": "four spells",
-        "five spell": "five spells",
-                
-        # Numbered creature(s) cleanup
-        "one creature(s)": "one creature",
-        "two creature(s)": "two creatures",
-        "three creature(s)": "three creatures",
-        "four creature(s)": "four creatures",
-        "five creature(s)": "five creatures",
-        "one creatures": "one creature",
-        "two creature": "two creatures",
-        "three creature": "three creatures",
-        "four creature": "four creatures",
-        "five creature": "five creatures",
-        
-        # remaining non-numbered words to be fixed
-        "spell(s)": "spells",
-        "target(s)": "targets",
-        "point(s)": "points",
-        "card(s)": "cards",
-        "creature(s)": "creatures",
-        "spellss": "spells",
-        "targetss": "targets",
-        "pointss": "points",
-        "cardss": "cards",
-        "creaturess": "creatures",
-        
-        # duplicate card        
-        "card card": "card",
-        
-        # OTher replacements needed
-        "the top one card": "the top card",
-        "four spells cards": "four spell cards",
-        "spellscaster": "spellcaster", # TODO - Figure out where this string is coming from in the output...?!
-        "spells cards": "spell cards",
-    }
-    
+    # Load phrase replacements from the configuration file
+    phrase_replacements = {}
+    try:
+        with open(replacements_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                # Skip empty lines or comments (lines starting with '#')
+                if not line or line.startswith('#'):
+                    continue
+                if ':' in line:  # Ensure line has a key-value separator
+                    old_phrase, new_phrase = map(str.strip, line.split(':', 1))
+                    phrase_replacements[old_phrase] = new_phrase
+    except FileNotFoundError:
+        print(f"Warning: Replacement file '{replacements_file}' not found. No replacements will be applied.")
+    except Exception as e:
+        print(f"Error loading replacement file '{replacements_file}': {e}")
+
     updated_combinations = []
     
     for line in combinations:
@@ -320,7 +238,6 @@ def replace_phrases_in_combinations(combinations):
         updated_line = re.sub(r"one (.+?) spells\b", r"one \1 spell", updated_line)
         updated_line = re.sub(r"one (.+?) creatures\b", r"one \1 creature", updated_line)
         updated_line = re.sub(r"one (.+?) targets\b", r"one \1 target", updated_line)
-        
         
         updated_combinations.append(updated_line)
     
@@ -406,6 +323,10 @@ if __name__ == "__main__":
                         help="Test mode will only output the combinations to terminal.")
     parser.add_argument('-d', '--dedupe', nargs='?', const='effects/all_effects.txt', default=None,
                         help="Remove duplicate lines from the specified file (or 'effects/all_effects.txt' if none given) and exit.")
+    parser.add_argument('-c', '--combinations_to_remove', default='placeholders/combinations_to_remove.txt',
+                    help="List file containing phrases to remove from resulting combinations (default: 'placeholders/combinations_to_remove.txt').")
+    parser.add_argument('-r', '--replacements_file', default='placeholders/phrase_replacements.txt',
+                    help="Configuration file containing phrase replacements (format: 'old phrase: new phrase') (default: 'placeholders/phrase_replacements.txt').")
     args = parser.parse_args()
     
     # Run deduplication if -d is specified
@@ -441,8 +362,8 @@ if __name__ == "__main__":
             
     
     all_combinations = remove_duplicates(all_combinations)
-    all_combinations = clean_and_filter_combinations(all_combinations)
-    all_combinations = replace_phrases_in_combinations(all_combinations)
+    all_combinations = clean_and_filter_combinations(all_combinations, args.combinations_to_remove)
+    all_combinations = replace_phrases_in_combinations(all_combinations, args.replacements_file)
     all_combinations = alphabetize_strings(all_combinations)
     
     if not args.test_mode:
