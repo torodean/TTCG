@@ -169,7 +169,7 @@ The script offers the following key features:
 \subsection{Usage}
 Invoke the script via the command line:
 \begin{lstlisting}[language=bash]
-python3 add_csv_field.py -i INPUT -o OUTPUT -c COLUMN [-p DIR] [-t TEXT | -e EXACT]
+python3 add_csv_field.py -i INPUT -o OUTPUT -c COLUMN [-p DIR] [-t TEXT | -e EXACT] [-m MATCH\_COLUMN]
 \end{lstlisting}
 Key arguments include:
 \begin{itemize}
@@ -179,7 +179,8 @@ Key arguments include:
     \item \texttt{-p/--placeholder\_dir}: Directory with placeholder files (default: \texttt{placeholders}).
     \item \texttt{-t/--text}: Pattern to match, including placeholders (e.g., \texttt{Draw <number> cards}).
     \item \texttt{-e/--exact}: Exact substring to match (e.g., \texttt{Draw two}).
-\end{itemize}
+    \item \texttt{-m/--match\_column}: An extra identifier for specifying a column which must be true to evaluate as a match..
+\end{itemize} 
 Exactly one of \texttt{-t} or \texttt{-e} must be provided.
 
 \subsection{Example}
