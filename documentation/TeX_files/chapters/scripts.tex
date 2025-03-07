@@ -239,3 +239,88 @@ Gain life;False
     \item Assumes semicolon (\texttt{;}) as the CSV delimiter; other delimiters are not supported.
     \item Non-CSV inputs are converted to CSV with a default \texttt{EFFECTNAME} column.
 \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Alphabetize File}
+\subsection{Overview}
+The \texttt{alphabetize\_file.py} script is a lightweight Python 3 tool designed to read lines from a text file, sort them alphabetically, and write the sorted list to an output file. It provides a simple way to organize unordered text data into a consistent, alphabetically ordered format. The script operates on plain text files, ignoring empty lines, and is controlled via command-line arguments for input and output file paths.
+
+This tool is a straightforward utility for tasks requiring sorted text, complementing more complex scripts like \texttt{create\_effect\_combinations.py} by offering a basic file-processing capability within the same toolchain.
+
+\subsection{Purpose}
+The \texttt{alphabetize\_file.py} script serves to automate the sorting of text lines in a file, making it useful for:
+\begin{itemize}
+    \item Organizing lists of items, such as effect names or keywords, for readability or further processing.
+    \item Preparing data for manual review or input into other tools that require sorted text.
+    \item Cleaning up unsorted outputs from scripts like \texttt{create\_effect\_combinations.py}.
+\end{itemize}
+Its simplicity ensures quick and reliable sorting without the need for external software.
+
+\subsection{Features}
+The script offers the following features:
+\begin{itemize}
+    \item \textbf{Alphabetical Sorting}: Sorts all non-empty lines in the input file alphabetically.
+    \item \textbf{Input/Output Flexibility}: Reads from a specified input file and writes to a specified output file, with defaults for convenience.
+    \item \textbf{Empty Line Handling}: Ignores blank lines in the input, ensuring the output contains only meaningful content.
+    \item \textbf{Error Handling}: Detects and reports file-not-found errors or other processing issues, exiting gracefully with informative messages.
+\end{itemize}
+
+\subsection{Usage}
+Invoke the script via the command line:
+\begin{lstlisting}[language=bash]
+python3 alphabetize_file.py [-i INPUT] [-o OUTPUT]
+\end{lstlisting}
+Key arguments include:
+\begin{itemize}
+    \item \texttt{-i/--input}: Input file to alphabetize (default: \texttt{input.txt}).
+    \item \texttt{-o/--output}: Output file for sorted lines (default: \texttt{output.txt}).
+\end{itemize}
+
+\subsection{Example}
+Given an input file \texttt{effects.txt}:
+\begin{lstlisting}
+Draw 2 cards
+Gain 5 life
+Draw 1 creature
+
+Add 3 points
+\end{lstlisting}
+Running:
+\begin{lstlisting}[language=bash]
+python3 alphabetize_file.py -i effects.txt -o sorted_effects.txt
+\end{lstlisting}
+Outputs \texttt{sorted\_effects.txt}:
+\begin{lstlisting}
+Add 3 points
+Draw 1 creature
+Draw 2 cards
+Gain 5 life
+\end{lstlisting}
+The script sorts the lines alphabetically, skipping the empty line, and writes the result to the output file.
+
+\subsection{Requirements}
+\begin{itemize}
+    \item Python 3.x
+    \item A plain text input file (e.g., \texttt{.txt}).
+\end{itemize}
+
+\subsection{Limitations}
+\begin{itemize}
+    \item Sorting is case-sensitive (e.g., "Zebra" comes before "apple").
+    \item Does not preserve original line numbers or metadata; only the text content is sorted.
+    \item Overwrites the output file if it already exists, without warning.
+    \item No option to sort in reverse order or with custom comparators.
+\end{itemize}
+
