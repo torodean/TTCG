@@ -131,3 +131,111 @@ Total combinations: 2
     \item Recursive placeholder cycles are detected but result in unresolved placeholders (e.g., \texttt{<rank>}).
     \item Additional grammar fixes beyond configuration files are hardcoded in the script.
 \end{itemize}
+
+
+
+
+
+
+
+
+\section{Add CSV Field}
+\subsection{Overview}
+The \texttt{add\_csv\_field.py} script is a Python 3 tool designed to process text or CSV files containing effects (e.g., game card descriptions) and generate or update a CSV file with a custom column indicating whether each effect matches a specified pattern or substring. It supports two modes: pattern matching with placeholder expansion (e.g., \texttt{<number> cards}) and exact substring matching. The script integrates with a directory of placeholder files to resolve patterns dynamically, making it versatile for analyzing structured text data.
+
+This tool is particularly useful for annotating datasets, such as marking effects that contain specific keywords or structures, and outputs results in a semicolon-delimited CSV format for easy integration with other tools or analysis workflows.
+
+\subsection{Purpose}
+The \texttt{add\_csv\_field.py} script aims to automate the annotation of effects by adding or updating a boolean column in a CSV file based on user-defined criteria. Common use cases include:
+\begin{itemize}
+    \item Tagging game effects that match specific patterns (e.g., "Draw \texttt{<number>} cards") for categorization.
+    \item Validating or auditing text data by marking entries with exact substrings.
+    \item Preparing datasets for further processing or analysis by adding metadata columns.
+\end{itemize}
+By leveraging placeholder resolution and flexible input handling, it simplifies the task of identifying and labeling patterns in text.
+
+\subsection{Features}
+The script offers the following key features:
+\begin{itemize}
+    \item \textbf{Dual Input Support}: Processes plain text files (one effect per line) or semicolon-delimited CSV files with an \texttt{EFFECTNAME} column.
+    \item \textbf{Pattern Matching}: Checks for patterns with placeholders (e.g., \texttt{Destroy <number> cards}), expanding them using values from placeholder files in a specified directory (default: \texttt{placeholders/}).
+    \item \textbf{Exact Substring Matching}: Sets a column to \texttt{True} for effects containing an exact substring (e.g., \texttt{Draw two}).
+    \item \textbf{Column Management}: Adds a new column if it doesn’t exist or updates an existing column, setting \texttt{True} where matches occur (preserving \texttt{True} values in updates).
+    \item \textbf{Placeholder Resolution}: Recursively resolves nested placeholders in patterns, using the same logic as \texttt{create\_effect\_combinations.py}.
+    \item \textbf{Output Format}: Generates a semicolon-delimited CSV with at least two columns: \texttt{EFFECTNAME} and the user-specified column.
+    \item \textbf{Error Handling}: Manages missing files, invalid columns, and recursive placeholder cycles (unresolved as, e.g., \texttt{<number>}).
+\end{itemize}
+
+\subsection{Usage}
+Invoke the script via the command line:
+\begin{lstlisting}[language=bash]
+python3 add_csv_field.py -i INPUT -o OUTPUT -c COLUMN [-p DIR] [-t TEXT | -e EXACT]
+\end{lstlisting}
+Key arguments include:
+\begin{itemize}
+    \item \texttt{-i/--input}: Input file (text or CSV) with effects (default: \texttt{effects/effects\_with\_placeholders.csv}).
+    \item \texttt{-o/--output}: Output CSV file (default: \texttt{effects/effects\_with\_placeholders.csv}).
+    \item \texttt{-c/--column}: Name of the column to add or update (required, e.g., \texttt{HasDraw}).
+    \item \texttt{-p/--placeholder\_dir}: Directory with placeholder files (default: \texttt{placeholders}).
+    \item \texttt{-t/--text}: Pattern to match, including placeholders (e.g., \texttt{Draw <number> cards}).
+    \item \texttt{-e/--exact}: Exact substring to match (e.g., \texttt{Draw two}).
+\end{itemize}
+Exactly one of \texttt{-t} or \texttt{-e} must be provided.
+
+\subsection{Example}
+\subsubsection{Pattern Matching}
+With \texttt{placeholders/number.txt}:
+\begin{lstlisting}
+1
+2
+3
+\end{lstlisting}
+And input file \texttt{effects.txt}:
+\begin{lstlisting}
+Draw 2 cards
+Gain 5 life
+Draw 1 creature
+\end{lstlisting}
+Running:
+\begin{lstlisting}[language=bash]
+python3 add_csv_field.py -i effects.txt -o output.csv -c HasDraw -t "Draw <number>"
+\end{lstlisting}
+Outputs \texttt{output.csv}:
+\begin{lstlisting}
+EFFECTNAME;HasDraw
+Draw 2 cards;True
+Gain 5 life;False
+Draw 1 creature;True
+\end{lstlisting}
+
+\subsubsection{Exact Match}
+With input CSV \texttt{effects.csv}:
+\begin{lstlisting}
+EFFECTNAME;HasDraw
+Draw two cards;False
+Gain life;False
+\end{lstlisting}
+Running:
+\begin{lstlisting}[language=bash]
+python3 add_csv_field.py -i effects.csv -o updated.csv -c HasDraw -e "Draw two"
+\end{lstlisting}
+Outputs \texttt{updated.csv}:
+\begin{lstlisting}
+EFFECTNAME;HasDraw
+Draw two cards;True
+Gain life;False
+\end{lstlisting}
+
+\subsection{Requirements}
+\begin{itemize}
+    \item Python 3.x
+    \item Placeholder files in the specified directory (e.g., \texttt{number.txt}) for pattern matching with \texttt{-t}.
+\end{itemize}
+
+\subsection{Limitations}
+\begin{itemize}
+    \item For \texttt{-e/--exact}, the specified column must already exist in CSV inputs; otherwise, an error occurs.
+    \item Recursive placeholder cycles in patterns are detected but result in unresolved placeholders (e.g., \texttt{<number>}).
+    \item Assumes semicolon (\texttt{;}) as the CSV delimiter; other delimiters are not supported.
+    \item Non-CSV inputs are converted to CSV with a default \texttt{EFFECTNAME} column.
+\end{itemize}
