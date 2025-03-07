@@ -1,44 +1,44 @@
 Add <number> <target>(s) from your <pile> to your hand.
-Counter the effect of a <typeslevels> card.
-Destroy up to <number> <typeslevels> card(s) on the field.
-Destroy exactly <number> <typeslevels> card(s) on the field.
-This turn, change one <type> card to any other type.
-This turn, change one <subtype> card to any other subtype.
-While this card is on the field, attack and defense changes are inverted.
 Both players discard <number> card(s).
 Both players discard their hand and draw the same number of cards they discarded.
 Both players lose <number> point(s).
 Both players mill <number> card(s) from their deck.
-Destroy exactly <number> <card>(s) controlled by each player.
+Counter the effect of a <typeslevels> card.
 Destroy <number> <typeslevels> card(s) from your side of the field to gain <number+1> points.
+Destroy exactly <number> <card>(s) controlled by each player.
+Destroy exactly <number> <typeslevels> card(s) on the field.
 Destroy one <typeslevels> card you control to destroy one other card on the field.
+Destroy one rank <rank> <types> card you own to play one rank <rank+1> <types> from your <pile>.
 Destroy this card to destroy <number> <typeslevels> card(s) on the field.
-While this card is on the field, all <typeslevels> card(s) gain <atkdef>.
-This turn, all <typeslevels> card(s) gain <atkdef>.
-Discard this card to add one <target> from your <pile> to your hand.
-Discard one <typeslevels> card to counter the effect of a <typeslevels> card.
-Discard one <typeslevels> card to add one <typeslevels> card from your <pile> to your hand.
-Discard one <typeslevels> card from your hand to play up to two <typeslevels> cards from your <pile>.
-Discard one <typeslevels> card from your hand to play one <typeslevels> card from your <pile>.
+Destroy this card to shuffle your discard pile into your deck.
 Destroy two <typeslevels> cards you own to play one <typeslevels> card from your <pile>.
-Your opponent loses <number> point(s).
-Gain <number> point(s).
-You can send <number> card(s) underneath this card to the discard pile.
-You can play one extra <typeslevels> card this turn.
-You can rank up this creature using a <types> creature from your <pile>.
-You can rank up one of your <types> creatures using a creature from your <pile>.
-When this card is sent to the discard pile, your opponent takes <number> point(s) of damage.
-Return one <typeslevels> card from the discard pile to the top of your deck.
+Destroy up to <number> <typeslevels> card(s) on the field.
+Discard one <typeslevels> card from your hand to play one <typeslevels> card from your <pile>.
+Discard one <typeslevels> card from your hand to play up to two <typeslevels> cards from your <pile>.
+Discard one <typeslevels> card to add one <typeslevels> card from your <pile> to your hand.
+Discard one <typeslevels> card to counter the effect of a <typeslevels> card.
+Discard this card to add one <target> from your <pile> to your hand.
 Draw <number> card(s), then discard <number-1> card(s) of your choice.
 Draw <number> card(s), then discard <number-2> card(s) of your choice.
 Draw <number> card(s).
-While this card is on the field, <types> cards cannot be targeted by effects.
-This turn, double the attack of one <types> card you control.
-When a <types> card is destroyed, gain one point.
-This turn, increase the rank of one <typeslevels> card you control by one.
-While this card is on the field, all <typeslevels> cards gain <atkdef>.
-Your opponent cannot play <types> cards next turn.
-Destroy this card to shuffle your discard pile into your deck.
+Gain <number> point(s).
 Lose <number> point(s) to destroy <number> card(s) on the field.
+Return one <typeslevels> card from the discard pile to the top of your deck.
 Reveal the top <number+1> card(s) of your deck and play one <typeslevels> card from among them.
-Destroy one rank <rank> <types> card you own to play one rank <rank+1> <types> from your <pile>.
+This turn, all <typeslevels> card(s) gain <atkdef>.
+This turn, change one <subtype> card to any other subtype.
+This turn, change one <type> card to any other type.
+This turn, double the attack of one <types> card you control.
+This turn, increase the rank of one <typeslevels> card you control by one.
+When a <types> card is destroyed, gain one point.
+When this card is sent to the discard pile, your opponent takes <number> point(s) of damage.
+While this card is on the field, <types> cards cannot be targeted by effects.
+While this card is on the field, all <typeslevels> card(s) gain <atkdef>.
+While this card is on the field, all <typeslevels> cards gain <atkdef>.
+While this card is on the field, attack and defense changes are inverted.
+You can play one extra <typeslevels> card this turn.
+You can rank up one of your <types> creatures using a creature from your <pile>.
+You can rank up this creature using a <types> creature from your <pile>.
+You can send <number> card(s) underneath this card to the discard pile.
+Your opponent cannot play <types> cards next turn.
+Your opponent loses <number> point(s).
