@@ -163,7 +163,7 @@ def clean_and_filter_combinations(combinations, config_file):
     # Load phrases to remove from the configuration file
     try:
         with open(config_file, 'r') as f:
-            phrases_to_remove = [line.strip() for line in f if line.strip()]
+            phrases_to_remove = [line.strip() for line in f if line.strip() and not line.strip().startswith('#')]
     except FileNotFoundError:
         # If the file doesn't exist, use an empty list or raise a warning
         phrases_to_remove = []
