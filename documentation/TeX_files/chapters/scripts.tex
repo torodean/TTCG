@@ -324,3 +324,54 @@ The script sorts the lines alphabetically, skipping the empty line, and writes t
     \item No option to sort in reverse order or with custom comparators.
 \end{itemize}
 
+
+
+
+
+
+
+
+
+
+
+
+\section{Generate and Order Effects}
+\subsection{Overview}
+The \texttt{generate\_and\_order\_effects.sh} script is a Bash utility designed to orchestrate the generation, categorization, and organization of effect descriptions, such as those used in game design or simulation contexts. It leverages companion Python tools (e.g., \texttt{create\_effect\_combinations.py} and \texttt{add\_csv\_field.py}) to create a comprehensive list of effects, annotate them with metadata, and store the results in a structured format. This script serves as a high-level workflow manager, evolving to meet the needs of effect generation and classification.
+
+\subsection{Purpose}
+The primary goal of \texttt{generate\_and\_order\_effects.sh} is to automate the process of producing and organizing effect text, enabling:
+\begin{itemize}
+    \item Generation of a broad set of effect combinations from predefined templates.
+    \item Classification of effects into categories (e.g., units, spells) based on patterns or specific text.
+    \item Preparation of structured output for further analysis or integration into larger systems.
+\end{itemize}
+It provides a flexible framework that can adapt as effect definitions and categorization requirements change.
+
+\subsection{Features}
+\begin{itemize}
+    \item \textbf{Effect Generation}: Produces an initial set of effects using external tools.
+    \item \textbf{Categorization}: Adds metadata to effects based on pattern matching or exact text searches.
+    \item \textbf{File Management}: Cleans up old files and ensures consistent output locations.
+    \item \textbf{Extensibility}: Designed to evolve, supporting additional effect types and classification rules over time.
+\end{itemize}
+
+\subsection{Usage}
+Run the script from the command line:
+\begin{lstlisting}[language=bash]
+./generate_and_order_effects.sh
+\end{lstlisting}
+No arguments are currently required, though future iterations may introduce options for customization.
+
+\subsection{Requirements}
+\begin{itemize}
+    \item Bash shell environment.
+    \item Python 3.x and dependent scripts (\texttt{create\_effect\_combinations.py}, \texttt{add\_csv\_field.py}).
+    \item Placeholder files in the \texttt{placeholders/} directory.
+\end{itemize}
+
+\subsection{Limitations}
+\begin{itemize}
+    \item Dependent on external Python tools and their configurations.
+    \item Evolving nature may lead to temporary inconsistencies in output format or behavior.
+\end{itemize}
