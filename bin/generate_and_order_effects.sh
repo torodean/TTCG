@@ -59,7 +59,7 @@ sleep 1 # Give the file time to generate.
 ./add_csv_field.py -c SPELL -t "Discard one <type> card from your hand to play up to two"
 ./add_csv_field.py -c SPELL -t "Discard one rank <rank> <card> from your hand to play up to two"
 ./add_csv_field.py -c SPELL -t "Discard one <type> card to add one"
-./add_csv_field.py -c SPELL -t "Discard one rank <rank> <card> card to add one"
+./add_csv_field.py -c SPELL -t "Discard one rank <rank> <card> to add one"
 ./add_csv_field.py -c SPELL -t "Discard one <type> card to counter"
 ./add_csv_field.py -c SPELL -t "Discard one rank <rank> <card> to counter"
 ./add_csv_field.py -c SPELL -t "Return one <type> card"
