@@ -79,3 +79,4 @@ four spells cards: four spell cards
 # TODO - Figure out where this "spellscaster" string is coming from in the output...?!
 spellscaster: spellcaster 
 spells cards: spell cards
+up to one: one
