@@ -70,9 +70,9 @@ sleep 1 # Give the file time to generate.
 ./add_csv_field.py -c SPELL -t "This turn, change one <type>"
 ./add_csv_field.py -c SPELL -t "While this card is on the field, all <type>"
 ./add_csv_field.py -c SPELL -t "While this card is on the field, all rank <rank> <card>"
-./add_csv_field.py -c SPELL -t "You can play one extra <types>"
+./add_csv_field.py -c SPELL -t "You can play one extra <type>"
 ./add_csv_field.py -c SPELL -t "You can play one extra rank <rank> <card>"
-./add_csv_field.py -c SPELL -t "Your opponent cannot play <types>"
+./add_csv_field.py -c SPELL -t "Your opponent cannot play <type>"
 
 
 # Add some unit specific effects.
