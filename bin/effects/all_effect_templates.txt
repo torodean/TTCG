@@ -1,10 +1,10 @@
-Add <number> <target>(s) from your <pile> to your hand.
+Add up to <number> <target>(s) from your <pile> to your hand.
 Both players discard <number> card(s).
 Both players discard their hand and draw the same number of cards they discarded.
 Both players lose <number> point(s).
 Both players mill <number> card(s) from their deck.
 Counter the effect of a <typeslevels> card.
-Destroy <number> <typeslevels> card(s) from your side of the field to gain <number+1> points.
+Destroy exactly <number> <typeslevels> card(s) from your side of the field to gain <number+1> points.
 Destroy exactly <number> <card>(s) controlled by each player.
 Destroy exactly <number> <typeslevels> card(s) on the field.
 Destroy one <typeslevels> card you control to destroy one other card on the field.
@@ -39,6 +39,9 @@ While this card is on the field, attack and defense changes are inverted.
 You can play one extra <typeslevels> card this turn.
 You can rank up one of your <types> creatures using a creature from your <pile>.
 You can rank up this creature using a <types> creature from your <pile>.
-You can send <number> card(s) underneath this card to the discard pile.
+You can send up to <number> card(s) under this card to the discard pile.
 Your opponent cannot play <types> cards next turn.
 Your opponent loses <number> point(s).
+Send up to <number> card(s) from under another card to the discard pile.
+Return one <types> card from the field to the owner's hand.
+
