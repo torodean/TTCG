@@ -5,6 +5,9 @@ import itertools
 import re
 import argparse
 
+# load needed methods from ttcg_tools
+from ttcg_tools import load_placeholder_values
+
 
 def write_combinations_to_file(combinations, output_file):
     """
@@ -17,55 +20,6 @@ def write_combinations_to_file(combinations, output_file):
     with open(output_file, 'a') as f:
         for combination in combinations:
             f.write(combination + '\n')
-
-
-def load_placeholder_values(placeholder_dir, placeholder, visited=None):
-    """
-    Load possible values for a given placeholder from a corresponding text file, recursively resolving nested placeholders.
-
-    Args:
-        placeholder_dir (str): Directory containing placeholder text files.
-        placeholder (str): Placeholder name.
-        visited (set, optional): Set of placeholders already processed to prevent infinite recursion.
-
-    Returns:
-        list: List of fully resolved values for the placeholder.
-    """
-    # Initialize visited set to track recursion and prevent cycles
-    if visited is None:
-        visited = set()
-    
-    # Avoid infinite recursion by skipping if placeholder already visited
-    if placeholder in visited:
-        return [f"<{placeholder}>"]  # Return unresolved placeholder as-is to signal a cycle
-    
-    visited.add(placeholder)
-    
-    file_path = os.path.join(placeholder_dir, f"{placeholder}.txt")
-    if not os.path.exists(file_path):
-        visited.remove(placeholder)  # Clean up before returning
-        return [f"<{placeholder}>"]  # Return unresolved placeholder if file missing
-    
-    raw_values = []
-    with open(file_path, 'r') as f:
-        raw_values = [line.strip().replace('_', '') for line in f if line.strip()]
-    
-    if not raw_values:
-        visited.remove(placeholder)
-        return [f"<{placeholder}>"]  # Return unresolved if file empty
-    
-    # Process each value for nested placeholders
-    resolved_values = []
-    for value in raw_values:
-        if re.search(r"<[^>]+>", value):  # Check if value contains placeholders
-            # Treat value as a sentence and recursively generate combinations
-            sub_combinations = generate_combinations(value, placeholder_dir, visited.copy())
-            resolved_values.extend(sub_combinations)
-        else:
-            resolved_values.append(value)
-    
-    visited.remove(placeholder)  # Clean up after processing
-    return resolved_values
 
 
 def generate_combinations(sentence, placeholder_dir, visited=None):
