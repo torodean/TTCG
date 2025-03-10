@@ -2,7 +2,7 @@
 
 # Cleanup old files
 rm -rf effects/all_effects.txt
-rm -rf effects/effects/effects_with_placeholders.csv
+rm -rf effects/effects_with_placeholders.csv
 
 # Create the base list of all effects.
 ./create_effect_combinations.py -f
