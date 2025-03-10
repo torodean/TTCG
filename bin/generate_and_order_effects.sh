@@ -14,7 +14,8 @@ sleep 1 # Give the file time to generate.
 ./add_csv_field.py -c SPELL -t "<type> "
 
 # Add rank specific columns.
-# Creature effects can typically have the rank of that creature, one higher, 
+# Creature effects can typically have the rank of that creature, one higher, etc.
+# TODO
 
 
 # Add some spell specific effects.
