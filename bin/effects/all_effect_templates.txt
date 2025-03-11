@@ -1,11 +1,14 @@
+Activate the effect of a card under another card.
+Activate the effect of a card under this card.
 Add up to <number> <target>(s) from your <pile> to your hand.
 Both players discard <number> card(s).
 Both players discard their hand and draw the same number of cards they discarded.
+Both players gain <number> point(s) for each <types> card they control.
 Both players lose <number> point(s).
 Both players mill <number> card(s) from their deck.
 Counter the effect of a <typeslevels> card.
-Destroy exactly <number> <typeslevels> card(s) from your side of the field to gain <number+1> points.
 Destroy exactly <number> <card>(s) controlled by each player.
+Destroy exactly <number> <typeslevels> card(s) from your side of the field to gain <number+1> points.
 Destroy exactly <number> <typeslevels> card(s) on the field.
 Destroy one <typeslevels> card you control to destroy one other card on the field.
 Destroy one rank <rank> <types> card you own to play one rank <rank+1> <types> from your <pile>.
@@ -21,17 +24,33 @@ Discard this card to add one <target> from your <pile> to your hand.
 Draw <number> card(s), then discard <number-1> card(s) of your choice.
 Draw <number> card(s), then discard <number-2> card(s) of your choice.
 Draw <number> card(s).
+For the next <number> turns, <types> cards you control cannot be destroyed.
+Force your opponent to discard <number> card(s) of their choice from their hand.
+Gain <number> point(s) for each <typeslevels> card on the field.
+Gain <number> point(s) for each card under this one.
 Gain <number> point(s).
 Lose <number> point(s) to destroy <number> card(s) on the field.
+Lose <number> point(s) to draw <number> card(s).
+Place one <typeslevels> card from your <pile> under this card.
+Play one <card> under this one.
+Return one <types> card from the field to the owner's hand.
 Return one <typeslevels> card from the discard pile to the top of your deck.
+Return up to <number> <typeslevels> card(s) from your discard pile to your hand.
 Reveal the top <number+1> card(s) of your deck and play one <typeslevels> card from among them.
+Send up to <number> card(s) from under another card to the discard pile.
+Skip your next turn to destroy all <typeslevels> cards on the field.
+Swap one <typeslevels> card you control with one <typeslevels> card from your <pile>.
+Swap the attack and defense of one <typeslevels> card on the field.
+Take one of your other <card>(s) on the field and move it under this card.
 This turn, all <typeslevels> card(s) gain <atkdef>.
 This turn, change one <subtype> card to any other subtype.
 This turn, change one <type> card to any other type.
 This turn, double the attack of one <types> card you control.
 This turn, increase the rank of one <typeslevels> card you control by one.
+Until your next turn, all <types> card(s) you control become rank <rank>.
 When a <types> card is destroyed, gain one point.
 When this card is sent to the discard pile, your opponent takes <number> point(s) of damage.
+Whenever a <typeslevels> card is discarded, draw one card.
 While this card is on the field, <types> cards cannot be targeted by effects.
 While this card is on the field, all <typeslevels> card(s) gain <atkdef>.
 While this card is on the field, all <typeslevels> card(s) lose <atkdef>.
@@ -42,22 +61,3 @@ You can rank up this creature using a <types> creature from your <pile>.
 You can send up to <number> card(s) under this card to the discard pile.
 Your opponent cannot play <types> cards next turn.
 Your opponent loses <number> point(s).
-Send up to <number> card(s) from under another card to the discard pile.
-Return one <types> card from the field to the owner's hand.
-Activate the effect of a card under this card.
-Activate the effect of a card under another card.
-Take one of your other <card>(s) on the field and move it under this card.
-Play one <card> under this one.
-Swap one <typeslevels> card you control with one <typeslevels> card from your <pile>.
-Return up to <number> <typeslevels> card(s) from your discard pile to your hand.
-Both players gain <number> point(s) for each <types> card they control.
-Lose <number> point(s) to draw <number> card(s).
-Gain <number> point(s) for each <typeslevels> card on the field.
-Whenever a <typeslevels> card is discarded, draw one card.
-Until your next turn, all <types> card(s) you control become rank <rank>.
-Swap the attack and defense of one <typeslevels> card on the field.
-Force your opponent to discard <number> card(s) of their choice from their hand.
-Place one <typeslevels> card from your <pile> under this card.
-Skip your next turn to destroy all <typeslevels> cards on the field.
-For the next <number> turns, <types> cards you control cannot be destroyed.
-Gain <number> point(s) for each card under this one.
