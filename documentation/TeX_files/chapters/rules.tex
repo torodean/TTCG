@@ -7,26 +7,30 @@
     \item[HAND:] The cards that the player has in their possession from their deck.
     \item[DRAW:] The act of taking a card from the deck and adding it to the hand.
     \item[SHUFFLE:] The act of mixing a pile of cards.
-    \item[DISCARD:] The act of moving a card from the hand or field to the discard pile.
-    \item[DISCARD PILE:] The area where used or destroyed cards are placed.
+    \item[DISCARD:] The act of moving a card from the hand to the discard pile.
+    \item[DISCARD PILE:] The area where destroyed cards are stacked.
     \item[SEARCH:] The ability to look through a deck or discard pile for a specific card.
     \item[MILL:] Sending cards from the deck directly to the discard pile.
     \item[RECOVER:] The ability to retrieve a card from the discard pile or another out-of-play area.
     \item[FIELD:] The area where cards are placed by both players.
     \item[UNIT ZONE:] The top area of a player's field, where units cards are played.
     \item[SPELL ZONE:] The bottom area of a player's field, where spell cards are played.
-    \item[PLAY:] The action of placing a card on the field.
+    \item[PLAY:] The action of placing a card on the field in an active position.
+    \item[ACTIVE:] The top card of a pile on the field (a card that is considered active).
     \item[TAP:] Switch the position of a card from vertical to horizontal or from horizontal to vertical.
-    \item[LEVEL UP:] The act of placing a card of one level higher on top of another card.
+    \item[RANK UP:] The act of placing a card of one level higher on top of another card.
+	\item[LEVEL UP:] The act of placing a card of one level higher on top of another card.
+	\item[PROMOTE:] The act of placing a card of one level higher on top of another card.
     \item[UNDER:] Refers to all cards that are beneath another card (usually through leveling up cards).
-    \item[DESTROY:] The act of sending a card and all cards under it to the discard pile.
+    \item[DESTROY:] The act of sending a card to the discard pile.
     \item[TURN:] The period of time where only one player can play cards.
     \item[POINT:] The unit which keeps track of a player's score.
     \item[UNIT:] Any valid card from the game which has an attack, defense, and non-spell type.
     \item[SPELL CARD:] Any valid card from the game which has a type equal to spell.
-    \item[TYPE:] One of the primary types of cards within the game - Water, Fire, Earth, Nature, Electric, Light, Dark.
-    \item[SUB-TYPE:] One of the subtype categories of cards within the game - Dragon, Warrior, Beast, Spell-caster, Flying, Insect, Reptile, Humanoid, Machine, Fairy, Ghost, Fish, etc.
-    \item[LEVEL:] The number of stars on a unit card.
+    \item[TYPE:] One of the primary types of cards within the game - Water, Fire, Earth, Air, Nature, Electric, Light, Dark.
+    \item[SUBTYPE:] One of the subtype categories of cards within the game - Dragon, Warrior, Beast, Spell-caster, Flying, Insect, Reptile, Humanoid, Machine, Fairy, Ghost, Fish, etc.
+    \item[LEVEL:] The number of stars on a card.
+    \item[RANK:] The number of stars on a card.
     \item[ATTACK:] The attacking potential of a unit card.
     \item[DEFENSE:] The defensive potential of a unit card.
     \item[EFFECT:] The text written on a card which does some action within the game.
@@ -40,7 +44,6 @@
     \item[INDESTRUCTIBLE:]  This means a card cannot be \textit{destroyed}.
     \item[IMMORTAL:] This is an alternate term meaning a card is Indestructible.
     \item[EXACTLY:] This term is used when a condition has to be met for a card effect to activate.
-    \item[RANK:] The number of stars on a card.
     \item[OWNING:] A player is considered the owner or owning player if the card on the field came from their deck.
 \end{description}
 
@@ -194,6 +197,7 @@
     \item When a unit attacks, the attack value is used to determine its strength.
     \item When a unit is defending, the defense value is used to determine its strength.
     \item During an attack, whichever unit has the higher power/attack prevails, and the other is destroyed (unless a card states otherwise) and sent to the discard pile.
+    \item When a card is destroyed in battle, the card directly underneath it becomes an active card.
 \end{itemize}
 
 
