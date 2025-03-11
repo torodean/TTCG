@@ -21,7 +21,7 @@ def write_combinations_to_file(combinations, output_file):
             f.write(combination + '\n')
 
 
-def clean_and_filter_combinations(combinations, config_file):
+def clean_and_filter_combinations(combinations, config_file, verbose=False):
     """
     Processes a list of strings, replaces double spaces with single spaces, and removes strings containing specific phrases
     loaded from a configuration file.
@@ -29,10 +29,14 @@ def clean_and_filter_combinations(combinations, config_file):
     Args:
         combinations (list): List of strings to clean and filter.
         config_file (str): Path to the configuration file containing phrases to remove (default: 'placeholders/combinations_to_remove.txt').
+        verbose (bool): Adds extra output.
 
     Returns:
         list: List of cleaned and filtered strings.
     """
+    if verbose:
+        print(f"Cleaning combinations based on config file: {config_file}")
+
     # Load phrases to remove from the configuration file
     try:
         with open(config_file, 'r') as f:
@@ -59,7 +63,7 @@ def clean_and_filter_combinations(combinations, config_file):
     return cleaned_combinations
 
 
-def replace_phrases_in_combinations(combinations, replacements_file):
+def replace_phrases_in_combinations(combinations, replacements_file, verbose=False):
     """
     Searches a list of strings and replaces specific phrases with their designated replacements loaded from a configuration file.
     Lines starting with '#' in the file are treated as comments and ignored.
@@ -67,10 +71,14 @@ def replace_phrases_in_combinations(combinations, replacements_file):
     Args:
         combinations (list): List of strings to process.
         replacements_file (str): Path to the configuration file containing phrase replacements (default: 'placeholders/phrase_replacements.txt').
+        verbose (bool): Adds extra output.
 
     Returns:
         list: List of strings with phrases replaced.
     """
+    if verbose:
+        print(f"Replacing phrases from replacement file: {replacements_file}")
+
     # Load phrase replacements from the configuration file
     phrase_replacements = {}
     try:
@@ -151,13 +159,17 @@ def alphabetize_strings(string_list):
     return sorted(string_list)
 
 
-def dedupe_file(file_path):
+def dedupe_file(file_path, verbose=False):
     """
     Reads a file, removes duplicate lines, writes back the unique lines, and exits the program.
 
     Args:
         file_path (str): Path to the file to deduplicate.
+        verbose (bool): Adds extra output.
     """
+    if verbose:
+        print(f"De-duplicating file: {file_path}.")
+
     try:
         # Read all lines, preserving order, removing duplicates
         with open(file_path, 'r') as f:
@@ -194,6 +206,8 @@ if __name__ == "__main__":
                         help="The file to output the effects to.")
     parser.add_argument('-t', "--test_mode", default=False, action='store_true', 
                         help="Test mode will only output the combinations to terminal.")
+    parser.add_argument('-v', "--verbose", default=False, action='store_true',
+                        help="Adds extra output during program processing.")
     parser.add_argument('-d', '--dedupe', nargs='?', const='effects/all_effects.txt', default=None,
                         help="Remove duplicate lines from the specified file (or 'effects/all_effects.txt' if none given) and exit.")
     parser.add_argument('-c', '--combinations_to_remove', default='placeholders/combinations_to_remove.txt',
@@ -244,9 +258,10 @@ if __name__ == "__main__":
     
     if not args.test_mode:
         write_combinations_to_file(all_combinations, args.output_file)
-    
-    # Print each generated combination
-    for combo in all_combinations:
-        print(combo)
+
+    if args.verbose:
+        # Print each generated combination
+        for combo in all_combinations:
+            print(combo)
 
     print(f"Total combinations: {len(all_combinations)}")

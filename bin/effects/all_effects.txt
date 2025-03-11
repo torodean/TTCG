@@ -1,5 +1,5 @@
 Activate the effect of a card under another card.
-Activate the effect of a card under this one.
+Activate the effect of a card under this card.
 Add one air card from your deck to your hand.
 Add one air card from your discard pile to your hand.
 Add one aquatic card from your deck to your hand.
@@ -7254,90 +7254,90 @@ For the next all turns, spellcaster cards you control cannot be destroyed.
 For the next all turns, undead cards you control cannot be destroyed.
 For the next all turns, warrior cards you control cannot be destroyed.
 For the next all turns, water cards you control cannot be destroyed.
-For the next four turns, air cards you control cannot be destroyed.
-For the next four turns, aquatic cards you control cannot be destroyed.
-For the next four turns, beast cards you control cannot be destroyed.
-For the next four turns, botanic cards you control cannot be destroyed.
-For the next four turns, dark cards you control cannot be destroyed.
-For the next four turns, dragon cards you control cannot be destroyed.
-For the next four turns, earth cards you control cannot be destroyed.
-For the next four turns, electric cards you control cannot be destroyed.
-For the next four turns, elemental cards you control cannot be destroyed.
-For the next four turns, fairy cards you control cannot be destroyed.
-For the next four turns, fire cards you control cannot be destroyed.
-For the next four turns, ghost cards you control cannot be destroyed.
-For the next four turns, insect cards you control cannot be destroyed.
-For the next four turns, light cards you control cannot be destroyed.
-For the next four turns, machine cards you control cannot be destroyed.
-For the next four turns, reptile cards you control cannot be destroyed.
-For the next four turns, spell cards you control cannot be destroyed.
-For the next four turns, spellcaster cards you control cannot be destroyed.
-For the next four turns, undead cards you control cannot be destroyed.
-For the next four turns, warrior cards you control cannot be destroyed.
-For the next four turns, water cards you control cannot be destroyed.
-For the next one turns, air card you control cannot be destroyed.
-For the next one turns, aquatic card you control cannot be destroyed.
-For the next one turns, beast card you control cannot be destroyed.
-For the next one turns, botanic card you control cannot be destroyed.
-For the next one turns, dark card you control cannot be destroyed.
-For the next one turns, dragon card you control cannot be destroyed.
-For the next one turns, earth card you control cannot be destroyed.
-For the next one turns, electric card you control cannot be destroyed.
-For the next one turns, elemental card you control cannot be destroyed.
-For the next one turns, fairy card you control cannot be destroyed.
-For the next one turns, fire card you control cannot be destroyed.
-For the next one turns, ghost card you control cannot be destroyed.
-For the next one turns, insect card you control cannot be destroyed.
-For the next one turns, light card you control cannot be destroyed.
-For the next one turns, machine card you control cannot be destroyed.
-For the next one turns, reptile card you control cannot be destroyed.
-For the next one turns, spell card you control cannot be destroyed.
-For the next one turns, spellcaster card you control cannot be destroyed.
-For the next one turns, undead card you control cannot be destroyed.
-For the next one turns, warrior card you control cannot be destroyed.
-For the next one turns, water card you control cannot be destroyed.
-For the next three turns, air cards you control cannot be destroyed.
-For the next three turns, aquatic cards you control cannot be destroyed.
-For the next three turns, beast cards you control cannot be destroyed.
-For the next three turns, botanic cards you control cannot be destroyed.
-For the next three turns, dark cards you control cannot be destroyed.
-For the next three turns, dragon cards you control cannot be destroyed.
-For the next three turns, earth cards you control cannot be destroyed.
-For the next three turns, electric cards you control cannot be destroyed.
-For the next three turns, elemental cards you control cannot be destroyed.
-For the next three turns, fairy cards you control cannot be destroyed.
-For the next three turns, fire cards you control cannot be destroyed.
-For the next three turns, ghost cards you control cannot be destroyed.
-For the next three turns, insect cards you control cannot be destroyed.
-For the next three turns, light cards you control cannot be destroyed.
-For the next three turns, machine cards you control cannot be destroyed.
-For the next three turns, reptile cards you control cannot be destroyed.
-For the next three turns, spell cards you control cannot be destroyed.
-For the next three turns, spellcaster cards you control cannot be destroyed.
-For the next three turns, undead cards you control cannot be destroyed.
-For the next three turns, warrior cards you control cannot be destroyed.
-For the next three turns, water cards you control cannot be destroyed.
-For the next two turns, air cards you control cannot be destroyed.
-For the next two turns, aquatic cards you control cannot be destroyed.
-For the next two turns, beast cards you control cannot be destroyed.
-For the next two turns, botanic cards you control cannot be destroyed.
-For the next two turns, dark cards you control cannot be destroyed.
-For the next two turns, dragon cards you control cannot be destroyed.
-For the next two turns, earth cards you control cannot be destroyed.
-For the next two turns, electric cards you control cannot be destroyed.
-For the next two turns, elemental cards you control cannot be destroyed.
-For the next two turns, fairy cards you control cannot be destroyed.
-For the next two turns, fire cards you control cannot be destroyed.
-For the next two turns, ghost cards you control cannot be destroyed.
-For the next two turns, insect cards you control cannot be destroyed.
-For the next two turns, light cards you control cannot be destroyed.
-For the next two turns, machine cards you control cannot be destroyed.
-For the next two turns, reptile cards you control cannot be destroyed.
-For the next two turns, spell cards you control cannot be destroyed.
-For the next two turns, spellcaster cards you control cannot be destroyed.
-For the next two turns, undead cards you control cannot be destroyed.
-For the next two turns, warrior cards you control cannot be destroyed.
-For the next two turns, water cards you control cannot be destroyed.
+For the next four turnss, air cards you control cannot be destroyed.
+For the next four turnss, aquatic cards you control cannot be destroyed.
+For the next four turnss, beast cards you control cannot be destroyed.
+For the next four turnss, botanic cards you control cannot be destroyed.
+For the next four turnss, dark cards you control cannot be destroyed.
+For the next four turnss, dragon cards you control cannot be destroyed.
+For the next four turnss, earth cards you control cannot be destroyed.
+For the next four turnss, electric cards you control cannot be destroyed.
+For the next four turnss, elemental cards you control cannot be destroyed.
+For the next four turnss, fairy cards you control cannot be destroyed.
+For the next four turnss, fire cards you control cannot be destroyed.
+For the next four turnss, ghost cards you control cannot be destroyed.
+For the next four turnss, insect cards you control cannot be destroyed.
+For the next four turnss, light cards you control cannot be destroyed.
+For the next four turnss, machine cards you control cannot be destroyed.
+For the next four turnss, reptile cards you control cannot be destroyed.
+For the next four turnss, spell cards you control cannot be destroyed.
+For the next four turnss, spellcaster cards you control cannot be destroyed.
+For the next four turnss, undead cards you control cannot be destroyed.
+For the next four turnss, warrior cards you control cannot be destroyed.
+For the next four turnss, water cards you control cannot be destroyed.
+For the next one turn, air card you control cannot be destroyed.
+For the next one turn, aquatic card you control cannot be destroyed.
+For the next one turn, beast card you control cannot be destroyed.
+For the next one turn, botanic card you control cannot be destroyed.
+For the next one turn, dark card you control cannot be destroyed.
+For the next one turn, dragon card you control cannot be destroyed.
+For the next one turn, earth card you control cannot be destroyed.
+For the next one turn, electric card you control cannot be destroyed.
+For the next one turn, elemental card you control cannot be destroyed.
+For the next one turn, fairy card you control cannot be destroyed.
+For the next one turn, fire card you control cannot be destroyed.
+For the next one turn, ghost card you control cannot be destroyed.
+For the next one turn, insect card you control cannot be destroyed.
+For the next one turn, light card you control cannot be destroyed.
+For the next one turn, machine card you control cannot be destroyed.
+For the next one turn, reptile card you control cannot be destroyed.
+For the next one turn, spell card you control cannot be destroyed.
+For the next one turn, spellcaster card you control cannot be destroyed.
+For the next one turn, undead card you control cannot be destroyed.
+For the next one turn, warrior card you control cannot be destroyed.
+For the next one turn, water card you control cannot be destroyed.
+For the next three turnss, air cards you control cannot be destroyed.
+For the next three turnss, aquatic cards you control cannot be destroyed.
+For the next three turnss, beast cards you control cannot be destroyed.
+For the next three turnss, botanic cards you control cannot be destroyed.
+For the next three turnss, dark cards you control cannot be destroyed.
+For the next three turnss, dragon cards you control cannot be destroyed.
+For the next three turnss, earth cards you control cannot be destroyed.
+For the next three turnss, electric cards you control cannot be destroyed.
+For the next three turnss, elemental cards you control cannot be destroyed.
+For the next three turnss, fairy cards you control cannot be destroyed.
+For the next three turnss, fire cards you control cannot be destroyed.
+For the next three turnss, ghost cards you control cannot be destroyed.
+For the next three turnss, insect cards you control cannot be destroyed.
+For the next three turnss, light cards you control cannot be destroyed.
+For the next three turnss, machine cards you control cannot be destroyed.
+For the next three turnss, reptile cards you control cannot be destroyed.
+For the next three turnss, spell cards you control cannot be destroyed.
+For the next three turnss, spellcaster cards you control cannot be destroyed.
+For the next three turnss, undead cards you control cannot be destroyed.
+For the next three turnss, warrior cards you control cannot be destroyed.
+For the next three turnss, water cards you control cannot be destroyed.
+For the next two turnss, air cards you control cannot be destroyed.
+For the next two turnss, aquatic cards you control cannot be destroyed.
+For the next two turnss, beast cards you control cannot be destroyed.
+For the next two turnss, botanic cards you control cannot be destroyed.
+For the next two turnss, dark cards you control cannot be destroyed.
+For the next two turnss, dragon cards you control cannot be destroyed.
+For the next two turnss, earth cards you control cannot be destroyed.
+For the next two turnss, electric cards you control cannot be destroyed.
+For the next two turnss, elemental cards you control cannot be destroyed.
+For the next two turnss, fairy cards you control cannot be destroyed.
+For the next two turnss, fire cards you control cannot be destroyed.
+For the next two turnss, ghost cards you control cannot be destroyed.
+For the next two turnss, insect cards you control cannot be destroyed.
+For the next two turnss, light cards you control cannot be destroyed.
+For the next two turnss, machine cards you control cannot be destroyed.
+For the next two turnss, reptile cards you control cannot be destroyed.
+For the next two turnss, spell cards you control cannot be destroyed.
+For the next two turnss, spellcaster cards you control cannot be destroyed.
+For the next two turnss, undead cards you control cannot be destroyed.
+For the next two turnss, warrior cards you control cannot be destroyed.
+For the next two turnss, water cards you control cannot be destroyed.
 Force your opponent to discard four cards of their choice from their hand.
 Force your opponent to discard one card of their choice from their hand.
 Force your opponent to discard three cards of their choice from their hand.
@@ -8788,32 +8788,18 @@ Whenever a warrior card is discarded, draw one card.
 Whenever a water card is discarded, draw one card.
 While this card is on the field, air cards cannot be targeted by effects.
 While this card is on the field, all air cards gain 100 attack.
-While this card is on the field, all air cards gain 100 attack.
-While this card is on the field, all air cards gain 100 defense.
 While this card is on the field, all air cards gain 100 defense.
 While this card is on the field, all air cards gain 200 attack.
-While this card is on the field, all air cards gain 200 attack.
-While this card is on the field, all air cards gain 200 defense.
 While this card is on the field, all air cards gain 200 defense.
 While this card is on the field, all air cards gain 25 attack.
-While this card is on the field, all air cards gain 25 attack.
-While this card is on the field, all air cards gain 25 defense.
 While this card is on the field, all air cards gain 25 defense.
 While this card is on the field, all air cards gain 300 attack.
-While this card is on the field, all air cards gain 300 attack.
-While this card is on the field, all air cards gain 300 defense.
 While this card is on the field, all air cards gain 300 defense.
 While this card is on the field, all air cards gain 400 attack.
-While this card is on the field, all air cards gain 400 attack.
-While this card is on the field, all air cards gain 400 defense.
 While this card is on the field, all air cards gain 400 defense.
 While this card is on the field, all air cards gain 50 attack.
-While this card is on the field, all air cards gain 50 attack.
-While this card is on the field, all air cards gain 50 defense.
 While this card is on the field, all air cards gain 50 defense.
 While this card is on the field, all air cards gain 500 attack.
-While this card is on the field, all air cards gain 500 attack.
-While this card is on the field, all air cards gain 500 defense.
 While this card is on the field, all air cards gain 500 defense.
 While this card is on the field, all air cards lose 100 attack.
 While this card is on the field, all air cards lose 100 defense.
@@ -8830,32 +8816,18 @@ While this card is on the field, all air cards lose 50 defense.
 While this card is on the field, all air cards lose 500 attack.
 While this card is on the field, all air cards lose 500 defense.
 While this card is on the field, all aquatic cards gain 100 attack.
-While this card is on the field, all aquatic cards gain 100 attack.
-While this card is on the field, all aquatic cards gain 100 defense.
 While this card is on the field, all aquatic cards gain 100 defense.
 While this card is on the field, all aquatic cards gain 200 attack.
-While this card is on the field, all aquatic cards gain 200 attack.
-While this card is on the field, all aquatic cards gain 200 defense.
 While this card is on the field, all aquatic cards gain 200 defense.
 While this card is on the field, all aquatic cards gain 25 attack.
-While this card is on the field, all aquatic cards gain 25 attack.
-While this card is on the field, all aquatic cards gain 25 defense.
 While this card is on the field, all aquatic cards gain 25 defense.
 While this card is on the field, all aquatic cards gain 300 attack.
-While this card is on the field, all aquatic cards gain 300 attack.
-While this card is on the field, all aquatic cards gain 300 defense.
 While this card is on the field, all aquatic cards gain 300 defense.
 While this card is on the field, all aquatic cards gain 400 attack.
-While this card is on the field, all aquatic cards gain 400 attack.
-While this card is on the field, all aquatic cards gain 400 defense.
 While this card is on the field, all aquatic cards gain 400 defense.
 While this card is on the field, all aquatic cards gain 50 attack.
-While this card is on the field, all aquatic cards gain 50 attack.
-While this card is on the field, all aquatic cards gain 50 defense.
 While this card is on the field, all aquatic cards gain 50 defense.
 While this card is on the field, all aquatic cards gain 500 attack.
-While this card is on the field, all aquatic cards gain 500 attack.
-While this card is on the field, all aquatic cards gain 500 defense.
 While this card is on the field, all aquatic cards gain 500 defense.
 While this card is on the field, all aquatic cards lose 100 attack.
 While this card is on the field, all aquatic cards lose 100 defense.
@@ -8872,32 +8844,18 @@ While this card is on the field, all aquatic cards lose 50 defense.
 While this card is on the field, all aquatic cards lose 500 attack.
 While this card is on the field, all aquatic cards lose 500 defense.
 While this card is on the field, all beast cards gain 100 attack.
-While this card is on the field, all beast cards gain 100 attack.
-While this card is on the field, all beast cards gain 100 defense.
 While this card is on the field, all beast cards gain 100 defense.
 While this card is on the field, all beast cards gain 200 attack.
-While this card is on the field, all beast cards gain 200 attack.
-While this card is on the field, all beast cards gain 200 defense.
 While this card is on the field, all beast cards gain 200 defense.
 While this card is on the field, all beast cards gain 25 attack.
-While this card is on the field, all beast cards gain 25 attack.
-While this card is on the field, all beast cards gain 25 defense.
 While this card is on the field, all beast cards gain 25 defense.
 While this card is on the field, all beast cards gain 300 attack.
-While this card is on the field, all beast cards gain 300 attack.
-While this card is on the field, all beast cards gain 300 defense.
 While this card is on the field, all beast cards gain 300 defense.
 While this card is on the field, all beast cards gain 400 attack.
-While this card is on the field, all beast cards gain 400 attack.
-While this card is on the field, all beast cards gain 400 defense.
 While this card is on the field, all beast cards gain 400 defense.
 While this card is on the field, all beast cards gain 50 attack.
-While this card is on the field, all beast cards gain 50 attack.
-While this card is on the field, all beast cards gain 50 defense.
 While this card is on the field, all beast cards gain 50 defense.
 While this card is on the field, all beast cards gain 500 attack.
-While this card is on the field, all beast cards gain 500 attack.
-While this card is on the field, all beast cards gain 500 defense.
 While this card is on the field, all beast cards gain 500 defense.
 While this card is on the field, all beast cards lose 100 attack.
 While this card is on the field, all beast cards lose 100 defense.
@@ -8914,32 +8872,18 @@ While this card is on the field, all beast cards lose 50 defense.
 While this card is on the field, all beast cards lose 500 attack.
 While this card is on the field, all beast cards lose 500 defense.
 While this card is on the field, all botanic cards gain 100 attack.
-While this card is on the field, all botanic cards gain 100 attack.
-While this card is on the field, all botanic cards gain 100 defense.
 While this card is on the field, all botanic cards gain 100 defense.
 While this card is on the field, all botanic cards gain 200 attack.
-While this card is on the field, all botanic cards gain 200 attack.
-While this card is on the field, all botanic cards gain 200 defense.
 While this card is on the field, all botanic cards gain 200 defense.
 While this card is on the field, all botanic cards gain 25 attack.
-While this card is on the field, all botanic cards gain 25 attack.
-While this card is on the field, all botanic cards gain 25 defense.
 While this card is on the field, all botanic cards gain 25 defense.
 While this card is on the field, all botanic cards gain 300 attack.
-While this card is on the field, all botanic cards gain 300 attack.
-While this card is on the field, all botanic cards gain 300 defense.
 While this card is on the field, all botanic cards gain 300 defense.
 While this card is on the field, all botanic cards gain 400 attack.
-While this card is on the field, all botanic cards gain 400 attack.
-While this card is on the field, all botanic cards gain 400 defense.
 While this card is on the field, all botanic cards gain 400 defense.
 While this card is on the field, all botanic cards gain 50 attack.
-While this card is on the field, all botanic cards gain 50 attack.
-While this card is on the field, all botanic cards gain 50 defense.
 While this card is on the field, all botanic cards gain 50 defense.
 While this card is on the field, all botanic cards gain 500 attack.
-While this card is on the field, all botanic cards gain 500 attack.
-While this card is on the field, all botanic cards gain 500 defense.
 While this card is on the field, all botanic cards gain 500 defense.
 While this card is on the field, all botanic cards lose 100 attack.
 While this card is on the field, all botanic cards lose 100 defense.
@@ -8956,32 +8900,18 @@ While this card is on the field, all botanic cards lose 50 defense.
 While this card is on the field, all botanic cards lose 500 attack.
 While this card is on the field, all botanic cards lose 500 defense.
 While this card is on the field, all dark cards gain 100 attack.
-While this card is on the field, all dark cards gain 100 attack.
-While this card is on the field, all dark cards gain 100 defense.
 While this card is on the field, all dark cards gain 100 defense.
 While this card is on the field, all dark cards gain 200 attack.
-While this card is on the field, all dark cards gain 200 attack.
-While this card is on the field, all dark cards gain 200 defense.
 While this card is on the field, all dark cards gain 200 defense.
 While this card is on the field, all dark cards gain 25 attack.
-While this card is on the field, all dark cards gain 25 attack.
-While this card is on the field, all dark cards gain 25 defense.
 While this card is on the field, all dark cards gain 25 defense.
 While this card is on the field, all dark cards gain 300 attack.
-While this card is on the field, all dark cards gain 300 attack.
-While this card is on the field, all dark cards gain 300 defense.
 While this card is on the field, all dark cards gain 300 defense.
 While this card is on the field, all dark cards gain 400 attack.
-While this card is on the field, all dark cards gain 400 attack.
-While this card is on the field, all dark cards gain 400 defense.
 While this card is on the field, all dark cards gain 400 defense.
 While this card is on the field, all dark cards gain 50 attack.
-While this card is on the field, all dark cards gain 50 attack.
-While this card is on the field, all dark cards gain 50 defense.
 While this card is on the field, all dark cards gain 50 defense.
 While this card is on the field, all dark cards gain 500 attack.
-While this card is on the field, all dark cards gain 500 attack.
-While this card is on the field, all dark cards gain 500 defense.
 While this card is on the field, all dark cards gain 500 defense.
 While this card is on the field, all dark cards lose 100 attack.
 While this card is on the field, all dark cards lose 100 defense.
@@ -8998,32 +8928,18 @@ While this card is on the field, all dark cards lose 50 defense.
 While this card is on the field, all dark cards lose 500 attack.
 While this card is on the field, all dark cards lose 500 defense.
 While this card is on the field, all dragon cards gain 100 attack.
-While this card is on the field, all dragon cards gain 100 attack.
-While this card is on the field, all dragon cards gain 100 defense.
 While this card is on the field, all dragon cards gain 100 defense.
 While this card is on the field, all dragon cards gain 200 attack.
-While this card is on the field, all dragon cards gain 200 attack.
-While this card is on the field, all dragon cards gain 200 defense.
 While this card is on the field, all dragon cards gain 200 defense.
 While this card is on the field, all dragon cards gain 25 attack.
-While this card is on the field, all dragon cards gain 25 attack.
-While this card is on the field, all dragon cards gain 25 defense.
 While this card is on the field, all dragon cards gain 25 defense.
 While this card is on the field, all dragon cards gain 300 attack.
-While this card is on the field, all dragon cards gain 300 attack.
-While this card is on the field, all dragon cards gain 300 defense.
 While this card is on the field, all dragon cards gain 300 defense.
 While this card is on the field, all dragon cards gain 400 attack.
-While this card is on the field, all dragon cards gain 400 attack.
-While this card is on the field, all dragon cards gain 400 defense.
 While this card is on the field, all dragon cards gain 400 defense.
 While this card is on the field, all dragon cards gain 50 attack.
-While this card is on the field, all dragon cards gain 50 attack.
-While this card is on the field, all dragon cards gain 50 defense.
 While this card is on the field, all dragon cards gain 50 defense.
 While this card is on the field, all dragon cards gain 500 attack.
-While this card is on the field, all dragon cards gain 500 attack.
-While this card is on the field, all dragon cards gain 500 defense.
 While this card is on the field, all dragon cards gain 500 defense.
 While this card is on the field, all dragon cards lose 100 attack.
 While this card is on the field, all dragon cards lose 100 defense.
@@ -9040,32 +8956,18 @@ While this card is on the field, all dragon cards lose 50 defense.
 While this card is on the field, all dragon cards lose 500 attack.
 While this card is on the field, all dragon cards lose 500 defense.
 While this card is on the field, all earth cards gain 100 attack.
-While this card is on the field, all earth cards gain 100 attack.
-While this card is on the field, all earth cards gain 100 defense.
 While this card is on the field, all earth cards gain 100 defense.
 While this card is on the field, all earth cards gain 200 attack.
-While this card is on the field, all earth cards gain 200 attack.
-While this card is on the field, all earth cards gain 200 defense.
 While this card is on the field, all earth cards gain 200 defense.
 While this card is on the field, all earth cards gain 25 attack.
-While this card is on the field, all earth cards gain 25 attack.
-While this card is on the field, all earth cards gain 25 defense.
 While this card is on the field, all earth cards gain 25 defense.
 While this card is on the field, all earth cards gain 300 attack.
-While this card is on the field, all earth cards gain 300 attack.
-While this card is on the field, all earth cards gain 300 defense.
 While this card is on the field, all earth cards gain 300 defense.
 While this card is on the field, all earth cards gain 400 attack.
-While this card is on the field, all earth cards gain 400 attack.
-While this card is on the field, all earth cards gain 400 defense.
 While this card is on the field, all earth cards gain 400 defense.
 While this card is on the field, all earth cards gain 50 attack.
-While this card is on the field, all earth cards gain 50 attack.
-While this card is on the field, all earth cards gain 50 defense.
 While this card is on the field, all earth cards gain 50 defense.
 While this card is on the field, all earth cards gain 500 attack.
-While this card is on the field, all earth cards gain 500 attack.
-While this card is on the field, all earth cards gain 500 defense.
 While this card is on the field, all earth cards gain 500 defense.
 While this card is on the field, all earth cards lose 100 attack.
 While this card is on the field, all earth cards lose 100 defense.
@@ -9082,32 +8984,18 @@ While this card is on the field, all earth cards lose 50 defense.
 While this card is on the field, all earth cards lose 500 attack.
 While this card is on the field, all earth cards lose 500 defense.
 While this card is on the field, all electric cards gain 100 attack.
-While this card is on the field, all electric cards gain 100 attack.
-While this card is on the field, all electric cards gain 100 defense.
 While this card is on the field, all electric cards gain 100 defense.
 While this card is on the field, all electric cards gain 200 attack.
-While this card is on the field, all electric cards gain 200 attack.
-While this card is on the field, all electric cards gain 200 defense.
 While this card is on the field, all electric cards gain 200 defense.
 While this card is on the field, all electric cards gain 25 attack.
-While this card is on the field, all electric cards gain 25 attack.
-While this card is on the field, all electric cards gain 25 defense.
 While this card is on the field, all electric cards gain 25 defense.
 While this card is on the field, all electric cards gain 300 attack.
-While this card is on the field, all electric cards gain 300 attack.
-While this card is on the field, all electric cards gain 300 defense.
 While this card is on the field, all electric cards gain 300 defense.
 While this card is on the field, all electric cards gain 400 attack.
-While this card is on the field, all electric cards gain 400 attack.
-While this card is on the field, all electric cards gain 400 defense.
 While this card is on the field, all electric cards gain 400 defense.
 While this card is on the field, all electric cards gain 50 attack.
-While this card is on the field, all electric cards gain 50 attack.
-While this card is on the field, all electric cards gain 50 defense.
 While this card is on the field, all electric cards gain 50 defense.
 While this card is on the field, all electric cards gain 500 attack.
-While this card is on the field, all electric cards gain 500 attack.
-While this card is on the field, all electric cards gain 500 defense.
 While this card is on the field, all electric cards gain 500 defense.
 While this card is on the field, all electric cards lose 100 attack.
 While this card is on the field, all electric cards lose 100 defense.
@@ -9124,32 +9012,18 @@ While this card is on the field, all electric cards lose 50 defense.
 While this card is on the field, all electric cards lose 500 attack.
 While this card is on the field, all electric cards lose 500 defense.
 While this card is on the field, all elemental cards gain 100 attack.
-While this card is on the field, all elemental cards gain 100 attack.
-While this card is on the field, all elemental cards gain 100 defense.
 While this card is on the field, all elemental cards gain 100 defense.
 While this card is on the field, all elemental cards gain 200 attack.
-While this card is on the field, all elemental cards gain 200 attack.
-While this card is on the field, all elemental cards gain 200 defense.
 While this card is on the field, all elemental cards gain 200 defense.
 While this card is on the field, all elemental cards gain 25 attack.
-While this card is on the field, all elemental cards gain 25 attack.
-While this card is on the field, all elemental cards gain 25 defense.
 While this card is on the field, all elemental cards gain 25 defense.
 While this card is on the field, all elemental cards gain 300 attack.
-While this card is on the field, all elemental cards gain 300 attack.
-While this card is on the field, all elemental cards gain 300 defense.
 While this card is on the field, all elemental cards gain 300 defense.
 While this card is on the field, all elemental cards gain 400 attack.
-While this card is on the field, all elemental cards gain 400 attack.
-While this card is on the field, all elemental cards gain 400 defense.
 While this card is on the field, all elemental cards gain 400 defense.
 While this card is on the field, all elemental cards gain 50 attack.
-While this card is on the field, all elemental cards gain 50 attack.
-While this card is on the field, all elemental cards gain 50 defense.
 While this card is on the field, all elemental cards gain 50 defense.
 While this card is on the field, all elemental cards gain 500 attack.
-While this card is on the field, all elemental cards gain 500 attack.
-While this card is on the field, all elemental cards gain 500 defense.
 While this card is on the field, all elemental cards gain 500 defense.
 While this card is on the field, all elemental cards lose 100 attack.
 While this card is on the field, all elemental cards lose 100 defense.
@@ -9166,32 +9040,18 @@ While this card is on the field, all elemental cards lose 50 defense.
 While this card is on the field, all elemental cards lose 500 attack.
 While this card is on the field, all elemental cards lose 500 defense.
 While this card is on the field, all fairy cards gain 100 attack.
-While this card is on the field, all fairy cards gain 100 attack.
-While this card is on the field, all fairy cards gain 100 defense.
 While this card is on the field, all fairy cards gain 100 defense.
 While this card is on the field, all fairy cards gain 200 attack.
-While this card is on the field, all fairy cards gain 200 attack.
-While this card is on the field, all fairy cards gain 200 defense.
 While this card is on the field, all fairy cards gain 200 defense.
 While this card is on the field, all fairy cards gain 25 attack.
-While this card is on the field, all fairy cards gain 25 attack.
-While this card is on the field, all fairy cards gain 25 defense.
 While this card is on the field, all fairy cards gain 25 defense.
 While this card is on the field, all fairy cards gain 300 attack.
-While this card is on the field, all fairy cards gain 300 attack.
-While this card is on the field, all fairy cards gain 300 defense.
 While this card is on the field, all fairy cards gain 300 defense.
 While this card is on the field, all fairy cards gain 400 attack.
-While this card is on the field, all fairy cards gain 400 attack.
-While this card is on the field, all fairy cards gain 400 defense.
 While this card is on the field, all fairy cards gain 400 defense.
 While this card is on the field, all fairy cards gain 50 attack.
-While this card is on the field, all fairy cards gain 50 attack.
-While this card is on the field, all fairy cards gain 50 defense.
 While this card is on the field, all fairy cards gain 50 defense.
 While this card is on the field, all fairy cards gain 500 attack.
-While this card is on the field, all fairy cards gain 500 attack.
-While this card is on the field, all fairy cards gain 500 defense.
 While this card is on the field, all fairy cards gain 500 defense.
 While this card is on the field, all fairy cards lose 100 attack.
 While this card is on the field, all fairy cards lose 100 defense.
@@ -9208,32 +9068,18 @@ While this card is on the field, all fairy cards lose 50 defense.
 While this card is on the field, all fairy cards lose 500 attack.
 While this card is on the field, all fairy cards lose 500 defense.
 While this card is on the field, all fire cards gain 100 attack.
-While this card is on the field, all fire cards gain 100 attack.
-While this card is on the field, all fire cards gain 100 defense.
 While this card is on the field, all fire cards gain 100 defense.
 While this card is on the field, all fire cards gain 200 attack.
-While this card is on the field, all fire cards gain 200 attack.
-While this card is on the field, all fire cards gain 200 defense.
 While this card is on the field, all fire cards gain 200 defense.
 While this card is on the field, all fire cards gain 25 attack.
-While this card is on the field, all fire cards gain 25 attack.
-While this card is on the field, all fire cards gain 25 defense.
 While this card is on the field, all fire cards gain 25 defense.
 While this card is on the field, all fire cards gain 300 attack.
-While this card is on the field, all fire cards gain 300 attack.
-While this card is on the field, all fire cards gain 300 defense.
 While this card is on the field, all fire cards gain 300 defense.
 While this card is on the field, all fire cards gain 400 attack.
-While this card is on the field, all fire cards gain 400 attack.
-While this card is on the field, all fire cards gain 400 defense.
 While this card is on the field, all fire cards gain 400 defense.
 While this card is on the field, all fire cards gain 50 attack.
-While this card is on the field, all fire cards gain 50 attack.
-While this card is on the field, all fire cards gain 50 defense.
 While this card is on the field, all fire cards gain 50 defense.
 While this card is on the field, all fire cards gain 500 attack.
-While this card is on the field, all fire cards gain 500 attack.
-While this card is on the field, all fire cards gain 500 defense.
 While this card is on the field, all fire cards gain 500 defense.
 While this card is on the field, all fire cards lose 100 attack.
 While this card is on the field, all fire cards lose 100 defense.
@@ -9250,32 +9096,18 @@ While this card is on the field, all fire cards lose 50 defense.
 While this card is on the field, all fire cards lose 500 attack.
 While this card is on the field, all fire cards lose 500 defense.
 While this card is on the field, all ghost cards gain 100 attack.
-While this card is on the field, all ghost cards gain 100 attack.
-While this card is on the field, all ghost cards gain 100 defense.
 While this card is on the field, all ghost cards gain 100 defense.
 While this card is on the field, all ghost cards gain 200 attack.
-While this card is on the field, all ghost cards gain 200 attack.
-While this card is on the field, all ghost cards gain 200 defense.
 While this card is on the field, all ghost cards gain 200 defense.
 While this card is on the field, all ghost cards gain 25 attack.
-While this card is on the field, all ghost cards gain 25 attack.
-While this card is on the field, all ghost cards gain 25 defense.
 While this card is on the field, all ghost cards gain 25 defense.
 While this card is on the field, all ghost cards gain 300 attack.
-While this card is on the field, all ghost cards gain 300 attack.
-While this card is on the field, all ghost cards gain 300 defense.
 While this card is on the field, all ghost cards gain 300 defense.
 While this card is on the field, all ghost cards gain 400 attack.
-While this card is on the field, all ghost cards gain 400 attack.
-While this card is on the field, all ghost cards gain 400 defense.
 While this card is on the field, all ghost cards gain 400 defense.
 While this card is on the field, all ghost cards gain 50 attack.
-While this card is on the field, all ghost cards gain 50 attack.
-While this card is on the field, all ghost cards gain 50 defense.
 While this card is on the field, all ghost cards gain 50 defense.
 While this card is on the field, all ghost cards gain 500 attack.
-While this card is on the field, all ghost cards gain 500 attack.
-While this card is on the field, all ghost cards gain 500 defense.
 While this card is on the field, all ghost cards gain 500 defense.
 While this card is on the field, all ghost cards lose 100 attack.
 While this card is on the field, all ghost cards lose 100 defense.
@@ -9292,32 +9124,18 @@ While this card is on the field, all ghost cards lose 50 defense.
 While this card is on the field, all ghost cards lose 500 attack.
 While this card is on the field, all ghost cards lose 500 defense.
 While this card is on the field, all insect cards gain 100 attack.
-While this card is on the field, all insect cards gain 100 attack.
-While this card is on the field, all insect cards gain 100 defense.
 While this card is on the field, all insect cards gain 100 defense.
 While this card is on the field, all insect cards gain 200 attack.
-While this card is on the field, all insect cards gain 200 attack.
-While this card is on the field, all insect cards gain 200 defense.
 While this card is on the field, all insect cards gain 200 defense.
 While this card is on the field, all insect cards gain 25 attack.
-While this card is on the field, all insect cards gain 25 attack.
-While this card is on the field, all insect cards gain 25 defense.
 While this card is on the field, all insect cards gain 25 defense.
 While this card is on the field, all insect cards gain 300 attack.
-While this card is on the field, all insect cards gain 300 attack.
-While this card is on the field, all insect cards gain 300 defense.
 While this card is on the field, all insect cards gain 300 defense.
 While this card is on the field, all insect cards gain 400 attack.
-While this card is on the field, all insect cards gain 400 attack.
-While this card is on the field, all insect cards gain 400 defense.
 While this card is on the field, all insect cards gain 400 defense.
 While this card is on the field, all insect cards gain 50 attack.
-While this card is on the field, all insect cards gain 50 attack.
-While this card is on the field, all insect cards gain 50 defense.
 While this card is on the field, all insect cards gain 50 defense.
 While this card is on the field, all insect cards gain 500 attack.
-While this card is on the field, all insect cards gain 500 attack.
-While this card is on the field, all insect cards gain 500 defense.
 While this card is on the field, all insect cards gain 500 defense.
 While this card is on the field, all insect cards lose 100 attack.
 While this card is on the field, all insect cards lose 100 defense.
@@ -9334,32 +9152,18 @@ While this card is on the field, all insect cards lose 50 defense.
 While this card is on the field, all insect cards lose 500 attack.
 While this card is on the field, all insect cards lose 500 defense.
 While this card is on the field, all light cards gain 100 attack.
-While this card is on the field, all light cards gain 100 attack.
-While this card is on the field, all light cards gain 100 defense.
 While this card is on the field, all light cards gain 100 defense.
 While this card is on the field, all light cards gain 200 attack.
-While this card is on the field, all light cards gain 200 attack.
-While this card is on the field, all light cards gain 200 defense.
 While this card is on the field, all light cards gain 200 defense.
 While this card is on the field, all light cards gain 25 attack.
-While this card is on the field, all light cards gain 25 attack.
-While this card is on the field, all light cards gain 25 defense.
 While this card is on the field, all light cards gain 25 defense.
 While this card is on the field, all light cards gain 300 attack.
-While this card is on the field, all light cards gain 300 attack.
-While this card is on the field, all light cards gain 300 defense.
 While this card is on the field, all light cards gain 300 defense.
 While this card is on the field, all light cards gain 400 attack.
-While this card is on the field, all light cards gain 400 attack.
-While this card is on the field, all light cards gain 400 defense.
 While this card is on the field, all light cards gain 400 defense.
 While this card is on the field, all light cards gain 50 attack.
-While this card is on the field, all light cards gain 50 attack.
-While this card is on the field, all light cards gain 50 defense.
 While this card is on the field, all light cards gain 50 defense.
 While this card is on the field, all light cards gain 500 attack.
-While this card is on the field, all light cards gain 500 attack.
-While this card is on the field, all light cards gain 500 defense.
 While this card is on the field, all light cards gain 500 defense.
 While this card is on the field, all light cards lose 100 attack.
 While this card is on the field, all light cards lose 100 defense.
@@ -9376,32 +9180,18 @@ While this card is on the field, all light cards lose 50 defense.
 While this card is on the field, all light cards lose 500 attack.
 While this card is on the field, all light cards lose 500 defense.
 While this card is on the field, all machine cards gain 100 attack.
-While this card is on the field, all machine cards gain 100 attack.
-While this card is on the field, all machine cards gain 100 defense.
 While this card is on the field, all machine cards gain 100 defense.
 While this card is on the field, all machine cards gain 200 attack.
-While this card is on the field, all machine cards gain 200 attack.
-While this card is on the field, all machine cards gain 200 defense.
 While this card is on the field, all machine cards gain 200 defense.
 While this card is on the field, all machine cards gain 25 attack.
-While this card is on the field, all machine cards gain 25 attack.
-While this card is on the field, all machine cards gain 25 defense.
 While this card is on the field, all machine cards gain 25 defense.
 While this card is on the field, all machine cards gain 300 attack.
-While this card is on the field, all machine cards gain 300 attack.
-While this card is on the field, all machine cards gain 300 defense.
 While this card is on the field, all machine cards gain 300 defense.
 While this card is on the field, all machine cards gain 400 attack.
-While this card is on the field, all machine cards gain 400 attack.
-While this card is on the field, all machine cards gain 400 defense.
 While this card is on the field, all machine cards gain 400 defense.
 While this card is on the field, all machine cards gain 50 attack.
-While this card is on the field, all machine cards gain 50 attack.
-While this card is on the field, all machine cards gain 50 defense.
 While this card is on the field, all machine cards gain 50 defense.
 While this card is on the field, all machine cards gain 500 attack.
-While this card is on the field, all machine cards gain 500 attack.
-While this card is on the field, all machine cards gain 500 defense.
 While this card is on the field, all machine cards gain 500 defense.
 While this card is on the field, all machine cards lose 100 attack.
 While this card is on the field, all machine cards lose 100 defense.
@@ -9418,32 +9208,18 @@ While this card is on the field, all machine cards lose 50 defense.
 While this card is on the field, all machine cards lose 500 attack.
 While this card is on the field, all machine cards lose 500 defense.
 While this card is on the field, all rank 1 cards gain 100 attack.
-While this card is on the field, all rank 1 cards gain 100 attack.
-While this card is on the field, all rank 1 cards gain 100 defense.
 While this card is on the field, all rank 1 cards gain 100 defense.
 While this card is on the field, all rank 1 cards gain 200 attack.
-While this card is on the field, all rank 1 cards gain 200 attack.
-While this card is on the field, all rank 1 cards gain 200 defense.
 While this card is on the field, all rank 1 cards gain 200 defense.
 While this card is on the field, all rank 1 cards gain 25 attack.
-While this card is on the field, all rank 1 cards gain 25 attack.
-While this card is on the field, all rank 1 cards gain 25 defense.
 While this card is on the field, all rank 1 cards gain 25 defense.
 While this card is on the field, all rank 1 cards gain 300 attack.
-While this card is on the field, all rank 1 cards gain 300 attack.
-While this card is on the field, all rank 1 cards gain 300 defense.
 While this card is on the field, all rank 1 cards gain 300 defense.
 While this card is on the field, all rank 1 cards gain 400 attack.
-While this card is on the field, all rank 1 cards gain 400 attack.
-While this card is on the field, all rank 1 cards gain 400 defense.
 While this card is on the field, all rank 1 cards gain 400 defense.
 While this card is on the field, all rank 1 cards gain 50 attack.
-While this card is on the field, all rank 1 cards gain 50 attack.
-While this card is on the field, all rank 1 cards gain 50 defense.
 While this card is on the field, all rank 1 cards gain 50 defense.
 While this card is on the field, all rank 1 cards gain 500 attack.
-While this card is on the field, all rank 1 cards gain 500 attack.
-While this card is on the field, all rank 1 cards gain 500 defense.
 While this card is on the field, all rank 1 cards gain 500 defense.
 While this card is on the field, all rank 1 cards lose 100 attack.
 While this card is on the field, all rank 1 cards lose 100 defense.
@@ -9460,32 +9236,18 @@ While this card is on the field, all rank 1 cards lose 50 defense.
 While this card is on the field, all rank 1 cards lose 500 attack.
 While this card is on the field, all rank 1 cards lose 500 defense.
 While this card is on the field, all rank 1 creature cards gain 100 attack.
-While this card is on the field, all rank 1 creature cards gain 100 attack.
-While this card is on the field, all rank 1 creature cards gain 100 defense.
 While this card is on the field, all rank 1 creature cards gain 100 defense.
 While this card is on the field, all rank 1 creature cards gain 200 attack.
-While this card is on the field, all rank 1 creature cards gain 200 attack.
-While this card is on the field, all rank 1 creature cards gain 200 defense.
 While this card is on the field, all rank 1 creature cards gain 200 defense.
 While this card is on the field, all rank 1 creature cards gain 25 attack.
-While this card is on the field, all rank 1 creature cards gain 25 attack.
-While this card is on the field, all rank 1 creature cards gain 25 defense.
 While this card is on the field, all rank 1 creature cards gain 25 defense.
 While this card is on the field, all rank 1 creature cards gain 300 attack.
-While this card is on the field, all rank 1 creature cards gain 300 attack.
-While this card is on the field, all rank 1 creature cards gain 300 defense.
 While this card is on the field, all rank 1 creature cards gain 300 defense.
 While this card is on the field, all rank 1 creature cards gain 400 attack.
-While this card is on the field, all rank 1 creature cards gain 400 attack.
-While this card is on the field, all rank 1 creature cards gain 400 defense.
 While this card is on the field, all rank 1 creature cards gain 400 defense.
 While this card is on the field, all rank 1 creature cards gain 50 attack.
-While this card is on the field, all rank 1 creature cards gain 50 attack.
-While this card is on the field, all rank 1 creature cards gain 50 defense.
 While this card is on the field, all rank 1 creature cards gain 50 defense.
 While this card is on the field, all rank 1 creature cards gain 500 attack.
-While this card is on the field, all rank 1 creature cards gain 500 attack.
-While this card is on the field, all rank 1 creature cards gain 500 defense.
 While this card is on the field, all rank 1 creature cards gain 500 defense.
 While this card is on the field, all rank 1 creature cards lose 100 attack.
 While this card is on the field, all rank 1 creature cards lose 100 defense.
@@ -9515,33 +9277,33 @@ While this card is on the field, all rank 1 spell cards gain 50 attack.
 While this card is on the field, all rank 1 spell cards gain 50 defense.
 While this card is on the field, all rank 1 spell cards gain 500 attack.
 While this card is on the field, all rank 1 spell cards gain 500 defense.
-While this card is on the field, all rank 2 cards gain 100 attack.
+While this card is on the field, all rank 1 spell cards lose 100 attack.
+While this card is on the field, all rank 1 spell cards lose 100 defense.
+While this card is on the field, all rank 1 spell cards lose 200 attack.
+While this card is on the field, all rank 1 spell cards lose 200 defense.
+While this card is on the field, all rank 1 spell cards lose 25 attack.
+While this card is on the field, all rank 1 spell cards lose 25 defense.
+While this card is on the field, all rank 1 spell cards lose 300 attack.
+While this card is on the field, all rank 1 spell cards lose 300 defense.
+While this card is on the field, all rank 1 spell cards lose 400 attack.
+While this card is on the field, all rank 1 spell cards lose 400 defense.
+While this card is on the field, all rank 1 spell cards lose 50 attack.
+While this card is on the field, all rank 1 spell cards lose 50 defense.
+While this card is on the field, all rank 1 spell cards lose 500 attack.
+While this card is on the field, all rank 1 spell cards lose 500 defense.
 While this card is on the field, all rank 2 cards gain 100 attack.
 While this card is on the field, all rank 2 cards gain 100 defense.
-While this card is on the field, all rank 2 cards gain 100 defense.
-While this card is on the field, all rank 2 cards gain 200 attack.
 While this card is on the field, all rank 2 cards gain 200 attack.
 While this card is on the field, all rank 2 cards gain 200 defense.
-While this card is on the field, all rank 2 cards gain 200 defense.
-While this card is on the field, all rank 2 cards gain 25 attack.
 While this card is on the field, all rank 2 cards gain 25 attack.
 While this card is on the field, all rank 2 cards gain 25 defense.
-While this card is on the field, all rank 2 cards gain 25 defense.
-While this card is on the field, all rank 2 cards gain 300 attack.
 While this card is on the field, all rank 2 cards gain 300 attack.
 While this card is on the field, all rank 2 cards gain 300 defense.
-While this card is on the field, all rank 2 cards gain 300 defense.
-While this card is on the field, all rank 2 cards gain 400 attack.
 While this card is on the field, all rank 2 cards gain 400 attack.
 While this card is on the field, all rank 2 cards gain 400 defense.
-While this card is on the field, all rank 2 cards gain 400 defense.
-While this card is on the field, all rank 2 cards gain 50 attack.
 While this card is on the field, all rank 2 cards gain 50 attack.
 While this card is on the field, all rank 2 cards gain 50 defense.
-While this card is on the field, all rank 2 cards gain 50 defense.
 While this card is on the field, all rank 2 cards gain 500 attack.
-While this card is on the field, all rank 2 cards gain 500 attack.
-While this card is on the field, all rank 2 cards gain 500 defense.
 While this card is on the field, all rank 2 cards gain 500 defense.
 While this card is on the field, all rank 2 cards lose 100 attack.
 While this card is on the field, all rank 2 cards lose 100 defense.
@@ -9558,32 +9320,18 @@ While this card is on the field, all rank 2 cards lose 50 defense.
 While this card is on the field, all rank 2 cards lose 500 attack.
 While this card is on the field, all rank 2 cards lose 500 defense.
 While this card is on the field, all rank 2 creature cards gain 100 attack.
-While this card is on the field, all rank 2 creature cards gain 100 attack.
-While this card is on the field, all rank 2 creature cards gain 100 defense.
 While this card is on the field, all rank 2 creature cards gain 100 defense.
 While this card is on the field, all rank 2 creature cards gain 200 attack.
-While this card is on the field, all rank 2 creature cards gain 200 attack.
-While this card is on the field, all rank 2 creature cards gain 200 defense.
 While this card is on the field, all rank 2 creature cards gain 200 defense.
 While this card is on the field, all rank 2 creature cards gain 25 attack.
-While this card is on the field, all rank 2 creature cards gain 25 attack.
-While this card is on the field, all rank 2 creature cards gain 25 defense.
 While this card is on the field, all rank 2 creature cards gain 25 defense.
 While this card is on the field, all rank 2 creature cards gain 300 attack.
-While this card is on the field, all rank 2 creature cards gain 300 attack.
-While this card is on the field, all rank 2 creature cards gain 300 defense.
 While this card is on the field, all rank 2 creature cards gain 300 defense.
 While this card is on the field, all rank 2 creature cards gain 400 attack.
-While this card is on the field, all rank 2 creature cards gain 400 attack.
-While this card is on the field, all rank 2 creature cards gain 400 defense.
 While this card is on the field, all rank 2 creature cards gain 400 defense.
 While this card is on the field, all rank 2 creature cards gain 50 attack.
-While this card is on the field, all rank 2 creature cards gain 50 attack.
-While this card is on the field, all rank 2 creature cards gain 50 defense.
 While this card is on the field, all rank 2 creature cards gain 50 defense.
 While this card is on the field, all rank 2 creature cards gain 500 attack.
-While this card is on the field, all rank 2 creature cards gain 500 attack.
-While this card is on the field, all rank 2 creature cards gain 500 defense.
 While this card is on the field, all rank 2 creature cards gain 500 defense.
 While this card is on the field, all rank 2 creature cards lose 100 attack.
 While this card is on the field, all rank 2 creature cards lose 100 defense.
@@ -9613,33 +9361,33 @@ While this card is on the field, all rank 2 spell cards gain 50 attack.
 While this card is on the field, all rank 2 spell cards gain 50 defense.
 While this card is on the field, all rank 2 spell cards gain 500 attack.
 While this card is on the field, all rank 2 spell cards gain 500 defense.
-While this card is on the field, all rank 3 cards gain 100 attack.
+While this card is on the field, all rank 2 spell cards lose 100 attack.
+While this card is on the field, all rank 2 spell cards lose 100 defense.
+While this card is on the field, all rank 2 spell cards lose 200 attack.
+While this card is on the field, all rank 2 spell cards lose 200 defense.
+While this card is on the field, all rank 2 spell cards lose 25 attack.
+While this card is on the field, all rank 2 spell cards lose 25 defense.
+While this card is on the field, all rank 2 spell cards lose 300 attack.
+While this card is on the field, all rank 2 spell cards lose 300 defense.
+While this card is on the field, all rank 2 spell cards lose 400 attack.
+While this card is on the field, all rank 2 spell cards lose 400 defense.
+While this card is on the field, all rank 2 spell cards lose 50 attack.
+While this card is on the field, all rank 2 spell cards lose 50 defense.
+While this card is on the field, all rank 2 spell cards lose 500 attack.
+While this card is on the field, all rank 2 spell cards lose 500 defense.
 While this card is on the field, all rank 3 cards gain 100 attack.
 While this card is on the field, all rank 3 cards gain 100 defense.
-While this card is on the field, all rank 3 cards gain 100 defense.
-While this card is on the field, all rank 3 cards gain 200 attack.
 While this card is on the field, all rank 3 cards gain 200 attack.
 While this card is on the field, all rank 3 cards gain 200 defense.
-While this card is on the field, all rank 3 cards gain 200 defense.
-While this card is on the field, all rank 3 cards gain 25 attack.
 While this card is on the field, all rank 3 cards gain 25 attack.
 While this card is on the field, all rank 3 cards gain 25 defense.
-While this card is on the field, all rank 3 cards gain 25 defense.
-While this card is on the field, all rank 3 cards gain 300 attack.
 While this card is on the field, all rank 3 cards gain 300 attack.
 While this card is on the field, all rank 3 cards gain 300 defense.
-While this card is on the field, all rank 3 cards gain 300 defense.
-While this card is on the field, all rank 3 cards gain 400 attack.
 While this card is on the field, all rank 3 cards gain 400 attack.
 While this card is on the field, all rank 3 cards gain 400 defense.
-While this card is on the field, all rank 3 cards gain 400 defense.
-While this card is on the field, all rank 3 cards gain 50 attack.
 While this card is on the field, all rank 3 cards gain 50 attack.
 While this card is on the field, all rank 3 cards gain 50 defense.
-While this card is on the field, all rank 3 cards gain 50 defense.
 While this card is on the field, all rank 3 cards gain 500 attack.
-While this card is on the field, all rank 3 cards gain 500 attack.
-While this card is on the field, all rank 3 cards gain 500 defense.
 While this card is on the field, all rank 3 cards gain 500 defense.
 While this card is on the field, all rank 3 cards lose 100 attack.
 While this card is on the field, all rank 3 cards lose 100 defense.
@@ -9656,32 +9404,18 @@ While this card is on the field, all rank 3 cards lose 50 defense.
 While this card is on the field, all rank 3 cards lose 500 attack.
 While this card is on the field, all rank 3 cards lose 500 defense.
 While this card is on the field, all rank 3 creature cards gain 100 attack.
-While this card is on the field, all rank 3 creature cards gain 100 attack.
-While this card is on the field, all rank 3 creature cards gain 100 defense.
 While this card is on the field, all rank 3 creature cards gain 100 defense.
 While this card is on the field, all rank 3 creature cards gain 200 attack.
-While this card is on the field, all rank 3 creature cards gain 200 attack.
-While this card is on the field, all rank 3 creature cards gain 200 defense.
 While this card is on the field, all rank 3 creature cards gain 200 defense.
 While this card is on the field, all rank 3 creature cards gain 25 attack.
-While this card is on the field, all rank 3 creature cards gain 25 attack.
-While this card is on the field, all rank 3 creature cards gain 25 defense.
 While this card is on the field, all rank 3 creature cards gain 25 defense.
 While this card is on the field, all rank 3 creature cards gain 300 attack.
-While this card is on the field, all rank 3 creature cards gain 300 attack.
-While this card is on the field, all rank 3 creature cards gain 300 defense.
 While this card is on the field, all rank 3 creature cards gain 300 defense.
 While this card is on the field, all rank 3 creature cards gain 400 attack.
-While this card is on the field, all rank 3 creature cards gain 400 attack.
-While this card is on the field, all rank 3 creature cards gain 400 defense.
 While this card is on the field, all rank 3 creature cards gain 400 defense.
 While this card is on the field, all rank 3 creature cards gain 50 attack.
-While this card is on the field, all rank 3 creature cards gain 50 attack.
-While this card is on the field, all rank 3 creature cards gain 50 defense.
 While this card is on the field, all rank 3 creature cards gain 50 defense.
 While this card is on the field, all rank 3 creature cards gain 500 attack.
-While this card is on the field, all rank 3 creature cards gain 500 attack.
-While this card is on the field, all rank 3 creature cards gain 500 defense.
 While this card is on the field, all rank 3 creature cards gain 500 defense.
 While this card is on the field, all rank 3 creature cards lose 100 attack.
 While this card is on the field, all rank 3 creature cards lose 100 defense.
@@ -9711,33 +9445,33 @@ While this card is on the field, all rank 3 spell cards gain 50 attack.
 While this card is on the field, all rank 3 spell cards gain 50 defense.
 While this card is on the field, all rank 3 spell cards gain 500 attack.
 While this card is on the field, all rank 3 spell cards gain 500 defense.
-While this card is on the field, all rank 4 cards gain 100 attack.
+While this card is on the field, all rank 3 spell cards lose 100 attack.
+While this card is on the field, all rank 3 spell cards lose 100 defense.
+While this card is on the field, all rank 3 spell cards lose 200 attack.
+While this card is on the field, all rank 3 spell cards lose 200 defense.
+While this card is on the field, all rank 3 spell cards lose 25 attack.
+While this card is on the field, all rank 3 spell cards lose 25 defense.
+While this card is on the field, all rank 3 spell cards lose 300 attack.
+While this card is on the field, all rank 3 spell cards lose 300 defense.
+While this card is on the field, all rank 3 spell cards lose 400 attack.
+While this card is on the field, all rank 3 spell cards lose 400 defense.
+While this card is on the field, all rank 3 spell cards lose 50 attack.
+While this card is on the field, all rank 3 spell cards lose 50 defense.
+While this card is on the field, all rank 3 spell cards lose 500 attack.
+While this card is on the field, all rank 3 spell cards lose 500 defense.
 While this card is on the field, all rank 4 cards gain 100 attack.
 While this card is on the field, all rank 4 cards gain 100 defense.
-While this card is on the field, all rank 4 cards gain 100 defense.
-While this card is on the field, all rank 4 cards gain 200 attack.
 While this card is on the field, all rank 4 cards gain 200 attack.
 While this card is on the field, all rank 4 cards gain 200 defense.
-While this card is on the field, all rank 4 cards gain 200 defense.
-While this card is on the field, all rank 4 cards gain 25 attack.
 While this card is on the field, all rank 4 cards gain 25 attack.
 While this card is on the field, all rank 4 cards gain 25 defense.
-While this card is on the field, all rank 4 cards gain 25 defense.
-While this card is on the field, all rank 4 cards gain 300 attack.
 While this card is on the field, all rank 4 cards gain 300 attack.
 While this card is on the field, all rank 4 cards gain 300 defense.
-While this card is on the field, all rank 4 cards gain 300 defense.
-While this card is on the field, all rank 4 cards gain 400 attack.
 While this card is on the field, all rank 4 cards gain 400 attack.
 While this card is on the field, all rank 4 cards gain 400 defense.
-While this card is on the field, all rank 4 cards gain 400 defense.
-While this card is on the field, all rank 4 cards gain 50 attack.
 While this card is on the field, all rank 4 cards gain 50 attack.
 While this card is on the field, all rank 4 cards gain 50 defense.
-While this card is on the field, all rank 4 cards gain 50 defense.
 While this card is on the field, all rank 4 cards gain 500 attack.
-While this card is on the field, all rank 4 cards gain 500 attack.
-While this card is on the field, all rank 4 cards gain 500 defense.
 While this card is on the field, all rank 4 cards gain 500 defense.
 While this card is on the field, all rank 4 cards lose 100 attack.
 While this card is on the field, all rank 4 cards lose 100 defense.
@@ -9754,32 +9488,18 @@ While this card is on the field, all rank 4 cards lose 50 defense.
 While this card is on the field, all rank 4 cards lose 500 attack.
 While this card is on the field, all rank 4 cards lose 500 defense.
 While this card is on the field, all rank 4 creature cards gain 100 attack.
-While this card is on the field, all rank 4 creature cards gain 100 attack.
-While this card is on the field, all rank 4 creature cards gain 100 defense.
 While this card is on the field, all rank 4 creature cards gain 100 defense.
 While this card is on the field, all rank 4 creature cards gain 200 attack.
-While this card is on the field, all rank 4 creature cards gain 200 attack.
-While this card is on the field, all rank 4 creature cards gain 200 defense.
 While this card is on the field, all rank 4 creature cards gain 200 defense.
 While this card is on the field, all rank 4 creature cards gain 25 attack.
-While this card is on the field, all rank 4 creature cards gain 25 attack.
-While this card is on the field, all rank 4 creature cards gain 25 defense.
 While this card is on the field, all rank 4 creature cards gain 25 defense.
 While this card is on the field, all rank 4 creature cards gain 300 attack.
-While this card is on the field, all rank 4 creature cards gain 300 attack.
-While this card is on the field, all rank 4 creature cards gain 300 defense.
 While this card is on the field, all rank 4 creature cards gain 300 defense.
 While this card is on the field, all rank 4 creature cards gain 400 attack.
-While this card is on the field, all rank 4 creature cards gain 400 attack.
-While this card is on the field, all rank 4 creature cards gain 400 defense.
 While this card is on the field, all rank 4 creature cards gain 400 defense.
 While this card is on the field, all rank 4 creature cards gain 50 attack.
-While this card is on the field, all rank 4 creature cards gain 50 attack.
-While this card is on the field, all rank 4 creature cards gain 50 defense.
 While this card is on the field, all rank 4 creature cards gain 50 defense.
 While this card is on the field, all rank 4 creature cards gain 500 attack.
-While this card is on the field, all rank 4 creature cards gain 500 attack.
-While this card is on the field, all rank 4 creature cards gain 500 defense.
 While this card is on the field, all rank 4 creature cards gain 500 defense.
 While this card is on the field, all rank 4 creature cards lose 100 attack.
 While this card is on the field, all rank 4 creature cards lose 100 defense.
@@ -9796,32 +9516,18 @@ While this card is on the field, all rank 4 creature cards lose 50 defense.
 While this card is on the field, all rank 4 creature cards lose 500 attack.
 While this card is on the field, all rank 4 creature cards lose 500 defense.
 While this card is on the field, all rank 5 cards gain 100 attack.
-While this card is on the field, all rank 5 cards gain 100 attack.
-While this card is on the field, all rank 5 cards gain 100 defense.
 While this card is on the field, all rank 5 cards gain 100 defense.
 While this card is on the field, all rank 5 cards gain 200 attack.
-While this card is on the field, all rank 5 cards gain 200 attack.
-While this card is on the field, all rank 5 cards gain 200 defense.
 While this card is on the field, all rank 5 cards gain 200 defense.
 While this card is on the field, all rank 5 cards gain 25 attack.
-While this card is on the field, all rank 5 cards gain 25 attack.
-While this card is on the field, all rank 5 cards gain 25 defense.
 While this card is on the field, all rank 5 cards gain 25 defense.
 While this card is on the field, all rank 5 cards gain 300 attack.
-While this card is on the field, all rank 5 cards gain 300 attack.
-While this card is on the field, all rank 5 cards gain 300 defense.
 While this card is on the field, all rank 5 cards gain 300 defense.
 While this card is on the field, all rank 5 cards gain 400 attack.
-While this card is on the field, all rank 5 cards gain 400 attack.
-While this card is on the field, all rank 5 cards gain 400 defense.
 While this card is on the field, all rank 5 cards gain 400 defense.
 While this card is on the field, all rank 5 cards gain 50 attack.
-While this card is on the field, all rank 5 cards gain 50 attack.
-While this card is on the field, all rank 5 cards gain 50 defense.
 While this card is on the field, all rank 5 cards gain 50 defense.
 While this card is on the field, all rank 5 cards gain 500 attack.
-While this card is on the field, all rank 5 cards gain 500 attack.
-While this card is on the field, all rank 5 cards gain 500 defense.
 While this card is on the field, all rank 5 cards gain 500 defense.
 While this card is on the field, all rank 5 cards lose 100 attack.
 While this card is on the field, all rank 5 cards lose 100 defense.
@@ -9838,32 +9544,18 @@ While this card is on the field, all rank 5 cards lose 50 defense.
 While this card is on the field, all rank 5 cards lose 500 attack.
 While this card is on the field, all rank 5 cards lose 500 defense.
 While this card is on the field, all rank 5 creature cards gain 100 attack.
-While this card is on the field, all rank 5 creature cards gain 100 attack.
-While this card is on the field, all rank 5 creature cards gain 100 defense.
 While this card is on the field, all rank 5 creature cards gain 100 defense.
 While this card is on the field, all rank 5 creature cards gain 200 attack.
-While this card is on the field, all rank 5 creature cards gain 200 attack.
-While this card is on the field, all rank 5 creature cards gain 200 defense.
 While this card is on the field, all rank 5 creature cards gain 200 defense.
 While this card is on the field, all rank 5 creature cards gain 25 attack.
-While this card is on the field, all rank 5 creature cards gain 25 attack.
-While this card is on the field, all rank 5 creature cards gain 25 defense.
 While this card is on the field, all rank 5 creature cards gain 25 defense.
 While this card is on the field, all rank 5 creature cards gain 300 attack.
-While this card is on the field, all rank 5 creature cards gain 300 attack.
-While this card is on the field, all rank 5 creature cards gain 300 defense.
 While this card is on the field, all rank 5 creature cards gain 300 defense.
 While this card is on the field, all rank 5 creature cards gain 400 attack.
-While this card is on the field, all rank 5 creature cards gain 400 attack.
-While this card is on the field, all rank 5 creature cards gain 400 defense.
 While this card is on the field, all rank 5 creature cards gain 400 defense.
 While this card is on the field, all rank 5 creature cards gain 50 attack.
-While this card is on the field, all rank 5 creature cards gain 50 attack.
-While this card is on the field, all rank 5 creature cards gain 50 defense.
 While this card is on the field, all rank 5 creature cards gain 50 defense.
 While this card is on the field, all rank 5 creature cards gain 500 attack.
-While this card is on the field, all rank 5 creature cards gain 500 attack.
-While this card is on the field, all rank 5 creature cards gain 500 defense.
 While this card is on the field, all rank 5 creature cards gain 500 defense.
 While this card is on the field, all rank 5 creature cards lose 100 attack.
 While this card is on the field, all rank 5 creature cards lose 100 defense.
@@ -9880,32 +9572,18 @@ While this card is on the field, all rank 5 creature cards lose 50 defense.
 While this card is on the field, all rank 5 creature cards lose 500 attack.
 While this card is on the field, all rank 5 creature cards lose 500 defense.
 While this card is on the field, all reptile cards gain 100 attack.
-While this card is on the field, all reptile cards gain 100 attack.
-While this card is on the field, all reptile cards gain 100 defense.
 While this card is on the field, all reptile cards gain 100 defense.
 While this card is on the field, all reptile cards gain 200 attack.
-While this card is on the field, all reptile cards gain 200 attack.
-While this card is on the field, all reptile cards gain 200 defense.
 While this card is on the field, all reptile cards gain 200 defense.
 While this card is on the field, all reptile cards gain 25 attack.
-While this card is on the field, all reptile cards gain 25 attack.
-While this card is on the field, all reptile cards gain 25 defense.
 While this card is on the field, all reptile cards gain 25 defense.
 While this card is on the field, all reptile cards gain 300 attack.
-While this card is on the field, all reptile cards gain 300 attack.
-While this card is on the field, all reptile cards gain 300 defense.
 While this card is on the field, all reptile cards gain 300 defense.
 While this card is on the field, all reptile cards gain 400 attack.
-While this card is on the field, all reptile cards gain 400 attack.
-While this card is on the field, all reptile cards gain 400 defense.
 While this card is on the field, all reptile cards gain 400 defense.
 While this card is on the field, all reptile cards gain 50 attack.
-While this card is on the field, all reptile cards gain 50 attack.
-While this card is on the field, all reptile cards gain 50 defense.
 While this card is on the field, all reptile cards gain 50 defense.
 While this card is on the field, all reptile cards gain 500 attack.
-While this card is on the field, all reptile cards gain 500 attack.
-While this card is on the field, all reptile cards gain 500 defense.
 While this card is on the field, all reptile cards gain 500 defense.
 While this card is on the field, all reptile cards lose 100 attack.
 While this card is on the field, all reptile cards lose 100 defense.
@@ -9935,33 +9613,33 @@ While this card is on the field, all spell cards gain 50 attack.
 While this card is on the field, all spell cards gain 50 defense.
 While this card is on the field, all spell cards gain 500 attack.
 While this card is on the field, all spell cards gain 500 defense.
-While this card is on the field, all spellcaster cards gain 100 attack.
+While this card is on the field, all spell cards lose 100 attack.
+While this card is on the field, all spell cards lose 100 defense.
+While this card is on the field, all spell cards lose 200 attack.
+While this card is on the field, all spell cards lose 200 defense.
+While this card is on the field, all spell cards lose 25 attack.
+While this card is on the field, all spell cards lose 25 defense.
+While this card is on the field, all spell cards lose 300 attack.
+While this card is on the field, all spell cards lose 300 defense.
+While this card is on the field, all spell cards lose 400 attack.
+While this card is on the field, all spell cards lose 400 defense.
+While this card is on the field, all spell cards lose 50 attack.
+While this card is on the field, all spell cards lose 50 defense.
+While this card is on the field, all spell cards lose 500 attack.
+While this card is on the field, all spell cards lose 500 defense.
 While this card is on the field, all spellcaster cards gain 100 attack.
 While this card is on the field, all spellcaster cards gain 100 defense.
-While this card is on the field, all spellcaster cards gain 100 defense.
-While this card is on the field, all spellcaster cards gain 200 attack.
 While this card is on the field, all spellcaster cards gain 200 attack.
 While this card is on the field, all spellcaster cards gain 200 defense.
-While this card is on the field, all spellcaster cards gain 200 defense.
-While this card is on the field, all spellcaster cards gain 25 attack.
 While this card is on the field, all spellcaster cards gain 25 attack.
 While this card is on the field, all spellcaster cards gain 25 defense.
-While this card is on the field, all spellcaster cards gain 25 defense.
-While this card is on the field, all spellcaster cards gain 300 attack.
 While this card is on the field, all spellcaster cards gain 300 attack.
 While this card is on the field, all spellcaster cards gain 300 defense.
-While this card is on the field, all spellcaster cards gain 300 defense.
-While this card is on the field, all spellcaster cards gain 400 attack.
 While this card is on the field, all spellcaster cards gain 400 attack.
 While this card is on the field, all spellcaster cards gain 400 defense.
-While this card is on the field, all spellcaster cards gain 400 defense.
-While this card is on the field, all spellcaster cards gain 50 attack.
 While this card is on the field, all spellcaster cards gain 50 attack.
 While this card is on the field, all spellcaster cards gain 50 defense.
-While this card is on the field, all spellcaster cards gain 50 defense.
 While this card is on the field, all spellcaster cards gain 500 attack.
-While this card is on the field, all spellcaster cards gain 500 attack.
-While this card is on the field, all spellcaster cards gain 500 defense.
 While this card is on the field, all spellcaster cards gain 500 defense.
 While this card is on the field, all spellcaster cards lose 100 attack.
 While this card is on the field, all spellcaster cards lose 100 defense.
@@ -9978,32 +9656,18 @@ While this card is on the field, all spellcaster cards lose 50 defense.
 While this card is on the field, all spellcaster cards lose 500 attack.
 While this card is on the field, all spellcaster cards lose 500 defense.
 While this card is on the field, all undead cards gain 100 attack.
-While this card is on the field, all undead cards gain 100 attack.
-While this card is on the field, all undead cards gain 100 defense.
 While this card is on the field, all undead cards gain 100 defense.
 While this card is on the field, all undead cards gain 200 attack.
-While this card is on the field, all undead cards gain 200 attack.
-While this card is on the field, all undead cards gain 200 defense.
 While this card is on the field, all undead cards gain 200 defense.
 While this card is on the field, all undead cards gain 25 attack.
-While this card is on the field, all undead cards gain 25 attack.
-While this card is on the field, all undead cards gain 25 defense.
 While this card is on the field, all undead cards gain 25 defense.
 While this card is on the field, all undead cards gain 300 attack.
-While this card is on the field, all undead cards gain 300 attack.
-While this card is on the field, all undead cards gain 300 defense.
 While this card is on the field, all undead cards gain 300 defense.
 While this card is on the field, all undead cards gain 400 attack.
-While this card is on the field, all undead cards gain 400 attack.
-While this card is on the field, all undead cards gain 400 defense.
 While this card is on the field, all undead cards gain 400 defense.
 While this card is on the field, all undead cards gain 50 attack.
-While this card is on the field, all undead cards gain 50 attack.
-While this card is on the field, all undead cards gain 50 defense.
 While this card is on the field, all undead cards gain 50 defense.
 While this card is on the field, all undead cards gain 500 attack.
-While this card is on the field, all undead cards gain 500 attack.
-While this card is on the field, all undead cards gain 500 defense.
 While this card is on the field, all undead cards gain 500 defense.
 While this card is on the field, all undead cards lose 100 attack.
 While this card is on the field, all undead cards lose 100 defense.
@@ -10020,32 +9684,18 @@ While this card is on the field, all undead cards lose 50 defense.
 While this card is on the field, all undead cards lose 500 attack.
 While this card is on the field, all undead cards lose 500 defense.
 While this card is on the field, all warrior cards gain 100 attack.
-While this card is on the field, all warrior cards gain 100 attack.
-While this card is on the field, all warrior cards gain 100 defense.
 While this card is on the field, all warrior cards gain 100 defense.
 While this card is on the field, all warrior cards gain 200 attack.
-While this card is on the field, all warrior cards gain 200 attack.
-While this card is on the field, all warrior cards gain 200 defense.
 While this card is on the field, all warrior cards gain 200 defense.
 While this card is on the field, all warrior cards gain 25 attack.
-While this card is on the field, all warrior cards gain 25 attack.
-While this card is on the field, all warrior cards gain 25 defense.
 While this card is on the field, all warrior cards gain 25 defense.
 While this card is on the field, all warrior cards gain 300 attack.
-While this card is on the field, all warrior cards gain 300 attack.
-While this card is on the field, all warrior cards gain 300 defense.
 While this card is on the field, all warrior cards gain 300 defense.
 While this card is on the field, all warrior cards gain 400 attack.
-While this card is on the field, all warrior cards gain 400 attack.
-While this card is on the field, all warrior cards gain 400 defense.
 While this card is on the field, all warrior cards gain 400 defense.
 While this card is on the field, all warrior cards gain 50 attack.
-While this card is on the field, all warrior cards gain 50 attack.
-While this card is on the field, all warrior cards gain 50 defense.
 While this card is on the field, all warrior cards gain 50 defense.
 While this card is on the field, all warrior cards gain 500 attack.
-While this card is on the field, all warrior cards gain 500 attack.
-While this card is on the field, all warrior cards gain 500 defense.
 While this card is on the field, all warrior cards gain 500 defense.
 While this card is on the field, all warrior cards lose 100 attack.
 While this card is on the field, all warrior cards lose 100 defense.
@@ -10062,32 +9712,18 @@ While this card is on the field, all warrior cards lose 50 defense.
 While this card is on the field, all warrior cards lose 500 attack.
 While this card is on the field, all warrior cards lose 500 defense.
 While this card is on the field, all water cards gain 100 attack.
-While this card is on the field, all water cards gain 100 attack.
-While this card is on the field, all water cards gain 100 defense.
 While this card is on the field, all water cards gain 100 defense.
 While this card is on the field, all water cards gain 200 attack.
-While this card is on the field, all water cards gain 200 attack.
-While this card is on the field, all water cards gain 200 defense.
 While this card is on the field, all water cards gain 200 defense.
 While this card is on the field, all water cards gain 25 attack.
-While this card is on the field, all water cards gain 25 attack.
-While this card is on the field, all water cards gain 25 defense.
 While this card is on the field, all water cards gain 25 defense.
 While this card is on the field, all water cards gain 300 attack.
-While this card is on the field, all water cards gain 300 attack.
-While this card is on the field, all water cards gain 300 defense.
 While this card is on the field, all water cards gain 300 defense.
 While this card is on the field, all water cards gain 400 attack.
-While this card is on the field, all water cards gain 400 attack.
-While this card is on the field, all water cards gain 400 defense.
 While this card is on the field, all water cards gain 400 defense.
 While this card is on the field, all water cards gain 50 attack.
-While this card is on the field, all water cards gain 50 attack.
-While this card is on the field, all water cards gain 50 defense.
 While this card is on the field, all water cards gain 50 defense.
 While this card is on the field, all water cards gain 500 attack.
-While this card is on the field, all water cards gain 500 attack.
-While this card is on the field, all water cards gain 500 defense.
 While this card is on the field, all water cards gain 500 defense.
 While this card is on the field, all water cards lose 100 attack.
 While this card is on the field, all water cards lose 100 defense.
