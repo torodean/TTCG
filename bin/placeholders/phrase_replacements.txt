@@ -57,6 +57,18 @@ two creature: two creatures
 three creature: three creatures
 four creature: four creatures
 five creature: five creatures
+
+# Numbered turn(s) cleanup
+one turn(s): one turn
+two turn(s): two turns
+three turn(s): three turns
+four turn(s): four turns
+five turn(s): five turns
+one turns: one turn
+two turn: two turns
+three turn: three turns
+four turn: four turns
+five turn: five turns
         
 # Remaining non-numbered words to be fixed
 spell(s): spells
