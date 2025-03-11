@@ -7,50 +7,8 @@ import csv
 
 # load needed methods from ttcg_tools
 from ttcg_tools import load_placeholder_values
+from ttcg_tools import generate_combinations
 
-
-def generate_combinations(sentence, placeholder_dir, visited=None):
-    """
-    Generates all possible combinations of a sentence by replacing placeholders with their resolved values.
-
-    This function takes a sentence containing placeholders (e.g., '<number>') and replaces each with values loaded from
-    corresponding files in the specified directory, using `load_placeholder_values`. It computes the Cartesian product
-    of all placeholder value sets to produce every possible combination. Recursion is managed via a visited set to avoid
-    infinite loops with nested placeholders.
-
-    Args:
-        sentence (str): Input sentence with placeholders in angle brackets (e.g., "Draw <number> cards").
-        placeholder_dir (str): Directory path containing placeholder text files (e.g., 'placeholders/').
-        visited (set, optional): Set of placeholders already processed in the recursion stack to detect cycles.
-                                 Defaults to None, initializing an empty set if not provided.
-
-    Returns:
-        list: A list of strings, each representing a unique combination of the sentence with all placeholders replaced.
-              If no placeholders are found, returns a single-element list containing the original sentence.
-
-    Examples:
-        >>> generate_combinations("Draw <number> cards", "placeholders/")
-        ['Draw 1 cards', 'Draw 2 cards', 'Draw 3 cards']  # Assuming number.txt has "1\n2\n3"
-        >>> generate_combinations("No placeholders here", "placeholders/")
-        ['No placeholders here']  # No placeholders, returns original sentence
-    """
-    if visited is None:
-        visited = set()
-    
-    placeholders = re.findall(r"<([^>]+)>", sentence)
-    if not placeholders:
-        return [sentence]
-    
-    placeholder_values = {p: load_placeholder_values(placeholder_dir, p, visited.copy()) for p in placeholders}
-    from itertools import product
-    combinations = []
-    all_values = [placeholder_values[p] for p in placeholders]
-    for combo in product(*all_values):
-        result = sentence
-        for placeholder, value in zip(placeholders, combo):
-            result = result.replace(f"<{placeholder}>", value)
-        combinations.append(result)
-    return combinations
 
 
 def check_pattern_existence(effect, pattern, placeholder_dir):
