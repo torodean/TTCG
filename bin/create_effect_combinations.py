@@ -1,13 +1,11 @@
 #!/bin/python3
 
-import os
-import itertools
 import re
 import argparse
 
 # load needed methods from ttcg_tools
-from ttcg_tools import load_placeholder_values
 from ttcg_tools import generate_combinations
+from ttcg_tools import get_command_string
 
 
 def write_combinations_to_file(combinations, output_file):
@@ -21,7 +19,7 @@ def write_combinations_to_file(combinations, output_file):
     with open(output_file, 'a') as f:
         for combination in combinations:
             f.write(combination + '\n')
-    
+
 
 def clean_and_filter_combinations(combinations, config_file):
     """
@@ -46,18 +44,18 @@ def clean_and_filter_combinations(combinations, config_file):
     except Exception as e:
         phrases_to_remove = []
         print(f"Error loading configuration file '{config_file}': {e}")
-    
+
     cleaned_combinations = []
-    
+
     for line in combinations:
         # Replace all double spaces with single spaces
         cleaned_line = line.replace("  ", " ")
-        
+
         # Check if any phrase from the list is in the string
         if not any(phrase in cleaned_line for phrase in phrases_to_remove):
             # Only keep the string if no phrases match
             cleaned_combinations.append(cleaned_line.strip())
-    
+
     return cleaned_combinations
 
 
@@ -203,7 +201,10 @@ if __name__ == "__main__":
     parser.add_argument('-r', '--replacements_file', default='placeholders/phrase_replacements.txt',
                     help="Configuration file containing phrase replacements (format: 'old phrase: new phrase') (default: 'placeholders/phrase_replacements.txt').")
     args = parser.parse_args()
-    
+
+    # Print the command using the generic method
+    print(get_command_string(args))
+
     # Run deduplication if -d is specified
     if args.dedupe:
         dedupe_file(args.dedupe)

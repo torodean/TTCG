@@ -1,6 +1,6 @@
 import os
+import sys
 import re
-import csv
 import itertools
 
 def load_placeholder_values(placeholder_dir, placeholder, visited=None):
@@ -139,3 +139,33 @@ def generate_combinations(sentence, placeholder_dir, visited=None):
         combinations.append(result)
     
     return combinations
+
+
+def get_command_string(args):
+    """
+    Reconstructs the command string from parsed arguments dynamically.
+
+    Args:
+        args: Parsed arguments from argparse (typically an argparse.Namespace object).
+
+    Returns:
+        str: The command string as it would be run from the terminal.
+    """
+    # Get the script name from sys.argv[0] or __file__
+    script_name = sys.argv[0] if sys.argv[0] else __file__
+    command = ["python3", script_name]
+
+    # Convert args to a dict and iterate over all attributes
+    args_dict = vars(args)
+    for arg_name, arg_value in args_dict.items():
+        if arg_value is not None:  # Skip unset arguments
+            # Convert long argument name to flag (e.g., 'input' -> '--input')
+            flag = f"--{arg_name}" if len(arg_name) > 1 else f"-{arg_name}"
+            # Handle boolean flags (no value) vs. arguments with values
+            if isinstance(arg_value, bool):
+                if arg_value:  # Only include if True
+                    command.append(flag)
+            else:
+                command.extend([flag, str(arg_value)])
+
+    return " ".join(command)

@@ -8,7 +8,7 @@ import csv
 # load needed methods from ttcg_tools
 from ttcg_tools import load_placeholder_values
 from ttcg_tools import generate_combinations
-
+from ttcg_tools import get_command_string
 
 
 def check_pattern_existence(effect, pattern, placeholder_dir):
@@ -274,6 +274,9 @@ def main():
     parser.add_argument('-e', '--exact', help="Exact line to match and set the specified column to True.")
     parser.add_argument('-m', '--match_column', help="An extra identifier for specifying a column which must be true to evaluate as a match.")
     args = parser.parse_args()
+
+    # Print the command using the generic method
+    print(get_command_string(args))
 
     # Ensure exactly one of -e or -t is provided
     if (args.text is None) == (args.exact is None):
