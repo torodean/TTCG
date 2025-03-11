@@ -91,9 +91,6 @@ python3 add_csv_field.py -c SPELL -t "For the next <number> turns, <type> cards"
 python3 add_csv_field.py -c SPELL -t "Activate the effect of a card under this card"
 python3 add_csv_field.py -c SPELL -t "Activate the effect of a card under another card"
 
-# Handle some exact matches (used for one off effects)
-python3 add_csv_field.py -c SPELL -e "While this card is on the field, attack and defense changes are inverted."
-
 
 
 # Add some unit specific effects.
@@ -121,7 +118,9 @@ python3 add_csv_field.py -c UNIT -t "for each card under this one"
 
 
 
+
 # Handle some exact matches (used for one off effects)
+python3 add_csv_field.py -c SPELL -e "While this card is on the field, attack and defense changes are inverted."
 python3 add_csv_field.py -c UNIT -e "While this card is on the field, attack and defense changes are inverted."
 python3 add_csv_field.py -c UNIT -e "Activate the effect of a card under this one."
 python3 add_csv_field.py -c UNIT -e "Activate the effect of a card under another card."
