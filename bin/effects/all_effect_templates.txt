@@ -34,8 +34,7 @@ When a <types> card is destroyed, gain one point.
 When this card is sent to the discard pile, your opponent takes <number> point(s) of damage.
 While this card is on the field, <types> cards cannot be targeted by effects.
 While this card is on the field, all <typeslevels> card(s) gain <atkdef>.
-While this card is on the field, all <typeslevels> cards gain <atkdef>.
-While this card is on the field, all <typeslevels> cards lose <atkdef>.
+While this card is on the field, all <typeslevels> card(s) lose <atkdef>.
 While this card is on the field, attack and defense changes are inverted.
 You can play one extra <typeslevels> card this turn.
 You can rank up one of your <types> creatures using a creature from your <pile>.
