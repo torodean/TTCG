@@ -24,6 +24,14 @@ The `bin` directory serves as the central hub for executable scripts used in the
 - **Configuration Files**: Uses `../placeholders/combinations_to_remove.txt` (phrases to filter) and `../placeholders/phrase_replacements.txt` (replacements), both supporting `#` comments.
 - **Dependencies**: Relies on placeholder files in `../placeholders/` and effect templates in `../effects/`.
 
+### `filter_effects_and_pair.py`
+- **Purpose**: Filters rows from a CSV file based on specified columns containing "True" and generates random pairs of values from the first column.
+- **Key Features**: Accepts multiple column filters via `-c`, extracts rows where all specified columns are "True" (case-insensitive), selects 10 random pairs from the first column, and handles errors gracefully with informative messages.
+- **Usage**: `python3 filter_effects_and_pair.py [INPUT_FILE] -c COLUMN [-c COLUMN ...]`
+- **Input**: Defaults to `effects/effects_with_placeholders.csv` if no input file is provided; expects a CSV with a header row.
+- **Dependencies**: Requires `pandas` for CSV processing (`pip install pandas`); no additional configuration files needed.
+- **Output**: Prints 10 random pairs (or fewer if limited by data) from the first column of filtered rows, numbered for clarity.
+  
 ### `generate_and_order_effects.sh`
 - **Purpose**: Orchestrates the generation and categorization of effects, coordinating other scripts to produce and annotate a comprehensive effect list.
 - **Key Features**: Cleans up old files, generates effects, and adds metadata columns (e.g., UNIT, SPELL) based on patterns or exact matches.
