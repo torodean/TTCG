@@ -37,6 +37,12 @@ The `bin` directory serves as the central hub for executable scripts used in the
 - **Key Features**: Cleans up old files, generates effects, and adds metadata columns (e.g., UNIT, SPELL) based on patterns or exact matches.
 - **Usage**: `./generate_and_order_effects.sh`
 - **Dependencies**: Requires `create_effect_combinations.py`, `add_csv_field.py`, and files in `../effects/` and `../placeholders/`.
+  
+### `ttcg_tools.py`
+- **Purpose**: Provides a collection of shared utility functions and tools used across multiple TTCG-related scripts to streamline common tasks and ensure consistency.
+- **Key Features**: Centralizes reusable code for tasks such as data processing, file handling, and configuration management, reducing duplication across scripts.
+- **Usage**: Import into other scripts with `import ttcg_tools` or `from ttcg_tools import <function>`; specific functions depend on the current implementation.
+- **Notes**: Designed as a dynamic library, so its contents evolve with the needs of other scripts; check the source for the latest available utilities.
 
 ### Other Scripts
 - Additional scripts in this directory may support related tasks (e.g., data validation, conversion).
