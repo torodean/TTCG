@@ -5,6 +5,7 @@ import pandas as pd
 import random
 import sys
 
+
 def parse_args():
     """
     Parse command-line arguments for the CSV filtering and pairing script.
@@ -46,15 +47,19 @@ def parse_args():
              "columns equal 'True' (case-insensitive) are kept. This flag can be used "
              "multiple times (e.g., -c col1 -c col2) to filter on multiple columns."
     )
+    parser.add_argument(
+        "-p",
+        "--pairs",
+        type=int,
+        default=10,
+        help="Number of random pairs to generate (default: 10)."
+    )
     return parser.parse_args()
+    
 
 def load_and_filter_csv(file_path, columns):
     """
-    Load a CSV file and filter rows where all specified columns equal 'True'.
-
-    This function reads the CSV into a pandas DataFrame, checks that the specified columns
-    exist, and filters for rows where all given columns have the value 'True'. It then
-    returns the values from the first column of the filtered rows.
+    Load a semicolon-delimited CSV file and filter rows where all specified columns equal 'True'.
 
     Args:
         file_path (str): Path to the CSV file to read.
@@ -66,19 +71,10 @@ def load_and_filter_csv(file_path, columns):
     Raises:
         SystemExit: If the file is not found, is empty, contains invalid data, or if specified
                     columns don’t exist in the CSV, or if no rows match the filter criteria.
-
-    Example:
-        For a CSV like:
-        name,active,enabled
-        Effect1,True,True
-        Effect2,False,True
-        Effect3,True,True
-        >>> load_and_filter_csv('effects.csv', ['active', 'enabled'])
-        ['Effect1', 'Effect3']
     """
     try:
-        # Read CSV into a DataFrame, assuming first row is header
-        df = pd.read_csv(file_path)
+        # Read CSV with semicolon delimiter
+        df = pd.read_csv(file_path, sep=';')  # Specify semicolon as delimiter
         
         # Check if all specified columns exist in the DataFrame
         missing_cols = [col for col in columns if col not in df.columns]
@@ -86,7 +82,6 @@ def load_and_filter_csv(file_path, columns):
             sys.exit(f"Error: Columns not found in CSV: {', '.join(missing_cols)}")
         
         # Filter rows where all specified columns are 'True'
-        # Convert to string and lowercase to handle various True formats (e.g., TRUE, true)
         mask = True
         for col in columns:
             mask &= (df[col].astype(str).str.lower() == "true")
@@ -103,8 +98,11 @@ def load_and_filter_csv(file_path, columns):
         sys.exit(f"Error: File '{file_path}' not found")
     except pd.errors.EmptyDataError:
         sys.exit(f"Error: File '{file_path}' is empty")
+    except pd.errors.ParserError as e:
+        sys.exit(f"Error: CSV parsing failed. Check file format and delimiter. Details: {str(e)}")
     except Exception as e:
         sys.exit(f"Error processing CSV: {str(e)}")
+        
 
 def get_random_pairs(values, num_pairs=10):
     """
@@ -143,6 +141,7 @@ def get_random_pairs(values, num_pairs=10):
     # Return up to max_pairs pairs
     return pairs[:max_pairs]
 
+
 def main():
     """
     Main function to orchestrate CSV filtering and random pair generation.
@@ -162,7 +161,7 @@ def main():
     first_col_values = load_and_filter_csv(input_file, columns)
     
     # Generate 10 random pairs from the filtered first column values
-    pairs = get_random_pairs(first_col_values)
+    pairs = get_random_pairs(first_col_values, num_pairs=args.pairs)
     
     # Print the results in a readable format
     print(f"Found {len(first_col_values)} matching rows. Here are 10 random pairs from the first column:")
