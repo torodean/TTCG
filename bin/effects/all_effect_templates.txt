@@ -12,7 +12,7 @@ Destroy exactly <number> <typeslevels> card(s) from your side of the field to ga
 Destroy exactly <number> <typeslevels> card(s) on the field.
 Destroy one <typeslevels> card you control to destroy one other card on the field.
 Destroy one rank <rank> <types> card you own to play one rank <rank+1> <types> from your <pile>.
-Destroy this card to destroy <number> <typeslevels> card(s) on the field.
+Destroy this card to destroy up to <number> <typeslevels> card(s) on the field.
 Destroy this card to shuffle your discard pile into your deck.
 Destroy two <typeslevels> cards you own to play one <typeslevels> card from your <pile>.
 Destroy up to <number> <typeslevels> card(s) on the field.

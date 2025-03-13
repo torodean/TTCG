@@ -259,6 +259,62 @@ def set_exact_match_to_true(input_file, output_file, column_name, exact_line):
         exit(1)
 
 
+def delete_matching_lines(input_file, output_file, search_string):
+    """
+    Deletes lines from a file that contain an exact match to the search string.
+    
+    Processes an input file (text or CSV) and writes all lines that do not contain
+    the exact search string to the output file. For CSV files, checks the EFFECTNAME
+    column (or first column if EFFECTNAME not found) for matches.
+
+    Args:
+        input_file (str): Path to the input file (text or CSV).
+        output_file (str): Path to the output file to write remaining lines.
+        search_string (str): Exact string to match for line deletion.
+
+    Returns:
+        None: Writes filtered results to output_file and prints status messages.
+
+    Raises:
+        FileNotFoundError: If input file doesn't exist.
+        Exception: For other processing errors.
+    """
+    try:
+        is_csv = input_file.endswith('.csv')
+        
+        if is_csv:
+            with open(input_file, 'r', newline='') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader)
+                rows = list(reader)
+                
+                effect_col = header.index('EFFECTNAME') if 'EFFECTNAME' in header else 0
+                filtered_rows = [row for row in rows if search_string not in row[effect_col]]
+                
+            with open(output_file, 'w', newline='') as f:
+                writer = csv.writer(f, delimiter=';')
+                writer.writerow(header)
+                writer.writerows(filtered_rows)
+        else:
+            with open(input_file, 'r') as f:
+                lines = [line.strip() for line in f if line.strip()]
+                filtered_lines = [line for line in lines if search_string not in line]
+                
+            with open(output_file, 'w') as f:
+                f.write('\n'.join(filtered_lines))
+                if filtered_lines:  # Add newline at end if not empty
+                    f.write('\n')
+        
+        print(f"Processed '{input_file}', removed lines matching '{search_string}', wrote to '{output_file}'.")
+        
+    except FileNotFoundError:
+        print(f"Error: Input file '{input_file}' not found.")
+        exit(1)
+    except Exception as e:
+        print(f"Error processing file: {e}")
+        exit(1)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Convert effects file to CSV with custom pattern check.")
     parser.add_argument('-i', '--input', default='effects/effects_with_placeholders.csv',
@@ -273,16 +329,22 @@ def main():
                         help="Pattern to search for (e.g., 'some text <placeholder> more text').")
     parser.add_argument('-e', '--exact', help="Exact line to match and set the specified column to True.")
     parser.add_argument('-m', '--match_column', help="An extra identifier for specifying a column which must be true to evaluate as a match.")
+    parser.add_argument('-d', '--delete', help="Exact string to match for deleting entire lines.")
     args = parser.parse_args()
 
     # Print the command using the generic method
     print(get_command_string(args))
 
-    # Ensure exactly one of -e or -t is provided
-    if (args.text is None) == (args.exact is None):
-        parser.error("You must provide exactly one of -t/--text or -e/--exact, but not both.")
+    # Ensure exactly one of -t/--text, -e/--exact, or -d/--delete is provided
+    provided_options = sum(1 for opt in [args.text, args.exact, args.delete] if opt is not None)
+    if provided_options != 1:
+        parser.error("You must provide exactly one of -t/--text, -e/--exact, or -d/--delete.")
     
-    process_effects_file(args.input, args.output, args.placeholder_dir, args.column, args.text, args.exact)
+    if args.delete:
+        delete_matching_lines(args.input, args.output, args.delete)
+    else:
+        process_effects_file(args.input, args.output, args.placeholder_dir, args.column, args.text, args.exact)
+        
 
 if __name__ == "__main__":
     main()
