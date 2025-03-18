@@ -3299,179 +3299,6 @@ Counter the effect of a spellcaster card.
 Counter the effect of a undead card.
 Counter the effect of a warrior card.
 Counter the effect of a water card.
-Destroy exactly all air cards from your side of the field to gain four points.
-Destroy exactly all air cards from your side of the field to gain one point.
-Destroy exactly all air cards from your side of the field to gain three points.
-Destroy exactly all air cards from your side of the field to gain two points.
-Destroy exactly all air cards on the field.
-Destroy exactly all aquatic cards from your side of the field to gain four points.
-Destroy exactly all aquatic cards from your side of the field to gain one point.
-Destroy exactly all aquatic cards from your side of the field to gain three points.
-Destroy exactly all aquatic cards from your side of the field to gain two points.
-Destroy exactly all aquatic cards on the field.
-Destroy exactly all beast cards from your side of the field to gain four points.
-Destroy exactly all beast cards from your side of the field to gain one point.
-Destroy exactly all beast cards from your side of the field to gain three points.
-Destroy exactly all beast cards from your side of the field to gain two points.
-Destroy exactly all beast cards on the field.
-Destroy exactly all botanic cards from your side of the field to gain four points.
-Destroy exactly all botanic cards from your side of the field to gain one point.
-Destroy exactly all botanic cards from your side of the field to gain three points.
-Destroy exactly all botanic cards from your side of the field to gain two points.
-Destroy exactly all botanic cards on the field.
-Destroy exactly all cards controlled by each player.
-Destroy exactly all creatures controlled by each player.
-Destroy exactly all dark cards from your side of the field to gain four points.
-Destroy exactly all dark cards from your side of the field to gain one point.
-Destroy exactly all dark cards from your side of the field to gain three points.
-Destroy exactly all dark cards from your side of the field to gain two points.
-Destroy exactly all dark cards on the field.
-Destroy exactly all dragon cards from your side of the field to gain four points.
-Destroy exactly all dragon cards from your side of the field to gain one point.
-Destroy exactly all dragon cards from your side of the field to gain three points.
-Destroy exactly all dragon cards from your side of the field to gain two points.
-Destroy exactly all dragon cards on the field.
-Destroy exactly all earth cards from your side of the field to gain four points.
-Destroy exactly all earth cards from your side of the field to gain one point.
-Destroy exactly all earth cards from your side of the field to gain three points.
-Destroy exactly all earth cards from your side of the field to gain two points.
-Destroy exactly all earth cards on the field.
-Destroy exactly all electric cards from your side of the field to gain four points.
-Destroy exactly all electric cards from your side of the field to gain one point.
-Destroy exactly all electric cards from your side of the field to gain three points.
-Destroy exactly all electric cards from your side of the field to gain two points.
-Destroy exactly all electric cards on the field.
-Destroy exactly all elemental cards from your side of the field to gain four points.
-Destroy exactly all elemental cards from your side of the field to gain one point.
-Destroy exactly all elemental cards from your side of the field to gain three points.
-Destroy exactly all elemental cards from your side of the field to gain two points.
-Destroy exactly all elemental cards on the field.
-Destroy exactly all fairy cards from your side of the field to gain four points.
-Destroy exactly all fairy cards from your side of the field to gain one point.
-Destroy exactly all fairy cards from your side of the field to gain three points.
-Destroy exactly all fairy cards from your side of the field to gain two points.
-Destroy exactly all fairy cards on the field.
-Destroy exactly all fire cards from your side of the field to gain four points.
-Destroy exactly all fire cards from your side of the field to gain one point.
-Destroy exactly all fire cards from your side of the field to gain three points.
-Destroy exactly all fire cards from your side of the field to gain two points.
-Destroy exactly all fire cards on the field.
-Destroy exactly all ghost cards from your side of the field to gain four points.
-Destroy exactly all ghost cards from your side of the field to gain one point.
-Destroy exactly all ghost cards from your side of the field to gain three points.
-Destroy exactly all ghost cards from your side of the field to gain two points.
-Destroy exactly all ghost cards on the field.
-Destroy exactly all insect cards from your side of the field to gain four points.
-Destroy exactly all insect cards from your side of the field to gain one point.
-Destroy exactly all insect cards from your side of the field to gain three points.
-Destroy exactly all insect cards from your side of the field to gain two points.
-Destroy exactly all insect cards on the field.
-Destroy exactly all light cards from your side of the field to gain four points.
-Destroy exactly all light cards from your side of the field to gain one point.
-Destroy exactly all light cards from your side of the field to gain three points.
-Destroy exactly all light cards from your side of the field to gain two points.
-Destroy exactly all light cards on the field.
-Destroy exactly all machine cards from your side of the field to gain four points.
-Destroy exactly all machine cards from your side of the field to gain one point.
-Destroy exactly all machine cards from your side of the field to gain three points.
-Destroy exactly all machine cards from your side of the field to gain two points.
-Destroy exactly all machine cards on the field.
-Destroy exactly all rank 1 cards from your side of the field to gain four points.
-Destroy exactly all rank 1 cards from your side of the field to gain one point.
-Destroy exactly all rank 1 cards from your side of the field to gain three points.
-Destroy exactly all rank 1 cards from your side of the field to gain two points.
-Destroy exactly all rank 1 cards on the field.
-Destroy exactly all rank 1 creature cards from your side of the field to gain four points.
-Destroy exactly all rank 1 creature cards from your side of the field to gain one point.
-Destroy exactly all rank 1 creature cards from your side of the field to gain three points.
-Destroy exactly all rank 1 creature cards from your side of the field to gain two points.
-Destroy exactly all rank 1 creature cards on the field.
-Destroy exactly all rank 1 spell cards from your side of the field to gain four points.
-Destroy exactly all rank 1 spell cards from your side of the field to gain one point.
-Destroy exactly all rank 1 spell cards from your side of the field to gain three points.
-Destroy exactly all rank 1 spell cards from your side of the field to gain two points.
-Destroy exactly all rank 1 spell cards on the field.
-Destroy exactly all rank 2 cards from your side of the field to gain four points.
-Destroy exactly all rank 2 cards from your side of the field to gain one point.
-Destroy exactly all rank 2 cards from your side of the field to gain three points.
-Destroy exactly all rank 2 cards from your side of the field to gain two points.
-Destroy exactly all rank 2 cards on the field.
-Destroy exactly all rank 2 creature cards from your side of the field to gain four points.
-Destroy exactly all rank 2 creature cards from your side of the field to gain one point.
-Destroy exactly all rank 2 creature cards from your side of the field to gain three points.
-Destroy exactly all rank 2 creature cards from your side of the field to gain two points.
-Destroy exactly all rank 2 creature cards on the field.
-Destroy exactly all rank 2 spell cards from your side of the field to gain four points.
-Destroy exactly all rank 2 spell cards from your side of the field to gain one point.
-Destroy exactly all rank 2 spell cards from your side of the field to gain three points.
-Destroy exactly all rank 2 spell cards from your side of the field to gain two points.
-Destroy exactly all rank 2 spell cards on the field.
-Destroy exactly all rank 3 cards from your side of the field to gain four points.
-Destroy exactly all rank 3 cards from your side of the field to gain one point.
-Destroy exactly all rank 3 cards from your side of the field to gain three points.
-Destroy exactly all rank 3 cards from your side of the field to gain two points.
-Destroy exactly all rank 3 cards on the field.
-Destroy exactly all rank 3 creature cards from your side of the field to gain four points.
-Destroy exactly all rank 3 creature cards from your side of the field to gain one point.
-Destroy exactly all rank 3 creature cards from your side of the field to gain three points.
-Destroy exactly all rank 3 creature cards from your side of the field to gain two points.
-Destroy exactly all rank 3 creature cards on the field.
-Destroy exactly all rank 3 spell cards from your side of the field to gain four points.
-Destroy exactly all rank 3 spell cards from your side of the field to gain one point.
-Destroy exactly all rank 3 spell cards from your side of the field to gain three points.
-Destroy exactly all rank 3 spell cards from your side of the field to gain two points.
-Destroy exactly all rank 3 spell cards on the field.
-Destroy exactly all rank 4 cards from your side of the field to gain four points.
-Destroy exactly all rank 4 cards from your side of the field to gain one point.
-Destroy exactly all rank 4 cards from your side of the field to gain three points.
-Destroy exactly all rank 4 cards from your side of the field to gain two points.
-Destroy exactly all rank 4 cards on the field.
-Destroy exactly all rank 4 creature cards from your side of the field to gain four points.
-Destroy exactly all rank 4 creature cards from your side of the field to gain one point.
-Destroy exactly all rank 4 creature cards from your side of the field to gain three points.
-Destroy exactly all rank 4 creature cards from your side of the field to gain two points.
-Destroy exactly all rank 4 creature cards on the field.
-Destroy exactly all rank 5 cards from your side of the field to gain four points.
-Destroy exactly all rank 5 cards from your side of the field to gain one point.
-Destroy exactly all rank 5 cards from your side of the field to gain three points.
-Destroy exactly all rank 5 cards from your side of the field to gain two points.
-Destroy exactly all rank 5 cards on the field.
-Destroy exactly all rank 5 creature cards from your side of the field to gain four points.
-Destroy exactly all rank 5 creature cards from your side of the field to gain one point.
-Destroy exactly all rank 5 creature cards from your side of the field to gain three points.
-Destroy exactly all rank 5 creature cards from your side of the field to gain two points.
-Destroy exactly all rank 5 creature cards on the field.
-Destroy exactly all reptile cards from your side of the field to gain four points.
-Destroy exactly all reptile cards from your side of the field to gain one point.
-Destroy exactly all reptile cards from your side of the field to gain three points.
-Destroy exactly all reptile cards from your side of the field to gain two points.
-Destroy exactly all reptile cards on the field.
-Destroy exactly all spell cards from your side of the field to gain four points.
-Destroy exactly all spell cards from your side of the field to gain one point.
-Destroy exactly all spell cards from your side of the field to gain three points.
-Destroy exactly all spell cards from your side of the field to gain two points.
-Destroy exactly all spell cards on the field.
-Destroy exactly all spellcaster cards from your side of the field to gain four points.
-Destroy exactly all spellcaster cards from your side of the field to gain one point.
-Destroy exactly all spellcaster cards from your side of the field to gain three points.
-Destroy exactly all spellcaster cards from your side of the field to gain two points.
-Destroy exactly all spellcaster cards on the field.
-Destroy exactly all spells controlled by each player.
-Destroy exactly all undead cards from your side of the field to gain four points.
-Destroy exactly all undead cards from your side of the field to gain one point.
-Destroy exactly all undead cards from your side of the field to gain three points.
-Destroy exactly all undead cards from your side of the field to gain two points.
-Destroy exactly all undead cards on the field.
-Destroy exactly all warrior cards from your side of the field to gain four points.
-Destroy exactly all warrior cards from your side of the field to gain one point.
-Destroy exactly all warrior cards from your side of the field to gain three points.
-Destroy exactly all warrior cards from your side of the field to gain two points.
-Destroy exactly all warrior cards on the field.
-Destroy exactly all water cards from your side of the field to gain four points.
-Destroy exactly all water cards from your side of the field to gain one point.
-Destroy exactly all water cards from your side of the field to gain three points.
-Destroy exactly all water cards from your side of the field to gain two points.
-Destroy exactly all water cards on the field.
 Destroy exactly four air cards from your side of the field to gain four points.
 Destroy exactly four air cards from your side of the field to gain one point.
 Destroy exactly four air cards from your side of the field to gain three points.
@@ -5016,74 +4843,6 @@ Destroy one warrior card on the field.
 Destroy one warrior card you control to destroy one other card on the field.
 Destroy one water card on the field.
 Destroy one water card you control to destroy one other card on the field.
-Destroy this card to destroy all air cards on the field.
-Destroy this card to destroy all aquatic cards on the field.
-Destroy this card to destroy all beast cards on the field.
-Destroy this card to destroy all botanic cards on the field.
-Destroy this card to destroy all dark cards on the field.
-Destroy this card to destroy all dragon cards on the field.
-Destroy this card to destroy all earth cards on the field.
-Destroy this card to destroy all electric cards on the field.
-Destroy this card to destroy all elemental cards on the field.
-Destroy this card to destroy all fairy cards on the field.
-Destroy this card to destroy all fire cards on the field.
-Destroy this card to destroy all ghost cards on the field.
-Destroy this card to destroy all insect cards on the field.
-Destroy this card to destroy all light cards on the field.
-Destroy this card to destroy all machine cards on the field.
-Destroy this card to destroy all rank 1 cards on the field.
-Destroy this card to destroy all rank 1 creature cards on the field.
-Destroy this card to destroy all rank 1 spell cards on the field.
-Destroy this card to destroy all rank 2 cards on the field.
-Destroy this card to destroy all rank 2 creature cards on the field.
-Destroy this card to destroy all rank 2 spell cards on the field.
-Destroy this card to destroy all rank 3 cards on the field.
-Destroy this card to destroy all rank 3 creature cards on the field.
-Destroy this card to destroy all rank 3 spell cards on the field.
-Destroy this card to destroy all rank 4 cards on the field.
-Destroy this card to destroy all rank 4 creature cards on the field.
-Destroy this card to destroy all rank 5 cards on the field.
-Destroy this card to destroy all rank 5 creature cards on the field.
-Destroy this card to destroy all reptile cards on the field.
-Destroy this card to destroy all spell cards on the field.
-Destroy this card to destroy all spellcaster cards on the field.
-Destroy this card to destroy all undead cards on the field.
-Destroy this card to destroy all warrior cards on the field.
-Destroy this card to destroy all water cards on the field.
-Destroy this card to destroy four air cards on the field.
-Destroy this card to destroy four aquatic cards on the field.
-Destroy this card to destroy four beast cards on the field.
-Destroy this card to destroy four botanic cards on the field.
-Destroy this card to destroy four dark cards on the field.
-Destroy this card to destroy four dragon cards on the field.
-Destroy this card to destroy four earth cards on the field.
-Destroy this card to destroy four electric cards on the field.
-Destroy this card to destroy four elemental cards on the field.
-Destroy this card to destroy four fairy cards on the field.
-Destroy this card to destroy four fire cards on the field.
-Destroy this card to destroy four ghost cards on the field.
-Destroy this card to destroy four insect cards on the field.
-Destroy this card to destroy four light cards on the field.
-Destroy this card to destroy four machine cards on the field.
-Destroy this card to destroy four rank 1 cards on the field.
-Destroy this card to destroy four rank 1 creature cards on the field.
-Destroy this card to destroy four rank 1 spell cards on the field.
-Destroy this card to destroy four rank 2 cards on the field.
-Destroy this card to destroy four rank 2 creature cards on the field.
-Destroy this card to destroy four rank 2 spell cards on the field.
-Destroy this card to destroy four rank 3 cards on the field.
-Destroy this card to destroy four rank 3 creature cards on the field.
-Destroy this card to destroy four rank 3 spell cards on the field.
-Destroy this card to destroy four rank 4 cards on the field.
-Destroy this card to destroy four rank 4 creature cards on the field.
-Destroy this card to destroy four rank 5 cards on the field.
-Destroy this card to destroy four rank 5 creature cards on the field.
-Destroy this card to destroy four reptile cards on the field.
-Destroy this card to destroy four spell cards on the field.
-Destroy this card to destroy four spellcaster cards on the field.
-Destroy this card to destroy four undead cards on the field.
-Destroy this card to destroy four warrior cards on the field.
-Destroy this card to destroy four water cards on the field.
 Destroy this card to destroy one air card on the field.
 Destroy this card to destroy one aquatic card on the field.
 Destroy this card to destroy one beast card on the field.
@@ -5118,74 +4877,142 @@ Destroy this card to destroy one spellcaster card on the field.
 Destroy this card to destroy one undead card on the field.
 Destroy this card to destroy one warrior card on the field.
 Destroy this card to destroy one water card on the field.
-Destroy this card to destroy three air cards on the field.
-Destroy this card to destroy three aquatic cards on the field.
-Destroy this card to destroy three beast cards on the field.
-Destroy this card to destroy three botanic cards on the field.
-Destroy this card to destroy three dark cards on the field.
-Destroy this card to destroy three dragon cards on the field.
-Destroy this card to destroy three earth cards on the field.
-Destroy this card to destroy three electric cards on the field.
-Destroy this card to destroy three elemental cards on the field.
-Destroy this card to destroy three fairy cards on the field.
-Destroy this card to destroy three fire cards on the field.
-Destroy this card to destroy three ghost cards on the field.
-Destroy this card to destroy three insect cards on the field.
-Destroy this card to destroy three light cards on the field.
-Destroy this card to destroy three machine cards on the field.
-Destroy this card to destroy three rank 1 cards on the field.
-Destroy this card to destroy three rank 1 creature cards on the field.
-Destroy this card to destroy three rank 1 spell cards on the field.
-Destroy this card to destroy three rank 2 cards on the field.
-Destroy this card to destroy three rank 2 creature cards on the field.
-Destroy this card to destroy three rank 2 spell cards on the field.
-Destroy this card to destroy three rank 3 cards on the field.
-Destroy this card to destroy three rank 3 creature cards on the field.
-Destroy this card to destroy three rank 3 spell cards on the field.
-Destroy this card to destroy three rank 4 cards on the field.
-Destroy this card to destroy three rank 4 creature cards on the field.
-Destroy this card to destroy three rank 5 cards on the field.
-Destroy this card to destroy three rank 5 creature cards on the field.
-Destroy this card to destroy three reptile cards on the field.
-Destroy this card to destroy three spell cards on the field.
-Destroy this card to destroy three spellcaster cards on the field.
-Destroy this card to destroy three undead cards on the field.
-Destroy this card to destroy three warrior cards on the field.
-Destroy this card to destroy three water cards on the field.
-Destroy this card to destroy two air cards on the field.
-Destroy this card to destroy two aquatic cards on the field.
-Destroy this card to destroy two beast cards on the field.
-Destroy this card to destroy two botanic cards on the field.
-Destroy this card to destroy two dark cards on the field.
-Destroy this card to destroy two dragon cards on the field.
-Destroy this card to destroy two earth cards on the field.
-Destroy this card to destroy two electric cards on the field.
-Destroy this card to destroy two elemental cards on the field.
-Destroy this card to destroy two fairy cards on the field.
-Destroy this card to destroy two fire cards on the field.
-Destroy this card to destroy two ghost cards on the field.
-Destroy this card to destroy two insect cards on the field.
-Destroy this card to destroy two light cards on the field.
-Destroy this card to destroy two machine cards on the field.
-Destroy this card to destroy two rank 1 cards on the field.
-Destroy this card to destroy two rank 1 creature cards on the field.
-Destroy this card to destroy two rank 1 spell cards on the field.
-Destroy this card to destroy two rank 2 cards on the field.
-Destroy this card to destroy two rank 2 creature cards on the field.
-Destroy this card to destroy two rank 2 spell cards on the field.
-Destroy this card to destroy two rank 3 cards on the field.
-Destroy this card to destroy two rank 3 creature cards on the field.
-Destroy this card to destroy two rank 3 spell cards on the field.
-Destroy this card to destroy two rank 4 cards on the field.
-Destroy this card to destroy two rank 4 creature cards on the field.
-Destroy this card to destroy two rank 5 cards on the field.
-Destroy this card to destroy two rank 5 creature cards on the field.
-Destroy this card to destroy two reptile cards on the field.
-Destroy this card to destroy two spell cards on the field.
-Destroy this card to destroy two spellcaster cards on the field.
-Destroy this card to destroy two undead cards on the field.
-Destroy this card to destroy two warrior cards on the field.
-Destroy this card to destroy two water cards on the field.
+Destroy this card to destroy up to all air cards on the field.
+Destroy this card to destroy up to all aquatic cards on the field.
+Destroy this card to destroy up to all beast cards on the field.
+Destroy this card to destroy up to all botanic cards on the field.
+Destroy this card to destroy up to all dark cards on the field.
+Destroy this card to destroy up to all dragon cards on the field.
+Destroy this card to destroy up to all earth cards on the field.
+Destroy this card to destroy up to all electric cards on the field.
+Destroy this card to destroy up to all elemental cards on the field.
+Destroy this card to destroy up to all fairy cards on the field.
+Destroy this card to destroy up to all fire cards on the field.
+Destroy this card to destroy up to all ghost cards on the field.
+Destroy this card to destroy up to all insect cards on the field.
+Destroy this card to destroy up to all light cards on the field.
+Destroy this card to destroy up to all machine cards on the field.
+Destroy this card to destroy up to all rank 1 cards on the field.
+Destroy this card to destroy up to all rank 1 creature cards on the field.
+Destroy this card to destroy up to all rank 1 spell cards on the field.
+Destroy this card to destroy up to all rank 2 cards on the field.
+Destroy this card to destroy up to all rank 2 creature cards on the field.
+Destroy this card to destroy up to all rank 2 spell cards on the field.
+Destroy this card to destroy up to all rank 3 cards on the field.
+Destroy this card to destroy up to all rank 3 creature cards on the field.
+Destroy this card to destroy up to all rank 3 spell cards on the field.
+Destroy this card to destroy up to all rank 4 cards on the field.
+Destroy this card to destroy up to all rank 4 creature cards on the field.
+Destroy this card to destroy up to all rank 5 cards on the field.
+Destroy this card to destroy up to all rank 5 creature cards on the field.
+Destroy this card to destroy up to all reptile cards on the field.
+Destroy this card to destroy up to all spell cards on the field.
+Destroy this card to destroy up to all spellcaster cards on the field.
+Destroy this card to destroy up to all undead cards on the field.
+Destroy this card to destroy up to all warrior cards on the field.
+Destroy this card to destroy up to all water cards on the field.
+Destroy this card to destroy up to four air cards on the field.
+Destroy this card to destroy up to four aquatic cards on the field.
+Destroy this card to destroy up to four beast cards on the field.
+Destroy this card to destroy up to four botanic cards on the field.
+Destroy this card to destroy up to four dark cards on the field.
+Destroy this card to destroy up to four dragon cards on the field.
+Destroy this card to destroy up to four earth cards on the field.
+Destroy this card to destroy up to four electric cards on the field.
+Destroy this card to destroy up to four elemental cards on the field.
+Destroy this card to destroy up to four fairy cards on the field.
+Destroy this card to destroy up to four fire cards on the field.
+Destroy this card to destroy up to four ghost cards on the field.
+Destroy this card to destroy up to four insect cards on the field.
+Destroy this card to destroy up to four light cards on the field.
+Destroy this card to destroy up to four machine cards on the field.
+Destroy this card to destroy up to four rank 1 cards on the field.
+Destroy this card to destroy up to four rank 1 creature cards on the field.
+Destroy this card to destroy up to four rank 1 spell cards on the field.
+Destroy this card to destroy up to four rank 2 cards on the field.
+Destroy this card to destroy up to four rank 2 creature cards on the field.
+Destroy this card to destroy up to four rank 2 spell cards on the field.
+Destroy this card to destroy up to four rank 3 cards on the field.
+Destroy this card to destroy up to four rank 3 creature cards on the field.
+Destroy this card to destroy up to four rank 3 spell cards on the field.
+Destroy this card to destroy up to four rank 4 cards on the field.
+Destroy this card to destroy up to four rank 4 creature cards on the field.
+Destroy this card to destroy up to four rank 5 cards on the field.
+Destroy this card to destroy up to four rank 5 creature cards on the field.
+Destroy this card to destroy up to four reptile cards on the field.
+Destroy this card to destroy up to four spell cards on the field.
+Destroy this card to destroy up to four spellcaster cards on the field.
+Destroy this card to destroy up to four undead cards on the field.
+Destroy this card to destroy up to four warrior cards on the field.
+Destroy this card to destroy up to four water cards on the field.
+Destroy this card to destroy up to three air cards on the field.
+Destroy this card to destroy up to three aquatic cards on the field.
+Destroy this card to destroy up to three beast cards on the field.
+Destroy this card to destroy up to three botanic cards on the field.
+Destroy this card to destroy up to three dark cards on the field.
+Destroy this card to destroy up to three dragon cards on the field.
+Destroy this card to destroy up to three earth cards on the field.
+Destroy this card to destroy up to three electric cards on the field.
+Destroy this card to destroy up to three elemental cards on the field.
+Destroy this card to destroy up to three fairy cards on the field.
+Destroy this card to destroy up to three fire cards on the field.
+Destroy this card to destroy up to three ghost cards on the field.
+Destroy this card to destroy up to three insect cards on the field.
+Destroy this card to destroy up to three light cards on the field.
+Destroy this card to destroy up to three machine cards on the field.
+Destroy this card to destroy up to three rank 1 cards on the field.
+Destroy this card to destroy up to three rank 1 creature cards on the field.
+Destroy this card to destroy up to three rank 1 spell cards on the field.
+Destroy this card to destroy up to three rank 2 cards on the field.
+Destroy this card to destroy up to three rank 2 creature cards on the field.
+Destroy this card to destroy up to three rank 2 spell cards on the field.
+Destroy this card to destroy up to three rank 3 cards on the field.
+Destroy this card to destroy up to three rank 3 creature cards on the field.
+Destroy this card to destroy up to three rank 3 spell cards on the field.
+Destroy this card to destroy up to three rank 4 cards on the field.
+Destroy this card to destroy up to three rank 4 creature cards on the field.
+Destroy this card to destroy up to three rank 5 cards on the field.
+Destroy this card to destroy up to three rank 5 creature cards on the field.
+Destroy this card to destroy up to three reptile cards on the field.
+Destroy this card to destroy up to three spell cards on the field.
+Destroy this card to destroy up to three spellcaster cards on the field.
+Destroy this card to destroy up to three undead cards on the field.
+Destroy this card to destroy up to three warrior cards on the field.
+Destroy this card to destroy up to three water cards on the field.
+Destroy this card to destroy up to two air cards on the field.
+Destroy this card to destroy up to two aquatic cards on the field.
+Destroy this card to destroy up to two beast cards on the field.
+Destroy this card to destroy up to two botanic cards on the field.
+Destroy this card to destroy up to two dark cards on the field.
+Destroy this card to destroy up to two dragon cards on the field.
+Destroy this card to destroy up to two earth cards on the field.
+Destroy this card to destroy up to two electric cards on the field.
+Destroy this card to destroy up to two elemental cards on the field.
+Destroy this card to destroy up to two fairy cards on the field.
+Destroy this card to destroy up to two fire cards on the field.
+Destroy this card to destroy up to two ghost cards on the field.
+Destroy this card to destroy up to two insect cards on the field.
+Destroy this card to destroy up to two light cards on the field.
+Destroy this card to destroy up to two machine cards on the field.
+Destroy this card to destroy up to two rank 1 cards on the field.
+Destroy this card to destroy up to two rank 1 creature cards on the field.
+Destroy this card to destroy up to two rank 1 spell cards on the field.
+Destroy this card to destroy up to two rank 2 cards on the field.
+Destroy this card to destroy up to two rank 2 creature cards on the field.
+Destroy this card to destroy up to two rank 2 spell cards on the field.
+Destroy this card to destroy up to two rank 3 cards on the field.
+Destroy this card to destroy up to two rank 3 creature cards on the field.
+Destroy this card to destroy up to two rank 3 spell cards on the field.
+Destroy this card to destroy up to two rank 4 cards on the field.
+Destroy this card to destroy up to two rank 4 creature cards on the field.
+Destroy this card to destroy up to two rank 5 cards on the field.
+Destroy this card to destroy up to two rank 5 creature cards on the field.
+Destroy this card to destroy up to two reptile cards on the field.
+Destroy this card to destroy up to two spell cards on the field.
+Destroy this card to destroy up to two spellcaster cards on the field.
+Destroy this card to destroy up to two undead cards on the field.
+Destroy this card to destroy up to two warrior cards on the field.
+Destroy this card to destroy up to two water cards on the field.
 Destroy this card to shuffle your discard pile into your deck.
 Destroy two air cards you own to play one air card from your deck.
 Destroy two air cards you own to play one air card from your discard pile.
