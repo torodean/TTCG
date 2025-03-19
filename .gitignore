@@ -4,3 +4,4 @@
 *.toc
 *.o
 .idea
+bin/__pycache__

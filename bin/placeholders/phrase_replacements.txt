@@ -81,6 +81,7 @@ targetss: targets
 pointss: points
 cardss: cards
 creaturess: creatures
+turnss: turns
         
 # Duplicate card        
 card card: card
