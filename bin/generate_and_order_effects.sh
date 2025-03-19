@@ -90,9 +90,18 @@ python3 add_csv_field.py -c SPELL -t "Skip your next turn to destroy all rank <r
 python3 add_csv_field.py -c SPELL -t "For the next <number> turns, <type> cards"
 python3 add_csv_field.py -c SPELL -t "Activate the effect of a card under this card"
 python3 add_csv_field.py -c SPELL -t "Activate the effect of a card under another card"
+python3 add_csv_field.py -c SPELL -t "Activate the effect of another card"
+python3 add_csv_field.py -c SPELL -t "Add one rank <rank> <card>"
+python3 add_csv_field.py -c SPELL -t "Add one rank <rank> or higher <card>"
+python3 add_csv_field.py -c SPELL -t "Add one rank <rank> or lower <card>"
+python3 add_csv_field.py -c SPELL -t "Add up to <number> <card>"
+python3 add_csv_field.py -c SPELL -t "Destroy one rank <rank> <card>"
+python3 add_csv_field.py -c SPELL -t "Destroy two rank <rank> <card>"
+python3 add_csv_field.py -c SPELL -t "Return up to <number> rank <rank> <card>"
 
 # Handle some exact matches (used for one off effects)
 python3 add_csv_field.py -c SPELL -e "While this card is on the field, attack and defense changes are inverted."
+python3 add_csv_field.py -c SPELL -e "Send one card from under another card to the discard pile."
 
 
 ####################################################
@@ -210,6 +219,10 @@ python3 add_csv_field.py -c UNIT -t "Place one <subtype> card from your <pile> u
 python3 add_csv_field.py -c UNIT -t "Skip your next turn to destroy all <subtype>"
 python3 add_csv_field.py -c UNIT -t "For the next <number> turns, <subtype> cards"
 python3 add_csv_field.py -c UNIT -t "for each card under this one"
+python3 add_csv_field.py -c UNIT -t "Activate the effect of another creature"
+python3 add_csv_field.py -c UNIT -t "Place one rank <rank> creature card from your"
+
+
 
 # Handle some exact matches (used for one off effects)
 python3 add_csv_field.py -c UNIT -e "While this card is on the field, attack and defense changes are inverted."

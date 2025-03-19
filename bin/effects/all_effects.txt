@@ -4880,40 +4880,6 @@ Destroy this card to destroy one spellcaster card on the field.
 Destroy this card to destroy one undead card on the field.
 Destroy this card to destroy one warrior card on the field.
 Destroy this card to destroy one water card on the field.
-Destroy this card to destroy up to all air cards on the field.
-Destroy this card to destroy up to all aquatic cards on the field.
-Destroy this card to destroy up to all beast cards on the field.
-Destroy this card to destroy up to all botanic cards on the field.
-Destroy this card to destroy up to all dark cards on the field.
-Destroy this card to destroy up to all dragon cards on the field.
-Destroy this card to destroy up to all earth cards on the field.
-Destroy this card to destroy up to all electric cards on the field.
-Destroy this card to destroy up to all elemental cards on the field.
-Destroy this card to destroy up to all fairy cards on the field.
-Destroy this card to destroy up to all fire cards on the field.
-Destroy this card to destroy up to all ghost cards on the field.
-Destroy this card to destroy up to all insect cards on the field.
-Destroy this card to destroy up to all light cards on the field.
-Destroy this card to destroy up to all machine cards on the field.
-Destroy this card to destroy up to all rank 1 cards on the field.
-Destroy this card to destroy up to all rank 1 creature cards on the field.
-Destroy this card to destroy up to all rank 1 spell cards on the field.
-Destroy this card to destroy up to all rank 2 cards on the field.
-Destroy this card to destroy up to all rank 2 creature cards on the field.
-Destroy this card to destroy up to all rank 2 spell cards on the field.
-Destroy this card to destroy up to all rank 3 cards on the field.
-Destroy this card to destroy up to all rank 3 creature cards on the field.
-Destroy this card to destroy up to all rank 3 spell cards on the field.
-Destroy this card to destroy up to all rank 4 cards on the field.
-Destroy this card to destroy up to all rank 4 creature cards on the field.
-Destroy this card to destroy up to all rank 5 cards on the field.
-Destroy this card to destroy up to all rank 5 creature cards on the field.
-Destroy this card to destroy up to all reptile cards on the field.
-Destroy this card to destroy up to all spell cards on the field.
-Destroy this card to destroy up to all spellcaster cards on the field.
-Destroy this card to destroy up to all undead cards on the field.
-Destroy this card to destroy up to all warrior cards on the field.
-Destroy this card to destroy up to all water cards on the field.
 Destroy this card to destroy up to four air cards on the field.
 Destroy this card to destroy up to four aquatic cards on the field.
 Destroy this card to destroy up to four beast cards on the field.
@@ -5085,40 +5051,6 @@ Destroy two warrior cards you own to play one warrior card from your deck.
 Destroy two warrior cards you own to play one warrior card from your discard pile.
 Destroy two water cards you own to play one water card from your deck.
 Destroy two water cards you own to play one water card from your discard pile.
-Destroy up to all air cards on the field.
-Destroy up to all aquatic cards on the field.
-Destroy up to all beast cards on the field.
-Destroy up to all botanic cards on the field.
-Destroy up to all dark cards on the field.
-Destroy up to all dragon cards on the field.
-Destroy up to all earth cards on the field.
-Destroy up to all electric cards on the field.
-Destroy up to all elemental cards on the field.
-Destroy up to all fairy cards on the field.
-Destroy up to all fire cards on the field.
-Destroy up to all ghost cards on the field.
-Destroy up to all insect cards on the field.
-Destroy up to all light cards on the field.
-Destroy up to all machine cards on the field.
-Destroy up to all rank 1 cards on the field.
-Destroy up to all rank 1 creature cards on the field.
-Destroy up to all rank 1 spell cards on the field.
-Destroy up to all rank 2 cards on the field.
-Destroy up to all rank 2 creature cards on the field.
-Destroy up to all rank 2 spell cards on the field.
-Destroy up to all rank 3 cards on the field.
-Destroy up to all rank 3 creature cards on the field.
-Destroy up to all rank 3 spell cards on the field.
-Destroy up to all rank 4 cards on the field.
-Destroy up to all rank 4 creature cards on the field.
-Destroy up to all rank 5 cards on the field.
-Destroy up to all rank 5 creature cards on the field.
-Destroy up to all reptile cards on the field.
-Destroy up to all spell cards on the field.
-Destroy up to all spellcaster cards on the field.
-Destroy up to all undead cards on the field.
-Destroy up to all warrior cards on the field.
-Destroy up to all water cards on the field.
 Destroy up to four air cards on the field.
 Destroy up to four aquatic cards on the field.
 Destroy up to four beast cards on the field.
@@ -6692,40 +6624,6 @@ Return one warrior card from your discard pile to your hand.
 Return one water card from the discard pile to the top of your deck.
 Return one water card from the field to the owner's hand.
 Return one water card from your discard pile to your hand.
-Return up to all air cards from your discard pile to your hand.
-Return up to all aquatic cards from your discard pile to your hand.
-Return up to all beast cards from your discard pile to your hand.
-Return up to all botanic cards from your discard pile to your hand.
-Return up to all dark cards from your discard pile to your hand.
-Return up to all dragon cards from your discard pile to your hand.
-Return up to all earth cards from your discard pile to your hand.
-Return up to all electric cards from your discard pile to your hand.
-Return up to all elemental cards from your discard pile to your hand.
-Return up to all fairy cards from your discard pile to your hand.
-Return up to all fire cards from your discard pile to your hand.
-Return up to all ghost cards from your discard pile to your hand.
-Return up to all insect cards from your discard pile to your hand.
-Return up to all light cards from your discard pile to your hand.
-Return up to all machine cards from your discard pile to your hand.
-Return up to all rank 1 cards from your discard pile to your hand.
-Return up to all rank 1 creature cards from your discard pile to your hand.
-Return up to all rank 1 spell cards from your discard pile to your hand.
-Return up to all rank 2 cards from your discard pile to your hand.
-Return up to all rank 2 creature cards from your discard pile to your hand.
-Return up to all rank 2 spell cards from your discard pile to your hand.
-Return up to all rank 3 cards from your discard pile to your hand.
-Return up to all rank 3 creature cards from your discard pile to your hand.
-Return up to all rank 3 spell cards from your discard pile to your hand.
-Return up to all rank 4 cards from your discard pile to your hand.
-Return up to all rank 4 creature cards from your discard pile to your hand.
-Return up to all rank 5 cards from your discard pile to your hand.
-Return up to all rank 5 creature cards from your discard pile to your hand.
-Return up to all reptile cards from your discard pile to your hand.
-Return up to all spell cards from your discard pile to your hand.
-Return up to all spellcaster cards from your discard pile to your hand.
-Return up to all undead cards from your discard pile to your hand.
-Return up to all warrior cards from your discard pile to your hand.
-Return up to all water cards from your discard pile to your hand.
 Return up to four air cards from your discard pile to your hand.
 Return up to four aquatic cards from your discard pile to your hand.
 Return up to four beast cards from your discard pile to your hand.
@@ -6965,7 +6863,6 @@ Reveal the top two cards of your deck and play one undead card from among them.
 Reveal the top two cards of your deck and play one warrior card from among them.
 Reveal the top two cards of your deck and play one water card from among them.
 Send one card from under another card to the discard pile.
-Send up to all cards from under another card to the discard pile.
 Send up to four cards from under another card to the discard pile.
 Send up to three cards from under another card to the discard pile.
 Send up to two cards from under another card to the discard pile.
@@ -8913,7 +8810,6 @@ You can rank up this creature using a warrior creature from your discard pile.
 You can rank up this creature using a water creature from your deck.
 You can rank up this creature using a water creature from your discard pile.
 You can send one card under this card to the discard pile.
-You can send up to all cards under this card to the discard pile.
 You can send up to four cards under this card to the discard pile.
 You can send up to three cards under this card to the discard pile.
 You can send up to two cards under this card to the discard pile.

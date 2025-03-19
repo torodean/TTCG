@@ -25,5 +25,5 @@ Add four
 Add five
 Add three
 Add all
-Add up to all
+up to all
 exactly all
