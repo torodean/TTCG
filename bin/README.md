@@ -37,6 +37,22 @@ The `bin` directory serves as the central hub for executable scripts used in the
 - **Key Features**: Cleans up old files, generates effects, and adds metadata columns (e.g., UNIT, SPELL) based on patterns or exact matches.
 - **Usage**: `./generate_and_order_effects.sh`
 - **Dependencies**: Requires `create_effect_combinations.py`, `add_csv_field.py`, and files in `../effects/` and `../placeholders/`.
+
+### `generate_random_effects.py`
+- **Purpose**: Filters a CSV file to find rows where specified columns are "True", then generates and prints random pairs from the first column of the filtered rows.
+- **Key Features**: 
+  - Filters CSV rows based on multiple columns being "True" (case-insensitive).
+  - Generates up to a specified number of random pairs (default: 10) from the first column.
+  - Handles semicolon-delimited CSV files.
+  - Includes error handling for file issues, missing columns, and insufficient data.
+- **Usage**: 
+  - Run the script with: `python random_pairs.py [-c COLUMN]... [INPUT_FILE]`.
+  - Default input file: `effects/effects_with_placeholders.csv`.
+  - Use `-p` to specify the number of pairs (e.g., `-p 5`).
+- **Dependencies**: 
+  - Python 3.x
+  - `pandas` (for CSV processing)
+  - `argparse`, `random`, `sys` (standard library)
   
 ### `ttcg_tools.py`
 - **Purpose**: Provides a collection of shared utility functions and tools used across multiple TTCG-related scripts to streamline common tasks and ensure consistency.
