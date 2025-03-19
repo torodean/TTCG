@@ -120,6 +120,14 @@ for level in LEVEL_{1..3}; do
     python3 add_csv_field.py -c "$level" -m SPELL -t "Counter the effect of a <type> card"
     python3 add_csv_field.py -c "$level" -m SPELL -t "While this card is on the field, all <type> card"
     python3 add_csv_field.py -c "$level" -m SPELL -t "Both players discard their hand"
+    python3 add_csv_field.py -c "$level" -m SPELL -t "Destroy this card to destroy one <type>"
+	python3 add_csv_field.py -c "$level" -m SPELL -t "Destroy this card to destroy up to <number> <type>"
+    python3 add_csv_field.py -c "$level" -m SPELL -t "Discard one <type> card"
+    python3 add_csv_field.py -c "$level" -m SPELL -t "Discard this card to add one <type>"
+    python3 add_csv_field.py -c "$level" -m SPELL -t "Play one <card> under"
+    python3 add_csv_field.py -c "$level" -m SPELL -t "Activate the effect of another"
+    python3 add_csv_field.py -c "$level" -m SPELL -t "When a <type> card is destroyed"
+    python3 add_csv_field.py -c "$level" -m SPELL -t "While this card is on the field, all <type>"
 done
 
 # Some various <number> effect combinations for spells.
@@ -151,6 +159,8 @@ for l in "LEVEL_1 1 2" "LEVEL_2 2 3" "LEVEL_3 3 4"; do
         python3 add_csv_field.py -c "$level" -m SPELL -t "You can play ${NUMS[m]} extra rank <rank>"
         python3 add_csv_field.py -c "$level" -m SPELL -t "Both players gain ${NUMS[m]} point"
 		python3 add_csv_field.py -c "$level" -m SPELL -t "This turn, all rank ${m}"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "Destroy two <type> cards you own to play"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "For the next ${NUMS[m]} turn"
     done
 done
 
@@ -160,7 +170,19 @@ for l in "LEVEL_1 1 2" "LEVEL_2 2 4" "LEVEL_3 4 5"; do
     read level min max <<< "$l"
     for ((m=min; m<=max; m++)); do
         python3 add_csv_field.py -c "$level" -m SPELL -t "Add up to <number> rank ${m} light cards from your deck to your hand."
-  
+        python3 add_csv_field.py -c "$level" -m SPELL -t "Destroy this card to destroy one rank ${m}"
+		python3 add_csv_field.py -c "$level" -m SPELL -t "Destroy this card to destroy up to <number> rank ${m}"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "Destroy two rank ${m}"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "Discard one rank ${m}"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "card to add one rank ${m}"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "card from your hand to play up to two rank ${m}"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "card from your hand to play one rank ${m}"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "Destroy all rank ${m} <card>"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "Counter the effect of a rank ${m} <card>"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "Discard this card to add one rank ${m}"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "Return one rank ${m}"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "Whenever a rank ${m}"
+        python3 add_csv_field.py -c "$level" -m SPELL -t "While this card is on the field, all rank ${m}"
     done
 done
 
@@ -194,17 +216,7 @@ python3 add_csv_field.py -c UNIT -e "While this card is on the field, attack and
 python3 add_csv_field.py -c UNIT -e "Activate the effect of a card under this one."
 python3 add_csv_field.py -c UNIT -e "Activate the effect of a card under another card."
 
-# Some various <rank> effect combinations for spells.
-for l in "LEVEL_1 1 2" "LEVEL_2 2 4" "LEVEL_3 4 5"; do
-    read level min max <<< "$l"
-    for ((r=min; r<=max; r++)); do
-        python3 add_csv_field.py -c "$level" -m SPELL -t "card to add one rank $r"
-        python3 add_csv_field.py -c "$level" -m SPELL -t "card from your hand to play up to two rank $r"
-        python3 add_csv_field.py -c "$level" -m SPELL -t "card from your hand to play one rank $r"
-        python3 add_csv_field.py -c "$level" -m SPELL -t "Destroy all rank $r <card>"
-        python3 add_csv_field.py -c "$level" -m SPELL -t "Counter the effect of a rank $r <card>"
-    done
-done
+
 
 
 ####################################################
@@ -240,6 +252,15 @@ for level in LEVEL_{1..5}; do
     python3 add_csv_field.py -c "$level" -m UNIT -t "While this card is on the field, all <subtype> card"
     python3 add_csv_field.py -c "$level" -m UNIT -t "Counter the effect of a <subtype> card"
     python3 add_csv_field.py -c "$level" -m UNIT -t "This turn, all <subtype> cards gain"
+    python3 add_csv_field.py -c "$level" -m UNIT -t "Destroy this card to destroy one <subtype>"
+    python3 add_csv_field.py -c "$level" -m UNIT -t "Destroy this card to destroy up to <number> <subtype>"
+    python3 add_csv_field.py -c "$level" -m UNIT -t "Destroy two <subtype> cards you own to play"
+    python3 add_csv_field.py -c "$level" -m UNIT -t "Discard one <subtype> card"
+    python3 add_csv_field.py -c "$level" -m UNIT -t "Discard this card to add one <subtype>"
+    python3 add_csv_field.py -c "$level" -m UNIT -t "Play one <card> under"
+    python3 add_csv_field.py -c "$level" -m UNIT -t "Activate the effect of another"
+    python3 add_csv_field.py -c "$level" -m UNIT -t "When a <subtype> card is destroyed"
+    python3 add_csv_field.py -c "$level" -m UNIT -t "While this card is on the field, all <subtype>"
 done
 
 # Some various <number> effect combinations for units.
@@ -271,5 +292,14 @@ for l in "LEVEL_1 1 2" "LEVEL_2 1 3" "LEVEL_3 2 4" "LEVEL_4 3 5" "LEVEL_5 4 5"; 
         python3 add_csv_field.py -c "$level" -m UNIT -t "Destroy this card to destroy up to <number> rank ${m}"
 		python3 add_csv_field.py -c "$level" -m UNIT -t "This turn, all <subtype> cards gain"
 		python3 add_csv_field.py -c "$level" -m UNIT -t "This turn, all rank ${m}"
+		python3 add_csv_field.py -c "$level" -m UNIT -t "Destroy this card to destroy one rank ${m}"
+		python3 add_csv_field.py -c "$level" -m UNIT -t "Destroy this card to destroy up to <number> rank ${m}"
+        python3 add_csv_field.py -c "$level" -m UNIT -t "Destroy two rank ${m}"
+        python3 add_csv_field.py -c "$level" -m UNIT -t "Discard one rank ${m}"
+        python3 add_csv_field.py -c "$level" -m UNIT -t "Discard this card to add one rank ${m}"
+        python3 add_csv_field.py -c "$level" -m UNIT -t "For the next ${NUMS[m]} turn"
+        python3 add_csv_field.py -c "$level" -m UNIT -t "Return one rank ${m}"
+        python3 add_csv_field.py -c "$level" -m UNIT -t "Whenever a rank ${m}"
+        python3 add_csv_field.py -c "$level" -m UNIT -t "While this card is on the field, all rank ${m}"
     done
 done

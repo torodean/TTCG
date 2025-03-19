@@ -1,6 +1,9 @@
 EFFECTNAME;UNIT;SPELL;LEVEL_1;LEVEL_3;LEVEL_2;LEVEL_4;LEVEL_5
 Activate the effect of a card under another card.;True;True;True;True;True;True;True
 Activate the effect of a card under this card.;False;True;True;True;True;True;True
+Activate the effect of another card on the field.;False;False;False;False;False;False;False
+Activate the effect of another creature on the field.;False;False;False;False;False;False;False
+Activate the effect of another spell on the field.;False;True;False;False;False;False;False
 Add one air card from your deck to your hand.;False;True;True;False;False;False;False
 Add one air card from your discard pile to your hand.;False;True;True;False;False;False;False
 Add one aquatic card from your deck to your hand.;True;False;True;False;True;False;False
@@ -4844,55 +4847,55 @@ Destroy one warrior card on the field.;True;False;True;False;False;False;False
 Destroy one warrior card you control to destroy one other card on the field.;True;False;True;False;False;False;False
 Destroy one water card on the field.;False;True;True;False;False;False;False
 Destroy one water card you control to destroy one other card on the field.;False;True;True;False;False;False;False
-Destroy this card to destroy one air card on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy one aquatic card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one beast card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one botanic card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one dark card on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy one dragon card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one earth card on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy one electric card on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy one elemental card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one fairy card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one fire card on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy one ghost card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one insect card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one light card on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy one machine card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one rank 1 card on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy one rank 1 creature card on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy one rank 1 spell card on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy one rank 2 card on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy one rank 2 creature card on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy one rank 2 spell card on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy one rank 3 card on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy one rank 3 creature card on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy one rank 3 spell card on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy one rank 4 card on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy one rank 4 creature card on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy one rank 5 card on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy one rank 5 creature card on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy one reptile card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one spell card on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy one spellcaster card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one undead card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one warrior card on the field.;True;False;True;False;True;False;False
-Destroy this card to destroy one water card on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to all air cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to all aquatic cards on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy up to all beast cards on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy up to all botanic cards on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy up to all dark cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to all dragon cards on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy up to all earth cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to all electric cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to all elemental cards on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy up to all fairy cards on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy up to all fire cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to all ghost cards on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy up to all insect cards on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy up to all light cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to all machine cards on the field.;True;False;False;False;False;False;False
+Destroy this card to destroy one air card on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy one aquatic card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one beast card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one botanic card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one dark card on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy one dragon card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one earth card on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy one electric card on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy one elemental card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one fairy card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one fire card on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy one ghost card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one insect card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one light card on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy one machine card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one rank 1 card on the field.;True;False;True;False;True;False;False
+Destroy this card to destroy one rank 1 creature card on the field.;True;False;True;False;True;False;False
+Destroy this card to destroy one rank 1 spell card on the field.;True;True;True;False;True;False;False
+Destroy this card to destroy one rank 2 card on the field.;True;False;True;True;True;False;False
+Destroy this card to destroy one rank 2 creature card on the field.;True;False;True;True;True;False;False
+Destroy this card to destroy one rank 2 spell card on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy one rank 3 card on the field.;True;False;False;True;True;True;False
+Destroy this card to destroy one rank 3 creature card on the field.;True;False;False;True;True;True;False
+Destroy this card to destroy one rank 3 spell card on the field.;True;True;False;True;True;True;False
+Destroy this card to destroy one rank 4 card on the field.;True;False;False;True;True;True;True
+Destroy this card to destroy one rank 4 creature card on the field.;True;False;False;True;True;True;True
+Destroy this card to destroy one rank 5 card on the field.;True;False;False;True;False;True;True
+Destroy this card to destroy one rank 5 creature card on the field.;True;False;False;True;False;True;True
+Destroy this card to destroy one reptile card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one spell card on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy one spellcaster card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one undead card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one warrior card on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy one water card on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to all air cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to all aquatic cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to all beast cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to all botanic cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to all dark cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to all dragon cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to all earth cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to all electric cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to all elemental cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to all fairy cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to all fire cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to all ghost cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to all insect cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to all light cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to all machine cards on the field.;True;False;True;True;True;True;True
 Destroy this card to destroy up to all rank 1 cards on the field.;True;False;True;False;True;False;False
 Destroy this card to destroy up to all rank 1 creature cards on the field.;True;False;True;False;True;False;False
 Destroy this card to destroy up to all rank 1 spell cards on the field.;True;True;True;False;True;False;False
@@ -4902,31 +4905,31 @@ Destroy this card to destroy up to all rank 2 spell cards on the field.;True;Tru
 Destroy this card to destroy up to all rank 3 cards on the field.;True;False;False;True;True;True;False
 Destroy this card to destroy up to all rank 3 creature cards on the field.;True;False;False;True;True;True;False
 Destroy this card to destroy up to all rank 3 spell cards on the field.;True;True;False;True;True;True;False
-Destroy this card to destroy up to all rank 4 cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to all rank 4 creature cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to all rank 5 cards on the field.;True;False;False;False;False;True;True
-Destroy this card to destroy up to all rank 5 creature cards on the field.;True;False;False;False;False;True;True
-Destroy this card to destroy up to all reptile cards on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy up to all spell cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to all spellcaster cards on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy up to all undead cards on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy up to all warrior cards on the field.;True;False;False;False;False;False;False
-Destroy this card to destroy up to all water cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to four air cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to four aquatic cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four beast cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four botanic cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four dark cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to four dragon cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four earth cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to four electric cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to four elemental cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four fairy cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four fire cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to four ghost cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four insect cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four light cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to four machine cards on the field.;True;False;False;True;False;True;True
+Destroy this card to destroy up to all rank 4 cards on the field.;True;False;False;True;True;True;True
+Destroy this card to destroy up to all rank 4 creature cards on the field.;True;False;False;True;True;True;True
+Destroy this card to destroy up to all rank 5 cards on the field.;True;False;False;True;False;True;True
+Destroy this card to destroy up to all rank 5 creature cards on the field.;True;False;False;True;False;True;True
+Destroy this card to destroy up to all reptile cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to all spell cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to all spellcaster cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to all undead cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to all warrior cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to all water cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to four air cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to four aquatic cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to four beast cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to four botanic cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to four dark cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to four dragon cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to four earth cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to four electric cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to four elemental cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to four fairy cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to four fire cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to four ghost cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to four insect cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to four light cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to four machine cards on the field.;True;False;True;True;True;True;True
 Destroy this card to destroy up to four rank 1 cards on the field.;True;False;True;False;True;False;False
 Destroy this card to destroy up to four rank 1 creature cards on the field.;True;False;True;False;True;False;False
 Destroy this card to destroy up to four rank 1 spell cards on the field.;True;True;True;False;True;False;False
@@ -4936,31 +4939,31 @@ Destroy this card to destroy up to four rank 2 spell cards on the field.;True;Tr
 Destroy this card to destroy up to four rank 3 cards on the field.;True;False;False;True;True;True;False
 Destroy this card to destroy up to four rank 3 creature cards on the field.;True;False;False;True;True;True;False
 Destroy this card to destroy up to four rank 3 spell cards on the field.;True;True;False;True;True;True;False
-Destroy this card to destroy up to four rank 4 cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four rank 4 creature cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four rank 5 cards on the field.;True;False;False;False;False;True;True
-Destroy this card to destroy up to four rank 5 creature cards on the field.;True;False;False;False;False;True;True
-Destroy this card to destroy up to four reptile cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four spell cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to four spellcaster cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four undead cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four warrior cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to four water cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to three air cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to three aquatic cards on the field.;True;False;False;True;True;True;False
-Destroy this card to destroy up to three beast cards on the field.;True;False;False;True;True;True;False
-Destroy this card to destroy up to three botanic cards on the field.;True;False;False;True;True;True;False
-Destroy this card to destroy up to three dark cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to three dragon cards on the field.;True;False;False;True;True;True;False
-Destroy this card to destroy up to three earth cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to three electric cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to three elemental cards on the field.;True;False;False;True;True;True;False
-Destroy this card to destroy up to three fairy cards on the field.;True;False;False;True;True;True;False
-Destroy this card to destroy up to three fire cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to three ghost cards on the field.;True;False;False;True;True;True;False
-Destroy this card to destroy up to three insect cards on the field.;True;False;False;True;True;True;False
-Destroy this card to destroy up to three light cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to three machine cards on the field.;True;False;False;True;True;True;False
+Destroy this card to destroy up to four rank 4 cards on the field.;True;False;False;True;True;True;True
+Destroy this card to destroy up to four rank 4 creature cards on the field.;True;False;False;True;True;True;True
+Destroy this card to destroy up to four rank 5 cards on the field.;True;False;False;True;False;True;True
+Destroy this card to destroy up to four rank 5 creature cards on the field.;True;False;False;True;False;True;True
+Destroy this card to destroy up to four reptile cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to four spell cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to four spellcaster cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to four undead cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to four warrior cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to four water cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to three air cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to three aquatic cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to three beast cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to three botanic cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to three dark cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to three dragon cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to three earth cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to three electric cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to three elemental cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to three fairy cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to three fire cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to three ghost cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to three insect cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to three light cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to three machine cards on the field.;True;False;True;True;True;True;True
 Destroy this card to destroy up to three rank 1 cards on the field.;True;False;True;False;True;False;False
 Destroy this card to destroy up to three rank 1 creature cards on the field.;True;False;True;False;True;False;False
 Destroy this card to destroy up to three rank 1 spell cards on the field.;True;True;True;False;True;False;False
@@ -4970,31 +4973,31 @@ Destroy this card to destroy up to three rank 2 spell cards on the field.;True;T
 Destroy this card to destroy up to three rank 3 cards on the field.;True;False;False;True;True;True;False
 Destroy this card to destroy up to three rank 3 creature cards on the field.;True;False;False;True;True;True;False
 Destroy this card to destroy up to three rank 3 spell cards on the field.;True;True;False;True;True;True;False
-Destroy this card to destroy up to three rank 4 cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to three rank 4 creature cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to three rank 5 cards on the field.;True;False;False;False;False;True;True
-Destroy this card to destroy up to three rank 5 creature cards on the field.;True;False;False;False;False;True;True
-Destroy this card to destroy up to three reptile cards on the field.;True;False;False;True;True;True;False
-Destroy this card to destroy up to three spell cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to three spellcaster cards on the field.;True;False;False;True;True;True;False
-Destroy this card to destroy up to three undead cards on the field.;True;False;False;True;True;True;False
-Destroy this card to destroy up to three warrior cards on the field.;True;False;False;True;True;True;False
-Destroy this card to destroy up to three water cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to two air cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to two aquatic cards on the field.;True;False;True;True;True;False;False
-Destroy this card to destroy up to two beast cards on the field.;True;False;True;True;True;False;False
-Destroy this card to destroy up to two botanic cards on the field.;True;False;True;True;True;False;False
-Destroy this card to destroy up to two dark cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to two dragon cards on the field.;True;False;True;True;True;False;False
-Destroy this card to destroy up to two earth cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to two electric cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to two elemental cards on the field.;True;False;True;True;True;False;False
-Destroy this card to destroy up to two fairy cards on the field.;True;False;True;True;True;False;False
-Destroy this card to destroy up to two fire cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to two ghost cards on the field.;True;False;True;True;True;False;False
-Destroy this card to destroy up to two insect cards on the field.;True;False;True;True;True;False;False
-Destroy this card to destroy up to two light cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to two machine cards on the field.;True;False;True;True;True;False;False
+Destroy this card to destroy up to three rank 4 cards on the field.;True;False;False;True;True;True;True
+Destroy this card to destroy up to three rank 4 creature cards on the field.;True;False;False;True;True;True;True
+Destroy this card to destroy up to three rank 5 cards on the field.;True;False;False;True;False;True;True
+Destroy this card to destroy up to three rank 5 creature cards on the field.;True;False;False;True;False;True;True
+Destroy this card to destroy up to three reptile cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to three spell cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to three spellcaster cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to three undead cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to three warrior cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to three water cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to two air cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to two aquatic cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to two beast cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to two botanic cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to two dark cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to two dragon cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to two earth cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to two electric cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to two elemental cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to two fairy cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to two fire cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to two ghost cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to two insect cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to two light cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to two machine cards on the field.;True;False;True;True;True;True;True
 Destroy this card to destroy up to two rank 1 cards on the field.;True;False;True;False;True;False;False
 Destroy this card to destroy up to two rank 1 creature cards on the field.;True;False;True;False;True;False;False
 Destroy this card to destroy up to two rank 1 spell cards on the field.;True;True;True;False;True;False;False
@@ -5004,85 +5007,85 @@ Destroy this card to destroy up to two rank 2 spell cards on the field.;True;Tru
 Destroy this card to destroy up to two rank 3 cards on the field.;True;False;False;True;True;True;False
 Destroy this card to destroy up to two rank 3 creature cards on the field.;True;False;False;True;True;True;False
 Destroy this card to destroy up to two rank 3 spell cards on the field.;True;True;False;True;True;True;False
-Destroy this card to destroy up to two rank 4 cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to two rank 4 creature cards on the field.;True;False;False;True;False;True;True
-Destroy this card to destroy up to two rank 5 cards on the field.;True;False;False;False;False;True;True
-Destroy this card to destroy up to two rank 5 creature cards on the field.;True;False;False;False;False;True;True
-Destroy this card to destroy up to two reptile cards on the field.;True;False;True;True;True;False;False
-Destroy this card to destroy up to two spell cards on the field.;True;True;False;False;False;False;False
-Destroy this card to destroy up to two spellcaster cards on the field.;True;False;True;True;True;False;False
-Destroy this card to destroy up to two undead cards on the field.;True;False;True;True;True;False;False
-Destroy this card to destroy up to two warrior cards on the field.;True;False;True;True;True;False;False
-Destroy this card to destroy up to two water cards on the field.;True;True;False;False;False;False;False
+Destroy this card to destroy up to two rank 4 cards on the field.;True;False;False;True;True;True;True
+Destroy this card to destroy up to two rank 4 creature cards on the field.;True;False;False;True;True;True;True
+Destroy this card to destroy up to two rank 5 cards on the field.;True;False;False;True;False;True;True
+Destroy this card to destroy up to two rank 5 creature cards on the field.;True;False;False;True;False;True;True
+Destroy this card to destroy up to two reptile cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to two spell cards on the field.;True;True;True;True;True;False;False
+Destroy this card to destroy up to two spellcaster cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to two undead cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to two warrior cards on the field.;True;False;True;True;True;True;True
+Destroy this card to destroy up to two water cards on the field.;True;True;True;True;True;False;False
 Destroy this card to shuffle your discard pile into your deck.;True;False;False;False;False;False;False
-Destroy two air cards you own to play one air card from your deck.;False;True;False;False;False;False;False
-Destroy two air cards you own to play one air card from your discard pile.;False;True;False;False;False;False;False
-Destroy two aquatic cards you own to play one aquatic card from your deck.;True;False;False;False;False;False;False
-Destroy two aquatic cards you own to play one aquatic card from your discard pile.;True;False;False;False;False;False;False
-Destroy two beast cards you own to play one beast card from your deck.;True;False;False;False;False;False;False
-Destroy two beast cards you own to play one beast card from your discard pile.;True;False;False;False;False;False;False
-Destroy two botanic cards you own to play one botanic card from your deck.;True;False;False;False;False;False;False
-Destroy two botanic cards you own to play one botanic card from your discard pile.;True;False;False;False;False;False;False
-Destroy two dark cards you own to play one dark card from your deck.;False;True;False;False;False;False;False
-Destroy two dark cards you own to play one dark card from your discard pile.;False;True;False;False;False;False;False
-Destroy two dragon cards you own to play one dragon card from your deck.;True;False;False;False;False;False;False
-Destroy two dragon cards you own to play one dragon card from your discard pile.;True;False;False;False;False;False;False
-Destroy two earth cards you own to play one earth card from your deck.;False;True;False;False;False;False;False
-Destroy two earth cards you own to play one earth card from your discard pile.;False;True;False;False;False;False;False
-Destroy two electric cards you own to play one electric card from your deck.;False;True;False;False;False;False;False
-Destroy two electric cards you own to play one electric card from your discard pile.;False;True;False;False;False;False;False
-Destroy two elemental cards you own to play one elemental card from your deck.;True;False;False;False;False;False;False
-Destroy two elemental cards you own to play one elemental card from your discard pile.;True;False;False;False;False;False;False
-Destroy two fairy cards you own to play one fairy card from your deck.;True;False;False;False;False;False;False
-Destroy two fairy cards you own to play one fairy card from your discard pile.;True;False;False;False;False;False;False
-Destroy two fire cards you own to play one fire card from your deck.;False;True;False;False;False;False;False
-Destroy two fire cards you own to play one fire card from your discard pile.;False;True;False;False;False;False;False
-Destroy two ghost cards you own to play one ghost card from your deck.;True;False;False;False;False;False;False
-Destroy two ghost cards you own to play one ghost card from your discard pile.;True;False;False;False;False;False;False
-Destroy two insect cards you own to play one insect card from your deck.;True;False;False;False;False;False;False
-Destroy two insect cards you own to play one insect card from your discard pile.;True;False;False;False;False;False;False
-Destroy two light cards you own to play one light card from your deck.;False;True;False;False;False;False;False
-Destroy two light cards you own to play one light card from your discard pile.;False;True;False;False;False;False;False
-Destroy two machine cards you own to play one machine card from your deck.;True;False;False;False;False;False;False
-Destroy two machine cards you own to play one machine card from your discard pile.;True;False;False;False;False;False;False
-Destroy two rank 1 cards you own to play one rank 1 card from your deck.;False;False;False;False;False;False;False
-Destroy two rank 1 cards you own to play one rank 1 card from your discard pile.;False;False;False;False;False;False;False
-Destroy two rank 1 creature cards you own to play one rank 1 creature card from your deck.;False;False;False;False;False;False;False
-Destroy two rank 1 creature cards you own to play one rank 1 creature card from your discard pile.;False;False;False;False;False;False;False
-Destroy two rank 1 spell cards you own to play one rank 1 spell card from your deck.;False;True;False;False;False;False;False
-Destroy two rank 1 spell cards you own to play one rank 1 spell card from your discard pile.;False;True;False;False;False;False;False
-Destroy two rank 2 cards you own to play one rank 2 card from your deck.;False;False;False;False;False;False;False
-Destroy two rank 2 cards you own to play one rank 2 card from your discard pile.;False;False;False;False;False;False;False
-Destroy two rank 2 creature cards you own to play one rank 2 creature card from your deck.;False;False;False;False;False;False;False
-Destroy two rank 2 creature cards you own to play one rank 2 creature card from your discard pile.;False;False;False;False;False;False;False
-Destroy two rank 2 spell cards you own to play one rank 2 spell card from your deck.;False;True;False;False;False;False;False
-Destroy two rank 2 spell cards you own to play one rank 2 spell card from your discard pile.;False;True;False;False;False;False;False
-Destroy two rank 3 cards you own to play one rank 3 card from your deck.;False;False;False;False;False;False;False
-Destroy two rank 3 cards you own to play one rank 3 card from your discard pile.;False;False;False;False;False;False;False
-Destroy two rank 3 creature cards you own to play one rank 3 creature card from your deck.;False;False;False;False;False;False;False
-Destroy two rank 3 creature cards you own to play one rank 3 creature card from your discard pile.;False;False;False;False;False;False;False
-Destroy two rank 3 spell cards you own to play one rank 3 spell card from your deck.;False;True;False;False;False;False;False
-Destroy two rank 3 spell cards you own to play one rank 3 spell card from your discard pile.;False;True;False;False;False;False;False
-Destroy two rank 4 cards you own to play one rank 4 card from your deck.;False;False;False;False;False;False;False
-Destroy two rank 4 cards you own to play one rank 4 card from your discard pile.;False;False;False;False;False;False;False
-Destroy two rank 4 creature cards you own to play one rank 4 creature card from your deck.;False;False;False;False;False;False;False
-Destroy two rank 4 creature cards you own to play one rank 4 creature card from your discard pile.;False;False;False;False;False;False;False
-Destroy two rank 5 cards you own to play one rank 5 card from your deck.;False;False;False;False;False;False;False
-Destroy two rank 5 cards you own to play one rank 5 card from your discard pile.;False;False;False;False;False;False;False
-Destroy two rank 5 creature cards you own to play one rank 5 creature card from your deck.;False;False;False;False;False;False;False
-Destroy two rank 5 creature cards you own to play one rank 5 creature card from your discard pile.;False;False;False;False;False;False;False
-Destroy two reptile cards you own to play one reptile card from your deck.;True;False;False;False;False;False;False
-Destroy two reptile cards you own to play one reptile card from your discard pile.;True;False;False;False;False;False;False
-Destroy two spell cards you own to play one spell card from your deck.;False;True;False;False;False;False;False
-Destroy two spell cards you own to play one spell card from your discard pile.;False;True;False;False;False;False;False
-Destroy two spellcaster cards you own to play one spellcaster card from your deck.;True;False;False;False;False;False;False
-Destroy two spellcaster cards you own to play one spellcaster card from your discard pile.;True;False;False;False;False;False;False
-Destroy two undead cards you own to play one undead card from your deck.;True;False;False;False;False;False;False
-Destroy two undead cards you own to play one undead card from your discard pile.;True;False;False;False;False;False;False
-Destroy two warrior cards you own to play one warrior card from your deck.;True;False;False;False;False;False;False
-Destroy two warrior cards you own to play one warrior card from your discard pile.;True;False;False;False;False;False;False
-Destroy two water cards you own to play one water card from your deck.;False;True;False;False;False;False;False
-Destroy two water cards you own to play one water card from your discard pile.;False;True;False;False;False;False;False
+Destroy two air cards you own to play one air card from your deck.;False;True;True;True;True;False;False
+Destroy two air cards you own to play one air card from your discard pile.;False;True;True;True;True;False;False
+Destroy two aquatic cards you own to play one aquatic card from your deck.;True;False;True;True;True;True;True
+Destroy two aquatic cards you own to play one aquatic card from your discard pile.;True;False;True;True;True;True;True
+Destroy two beast cards you own to play one beast card from your deck.;True;False;True;True;True;True;True
+Destroy two beast cards you own to play one beast card from your discard pile.;True;False;True;True;True;True;True
+Destroy two botanic cards you own to play one botanic card from your deck.;True;False;True;True;True;True;True
+Destroy two botanic cards you own to play one botanic card from your discard pile.;True;False;True;True;True;True;True
+Destroy two dark cards you own to play one dark card from your deck.;False;True;True;True;True;False;False
+Destroy two dark cards you own to play one dark card from your discard pile.;False;True;True;True;True;False;False
+Destroy two dragon cards you own to play one dragon card from your deck.;True;False;True;True;True;True;True
+Destroy two dragon cards you own to play one dragon card from your discard pile.;True;False;True;True;True;True;True
+Destroy two earth cards you own to play one earth card from your deck.;False;True;True;True;True;False;False
+Destroy two earth cards you own to play one earth card from your discard pile.;False;True;True;True;True;False;False
+Destroy two electric cards you own to play one electric card from your deck.;False;True;True;True;True;False;False
+Destroy two electric cards you own to play one electric card from your discard pile.;False;True;True;True;True;False;False
+Destroy two elemental cards you own to play one elemental card from your deck.;True;False;True;True;True;True;True
+Destroy two elemental cards you own to play one elemental card from your discard pile.;True;False;True;True;True;True;True
+Destroy two fairy cards you own to play one fairy card from your deck.;True;False;True;True;True;True;True
+Destroy two fairy cards you own to play one fairy card from your discard pile.;True;False;True;True;True;True;True
+Destroy two fire cards you own to play one fire card from your deck.;False;True;True;True;True;False;False
+Destroy two fire cards you own to play one fire card from your discard pile.;False;True;True;True;True;False;False
+Destroy two ghost cards you own to play one ghost card from your deck.;True;False;True;True;True;True;True
+Destroy two ghost cards you own to play one ghost card from your discard pile.;True;False;True;True;True;True;True
+Destroy two insect cards you own to play one insect card from your deck.;True;False;True;True;True;True;True
+Destroy two insect cards you own to play one insect card from your discard pile.;True;False;True;True;True;True;True
+Destroy two light cards you own to play one light card from your deck.;False;True;True;True;True;False;False
+Destroy two light cards you own to play one light card from your discard pile.;False;True;True;True;True;False;False
+Destroy two machine cards you own to play one machine card from your deck.;True;False;True;True;True;True;True
+Destroy two machine cards you own to play one machine card from your discard pile.;True;False;True;True;True;True;True
+Destroy two rank 1 cards you own to play one rank 1 card from your deck.;False;False;True;False;True;False;False
+Destroy two rank 1 cards you own to play one rank 1 card from your discard pile.;False;False;True;False;True;False;False
+Destroy two rank 1 creature cards you own to play one rank 1 creature card from your deck.;False;False;True;False;True;False;False
+Destroy two rank 1 creature cards you own to play one rank 1 creature card from your discard pile.;False;False;True;False;True;False;False
+Destroy two rank 1 spell cards you own to play one rank 1 spell card from your deck.;False;True;True;False;True;False;False
+Destroy two rank 1 spell cards you own to play one rank 1 spell card from your discard pile.;False;True;True;False;True;False;False
+Destroy two rank 2 cards you own to play one rank 2 card from your deck.;False;False;True;True;True;False;False
+Destroy two rank 2 cards you own to play one rank 2 card from your discard pile.;False;False;True;True;True;False;False
+Destroy two rank 2 creature cards you own to play one rank 2 creature card from your deck.;False;False;True;True;True;False;False
+Destroy two rank 2 creature cards you own to play one rank 2 creature card from your discard pile.;False;False;True;True;True;False;False
+Destroy two rank 2 spell cards you own to play one rank 2 spell card from your deck.;False;True;True;True;True;False;False
+Destroy two rank 2 spell cards you own to play one rank 2 spell card from your discard pile.;False;True;True;True;True;False;False
+Destroy two rank 3 cards you own to play one rank 3 card from your deck.;False;False;False;True;True;True;False
+Destroy two rank 3 cards you own to play one rank 3 card from your discard pile.;False;False;False;True;True;True;False
+Destroy two rank 3 creature cards you own to play one rank 3 creature card from your deck.;False;False;False;True;True;True;False
+Destroy two rank 3 creature cards you own to play one rank 3 creature card from your discard pile.;False;False;False;True;True;True;False
+Destroy two rank 3 spell cards you own to play one rank 3 spell card from your deck.;False;True;False;True;True;True;False
+Destroy two rank 3 spell cards you own to play one rank 3 spell card from your discard pile.;False;True;False;True;True;True;False
+Destroy two rank 4 cards you own to play one rank 4 card from your deck.;False;False;False;True;True;True;True
+Destroy two rank 4 cards you own to play one rank 4 card from your discard pile.;False;False;False;True;True;True;True
+Destroy two rank 4 creature cards you own to play one rank 4 creature card from your deck.;False;False;False;True;True;True;True
+Destroy two rank 4 creature cards you own to play one rank 4 creature card from your discard pile.;False;False;False;True;True;True;True
+Destroy two rank 5 cards you own to play one rank 5 card from your deck.;False;False;False;True;False;True;True
+Destroy two rank 5 cards you own to play one rank 5 card from your discard pile.;False;False;False;True;False;True;True
+Destroy two rank 5 creature cards you own to play one rank 5 creature card from your deck.;False;False;False;True;False;True;True
+Destroy two rank 5 creature cards you own to play one rank 5 creature card from your discard pile.;False;False;False;True;False;True;True
+Destroy two reptile cards you own to play one reptile card from your deck.;True;False;True;True;True;True;True
+Destroy two reptile cards you own to play one reptile card from your discard pile.;True;False;True;True;True;True;True
+Destroy two spell cards you own to play one spell card from your deck.;False;True;True;True;True;False;False
+Destroy two spell cards you own to play one spell card from your discard pile.;False;True;True;True;True;False;False
+Destroy two spellcaster cards you own to play one spellcaster card from your deck.;True;False;True;True;True;True;True
+Destroy two spellcaster cards you own to play one spellcaster card from your discard pile.;True;False;True;True;True;True;True
+Destroy two undead cards you own to play one undead card from your deck.;True;False;True;True;True;True;True
+Destroy two undead cards you own to play one undead card from your discard pile.;True;False;True;True;True;True;True
+Destroy two warrior cards you own to play one warrior card from your deck.;True;False;True;True;True;True;True
+Destroy two warrior cards you own to play one warrior card from your discard pile.;True;False;True;True;True;True;True
+Destroy two water cards you own to play one water card from your deck.;False;True;True;True;True;False;False
+Destroy two water cards you own to play one water card from your discard pile.;False;True;True;True;True;False;False
 Destroy up to all air cards on the field.;False;True;False;False;False;False;False
 Destroy up to all aquatic cards on the field.;True;False;False;False;False;False;False
 Destroy up to all beast cards on the field.;True;False;False;False;False;False;False
@@ -5221,276 +5224,276 @@ Destroy up to two warrior cards on the field.;True;False;True;False;True;False;F
 Destroy up to two water cards on the field.;False;True;True;False;True;False;False
 Discard one air card from your hand to play one air card from your deck.;False;True;True;True;True;False;False
 Discard one air card from your hand to play one air card from your discard pile.;False;True;True;True;True;False;False
-Discard one air card from your hand to play up to two air card from your deck.;False;True;False;False;False;False;False
-Discard one air card from your hand to play up to two air card from your discard pile.;False;True;False;False;False;False;False
+Discard one air card from your hand to play up to two air card from your deck.;False;True;True;True;True;False;False
+Discard one air card from your hand to play up to two air card from your discard pile.;False;True;True;True;True;False;False
 Discard one air card to add one air card from your deck to your hand.;False;True;True;True;True;False;False
 Discard one air card to add one air card from your discard pile to your hand.;False;True;True;True;True;False;False
 Discard one air card to counter the effect of a air card.;False;True;True;True;True;False;False
-Discard one aquatic card from your hand to play one aquatic card from your deck.;True;False;False;False;False;False;False
-Discard one aquatic card from your hand to play one aquatic card from your discard pile.;True;False;False;False;False;False;False
-Discard one aquatic card from your hand to play up to two aquatic card from your deck.;True;False;False;False;False;False;False
-Discard one aquatic card from your hand to play up to two aquatic card from your discard pile.;True;False;False;False;False;False;False
-Discard one aquatic card to add one aquatic card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one aquatic card to add one aquatic card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one aquatic card to counter the effect of a aquatic card.;True;False;False;False;False;False;False
-Discard one beast card from your hand to play one beast card from your deck.;True;False;False;False;False;False;False
-Discard one beast card from your hand to play one beast card from your discard pile.;True;False;False;False;False;False;False
-Discard one beast card from your hand to play up to two beast card from your deck.;True;False;False;False;False;False;False
-Discard one beast card from your hand to play up to two beast card from your discard pile.;True;False;False;False;False;False;False
-Discard one beast card to add one beast card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one beast card to add one beast card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one beast card to counter the effect of a beast card.;True;False;False;False;False;False;False
-Discard one botanic card from your hand to play one botanic card from your deck.;True;False;False;False;False;False;False
-Discard one botanic card from your hand to play one botanic card from your discard pile.;True;False;False;False;False;False;False
-Discard one botanic card from your hand to play up to two botanic card from your deck.;True;False;False;False;False;False;False
-Discard one botanic card from your hand to play up to two botanic card from your discard pile.;True;False;False;False;False;False;False
-Discard one botanic card to add one botanic card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one botanic card to add one botanic card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one botanic card to counter the effect of a botanic card.;True;False;False;False;False;False;False
+Discard one aquatic card from your hand to play one aquatic card from your deck.;True;False;True;True;True;True;True
+Discard one aquatic card from your hand to play one aquatic card from your discard pile.;True;False;True;True;True;True;True
+Discard one aquatic card from your hand to play up to two aquatic card from your deck.;True;False;True;True;True;True;True
+Discard one aquatic card from your hand to play up to two aquatic card from your discard pile.;True;False;True;True;True;True;True
+Discard one aquatic card to add one aquatic card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one aquatic card to add one aquatic card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one aquatic card to counter the effect of a aquatic card.;True;False;True;True;True;True;True
+Discard one beast card from your hand to play one beast card from your deck.;True;False;True;True;True;True;True
+Discard one beast card from your hand to play one beast card from your discard pile.;True;False;True;True;True;True;True
+Discard one beast card from your hand to play up to two beast card from your deck.;True;False;True;True;True;True;True
+Discard one beast card from your hand to play up to two beast card from your discard pile.;True;False;True;True;True;True;True
+Discard one beast card to add one beast card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one beast card to add one beast card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one beast card to counter the effect of a beast card.;True;False;True;True;True;True;True
+Discard one botanic card from your hand to play one botanic card from your deck.;True;False;True;True;True;True;True
+Discard one botanic card from your hand to play one botanic card from your discard pile.;True;False;True;True;True;True;True
+Discard one botanic card from your hand to play up to two botanic card from your deck.;True;False;True;True;True;True;True
+Discard one botanic card from your hand to play up to two botanic card from your discard pile.;True;False;True;True;True;True;True
+Discard one botanic card to add one botanic card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one botanic card to add one botanic card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one botanic card to counter the effect of a botanic card.;True;False;True;True;True;True;True
 Discard one dark card from your hand to play one dark card from your deck.;False;True;True;True;True;False;False
 Discard one dark card from your hand to play one dark card from your discard pile.;False;True;True;True;True;False;False
-Discard one dark card from your hand to play up to two dark card from your deck.;False;True;False;False;False;False;False
-Discard one dark card from your hand to play up to two dark card from your discard pile.;False;True;False;False;False;False;False
+Discard one dark card from your hand to play up to two dark card from your deck.;False;True;True;True;True;False;False
+Discard one dark card from your hand to play up to two dark card from your discard pile.;False;True;True;True;True;False;False
 Discard one dark card to add one dark card from your deck to your hand.;False;True;True;True;True;False;False
 Discard one dark card to add one dark card from your discard pile to your hand.;False;True;True;True;True;False;False
 Discard one dark card to counter the effect of a dark card.;False;True;True;True;True;False;False
-Discard one dragon card from your hand to play one dragon card from your deck.;True;False;False;False;False;False;False
-Discard one dragon card from your hand to play one dragon card from your discard pile.;True;False;False;False;False;False;False
-Discard one dragon card from your hand to play up to two dragon card from your deck.;True;False;False;False;False;False;False
-Discard one dragon card from your hand to play up to two dragon card from your discard pile.;True;False;False;False;False;False;False
-Discard one dragon card to add one dragon card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one dragon card to add one dragon card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one dragon card to counter the effect of a dragon card.;True;False;False;False;False;False;False
+Discard one dragon card from your hand to play one dragon card from your deck.;True;False;True;True;True;True;True
+Discard one dragon card from your hand to play one dragon card from your discard pile.;True;False;True;True;True;True;True
+Discard one dragon card from your hand to play up to two dragon card from your deck.;True;False;True;True;True;True;True
+Discard one dragon card from your hand to play up to two dragon card from your discard pile.;True;False;True;True;True;True;True
+Discard one dragon card to add one dragon card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one dragon card to add one dragon card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one dragon card to counter the effect of a dragon card.;True;False;True;True;True;True;True
 Discard one earth card from your hand to play one earth card from your deck.;False;True;True;True;True;False;False
 Discard one earth card from your hand to play one earth card from your discard pile.;False;True;True;True;True;False;False
-Discard one earth card from your hand to play up to two earth card from your deck.;False;True;False;False;False;False;False
-Discard one earth card from your hand to play up to two earth card from your discard pile.;False;True;False;False;False;False;False
+Discard one earth card from your hand to play up to two earth card from your deck.;False;True;True;True;True;False;False
+Discard one earth card from your hand to play up to two earth card from your discard pile.;False;True;True;True;True;False;False
 Discard one earth card to add one earth card from your deck to your hand.;False;True;True;True;True;False;False
 Discard one earth card to add one earth card from your discard pile to your hand.;False;True;True;True;True;False;False
 Discard one earth card to counter the effect of a earth card.;False;True;True;True;True;False;False
 Discard one electric card from your hand to play one electric card from your deck.;False;True;True;True;True;False;False
 Discard one electric card from your hand to play one electric card from your discard pile.;False;True;True;True;True;False;False
-Discard one electric card from your hand to play up to two electric card from your deck.;False;True;False;False;False;False;False
-Discard one electric card from your hand to play up to two electric card from your discard pile.;False;True;False;False;False;False;False
+Discard one electric card from your hand to play up to two electric card from your deck.;False;True;True;True;True;False;False
+Discard one electric card from your hand to play up to two electric card from your discard pile.;False;True;True;True;True;False;False
 Discard one electric card to add one electric card from your deck to your hand.;False;True;True;True;True;False;False
 Discard one electric card to add one electric card from your discard pile to your hand.;False;True;True;True;True;False;False
 Discard one electric card to counter the effect of a electric card.;False;True;True;True;True;False;False
-Discard one elemental card from your hand to play one elemental card from your deck.;True;False;False;False;False;False;False
-Discard one elemental card from your hand to play one elemental card from your discard pile.;True;False;False;False;False;False;False
-Discard one elemental card from your hand to play up to two elemental card from your deck.;True;False;False;False;False;False;False
-Discard one elemental card from your hand to play up to two elemental card from your discard pile.;True;False;False;False;False;False;False
-Discard one elemental card to add one elemental card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one elemental card to add one elemental card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one elemental card to counter the effect of a elemental card.;True;False;False;False;False;False;False
-Discard one fairy card from your hand to play one fairy card from your deck.;True;False;False;False;False;False;False
-Discard one fairy card from your hand to play one fairy card from your discard pile.;True;False;False;False;False;False;False
-Discard one fairy card from your hand to play up to two fairy card from your deck.;True;False;False;False;False;False;False
-Discard one fairy card from your hand to play up to two fairy card from your discard pile.;True;False;False;False;False;False;False
-Discard one fairy card to add one fairy card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one fairy card to add one fairy card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one fairy card to counter the effect of a fairy card.;True;False;False;False;False;False;False
+Discard one elemental card from your hand to play one elemental card from your deck.;True;False;True;True;True;True;True
+Discard one elemental card from your hand to play one elemental card from your discard pile.;True;False;True;True;True;True;True
+Discard one elemental card from your hand to play up to two elemental card from your deck.;True;False;True;True;True;True;True
+Discard one elemental card from your hand to play up to two elemental card from your discard pile.;True;False;True;True;True;True;True
+Discard one elemental card to add one elemental card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one elemental card to add one elemental card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one elemental card to counter the effect of a elemental card.;True;False;True;True;True;True;True
+Discard one fairy card from your hand to play one fairy card from your deck.;True;False;True;True;True;True;True
+Discard one fairy card from your hand to play one fairy card from your discard pile.;True;False;True;True;True;True;True
+Discard one fairy card from your hand to play up to two fairy card from your deck.;True;False;True;True;True;True;True
+Discard one fairy card from your hand to play up to two fairy card from your discard pile.;True;False;True;True;True;True;True
+Discard one fairy card to add one fairy card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one fairy card to add one fairy card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one fairy card to counter the effect of a fairy card.;True;False;True;True;True;True;True
 Discard one fire card from your hand to play one fire card from your deck.;False;True;True;True;True;False;False
 Discard one fire card from your hand to play one fire card from your discard pile.;False;True;True;True;True;False;False
-Discard one fire card from your hand to play up to two fire card from your deck.;False;True;False;False;False;False;False
-Discard one fire card from your hand to play up to two fire card from your discard pile.;False;True;False;False;False;False;False
+Discard one fire card from your hand to play up to two fire card from your deck.;False;True;True;True;True;False;False
+Discard one fire card from your hand to play up to two fire card from your discard pile.;False;True;True;True;True;False;False
 Discard one fire card to add one fire card from your deck to your hand.;False;True;True;True;True;False;False
 Discard one fire card to add one fire card from your discard pile to your hand.;False;True;True;True;True;False;False
 Discard one fire card to counter the effect of a fire card.;False;True;True;True;True;False;False
-Discard one ghost card from your hand to play one ghost card from your deck.;True;False;False;False;False;False;False
-Discard one ghost card from your hand to play one ghost card from your discard pile.;True;False;False;False;False;False;False
-Discard one ghost card from your hand to play up to two ghost card from your deck.;True;False;False;False;False;False;False
-Discard one ghost card from your hand to play up to two ghost card from your discard pile.;True;False;False;False;False;False;False
-Discard one ghost card to add one ghost card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one ghost card to add one ghost card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one ghost card to counter the effect of a ghost card.;True;False;False;False;False;False;False
-Discard one insect card from your hand to play one insect card from your deck.;True;False;False;False;False;False;False
-Discard one insect card from your hand to play one insect card from your discard pile.;True;False;False;False;False;False;False
-Discard one insect card from your hand to play up to two insect card from your deck.;True;False;False;False;False;False;False
-Discard one insect card from your hand to play up to two insect card from your discard pile.;True;False;False;False;False;False;False
-Discard one insect card to add one insect card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one insect card to add one insect card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one insect card to counter the effect of a insect card.;True;False;False;False;False;False;False
+Discard one ghost card from your hand to play one ghost card from your deck.;True;False;True;True;True;True;True
+Discard one ghost card from your hand to play one ghost card from your discard pile.;True;False;True;True;True;True;True
+Discard one ghost card from your hand to play up to two ghost card from your deck.;True;False;True;True;True;True;True
+Discard one ghost card from your hand to play up to two ghost card from your discard pile.;True;False;True;True;True;True;True
+Discard one ghost card to add one ghost card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one ghost card to add one ghost card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one ghost card to counter the effect of a ghost card.;True;False;True;True;True;True;True
+Discard one insect card from your hand to play one insect card from your deck.;True;False;True;True;True;True;True
+Discard one insect card from your hand to play one insect card from your discard pile.;True;False;True;True;True;True;True
+Discard one insect card from your hand to play up to two insect card from your deck.;True;False;True;True;True;True;True
+Discard one insect card from your hand to play up to two insect card from your discard pile.;True;False;True;True;True;True;True
+Discard one insect card to add one insect card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one insect card to add one insect card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one insect card to counter the effect of a insect card.;True;False;True;True;True;True;True
 Discard one light card from your hand to play one light card from your deck.;False;True;True;True;True;False;False
 Discard one light card from your hand to play one light card from your discard pile.;False;True;True;True;True;False;False
-Discard one light card from your hand to play up to two light card from your deck.;False;True;False;False;False;False;False
-Discard one light card from your hand to play up to two light card from your discard pile.;False;True;False;False;False;False;False
+Discard one light card from your hand to play up to two light card from your deck.;False;True;True;True;True;False;False
+Discard one light card from your hand to play up to two light card from your discard pile.;False;True;True;True;True;False;False
 Discard one light card to add one light card from your deck to your hand.;False;True;True;True;True;False;False
 Discard one light card to add one light card from your discard pile to your hand.;False;True;True;True;True;False;False
 Discard one light card to counter the effect of a light card.;False;True;True;True;True;False;False
-Discard one machine card from your hand to play one machine card from your deck.;True;False;False;False;False;False;False
-Discard one machine card from your hand to play one machine card from your discard pile.;True;False;False;False;False;False;False
-Discard one machine card from your hand to play up to two machine card from your deck.;True;False;False;False;False;False;False
-Discard one machine card from your hand to play up to two machine card from your discard pile.;True;False;False;False;False;False;False
-Discard one machine card to add one machine card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one machine card to add one machine card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one machine card to counter the effect of a machine card.;True;False;False;False;False;False;False
-Discard one rank 1 card from your hand to play one rank 1 card from your deck.;False;True;True;False;False;False;False
-Discard one rank 1 card from your hand to play one rank 1 card from your discard pile.;False;True;True;False;False;False;False
-Discard one rank 1 card from your hand to play up to two rank 1 card from your deck.;False;True;True;False;False;False;False
-Discard one rank 1 card from your hand to play up to two rank 1 card from your discard pile.;False;True;True;False;False;False;False
+Discard one machine card from your hand to play one machine card from your deck.;True;False;True;True;True;True;True
+Discard one machine card from your hand to play one machine card from your discard pile.;True;False;True;True;True;True;True
+Discard one machine card from your hand to play up to two machine card from your deck.;True;False;True;True;True;True;True
+Discard one machine card from your hand to play up to two machine card from your discard pile.;True;False;True;True;True;True;True
+Discard one machine card to add one machine card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one machine card to add one machine card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one machine card to counter the effect of a machine card.;True;False;True;True;True;True;True
+Discard one rank 1 card from your hand to play one rank 1 card from your deck.;False;True;True;False;True;False;False
+Discard one rank 1 card from your hand to play one rank 1 card from your discard pile.;False;True;True;False;True;False;False
+Discard one rank 1 card from your hand to play up to two rank 1 card from your deck.;False;True;True;False;True;False;False
+Discard one rank 1 card from your hand to play up to two rank 1 card from your discard pile.;False;True;True;False;True;False;False
 Discard one rank 1 card to add one rank 1 card from your deck to your hand.;False;True;True;False;True;False;False
 Discard one rank 1 card to add one rank 1 card from your discard pile to your hand.;False;True;True;False;True;False;False
-Discard one rank 1 card to counter the effect of a rank 1 card.;False;True;False;False;False;False;False
-Discard one rank 1 creature card from your hand to play one rank 1 creature card from your deck.;False;True;True;False;False;False;False
-Discard one rank 1 creature card from your hand to play one rank 1 creature card from your discard pile.;False;True;True;False;False;False;False
-Discard one rank 1 creature card from your hand to play up to two rank 1 creature card from your deck.;False;True;True;False;False;False;False
-Discard one rank 1 creature card from your hand to play up to two rank 1 creature card from your discard pile.;False;True;True;False;False;False;False
+Discard one rank 1 card to counter the effect of a rank 1 card.;False;True;True;False;True;False;False
+Discard one rank 1 creature card from your hand to play one rank 1 creature card from your deck.;False;True;True;False;True;False;False
+Discard one rank 1 creature card from your hand to play one rank 1 creature card from your discard pile.;False;True;True;False;True;False;False
+Discard one rank 1 creature card from your hand to play up to two rank 1 creature card from your deck.;False;True;True;False;True;False;False
+Discard one rank 1 creature card from your hand to play up to two rank 1 creature card from your discard pile.;False;True;True;False;True;False;False
 Discard one rank 1 creature card to add one rank 1 creature card from your deck to your hand.;False;True;True;False;True;False;False
 Discard one rank 1 creature card to add one rank 1 creature card from your discard pile to your hand.;False;True;True;False;True;False;False
-Discard one rank 1 creature card to counter the effect of a rank 1 creature card.;False;True;False;False;False;False;False
-Discard one rank 1 spell card from your hand to play one rank 1 spell card from your deck.;False;True;True;False;False;False;False
-Discard one rank 1 spell card from your hand to play one rank 1 spell card from your discard pile.;False;True;True;False;False;False;False
-Discard one rank 1 spell card from your hand to play up to two rank 1 spell card from your deck.;False;True;True;False;False;False;False
-Discard one rank 1 spell card from your hand to play up to two rank 1 spell card from your discard pile.;False;True;True;False;False;False;False
+Discard one rank 1 creature card to counter the effect of a rank 1 creature card.;False;True;True;False;True;False;False
+Discard one rank 1 spell card from your hand to play one rank 1 spell card from your deck.;False;True;True;False;True;False;False
+Discard one rank 1 spell card from your hand to play one rank 1 spell card from your discard pile.;False;True;True;False;True;False;False
+Discard one rank 1 spell card from your hand to play up to two rank 1 spell card from your deck.;False;True;True;False;True;False;False
+Discard one rank 1 spell card from your hand to play up to two rank 1 spell card from your discard pile.;False;True;True;False;True;False;False
 Discard one rank 1 spell card to add one rank 1 spell card from your deck to your hand.;False;True;True;False;True;False;False
 Discard one rank 1 spell card to add one rank 1 spell card from your discard pile to your hand.;False;True;True;False;True;False;False
-Discard one rank 1 spell card to counter the effect of a rank 1 spell card.;False;True;False;False;False;False;False
-Discard one rank 2 card from your hand to play one rank 2 card from your deck.;False;True;True;False;True;False;False
-Discard one rank 2 card from your hand to play one rank 2 card from your discard pile.;False;True;True;False;True;False;False
-Discard one rank 2 card from your hand to play up to two rank 2 card from your deck.;False;True;True;False;True;False;False
-Discard one rank 2 card from your hand to play up to two rank 2 card from your discard pile.;False;True;True;False;True;False;False
+Discard one rank 1 spell card to counter the effect of a rank 1 spell card.;False;True;True;False;True;False;False
+Discard one rank 2 card from your hand to play one rank 2 card from your deck.;False;True;True;True;True;False;False
+Discard one rank 2 card from your hand to play one rank 2 card from your discard pile.;False;True;True;True;True;False;False
+Discard one rank 2 card from your hand to play up to two rank 2 card from your deck.;False;True;True;True;True;False;False
+Discard one rank 2 card from your hand to play up to two rank 2 card from your discard pile.;False;True;True;True;True;False;False
 Discard one rank 2 card to add one rank 2 card from your deck to your hand.;False;True;True;True;True;False;False
 Discard one rank 2 card to add one rank 2 card from your discard pile to your hand.;False;True;True;True;True;False;False
-Discard one rank 2 card to counter the effect of a rank 2 card.;False;True;False;False;False;False;False
-Discard one rank 2 creature card from your hand to play one rank 2 creature card from your deck.;False;True;True;False;True;False;False
-Discard one rank 2 creature card from your hand to play one rank 2 creature card from your discard pile.;False;True;True;False;True;False;False
-Discard one rank 2 creature card from your hand to play up to two rank 2 creature card from your deck.;False;True;True;False;True;False;False
-Discard one rank 2 creature card from your hand to play up to two rank 2 creature card from your discard pile.;False;True;True;False;True;False;False
+Discard one rank 2 card to counter the effect of a rank 2 card.;False;True;True;True;True;False;False
+Discard one rank 2 creature card from your hand to play one rank 2 creature card from your deck.;False;True;True;True;True;False;False
+Discard one rank 2 creature card from your hand to play one rank 2 creature card from your discard pile.;False;True;True;True;True;False;False
+Discard one rank 2 creature card from your hand to play up to two rank 2 creature card from your deck.;False;True;True;True;True;False;False
+Discard one rank 2 creature card from your hand to play up to two rank 2 creature card from your discard pile.;False;True;True;True;True;False;False
 Discard one rank 2 creature card to add one rank 2 creature card from your deck to your hand.;False;True;True;True;True;False;False
 Discard one rank 2 creature card to add one rank 2 creature card from your discard pile to your hand.;False;True;True;True;True;False;False
-Discard one rank 2 creature card to counter the effect of a rank 2 creature card.;False;True;False;False;False;False;False
-Discard one rank 2 spell card from your hand to play one rank 2 spell card from your deck.;False;True;True;False;True;False;False
-Discard one rank 2 spell card from your hand to play one rank 2 spell card from your discard pile.;False;True;True;False;True;False;False
-Discard one rank 2 spell card from your hand to play up to two rank 2 spell card from your deck.;False;True;True;False;True;False;False
-Discard one rank 2 spell card from your hand to play up to two rank 2 spell card from your discard pile.;False;True;True;False;True;False;False
+Discard one rank 2 creature card to counter the effect of a rank 2 creature card.;False;True;True;True;True;False;False
+Discard one rank 2 spell card from your hand to play one rank 2 spell card from your deck.;False;True;True;True;True;False;False
+Discard one rank 2 spell card from your hand to play one rank 2 spell card from your discard pile.;False;True;True;True;True;False;False
+Discard one rank 2 spell card from your hand to play up to two rank 2 spell card from your deck.;False;True;True;True;True;False;False
+Discard one rank 2 spell card from your hand to play up to two rank 2 spell card from your discard pile.;False;True;True;True;True;False;False
 Discard one rank 2 spell card to add one rank 2 spell card from your deck to your hand.;False;True;True;True;True;False;False
 Discard one rank 2 spell card to add one rank 2 spell card from your discard pile to your hand.;False;True;True;True;True;False;False
-Discard one rank 2 spell card to counter the effect of a rank 2 spell card.;False;True;False;False;False;False;False
-Discard one rank 3 card from your hand to play one rank 3 card from your deck.;False;True;False;False;True;False;False
-Discard one rank 3 card from your hand to play one rank 3 card from your discard pile.;False;True;False;False;True;False;False
-Discard one rank 3 card from your hand to play up to two rank 3 card from your deck.;False;True;False;False;True;False;False
-Discard one rank 3 card from your hand to play up to two rank 3 card from your discard pile.;False;True;False;False;True;False;False
+Discard one rank 2 spell card to counter the effect of a rank 2 spell card.;False;True;True;True;True;False;False
+Discard one rank 3 card from your hand to play one rank 3 card from your deck.;False;True;False;True;True;True;False
+Discard one rank 3 card from your hand to play one rank 3 card from your discard pile.;False;True;False;True;True;True;False
+Discard one rank 3 card from your hand to play up to two rank 3 card from your deck.;False;True;False;True;True;True;False
+Discard one rank 3 card from your hand to play up to two rank 3 card from your discard pile.;False;True;False;True;True;True;False
 Discard one rank 3 card to add one rank 3 card from your deck to your hand.;False;True;False;True;True;True;False
 Discard one rank 3 card to add one rank 3 card from your discard pile to your hand.;False;True;False;True;True;True;False
-Discard one rank 3 card to counter the effect of a rank 3 card.;False;True;False;False;False;False;False
-Discard one rank 3 creature card from your hand to play one rank 3 creature card from your deck.;False;True;False;False;True;False;False
-Discard one rank 3 creature card from your hand to play one rank 3 creature card from your discard pile.;False;True;False;False;True;False;False
-Discard one rank 3 creature card from your hand to play up to two rank 3 creature card from your deck.;False;True;False;False;True;False;False
-Discard one rank 3 creature card from your hand to play up to two rank 3 creature card from your discard pile.;False;True;False;False;True;False;False
+Discard one rank 3 card to counter the effect of a rank 3 card.;False;True;False;True;True;True;False
+Discard one rank 3 creature card from your hand to play one rank 3 creature card from your deck.;False;True;False;True;True;True;False
+Discard one rank 3 creature card from your hand to play one rank 3 creature card from your discard pile.;False;True;False;True;True;True;False
+Discard one rank 3 creature card from your hand to play up to two rank 3 creature card from your deck.;False;True;False;True;True;True;False
+Discard one rank 3 creature card from your hand to play up to two rank 3 creature card from your discard pile.;False;True;False;True;True;True;False
 Discard one rank 3 creature card to add one rank 3 creature card from your deck to your hand.;False;True;False;True;True;True;False
 Discard one rank 3 creature card to add one rank 3 creature card from your discard pile to your hand.;False;True;False;True;True;True;False
-Discard one rank 3 creature card to counter the effect of a rank 3 creature card.;False;True;False;False;False;False;False
-Discard one rank 3 spell card from your hand to play one rank 3 spell card from your deck.;False;True;False;False;True;False;False
-Discard one rank 3 spell card from your hand to play one rank 3 spell card from your discard pile.;False;True;False;False;True;False;False
-Discard one rank 3 spell card from your hand to play up to two rank 3 spell card from your deck.;False;True;False;False;True;False;False
-Discard one rank 3 spell card from your hand to play up to two rank 3 spell card from your discard pile.;False;True;False;False;True;False;False
+Discard one rank 3 creature card to counter the effect of a rank 3 creature card.;False;True;False;True;True;True;False
+Discard one rank 3 spell card from your hand to play one rank 3 spell card from your deck.;False;True;False;True;True;True;False
+Discard one rank 3 spell card from your hand to play one rank 3 spell card from your discard pile.;False;True;False;True;True;True;False
+Discard one rank 3 spell card from your hand to play up to two rank 3 spell card from your deck.;False;True;False;True;True;True;False
+Discard one rank 3 spell card from your hand to play up to two rank 3 spell card from your discard pile.;False;True;False;True;True;True;False
 Discard one rank 3 spell card to add one rank 3 spell card from your deck to your hand.;False;True;False;True;True;True;False
 Discard one rank 3 spell card to add one rank 3 spell card from your discard pile to your hand.;False;True;False;True;True;True;False
-Discard one rank 3 spell card to counter the effect of a rank 3 spell card.;False;True;False;False;False;False;False
-Discard one rank 4 card from your hand to play one rank 4 card from your deck.;False;True;False;True;True;False;False
-Discard one rank 4 card from your hand to play one rank 4 card from your discard pile.;False;True;False;True;True;False;False
-Discard one rank 4 card from your hand to play up to two rank 4 card from your deck.;False;True;False;True;True;False;False
-Discard one rank 4 card from your hand to play up to two rank 4 card from your discard pile.;False;True;False;True;True;False;False
+Discard one rank 3 spell card to counter the effect of a rank 3 spell card.;False;True;False;True;True;True;False
+Discard one rank 4 card from your hand to play one rank 4 card from your deck.;False;True;False;True;True;True;True
+Discard one rank 4 card from your hand to play one rank 4 card from your discard pile.;False;True;False;True;True;True;True
+Discard one rank 4 card from your hand to play up to two rank 4 card from your deck.;False;True;False;True;True;True;True
+Discard one rank 4 card from your hand to play up to two rank 4 card from your discard pile.;False;True;False;True;True;True;True
 Discard one rank 4 card to add one rank 4 card from your deck to your hand.;False;True;False;True;True;True;True
 Discard one rank 4 card to add one rank 4 card from your discard pile to your hand.;False;True;False;True;True;True;True
-Discard one rank 4 card to counter the effect of a rank 4 card.;False;True;False;False;False;False;False
-Discard one rank 4 creature card from your hand to play one rank 4 creature card from your deck.;False;True;False;True;True;False;False
-Discard one rank 4 creature card from your hand to play one rank 4 creature card from your discard pile.;False;True;False;True;True;False;False
-Discard one rank 4 creature card from your hand to play up to two rank 4 creature card from your deck.;False;True;False;True;True;False;False
-Discard one rank 4 creature card from your hand to play up to two rank 4 creature card from your discard pile.;False;True;False;True;True;False;False
+Discard one rank 4 card to counter the effect of a rank 4 card.;False;True;False;True;True;True;True
+Discard one rank 4 creature card from your hand to play one rank 4 creature card from your deck.;False;True;False;True;True;True;True
+Discard one rank 4 creature card from your hand to play one rank 4 creature card from your discard pile.;False;True;False;True;True;True;True
+Discard one rank 4 creature card from your hand to play up to two rank 4 creature card from your deck.;False;True;False;True;True;True;True
+Discard one rank 4 creature card from your hand to play up to two rank 4 creature card from your discard pile.;False;True;False;True;True;True;True
 Discard one rank 4 creature card to add one rank 4 creature card from your deck to your hand.;False;True;False;True;True;True;True
 Discard one rank 4 creature card to add one rank 4 creature card from your discard pile to your hand.;False;True;False;True;True;True;True
-Discard one rank 4 creature card to counter the effect of a rank 4 creature card.;False;True;False;False;False;False;False
-Discard one rank 5 card from your hand to play one rank 5 card from your deck.;False;True;False;True;False;False;False
-Discard one rank 5 card from your hand to play one rank 5 card from your discard pile.;False;True;False;True;False;False;False
-Discard one rank 5 card from your hand to play up to two rank 5 card from your deck.;False;True;False;True;False;False;False
-Discard one rank 5 card from your hand to play up to two rank 5 card from your discard pile.;False;True;False;True;False;False;False
+Discard one rank 4 creature card to counter the effect of a rank 4 creature card.;False;True;False;True;True;True;True
+Discard one rank 5 card from your hand to play one rank 5 card from your deck.;False;True;False;True;False;True;True
+Discard one rank 5 card from your hand to play one rank 5 card from your discard pile.;False;True;False;True;False;True;True
+Discard one rank 5 card from your hand to play up to two rank 5 card from your deck.;False;True;False;True;False;True;True
+Discard one rank 5 card from your hand to play up to two rank 5 card from your discard pile.;False;True;False;True;False;True;True
 Discard one rank 5 card to add one rank 5 card from your deck to your hand.;False;True;False;True;False;True;True
 Discard one rank 5 card to add one rank 5 card from your discard pile to your hand.;False;True;False;True;False;True;True
-Discard one rank 5 card to counter the effect of a rank 5 card.;False;True;False;False;False;False;False
-Discard one rank 5 creature card from your hand to play one rank 5 creature card from your deck.;False;True;False;True;False;False;False
-Discard one rank 5 creature card from your hand to play one rank 5 creature card from your discard pile.;False;True;False;True;False;False;False
-Discard one rank 5 creature card from your hand to play up to two rank 5 creature card from your deck.;False;True;False;True;False;False;False
-Discard one rank 5 creature card from your hand to play up to two rank 5 creature card from your discard pile.;False;True;False;True;False;False;False
+Discard one rank 5 card to counter the effect of a rank 5 card.;False;True;False;True;False;True;True
+Discard one rank 5 creature card from your hand to play one rank 5 creature card from your deck.;False;True;False;True;False;True;True
+Discard one rank 5 creature card from your hand to play one rank 5 creature card from your discard pile.;False;True;False;True;False;True;True
+Discard one rank 5 creature card from your hand to play up to two rank 5 creature card from your deck.;False;True;False;True;False;True;True
+Discard one rank 5 creature card from your hand to play up to two rank 5 creature card from your discard pile.;False;True;False;True;False;True;True
 Discard one rank 5 creature card to add one rank 5 creature card from your deck to your hand.;False;True;False;True;False;True;True
 Discard one rank 5 creature card to add one rank 5 creature card from your discard pile to your hand.;False;True;False;True;False;True;True
-Discard one rank 5 creature card to counter the effect of a rank 5 creature card.;False;True;False;False;False;False;False
-Discard one reptile card from your hand to play one reptile card from your deck.;True;False;False;False;False;False;False
-Discard one reptile card from your hand to play one reptile card from your discard pile.;True;False;False;False;False;False;False
-Discard one reptile card from your hand to play up to two reptile card from your deck.;True;False;False;False;False;False;False
-Discard one reptile card from your hand to play up to two reptile card from your discard pile.;True;False;False;False;False;False;False
-Discard one reptile card to add one reptile card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one reptile card to add one reptile card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one reptile card to counter the effect of a reptile card.;True;False;False;False;False;False;False
+Discard one rank 5 creature card to counter the effect of a rank 5 creature card.;False;True;False;True;False;True;True
+Discard one reptile card from your hand to play one reptile card from your deck.;True;False;True;True;True;True;True
+Discard one reptile card from your hand to play one reptile card from your discard pile.;True;False;True;True;True;True;True
+Discard one reptile card from your hand to play up to two reptile card from your deck.;True;False;True;True;True;True;True
+Discard one reptile card from your hand to play up to two reptile card from your discard pile.;True;False;True;True;True;True;True
+Discard one reptile card to add one reptile card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one reptile card to add one reptile card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one reptile card to counter the effect of a reptile card.;True;False;True;True;True;True;True
 Discard one spell card from your hand to play one spell card from your deck.;False;True;True;True;True;False;False
 Discard one spell card from your hand to play one spell card from your discard pile.;False;True;True;True;True;False;False
-Discard one spell card from your hand to play up to two spell card from your deck.;False;True;False;False;False;False;False
-Discard one spell card from your hand to play up to two spell card from your discard pile.;False;True;False;False;False;False;False
+Discard one spell card from your hand to play up to two spell card from your deck.;False;True;True;True;True;False;False
+Discard one spell card from your hand to play up to two spell card from your discard pile.;False;True;True;True;True;False;False
 Discard one spell card to add one spell card from your deck to your hand.;False;True;True;True;True;False;False
 Discard one spell card to add one spell card from your discard pile to your hand.;False;True;True;True;True;False;False
 Discard one spell card to counter the effect of a spell card.;False;True;True;True;True;False;False
-Discard one spellcaster card from your hand to play one spellcaster card from your deck.;True;False;False;False;False;False;False
-Discard one spellcaster card from your hand to play one spellcaster card from your discard pile.;True;False;False;False;False;False;False
-Discard one spellcaster card from your hand to play up to two spellcaster card from your deck.;True;False;False;False;False;False;False
-Discard one spellcaster card from your hand to play up to two spellcaster card from your discard pile.;True;False;False;False;False;False;False
-Discard one spellcaster card to add one spellcaster card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one spellcaster card to add one spellcaster card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one spellcaster card to counter the effect of a spellcaster card.;True;False;False;False;False;False;False
-Discard one undead card from your hand to play one undead card from your deck.;True;False;False;False;False;False;False
-Discard one undead card from your hand to play one undead card from your discard pile.;True;False;False;False;False;False;False
-Discard one undead card from your hand to play up to two undead card from your deck.;True;False;False;False;False;False;False
-Discard one undead card from your hand to play up to two undead card from your discard pile.;True;False;False;False;False;False;False
-Discard one undead card to add one undead card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one undead card to add one undead card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one undead card to counter the effect of a undead card.;True;False;False;False;False;False;False
-Discard one warrior card from your hand to play one warrior card from your deck.;True;False;False;False;False;False;False
-Discard one warrior card from your hand to play one warrior card from your discard pile.;True;False;False;False;False;False;False
-Discard one warrior card from your hand to play up to two warrior card from your deck.;True;False;False;False;False;False;False
-Discard one warrior card from your hand to play up to two warrior card from your discard pile.;True;False;False;False;False;False;False
-Discard one warrior card to add one warrior card from your deck to your hand.;True;False;False;False;False;False;False
-Discard one warrior card to add one warrior card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard one warrior card to counter the effect of a warrior card.;True;False;False;False;False;False;False
+Discard one spellcaster card from your hand to play one spellcaster card from your deck.;True;False;True;True;True;True;True
+Discard one spellcaster card from your hand to play one spellcaster card from your discard pile.;True;False;True;True;True;True;True
+Discard one spellcaster card from your hand to play up to two spellcaster card from your deck.;True;False;True;True;True;True;True
+Discard one spellcaster card from your hand to play up to two spellcaster card from your discard pile.;True;False;True;True;True;True;True
+Discard one spellcaster card to add one spellcaster card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one spellcaster card to add one spellcaster card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one spellcaster card to counter the effect of a spellcaster card.;True;False;True;True;True;True;True
+Discard one undead card from your hand to play one undead card from your deck.;True;False;True;True;True;True;True
+Discard one undead card from your hand to play one undead card from your discard pile.;True;False;True;True;True;True;True
+Discard one undead card from your hand to play up to two undead card from your deck.;True;False;True;True;True;True;True
+Discard one undead card from your hand to play up to two undead card from your discard pile.;True;False;True;True;True;True;True
+Discard one undead card to add one undead card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one undead card to add one undead card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one undead card to counter the effect of a undead card.;True;False;True;True;True;True;True
+Discard one warrior card from your hand to play one warrior card from your deck.;True;False;True;True;True;True;True
+Discard one warrior card from your hand to play one warrior card from your discard pile.;True;False;True;True;True;True;True
+Discard one warrior card from your hand to play up to two warrior card from your deck.;True;False;True;True;True;True;True
+Discard one warrior card from your hand to play up to two warrior card from your discard pile.;True;False;True;True;True;True;True
+Discard one warrior card to add one warrior card from your deck to your hand.;True;False;True;True;True;True;True
+Discard one warrior card to add one warrior card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard one warrior card to counter the effect of a warrior card.;True;False;True;True;True;True;True
 Discard one water card from your hand to play one water card from your deck.;False;True;True;True;True;False;False
 Discard one water card from your hand to play one water card from your discard pile.;False;True;True;True;True;False;False
-Discard one water card from your hand to play up to two water card from your deck.;False;True;False;False;False;False;False
-Discard one water card from your hand to play up to two water card from your discard pile.;False;True;False;False;False;False;False
+Discard one water card from your hand to play up to two water card from your deck.;False;True;True;True;True;False;False
+Discard one water card from your hand to play up to two water card from your discard pile.;False;True;True;True;True;False;False
 Discard one water card to add one water card from your deck to your hand.;False;True;True;True;True;False;False
 Discard one water card to add one water card from your discard pile to your hand.;False;True;True;True;True;False;False
 Discard one water card to counter the effect of a water card.;False;True;True;True;True;False;False
-Discard this card to add one air card from your deck to your hand.;False;True;False;False;False;False;False
-Discard this card to add one air card from your discard pile to your hand.;False;True;False;False;False;False;False
-Discard this card to add one aquatic card from your deck to your hand.;True;False;False;False;False;False;False
-Discard this card to add one aquatic card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard this card to add one beast card from your deck to your hand.;True;False;False;False;False;False;False
-Discard this card to add one beast card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard this card to add one botanic card from your deck to your hand.;True;False;False;False;False;False;False
-Discard this card to add one botanic card from your discard pile to your hand.;True;False;False;False;False;False;False
+Discard this card to add one air card from your deck to your hand.;False;True;True;True;True;False;False
+Discard this card to add one air card from your discard pile to your hand.;False;True;True;True;True;False;False
+Discard this card to add one aquatic card from your deck to your hand.;True;False;True;True;True;True;True
+Discard this card to add one aquatic card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard this card to add one beast card from your deck to your hand.;True;False;True;True;True;True;True
+Discard this card to add one beast card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard this card to add one botanic card from your deck to your hand.;True;False;True;True;True;True;True
+Discard this card to add one botanic card from your discard pile to your hand.;True;False;True;True;True;True;True
 Discard this card to add one card from your deck to your hand.;False;True;False;False;False;False;False
 Discard this card to add one card from your discard pile to your hand.;False;True;False;False;False;False;False
 Discard this card to add one creature from your deck to your hand.;False;True;False;False;False;False;False
 Discard this card to add one creature from your discard pile to your hand.;False;True;False;False;False;False;False
-Discard this card to add one dark card from your deck to your hand.;False;True;False;False;False;False;False
-Discard this card to add one dark card from your discard pile to your hand.;False;True;False;False;False;False;False
-Discard this card to add one dragon card from your deck to your hand.;True;False;False;False;False;False;False
-Discard this card to add one dragon card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard this card to add one earth card from your deck to your hand.;False;True;False;False;False;False;False
-Discard this card to add one earth card from your discard pile to your hand.;False;True;False;False;False;False;False
-Discard this card to add one electric card from your deck to your hand.;False;True;False;False;False;False;False
-Discard this card to add one electric card from your discard pile to your hand.;False;True;False;False;False;False;False
-Discard this card to add one elemental card from your deck to your hand.;True;False;False;False;False;False;False
-Discard this card to add one elemental card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard this card to add one fairy card from your deck to your hand.;True;False;False;False;False;False;False
-Discard this card to add one fairy card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard this card to add one fire card from your deck to your hand.;False;True;False;False;False;False;False
-Discard this card to add one fire card from your discard pile to your hand.;False;True;False;False;False;False;False
-Discard this card to add one ghost card from your deck to your hand.;True;False;False;False;False;False;False
-Discard this card to add one ghost card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard this card to add one insect card from your deck to your hand.;True;False;False;False;False;False;False
-Discard this card to add one insect card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard this card to add one light card from your deck to your hand.;False;True;False;False;False;False;False
-Discard this card to add one light card from your discard pile to your hand.;False;True;False;False;False;False;False
-Discard this card to add one machine card from your deck to your hand.;True;False;False;False;False;False;False
-Discard this card to add one machine card from your discard pile to your hand.;True;False;False;False;False;False;False
+Discard this card to add one dark card from your deck to your hand.;False;True;True;True;True;False;False
+Discard this card to add one dark card from your discard pile to your hand.;False;True;True;True;True;False;False
+Discard this card to add one dragon card from your deck to your hand.;True;False;True;True;True;True;True
+Discard this card to add one dragon card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard this card to add one earth card from your deck to your hand.;False;True;True;True;True;False;False
+Discard this card to add one earth card from your discard pile to your hand.;False;True;True;True;True;False;False
+Discard this card to add one electric card from your deck to your hand.;False;True;True;True;True;False;False
+Discard this card to add one electric card from your discard pile to your hand.;False;True;True;True;True;False;False
+Discard this card to add one elemental card from your deck to your hand.;True;False;True;True;True;True;True
+Discard this card to add one elemental card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard this card to add one fairy card from your deck to your hand.;True;False;True;True;True;True;True
+Discard this card to add one fairy card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard this card to add one fire card from your deck to your hand.;False;True;True;True;True;False;False
+Discard this card to add one fire card from your discard pile to your hand.;False;True;True;True;True;False;False
+Discard this card to add one ghost card from your deck to your hand.;True;False;True;True;True;True;True
+Discard this card to add one ghost card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard this card to add one insect card from your deck to your hand.;True;False;True;True;True;True;True
+Discard this card to add one insect card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard this card to add one light card from your deck to your hand.;False;True;True;True;True;False;False
+Discard this card to add one light card from your discard pile to your hand.;False;True;True;True;True;False;False
+Discard this card to add one machine card from your deck to your hand.;True;False;True;True;True;True;True
+Discard this card to add one machine card from your discard pile to your hand.;True;False;True;True;True;True;True
 Discard this card to add one rank 1 air card from your deck to your hand.;False;True;True;False;True;False;False
 Discard this card to add one rank 1 air card from your deck to your hand.;False;True;True;False;True;False;False
 Discard this card to add one rank 1 air card from your discard pile to your hand.;False;True;True;False;True;False;False
@@ -6235,20 +6238,20 @@ Discard this card to add one rank 5 water card from your deck to your hand.;Fals
 Discard this card to add one rank 5 water card from your deck to your hand.;False;True;False;True;False;True;True
 Discard this card to add one rank 5 water card from your discard pile to your hand.;False;True;False;True;False;True;True
 Discard this card to add one rank 5 water card from your discard pile to your hand.;False;True;False;True;False;True;True
-Discard this card to add one reptile card from your deck to your hand.;True;False;False;False;False;False;False
-Discard this card to add one reptile card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard this card to add one spell card from your deck to your hand.;False;True;False;False;False;False;False
-Discard this card to add one spell card from your discard pile to your hand.;False;True;False;False;False;False;False
-Discard this card to add one spell from your deck to your hand.;False;True;False;False;False;False;False
-Discard this card to add one spell from your discard pile to your hand.;False;True;False;False;False;False;False
-Discard this card to add one spellcaster card from your deck to your hand.;True;True;False;False;False;False;False
-Discard this card to add one spellcaster card from your discard pile to your hand.;True;True;False;False;False;False;False
-Discard this card to add one undead card from your deck to your hand.;True;False;False;False;False;False;False
-Discard this card to add one undead card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard this card to add one warrior card from your deck to your hand.;True;False;False;False;False;False;False
-Discard this card to add one warrior card from your discard pile to your hand.;True;False;False;False;False;False;False
-Discard this card to add one water card from your deck to your hand.;False;True;False;False;False;False;False
-Discard this card to add one water card from your discard pile to your hand.;False;True;False;False;False;False;False
+Discard this card to add one reptile card from your deck to your hand.;True;False;True;True;True;True;True
+Discard this card to add one reptile card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard this card to add one spell card from your deck to your hand.;False;True;True;True;True;False;False
+Discard this card to add one spell card from your discard pile to your hand.;False;True;True;True;True;False;False
+Discard this card to add one spell from your deck to your hand.;False;True;True;True;True;False;False
+Discard this card to add one spell from your discard pile to your hand.;False;True;True;True;True;False;False
+Discard this card to add one spellcaster card from your deck to your hand.;True;True;True;True;True;True;True
+Discard this card to add one spellcaster card from your discard pile to your hand.;True;True;True;True;True;True;True
+Discard this card to add one undead card from your deck to your hand.;True;False;True;True;True;True;True
+Discard this card to add one undead card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard this card to add one warrior card from your deck to your hand.;True;False;True;True;True;True;True
+Discard this card to add one warrior card from your discard pile to your hand.;True;False;True;True;True;True;True
+Discard this card to add one water card from your deck to your hand.;False;True;True;True;True;False;False
+Discard this card to add one water card from your discard pile to your hand.;False;True;True;True;True;False;False
 Draw four cards, then discard four cards of your choice.;False;True;False;True;False;False;False
 Draw four cards, then discard one card of your choice.;False;True;False;True;False;False;False
 Draw four cards, then discard three cards of your choice.;False;True;False;True;False;False;False
@@ -6290,90 +6293,90 @@ For the next all turns, spellcaster cards you control cannot be destroyed.;True;
 For the next all turns, undead cards you control cannot be destroyed.;True;False;False;False;False;False;False
 For the next all turns, warrior cards you control cannot be destroyed.;True;False;False;False;False;False;False
 For the next all turns, water cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next four turnss, air cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next four turnss, aquatic cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, beast cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, botanic cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, dark cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next four turnss, dragon cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, earth cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next four turnss, electric cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next four turnss, elemental cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, fairy cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, fire cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next four turnss, ghost cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, insect cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, light cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next four turnss, machine cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, reptile cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, spell cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next four turnss, spellcaster cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, undead cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, warrior cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next four turnss, water cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next one turn, air card you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next one turn, aquatic card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, beast card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, botanic card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, dark card you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next one turn, dragon card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, earth card you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next one turn, electric card you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next one turn, elemental card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, fairy card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, fire card you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next one turn, ghost card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, insect card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, light card you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next one turn, machine card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, reptile card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, spell card you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next one turn, spellcaster card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, undead card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, warrior card you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next one turn, water card you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next three turnss, air cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next three turnss, aquatic cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, beast cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, botanic cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, dark cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next three turnss, dragon cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, earth cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next three turnss, electric cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next three turnss, elemental cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, fairy cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, fire cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next three turnss, ghost cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, insect cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, light cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next three turnss, machine cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, reptile cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, spell cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next three turnss, spellcaster cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, undead cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, warrior cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next three turnss, water cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next two turnss, air cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next two turnss, aquatic cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, beast cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, botanic cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, dark cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next two turnss, dragon cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, earth cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next two turnss, electric cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next two turnss, elemental cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, fairy cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, fire cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next two turnss, ghost cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, insect cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, light cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next two turnss, machine cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, reptile cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, spell cards you control cannot be destroyed.;False;True;False;False;False;False;False
-For the next two turnss, spellcaster cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, undead cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, warrior cards you control cannot be destroyed.;True;False;False;False;False;False;False
-For the next two turnss, water cards you control cannot be destroyed.;False;True;False;False;False;False;False
+For the next four turns, air cards you control cannot be destroyed.;False;True;False;True;False;True;True
+For the next four turns, aquatic cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, beast cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, botanic cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, dark cards you control cannot be destroyed.;False;True;False;True;False;True;True
+For the next four turns, dragon cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, earth cards you control cannot be destroyed.;False;True;False;True;False;True;True
+For the next four turns, electric cards you control cannot be destroyed.;False;True;False;True;False;True;True
+For the next four turns, elemental cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, fairy cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, fire cards you control cannot be destroyed.;False;True;False;True;False;True;True
+For the next four turns, ghost cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, insect cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, light cards you control cannot be destroyed.;False;True;False;True;False;True;True
+For the next four turns, machine cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, reptile cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, spell cards you control cannot be destroyed.;False;True;False;True;False;True;True
+For the next four turns, spellcaster cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, undead cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, warrior cards you control cannot be destroyed.;True;False;False;True;False;True;True
+For the next four turns, water cards you control cannot be destroyed.;False;True;False;True;False;True;True
+For the next one turn, air card you control cannot be destroyed.;False;True;True;False;True;False;False
+For the next one turn, aquatic card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, beast card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, botanic card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, dark card you control cannot be destroyed.;False;True;True;False;True;False;False
+For the next one turn, dragon card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, earth card you control cannot be destroyed.;False;True;True;False;True;False;False
+For the next one turn, electric card you control cannot be destroyed.;False;True;True;False;True;False;False
+For the next one turn, elemental card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, fairy card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, fire card you control cannot be destroyed.;False;True;True;False;True;False;False
+For the next one turn, ghost card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, insect card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, light card you control cannot be destroyed.;False;True;True;False;True;False;False
+For the next one turn, machine card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, reptile card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, spell card you control cannot be destroyed.;False;True;True;False;True;False;False
+For the next one turn, spellcaster card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, undead card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, warrior card you control cannot be destroyed.;True;False;True;False;True;False;False
+For the next one turn, water card you control cannot be destroyed.;False;True;True;False;True;False;False
+For the next three turns, air cards you control cannot be destroyed.;False;True;False;True;True;True;False
+For the next three turns, aquatic cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, beast cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, botanic cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, dark cards you control cannot be destroyed.;False;True;False;True;True;True;False
+For the next three turns, dragon cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, earth cards you control cannot be destroyed.;False;True;False;True;True;True;False
+For the next three turns, electric cards you control cannot be destroyed.;False;True;False;True;True;True;False
+For the next three turns, elemental cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, fairy cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, fire cards you control cannot be destroyed.;False;True;False;True;True;True;False
+For the next three turns, ghost cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, insect cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, light cards you control cannot be destroyed.;False;True;False;True;True;True;False
+For the next three turns, machine cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, reptile cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, spell cards you control cannot be destroyed.;False;True;False;True;True;True;False
+For the next three turns, spellcaster cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, undead cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, warrior cards you control cannot be destroyed.;True;False;False;True;True;True;False
+For the next three turns, water cards you control cannot be destroyed.;False;True;False;True;True;True;False
+For the next two turns, air cards you control cannot be destroyed.;False;True;True;True;True;False;False
+For the next two turns, aquatic cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, beast cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, botanic cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, dark cards you control cannot be destroyed.;False;True;True;True;True;False;False
+For the next two turns, dragon cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, earth cards you control cannot be destroyed.;False;True;True;True;True;False;False
+For the next two turns, electric cards you control cannot be destroyed.;False;True;True;True;True;False;False
+For the next two turns, elemental cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, fairy cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, fire cards you control cannot be destroyed.;False;True;True;True;True;False;False
+For the next two turns, ghost cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, insect cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, light cards you control cannot be destroyed.;False;True;True;True;True;False;False
+For the next two turns, machine cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, reptile cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, spell cards you control cannot be destroyed.;False;True;True;True;True;False;False
+For the next two turns, spellcaster cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, undead cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, warrior cards you control cannot be destroyed.;True;False;True;True;True;False;False
+For the next two turns, water cards you control cannot be destroyed.;False;True;True;True;True;False;False
 Force your opponent to discard four cards of their choice from their hand.;False;True;False;False;False;False;False
 Force your opponent to discard one card of their choice from their hand.;False;True;False;False;False;False;False
 Force your opponent to discard three cards of their choice from their hand.;False;True;False;False;False;False;False
@@ -6598,9 +6601,9 @@ Place one warrior card from your deck under this card.;True;False;True;True;True
 Place one warrior card from your discard pile under this card.;True;False;True;True;True;True;True
 Place one water card from your deck under this card.;False;True;False;False;False;False;False
 Place one water card from your discard pile under this card.;False;True;False;False;False;False;False
-Play one card under this one.;True;True;False;False;False;False;False
-Play one creature under this one.;True;True;False;False;False;False;False
-Play one spell under this one.;True;True;False;False;False;False;False
+Play one card under this one.;True;True;True;True;True;True;True
+Play one creature under this one.;True;True;True;True;True;True;True
+Play one spell under this one.;True;True;True;True;True;True;True
 Return one air card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
 Return one air card from the field to the owner's hand.;False;True;False;False;False;False;False
 Return one air card from your discard pile to your hand.;False;True;False;False;False;False;False
@@ -6646,32 +6649,32 @@ Return one light card from your discard pile to your hand.;False;True;False;Fals
 Return one machine card from the discard pile to the top of your deck.;True;False;False;False;False;False;False
 Return one machine card from the field to the owner's hand.;True;False;False;False;False;False;False
 Return one machine card from your discard pile to your hand.;True;False;False;False;False;False;False
-Return one rank 1 card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 1 card from your discard pile to your hand.;False;True;False;False;False;False;False
-Return one rank 1 creature card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 1 creature card from your discard pile to your hand.;False;True;False;False;False;False;False
-Return one rank 1 spell card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 1 spell card from your discard pile to your hand.;False;True;False;False;False;False;False
-Return one rank 2 card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 2 card from your discard pile to your hand.;False;True;False;False;False;False;False
-Return one rank 2 creature card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 2 creature card from your discard pile to your hand.;False;True;False;False;False;False;False
-Return one rank 2 spell card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 2 spell card from your discard pile to your hand.;False;True;False;False;False;False;False
-Return one rank 3 card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 3 card from your discard pile to your hand.;False;True;False;False;False;False;False
-Return one rank 3 creature card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 3 creature card from your discard pile to your hand.;False;True;False;False;False;False;False
-Return one rank 3 spell card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 3 spell card from your discard pile to your hand.;False;True;False;False;False;False;False
-Return one rank 4 card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 4 card from your discard pile to your hand.;False;True;False;False;False;False;False
-Return one rank 4 creature card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 4 creature card from your discard pile to your hand.;False;True;False;False;False;False;False
-Return one rank 5 card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 5 card from your discard pile to your hand.;False;True;False;False;False;False;False
-Return one rank 5 creature card from the discard pile to the top of your deck.;False;True;False;False;False;False;False
-Return one rank 5 creature card from your discard pile to your hand.;False;True;False;False;False;False;False
+Return one rank 1 card from the discard pile to the top of your deck.;False;True;True;False;True;False;False
+Return one rank 1 card from your discard pile to your hand.;False;True;True;False;True;False;False
+Return one rank 1 creature card from the discard pile to the top of your deck.;False;True;True;False;True;False;False
+Return one rank 1 creature card from your discard pile to your hand.;False;True;True;False;True;False;False
+Return one rank 1 spell card from the discard pile to the top of your deck.;False;True;True;False;True;False;False
+Return one rank 1 spell card from your discard pile to your hand.;False;True;True;False;True;False;False
+Return one rank 2 card from the discard pile to the top of your deck.;False;True;True;True;True;False;False
+Return one rank 2 card from your discard pile to your hand.;False;True;True;True;True;False;False
+Return one rank 2 creature card from the discard pile to the top of your deck.;False;True;True;True;True;False;False
+Return one rank 2 creature card from your discard pile to your hand.;False;True;True;True;True;False;False
+Return one rank 2 spell card from the discard pile to the top of your deck.;False;True;True;True;True;False;False
+Return one rank 2 spell card from your discard pile to your hand.;False;True;True;True;True;False;False
+Return one rank 3 card from the discard pile to the top of your deck.;False;True;False;True;True;True;False
+Return one rank 3 card from your discard pile to your hand.;False;True;False;True;True;True;False
+Return one rank 3 creature card from the discard pile to the top of your deck.;False;True;False;True;True;True;False
+Return one rank 3 creature card from your discard pile to your hand.;False;True;False;True;True;True;False
+Return one rank 3 spell card from the discard pile to the top of your deck.;False;True;False;True;True;True;False
+Return one rank 3 spell card from your discard pile to your hand.;False;True;False;True;True;True;False
+Return one rank 4 card from the discard pile to the top of your deck.;False;True;False;True;True;True;True
+Return one rank 4 card from your discard pile to your hand.;False;True;False;True;True;True;True
+Return one rank 4 creature card from the discard pile to the top of your deck.;False;True;False;True;True;True;True
+Return one rank 4 creature card from your discard pile to your hand.;False;True;False;True;True;True;True
+Return one rank 5 card from the discard pile to the top of your deck.;False;True;False;True;False;True;True
+Return one rank 5 card from your discard pile to your hand.;False;True;False;True;False;True;True
+Return one rank 5 creature card from the discard pile to the top of your deck.;False;True;False;True;False;True;True
+Return one rank 5 creature card from your discard pile to your hand.;False;True;False;True;False;True;True
 Return one reptile card from the discard pile to the top of your deck.;True;False;False;False;False;False;False
 Return one reptile card from the field to the owner's hand.;True;False;False;False;False;False;False
 Return one reptile card from your discard pile to your hand.;True;False;False;False;False;False;False
