@@ -75,7 +75,7 @@ Both files are optional; if missing, the script proceeds without filtering or re
 
 \subsection{Usage}
 Invoke the script via the command line:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[style=terminalstyle]
 python3 create_effect_combinations.py [-s SENTENCE | -f FILE] [-p DIR] [-o OUT] [-t] [-d [FILE]] [-c CONFIG] [-r REPLACEMENTS]
 \end{lstlisting}
 Key arguments include:
@@ -108,7 +108,7 @@ And \texttt{placeholders/phrase\_replacements.txt}:
 two card: two cards
 \end{lstlisting}
 Running:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[style=terminalstyle]
 python3 create_effect_combinations.py -s "Draw <number> card" -t
 \end{lstlisting}
 Outputs:
@@ -168,7 +168,7 @@ The script offers the following key features:
 
 \subsection{Usage}
 Invoke the script via the command line:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[style=terminalstyle]
 python3 add_csv_field.py -i INPUT -o OUTPUT -c COLUMN [-p DIR] [-t TEXT | -e EXACT] [-m MATCH\_COLUMN]
 \end{lstlisting}
 Key arguments include:
@@ -198,7 +198,7 @@ Gain 5 life
 Draw 1 creature
 \end{lstlisting}
 Running:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[style=terminalstyle]
 python3 add_csv_field.py -i effects.txt -o output.csv -c HasDraw -t "Draw <number>"
 \end{lstlisting}
 Outputs \texttt{output.csv}:
@@ -217,7 +217,7 @@ Draw two cards;False
 Gain life;False
 \end{lstlisting}
 Running:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[style=terminalstyle]
 python3 add_csv_field.py -i effects.csv -o updated.csv -c HasDraw -e "Draw two"
 \end{lstlisting}
 Outputs \texttt{updated.csv}:
@@ -280,7 +280,7 @@ The script offers the following features:
 
 \subsection{Usage}
 Invoke the script via the command line:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[style=terminalstyle]
 python3 alphabetize_file.py [-i INPUT] [-o OUTPUT]
 \end{lstlisting}
 Key arguments include:
@@ -299,7 +299,7 @@ Draw 1 creature
 Add 3 points
 \end{lstlisting}
 Running:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[style=terminalstyle]
 python3 alphabetize_file.py -i effects.txt -o sorted_effects.txt
 \end{lstlisting}
 Outputs \texttt{sorted\_effects.txt}:
@@ -359,7 +359,7 @@ It provides a flexible framework that can adapt as effect definitions and catego
 
 \subsection{Usage}
 Run the script from the command line:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[style=terminalstyle]
 ./generate_and_order_effects.sh
 \end{lstlisting}
 No arguments are currently required, though future iterations may introduce options for customization.
@@ -410,7 +410,7 @@ It serves as a flexible tool for designers to produce and iterate on card design
 
 \subsection{Usage}
 Run the script from the command line with optional arguments:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[style=terminalstyle]
 	python3 create_card.py --name "Card Name" --type TYPE --level LEVEL --subtype SUBTYPE --effect1 "Effect 1" --effect2 "Effect 2" [--attack ATK] [--defense DEF] [--image IMAGE]
 \end{lstlisting}
 Defaults include \texttt{"fire"} type, level 1, and random stats.

@@ -157,12 +157,6 @@ def draw_single_line_text(draw, text, top_left, bottom_right, initial_font_size=
     temp_img = Image.new("RGBA", (text_width, text_height), (0, 0, 0, 0))
     temp_draw = ImageDraw.Draw(temp_img)
     temp_draw.text((0, 0), text, font=font, fill=color)
-
-    # Debug: Save temp_img before transformation in fallback
-    debug_path = f"debug_temp_{text[:10]}_{font_size}_fallback.png"
-    temp_img.save(debug_path)
-    print(f"Saved temp image before squishing (fallback): {debug_path}")
-
     squish_factor = box_width / text_width if text_width > box_width else 1
     affine_matrix = (squish_factor, 0, 0, 0, 1, 0)
     squished_img = temp_img.transform((int(text_width * squish_factor), text_height), Image.AFFINE, affine_matrix, resample=Image.BILINEAR)
@@ -231,10 +225,36 @@ def draw_wrapped_text(draw, text, top_left, bottom_right, initial_font_size=50, 
     draw.text((x1 + x_offset, y1 + y_offset), wrapped_text, font=font, fill=color, align="center")
 
 
-def create_card(card_data):
+def create_card(card_data, output_folder):
     """
-    Creates the card.
-    """    
+    Creates a TTCG trading card image with specified details and saves it to a file.
+
+    This function generates a 750x1050 pixel card image based on the provided card data,
+    including type, level, name, subtype, attack, defense, and effects. It uses a base image
+    determined by the card type and level, overlays text in designated areas, and saves the
+    result as a PNG file in the specified output folder.
+
+    Args:
+        card_data (dict): A dictionary containing card details with the following keys:
+            - type (str): Card type (e.g., 'fire') used to select the base image.
+            - level (int): Card level (1-5) for the star overlay.
+            - name (str): Card name, drawn in a box at the top.
+            - subtype (str): Card subtype(s), drawn below the name.
+            - attack (str): Attack value, drawn in a box (converted to string if numeric).
+            - defense (str): Defense value, drawn in a box (converted to string if numeric).
+            - effect1 (str): First effect text, drawn as wrapped text.
+            - effect2 (str): Second effect text, drawn as wrapped text.
+        output_folder (str): Path to the folder where the card image will be saved.
+
+    Returns:
+        None: The function saves the card image to a file and prints the file path.
+
+    Notes:
+        - The card dimensions are fixed at 750x1050 pixels (2.5" x 3.5" at 300 DPI).
+        - Text is drawn in specific boxes using helper functions (`create_base_card`,
+          `draw_single_line_text`, `draw_wrapped_text`), which are assumed to be defined elsewhere.
+        - The output file is named `<type>_<name>.png`, with spaces in the name replaced by underscores.
+    """
     # TTCG card dimensions: 2.5" x 3.5" at 300 DPI = 750 x 1050 pixels
     width, height = 750, 1050
     
@@ -258,7 +278,7 @@ def create_card(card_data):
     draw_wrapped_text(draw, card_data["effect2"], (70, 870), (680, 970), initial_font_size=30)
 
     # Save the card
-    output_file = f"../images/generated_cards/ttcg_card_{card_data['name'].replace(' ', '_')}.png"
+    output_file = f"{output_folder}/{card_data['type'].replace(' ', '_')}_card_{card_data['name'].replace(' ', '_')}.png"
     img.save(output_file)
     print(f"Card saved as {output_file}")
 
@@ -286,6 +306,8 @@ def parse_args():
                         help="Defense value (defaults to random based on level, sums with atk to level*500)")
     parser.add_argument("--image", type=str, default="image.png",
                         help="The image file for this card.")
+    parser.add_argument('-o', "--output", type=str, default="../images/generated_cards",
+                        help="The folder to output images to.")
 
     return parser.parse_args()
 
@@ -324,4 +346,4 @@ if __name__ == "__main__":
         "image": args.image
     }
 
-    create_card(card_data)
+    create_card(card_data, args.output)

@@ -39,12 +39,12 @@ The `bin` directory serves as the central hub for executable scripts used in the
 - **Dependencies**: Requires `create_effect_combinations.py`, `add_csv_field.py`, and files in `../effects/` and `../placeholders/`.
 
 ### `create_card.py`
-- **Purpose**: Generates a trading card image (TTCG format) with customizable text, type, level, and effects, overlaying text and stats on a type-specific background and level-specific star overlay.
-- **Key Features**: Creates a 750x1050 pixel card with a base image based on card type, overlays a level-specific star image, supports single-line text (with optional squishing/centering) for name, subtype, attack, and defense, and center-aligned wrapped text for effects; handles missing images gracefully with fallbacks.
-- **Usage**: `python3 create_card.py --name "Card Name" --type TYPE --level LEVEL --subtype SUBTYPE --effect1 "Effect 1" --effect2 "Effect 2" [--attack ATK] [--defense DEF] [--image IMAGE]`
-- **Input**: Command-line arguments for card details; defaults to `"fire"` type, level 1, and random attack/defense stats based on level (total stats = level * 500); expects PNG images in `../images/card pngs/` (e.g., `fire.png`, `1 star.png`).
-- **Dependencies**: Requires `Pillow` for image processing (`pip install Pillow`); uses system font `DejaVuSans.ttf` or falls back to default.
-- **Output**: Saves a PNG card image to `../images/generated_cards/ttcg_card_<name>.png` (spaces replaced with underscores), e.g., `ttcg_card_Card_Name.png`.
+- **Purpose**: Generates a trading card image in TTCG format with customizable text, type, level, effects, and stats, overlaying them on a type-specific background and level-specific star overlay.
+- **Key Features**: Creates a 750x1050 pixel card (2.5" x 3.5" at 300 DPI) with a base image based on card type and a level-specific star overlay; supports single-line text for name, subtype, attack, and defense (with centering for stats), and wrapped text for two effects; uses predefined layout coordinates.
+- **Usage**: `python3 create_card.py --name "Card Name" --type TYPE --level LEVEL --subtype SUBTYPE --effect1 "Effect 1" --effect2 "Effect 2" [--attack ATK] [--defense DEF] [--image IMAGE] [-o OUTPUT]`
+- **Input**: Command-line arguments for card details; no defaults for type or level; attack and defense optional (no random generation in this version); expects PNG images in `../images/card pngs/` (e.g., `fire.png`, `1 star.png`).
+- **Dependencies**: Requires `Pillow` for image processing (`pip install Pillow`); assumes helper functions like `create_base_card`, `draw_single_line_text`, and `draw_wrapped_text`.
+- **Output**: Saves a PNG card image to `<output_folder>/<type>_<name>.png` (spaces replaced with underscores), e.g., `ttcg_card_Card_Name.png`; defaults to `../images/generated_cards/` if `-o` is not specified.
 
 ### `generate_random_effects.py`
 - **Purpose**: Filters a CSV file to find rows where specified columns are "True", then generates and prints random pairs from the first column of the filtered rows.
