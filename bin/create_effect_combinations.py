@@ -63,7 +63,7 @@ def clean_and_filter_combinations(combinations, config_file, verbose=False):
     return cleaned_combinations
 
 
-def replace_phrases_in_combinations(combinations, replacements_file, verbose=False):
+def replace_phrases_in_combinations(combinations, replacements_file, verbose=False, fix_plurality=True):
     """
     Searches a list of strings and replaces specific phrases with their designated replacements loaded from a configuration file.
     Lines starting with '#' in the file are treated as comments and ignored.
@@ -72,6 +72,7 @@ def replace_phrases_in_combinations(combinations, replacements_file, verbose=Fal
         combinations (list): List of strings to process.
         replacements_file (str): Path to the configuration file containing phrase replacements (default: 'placeholders/phrase_replacements.txt').
         verbose (bool): Adds extra output.
+        fix_plurality (bool): Also performs various plurality fixes.
 
     Returns:
         list: List of strings with phrases replaced.
@@ -105,20 +106,21 @@ def replace_phrases_in_combinations(combinations, replacements_file, verbose=Fal
         for old_phrase, new_phrase in phrase_replacements.items():
             updated_line = updated_line.replace(old_phrase, new_phrase)
             
-        # Fix grammar for phrases similar to "two ___ card", "two ___ cards", etc...
-        updated_line = re.sub(r"one (\w+) cards\b", r"one \1 card", updated_line)
-        updated_line = re.sub(r"one (\w+) spells\b", r"one \1 spell", updated_line)
-        updated_line = re.sub(r"one (\w+) creatures\b", r"one \1 creature", updated_line)
-        updated_line = re.sub(r"one (\w+) targets\b", r"one \1 target", updated_line)
-        updated_line = re.sub(r"one (\w+ \d+) cards\b", r"one \1 card", updated_line)
-        updated_line = re.sub(r"one (\w+ \d+) spells\b", r"one \1 spell", updated_line)
-        updated_line = re.sub(r"one (\w+ \d+) creatures\b", r"one \1 creature", updated_line)
-        updated_line = re.sub(r"one (\w+ \d+) targets\b", r"one \1 target", updated_line)
-        
-        updated_line = re.sub(r"one (.+?) cards\b", r"one \1 card", updated_line)
-        updated_line = re.sub(r"one (.+?) spells\b", r"one \1 spell", updated_line)
-        updated_line = re.sub(r"one (.+?) creatures\b", r"one \1 creature", updated_line)
-        updated_line = re.sub(r"one (.+?) targets\b", r"one \1 target", updated_line)
+        if fix_plurality:
+            # Fix grammar for phrases similar to "two ___ card", "two ___ cards", etc...
+            updated_line = re.sub(r"one (\w+) cards\b", r"one \1 card", updated_line)
+            updated_line = re.sub(r"one (\w+) spells\b", r"one \1 spell", updated_line)
+            updated_line = re.sub(r"one (\w+) creatures\b", r"one \1 creature", updated_line)
+            updated_line = re.sub(r"one (\w+) targets\b", r"one \1 target", updated_line)
+            updated_line = re.sub(r"one (\w+ \d+) cards\b", r"one \1 card", updated_line)
+            updated_line = re.sub(r"one (\w+ \d+) spells\b", r"one \1 spell", updated_line)
+            updated_line = re.sub(r"one (\w+ \d+) creatures\b", r"one \1 creature", updated_line)
+            updated_line = re.sub(r"one (\w+ \d+) targets\b", r"one \1 target", updated_line)
+            
+            updated_line = re.sub(r"one (.+?) cards\b", r"one \1 card", updated_line)
+            updated_line = re.sub(r"one (.+?) spells\b", r"one \1 spell", updated_line)
+            updated_line = re.sub(r"one (.+?) creatures\b", r"one \1 creature", updated_line)
+            updated_line = re.sub(r"one (.+?) targets\b", r"one \1 target", updated_line)
         
         updated_combinations.append(updated_line)
     
@@ -251,9 +253,20 @@ if __name__ == "__main__":
             exit(1)
             
     
+    # First, remove any duplicates that were generated.
     all_combinations = remove_duplicates(all_combinations)
-    all_combinations = clean_and_filter_combinations(all_combinations, args.combinations_to_remove)
+    
+    # Replace phrases to fix errors made during template replacement.
     all_combinations = replace_phrases_in_combinations(all_combinations, args.replacements_file)
+    
+    # This must appear after the call to replace_phrases_in_combinations because some of the phrases in the
+    # config file will only appear after it has been ran.
+    all_combinations = clean_and_filter_combinations(all_combinations, args.combinations_to_remove)
+    
+    # Run replace_phrases_in_combinations again without plurality fixes to catch some straggler phrases that became incorrect.
+    all_combinations = replace_phrases_in_combinations(all_combinations, args.replacements_file, fix_plurality=False)
+    
+    # alphabetize the output effect combinations.
     all_combinations = alphabetize_strings(all_combinations)
     
     if not args.test_mode:

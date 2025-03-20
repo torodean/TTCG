@@ -5358,8 +5358,8 @@ Discard one reptile card to add one reptile card from your discard pile to your 
 Discard one reptile card to counter the effect of a reptile card.
 Discard one spell card from your hand to play one spell card from your deck.
 Discard one spell card from your hand to play one spell card from your discard pile.
-Discard one spell card from your hand to play up to two spell card from your deck.
-Discard one spell card from your hand to play up to two spell card from your discard pile.
+Discard one spell card from your hand to play up to two spells card from your deck.
+Discard one spell card from your hand to play up to two spells card from your discard pile.
 Discard one spell card to add one spell card from your deck to your hand.
 Discard one spell card to add one spell card from your discard pile to your hand.
 Discard one spell card to counter the effect of a spell card.
@@ -6188,10 +6188,10 @@ Draw four cards, then discard one card of your choice.
 Draw four cards, then discard three cards of your choice.
 Draw four cards, then discard two cards of your choice.
 Draw four cards.
-Draw one card, then discard four card of your choice.
+Draw one card, then discard four cards of your choice.
 Draw one card, then discard one card of your choice.
-Draw one card, then discard three card of your choice.
-Draw one card, then discard two card of your choice.
+Draw one card, then discard three cards of your choice.
+Draw one card, then discard two cards of your choice.
 Draw one card.
 Draw three cards, then discard four cards of your choice.
 Draw three cards, then discard one card of your choice.
@@ -6203,27 +6203,6 @@ Draw two cards, then discard one card of your choice.
 Draw two cards, then discard three cards of your choice.
 Draw two cards, then discard two cards of your choice.
 Draw two cards.
-For the next all turns, air cards you control cannot be destroyed.
-For the next all turns, aquatic cards you control cannot be destroyed.
-For the next all turns, beast cards you control cannot be destroyed.
-For the next all turns, botanic cards you control cannot be destroyed.
-For the next all turns, dark cards you control cannot be destroyed.
-For the next all turns, dragon cards you control cannot be destroyed.
-For the next all turns, earth cards you control cannot be destroyed.
-For the next all turns, electric cards you control cannot be destroyed.
-For the next all turns, elemental cards you control cannot be destroyed.
-For the next all turns, fairy cards you control cannot be destroyed.
-For the next all turns, fire cards you control cannot be destroyed.
-For the next all turns, ghost cards you control cannot be destroyed.
-For the next all turns, insect cards you control cannot be destroyed.
-For the next all turns, light cards you control cannot be destroyed.
-For the next all turns, machine cards you control cannot be destroyed.
-For the next all turns, reptile cards you control cannot be destroyed.
-For the next all turns, spell cards you control cannot be destroyed.
-For the next all turns, spellcaster cards you control cannot be destroyed.
-For the next all turns, undead cards you control cannot be destroyed.
-For the next all turns, warrior cards you control cannot be destroyed.
-For the next all turns, water cards you control cannot be destroyed.
 For the next four turns, air cards you control cannot be destroyed.
 For the next four turns, aquatic cards you control cannot be destroyed.
 For the next four turns, beast cards you control cannot be destroyed.
@@ -6726,40 +6705,6 @@ Return up to two spellcaster cards from your discard pile to your hand.
 Return up to two undead cards from your discard pile to your hand.
 Return up to two warrior cards from your discard pile to your hand.
 Return up to two water cards from your discard pile to your hand.
-Reveal the top card of your deck and play one air card from among them.
-Reveal the top card of your deck and play one aquatic card from among them.
-Reveal the top card of your deck and play one beast card from among them.
-Reveal the top card of your deck and play one botanic card from among them.
-Reveal the top card of your deck and play one dark card from among them.
-Reveal the top card of your deck and play one dragon card from among them.
-Reveal the top card of your deck and play one earth card from among them.
-Reveal the top card of your deck and play one electric card from among them.
-Reveal the top card of your deck and play one elemental card from among them.
-Reveal the top card of your deck and play one fairy card from among them.
-Reveal the top card of your deck and play one fire card from among them.
-Reveal the top card of your deck and play one ghost card from among them.
-Reveal the top card of your deck and play one insect card from among them.
-Reveal the top card of your deck and play one light card from among them.
-Reveal the top card of your deck and play one machine card from among them.
-Reveal the top card of your deck and play one rank 1 card from among them.
-Reveal the top card of your deck and play one rank 1 creature card from among them.
-Reveal the top card of your deck and play one rank 1 spell card from among them.
-Reveal the top card of your deck and play one rank 2 card from among them.
-Reveal the top card of your deck and play one rank 2 creature card from among them.
-Reveal the top card of your deck and play one rank 2 spell card from among them.
-Reveal the top card of your deck and play one rank 3 card from among them.
-Reveal the top card of your deck and play one rank 3 creature card from among them.
-Reveal the top card of your deck and play one rank 3 spell card from among them.
-Reveal the top card of your deck and play one rank 4 card from among them.
-Reveal the top card of your deck and play one rank 4 creature card from among them.
-Reveal the top card of your deck and play one rank 5 card from among them.
-Reveal the top card of your deck and play one rank 5 creature card from among them.
-Reveal the top card of your deck and play one reptile card from among them.
-Reveal the top card of your deck and play one spell card from among them.
-Reveal the top card of your deck and play one spellcaster card from among them.
-Reveal the top card of your deck and play one undead card from among them.
-Reveal the top card of your deck and play one warrior card from among them.
-Reveal the top card of your deck and play one water card from among them.
 Reveal the top four cards of your deck and play one air card from among them.
 Reveal the top four cards of your deck and play one aquatic card from among them.
 Reveal the top four cards of your deck and play one beast card from among them.
@@ -6997,14 +6942,26 @@ Swap the attack and defense of one rank 4 creature card on the field.
 Swap the attack and defense of one rank 5 card on the field.
 Swap the attack and defense of one rank 5 creature card on the field.
 Swap the attack and defense of one reptile card on the field.
-Swap the attack and defense of one spell card on the field.
-Swap the attack and defense of one spellcaster card on the field.
 Swap the attack and defense of one undead card on the field.
 Swap the attack and defense of one warrior card on the field.
 Swap the attack and defense of one water card on the field.
-Take one of your other card on the field and move it under this card.
-Take one of your other creature on the field and move it under this card.
-Take one of your other spell on the field and move it under this card.
+Take one of your other cards on the field and move it under this card.
+Take one of your other creatures on the field and move it under this card.
+Take one of your other spells on the field and move it under this card.
+This card gains 100 attack for each card under it.
+This card gains 100 defense for each card under it.
+This card gains 200 attack for each card under it.
+This card gains 200 defense for each card under it.
+This card gains 25 attack for each card under it.
+This card gains 25 defense for each card under it.
+This card gains 300 attack for each card under it.
+This card gains 300 defense for each card under it.
+This card gains 400 attack for each card under it.
+This card gains 400 defense for each card under it.
+This card gains 50 attack for each card under it.
+This card gains 50 defense for each card under it.
+This card gains 500 attack for each card under it.
+This card gains 500 defense for each card under it.
 This turn, all air cards gain 100 attack.
 This turn, all air cards gain 100 defense.
 This turn, all air cards gain 200 attack.
@@ -7243,20 +7200,6 @@ This turn, all rank 1 creature cards gain 50 attack.
 This turn, all rank 1 creature cards gain 50 defense.
 This turn, all rank 1 creature cards gain 500 attack.
 This turn, all rank 1 creature cards gain 500 defense.
-This turn, all rank 1 spell cards gain 100 attack.
-This turn, all rank 1 spell cards gain 100 defense.
-This turn, all rank 1 spell cards gain 200 attack.
-This turn, all rank 1 spell cards gain 200 defense.
-This turn, all rank 1 spell cards gain 25 attack.
-This turn, all rank 1 spell cards gain 25 defense.
-This turn, all rank 1 spell cards gain 300 attack.
-This turn, all rank 1 spell cards gain 300 defense.
-This turn, all rank 1 spell cards gain 400 attack.
-This turn, all rank 1 spell cards gain 400 defense.
-This turn, all rank 1 spell cards gain 50 attack.
-This turn, all rank 1 spell cards gain 50 defense.
-This turn, all rank 1 spell cards gain 500 attack.
-This turn, all rank 1 spell cards gain 500 defense.
 This turn, all rank 2 cards gain 100 attack.
 This turn, all rank 2 cards gain 100 defense.
 This turn, all rank 2 cards gain 200 attack.
@@ -7285,20 +7228,6 @@ This turn, all rank 2 creature cards gain 50 attack.
 This turn, all rank 2 creature cards gain 50 defense.
 This turn, all rank 2 creature cards gain 500 attack.
 This turn, all rank 2 creature cards gain 500 defense.
-This turn, all rank 2 spell cards gain 100 attack.
-This turn, all rank 2 spell cards gain 100 defense.
-This turn, all rank 2 spell cards gain 200 attack.
-This turn, all rank 2 spell cards gain 200 defense.
-This turn, all rank 2 spell cards gain 25 attack.
-This turn, all rank 2 spell cards gain 25 defense.
-This turn, all rank 2 spell cards gain 300 attack.
-This turn, all rank 2 spell cards gain 300 defense.
-This turn, all rank 2 spell cards gain 400 attack.
-This turn, all rank 2 spell cards gain 400 defense.
-This turn, all rank 2 spell cards gain 50 attack.
-This turn, all rank 2 spell cards gain 50 defense.
-This turn, all rank 2 spell cards gain 500 attack.
-This turn, all rank 2 spell cards gain 500 defense.
 This turn, all rank 3 cards gain 100 attack.
 This turn, all rank 3 cards gain 100 defense.
 This turn, all rank 3 cards gain 200 attack.
@@ -7327,20 +7256,6 @@ This turn, all rank 3 creature cards gain 50 attack.
 This turn, all rank 3 creature cards gain 50 defense.
 This turn, all rank 3 creature cards gain 500 attack.
 This turn, all rank 3 creature cards gain 500 defense.
-This turn, all rank 3 spell cards gain 100 attack.
-This turn, all rank 3 spell cards gain 100 defense.
-This turn, all rank 3 spell cards gain 200 attack.
-This turn, all rank 3 spell cards gain 200 defense.
-This turn, all rank 3 spell cards gain 25 attack.
-This turn, all rank 3 spell cards gain 25 defense.
-This turn, all rank 3 spell cards gain 300 attack.
-This turn, all rank 3 spell cards gain 300 defense.
-This turn, all rank 3 spell cards gain 400 attack.
-This turn, all rank 3 spell cards gain 400 defense.
-This turn, all rank 3 spell cards gain 50 attack.
-This turn, all rank 3 spell cards gain 50 defense.
-This turn, all rank 3 spell cards gain 500 attack.
-This turn, all rank 3 spell cards gain 500 defense.
 This turn, all rank 4 cards gain 100 attack.
 This turn, all rank 4 cards gain 100 defense.
 This turn, all rank 4 cards gain 200 attack.
@@ -7411,20 +7326,6 @@ This turn, all reptile cards gain 50 attack.
 This turn, all reptile cards gain 50 defense.
 This turn, all reptile cards gain 500 attack.
 This turn, all reptile cards gain 500 defense.
-This turn, all spell cards gain 100 attack.
-This turn, all spell cards gain 100 defense.
-This turn, all spell cards gain 200 attack.
-This turn, all spell cards gain 200 defense.
-This turn, all spell cards gain 25 attack.
-This turn, all spell cards gain 25 defense.
-This turn, all spell cards gain 300 attack.
-This turn, all spell cards gain 300 defense.
-This turn, all spell cards gain 400 attack.
-This turn, all spell cards gain 400 defense.
-This turn, all spell cards gain 50 attack.
-This turn, all spell cards gain 50 defense.
-This turn, all spell cards gain 500 attack.
-This turn, all spell cards gain 500 defense.
 This turn, all spellcaster cards gain 100 attack.
 This turn, all spellcaster cards gain 100 defense.
 This turn, all spellcaster cards gain 200 attack.
@@ -8198,34 +8099,6 @@ While this card is on the field, all rank 1 creature cards lose 50 attack.
 While this card is on the field, all rank 1 creature cards lose 50 defense.
 While this card is on the field, all rank 1 creature cards lose 500 attack.
 While this card is on the field, all rank 1 creature cards lose 500 defense.
-While this card is on the field, all rank 1 spell cards gain 100 attack.
-While this card is on the field, all rank 1 spell cards gain 100 defense.
-While this card is on the field, all rank 1 spell cards gain 200 attack.
-While this card is on the field, all rank 1 spell cards gain 200 defense.
-While this card is on the field, all rank 1 spell cards gain 25 attack.
-While this card is on the field, all rank 1 spell cards gain 25 defense.
-While this card is on the field, all rank 1 spell cards gain 300 attack.
-While this card is on the field, all rank 1 spell cards gain 300 defense.
-While this card is on the field, all rank 1 spell cards gain 400 attack.
-While this card is on the field, all rank 1 spell cards gain 400 defense.
-While this card is on the field, all rank 1 spell cards gain 50 attack.
-While this card is on the field, all rank 1 spell cards gain 50 defense.
-While this card is on the field, all rank 1 spell cards gain 500 attack.
-While this card is on the field, all rank 1 spell cards gain 500 defense.
-While this card is on the field, all rank 1 spell cards lose 100 attack.
-While this card is on the field, all rank 1 spell cards lose 100 defense.
-While this card is on the field, all rank 1 spell cards lose 200 attack.
-While this card is on the field, all rank 1 spell cards lose 200 defense.
-While this card is on the field, all rank 1 spell cards lose 25 attack.
-While this card is on the field, all rank 1 spell cards lose 25 defense.
-While this card is on the field, all rank 1 spell cards lose 300 attack.
-While this card is on the field, all rank 1 spell cards lose 300 defense.
-While this card is on the field, all rank 1 spell cards lose 400 attack.
-While this card is on the field, all rank 1 spell cards lose 400 defense.
-While this card is on the field, all rank 1 spell cards lose 50 attack.
-While this card is on the field, all rank 1 spell cards lose 50 defense.
-While this card is on the field, all rank 1 spell cards lose 500 attack.
-While this card is on the field, all rank 1 spell cards lose 500 defense.
 While this card is on the field, all rank 2 cards gain 100 attack.
 While this card is on the field, all rank 2 cards gain 100 defense.
 While this card is on the field, all rank 2 cards gain 200 attack.
@@ -8282,34 +8155,6 @@ While this card is on the field, all rank 2 creature cards lose 50 attack.
 While this card is on the field, all rank 2 creature cards lose 50 defense.
 While this card is on the field, all rank 2 creature cards lose 500 attack.
 While this card is on the field, all rank 2 creature cards lose 500 defense.
-While this card is on the field, all rank 2 spell cards gain 100 attack.
-While this card is on the field, all rank 2 spell cards gain 100 defense.
-While this card is on the field, all rank 2 spell cards gain 200 attack.
-While this card is on the field, all rank 2 spell cards gain 200 defense.
-While this card is on the field, all rank 2 spell cards gain 25 attack.
-While this card is on the field, all rank 2 spell cards gain 25 defense.
-While this card is on the field, all rank 2 spell cards gain 300 attack.
-While this card is on the field, all rank 2 spell cards gain 300 defense.
-While this card is on the field, all rank 2 spell cards gain 400 attack.
-While this card is on the field, all rank 2 spell cards gain 400 defense.
-While this card is on the field, all rank 2 spell cards gain 50 attack.
-While this card is on the field, all rank 2 spell cards gain 50 defense.
-While this card is on the field, all rank 2 spell cards gain 500 attack.
-While this card is on the field, all rank 2 spell cards gain 500 defense.
-While this card is on the field, all rank 2 spell cards lose 100 attack.
-While this card is on the field, all rank 2 spell cards lose 100 defense.
-While this card is on the field, all rank 2 spell cards lose 200 attack.
-While this card is on the field, all rank 2 spell cards lose 200 defense.
-While this card is on the field, all rank 2 spell cards lose 25 attack.
-While this card is on the field, all rank 2 spell cards lose 25 defense.
-While this card is on the field, all rank 2 spell cards lose 300 attack.
-While this card is on the field, all rank 2 spell cards lose 300 defense.
-While this card is on the field, all rank 2 spell cards lose 400 attack.
-While this card is on the field, all rank 2 spell cards lose 400 defense.
-While this card is on the field, all rank 2 spell cards lose 50 attack.
-While this card is on the field, all rank 2 spell cards lose 50 defense.
-While this card is on the field, all rank 2 spell cards lose 500 attack.
-While this card is on the field, all rank 2 spell cards lose 500 defense.
 While this card is on the field, all rank 3 cards gain 100 attack.
 While this card is on the field, all rank 3 cards gain 100 defense.
 While this card is on the field, all rank 3 cards gain 200 attack.
@@ -8366,34 +8211,6 @@ While this card is on the field, all rank 3 creature cards lose 50 attack.
 While this card is on the field, all rank 3 creature cards lose 50 defense.
 While this card is on the field, all rank 3 creature cards lose 500 attack.
 While this card is on the field, all rank 3 creature cards lose 500 defense.
-While this card is on the field, all rank 3 spell cards gain 100 attack.
-While this card is on the field, all rank 3 spell cards gain 100 defense.
-While this card is on the field, all rank 3 spell cards gain 200 attack.
-While this card is on the field, all rank 3 spell cards gain 200 defense.
-While this card is on the field, all rank 3 spell cards gain 25 attack.
-While this card is on the field, all rank 3 spell cards gain 25 defense.
-While this card is on the field, all rank 3 spell cards gain 300 attack.
-While this card is on the field, all rank 3 spell cards gain 300 defense.
-While this card is on the field, all rank 3 spell cards gain 400 attack.
-While this card is on the field, all rank 3 spell cards gain 400 defense.
-While this card is on the field, all rank 3 spell cards gain 50 attack.
-While this card is on the field, all rank 3 spell cards gain 50 defense.
-While this card is on the field, all rank 3 spell cards gain 500 attack.
-While this card is on the field, all rank 3 spell cards gain 500 defense.
-While this card is on the field, all rank 3 spell cards lose 100 attack.
-While this card is on the field, all rank 3 spell cards lose 100 defense.
-While this card is on the field, all rank 3 spell cards lose 200 attack.
-While this card is on the field, all rank 3 spell cards lose 200 defense.
-While this card is on the field, all rank 3 spell cards lose 25 attack.
-While this card is on the field, all rank 3 spell cards lose 25 defense.
-While this card is on the field, all rank 3 spell cards lose 300 attack.
-While this card is on the field, all rank 3 spell cards lose 300 defense.
-While this card is on the field, all rank 3 spell cards lose 400 attack.
-While this card is on the field, all rank 3 spell cards lose 400 defense.
-While this card is on the field, all rank 3 spell cards lose 50 attack.
-While this card is on the field, all rank 3 spell cards lose 50 defense.
-While this card is on the field, all rank 3 spell cards lose 500 attack.
-While this card is on the field, all rank 3 spell cards lose 500 defense.
 While this card is on the field, all rank 4 cards gain 100 attack.
 While this card is on the field, all rank 4 cards gain 100 defense.
 While this card is on the field, all rank 4 cards gain 200 attack.
@@ -8534,34 +8351,6 @@ While this card is on the field, all reptile cards lose 50 attack.
 While this card is on the field, all reptile cards lose 50 defense.
 While this card is on the field, all reptile cards lose 500 attack.
 While this card is on the field, all reptile cards lose 500 defense.
-While this card is on the field, all spell cards gain 100 attack.
-While this card is on the field, all spell cards gain 100 defense.
-While this card is on the field, all spell cards gain 200 attack.
-While this card is on the field, all spell cards gain 200 defense.
-While this card is on the field, all spell cards gain 25 attack.
-While this card is on the field, all spell cards gain 25 defense.
-While this card is on the field, all spell cards gain 300 attack.
-While this card is on the field, all spell cards gain 300 defense.
-While this card is on the field, all spell cards gain 400 attack.
-While this card is on the field, all spell cards gain 400 defense.
-While this card is on the field, all spell cards gain 50 attack.
-While this card is on the field, all spell cards gain 50 defense.
-While this card is on the field, all spell cards gain 500 attack.
-While this card is on the field, all spell cards gain 500 defense.
-While this card is on the field, all spell cards lose 100 attack.
-While this card is on the field, all spell cards lose 100 defense.
-While this card is on the field, all spell cards lose 200 attack.
-While this card is on the field, all spell cards lose 200 defense.
-While this card is on the field, all spell cards lose 25 attack.
-While this card is on the field, all spell cards lose 25 defense.
-While this card is on the field, all spell cards lose 300 attack.
-While this card is on the field, all spell cards lose 300 defense.
-While this card is on the field, all spell cards lose 400 attack.
-While this card is on the field, all spell cards lose 400 defense.
-While this card is on the field, all spell cards lose 50 attack.
-While this card is on the field, all spell cards lose 50 defense.
-While this card is on the field, all spell cards lose 500 attack.
-While this card is on the field, all spell cards lose 500 defense.
 While this card is on the field, all spellcaster cards gain 100 attack.
 While this card is on the field, all spellcaster cards gain 100 defense.
 While this card is on the field, all spellcaster cards gain 200 attack.

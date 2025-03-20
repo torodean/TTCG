@@ -62,3 +62,4 @@ You can send up to <number> card(s) under this card to the discard pile.
 Your opponent cannot play <types> cards next turn.
 Your opponent loses <number> point(s).
 Activate the effect of another <card> on the field.
+This card gains <atkdef> for each card under it.

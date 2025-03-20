@@ -93,3 +93,6 @@ four spells cards: four spell cards
 spellscaster: spellcaster 
 spells cards: spell cards
 up to one: one
+your other card on: your other cards on
+your other creature on: your other creatures on
+your other spell on: your other spells on
