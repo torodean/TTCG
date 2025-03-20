@@ -186,7 +186,7 @@ def create_card(card_data):
     draw_single_line_text(draw, card_data["subtype"], (70, 90), (585, 120))
     
     # Draw ATK and def in the boxes.
-    atk_x_min, atk_x_max = 130, 215    
+    atk_x_min, atk_x_max = 135, 215    
     atk_y_min, atk_y_max = 628, 665
     draw_single_line_text(draw, card_data["attack"], (atk_x_min, atk_y_min), (atk_x_max, atk_y_max), initial_font_size=50, center=True)
     draw_single_line_text(draw, card_data["defense"], (width - atk_x_max, atk_y_min), (width - atk_x_min, atk_y_max), initial_font_size=50, center=True)
