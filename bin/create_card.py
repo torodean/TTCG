@@ -258,7 +258,7 @@ def create_card(card_data):
     draw_wrapped_text(draw, card_data["effect2"], (70, 870), (680, 970), initial_font_size=30)
 
     # Save the card
-    output_file = f"ttcg_card_{card_data['name'].replace(' ', '_')}.png"
+    output_file = f"../images/generated_cards/ttcg_card_{card_data['name'].replace(' ', '_')}.png"
     img.save(output_file)
     print(f"Card saved as {output_file}")
 

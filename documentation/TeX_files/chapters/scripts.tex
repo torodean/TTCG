@@ -376,3 +376,67 @@ No arguments are currently required, though future iterations may introduce opti
     \item Dependent on external Python tools and their configurations.
     \item Evolving nature may lead to temporary inconsistencies in output format or behavior.
 \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\section{Create Trading Card}
+\subsection{Overview}
+The \texttt{create\_card.py} script is a Python utility designed to generate trading card images in the TTCG (Trading Card Template Generator) format. It combines a type-specific background image with a level-specific star overlay and overlays customizable text fields, such as name, subtype, attack, defense, and effects. Leveraging the \texttt{Pillow} library, the script provides robust image manipulation capabilities, including text squishing for single-line fields and center-aligned text wrapping for effect descriptions, making it suitable for rapid card prototyping in game design contexts.
+
+\subsection{Purpose}
+The primary goal of \texttt{create\_card.py} is to automate the creation of visually consistent trading card images, enabling:
+\begin{itemize}
+	\item Customization of card attributes like name, type, level, and effects via command-line arguments.
+	\item Dynamic rendering of text with automatic font size adjustment and horizontal squishing to fit designated boxes.
+	\item Generation of standardized 750x1050 pixel card images with transparent overlays for seamless integration into game assets.
+\end{itemize}
+It serves as a flexible tool for designers to produce and iterate on card designs efficiently.
+
+\subsection{Features}
+\begin{itemize}
+	\item \textbf{Card Base Creation}: Constructs a base image using type-specific PNGs (e.g., \texttt{fire.png}) and overlays level-specific star images (e.g., \texttt{1 star.png}).
+	\item \textbf{Text Rendering}: Supports single-line text with optional squishing and centering (name, subtype, attack, defense) and wrapped, center-aligned text for effects.
+	\item \textbf{Fallback Handling}: Uses a white background or skips overlays if image files are missing, ensuring graceful error handling.
+	\item \textbf{Stat Generation}: Automatically calculates random attack and defense stats based on level if not provided (total stats = level $\times$ 500).
+\end{itemize}
+
+\subsection{Usage}
+Run the script from the command line with optional arguments:
+\begin{lstlisting}[language=bash]
+	python3 create_card.py --name "Card Name" --type TYPE --level LEVEL --subtype SUBTYPE --effect1 "Effect 1" --effect2 "Effect 2" [--attack ATK] [--defense DEF] [--image IMAGE]
+\end{lstlisting}
+Defaults include \texttt{"fire"} type, level 1, and random stats.
+
+\subsection{Requirements}
+\begin{itemize}
+	\item Python 3.x with the \texttt{Pillow} library (\texttt{pip install Pillow}).
+	\item PNG images in \texttt{../images/card pngs/} (e.g., \texttt{fire.png}, \texttt{1 star.png}).
+	\item System font \texttt{/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf} or fallback to default font.
+\end{itemize}
+
+\subsection{Limitations}
+\begin{itemize}
+	\item Relies on specific file paths for background and overlay images, requiring manual setup.
+	\item Text wrapping estimate (\texttt{0.6} factor) may need tuning for optimal line breaks.
+	\item No built-in validation for attack/defense values exceeding level-based totals.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+

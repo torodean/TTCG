@@ -38,6 +38,14 @@ The `bin` directory serves as the central hub for executable scripts used in the
 - **Usage**: `./generate_and_order_effects.sh`
 - **Dependencies**: Requires `create_effect_combinations.py`, `add_csv_field.py`, and files in `../effects/` and `../placeholders/`.
 
+### `create_card.py`
+- **Purpose**: Generates a trading card image (TTCG format) with customizable text, type, level, and effects, overlaying text and stats on a type-specific background and level-specific star overlay.
+- **Key Features**: Creates a 750x1050 pixel card with a base image based on card type, overlays a level-specific star image, supports single-line text (with optional squishing/centering) for name, subtype, attack, and defense, and center-aligned wrapped text for effects; handles missing images gracefully with fallbacks.
+- **Usage**: `python3 create_card.py --name "Card Name" --type TYPE --level LEVEL --subtype SUBTYPE --effect1 "Effect 1" --effect2 "Effect 2" [--attack ATK] [--defense DEF] [--image IMAGE]`
+- **Input**: Command-line arguments for card details; defaults to `"fire"` type, level 1, and random attack/defense stats based on level (total stats = level * 500); expects PNG images in `../images/card pngs/` (e.g., `fire.png`, `1 star.png`).
+- **Dependencies**: Requires `Pillow` for image processing (`pip install Pillow`); uses system font `DejaVuSans.ttf` or falls back to default.
+- **Output**: Saves a PNG card image to `../images/generated_cards/ttcg_card_<name>.png` (spaces replaced with underscores), e.g., `ttcg_card_Card_Name.png`.
+
 ### `generate_random_effects.py`
 - **Purpose**: Filters a CSV file to find rows where specified columns are "True", then generates and prints random pairs from the first column of the filtered rows.
 - **Key Features**: 
