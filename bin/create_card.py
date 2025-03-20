@@ -169,6 +169,68 @@ def draw_single_line_text(draw, text, top_left, bottom_right, initial_font_size=
     draw._image.paste(squished_img, (x1, y1), squished_img)
 
 
+def draw_wrapped_text(draw, text, top_left, bottom_right, initial_font_size=50, color=(0, 0, 0, 255)):
+    """
+    Draws wrapped text within a box defined by top-left and bottom-right corners,
+    auto-adjusting font size to fit vertically, with text centered both spatially
+    (vertically and horizontally in the box) and in alignment (each line center-aligned).
+    
+    Args:
+        draw (ImageDraw.Draw): The drawing context for the image.
+        text (str): The text to draw.
+        top_left (tuple): (x, y) coordinates of the top-left corner of the box.
+        bottom_right (tuple): (x, y) coordinates of the bottom-right corner of the box.
+        initial_font_size (int): Starting font size to try (default 50).
+        color (tuple): RGBA color tuple (default black: (0, 0, 0, 255)).
+    """
+    import textwrap
+
+    # Calculate box dimensions
+    x1, y1 = top_left
+    x2, y2 = bottom_right        
+    box_width = x2 - x1
+    box_height = y2 - y1
+
+    # Use DejaVu Sans font
+    font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+    try:
+        font = ImageFont.truetype(font_path, initial_font_size)
+    except:
+        font = ImageFont.load_default()
+        initial_font_size = 12  # Default font is small, approximate size
+
+    # Start with initial font size and adjust downward for height
+    font_size = initial_font_size
+    while font_size > 1:
+        font = ImageFont.truetype(font_path, font_size) if font_path else ImageFont.load_default()
+
+        # Wrap text to fit box width
+        wrapped_text = textwrap.fill(text, width=int(box_width / (font_size * 0.5)))  # Rough chars-per-line estimate
+        bbox = draw.textbbox((0, 0), wrapped_text, font=font)
+        text_width = bbox[2] - bbox[0]
+        text_height = bbox[3] - bbox[1]
+
+        # Check vertical and horizontal fit
+        if text_height <= box_height and text_width <= box_width:
+            # Center the wrapped text
+            x_offset = (box_width - text_width) // 2
+            y_offset = (box_height - text_height) // 2
+            draw.text((x1 + x_offset, y1 + y_offset), wrapped_text, font=font, fill=color, align="center")
+            return
+        else:
+            font_size -= 1  # Reduce size if too tall or wide
+
+    # Fallback: Smallest size
+    font = ImageFont.truetype(font_path, font_size) if font_path else ImageFont.load_default()
+    wrapped_text = textwrap.fill(text, width=int(box_width / (font_size * 0.5)))
+    bbox = draw.textbbox((0, 0), wrapped_text, font=font)
+    text_width = bbox[2] - bbox[0]
+    text_height = bbox[3] - bbox[1]
+    x_offset = (box_width - text_width) // 2
+    y_offset = (box_height - text_height) // 2
+    draw.text((x1 + x_offset, y1 + y_offset), wrapped_text, font=font, fill=color, align="center")
+
+
 def create_card(card_data):
     """
     Creates the card.
@@ -190,6 +252,10 @@ def create_card(card_data):
     atk_y_min, atk_y_max = 628, 665
     draw_single_line_text(draw, card_data["attack"], (atk_x_min, atk_y_min), (atk_x_max, atk_y_max), initial_font_size=50, center=True)
     draw_single_line_text(draw, card_data["defense"], (width - atk_x_max, atk_y_min), (width - atk_x_min, atk_y_max), initial_font_size=50, center=True)
+    
+    # Draw effects in boxes.
+    draw_wrapped_text(draw, card_data["effect1"], (70, 710), (680, 810), initial_font_size=30)
+    draw_wrapped_text(draw, card_data["effect2"], (70, 870), (680, 970), initial_font_size=30)
 
     # Save the card
     output_file = f"ttcg_card_{card_data['name'].replace(' ', '_')}.png"
