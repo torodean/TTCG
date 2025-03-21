@@ -54,7 +54,7 @@ The `bin` directory serves as the central hub for executable scripts used in the
   - Handles semicolon-delimited CSV files.
   - Includes error handling for file issues, missing columns, and insufficient data.
 - **Usage**: 
-  - Run the script with: `python random_pairs.py [-c COLUMN]... [INPUT_FILE]`.
+  - Run the script with: `python random_pairs.py [-c COLUMN] [-i INPUT_FILE]`.
   - Default input file: `effects/effects_with_placeholders.csv`.
   - Use `-p` to specify the number of pairs (e.g., `-p 5`).
 - **Dependencies**: 
