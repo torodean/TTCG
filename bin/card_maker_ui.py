@@ -404,8 +404,8 @@ def main():
     # Subtypes checkboxes
     subtypes_frame = ttk.LabelFrame(left_frame, text="Subtypes", padding="8")
     subtypes_frame.grid(row=2, column=0, columnspan=2, pady=8, sticky="ew")
-    subtype_vars = [tk.BooleanVar() for _ in range(13)]
-    subtype_labels = ["Dragon", "Beast", "Elemental", "Aquatic", "Warrior", "Spellcaster", "Machine", "Ghost", "Insect", "Reptile", "Fairy", "Undead", "Botanic"]
+    subtype_vars = [tk.BooleanVar() for _ in range(14)]
+    subtype_labels = ["Avian", "Dragon", "Beast", "Elemental", "Aquatic", "Warrior", "Spellcaster", "Machine", "Ghost", "Insect", "Reptile", "Fairy", "Undead", "Botanic"]
     for i, label in enumerate(subtype_labels):
         ttk.Checkbutton(subtypes_frame, text=label, variable=subtype_vars[i]).grid(
             row=i // 3, column=i % 3, padx=8, pady=5, sticky="w"
