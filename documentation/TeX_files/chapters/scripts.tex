@@ -440,3 +440,58 @@ Defaults include \texttt{"fire"} type, level 1, and random stats.
 
 
 
+
+
+
+
+
+\section{Card Maker UI}
+\label{sec:card_maker_ui}
+
+\subsection{Overview}
+The \texttt{card\_maker\_ui.py} script is a Python-based graphical user interface (GUI) built with the Tkinter library, designed to create and preview trading cards in the TTCG (Trading Card Template Generator) format. It integrates \texttt{create\_card.py} for image generation and \texttt{generate\_random\_effects.py} for effect generation, offering an interactive platform for designing cards with real-time feedback. Utilizing a global \texttt{WIDGETS} dictionary, the script streamlines access to UI elements, enhancing code efficiency and maintainability.
+
+\subsection{Purpose}
+The primary goal of \texttt{card\_maker\_ui.py} is to provide an intuitive tool for card creation, enabling:
+\begin{itemize}
+	\item Real-time customization of card attributes such as type, level, name, subtypes, stats, and effects through a user-friendly interface.
+	\item Immediate visual feedback via a live card preview, updated with each input change.
+	\item Simplified workflow for saving card data and resetting the UI to default values, supporting iterative design processes.
+\end{itemize}
+It serves as the central hub for TTCG card prototyping, bridging user input with automated generation features.
+
+\subsection{Features}
+\begin{itemize}
+	\item \textbf{Interactive Interface}: Three-panel layout with input fields (left), live 400$\times$580 pixel preview (middle), and effect generator (right), all managed via a global \texttt{WIDGETS} dictionary.
+	\item \textbf{Dynamic Updates}: Automatically refreshes the preview using \texttt{create\_card.py} on input changes, with a \texttt{SKIP\_PREVIEW} flag to optimize reset operations.
+	\item \textbf{Effect Generation}: Produces up to ten random effects from a CSV file, filtered by type and subtypes, assignable to card fields with a single click.
+	\item \textbf{Stat Randomization}: Generates ATK and DEF values (total = level $\times$ 500) via a ``Randomize'' button or level selection, ensuring balanced stats.
+\end{itemize}
+
+\subsection{Usage}
+Run the script from the command line with an optional argument:
+\begin{lstlisting}[style=terminalstyle]
+python3 card_maker_ui.py [-i INPUT_FILE]
+\end{lstlisting}
+The \texttt{-i} argument specifies the effects CSV file (default: \texttt{effects/effects\_with\_placeholders.csv}). Default UI values include ``Fire'' type, level 1, ``Unnamed'' name, and 0 ATK/DEF.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/ui_sample.png}
+	\caption{Screenshot of the \texttt{card\_maker\_ui.py} interface, showcasing a card preview with ``Fire'' type, level 2, and randomized ATK/DEF values.}
+	\label{fig:card_maker_ui_screenshot}
+\end{figure}
+
+\subsection{Requirements}
+\begin{itemize}
+	\item Python 3.10+ with Tkinter (standard library) and \texttt{Pillow} (\texttt{pip install Pillow}).
+	\item Companion scripts \texttt{create\_card.py} and \texttt{generate\_random\_effects.py} in the same directory.
+	\item Effects CSV file (e.g., \texttt{effects/effects\_with\_placeholders.csv}) and PNG images in \texttt{../images/card pngs/}.
+\end{itemize}
+
+\subsection{Limitations}
+\begin{itemize}
+	\item Depends on external scripts and specific file paths, requiring proper project setup.
+	\item No current implementation for saving card data to a spreadsheet (placeholder \texttt{print} only) at the time of writing this - the tool is still being developed.
+	\item Effect generation may produce fewer than ten unique effects if the CSV pool is limited.
+\end{itemize}

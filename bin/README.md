@@ -46,6 +46,14 @@ The `bin` directory serves as the central hub for executable scripts used in the
 - **Dependencies**: Requires `Pillow` for image processing (`pip install Pillow`); assumes helper functions like `create_base_card`, `draw_single_line_text`, and `draw_wrapped_text`.
 - **Output**: Saves a PNG card image to `<output_folder>/<type>_<name>.png` (spaces replaced with underscores), e.g., `ttcg_card_Card_Name.png`; defaults to `../images/generated_cards/` if `-o` is not specified.
 
+### `card_maker_ui.py`
+- **Purpose**: Provides a Tkinter-based GUI for creating trading cards in TTCG format, allowing real-time preview, effect generation, and data saving, with customizable attributes like type, level, name, subtypes, stats, effects, and image.
+- **Key Features**: Interactive UI with dropdowns (type, level), checkboxes (subtypes), text entries (name, stats, effects), and buttons for randomization, reset, and saving; generates a 400x580 pixel preview (resized from 750x1050) using `create_card`; supports random ATK/DEF based on level and effect generation from a CSV file; centralizes widget access via a global `WIDGETS` dictionary.
+- **Usage**: `python3 card_maker_ui.py [-i INPUT_FILE]`
+- **Input**: Optional command-line argument `-i/--input_file` for the effects CSV (defaults to `effects/effects_with_placeholders.csv`); GUI inputs for card details with defaults (e.g., "Fire" type, level 1, "Unnamed", 0 ATK/DEF).
+- **Dependencies**: Requires `Pillow` (`pip install Pillow`) for image processing, `tkinter` (standard library), and custom modules `create_card.py` and `generate_random_effects.py`; assumes effect CSV and image assets in `../images/card pngs/`.
+- **Output**: Displays a live card preview in the GUI; saves card data to console (placeholder for spreadsheet implementation); generated card images stored temporarily via `tempfile`.
+
 ### `generate_random_effects.py`
 - **Purpose**: Filters a CSV file to find rows where specified columns are "True", then generates and prints random pairs from the first column of the filtered rows.
 - **Key Features**: 

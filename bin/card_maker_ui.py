@@ -16,49 +16,120 @@ import os
 import tempfile
 from PIL import Image, ImageTk
 
-def browse_image(image_entry):
+# For SN generation
+import hashlib
+
+# Global var to determine when preview should be generated vs not.
+SKIP_PREVIEW = False
+
+
+def get_card_data():
+    """Collect card data from GUI widgets into a dictionary.
+
+    This function gathers input from various Tkinter widgets in the card creator UI and
+    returns a dictionary containing the card's attributes. Empty or invalid inputs are
+    replaced with default values to ensure consistent output.
+
+    Returns:
+        dict: A dictionary with the following keys and values:
+            - "type" (str): Card type (defaults to "Unknown" if empty).
+            - "level" (int): Card level (defaults to 1 if empty or invalid).
+            - "name" (str): Card name (defaults to "Unnamed" if empty).
+            - "subtype" (str): Comma-separated list of selected subtypes (empty if none selected).
+            - "attack" (str): Attack value (defaults to "0" if empty).
+            - "defense" (str): Defense value (defaults to "0" if empty).
+            - "effect1" (str): First effect text (empty if none provided).
+            - "effect2" (str): Second effect text (empty if none provided).
+            - "image" (str): Image file path (defaults to "default.png" if empty).
+            - "serial" (str): Serial number (always empty in this context).
+
+    Notes:
+        - All string values are stripped of leading/trailing whitespace.
+        - Used by update_preview, save_to_card_list, and reset_ui to centralize data collection.
+    """
+    return {
+        "type": WIDGETS["type_combo"].get().strip() or "Unknown",
+        "level": int(WIDGETS["level_combo"].get().strip() or 1),
+        "name": WIDGETS["name_entry"].get().strip() or "Unnamed",
+        "subtype": ", ".join(get_selected_subtypes()),
+        "attack": WIDGETS["atk_entry"].get().strip() or "0",
+        "defense": WIDGETS["def_entry"].get().strip() or "0",
+        "effect1": WIDGETS["effect1_entry"].get("1.0", tk.END).strip() or "",
+        "effect2": WIDGETS["effect2_entry"].get("1.0", tk.END).strip() or "",
+        "image": WIDGETS["image_entry"].get().strip() or "default.png",
+        "serial": ""
+    }
+
+
+def save_to_card_list():
+    """
+    Save card data from the UI to a spreadsheet.
+
+    This function collects card details from the GUI widgets and saves them to a spreadsheet.
+    The implementation for saving (e.g., CSV, Excel) is left to be completed.
+
+    Returns:
+        None: Saves data to a spreadsheet.
+    """
+    # Collect card data from UI
+    card_data = get_card_data()
+
+    # TODO: Implement spreadsheet saving logic here
+    print("Card data to save:", card_data)  # Placeholder for debugging
+
+
+def reset_ui():
+    """
+    Reset the UI to default values and update the preview once.
+    """
+    global SKIP_PREVIEW
+    SKIP_PREVIEW = True  # Prevent updates during reset
+
+    # Reset widgets to default values
+    WIDGETS['type_combo'].set("Fire")
+    WIDGETS["level_combo"].set("1")
+    WIDGETS["name_entry"].delete(0, tk.END)
+    WIDGETS["name_entry"].insert(0, "Unnamed")
+    for var in WIDGETS["subtype_vars"]:
+        var.set(False)
+    WIDGETS["atk_entry"].delete(0, tk.END)
+    WIDGETS["atk_entry"].insert(0, "0")
+    WIDGETS["def_entry"].delete(0, tk.END)
+    WIDGETS["def_entry"].insert(0, "0")
+    WIDGETS["effect1_entry"].delete("1.0", tk.END)
+    WIDGETS["effect2_entry"].delete("1.0", tk.END)
+    WIDGETS["image_entry"].delete(0, tk.END)
+    WIDGETS["image_entry"].insert(0, "")
+
+    # Re-enable preview and update once
+    SKIP_PREVIEW = False
+    update_preview()
+    
+
+def browse_image():
     """Open a file dialog to select an image and update the entry field."""
     filename = filedialog.askopenfilename(
         filetypes=[("Image files", "*.png *.jpg *.jpeg *.gif *.bmp")]
     )
     if filename:
-        image_entry.delete(0, tk.END)
-        image_entry.insert(0, filename)
+        WIDGETS["image_entry"].delete(0, tk.END)
+        WIDGETS["image_entry"].insert(0, filename)
 
 
-def update_preview(
-    type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-    atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-):
+def update_preview():
     """
     Gather UI input, create a card image, and display it in the preview window.
 
     This function collects card data from the GUI, generates a card image using create_card,
     saves it to a temporary folder, and updates the preview canvas with the resulting image.
-
-    Args:
-        type_combo (ttk.Combobox): Widget for card type.
-        level_combo (ttk.Combobox): Widget for card level.
-        name_entry (ttk.Entry): Widget for card name.
-        subtype_vars (list of tk.BooleanVar): List of BooleanVar for subtype checkboxes.
-        subtype_labels (list of str): List of subtype labels.
-        atk_entry (ttk.Entry): Widget for attack value.
-        def_entry (ttk.Entry): Widget for defense value.
-        effect1_entry (tk.Text): Widget for first effect text.
-        effect2_entry (tk.Text): Widget for second effect text.
-        preview_canvas (tk.Canvas): Canvas widget to display the preview.
     """
-    # Gather card data from UI
-    card_data = {
-        "type": type_combo.get().strip() or "Unknown",
-        "level": int(level_combo.get().strip() or 1),
-        "name": name_entry.get().strip() or "Unnamed",
-        "subtype": ", ".join(get_selected_subtypes(subtype_vars, subtype_labels)),
-        "attack": atk_entry.get().strip() or "0",
-        "defense": def_entry.get().strip() or "0",
-        "effect1": effect1_entry.get("1.0", tk.END).strip() or "",
-        "effect2": effect2_entry.get("1.0", tk.END).strip() or ""
-    }
+    # Skip preview update during reset
+    global SKIP_PREVIEW
+    if SKIP_PREVIEW:
+        return
+        
+    # Collect card data from UI
+    card_data = get_card_data()
 
     # Use a temporary folder for output
     with tempfile.TemporaryDirectory() as temp_dir:
@@ -77,28 +148,23 @@ def update_preview(
         photo = ImageTk.PhotoImage(card_image)
         
         # Update the canvas
-        preview_canvas.delete("all")  # Clear previous content
-        preview_canvas.create_image(
+        WIDGETS["preview_canvas"].delete("all")  # Clear previous content
+        WIDGETS["preview_canvas"].create_image(
             preview_width // 2, preview_height // 2, image=photo
         )
         # Store reference to prevent garbage collection
-        preview_canvas.image = photo
+        WIDGETS["preview_canvas"].image = photo
 
 
-def randomize_atk_def(level_combo, atk_entry, def_entry):
+def randomize_atk_def():
     """
     Randomize ATK and DEF values based on the selected level.
 
     This function generates random ATK and DEF values in increments of 5, ensuring their sum
     equals 5 times the selected level. The values are then populated into the provided entry widgets.
-
-    Args:
-        level_combo (ttk.Combobox): The combobox widget containing the selected level (1-5).
-        atk_entry (ttk.Entry): The entry widget to populate with the random ATK value.
-        def_entry (ttk.Entry): The entry widget to populate with the random DEF value.
     """
     # Get the selected level, default to 1 if empty or invalid
-    level_str = level_combo.get().strip()
+    level_str = WIDGETS["level_combo"].get().strip()
     level = int(level_str) if level_str in [str(i) for i in range(1, 6)] else 1
 
     # Calculate total points (5 * level)
@@ -112,24 +178,20 @@ def randomize_atk_def(level_combo, atk_entry, def_entry):
     def_ = total_points - atk
 
     # Clear and populate the entry fields
-    atk_entry.delete(0, tk.END)
-    atk_entry.insert(0, str(atk))
-    def_entry.delete(0, tk.END)
-    def_entry.insert(0, str(def_))
+    WIDGETS["atk_entry"].delete(0, tk.END)
+    WIDGETS["atk_entry"].insert(0, str(atk))
+    WIDGETS["def_entry"].delete(0, tk.END)
+    WIDGETS["def_entry"].insert(0, str(def_))
 
 
-def get_selected_subtypes(subtype_vars, subtype_labels):
+def get_selected_subtypes():
     """
     Return a list of selected subtype labels based on their BooleanVar states.
-
-    Args:
-        subtype_vars (list of tk.BooleanVar): List of BooleanVar objects tied to subtype checkboxes.
-        subtype_labels (list of str): List of subtype labels corresponding to the vars.
 
     Returns:
         list of str: List of selected subtype labels.
     """
-    return [label for var, label in zip(subtype_vars, subtype_labels) if var.get()]
+    return [label for var, label in zip(WIDGETS["subtype_vars"], WIDGETS["subtype_labels"]) if var.get()]
 
 
 def generate_effects(effect_buttons, input_file, columns, subtypes):
@@ -191,19 +253,72 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
             btn.config(text="")
 
 
-def assign_effect(effect_text, effect1_entry, effect2_entry):
-    """Assign the clicked effect to the first empty effect field."""
-    current_effect1 = effect1_entry.get("1.0", tk.END).strip()
-    current_effect2 = effect2_entry.get("1.0", tk.END).strip()
+def assign_effect(effect_text):
+    """
+    Assign the clicked effect to the first empty effect field.
+    """
+    current_effect1 = WIDGETS["effect1_entry"].get("1.0", tk.END).strip()
+    current_effect2 = WIDGETS["effect2_entry"].get("1.0", tk.END).strip()
     if not current_effect1:
-        effect1_entry.delete("1.0", tk.END)
-        effect1_entry.insert("1.0", effect_text)
+        WIDGETS["effect1_entry"].delete("1.0", tk.END)
+        WIDGETS["effect1_entry"].insert("1.0", effect_text)
     elif not current_effect2:
-        effect2_entry.delete("1.0", tk.END)
-        effect2_entry.insert("1.0", effect_text)
+        WIDGETS["effect2_entry"].delete("1.0", tk.END)
+        WIDGETS["effect2_entry"].insert("1.0", effect_text)
 
 
-def get_gui_metadata(type_combo, level_combo):
+def generate_serial_number(card_data):
+    """
+    Generate a unique serial number for a trading card based on its attributes.
+
+    This function takes a dictionary of card attributes and returns a unique serial number.
+    The implementation should ensure uniqueness across potentially millions of cards using
+    attributes like name, type, subtypes, rarity, image, attack, defense, and effects.
+
+    Args:
+        card_data (dict): A dictionary containing card details with the following keys:
+            - name (str): Card name.
+            - type (str): Card type (e.g., 'Fire').
+            - subtypes (list of str): List of subtypes (e.g., ['Dragon', 'Warrior']).
+            - rarity (str): Card rarity (e.g., 'Rare').
+            - image (str): Path to the image file (e.g., 'dragon.png').
+            - attack (str): Attack value (e.g., '1500').
+            - defense (str): Defense value (e.g., '1200').
+            - effect1 (str): First effect text (e.g., 'Draw 1 card').
+            - effect2 (str): Second effect text (e.g., 'Gain 2 life').
+
+    Returns:
+        str: A unique serial number (e.g., 'FRA-DRWA-5f3a2b', 'e80b50170989').
+
+    Notes:
+        - The serial number should be concise (e.g., 8-12 characters) yet unique.
+        - Implementation details (e.g., hash, counter, UUID) are left to the user.
+    """
+    # Extract attributes from card_data
+    name = card_data.get('name', '')
+    card_type = card_data.get('type', '')
+    subtypes = card_data.get('subtypes', [])
+    rarity = card_data.get('rarity', '')
+    image = card_data.get('image', '')
+    attack = card_data.get('attack', '')
+    defense = card_data.get('defense', '')
+    effect1 = card_data.get('effect1', '')
+    effect2 = card_data.get('effect2', '')
+        
+    # Placeholder: Combine attributes into a unique string
+    attribute_string = (
+        f"{name}|{card_type}|{' '.join(subtypes)}|{rarity}|"
+        f"{image}|{attack}|{defense}|{effect1}|{effect2}"
+    )
+
+    # TODO: Implement serial number generation logic here
+    #serial_number = "IMPLEMENT_ME"  # TODO
+    serial_number = hashlib.sha256(attribute_string.encode('utf-8')).hexdigest()[:14] # Testing with hash
+    
+    return serial_number
+
+
+def get_gui_metadata():
     """
     Analyze GUI input and return a list of metadata strings.
 
@@ -211,24 +326,20 @@ def get_gui_metadata(type_combo, level_combo):
     - 'UNIT' if the type is not 'Spell' (case-insensitive), 'SPELL' if it is.
     - 'LEVEL_#' where # is the selected level (1-5).
 
-    Args:
-        type_combo (ttk.Combobox): The combobox widget containing the selected type.
-        level_combo (ttk.Combobox): The combobox widget containing the selected level.
-
     Returns:
         list of str: A list of metadata strings (e.g., ['UNIT', 'LEVEL_3'] or ['SPELL', 'LEVEL_1']).
     """
     metadata = []
 
     # Get the selected type and determine UNIT or SPELL
-    selected_type = type_combo.get().strip().lower()
+    selected_type = WIDGETS["type_combo"].get().strip().lower()
     if selected_type == "spell":
         metadata.append("SPELL")
     else:
         metadata.append("UNIT")
 
     # Get the selected level and add LEVEL_#
-    selected_level = level_combo.get().strip()
+    selected_level = WIDGETS["level_combo"].get().strip()
     if selected_level in [str(i) for i in range(1, 6)]:  # Validate it’s 1-5
         metadata.append(f"LEVEL_{selected_level}")
     else:
@@ -238,7 +349,9 @@ def get_gui_metadata(type_combo, level_combo):
 
 
 def main():
-    """Set up and run the Game Card Creator GUI."""
+    """
+    Set up and run the Card Creator GUI.
+    """
     parser = argparse.ArgumentParser(
         description="User Interface for card generation."
     )
@@ -311,11 +424,8 @@ def main():
     level_combo.bind(
         "<<ComboboxSelected>>",
         lambda e: [
-            randomize_atk_def(level_combo, atk_entry, def_entry),
-            update_preview(
-                type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-                atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-            )
+            randomize_atk_def(),
+            update_preview()
         ]
     )
 
@@ -324,7 +434,7 @@ def main():
     image_entry = ttk.Entry(left_frame, width=30, font=("Helvetica", 12))
     image_entry.grid(row=4, column=1, pady=8, padx=5, sticky="w")
     browse_btn = ttk.Button(
-        left_frame, text="Browse", command=lambda: browse_image(image_entry)
+        left_frame, text="Browse", command=lambda: browse_image()
     )
     browse_btn.grid(row=5, column=1, pady=8, padx=5, sticky="w")
 
@@ -345,11 +455,8 @@ def main():
         left_frame,
         text="Randomize",
         command=lambda: [
-            randomize_atk_def(level_combo, atk_entry, def_entry),
-            update_preview(
-                type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-                atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-            )
+            randomize_atk_def(),
+            update_preview()
         ]
     )
     randomize_btn.grid(row=8, column=1, pady=8, padx=5, sticky="w")
@@ -384,6 +491,22 @@ def main():
     )
     preview_canvas.grid(row=0, column=0)
 
+    # Save to Card List button
+    save_btn = ttk.Button(
+        preview_frame,
+        text="Save to Card List",
+        command=lambda: save_to_card_list()
+    )
+    save_btn.grid(row=1, column=0, pady=8, padx=5, sticky="ew")
+    
+    # Reset button
+    reset_btn = ttk.Button(
+        preview_frame,
+        text="Reset",
+        command=lambda: reset_ui()
+    )
+    reset_btn.grid(row=2, column=0, pady=8, padx=5, sticky="ew")
+
     # Right - Effects Generator window
     effects_frame = ttk.LabelFrame(main_frame, text="Effects Generator", padding="15")
     effects_frame.grid(row=0, column=2, padx=15, sticky="nsew")
@@ -395,13 +518,10 @@ def main():
         command=lambda: [
             generate_effects(
                 effect_buttons, args.input_file,
-                get_gui_metadata(type_combo, level_combo),
-                get_selected_subtypes(subtype_vars, subtype_labels)
+                get_gui_metadata(),
+                get_selected_subtypes()
             ),
-            update_preview(
-                type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-                atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-            )
+            update_preview()
         ]
     )
     generate_btn.grid(row=0, column=0, pady=8, padx=5, sticky="ew")
@@ -413,52 +533,42 @@ def main():
             effects_frame,
             text="",
             command=lambda i=i: [
-                assign_effect(effect_buttons[i].cget("text"), effect1_entry, effect2_entry),
-                update_preview(
-                    type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-                    atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-                )
+                assign_effect(effect_buttons[i].cget("text")),
+                update_preview()
             ]
         )
         btn.grid(row=i + 1, column=0, pady=5, padx=5, sticky="ew")
         effect_buttons.append(btn)
 
     # Bind additional UI updates
-    type_combo.bind("<<ComboboxSelected>>", lambda e: update_preview(
-        type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-        atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-    ))
-    name_entry.bind("<FocusOut>", lambda e: update_preview(
-        type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-        atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-    ))
-    atk_entry.bind("<FocusOut>", lambda e: update_preview(
-        type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-        atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-    ))
-    def_entry.bind("<FocusOut>", lambda e: update_preview(
-        type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-        atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-    ))
-    effect1_entry.bind("<FocusOut>", lambda e: update_preview(
-        type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-        atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-    ))
-    effect2_entry.bind("<FocusOut>", lambda e: update_preview(
-        type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-        atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-    ))
+    type_combo.bind("<<ComboboxSelected>>", lambda e: update_preview())
+    name_entry.bind("<FocusOut>", lambda e: update_preview())
+    atk_entry.bind("<FocusOut>", lambda e: update_preview())
+    def_entry.bind("<FocusOut>", lambda e: update_preview())
+    effect1_entry.bind("<FocusOut>", lambda e: update_preview())
+    effect2_entry.bind("<FocusOut>", lambda e: update_preview())
+    image_entry.bind("<FocusOut>", lambda e: update_preview())
     for var in subtype_vars:
-        var.trace("w", lambda *args: update_preview(
-            type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-            atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-        ))
+        var.trace("w", lambda *args: update_preview())     
+    
+    # global variable to store UI elements.
+    global WIDGETS
+    WIDGETS = {
+        "type_combo": type_combo,
+        "level_combo": level_combo,
+        "name_entry": name_entry,
+        "subtype_vars": subtype_vars,
+        "subtype_labels": subtype_labels,
+        "atk_entry": atk_entry,
+        "def_entry": def_entry,
+        "effect1_entry": effect1_entry,
+        "effect2_entry": effect2_entry,
+        "image_entry": image_entry,
+        "preview_canvas": preview_canvas  # Include this too, since it’s used often
+    }
 
     # Initial preview update
-    update_preview(
-        type_combo, level_combo, name_entry, subtype_vars, subtype_labels,
-        atk_entry, def_entry, effect1_entry, effect2_entry, preview_canvas
-    )
+    update_preview()
 
     # Configure grid weights
     main_frame.columnconfigure(0, weight=1)
