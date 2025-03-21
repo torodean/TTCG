@@ -244,6 +244,8 @@ def create_card(card_data, output_folder):
             - defense (str): Defense value, drawn in a box (converted to string if numeric).
             - effect1 (str): First effect text, drawn as wrapped text.
             - effect2 (str): Second effect text, drawn as wrapped text.
+            - image (str): The image file for this card.
+            - serial (str): The serial number for this card.
         output_folder (str): Path to the folder where the card image will be saved.
 
     Returns:
@@ -276,6 +278,10 @@ def create_card(card_data, output_folder):
     # Draw effects in boxes.
     draw_wrapped_text(draw, card_data["effect1"], (70, 710), (680, 810), initial_font_size=30)
     draw_wrapped_text(draw, card_data["effect2"], (70, 870), (680, 970), initial_font_size=30)
+    
+    # Draw the serial number and trademark.
+    draw_single_line_text(draw, card_data["serial"], (550, 1007), (722, 1022), initial_font_size=20)
+    draw_single_line_text(draw, "© True Trading Card Game Company", (31, 1007), (600, 1022), initial_font_size=20)
 
     # Save the card
     output_file = f"{output_folder}/{card_data['type'].replace(' ', '_')}_card_{card_data['name'].replace(' ', '_')}.png"
@@ -288,26 +294,28 @@ def parse_args():
     A method for parsing the script arguments.
     """
     parser = argparse.ArgumentParser(description="Create a TTCG trading card.")
-    parser.add_argument("--level", type=int, default=1, choices=range(1, 6),
+    parser.add_argument('-l', "--level", type=int, default=1, choices=range(1, 6),
                         help="Card level (1-5)")
-    parser.add_argument("--type", type=str, default="fire",
+    parser.add_argument('-t', "--type", type=str, default="fire",
                         help="Card type (e.g., Creature, Artifact)")
-    parser.add_argument("--name", type=str, default="Card Name",
+    parser.add_argument('-n', "--name", type=str, default="Card Name",
                         help="Card name")
-    parser.add_argument("--subtype", type=str, nargs="+", default=["Dragon", "Warrior"],
+    parser.add_argument('-s', "--subtype", type=str, nargs="+", default=["Dragon", "Warrior"],
                         help="Subtypes (space-separated, e.g., Dragon Spirit)")
-    parser.add_argument("--effect1", type=str, default="Effect 1",
+    parser.add_argument('-1', "--effect1", type=str, default="Effect 1",
                         help="First effect text")
-    parser.add_argument("--effect2", type=str, default="Effect 2",
+    parser.add_argument('-2', "--effect2", type=str, default="Effect 2",
                         help="Second effect text")
-    parser.add_argument("--attack", type=int, default=None,
+    parser.add_argument('-a', "--attack", type=int, default=None,
                         help="Attack value (defaults to random based on level)")
-    parser.add_argument("--defense", type=int, default=None,
+    parser.add_argument('-d', "--defense", type=int, default=None,
                         help="Defense value (defaults to random based on level, sums with atk to level*500)")
-    parser.add_argument("--image", type=str, default="image.png",
+    parser.add_argument('-i', "--image", type=str, default="image.png",
                         help="The image file for this card.")
     parser.add_argument('-o', "--output", type=str, default="../images/generated_cards",
                         help="The folder to output images to.")
+    parser.add_argument("--serial", type=str, default="ABCD1234567890",
+                        help="The serial number for the card.")
 
     return parser.parse_args()
 
@@ -343,7 +351,8 @@ if __name__ == "__main__":
         "defense": str(defense),
         "effect1": args.effect1,
         "effect2": args.effect2,
-        "image": args.image
+        "image": args.image,
+        "serial": args.serial
     }
 
     create_card(card_data, args.output)
