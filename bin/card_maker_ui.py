@@ -47,7 +47,7 @@ def get_card_data():
         - All string values are stripped of leading/trailing whitespace.
         - Used by update_preview, save_to_card_list, and reset_ui to centralize data collection.
     """
-    return {
+    card_data = {
         "type": WIDGETS["type_combo"].get().strip() or "Unknown",
         "level": int(WIDGETS["level_combo"].get().strip() or 1),
         "name": WIDGETS["name_entry"].get().strip() or "Unnamed",
@@ -57,8 +57,10 @@ def get_card_data():
         "effect1": WIDGETS["effect1_entry"].get("1.0", tk.END).strip() or "",
         "effect2": WIDGETS["effect2_entry"].get("1.0", tk.END).strip() or "",
         "image": WIDGETS["image_entry"].get().strip() or "default.png",
-        "serial": ""
+        "serial": WIDGETS["serial_entry"].get().strip() or ""
     }
+    print("Collected card data:", card_data)  # Debug statement
+    return card_data
 
 
 def save_to_card_list():
@@ -130,6 +132,10 @@ def update_preview():
         
     # Collect card data from UI
     card_data = get_card_data()
+    
+    #Set the serial number.
+    serial_number = generate_serial_number(card_data)
+    update_serial_number(serial_number)
 
     # Use a temporary folder for output
     with tempfile.TemporaryDirectory() as temp_dir:
@@ -191,12 +197,13 @@ def get_selected_subtypes():
     Returns:
         list of str: List of selected subtype labels.
     """
-    return [label for var, label in zip(WIDGETS["subtype_vars"], WIDGETS["subtype_labels"]) if var.get()]
+    selected = [label for var, label in zip(WIDGETS["subtype_vars"], WIDGETS["subtype_labels"]) if var.get()]
+    return selected
 
 
 def generate_effects(effect_buttons, input_file, columns, subtypes):
     """
-    Generate 10 random effects and populate the effect buttons.
+    Generate 15 random effects and populate the effect buttons.
 
     This function loads effects from a CSV file, filters them based on specified columns,
     and generates 10 unique random effects: up to 5 using subtypes as search strings,
@@ -217,7 +224,7 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
     generated_effects = []
 
     # Target: Up to 5 effects with subtypes, rest without
-    target_with_subtypes = 5
+    target_with_subtypes = 6
 
     # Generate up to 5 effects using subtypes as search strings
     if subtypes:  # Only if subtypes are provided
@@ -233,7 +240,7 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
             generated_effects.append(effect)
 
     # Generate remaining effects without search strings (up to 10 total)
-    remaining = 10 - len(generated_effects)
+    remaining = 15 - len(generated_effects)
     for _ in range(remaining):
         if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
             break  # Stop if no more unique effects are available
@@ -297,7 +304,8 @@ def generate_serial_number(card_data):
     # Extract attributes from card_data
     name = card_data.get('name', '')
     card_type = card_data.get('type', '')
-    subtypes = card_data.get('subtypes', [])
+    level = card_data.get('level', '')
+    subtypes = card_data.get('subtype', '')
     rarity = card_data.get('rarity', '')
     image = card_data.get('image', '')
     attack = card_data.get('attack', '')
@@ -307,15 +315,39 @@ def generate_serial_number(card_data):
         
     # Placeholder: Combine attributes into a unique string
     attribute_string = (
-        f"{name}|{card_type}|{' '.join(subtypes)}|{rarity}|"
-        f"{image}|{attack}|{defense}|{effect1}|{effect2}"
+        f"{name}{card_type}{level}{subtypes}{attack}{defense}{effect1}{effect2}{image}{rarity}"
     )
 
+    print(f"attribute_string: {attribute_string}")
+
     # TODO: Implement serial number generation logic here
-    #serial_number = "IMPLEMENT_ME"  # TODO
-    serial_number = hashlib.sha256(attribute_string.encode('utf-8')).hexdigest()[:14] # Testing with hash
+    serial_number = hashlib.sha256(attribute_string.encode('utf-8')).hexdigest() # Testing with hash
+    print(f"Full serial_number: {serial_number}")
+    
+    serial_number = serial_number[:14]
+    card_data["serial"] = serial_number
     
     return serial_number
+
+
+def update_serial_number(new_serial):
+    """
+    Updates the serial number displayed in the serial_entry widget.
+
+    Temporarily enables the serial_entry widget, clears its current content,
+    inserts the new serial number, and then disables it again to prevent user edits.
+
+    Args:
+        new_serial (str): The new serial number to display in the widget.
+
+    Returns:
+        None
+    """
+    print(f"Updating serial number to: {new_serial}")    # Debug output
+    WIDGETS["serial_entry"].configure(state="normal")    # Enable editing
+    WIDGETS["serial_entry"].delete(0, tk.END)            # Clear current text
+    WIDGETS["serial_entry"].insert(0, new_serial)        # Insert new serial
+    WIDGETS["serial_entry"].configure(state="disabled")  # Disable again
 
 
 def get_gui_metadata():
@@ -511,10 +543,19 @@ def main():
     effects_frame = ttk.LabelFrame(main_frame, text="Effects Generator", padding="15")
     effects_frame.grid(row=0, column=2, padx=15, sticky="nsew")
 
-    # Generate Effects button
+    # Define a custom style for the button
+    style = ttk.Style()
+    style.configure("Standout.TButton", 
+                    font=("Helvetica", 12, "bold"), # Bold and larger font
+                    foreground="white",             # Text color
+                    background="black",             # Background color (may not work on all platforms)
+                    padding=6)                      # Extra padding for size
+
+    # Generate Effects button with standout style
     generate_btn = ttk.Button(
         effects_frame,
         text="Generate Effects",
+        style="Standout.TButton",  # Apply the custom style
         command=lambda: [
             generate_effects(
                 effect_buttons, args.input_file,
@@ -524,11 +565,11 @@ def main():
             update_preview()
         ]
     )
-    generate_btn.grid(row=0, column=0, pady=8, padx=5, sticky="ew")
+    generate_btn.grid(row=0, column=0, pady=12, padx=10, sticky="ew")  # Increased padding
 
-    # Effect buttons (10)
+    # Effect buttons (15)
     effect_buttons = []
-    for i in range(10):
+    for i in range(15):
         btn = ttk.Button(
             effects_frame,
             text="",
