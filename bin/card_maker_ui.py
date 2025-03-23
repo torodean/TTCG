@@ -19,6 +19,10 @@ from PIL import Image, ImageTk
 # For SN generation
 import hashlib
 
+# Used for card data output.
+import csv
+
+
 # Global var to determine when preview should be generated vs not.
 SKIP_PREVIEW = False
 
@@ -63,21 +67,56 @@ def get_card_data():
     return card_data
 
 
-def save_to_card_list():
+def save_to_card_list(filename):
     """
     Save card data from the UI to a spreadsheet.
 
-    This function collects card details from the GUI widgets and saves them to a spreadsheet.
-    The implementation for saving (e.g., CSV, Excel) is left to be completed.
+    This function collects card details from the GUI widgets and saves them to a CSV file
+    with the header 'NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY'.
+    Data is appended to the file, and the header is written if the file doesn’t exist.
+
+    Args:
+        filename (str): The path to the output CSV file (e.g., 'card_list.csv').
 
     Returns:
-        None: Saves data to a spreadsheet.
+        None: Saves data to the specified CSV file.
     """
     # Collect card data from UI
     card_data = get_card_data()
 
-    # TODO: Implement spreadsheet saving logic here
-    print("Card data to save:", card_data)  # Placeholder for debugging
+    # Define the header
+    header = ["NAME", "TYPE", "SUBTYPES", "LEVEL", "IMAGE", "ATTACK", "DEFENSE", "EFFECT1", "EFFECT2", "SERIAL", "RARITY"]
+
+    # Check if file exists to determine if header needs to be written
+    file_exists = os.path.isfile(filename)
+
+    # Open the file in append mode
+    with open(filename, mode='a', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f, delimiter=';')
+
+        # Write header if the file is new
+        if not file_exists:
+            writer.writerow(header)
+
+        # Prepare the row data, adding a default 'RARITY' since it’s not in card_data
+        row = [
+            card_data.get("name", ""),
+            card_data.get("type", ""),
+            card_data.get("subtype", ""),
+            card_data.get("level", ""),
+            card_data.get("image", ""),
+            card_data.get("attack", ""),
+            card_data.get("defense", ""),
+            card_data.get("effect1", ""),
+            card_data.get("effect2", ""),
+            card_data.get("serial", ""),
+            "Common"  # Default rarity (modify if rarity is added to UI)
+        ]
+
+        # Write the row to the CSV
+        writer.writerow(row)
+
+    print(f"Card saved to {filename}:", card_data)  # Debug output
 
 
 def reset_ui():
@@ -395,6 +434,12 @@ def main():
              "'effects/effects_with_placeholders.csv'. The file should contain a header row "
              "with column names."
     )
+    parser.add_argument(
+        "-o",
+        "--output_file",
+        default="card_list/card_list.csv",
+        help="Path to the output CSV file for saving card data. Defaults to 'card_list.csv'."
+    )
     
     args = parser.parse_args()
     
@@ -527,7 +572,7 @@ def main():
     save_btn = ttk.Button(
         preview_frame,
         text="Save to Card List",
-        command=lambda: save_to_card_list()
+        command=lambda: save_to_card_list(args.output_file)
     )
     save_btn.grid(row=1, column=0, pady=8, padx=5, sticky="ew")
     
