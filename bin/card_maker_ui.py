@@ -564,7 +564,8 @@ def main():
         "effect1_entry": effect1_entry,
         "effect2_entry": effect2_entry,
         "image_entry": image_entry,
-        "preview_canvas": preview_canvas  # Include this too, since it’s used often
+        "preview_canvas": preview_canvas,
+        "serial_entry" : serial_entry
     }
 
     # Initial preview update
