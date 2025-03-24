@@ -8,27 +8,45 @@ import random
 def create_base_card(card_type, card_level, width=750, height=1050, card_image=None):
     """
     Creates the base card image based on type and level, with a type-specific background
-    and a level-specific overlay.
+    and a level-specific overlay, and an optional card image behind everything resized to width.
     
     Args:
         card_type (str): The type of the card.
         card_level (int): The level of the card.
         width (int): The width of the card (Defaults to 750).
         height (int): The height of the card (Defaults to 1050).
-        card_image (str): The main image to use for the card. (Defaults to None for testing).
+        card_image (str): The main image to use behind the card. (Defaults to None).
     
     Returns:
-        Image: The base card image with type background and level overlay.
+        Image: The base card image with optional background image, type background, and level overlay.
     """
+    # Start with transparent canvas
+    final_img = Image.new("RGBA", (width, height), (0, 0, 0, 0))
+
+    # Add card_image as bottom layer if provided, resized to width only
+    if card_image:
+        try:
+            bg_img = Image.open(card_image).convert("RGBA")
+            if bg_img.size != (width, height):
+                # Calculate new height maintaining aspect ratio
+                aspect_ratio = bg_img.size[1] / bg_img.size[0]
+                new_height = int(width * aspect_ratio)
+                bg_img = bg_img.resize((width, new_height), Image.Resampling.LANCZOS)
+            final_img.paste(bg_img, (0, 0), bg_img)
+        except FileNotFoundError:
+            pass
+
     # Get base image based on type (case-insensitive)
     base_image_path = f"../images/card pngs/{card_type.lower()}.png"
     try:
         base_img = Image.open(base_image_path).convert("RGBA")
         if base_img.size != (width, height):
             base_img = base_img.resize((width, height), Image.Resampling.LANCZOS)
+        # Ensure we're using the alpha channel correctly
+        final_img = Image.alpha_composite(final_img, base_img)
     except FileNotFoundError:
-        # Fallback to white background if image not found
-        base_img = Image.new("RGBA", (width, height), (255, 255, 255, 255))
+        # If no type image found, keep just the card_image or transparent
+        pass
 
     # Overlay level-specific PNG
     level_image_path = f"../images/card pngs/{card_level} star.png"
@@ -36,12 +54,13 @@ def create_base_card(card_type, card_level, width=750, height=1050, card_image=N
         level_img = Image.open(level_image_path).convert("RGBA")
         if level_img.size != (width, height):
             level_img = level_img.resize((width, height), Image.Resampling.LANCZOS)
-        base_img.paste(level_img, (0, 0), level_img)  # Overlay with transparency
+        # Use alpha_composite for level overlay too
+        final_img = Image.alpha_composite(final_img, level_img)
     except FileNotFoundError:
         # No overlay if level image not found
         pass
 
-    return base_img
+    return final_img
 
 
 def squish_text_horizontally(text, font_path, font_size, squish_factor, output_path):
@@ -260,7 +279,7 @@ def create_card(card_data, output_folder):
     # TTCG card dimensions: 2.5" x 3.5" at 300 DPI = 750 x 1050 pixels
     width, height = 750, 1050
     
-    img = create_base_card(card_data["type"], card_data["level"], width, height)
+    img = create_base_card(card_data["type"], card_data["level"], width, height, card_data["image"])
     draw = ImageDraw.Draw(img)
 
     # Draw name in a box from (70, 35) to (585, 70)
@@ -310,7 +329,7 @@ def parse_args():
                         help="Attack value (defaults to random based on level)")
     parser.add_argument('-d', "--defense", type=int, default=None,
                         help="Defense value (defaults to random based on level, sums with atk to level*500)")
-    parser.add_argument('-i', "--image", type=str, default="image.png",
+    parser.add_argument('-i', "--image", type=str, default=None,
                         help="The image file for this card.")
     parser.add_argument('-o', "--output", type=str, default="../images/generated_cards",
                         help="The folder to output images to.")

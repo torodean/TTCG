@@ -148,13 +148,19 @@ def reset_ui():
     
 
 def browse_image():
-    """Open a file dialog to select an image and update the entry field."""
+    """
+    Open a file dialog to select an image and update the entry field.
+    """
     filename = filedialog.askopenfilename(
+        initialdir="../images/creatures", 
         filetypes=[("Image files", "*.png *.jpg *.jpeg *.gif *.bmp")]
     )
     if filename:
         WIDGETS["image_entry"].delete(0, tk.END)
         WIDGETS["image_entry"].insert(0, filename)
+        
+    update_name_from_image()
+    update_preview()
 
 
 def update_preview():
@@ -419,6 +425,33 @@ def get_gui_metadata():
     return metadata
 
 
+def update_name_from_image():
+    image_path = WIDGETS["image_entry"].get()
+    current_name = WIDGETS["name_entry"].get().strip()
+    
+    if current_name == "Unnamed" and image_path:
+        # Check if the image_path points to a valid image file
+        try:
+            # Attempt to open the image to verify it's valid
+            with Image.open(image_path):
+                # Extract just the filename without path or extension
+                filename = os.path.splitext(os.path.basename(image_path))[0]
+                if filename[0] == "_":
+                    return # This is the case for un-named images with default hash names.
+                # Update the name_entry with the extracted filename
+                WIDGETS["name_entry"].delete(0, tk.END)
+                WIDGETS["name_entry"].insert(0, filename)
+                print(f"Name updated to: {filename}")
+        except (FileNotFoundError, IOError, ValueError):
+            # If image_path isn't valid, don't update and print a message
+            print(f"Invalid image path: {image_path}")
+    elif not image_path:
+        print("No image path provided")
+    else:
+        print(f"Name not updated: current name is '{current_name}', not 'Unnamed'")
+    
+
+
 def main():
     """
     Set up and run the Card Creator GUI.
@@ -509,7 +542,7 @@ def main():
     # Image with browse button
     ttk.Label(left_frame, text="Image:").grid(row=4, column=0, pady=8, padx=5, sticky="e")
     image_entry = ttk.Entry(left_frame, width=30, font=("Helvetica", 12))
-    image_entry.grid(row=4, column=1, pady=8, padx=5, sticky="w")
+    image_entry.grid(row=4, column=1, pady=8, padx=5, sticky="w")    
     browse_btn = ttk.Button(
         left_frame, text="Browse", command=lambda: browse_image()
     )
@@ -633,7 +666,7 @@ def main():
     def_entry.bind("<FocusOut>", lambda e: update_preview())
     effect1_entry.bind("<FocusOut>", lambda e: update_preview())
     effect2_entry.bind("<FocusOut>", lambda e: update_preview())
-    image_entry.bind("<FocusOut>", lambda e: update_preview())
+    image_entry.bind("<FocusOut>", lambda e: [update_name_from_image(), update_preview()])
     for var in subtype_vars:
         var.trace("w", lambda *args: update_preview())     
     
