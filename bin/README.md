@@ -70,6 +70,24 @@ The `bin` directory serves as the central hub for executable scripts used in the
   - `pandas` (for CSV processing)
   - `argparse`, `random`, `sys` (standard library)
   
+### `parse_image_files.py`
+- **Purpose**: Displays images from a specified folder one at a time with a transparent overlay image (`fire.png`) on top, allowing users to mark images as "needs fixed" by moving them to another folder. The images that need fixed are those which do not display correctly with the card name being at the top. 
+- **Key Features**: 
+  - Recursively loads all images (PNG, JPG, JPEG, GIF, BMP) from a source folder and its subfolders.
+  - Resizes each source image to match the overlay’s width while preserving aspect ratio, padding or cropping to match height.
+  - Composites the overlay image (`fire.png`) at its actual size on top using alpha compositing for proper transparency handling.
+  - Provides "Next" and "Needs Fixed" buttons: "Next" advances to the next image, "Needs Fixed" moves the current image to a designated folder.
+  - Includes error handling for missing files, no images found, and file movement issues.
+- **Usage**: 
+  - Run the script with: `python image_viewer.py`.
+  - Source folder: `../images/units/` (relative to script location).
+  - Overlay image: `../images/card pngs/fire.png` (must have transparency).
+  - Destination folder for "needs fixed" images: `../images/needs_fixed/` (created if not present).
+- **Dependencies**: 
+  - Python 3.x
+  - `Pillow` (for image processing, install with `pip install pillow`)
+  - `tkinter` (standard library, for GUI)
+  
 ### `ttcg_tools.py`
 - **Purpose**: Provides a collection of shared utility functions and tools used across multiple TTCG-related scripts to streamline common tasks and ensure consistency.
 - **Key Features**: Centralizes reusable code for tasks such as data processing, file handling, and configuration management, reducing duplication across scripts.
