@@ -37,7 +37,7 @@ def create_base_card(card_type, card_level, width=750, height=1050, card_image=N
             pass
 
     # Get base image based on type (case-insensitive)
-    base_image_path = f"../images/card pngs/{card_type.lower()}.png"
+    base_image_path = f"../images/card pngs/{card_type.lower()}-60.png"
     try:
         base_img = Image.open(base_image_path).convert("RGBA")
         if base_img.size != (width, height):
