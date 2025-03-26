@@ -41,7 +41,7 @@ The `bin` directory serves as the central hub for executable scripts used in the
 ### `create_card.py`
 - **Purpose**: Generates a trading card image in TTCG format with customizable text, type, level, effects, and stats, overlaying them on a type-specific background and level-specific star overlay.
 - **Key Features**: Creates a 750x1050 pixel card (2.5" x 3.5" at 300 DPI) with a base image based on card type and a level-specific star overlay; supports single-line text for name, subtype, attack, and defense (with centering for stats), and wrapped text for two effects; uses predefined layout coordinates.
-- **Usage**: `python3 create_card.py [-l {1,2,3,4,5}] [-t TYPE] [-n NAME] [-s SUBTYPE [SUBTYPE ...]] [-1 EFFECT1] [-2 EFFECT2] [-a ATTACK] [-d DEFENSE] [-i IMAGE] [-o OUTPUT] [--serial SERIAL]`
+- **Usage**: `python3 create_card.py [-l {1,2,3,4,5}] [-t TYPE] [-n NAME] [-s SUBTYPE [SUBTYPE ...]] [-1 EFFECT1] [-2 EFFECT2] [-a ATTACK] [-d DEFENSE] [-i IMAGE] [-o OUTPUT] [--serial SERIAL] [-T TRANSPARENCY]`
 - **Input**: Command-line arguments for card details; no defaults for type or level; attack and defense optional (no random generation in this version); expects PNG images in `../images/card pngs/` (e.g., `fire.png`, `1 star.png`).
 - **Dependencies**: Requires `Pillow` for image processing (`pip install Pillow`); assumes helper functions like `create_base_card`, `draw_single_line_text`, and `draw_wrapped_text`.
 - **Output**: Saves a PNG card image to `<output_folder>/<type>_<name>.png` (spaces replaced with underscores), e.g., `ttcg_card_Card_Name.png`; defaults to `../images/generated_cards/` if `-o` is not specified.
