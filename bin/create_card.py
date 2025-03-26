@@ -302,7 +302,10 @@ def create_card(card_data, output_folder, output_file_name=None):
     # Draw subtypes in a box from (70, 90) to (585, 120)
     card_type = card_data["type"]
     card_subtype = card_data["subtype"]
-    subtypes_line = f"{card_type}, {card_subtype}"
+    if card_type == "Spell":
+        subtypes_line = f"{card_type}"
+    else:
+        subtypes_line = f"{card_type}, {card_subtype}"
     draw_single_line_text(draw, subtypes_line, (70, 90), (585, 120))
     
     # Draw ATK and def in the boxes.

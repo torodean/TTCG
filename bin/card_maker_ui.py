@@ -209,32 +209,77 @@ def update_preview():
         WIDGETS["preview_canvas"].image = photo
 
 
-def randomize_atk_def():
+def generate_stat_pair(stat_bonus):
     """
-    Randomize ATK and DEF values based on the selected level.
+    Generate two random values between -stat_bonus and stat_bonus (inclusive).
+    
+    Args:
+        stat_bonus (int): The maximum absolute value for the random range.
+        
+    Returns:
+        tuple: A pair of integers (value1, value2) where each is between -stat_bonus and stat_bonus.
+    """
+    value1 = random.randint(-stat_bonus, stat_bonus) * 5
+    value2 = random.randint(-stat_bonus, stat_bonus) * 5
+    return (value1, value2)
+
+
+def get_sign(value):
+    """
+    Return the sign of a number as a string.
+    
+    Args:
+        value (int or float): The number to check.
+        
+    Returns:
+        str: "+" if value is >= 0, "" if value < 0.
+        
+    Note: This returns "" for negative numbers because they will already have a negative on them.
+    """
+    return "+" if value >= 0 else ""
+
+
+def randomize_atk_def(isSpell=False):
+    """
+    Randomize ATK and DEF values based on the selected level and type.
 
     This function generates random ATK and DEF values in increments of 5, ensuring their sum
     equals 5 times the selected level. The values are then populated into the provided entry widgets.
+    For spells, the values are slightly different and instead range as bonuses from +/- 5*level.
+    
+    Args:
+        isSpell (bool): Sets the generation to spell mode.
     """
     # Get the selected level, default to 1 if empty or invalid
     level_str = WIDGETS["level_combo"].get().strip()
+    card_type = WIDGETS["type_combo"].get().strip().lower()
     level = int(level_str) if level_str in [str(i) for i in range(1, 6)] else 1
 
-    # Calculate total points (5 * level)
-    total_points = 500 * level
-
-    # Generate ATK in increments of 5, leaving at least 0 for DEF
-    max_atk = total_points  # ATK can be 0 to total_points
-    atk = random.randrange(0, max_atk + 5, 5)  # Start at 0, step by 5, inclusive of max_atk
-
-    # DEF is the remainder to ensure atk + def = total_points
-    def_ = total_points - atk
-
-    # Clear and populate the entry fields
+    # Clear the entry fields
     WIDGETS["atk_entry"].delete(0, tk.END)
-    WIDGETS["atk_entry"].insert(0, str(atk))
     WIDGETS["def_entry"].delete(0, tk.END)
-    WIDGETS["def_entry"].insert(0, str(def_))
+
+    # Calculate total points (5 * level)
+    if (card_type == "spell"):
+        # Get stat bonuses.
+        card_atk, card_def = generate_stat_pair(level)
+    
+        # Populate the entry fields.
+        WIDGETS["atk_entry"].insert(0, f"{get_sign(card_atk)}{card_atk}")
+        WIDGETS["def_entry"].insert(0, f"{get_sign(card_def)}{card_def}")
+    else:
+        total_points = 500 * level
+
+        # Generate ATK in increments of 5, leaving at least 0 for DEF
+        max_atk = total_points  # ATK can be 0 to total_points
+        card_atk = random.randrange(0, max_atk + 5, 5)  # Start at 0, step by 5, inclusive of max_atk
+
+        # DEF is the remainder to ensure atk + def = total_points
+        card_def = total_points - card_atk
+    
+        # Populate the entry fields.
+        WIDGETS["atk_entry"].insert(0, str(card_atk))
+        WIDGETS["def_entry"].insert(0, str(card_def))
 
 
 def get_selected_subtypes():
@@ -506,7 +551,7 @@ def main():
     ttk.Label(left_frame, text="Type:").grid(row=1, column=0, pady=8, padx=5, sticky="e")
     type_combo = ttk.Combobox(
         left_frame,
-        values=["Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature"],
+        values=["Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature", "Spell"],
         width=27,
         font=("Helvetica", 12),
     )
