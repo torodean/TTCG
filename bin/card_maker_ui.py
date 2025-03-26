@@ -152,7 +152,7 @@ def browse_image():
     Open a file dialog to select an image and update the entry field.
     """
     filename = filedialog.askopenfilename(
-        initialdir="../images/creatures", 
+        initialdir="../images", 
         filetypes=[("Image files", "*.png *.jpg *.jpeg *.gif *.bmp")]
     )
     if filename:
