@@ -6,10 +6,31 @@ The `bin` directory serves as the central hub for executable scripts used in the
 ## Scripts
 
 ### `add_csv_field.py`
-- **Purpose**: Processes text or CSV files containing effects, adding or updating a custom column to indicate whether each effect matches a specified pattern (with placeholders) or exact substring.
-- **Key Features**: Supports placeholder expansion, handles both text and CSV inputs, and outputs semicolon-delimited CSV files.
-- **Usage**: `python3 add_csv_field.py -i INPUT -o OUTPUT -c COLUMN [-t TEXT | -e EXACT]`
-- **Dependencies**: Relies on placeholder files in `../placeholders/`.
+- **Purpose**: Processes text or semicolon-delimited CSV files containing effect descriptions, adding or updating a custom column to indicate matches against a specified pattern (with placeholders) or exact substring, or deleting lines matching a string.
+- **Key Features**:
+  - Supports placeholder expansion (e.g., `<number>`, `<type>`) using values from text files in a placeholder directory.
+  - Handles both plain text inputs (converted to CSV) and existing CSV files (updates or adds columns).
+  - Outputs results as semicolon-delimited CSV files with columns like `EFFECTNAME` and the user-specified column.
+  - Options for pattern matching, exact substring matching, or line deletion.
+  - Conditional matching based on an existing column’s value (via `-m/--match_column`).- **Usage**: `python3 add_csv_field.py -i INPUT -o OUTPUT -c COLUMN [-t TEXT | -e EXACT]`
+- **Usage**: 
+  - `python3 add_csv_field.py -i INPUT -o OUTPUT -c COLUMN [-p PLACEHOLDER_DIR] [-t TEXT | -e EXACT | -d DELETE] [-m MATCH_COLUMN]`
+  - `-i/--input`: Input file (text or CSV, defaults to `effects/effects_with_placeholders.csv`).
+  - `-o/--output`: Output CSV file (defaults to `effects/effects_with_placeholders.csv`).
+  - `-c/--column`: Name of the column to add or update (required, e.g., `HasDraw`).
+  - `-p/--placeholder_dir`: Directory with placeholder files (defaults to `placeholders`).
+  - `-t/--text`: Pattern to match, supporting placeholders (e.g., `Draw <number> cards`).
+  - `-e/--exact`: Exact substring to match (e.g., `Draw two`).
+  - `-d/--delete`: Exact string to match for deleting lines (e.g., `Discard`).
+  - `-m/--match_column`: Existing column that must be `True` for matching (optional, e.g., `UNIT`).
+**Dependencies**:
+- Python 3 standard libraries (`argparse`, `os`, `re`, `csv`).
+- Custom module `ttcg_tools` for placeholder handling and command string generation.
+- Placeholder text files in the specified directory (e.g., `placeholders/number.txt`).
+**Notes**:
+- Exactly one of `-t`, `-e`, or `-d` must be provided.
+- For CSV inputs, `-e` requires the column to pre-exist, while `-t` can create it.
+- Errors (e.g., missing files, invalid columns) are reported with descriptive messages.
 
 ### `alphabetize_file.py`
 - **Purpose**: Reads lines from a text file, sorts them alphabetically, and writes the result to an output file.
@@ -18,19 +39,34 @@ The `bin` directory serves as the central hub for executable scripts used in the
 - **Dependencies**: None beyond Python 3.
 
 ### `create_effect_combinations.py`
-- **Purpose**: Generates all possible combinations of effect templates by replacing placeholders with values, with configurable filtering and phrase replacement.
-- **Key Features**: Supports nested placeholders and offsets (e.g., `<rank+1>`), filters unwanted combinations, replaces phrases for refinement, and alphabetizes output.
-- **Usage**: `python3 create_effect_combinations.py [-s SENTENCE | -f FILE] [-c CONFIG] [-r REPLACEMENTS]`
-- **Configuration Files**: Uses `../placeholders/combinations_to_remove.txt` (phrases to filter) and `../placeholders/phrase_replacements.txt` (replacements), both supporting `#` comments.
-- **Dependencies**: Relies on placeholder files in `../placeholders/` and effect templates in `../effects/`.
-
-### `filter_effects_and_pair.py`
-- **Purpose**: Filters rows from a CSV file based on specified columns containing "True" and generates random pairs of values from the first column.
-- **Key Features**: Accepts multiple column filters via `-c`, extracts rows where all specified columns are "True" (case-insensitive), selects 10 random pairs from the first column, and handles errors gracefully with informative messages.
-- **Usage**: `python3 filter_effects_and_pair.py [INPUT_FILE] -c COLUMN [-c COLUMN ...]`
-- **Input**: Defaults to `effects/effects_with_placeholders.csv` if no input file is provided; expects a CSV with a header row.
-- **Dependencies**: Requires `pandas` for CSV processing (`pip install pandas`); no additional configuration files needed.
-- **Output**: Prints 10 random pairs (or fewer if limited by data) from the first column of filtered rows, numbered for clarity.
+- **Purpose**: Generates all possible combinations of effect templates by replacing placeholders with values from a directory, with options for filtering, phrase replacement, deduplication, and alphabetization.
+- **Key Features**:
+  - Expands placeholders (e.g., `<number>`, `<type>`) in a single sentence or file of sentences using values from placeholder files.
+  - Removes duplicates, filters out unwanted combinations based on a config file, and applies phrase replacements (e.g., for grammar fixes).
+  - Optionally fixes plurality (e.g., "one X cards" → "one X card") and alphabetizes the output.
+  - Supports test mode (output to terminal only) and verbose logging.
+  - Includes a deduplication-only mode for existing files via `-d/--dedupe`.
+- **Usage**: `python3 create_effect_combinations.py [-s SENTENCE | -f FILE] [-p PLACEHOLDER_DIR] [-o OUTPUT_FILE] [-c CONFIG] [-r REPLACEMENTS] [-t] [-v] [-d [FILE]]`
+  - `-s/--sentence`: Single sentence with placeholders (e.g., `Draw <number> cards`).
+  - `-f/--file`: File of sentences (defaults to `effects/all_effect_templates.txt` if no file specified).
+  - `-p/--placeholder_dir`: Directory with placeholder files (defaults to `placeholders`).
+  - `-o/--output_file`: Output file for combinations (defaults to `effects/all_effects.txt`).
+  - `-c/--combinations_to_remove`: Config file with phrases to filter (defaults to `placeholders/combinations_to_remove.txt`).
+  - `-r/--replacements_file`: Config file with phrase replacements (format: `old: new`, defaults to `placeholders/phrase_replacements.txt`).
+  - `-t/--test_mode`: Output to terminal only, no file write (default: `False`).
+  - `-v/--verbose`: Enable detailed output (default: `False`).
+  - `-d/--dedupe`: Deduplicate a file and exit (defaults to `effects/all_effects.txt` if no file given).
+**Configuration Files**:
+- `placeholders/combinations_to_remove.txt`: Phrases to exclude from output (lines ignored if empty or starting with `#`).
+- `placeholders/phrase_replacements.txt`: Phrase replacements (format: `old phrase: new phrase`, comments with `#`).
+**Dependencies**:
+- Python 3 standard libraries (`re`, `argparse`).
+- Custom module `ttcg_tools` for `generate_combinations` and `get_command_string`.
+- Placeholder text files in the specified directory (e.g., `placeholders/number.txt`).
+**Notes**:
+- Exactly one of `-s/--sentence` or `-f/--file` must be provided.
+- Output is appended to the file unless in test mode or deduplication mode.
+- Errors (e.g., missing files) are handled with descriptive messages.
   
 ### `generate_and_order_effects.sh`
 - **Purpose**: Orchestrates the generation and categorization of effects, coordinating other scripts to produce and annotate a comprehensive effect list.
