@@ -8,7 +8,7 @@ from PIL import Image, ImageTk
 # Configuration
 SOURCE_FOLDER = "../images/unsorted"           # Folders containing images (and subfolders)
 FIXED_FOLDER = "../images/needs_fixed"         # Destination folder for images needing fixes
-OVERLAY_IMAGE = "../images/card pngs/fire.png" # Transparent overlay image (displayed actual size)
+OVERLAY_IMAGE = "../images/card pngs/fire-50.png" # Transparent overlay image (displayed actual size)
 EXCLUDE_FOLDERS = ["images/needs_fixed", "images/card pngs", "images/generated_cards", "images/icons", "images/sample cards"]
 TYPES = ["earth", "fire", "water", "air", "nature", "electric", "light", "dark"]
 UNITS_BASE_FOLDER = "../images/units"

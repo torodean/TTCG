@@ -5,7 +5,7 @@ import argparse
 import random
 
 
-def create_base_card(card_type, card_level, width=750, height=1050, card_image=None):
+def create_base_card(card_type, card_level, width=750, height=1050, card_image=None, transparency=100):
     """
     Creates the base card image based on type and level, with a type-specific background
     and a level-specific overlay, and an optional card image behind everything resized to width.
@@ -16,6 +16,7 @@ def create_base_card(card_type, card_level, width=750, height=1050, card_image=N
         width (int): The width of the card (Defaults to 750).
         height (int): The height of the card (Defaults to 1050).
         card_image (str): The main image to use behind the card. (Defaults to None).
+        transparency (int): The transparency to use for minor features of the card art. 
     
     Returns:
         Image: The base card image with optional background image, type background, and level overlay.
@@ -37,7 +38,14 @@ def create_base_card(card_type, card_level, width=750, height=1050, card_image=N
             pass
 
     # Get base image based on type (case-insensitive)
-    base_image_path = f"../images/card pngs/{card_type.lower()}.png"
+    if transparency == 100:
+        base_image_path = f"../images/card pngs/{card_type.lower()}.png"
+    else:
+        base_image_path = f"../images/card pngs/{card_type.lower()}-{transparency}.png"
+        
+    # Print base image path for debugging.
+    print(f"base_image_path: {base_image_path}")
+        
     try:
         base_img = Image.open(base_image_path).convert("RGBA")
         if base_img.size != (width, height):
@@ -244,7 +252,7 @@ def draw_wrapped_text(draw, text, top_left, bottom_right, initial_font_size=50, 
     draw.text((x1 + x_offset, y1 + y_offset), wrapped_text, font=font, fill=color, align="center")
 
 
-def create_card(card_data, output_folder):
+def create_card(card_data, output_folder, output_file_name=None):
     """
     Creates a TTCG trading card image with specified details and saves it to a file.
 
@@ -266,6 +274,7 @@ def create_card(card_data, output_folder):
             - image (str): The image file for this card.
             - serial (str): The serial number for this card.
         output_folder (str): Path to the folder where the card image will be saved.
+        output_file_name (str): An optional output file name to use. This should not include the output folder path.
 
     Returns:
         None: The function saves the card image to a file and prints the file path.
@@ -279,7 +288,12 @@ def create_card(card_data, output_folder):
     # TTCG card dimensions: 2.5" x 3.5" at 300 DPI = 750 x 1050 pixels
     width, height = 750, 1050
     
-    img = create_base_card(card_data["type"], card_data["level"], width, height, card_data["image"])
+    img = create_base_card(card_data["type"], 
+                           card_data["level"], 
+                           width, 
+                           height, 
+                           card_data["image"], 
+                           card_data["transparency"])
     draw = ImageDraw.Draw(img)
 
     # Draw name in a box from (70, 35) to (585, 70)
@@ -291,8 +305,17 @@ def create_card(card_data, output_folder):
     # Draw ATK and def in the boxes.
     atk_x_min, atk_x_max = 135, 215    
     atk_y_min, atk_y_max = 628, 665
-    draw_single_line_text(draw, card_data["attack"], (atk_x_min, atk_y_min), (atk_x_max, atk_y_max), initial_font_size=50, center=True)
-    draw_single_line_text(draw, card_data["defense"], (width - atk_x_max, atk_y_min), (width - atk_x_min, atk_y_max), initial_font_size=50, center=True)
+    draw_single_line_text(draw, 
+                          card_data["attack"], 
+                          (atk_x_min, atk_y_min), 
+                          (atk_x_max, atk_y_max), 
+                          initial_font_size=50, 
+                          center=True)
+    draw_single_line_text(draw, card_data["defense"], 
+                          (width - atk_x_max, atk_y_min), 
+                          (width - atk_x_min, atk_y_max), 
+                          initial_font_size=50, 
+                          center=True)
     
     # Draw effects in boxes.
     draw_wrapped_text(draw, card_data["effect1"], (70, 710), (680, 810), initial_font_size=30)
@@ -302,8 +325,13 @@ def create_card(card_data, output_folder):
     draw_single_line_text(draw, card_data["serial"], (550, 1007), (722, 1022), initial_font_size=20)
     draw_single_line_text(draw, "© True Trading Card Game Company", (31, 1007), (600, 1022), initial_font_size=20)
 
+    # Create the output card name.
+    if output_file_name == None:
+        output_file = f"{output_folder}/{card_data['type'].replace(' ', '_')}_card_{card_data['name'].replace(' ', '_')}.png"
+    else:
+        output_file = f"{output_folder}/{output_file_name}"        
+
     # Save the card
-    output_file = f"{output_folder}/{card_data['type'].replace(' ', '_')}_card_{card_data['name'].replace(' ', '_')}.png"
     img.save(output_file)
     print(f"Card saved as {output_file}")
 
@@ -335,6 +363,8 @@ def parse_args():
                         help="The folder to output images to.")
     parser.add_argument("--serial", type=str, default="ABCD1234567890",
                         help="The serial number for the card.")
+    parser.add_argument('-T', "--transparency", type=int, default=100,
+                        help="The transparency of some card art fields (valid options are 50, 60, 75, and 100)")
 
     return parser.parse_args()
 
@@ -355,6 +385,11 @@ if __name__ == "__main__":
         attack = args.attack
         defense = args.defense
 
+    # Make sure the transparency option is valid.
+    if args.transparency not in (50, 60, 75, 100):
+        print(f"Invalid transparency option entered: {args.transparency}")
+        args.transparency = 100
+
     # Construct type string with subtype
     subtype_str = ""
     if args.subtype:
@@ -371,6 +406,7 @@ if __name__ == "__main__":
         "effect1": args.effect1,
         "effect2": args.effect2,
         "image": args.image,
+        "transparency": args.transparency,
         "serial": args.serial
     }
 
