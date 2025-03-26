@@ -9,6 +9,8 @@ from tkinter import filedialog
 # Used for randomly generating effects.
 from generate_random_effects import load_and_filter_csv
 from generate_random_effects import get_random_effect
+from ttcg_tools import output_text
+from ttcg_tools import check_line_in_file
 
 # Used for generating card preview.
 from create_card import create_card
@@ -25,8 +27,8 @@ import csv
 
 # Global var to determine when preview should be generated vs not.
 SKIP_PREVIEW = False
-
-
+    
+    
 def get_card_data():
     """Collect card data from GUI widgets into a dictionary.
 
@@ -62,10 +64,42 @@ def get_card_data():
         "effect2": WIDGETS["effect2_entry"].get("1.0", tk.END).strip() or "",
         "image": WIDGETS["image_entry"].get().strip() or "default.png",
         "transparency": WIDGETS["transparency_var"].get(),
-        "serial": WIDGETS["serial_entry"].get().strip() or ""
+        "serial": WIDGETS["serial_entry"].get().strip() or "",
+        "rarity": "0" # Rarity is not handled in this app so default to 0.
     }
-    print("Collected card data:", card_data)  # Debug statement
+    output_text(f"Collected card data: {card_data}", "note")  # Debug statement
     return card_data
+
+
+def check_for_effect_combination_in_file(file_path, effect_1, effect_2):
+    """
+    Check if a specific effect combination exists in a file. 
+    This will check for both possible orders of the input effect combination.
+    
+    Args:
+        file_path (str): Path to the file to check.
+        effect_1 (str): The first effect to search for.
+        effect_2 (str): The second effect to search for.
+    
+    Returns:
+        bool: True if the combination is found, False otherwise.
+    
+    Raises:
+        FileNotFoundError: If the file does not exist.
+        IOError: If there’s an issue reading the file.
+    """
+    try:
+        effect_combo_1 = f"{effect_1};{effect_2}"
+        effect_combo_2 = f"{effect_2};{effect_1}"
+        with open(file_path, 'r', encoding='utf-8') as file:
+            for line in file:
+                if effect_combo_1 in line or effect_combo_2 in line:
+                    return True
+        return False
+    except FileNotFoundError:
+        raise FileNotFoundError(f"The file '{file_path}' was not found.")
+    except IOError as e:
+        raise IOError(f"Error reading file '{file_path}': {e}")
 
 
 def save_to_card_list(filename):
@@ -73,7 +107,7 @@ def save_to_card_list(filename):
     Save card data from the UI to a spreadsheet.
 
     This function collects card details from the GUI widgets and saves them to a CSV file
-    with the header 'NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY'.
+    with the header 'NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY;TRANSPARENCY'.
     Data is appended to the file, and the header is written if the file doesn’t exist.
 
     Args:
@@ -86,7 +120,7 @@ def save_to_card_list(filename):
     card_data = get_card_data()
 
     # Define the header
-    header = ["NAME", "TYPE", "SUBTYPES", "LEVEL", "IMAGE", "ATTACK", "DEFENSE", "EFFECT1", "EFFECT2", "SERIAL", "RARITY"]
+    header = ["NAME", "TYPE", "SUBTYPES", "LEVEL", "IMAGE", "ATTACK", "DEFENSE", "EFFECT1", "EFFECT2", "SERIAL", "RARITY", "TRANSPARENCY"]
 
     # Check if file exists to determine if header needs to be written
     file_exists = os.path.isfile(filename)
@@ -98,6 +132,10 @@ def save_to_card_list(filename):
         # Write header if the file is new
         if not file_exists:
             writer.writerow(header)
+            
+        # Adjust subtypes for spell cards - it should have none.   
+        if card_data["type"].lower() == "spell":
+            card_data["subtype"] = ""
 
         # Prepare the row data, adding a default 'RARITY' since it’s not in card_data
         row = [
@@ -111,13 +149,19 @@ def save_to_card_list(filename):
             card_data.get("effect1", ""),
             card_data.get("effect2", ""),
             card_data.get("serial", ""),
-            "Common"  # Default rarity (modify if rarity is added to UI)
+            card_data.get("rarity", ""),
+            card_data.get("transparency", "")
         ]
 
-        # Write the row to the CSV
-        writer.writerow(row)
-
-    print(f"Card saved to {filename}:", card_data)  # Debug output
+        # Write the row to the CSV if it's not a duplicate.
+        if not check_line_in_file(filename, ";".join(str(r) for r in row)):
+            if not check_for_effect_combination_in_file(filename, row[7], row[8]):
+                writer.writerow(row)
+                output_text(f"Card data saved to {filename}: {card_data}", "success")
+            else:
+                output_text(f"Effect combination already exists in output file! Skipping", "error") 
+        else:
+            output_text(f"Card already exists in output file! Skipping", "error") 
 
 
 def reset_ui():
@@ -410,11 +454,11 @@ def generate_serial_number(card_data):
         f"{name}{card_type}{level}{subtypes}{attack}{defense}{effect1}{effect2}{image}{rarity}"
     )
 
-    print(f"attribute_string: {attribute_string}")
+    output_text(f"Created attribute_string: {attribute_string}", "note")
 
     # TODO: Implement serial number generation logic here
     serial_number = hashlib.sha256(attribute_string.encode('utf-8')).hexdigest() # Testing with hash
-    print(f"Full serial_number: {serial_number}")
+    output_text(f"Created serial_number: {serial_number}", "note")
     
     serial_number = serial_number[:14]
     card_data["serial"] = serial_number
@@ -435,11 +479,12 @@ def update_serial_number(new_serial):
     Returns:
         None
     """
-    print(f"Updating serial number to: {new_serial}")    # Debug output
+    output_text(f"Updating serial number to: {new_serial}", "note")
     WIDGETS["serial_entry"].configure(state="normal")    # Enable editing
     WIDGETS["serial_entry"].delete(0, tk.END)            # Clear current text
     WIDGETS["serial_entry"].insert(0, new_serial)        # Insert new serial
     WIDGETS["serial_entry"].configure(state="disabled")  # Disable again
+    output_text(f"Updated serial number!", "success")
 
 
 def get_gui_metadata():
@@ -488,14 +533,14 @@ def update_name_from_image():
                 # Update the name_entry with the extracted filename
                 WIDGETS["name_entry"].delete(0, tk.END)
                 WIDGETS["name_entry"].insert(0, filename)
-                print(f"Name updated to: {filename}")
+                output_text(f"Name updated to: {filename}", "note")
         except (FileNotFoundError, IOError, ValueError):
             # If image_path isn't valid, don't update and print a message
-            print(f"Invalid image path: {image_path}")
+            output_text(f"Invalid image path: {image_path}", "error")
     elif not image_path:
-        print("No image path provided")
+        output_text("No image path provided", "error")
     else:
-        print(f"Name not updated: current name is '{current_name}', not 'Unnamed'")
+        output_text(f"Name not updated: current name is '{current_name}', not 'Unnamed'", "warning")
     
 
 

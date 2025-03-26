@@ -3,6 +3,7 @@ from PIL import Image, ImageDraw, ImageFont
 import textwrap
 import argparse
 import random
+from ttcg_tools import output_text
 
 
 def create_base_card(card_type, card_level, width=750, height=1050, card_image=None, transparency=100):
@@ -44,7 +45,7 @@ def create_base_card(card_type, card_level, width=750, height=1050, card_image=N
         base_image_path = f"../images/card pngs/{card_type.lower()}-{transparency}.png"
         
     # Print base image path for debugging.
-    print(f"base_image_path: {base_image_path}")
+    output_text(f"base_image_path set to: {base_image_path}", "note")
         
     try:
         base_img = Image.open(base_image_path).convert("RGBA")
@@ -339,7 +340,7 @@ def create_card(card_data, output_folder, output_file_name=None):
 
     # Save the card
     img.save(output_file)
-    print(f"Card saved as {output_file}")
+    output_text(f"Card saved as {output_file}", "success")
 
 
 def parse_args():
@@ -393,7 +394,7 @@ if __name__ == "__main__":
 
     # Make sure the transparency option is valid.
     if args.transparency not in (50, 60, 75, 100):
-        print(f"Invalid transparency option entered: {args.transparency}")
+        output_text(f"Invalid transparency option entered: {args.transparency}")
         args.transparency = 100
 
     # Construct type string with subtype
