@@ -61,6 +61,7 @@ def get_card_data():
         "effect1": WIDGETS["effect1_entry"].get("1.0", tk.END).strip() or "",
         "effect2": WIDGETS["effect2_entry"].get("1.0", tk.END).strip() or "",
         "image": WIDGETS["image_entry"].get().strip() or "default.png",
+        "transparency": WIDGETS["transparency_var"].get(),
         "serial": WIDGETS["serial_entry"].get().strip() or ""
     }
     print("Collected card data:", card_data)  # Debug statement
@@ -185,10 +186,11 @@ def update_preview():
     # Use a temporary folder for output
     with tempfile.TemporaryDirectory() as temp_dir:
         # Generate the card image
-        create_card(card_data, temp_dir)
+        output_file_name = f"{card_data['type'].replace(' ', '_')}_card_{card_data['name'].replace(' ', '_')}-{card_data['transparency']}.png"
+        create_card(card_data, temp_dir, output_file_name)
         
         # Load the generated image
-        output_file = f"{temp_dir}/{card_data['type'].replace(' ', '_')}_card_{card_data['name'].replace(' ', '_')}.png"
+        output_file = f"{temp_dir}/{output_file_name}"
         card_image = Image.open(output_file)
         
         # Resize to fit preview canvas
@@ -588,9 +590,27 @@ def main():
     serial_entry.configure(state="disabled")
     serial_entry.grid(row=11, column=1, pady=8, padx=5, sticky="w")
 
-    # Middle - Preview window
+    # Middle Section
     preview_frame = ttk.LabelFrame(main_frame, text="Card Preview", padding="15")
     preview_frame.grid(row=0, column=1, padx=15, sticky="nsew")
+    
+    #Transparency selection
+    transparency_frame = ttk.LabelFrame(preview_frame, text="Transparency", padding="8")
+    transparency_frame.grid(row=0, column=0, pady=8, sticky="ew")
+    transparency_var = tk.IntVar(value=60)  # Default to 100%
+
+    transparency_values = [50, 60, 75, 100]
+    for i, value in enumerate(transparency_values):
+        ttk.Checkbutton(
+            transparency_frame,
+            text=f"{value}%",
+            variable=transparency_var,
+            onvalue=value,
+            offvalue=-1,  # Unique off value to ensure mutual exclusivity
+            command=update_preview
+        ).grid(row=0, column=i, padx=5, sticky="w")
+
+    # Preview window
     preview_canvas = tk.Canvas(
         preview_frame,
         width=PREVIEW_WIDTH,
@@ -599,7 +619,7 @@ def main():
         highlightthickness=1,
         highlightbackground="black",
     )
-    preview_canvas.grid(row=0, column=0)
+    preview_canvas.grid(row=1, column=0)
 
     # Save to Card List button
     save_btn = ttk.Button(
@@ -607,7 +627,7 @@ def main():
         text="Save to Card List",
         command=lambda: save_to_card_list(args.output_file)
     )
-    save_btn.grid(row=1, column=0, pady=8, padx=5, sticky="ew")
+    save_btn.grid(row=2, column=0, pady=8, padx=5, sticky="ew")
     
     # Reset button
     reset_btn = ttk.Button(
@@ -615,7 +635,7 @@ def main():
         text="Reset",
         command=lambda: reset_ui()
     )
-    reset_btn.grid(row=2, column=0, pady=8, padx=5, sticky="ew")
+    reset_btn.grid(row=3, column=0, pady=8, padx=5, sticky="ew")
 
     # Right - Effects Generator window
     effects_frame = ttk.LabelFrame(main_frame, text="Effects Generator", padding="15")
@@ -684,6 +704,7 @@ def main():
         "effect2_entry": effect2_entry,
         "image_entry": image_entry,
         "preview_canvas": preview_canvas,
+        "transparency_var": transparency_var,
         "serial_entry" : serial_entry
     }
 
