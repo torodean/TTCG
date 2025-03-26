@@ -3,6 +3,43 @@ import sys
 import re
 import itertools
 
+
+def output_text(text, option="text"):
+    """
+    Print text to the console in a specified color using ANSI escape codes.
+
+    Args:
+        text (str): The text to be printed.
+        option (str, optional): The color option for the text. Valid options are "text" (default, no color), 
+            "warning" (yellow), "error" (red), "note" (blue), "success" (green), "command" (cyan), 
+            and "test" (magenta). Defaults to "text". Invalid options result in uncolored text.
+
+    Returns:
+        None
+
+    Note:
+        This function uses ANSI escape codes for color formatting. Colors may not display correctly 
+        in all environments (e.g., some IDEs or Windows terminals without ANSI support).
+    """
+    color_codes = {
+        "text": "\033[0m",      # Reset color
+        "warning": "\033[93m",  # Yellow - Warning text
+        "error": "\033[91m",    # Red - Error text
+        "note": "\033[94m",     # Blue - Notes or program information
+        "success": "\033[92m",  # Green - Success text
+        "command": "\033[36m",  # Cyan - Command output text
+        "test": "\033[35m"      # Magenta - Testing
+    }
+
+    text = str(text)  # Ensure text is a string
+    if option in color_codes:
+        color_code = color_codes[option]
+        reset_code = color_codes["text"]
+        print(f"{color_code}{text}{reset_code}")
+    else:
+        print(text)
+
+
 def load_placeholder_values(placeholder_dir, placeholder, visited=None):
     """
     Loads and resolves values for a placeholder from a text file, handling nested placeholders recursively.
@@ -169,3 +206,30 @@ def get_command_string(args):
                 command.extend([flag, str(arg_value)])
 
     return " ".join(command)
+    
+    
+def check_line_in_file(file_path, target_line):
+    """
+    Check if a specific line exists in a file.
+    
+    Args:
+        file_path (str): Path to the file to check.
+        target_line (str): The line to search for.
+    
+    Returns:
+        bool: True if the line is found, False otherwise.
+    
+    Raises:
+        FileNotFoundError: If the file does not exist.
+        IOError: If there’s an issue reading the file.
+    """
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            for line in file:
+                if target_line.strip() in line:
+                    return True
+        return False
+    except FileNotFoundError:
+        raise FileNotFoundError(f"The file '{file_path}' was not found.")
+    except IOError as e:
+        raise IOError(f"Error reading file '{file_path}': {e}")
