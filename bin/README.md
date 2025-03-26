@@ -70,19 +70,29 @@ The `bin` directory serves as the central hub for executable scripts used in the
   - `pandas` (for CSV processing)
   - `argparse`, `random`, `sys` (standard library)
   
-### `parse_image_files.py`
-- **Purpose**: Displays images from a specified folder one at a time with a transparent overlay image (`fire.png`) on top, allowing users to mark images as "needs fixed" by moving them to another folder. The images that need fixed are those which do not display correctly with the card name being at the top. 
+# `parse_image_files.py`
+- **Purpose**: Displays images from a specified folder one at a time with a transparent overlay image (`fire.png`) on top, allowing users to:
+  - Mark images as "needs fixed" by moving them to a designated folder (e.g., for images where the card name isn’t at the top or doesn’t display correctly).
+  - Categorize images into "units" or "spells" subfolders by type (earth, fire, water, air, nature, electric, light, dark).
 - **Key Features**: 
-  - Recursively loads all images (PNG, JPG, JPEG, GIF, BMP) from a source folder and its subfolders.
-  - Resizes each source image to match the overlay’s width while preserving aspect ratio, padding or cropping to match height.
+  - Recursively loads all images (PNG, JPG, JPEG, GIF, BMP) from a source folder (`../images`) and its subfolders, excluding specified folders and optionally the top-level folder.
+  - Resizes each source image to match the overlay’s width while preserving aspect ratio, padding with transparency if shorter or cropping if taller to match the overlay’s height.
   - Composites the overlay image (`fire.png`) at its actual size on top using alpha compositing for proper transparency handling.
-  - Provides "Next" and "Needs Fixed" buttons: "Next" advances to the next image, "Needs Fixed" moves the current image to a designated folder.
+  - Provides GUI elements:
+    - "Next" button: Advances to the next image.
+    - "Needs Fixed" button: Moves the current image to `../images/needs_fixed/`.
+    - Side panel with two columns ("Units" and "Spells"), each containing buttons for types (e.g., "Earth", "Fire"). Clicking a type button moves the image to `../images/units/<type>/` or `../images/spells/<type>/`.
+  - Creates all destination directories (`needs_fixed`, `units/<type>`, `spells/<type>`) at startup to avoid per-image checks.
+  - Excludes specified folders (e.g., `images/needs_fixed`, `images/card pngs`) from image loading.
   - Includes error handling for missing files, no images found, and file movement issues.
 - **Usage**: 
-  - Run the script with: `python image_viewer.py`.
-  - Source folder: `../images/units/` (relative to script location).
+  - Run the script with: `python parse_image_files.py`.
+  - Source folder: `../images/` (relative to script location).
   - Overlay image: `../images/card pngs/fire.png` (must have transparency).
-  - Destination folder for "needs fixed" images: `../images/needs_fixed/` (created if not present).
+  - Destination folders:
+    - "Needs fixed": `../images/needs_fixed/` (created if not present).
+    - Units: `../images/units/<type>/` (e.g., `../images/units/fire/`, created if not present).
+    - Spells: `../images/spells/<type>/` (e.g., `../images/spells/water/`, created if not present).
 - **Dependencies**: 
   - Python 3.x
   - `Pillow` (for image processing, install with `pip install pillow`)
