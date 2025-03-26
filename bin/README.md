@@ -106,7 +106,7 @@ The `bin` directory serves as the central hub for executable scripts used in the
   - `pandas` (for CSV processing)
   - `argparse`, `random`, `sys` (standard library)
   
-# `parse_image_files.py`
+### `parse_image_files.py`
 - **Purpose**: Displays images from a specified folder one at a time with a transparent overlay image (`fire.png`) on top, allowing users to:
   - Mark images as "needs fixed" by moving them to a designated folder (e.g., for images where the card name isn’t at the top or doesn’t display correctly).
   - Categorize images into "units" or "spells" subfolders by type (earth, fire, water, air, nature, electric, light, dark).
