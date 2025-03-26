@@ -58,6 +58,9 @@ class ImageViewer:
             btn = Button(self.units_frame, text=type_name.capitalize(),
                         command=lambda t=type_name: self.move_to_type("units", t))
             btn.pack(fill="x", pady=2)
+        # Add Next button under Units with spacing
+        self.next_button = Button(self.units_frame, text="Next", command=self.next_image)
+        self.next_button.pack(fill="x", pady=(40, 0))  # 10px space above, 0 below
         
         # Spells column
         self.spells_frame = Frame(self.side_panel)
@@ -67,14 +70,9 @@ class ImageViewer:
             btn = Button(self.spells_frame, text=type_name.capitalize(),
                         command=lambda t=type_name: self.move_to_type("spells", t))
             btn.pack(fill="x", pady=2)
-        
-        # Bottom buttons
-        self.button_frame = Frame(root)
-        self.button_frame.pack(side="bottom", pady=10)
-        self.next_button = Button(self.button_frame, text="Next", command=self.next_image)
-        self.next_button.pack(side="left", padx=10)
-        self.fix_button = Button(self.button_frame, text="Needs Fixed", command=self.mark_needs_fixed)
-        self.fix_button.pack(side="left", padx=10)
+        # Add Needs Fixed button under Spells with spacing
+        self.fix_button = Button(self.spells_frame, text="Needs Fixed", command=self.mark_needs_fixed)
+        self.fix_button.pack(fill="x", pady=(40, 0))  # 10px space above, 0 below
         
         # Display the first image
         self.display_image()
