@@ -316,7 +316,7 @@ def parse_args():
     parser.add_argument('-l', "--level", type=int, default=1, choices=range(1, 6),
                         help="Card level (1-5)")
     parser.add_argument('-t', "--type", type=str, default="fire",
-                        help="Card type (e.g., Creature, Artifact)")
+                        help="Card type (e.g., earth, air, fire, water, etc)")
     parser.add_argument('-n', "--name", type=str, default="Card Name",
                         help="Card name")
     parser.add_argument('-s', "--subtype", type=str, nargs="+", default=["Dragon", "Warrior"],
