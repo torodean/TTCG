@@ -300,7 +300,10 @@ def create_card(card_data, output_folder, output_file_name=None):
     draw_single_line_text(draw, card_data["name"], (70, 35), (585, 70))
     
     # Draw subtypes in a box from (70, 90) to (585, 120)
-    draw_single_line_text(draw, card_data["subtype"], (70, 90), (585, 120))
+    card_type = card_data["type"]
+    card_subtype = card_data["subtype"]
+    subtypes_line = f"{card_type}, {card_subtype}"
+    draw_single_line_text(draw, subtypes_line, (70, 90), (585, 120))
     
     # Draw ATK and def in the boxes.
     atk_x_min, atk_x_max = 135, 215    
