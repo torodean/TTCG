@@ -37,7 +37,7 @@ SKIP_PREVIEW = False
 # Get script's directory (useful for relative paths)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
-
+TYPE_LIST = ["Spell", "Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature"]
     
 def get_card_data():
     """
@@ -228,7 +228,7 @@ def browse_image():
         WIDGETS["image_entry"].delete(0, tk.END)
         WIDGETS["image_entry"].insert(0, filename)
         
-    update_name_from_image()
+    update_name_from_image()    
     update_preview()
 
 
@@ -542,8 +542,38 @@ def get_gui_metadata():
 
 
 def update_name_from_image():
+    """
+    Update the card name and type based on the image path provided in the UI.
+
+    This function retrieves the image path from the 'image_entry' widget and the current name from
+    the 'name_entry' widget. It checks if the image path contains any type from TYPE_LIST and
+    updates the 'type_combo' widget accordingly. If the current name is 'Unnamed' and a valid
+    image path is provided, it extracts the filename (without path or extension) and updates
+    the 'name_entry' widget with it. Various status messages are output via output_text() to
+    indicate success, warnings, or errors.
+
+    Behavior:
+        - Updates 'type_combo' if a TYPE_LIST item is found in the image path (case-insensitive).
+        - Updates 'name_entry' to the filename if the current name is 'Unnamed' and the image is valid.
+        - Skips name update if the filename starts with '_' (indicating a default hash name).
+        - Outputs messages for invalid image paths, missing paths, or unchanged names.
+
+    Raises:
+        No exceptions are raised directly, but Image.open() may trigger FileNotFoundError, IOError,
+        or ValueError if the image path is invalid, which are caught and handled with error messages.
+    """
     image_path = WIDGETS["image_entry"].get()
     current_name = WIDGETS["name_entry"].get().strip()
+        
+    # Check if any item from TYPE_LIST is in card_data["image"] and update type_combo
+    image_value = image_path.strip()  # Remove extra whitespace
+    for type_item in TYPE_LIST:
+        if type_item.lower() in image_value.lower():
+            output_text(f"Setting type_combo to: {type_item}", "note")
+            WIDGETS["type_combo"].set(type_item)
+            break  # Stop after the first match
+    else:
+        output_text(f"No match from TYPE_LIST found in {image_value}", "warning")
     
     if current_name == "Unnamed" and image_path:
         # Check if the image_path points to a valid image file
@@ -564,8 +594,7 @@ def update_name_from_image():
     elif not image_path:
         output_text("No image path provided", "error")
     else:
-        output_text(f"Name not updated: current name is '{current_name}', not 'Unnamed'", "warning")
-    
+        output_text(f"Name not updated: current name is '{current_name}', not 'Unnamed'", "warning")    
 
 
 def main():
@@ -620,7 +649,7 @@ def main():
     ttk.Label(left_frame, text="Type:").grid(row=1, column=0, pady=8, padx=5, sticky="e")
     type_combo = ttk.Combobox(
         left_frame,
-        values=["Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature", "Spell"],
+        values=TYPE_LIST,
         width=27,
         font=("Helvetica", 12),
     )
