@@ -38,6 +38,12 @@ The `bin` directory serves as the central hub for executable scripts used in the
 - **Usage**: `python3 alphabetize_file.py [-i INPUT] [-o OUTPUT]`
 - **Dependencies**: None beyond Python 3.
 
+### `flip_image.py`
+- **Purpose**: Flips an image horizontally and saves the result, optionally overwriting the original file.
+- **Key Features**: Horizontal image flipping, optional output path, error handling for image processing.
+- **Usage**: `python3 flip_image.py INPUT_FILE [-o OUTPUT]`
+- **Dependencies**: Pillow (PIL) library for image processing.
+
 ### `create_effect_combinations.py`
 - **Purpose**: Generates all possible combinations of effect templates by replacing placeholders with values from a directory, with options for filtering, phrase replacement, deduplication, and alphabetization.
 - **Key Features**:

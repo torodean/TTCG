@@ -1,1 +1,5 @@
 NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY;TRANSPARENCY
+White Dragon Therros;Light;Dragon;4;../images/units/light/White Dragon Therros.jpeg;1860;140;Add up to three rank 2 dragon cards from your discard pile to your hand.;Add up to three rank 1 dragon cards from your deck to your hand.;4df3e4cb8046db;0;50
+Little Bubble Blue Fish;Water;Aquatic;1;../images/units/water/Little Bubble Blue Fish.jpg;245;255;Add one rank 2 aquatic card from your deck to your hand.;Both players gain one point for each aquatic card they control.;d680d88eaf6840;0;60
+Hogmoid;Fire;Beast, Elemental;1;../images/units/fire/Hogmoid.jpg;360;140;Add up to two rank 1 beast cards from your discard pile to your hand.;Reveal the top two cards of your deck and play one elemental card from among them.;a7626d4dd0045a;0;60
+Guinea Thief Miffles;Light;Beast, Warrior;1;../images/units/earth/Guinea Thief Miffles.jpg;395;105;Discard this card to add one rank 2 or higher beast card from your discard pile to your hand.;Add one rank 2 beast card from your deck to your hand.;f3d5f1dc53bd04;0;50

@@ -11,6 +11,8 @@ from generate_random_effects import load_and_filter_csv
 from generate_random_effects import get_random_effect
 from ttcg_tools import output_text
 from ttcg_tools import check_line_in_file
+from ttcg_tools import get_relative_path
+from flip_image import flip_image
 
 # Used for generating card preview.
 from create_card import create_card
@@ -27,10 +29,14 @@ import csv
 
 # Global var to determine when preview should be generated vs not.
 SKIP_PREVIEW = False
-    
+# Get script's directory (useful for relative paths)
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
+
     
 def get_card_data():
-    """Collect card data from GUI widgets into a dictionary.
+    """
+    Collect card data from GUI widgets into a dictionary.
 
     This function gathers input from various Tkinter widgets in the card creator UI and
     returns a dictionary containing the card's attributes. Empty or invalid inputs are
@@ -136,14 +142,19 @@ def save_to_card_list(filename):
         # Adjust subtypes for spell cards - it should have none.   
         if card_data["type"].lower() == "spell":
             card_data["subtype"] = ""
-
+        
+        image_path = card_data.get("image", "")
+        output_text(f"Full image path: {image_path}")
+        rel_image_path = get_relative_path(SCRIPT_DIR, image_path)
+        output_text(f"Relative path for image set to: {rel_image_path}", "note")
+        
         # Prepare the row data, adding a default 'RARITY' since it’s not in card_data
         row = [
             card_data.get("name", ""),
             card_data.get("type", ""),
             card_data.get("subtype", ""),
             card_data.get("level", ""),
-            card_data.get("image", ""),
+            rel_image_path,
             card_data.get("attack", ""),
             card_data.get("defense", ""),
             card_data.get("effect1", ""),
@@ -339,7 +350,7 @@ def get_selected_subtypes():
 
 def generate_effects(effect_buttons, input_file, columns, subtypes):
     """
-    Generate 15 random effects and populate the effect buttons.
+    Generate 18 random effects and populate the effect buttons.
 
     This function loads effects from a CSV file, filters them based on specified columns,
     and generates 10 unique random effects: up to 5 using subtypes as search strings,
@@ -360,7 +371,7 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
     generated_effects = []
 
     # Target: Up to 5 effects with subtypes, rest without
-    target_with_subtypes = 6
+    target_with_subtypes = 10
 
     # Generate up to 5 effects using subtypes as search strings
     if subtypes:  # Only if subtypes are provided
@@ -376,7 +387,7 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
             generated_effects.append(effect)
 
     # Generate remaining effects without search strings (up to 10 total)
-    remaining = 15 - len(generated_effects)
+    remaining = 18 - len(generated_effects)
     for _ in range(remaining):
         if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
             break  # Stop if no more unique effects are available
@@ -639,6 +650,17 @@ def main():
         left_frame, text="Browse", command=lambda: browse_image()
     )
     browse_btn.grid(row=5, column=1, pady=8, padx=5, sticky="w")
+    
+    # Add Flip Image button
+    flip_btn = ttk.Button(
+        left_frame, 
+        text="Flip Image", 
+        command=lambda: [
+            flip_image(image_entry.get()),
+            update_preview()
+        ]
+    )
+    flip_btn.grid(row=5, column=1, pady=8, padx=(110, 0), sticky="w")  # Adjusted padx
 
     # ATK
     ttk.Label(left_frame, text="ATK:").grid(row=6, column=0, pady=8, padx=5, sticky="e")
@@ -755,9 +777,9 @@ def main():
     )
     generate_btn.grid(row=0, column=0, pady=12, padx=10, sticky="ew")  # Increased padding
 
-    # Effect buttons (15)
+    # Effect buttons (18)
     effect_buttons = []
-    for i in range(15):
+    for i in range(18):
         btn = ttk.Button(
             effects_frame,
             text="",

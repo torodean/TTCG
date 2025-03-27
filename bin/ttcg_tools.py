@@ -12,7 +12,7 @@ def output_text(text, option="text"):
         text (str): The text to be printed.
         option (str, optional): The color option for the text. Valid options are "text" (default, no color), 
             "warning" (yellow), "error" (red), "note" (blue), "success" (green), "command" (cyan), 
-            and "test" (magenta). Defaults to "text". Invalid options result in uncolored text.
+            "test" (magenta), and "program" (orange). Defaults to "text". Invalid options result in uncolored text.
 
     Returns:
         None
@@ -28,7 +28,8 @@ def output_text(text, option="text"):
         "note": "\033[94m",     # Blue - Notes or program information
         "success": "\033[92m",  # Green - Success text
         "command": "\033[36m",  # Cyan - Command output text
-        "test": "\033[35m"      # Magenta - Testing
+        "test": "\033[35m",     # Magenta - Testing
+        "program": "\033[38;5;208m"  # Orange - Program-specific output
     }
 
     text = str(text)  # Ensure text is a string
@@ -233,3 +234,38 @@ def check_line_in_file(file_path, target_line):
         raise FileNotFoundError(f"The file '{file_path}' was not found.")
     except IOError as e:
         raise IOError(f"Error reading file '{file_path}': {e}")
+        
+        
+def get_relative_path(from_path, to_path):
+    """
+    Returns the relative path from one path (file or directory) to another.
+
+    Args:
+        from_path (str): The starting path (file or directory).
+        to_path (str): The target path (file or directory).
+
+    Returns:
+        str: The relative path from from_path to to_path.
+
+    Raises:
+        ValueError: If the paths are invalid or cannot be resolved on the current platform.
+
+    This method calculates the relative path from `from_path` to `to_path`. If `from_path` is a file,
+    the relative path is computed from its containing directory. If `from_path` is a directory,
+    it is used directly as the starting point.
+
+    Example:
+        from_path = '/home/user/project/bin'
+        to_path = '/home/user/project/images/file.jpg'
+        Returns: '../images/file.jpg'
+
+    Note: Uses `os.path.relpath()` to compute the relative path based on the operating system's path conventions.
+
+    Example usage:
+        relative_path = get_relative_path('/home/user/project/bin', '/home/user/project/images/file.jpg')
+        # Outputs in orange: 'Relative path: ../images/file.jpg'
+    """
+    # If from_path is a file, use its directory; if it's a directory, use it directly
+    start_dir = os.path.dirname(from_path) if os.path.isfile(from_path) else from_path
+    relative_path = os.path.relpath(to_path, start_dir)
+    return relative_path
