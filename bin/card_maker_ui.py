@@ -153,8 +153,8 @@ def save_to_card_list(filename):
         output_text(f"Full image path: {image_path}", "note")
         new_image_name = card_data.get("name", "")
         output_text(f"Image name: {new_image_name}", "note")
-        if new_image_name not in image_path:
-            rename_file(image_path, new_image_name)
+        if new_image_name not in image_path and "Unnamed" not in new_image_name:
+            image_path = rename_file(image_path, new_image_name)
         
         # Generate relative path for images.
         rel_image_path = get_relative_path(SCRIPT_DIR, image_path)
@@ -181,6 +181,7 @@ def save_to_card_list(filename):
             if not check_for_effect_combination_in_file(filename, row[7], row[8]):
                 writer.writerow(row)
                 output_text(f"Card data saved to {filename}: {card_data}", "success")
+                reset_ui()
             else:
                 output_text(f"Effect combination already exists in output file! Skipping", "error") 
         else:
@@ -286,8 +287,8 @@ def generate_stat_pair(stat_bonus):
     Returns:
         tuple: A pair of integers (value1, value2) where each is between -stat_bonus and stat_bonus.
     """
-    value1 = random.randint(-stat_bonus, stat_bonus) * 5
-    value2 = random.randint(-stat_bonus, stat_bonus) * 5
+    value1 = random.randint(-stat_bonus, stat_bonus) * 10
+    value2 = random.randint(-stat_bonus, stat_bonus) * 10
     return (value1, value2)
 
 
@@ -721,7 +722,7 @@ def main():
     #Transparency selection
     transparency_frame = ttk.LabelFrame(preview_frame, text="Transparency", padding="8")
     transparency_frame.grid(row=0, column=0, pady=8, sticky="ew")
-    transparency_var = tk.IntVar(value=60)  # Default to 100%
+    transparency_var = tk.IntVar(value=50)  # Default to 100%
 
     transparency_values = [50, 60, 75, 100]
     for i, value in enumerate(transparency_values):
