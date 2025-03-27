@@ -269,3 +269,50 @@ def get_relative_path(from_path, to_path):
     start_dir = os.path.dirname(from_path) if os.path.isfile(from_path) else from_path
     relative_path = os.path.relpath(to_path, start_dir)
     return relative_path
+    
+
+def rename_file(file_path, new_name):
+    """
+    Rename a file by changing its base name while keeping the original extension.
+
+    Args:
+        file_path (str): The full path to the file to be renamed (e.g., '/path/to/file.txt').
+        new_name (str): The new base name for the file (without extension, e.g., 'newfile').
+
+    Returns:
+        str: The new full path of the renamed file.
+
+    Raises:
+        FileNotFoundError: If the file at file_path does not exist.
+        OSError: If there’s an error renaming the file (e.g., permission denied, file already exists).
+        ValueError: If file_path has no extension or is invalid.
+
+    This method renames a file by replacing its base name with new_name while preserving its extension.
+    The new file remains in the same directory as the original.
+
+    Example:
+        rename_file('/home/user/docs/report.txt', 'summary')
+        # Renames '/home/user/docs/report.txt' to '/home/user/docs/summary.txt'
+
+    Note: The new_name should not include the extension; it will be appended from the original file_path.
+    """
+    # Check if file exists
+    if not os.path.isfile(file_path):
+        raise FileNotFoundError(f"The file '{file_path}' does not exist")
+
+    # Split the file path into directory, base name, and extension
+    directory, filename = os.path.split(file_path)
+    _, ext = os.path.splitext(filename)
+
+    # Validate that there’s an extension
+    if not ext:
+        raise ValueError(f"The file path '{file_path}' has no extension")
+
+    # Construct the new file path
+    new_filename = f"{new_name}{ext}"
+    new_file_path = os.path.join(directory, new_filename)
+
+    # Rename the file
+    os.rename(file_path, new_file_path)
+    
+    return new_file_path

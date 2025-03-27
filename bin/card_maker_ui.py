@@ -9,9 +9,14 @@ from tkinter import filedialog
 # Used for randomly generating effects.
 from generate_random_effects import load_and_filter_csv
 from generate_random_effects import get_random_effect
+
+# Inports from ttcg_tools
 from ttcg_tools import output_text
 from ttcg_tools import check_line_in_file
 from ttcg_tools import get_relative_path
+from ttcg_tools import rename_file
+
+# Used for flipping and correcting images.
 from flip_image import flip_image
 
 # Used for generating card preview.
@@ -32,7 +37,7 @@ SKIP_PREVIEW = False
 # Get script's directory (useful for relative paths)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
-
+TYPE_LIST = ["Spell", "Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature"]
     
 def get_card_data():
     """
@@ -143,8 +148,15 @@ def save_to_card_list(filename):
         if card_data["type"].lower() == "spell":
             card_data["subtype"] = ""
         
+        # Rename the image file based on the new name selected.
         image_path = card_data.get("image", "")
-        output_text(f"Full image path: {image_path}")
+        output_text(f"Full image path: {image_path}", "note")
+        new_image_name = card_data.get("name", "")
+        output_text(f"Image name: {new_image_name}", "note")
+        if new_image_name not in image_path and "Unnamed" not in new_image_name:
+            image_path = rename_file(image_path, new_image_name)
+        
+        # Generate relative path for images.
         rel_image_path = get_relative_path(SCRIPT_DIR, image_path)
         output_text(f"Relative path for image set to: {rel_image_path}", "note")
         
@@ -169,6 +181,7 @@ def save_to_card_list(filename):
             if not check_for_effect_combination_in_file(filename, row[7], row[8]):
                 writer.writerow(row)
                 output_text(f"Card data saved to {filename}: {card_data}", "success")
+                reset_ui()
             else:
                 output_text(f"Effect combination already exists in output file! Skipping", "error") 
         else:
@@ -215,7 +228,7 @@ def browse_image():
         WIDGETS["image_entry"].delete(0, tk.END)
         WIDGETS["image_entry"].insert(0, filename)
         
-    update_name_from_image()
+    update_name_from_image()    
     update_preview()
 
 
@@ -274,8 +287,8 @@ def generate_stat_pair(stat_bonus):
     Returns:
         tuple: A pair of integers (value1, value2) where each is between -stat_bonus and stat_bonus.
     """
-    value1 = random.randint(-stat_bonus, stat_bonus) * 5
-    value2 = random.randint(-stat_bonus, stat_bonus) * 5
+    value1 = random.randint(-stat_bonus, stat_bonus) * 10
+    value2 = random.randint(-stat_bonus, stat_bonus) * 10
     return (value1, value2)
 
 
@@ -529,8 +542,38 @@ def get_gui_metadata():
 
 
 def update_name_from_image():
+    """
+    Update the card name and type based on the image path provided in the UI.
+
+    This function retrieves the image path from the 'image_entry' widget and the current name from
+    the 'name_entry' widget. It checks if the image path contains any type from TYPE_LIST and
+    updates the 'type_combo' widget accordingly. If the current name is 'Unnamed' and a valid
+    image path is provided, it extracts the filename (without path or extension) and updates
+    the 'name_entry' widget with it. Various status messages are output via output_text() to
+    indicate success, warnings, or errors.
+
+    Behavior:
+        - Updates 'type_combo' if a TYPE_LIST item is found in the image path (case-insensitive).
+        - Updates 'name_entry' to the filename if the current name is 'Unnamed' and the image is valid.
+        - Skips name update if the filename starts with '_' (indicating a default hash name).
+        - Outputs messages for invalid image paths, missing paths, or unchanged names.
+
+    Raises:
+        No exceptions are raised directly, but Image.open() may trigger FileNotFoundError, IOError,
+        or ValueError if the image path is invalid, which are caught and handled with error messages.
+    """
     image_path = WIDGETS["image_entry"].get()
     current_name = WIDGETS["name_entry"].get().strip()
+        
+    # Check if any item from TYPE_LIST is in card_data["image"] and update type_combo
+    image_value = image_path.strip()  # Remove extra whitespace
+    for type_item in TYPE_LIST:
+        if type_item.lower() in image_value.lower():
+            output_text(f"Setting type_combo to: {type_item}", "note")
+            WIDGETS["type_combo"].set(type_item)
+            break  # Stop after the first match
+    else:
+        output_text(f"No match from TYPE_LIST found in {image_value}", "warning")
     
     if current_name == "Unnamed" and image_path:
         # Check if the image_path points to a valid image file
@@ -551,8 +594,7 @@ def update_name_from_image():
     elif not image_path:
         output_text("No image path provided", "error")
     else:
-        output_text(f"Name not updated: current name is '{current_name}', not 'Unnamed'", "warning")
-    
+        output_text(f"Name not updated: current name is '{current_name}', not 'Unnamed'", "warning")    
 
 
 def main():
@@ -607,7 +649,7 @@ def main():
     ttk.Label(left_frame, text="Type:").grid(row=1, column=0, pady=8, padx=5, sticky="e")
     type_combo = ttk.Combobox(
         left_frame,
-        values=["Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature", "Spell"],
+        values=TYPE_LIST,
         width=27,
         font=("Helvetica", 12),
     )
@@ -709,7 +751,7 @@ def main():
     #Transparency selection
     transparency_frame = ttk.LabelFrame(preview_frame, text="Transparency", padding="8")
     transparency_frame.grid(row=0, column=0, pady=8, sticky="ew")
-    transparency_var = tk.IntVar(value=60)  # Default to 100%
+    transparency_var = tk.IntVar(value=50)  # Default to 100%
 
     transparency_values = [50, 60, 75, 100]
     for i, value in enumerate(transparency_values):
