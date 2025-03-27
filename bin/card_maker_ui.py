@@ -9,9 +9,14 @@ from tkinter import filedialog
 # Used for randomly generating effects.
 from generate_random_effects import load_and_filter_csv
 from generate_random_effects import get_random_effect
+
+# Inports from ttcg_tools
 from ttcg_tools import output_text
 from ttcg_tools import check_line_in_file
 from ttcg_tools import get_relative_path
+from ttcg_tools import rename_file
+
+# Used for flipping and correcting images.
 from flip_image import flip_image
 
 # Used for generating card preview.
@@ -143,8 +148,15 @@ def save_to_card_list(filename):
         if card_data["type"].lower() == "spell":
             card_data["subtype"] = ""
         
+        # Rename the image file based on the new name selected.
         image_path = card_data.get("image", "")
-        output_text(f"Full image path: {image_path}")
+        output_text(f"Full image path: {image_path}", "note")
+        new_image_name = card_data.get("name", "")
+        output_text(f"Image name: {new_image_name}", "note")
+        if new_image_name not in image_path:
+            rename_file(image_path, new_image_name)
+        
+        # Generate relative path for images.
         rel_image_path = get_relative_path(SCRIPT_DIR, image_path)
         output_text(f"Relative path for image set to: {rel_image_path}", "note")
         
