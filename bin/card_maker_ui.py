@@ -5,6 +5,7 @@ import tkinter as tk
 import random
 from tkinter import ttk
 from tkinter import filedialog
+from pathlib import Path
 
 # Used for randomly generating effects.
 from generate_random_effects import load_and_filter_csv
@@ -38,6 +39,75 @@ SKIP_PREVIEW = False
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
 TYPE_LIST = ["Spell", "Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature"]
+    
+
+
+def get_next_image(current_path):
+    """
+    Get the next image file in a directory or the first image if a directory is provided.
+    
+    Args:
+        current_path (str or Path): File path to an image or directory path.
+            If a file path, returns the next image in the directory.
+            If a directory path, returns the first image in the directory.
+    
+    Returns:
+        str: Full path to the next image file (or first file if at the end),
+             or None if no image files are found or path is invalid.
+    
+    Notes:
+        - Supported image extensions: .jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp
+        - Files are sorted alphabetically
+        - If input is an image file and it's the last in the directory,
+          returns the first image file
+        - Case-insensitive extension matching
+    
+    Examples:
+        >>> get_next_image("/path/to/directory")
+        '/path/to/directory/image1.jpg'
+        >>> get_next_image("/path/to/directory/image1.jpg")
+        '/path/to/directory/image2.jpg'
+    """
+    # Define common image extensions
+    image_extensions = {'.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp'}
+    
+    # Convert input to Path object
+    path = Path(current_path)
+    
+    # If it's a directory, return the first image file
+    if path.is_dir():
+        for file in sorted(os.listdir(path)):
+            file_path = path / file
+            if file_path.is_file() and file_path.suffix.lower() in image_extensions:
+                return str(file_path)
+        return None  # Return None if no image files found
+    
+    # If it's a file, get its directory and find the next image
+    if path.is_file():
+        directory = path.parent
+        files = []
+        
+        # Collect all image files in the directory
+        for file in sorted(os.listdir(directory)):
+            file_path = directory / file
+            if file_path.is_file() and file_path.suffix.lower() in image_extensions:
+                files.append(file_path)
+        
+        if not files:
+            return None  # No image files in directory
+        
+        # Find current file's position
+        try:
+            current_index = files.index(path)
+            # Return next file, or first file if at the end
+            next_index = (current_index + 1) % len(files)
+            return str(files[next_index])
+        except ValueError:
+            # If current file isn't an image, return first image
+            return str(files[0]) if files else None
+    
+    return None  # Return None if path doesn't exist
+    
     
 def get_card_data():
     """
@@ -541,7 +611,7 @@ def get_gui_metadata():
     return metadata
 
 
-def update_name_from_image():
+def update_name_from_image(force_update=False):
     """
     Update the card name and type based on the image path provided in the UI.
 
@@ -551,6 +621,9 @@ def update_name_from_image():
     image path is provided, it extracts the filename (without path or extension) and updates
     the 'name_entry' widget with it. Various status messages are output via output_text() to
     indicate success, warnings, or errors.
+    
+    Args:
+        force_update (bool): Update the name regardless of what the name field currently is.
 
     Behavior:
         - Updates 'type_combo' if a TYPE_LIST item is found in the image path (case-insensitive).
@@ -575,7 +648,7 @@ def update_name_from_image():
     else:
         output_text(f"No match from TYPE_LIST found in {image_value}", "warning")
     
-    if current_name == "Unnamed" and image_path:
+    if (current_name == "Unnamed" and image_path) or (force_update and image_path):
         # Check if the image_path points to a valid image file
         try:
             # Attempt to open the image to verify it's valid
@@ -595,6 +668,21 @@ def update_name_from_image():
         output_text("No image path provided", "error")
     else:
         output_text(f"Name not updated: current name is '{current_name}', not 'Unnamed'", "warning")    
+
+
+def load_next_image():
+    """
+    This will select and load the next image file within the folder of the currently
+    selected/loaded image file. This will also clear the effect fields to prep the UI
+    for a new card.
+    """
+    current_image_file = WIDGETS["image_entry"].get().strip()
+    next_image_file = get_next_image(current_image_file)
+    WIDGETS["image_entry"].delete(0, tk.END)
+    WIDGETS["image_entry"].insert(0, next_image_file)
+    WIDGETS["effect1_entry"].delete(0, tk.END)
+    WIDGETS["effect2_entry"].delete(0, tk.END)
+    update_name_from_image(force_update=True)
 
 
 def main():
@@ -693,6 +781,17 @@ def main():
     )
     browse_btn.grid(row=5, column=1, pady=8, padx=5, sticky="w")
     
+    # Add Next Image button
+    next_img_btn = ttk.Button(
+        left_frame, 
+        text="Next Image", 
+        command=lambda: [
+            load_next_image(),
+            update_preview()
+        ]
+    )
+    next_img_btn.grid(row=5, column=1, pady=8, padx=(105, 0), sticky="w")  # Adjusted padx
+    
     # Add Flip Image button
     flip_btn = ttk.Button(
         left_frame, 
@@ -702,7 +801,7 @@ def main():
             update_preview()
         ]
     )
-    flip_btn.grid(row=5, column=1, pady=8, padx=(110, 0), sticky="w")  # Adjusted padx
+    flip_btn.grid(row=5, column=1, pady=8, padx=(205, 0), sticky="w")  # Adjusted padx
 
     # ATK
     ttk.Label(left_frame, text="ATK:").grid(row=6, column=0, pady=8, padx=5, sticky="e")
