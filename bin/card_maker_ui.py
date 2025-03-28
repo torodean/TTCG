@@ -199,6 +199,13 @@ def save_to_card_list(filename):
     """
     # Collect card data from UI
     card_data = get_card_data()
+    card_name = card_data.get("name", "").strip()
+    
+    # Check if the name already exists
+    if is_name_in_card_list(card_name):
+        output_text(f"Card name '{card_name}' already exists in {filename}! Skipping", "error")
+        load_next_image()  # Still load next image even if skipped
+        return
 
     # Define the header
     header = ["NAME", "TYPE", "SUBTYPES", "LEVEL", "IMAGE", "ATTACK", "DEFENSE", "EFFECT1", "EFFECT2", "SERIAL", "RARITY", "TRANSPARENCY"]
@@ -225,6 +232,8 @@ def save_to_card_list(filename):
         output_text(f"Image name: {new_image_name}", "note")
         if new_image_name not in image_path and "Unnamed" not in new_image_name:
             image_path = rename_file(image_path, new_image_name)
+            WIDGETS["image_entry"].delete(0, tk.END)
+            WIDGETS["image_entry"].insert(0, image_path)  # Update UI with new path
         
         # Generate relative path for images.
         rel_image_path = get_relative_path(SCRIPT_DIR, image_path)
@@ -251,7 +260,7 @@ def save_to_card_list(filename):
             if not check_for_effect_combination_in_file(filename, row[7], row[8]):
                 writer.writerow(row)
                 output_text(f"Card data saved to {filename}: {card_data}", "success")
-                reset_ui()
+                load_next_image()
             else:
                 output_text(f"Effect combination already exists in output file! Skipping", "error") 
         else:
@@ -490,6 +499,63 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
             btn.config(text="")
 
 
+def is_name_in_card_list(card_name, filename="card_list/card_list.csv"):
+    """
+    Check if a card name already exists in the card_list.csv file.
+
+    Args:
+        card_name (str): The name to check against the 'NAME' column in the CSV.
+        filename (str): Path to the CSV file (e.g., 'card_list.csv').
+
+    Returns:
+        bool: True if the card name is found in the file, False otherwise.
+    """
+    # Resolve the filename to an absolute path relative to the script directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    abs_filename = os.path.join(script_dir, filename) if not os.path.isabs(filename) else filename
+    output_text(f"Checking file: {abs_filename}", "note")
+
+    # If the file doesn’t exist, no names can match
+    if not os.path.isfile(abs_filename):
+        output_text(f"File {abs_filename} does not exist", "warning")
+        return False
+
+    # Open and read the CSV file
+    try:
+        with open(abs_filename, mode='r', encoding='utf-8') as f:
+            reader = csv.reader(f, delimiter=';')
+            
+            # Get the header row to find the 'NAME' column index
+            try:
+                header = next(reader)
+                output_text(f"Header: {header}", "note")
+                name_index = header.index("NAME")
+            except StopIteration:
+                output_text("File is empty", "warning")
+                return False
+            except ValueError:
+                output_text("CSV file does not contain a 'NAME' column in the header", "error")
+                raise ValueError("CSV file does not contain a 'NAME' column in the header")
+
+            # Check each row for a matching name
+            for row in reader:
+                #output_text(f"Row: {row}", "note")
+                if len(row) > name_index:
+                    csv_name = row[name_index].strip()
+                    if csv_name == card_name.strip():
+                        output_text(f"Found match: '{csv_name}' == '{card_name}'", "success")
+                        return True
+                else:
+                    output_text(f"Skipping malformed row: {row}", "warning")
+    
+    except Exception as e:
+        output_text(f"Error reading {abs_filename}: {str(e)}", "error")
+        return False
+
+    output_text(f"No match found for '{card_name}' in {abs_filename}", "note")
+    return False
+
+
 def assign_effect(effect_text):
     """
     Assign the clicked effect to the first empty effect field.
@@ -655,7 +721,9 @@ def update_name_from_image(force_update=False):
             with Image.open(image_path):
                 # Extract just the filename without path or extension
                 filename = os.path.splitext(os.path.basename(image_path))[0]
-                if filename[0] == "_":
+                if filename[0] == "_":                    
+                    WIDGETS["name_entry"].delete(0, tk.END)
+                    WIDGETS["name_entry"].insert(0, "Unknown")
                     return # This is the case for un-named images with default hash names.
                 # Update the name_entry with the extracted filename
                 WIDGETS["name_entry"].delete(0, tk.END)
@@ -670,19 +738,78 @@ def update_name_from_image(force_update=False):
         output_text(f"Name not updated: current name is '{current_name}', not 'Unnamed'", "warning")    
 
 
-def load_next_image():
+def load_next_image(image_file=None, filename="card_list/card_list.csv"):
     """
-    This will select and load the next image file within the folder of the currently
-    selected/loaded image file. This will also clear the effect fields to prep the UI
-    for a new card.
+    Select and load the next image file within the folder of the currently
+    selected/loaded image file whose name isn’t already in card_list.csv.
+    Clears the effect fields to prep the UI for a new card.
+    
+    Args:
+        image_file (str, optional): The current image file to use for loading the next. 
+            Defaults to gathering this field from the UI.
+        filename (str, optional): Path to the CSV file to check names against. 
+            Defaults to 'card_list.csv'.
     """
-    current_image_file = WIDGETS["image_entry"].get().strip()
+    output_text("Loading next image file!", "note")
+    
+    # Get the current image
+    if image_file is None:
+        current_image_file = WIDGETS["image_entry"].get().strip()
+    else:
+        current_image_file = image_file
+       
+    output_text(f"Current image file: {current_image_file}", "note")
+    
+    # Track checked images to avoid infinite loops
+    checked_images = set([current_image_file]) if current_image_file else set()
     next_image_file = get_next_image(current_image_file)
+    output_text(f"Next image file (initial): {next_image_file}", "note")
+
+    # Clear the current image entry
     WIDGETS["image_entry"].delete(0, tk.END)
-    WIDGETS["image_entry"].insert(0, next_image_file)
-    WIDGETS["effect1_entry"].delete(0, tk.END)
-    WIDGETS["effect2_entry"].delete(0, tk.END)
+
+    # Loop to find an image with a unique name
+    while next_image_file is not None:
+        # Set the image entry and update the name
+        WIDGETS["image_entry"].insert(0, next_image_file)
+        update_name_from_image(force_update=True)  # This sets name_entry
+        
+        # Get the name from the UI
+        potential_name = WIDGETS["name_entry"].get().strip()
+        output_text(f"Checking name: {potential_name}", "note")
+
+        # Check if the name is already in the card list
+        if not is_name_in_card_list(potential_name):
+            output_text(f"Loaded image with unique name: {next_image_file}", "success")
+            break  # Name is unique, keep this image
+        
+        # Name exists, try the next image
+        output_text(f"Name '{potential_name}' already exists, trying next image", "warning")
+        checked_images.add(next_image_file)
+        next_image_file = get_next_image(next_image_file)
+        output_text(f"Next image file: {next_image_file}", "note")
+
+        # Prevent infinite loop: if we've checked all images or cycled back, stop
+        if next_image_file in checked_images or next_image_file == current_image_file:
+            output_text("No unique image name found in directory!", "warning")
+            next_image_file = None
+            break
+        
+        # Clear image entry for the next iteration
+        WIDGETS["image_entry"].delete(0, tk.END)
+
+    # Finalize the UI state
+    if next_image_file is None:
+        output_text("No next image file with a unique name found!", "warning")
+        WIDGETS["image_entry"].insert(0, "")  # Clear the field
+    
+    # Clear effect fields
+    WIDGETS["effect1_entry"].delete("1.0", tk.END)
+    WIDGETS["effect2_entry"].delete("1.0", tk.END)
+    
+    # Final update of name and preview (redundant if loop succeeded, but ensures consistency)
     update_name_from_image(force_update=True)
+    update_preview()
 
 
 def main():
