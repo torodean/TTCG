@@ -4,17 +4,17 @@ This chapter provides a practical guide to generating and managing effect descri
 
 
 
-\subsection{Add and Auto-Generate Effect Strings from Templates}
+\section{Add and Auto-Generate Effect Strings from Templates}
 
 This section guides you through creating effect descriptions from templates using scripts in the \texttt{bin/} directory. You’ll combine placeholder values from \texttt{placeholders/} with templates from \texttt{effects/} to generate a list of effects.
 
-\subsubsection{What You’ll Need}
+\subsection{What You’ll Need}
 \begin{itemize}
 	\item A Unix-like system (e.g., Linux, macOS) with Bash and Python 3 installed or Windows with Cygwin and a compatible python setup.
 	\item The project directory structure: \texttt{bin/}, \texttt{placeholders/}, and \texttt{effects/}. This should already exist if you cloned this project using \textit{git}.
 \end{itemize}
 
-\subsubsection{Step-by-Step Guide}
+\subsection{Step-by-Step Guide}
 
 \paragraph{Step 1: Set Up Your Placeholders and Templates}
 \begin{enumerate}
@@ -83,7 +83,7 @@ python3 create_effect_combinations.py -f
 	\item Find the results in \texttt{../effects/all\_effects.txt}.
 \end{enumerate}
 
-\subsubsection{Tips}
+\subsection{Tips}
 \begin{itemize}
 	\item \textbf{Customize Output}: Tweak \texttt{all\_effect\_templates.txt} or placeholder files to change effects.
 	\item \textbf{Fix Errors}: If a script fails, double-check that files exist and paths are correct (e.g., \texttt{../placeholders/number.txt}).
@@ -96,18 +96,18 @@ python3 create_effect_combinations.py -f
 
 
 
-\subsection{Adding Metadata to Effects and Automating the Process}
+\section{Adding Metadata to Effects and Automating the Process}
 
 This section explains how to add metadata (e.g., categories like \texttt{UNIT} or \texttt{SPELL}) to your effect descriptions using the \texttt{add\_csv\_field.py} script and how to automate metadata addition for all effects with \texttt{generate\_and\_order\_effects.sh}. You’ll work with files in the \texttt{bin/} and \texttt{effects/} directories, building on the effects generated earlier.
 
-\subsubsection{What You’ll Need}
+\subsection{What You’ll Need}
 \begin{itemize}
 	\item A Unix-like system (e.g., Linux, macOS) with Bash and Python 3 installed, or Windows with Cygwin and a compatible Python setup.
 	\item The project directory structure: \texttt{bin/}, \texttt{placeholders/}, and \texttt{effects/}, already set up from cloning this project with \textit{git}.
 	\item An existing \texttt{all\_effects.txt} file in \texttt{effects/} from the previous section.
 \end{itemize}
 
-\subsubsection{Step-by-Step Guide}
+\subsection{Step-by-Step Guide}
 
 \paragraph{Step 1: Add Metadata with \texttt{add\_csv\_field.py}}
 \begin{enumerate}
@@ -214,14 +214,14 @@ python3 add_csv_field.py -c LEVEL_1 -m SPELL -t "Destroy one <type> card on the 
 	\item Check \texttt{../effects/effects\_with\_placeholders.csv} for the final result, which includes all effects with metadata columns added automatically.
 \end{enumerate}
 
-\subsubsection{Tips}
+\subsection{Tips}
 \begin{itemize}
 	\item \textbf{Customize Metadata}: Edit the patterns or exact strings in your \texttt{add\_csv\_field.py} commands to match your effects.
 	\item \textbf{Fix Errors}: Ensure input files exist and placeholder files in \texttt{../placeholders/} match your patterns.
 	\item \textbf{See Results}: Open \texttt{effects\_with\_placeholders.csv} in a spreadsheet or text editor to review metadata.
 \end{itemize}
 
-\subsubsection{What You Get}
+\subsection{What You Get}
 \begin{itemize}
 	\item \texttt{effects/effects\_with\_placeholders.csv}: A semicolon-delimited CSV with effects and metadata columns (e.g., \texttt{UNIT}, \texttt{SPELL}) set to ``True'' or ``False''.
 	\item At the time of writing this, the meta-data columns programmed into this automation script(s) create columns for UNIT, SPELL, LEVEL\_1, \dots LEVEL\_5. This allows the distinction between the two main sets of cards (units and spells) as well as different effects that should/could be valid for the varying levels of those cards.
@@ -242,17 +242,17 @@ python3 add_csv_field.py -c LEVEL_1 -m SPELL -t "Destroy one <type> card on the 
 
 
 
-\subsection{Generating Random Effect Pairs for Cards}
+\section{Generating Random Effect Pairs for Cards}
 
 This section shows you how to use \texttt{generate\_random\_effects.py} to create specific pairs of effects for a card, such as for a trading card game. The script filters effects from a CSV based on metadata columns and generates random pairs from the filtered list, perfect for assigning unique effect combinations to a card.
 
-\subsubsection{What You’ll Need}
+\subsection{What You’ll Need}
 \begin{itemize}
 	\item Python 3 installed and the project structure (\texttt{bin/}, \texttt{effects/}) set up.
 	\item \texttt{effects/effects\_with\_placeholders.csv} from previous sections, with metadata columns like \texttt{UNIT} or \texttt{SPELL}.
 \end{itemize}
 
-\subsubsection{Steps}
+\subsection{Steps}
 \begin{enumerate}
 	\item Navigate to the \texttt{bin/} directory:
 \begin{lstlisting}[style=terminalstyle]
@@ -277,7 +277,7 @@ python3 generate_random_effects.py my_effects.csv -c UNIT
 	\item Check the terminal output for numbered pairs of effects from the first column (e.g., ``Gain 1 fire points'' paired with ``Draw 2 cards'').
 \end{enumerate}
 
-\subsubsection{Tips}
+\subsection{Tips}
 \begin{itemize}
 	\item Use metadata columns added earlier (e.g., \texttt{UNIT}, \texttt{SPELL}) to filter effects specific to your card.
 	\item If no pairs appear, ensure your CSV has enough ``True'' rows for the specified columns.
@@ -296,17 +296,17 @@ python3 generate_random_effects.py my_effects.csv -c UNIT
 
 
 
-\subsection{Creating a TTCG Trading Card}
+\section{Creating a TTCG Trading Card}
 
 This section explains how to use \texttt{create\_card.py} to generate a trading card image for the TTCG format, complete with effects, stats, and a custom design. It builds on effects generated earlier, turning them into a visual card.
 
-\subsubsection{What You’ll Need}
+\subsection{What You’ll Need}
 \begin{itemize}
 	\item Python 3 with the \texttt{Pillow} library installed (\texttt{pip install Pillow}).
 	\item The project structure (\texttt{bin/}, \texttt{images/}) set up, with type images (e.g., \texttt{fire.png}) in \texttt{../images/card pngs/}.
 \end{itemize}
 
-\subsubsection{Steps}
+\subsection{Steps}
 \begin{enumerate}
 	\item Navigate to the \texttt{bin/} directory:
 \begin{lstlisting}[style=terminalstyle]
@@ -325,7 +325,7 @@ python3 create_card.py --name "Fire Dragon" --type fire --level 3 --subtype Drag
 	\item Check the output folder (defaults to \texttt{../images/generated\_cards/}) for the card, e.g., \texttt{ttcg\_card\_Fire\_Dragon.png}. It’s a 750x1050 pixel image with your card details.
 \end{enumerate}
 
-\subsubsection{Example}
+\subsection{Example}
 Below is an example command (without an image specified) with the matching output seen in Figure \ref{fig:sample_generated_output}.
 \begin{lstlisting}[style=terminalstyle]
 ./create_card.py --name "This is an even longer name for testing long names" --level 3 --effect1 "This is some sample text to represent an effect on the card." --effect2 "This is some sample text to represent an effect on the card. It's quite long to test longer effects. That way I can ensure the text fits nicely."
@@ -338,7 +338,7 @@ Below is an example command (without an image specified) with the matching outpu
 	\label{fig:sample_generated_output}
 \end{figure}
 
-\subsubsection{Tips}
+\subsection{Tips}
 \begin{itemize}
 	\item Use effects from \texttt{all\_effects.txt} or pairs from \texttt{generate\_random\_effects.py}.
 	\item If stats are omitted, they’re random but scaled to level (total = level * 500).
@@ -355,11 +355,11 @@ Below is an example command (without an image specified) with the matching outpu
 
 
 
-\subsection{Creating TTCG Trading Card(s) With The UI}
+\section{Creating TTCG Trading Card(s) With The UI}
 
 This section provides a step-by-step guide to creating trading cards using the TTCG Card Creator graphical user interface (GUI). The UI allows you to input card details, preview the card, and save it to a CSV file while ensuring unique card names. The interface features a dark theme for comfortable use, with all fields and previews clearly visible.
 
-\subsubsection{Launching the Application}
+\subsection{Launching the Application}
 
 \begin{enumerate}
     \item Ensure you have Python 3 installed, along with required libraries: \texttt{tkinter}, \texttt{PIL} (Pillow), and \texttt{csv}. Install them using:
@@ -385,7 +385,7 @@ python3 card_maker_ui.py
 	\label{fig:sample_ui_window}
 \end{figure}
 
-\subsubsection{Creating a Card}
+\subsection{Creating a Card}
 
 \begin{enumerate}
     \item \textbf{Set the Image:}
@@ -453,7 +453,7 @@ python3 create_card.py -S card_list/card_list.csv
 	    \end{itemize}
 \end{enumerate}
 
-\subsubsection{Understanding the Output}
+\subsection{Understanding the Output}
 
 \begin{itemize}
     \item Cards are saved to \texttt{card\_list/card\_list.csv} in the format:
@@ -465,7 +465,7 @@ Ember Foxling;Fire;Beast;1;../images/units/fire/Ember Foxling.jpg;360;140;...;..
     \item \texttt{RARITY} defaults to 0 (not editable in the UI yet).
 \end{itemize}
 
-\subsubsection{Tips and Troubleshooting}
+\subsection{Tips and Troubleshooting}
 
 \begin{itemize}
     \item \textbf{Duplicate Names:} If a name exists in \texttt{card\_list/card\_list.csv}, the UI skips to the next image. Ensure image filenames are unique or edit the name manually.
