@@ -5,6 +5,7 @@ import tkinter as tk
 import random
 from tkinter import ttk
 from tkinter import filedialog
+from pathlib import Path
 
 # Used for randomly generating effects.
 from generate_random_effects import load_and_filter_csv
@@ -38,6 +39,75 @@ SKIP_PREVIEW = False
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
 TYPE_LIST = ["Spell", "Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature"]
+    
+
+
+def get_next_image(current_path):
+    """
+    Get the next image file in a directory or the first image if a directory is provided.
+    
+    Args:
+        current_path (str or Path): File path to an image or directory path.
+            If a file path, returns the next image in the directory.
+            If a directory path, returns the first image in the directory.
+    
+    Returns:
+        str: Full path to the next image file (or first file if at the end),
+             or None if no image files are found or path is invalid.
+    
+    Notes:
+        - Supported image extensions: .jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp
+        - Files are sorted alphabetically
+        - If input is an image file and it's the last in the directory,
+          returns the first image file
+        - Case-insensitive extension matching
+    
+    Examples:
+        >>> get_next_image("/path/to/directory")
+        '/path/to/directory/image1.jpg'
+        >>> get_next_image("/path/to/directory/image1.jpg")
+        '/path/to/directory/image2.jpg'
+    """
+    # Define common image extensions
+    image_extensions = {'.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp'}
+    
+    # Convert input to Path object
+    path = Path(current_path)
+    
+    # If it's a directory, return the first image file
+    if path.is_dir():
+        for file in sorted(os.listdir(path)):
+            file_path = path / file
+            if file_path.is_file() and file_path.suffix.lower() in image_extensions:
+                return str(file_path)
+        return None  # Return None if no image files found
+    
+    # If it's a file, get its directory and find the next image
+    if path.is_file():
+        directory = path.parent
+        files = []
+        
+        # Collect all image files in the directory
+        for file in sorted(os.listdir(directory)):
+            file_path = directory / file
+            if file_path.is_file() and file_path.suffix.lower() in image_extensions:
+                files.append(file_path)
+        
+        if not files:
+            return None  # No image files in directory
+        
+        # Find current file's position
+        try:
+            current_index = files.index(path)
+            # Return next file, or first file if at the end
+            next_index = (current_index + 1) % len(files)
+            return str(files[next_index])
+        except ValueError:
+            # If current file isn't an image, return first image
+            return str(files[0]) if files else None
+    
+    return None  # Return None if path doesn't exist
+    
     
 def get_card_data():
     """
@@ -129,6 +199,13 @@ def save_to_card_list(filename):
     """
     # Collect card data from UI
     card_data = get_card_data()
+    card_name = card_data.get("name", "").strip()
+    
+    # Check if the name already exists
+    if is_name_in_card_list(card_name):
+        output_text(f"Card name '{card_name}' already exists in {filename}! Skipping", "error")
+        load_next_image()  # Still load next image even if skipped
+        return
 
     # Define the header
     header = ["NAME", "TYPE", "SUBTYPES", "LEVEL", "IMAGE", "ATTACK", "DEFENSE", "EFFECT1", "EFFECT2", "SERIAL", "RARITY", "TRANSPARENCY"]
@@ -155,6 +232,8 @@ def save_to_card_list(filename):
         output_text(f"Image name: {new_image_name}", "note")
         if new_image_name not in image_path and "Unnamed" not in new_image_name:
             image_path = rename_file(image_path, new_image_name)
+            WIDGETS["image_entry"].delete(0, tk.END)
+            WIDGETS["image_entry"].insert(0, image_path)  # Update UI with new path
         
         # Generate relative path for images.
         rel_image_path = get_relative_path(SCRIPT_DIR, image_path)
@@ -181,7 +260,7 @@ def save_to_card_list(filename):
             if not check_for_effect_combination_in_file(filename, row[7], row[8]):
                 writer.writerow(row)
                 output_text(f"Card data saved to {filename}: {card_data}", "success")
-                reset_ui()
+                load_next_image()
             else:
                 output_text(f"Effect combination already exists in output file! Skipping", "error") 
         else:
@@ -420,6 +499,63 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
             btn.config(text="")
 
 
+def is_name_in_card_list(card_name, filename="card_list/card_list.csv"):
+    """
+    Check if a card name already exists in the card_list.csv file.
+
+    Args:
+        card_name (str): The name to check against the 'NAME' column in the CSV.
+        filename (str): Path to the CSV file (e.g., 'card_list.csv').
+
+    Returns:
+        bool: True if the card name is found in the file, False otherwise.
+    """
+    # Resolve the filename to an absolute path relative to the script directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    abs_filename = os.path.join(script_dir, filename) if not os.path.isabs(filename) else filename
+    output_text(f"Checking file: {abs_filename}", "note")
+
+    # If the file doesn’t exist, no names can match
+    if not os.path.isfile(abs_filename):
+        output_text(f"File {abs_filename} does not exist", "warning")
+        return False
+
+    # Open and read the CSV file
+    try:
+        with open(abs_filename, mode='r', encoding='utf-8') as f:
+            reader = csv.reader(f, delimiter=';')
+            
+            # Get the header row to find the 'NAME' column index
+            try:
+                header = next(reader)
+                output_text(f"Header: {header}", "note")
+                name_index = header.index("NAME")
+            except StopIteration:
+                output_text("File is empty", "warning")
+                return False
+            except ValueError:
+                output_text("CSV file does not contain a 'NAME' column in the header", "error")
+                raise ValueError("CSV file does not contain a 'NAME' column in the header")
+
+            # Check each row for a matching name
+            for row in reader:
+                #output_text(f"Row: {row}", "note")
+                if len(row) > name_index:
+                    csv_name = row[name_index].strip()
+                    if csv_name == card_name.strip():
+                        output_text(f"Found match: '{csv_name}' == '{card_name}'", "success")
+                        return True
+                else:
+                    output_text(f"Skipping malformed row: {row}", "warning")
+    
+    except Exception as e:
+        output_text(f"Error reading {abs_filename}: {str(e)}", "error")
+        return False
+
+    output_text(f"No match found for '{card_name}' in {abs_filename}", "note")
+    return False
+
+
 def assign_effect(effect_text):
     """
     Assign the clicked effect to the first empty effect field.
@@ -541,7 +677,7 @@ def get_gui_metadata():
     return metadata
 
 
-def update_name_from_image():
+def update_name_from_image(force_update=False):
     """
     Update the card name and type based on the image path provided in the UI.
 
@@ -551,6 +687,9 @@ def update_name_from_image():
     image path is provided, it extracts the filename (without path or extension) and updates
     the 'name_entry' widget with it. Various status messages are output via output_text() to
     indicate success, warnings, or errors.
+    
+    Args:
+        force_update (bool): Update the name regardless of what the name field currently is.
 
     Behavior:
         - Updates 'type_combo' if a TYPE_LIST item is found in the image path (case-insensitive).
@@ -575,14 +714,16 @@ def update_name_from_image():
     else:
         output_text(f"No match from TYPE_LIST found in {image_value}", "warning")
     
-    if current_name == "Unnamed" and image_path:
+    if (current_name == "Unnamed" and image_path) or (force_update and image_path):
         # Check if the image_path points to a valid image file
         try:
             # Attempt to open the image to verify it's valid
             with Image.open(image_path):
                 # Extract just the filename without path or extension
                 filename = os.path.splitext(os.path.basename(image_path))[0]
-                if filename[0] == "_":
+                if filename[0] == "_":                    
+                    WIDGETS["name_entry"].delete(0, tk.END)
+                    WIDGETS["name_entry"].insert(0, "Unknown")
                     return # This is the case for un-named images with default hash names.
                 # Update the name_entry with the extracted filename
                 WIDGETS["name_entry"].delete(0, tk.END)
@@ -595,6 +736,80 @@ def update_name_from_image():
         output_text("No image path provided", "error")
     else:
         output_text(f"Name not updated: current name is '{current_name}', not 'Unnamed'", "warning")    
+
+
+def load_next_image(image_file=None, filename="card_list/card_list.csv"):
+    """
+    Select and load the next image file within the folder of the currently
+    selected/loaded image file whose name isn’t already in card_list.csv.
+    Clears the effect fields to prep the UI for a new card.
+    
+    Args:
+        image_file (str, optional): The current image file to use for loading the next. 
+            Defaults to gathering this field from the UI.
+        filename (str, optional): Path to the CSV file to check names against. 
+            Defaults to 'card_list.csv'.
+    """
+    output_text("Loading next image file!", "note")
+    
+    # Get the current image
+    if image_file is None:
+        current_image_file = WIDGETS["image_entry"].get().strip()
+    else:
+        current_image_file = image_file
+       
+    output_text(f"Current image file: {current_image_file}", "note")
+    
+    # Track checked images to avoid infinite loops
+    checked_images = set([current_image_file]) if current_image_file else set()
+    next_image_file = get_next_image(current_image_file)
+    output_text(f"Next image file (initial): {next_image_file}", "note")
+
+    # Clear the current image entry
+    WIDGETS["image_entry"].delete(0, tk.END)
+
+    # Loop to find an image with a unique name
+    while next_image_file is not None:
+        # Set the image entry and update the name
+        WIDGETS["image_entry"].insert(0, next_image_file)
+        update_name_from_image(force_update=True)  # This sets name_entry
+        
+        # Get the name from the UI
+        potential_name = WIDGETS["name_entry"].get().strip()
+        output_text(f"Checking name: {potential_name}", "note")
+
+        # Check if the name is already in the card list
+        if not is_name_in_card_list(potential_name):
+            output_text(f"Loaded image with unique name: {next_image_file}", "success")
+            break  # Name is unique, keep this image
+        
+        # Name exists, try the next image
+        output_text(f"Name '{potential_name}' already exists, trying next image", "warning")
+        checked_images.add(next_image_file)
+        next_image_file = get_next_image(next_image_file)
+        output_text(f"Next image file: {next_image_file}", "note")
+
+        # Prevent infinite loop: if we've checked all images or cycled back, stop
+        if next_image_file in checked_images or next_image_file == current_image_file:
+            output_text("No unique image name found in directory!", "warning")
+            next_image_file = None
+            break
+        
+        # Clear image entry for the next iteration
+        WIDGETS["image_entry"].delete(0, tk.END)
+
+    # Finalize the UI state
+    if next_image_file is None:
+        output_text("No next image file with a unique name found!", "warning")
+        WIDGETS["image_entry"].insert(0, "")  # Clear the field
+    
+    # Clear effect fields
+    WIDGETS["effect1_entry"].delete("1.0", tk.END)
+    WIDGETS["effect2_entry"].delete("1.0", tk.END)
+    
+    # Final update of name and preview (redundant if loop succeeded, but ensures consistency)
+    update_name_from_image(force_update=True)
+    update_preview()
 
 
 def main():
@@ -693,6 +908,17 @@ def main():
     )
     browse_btn.grid(row=5, column=1, pady=8, padx=5, sticky="w")
     
+    # Add Next Image button
+    next_img_btn = ttk.Button(
+        left_frame, 
+        text="Next Image", 
+        command=lambda: [
+            load_next_image(),
+            update_preview()
+        ]
+    )
+    next_img_btn.grid(row=5, column=1, pady=8, padx=(105, 0), sticky="w")  # Adjusted padx
+    
     # Add Flip Image button
     flip_btn = ttk.Button(
         left_frame, 
@@ -702,7 +928,7 @@ def main():
             update_preview()
         ]
     )
-    flip_btn.grid(row=5, column=1, pady=8, padx=(110, 0), sticky="w")  # Adjusted padx
+    flip_btn.grid(row=5, column=1, pady=8, padx=(205, 0), sticky="w")  # Adjusted padx
 
     # ATK
     ttk.Label(left_frame, text="ATK:").grid(row=6, column=0, pady=8, padx=5, sticky="e")

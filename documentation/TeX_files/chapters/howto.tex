@@ -349,3 +349,129 @@ Below is an example command (without an image specified) with the matching outpu
 
 
 
+
+
+
+
+
+
+\subsection{Creating TTCG Trading Card(s) With The UI}
+
+This section provides a step-by-step guide to creating trading cards using the TTCG Card Creator graphical user interface (GUI). The UI allows you to input card details, preview the card, and save it to a CSV file while ensuring unique card names. The interface features a dark theme for comfortable use, with all fields and previews clearly visible.
+
+\subsubsection{Launching the Application}
+
+\begin{enumerate}
+    \item Ensure you have Python 3 installed, along with required libraries: \texttt{tkinter}, \texttt{PIL} (Pillow), and \texttt{csv}. Install them using:
+\begin{lstlisting}[style=terminalstyle]
+pip install pillow
+\end{lstlisting}
+    \item Place your card images in a directory structure (e.g., \texttt{../images/units/fire/}, \texttt{../images/units/light/}, etc.), organized by type if desired.
+    \item Run the script from the command line:
+\begin{lstlisting}[style=terminalstyle]
+python3 card_maker_ui.py
+\end{lstlisting}
+          \begin{itemize}
+              \item \texttt{-i}: Path to the effects CSV file (defaults to \texttt{effects/effects\_with\_placeholders.csv}).
+              \item \texttt{-o}: Path to the output card list CSV (defaults to \texttt{card\_list/card\_list.csv}).
+          \end{itemize}
+    \item The GUI will open displaying three main sections: Card Details (left), Card Preview (middle), and Effects Generator (right).
+\end{enumerate}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/ui_sample.png} 
+	\caption{This is a sample display of the \texttt{card\_maker\_ui.py}}
+	\label{fig:sample_ui_window}
+\end{figure}
+
+\subsubsection{Creating a Card}
+
+\begin{enumerate}
+    \item \textbf{Set the Image:}
+          \begin{itemize}
+              \item In the \texttt{Card Details} section, click the \texttt{Browse} button below the \texttt{Image} field to select an image file (e.g., \texttt{Ember Foxling.jpg}).
+              \item The image path will populate the entry field, and the card name will update to the filename (e.g., \texttt{Ember Foxling}) if the current name is \texttt{Unnamed}.
+              \item The type (e.g., \texttt{Fire}) will automatically set if it’s in the image path and matches a predefined type list.
+              \item Use \texttt{Next Image} to cycle to the next image in the folder, skipping any whose names are already in \texttt{card\_list/card\_list.csv}.
+              \item Use \texttt{Flip Image} to horizontally flip the selected image if needed.
+          \end{itemize}
+
+    \item \textbf{Enter Card Details:}
+          \begin{itemize}
+              \item \texttt{Name}: Edit the auto-filled name (e.g., change \texttt{Ember Foxling} to \texttt{Ember Foxling Alpha}) if desired.
+              \item \texttt{Type}: Select from the dropdown (e.g., \texttt{Fire}, \texttt{Water}) or keep the auto-detected type.
+              \item \texttt{Subtypes}: Check boxes for applicable subtypes (e.g., \texttt{Beast}, \texttt{Elemental}). For \texttt{Spell} cards, subtypes are cleared automatically.
+              \item \texttt{Level}: Choose a level (1--5) from the dropdown.
+              \item \texttt{ATK} and \texttt{DEF}: Enter attack and defense values manually (e.g., \texttt{360} and \texttt{140}), or click \texttt{Randomize} to generate values based on the level.
+          \end{itemize}
+
+    \item \textbf{Add Effects:}
+          \begin{itemize}
+              \item In the \texttt{Effects Generator} section, click \texttt{Generate Effects} to populate 18 buttons with effect suggestions from \texttt{effects/effects\_with\_placeholders.csv}.
+              \item Click an effect button to assign it to \texttt{Effect 1} or \texttt{Effect 2} (e.g., \texttt{Add up to two rank 1 beast cards from your discard pile to your hand}).
+              \item Manually edit \texttt{Effect 1} and \texttt{Effect 2} text boxes if needed.
+          \end{itemize}
+
+    \item \textbf{Adjust Transparency:}
+          \begin{itemize}
+              \item In the \texttt{Card Preview} section, select a transparency level (50\%, 60\%, 75\%, or 100\%) using the checkboxes. The preview updates instantly.
+          \end{itemize}
+
+    \item \textbf{Preview the Card:}
+          \begin{itemize}
+              \item The \texttt{Card Preview} canvas (middle section) displays the card with the selected image, details, and effects. It updates automatically as you change fields.
+          \end{itemize}
+
+    \item \textbf{Save the Card:}
+          \begin{itemize}
+              \item Click \texttt{Save to Card List} in the \texttt{Card Preview} section.
+              \item The card is saved to \texttt{card\_list/card\_list.csv} with a unique serial number (auto-generated) if:
+                    \begin{itemize}
+                        \item The name isn’t already in the CSV.
+                        \item The exact card data (all fields) isn’t a duplicate.
+                        \item The effect combination isn’t already used.
+                    \end{itemize}
+              \item If saved, the UI loads the next image with a unique name. If skipped (e.g., duplicate name), it still advances to the next image.
+              \item Check the console or log for messages like \texttt{Card data saved} or \texttt{Card already exists}.
+              \item The save feature does not generate the output card, but rather saves all of the various card data to the \texttt{card\_list/card\_list.csv} file for them to be generated later.
+          \end{itemize}
+
+    \item \textbf{Reset the UI:}
+          \begin{itemize}
+              \item Click \texttt{Reset} to clear all fields and start over.
+          \end{itemize}
+          
+	\item \textbf{Generate the card Image File(s):}
+	    \begin{itemize}
+	        \item Once the \texttt{card\_list/card\_list.csv} is populated with the desired card values, the \textit{create\_card.py} script can be used to generate the card art for each card.
+	        \item Run the \textit{create\_card.py} script with the spreadsheet option pointing to the \texttt{card\_list/card\_list.csv}.
+\begin{lstlisting}[style=terminalstyle]
+python3 create_card.py -S card_list/card_list.csv
+\end{lstlisting}
+			\item The card images will output to the \texttt{../images/generated\_cards} folder.
+	    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Understanding the Output}
+
+\begin{itemize}
+    \item Cards are saved to \texttt{card\_list/card\_list.csv} in the format:
+\begin{lstlisting}
+NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY;TRANSPARENCY
+Ember Foxling;Fire;Beast;1;../images/units/fire/Ember Foxling.jpg;360;140;...;...;a7626d4dd0045a;0;50
+\end{lstlisting}
+    \item The \texttt{IMAGE} field uses a relative path from the script directory.
+    \item \texttt{RARITY} defaults to 0 (not editable in the UI yet).
+\end{itemize}
+
+\subsubsection{Tips and Troubleshooting}
+
+\begin{itemize}
+    \item \textbf{Duplicate Names:} If a name exists in \texttt{card\_list/card\_list.csv}, the UI skips to the next image. Ensure image filenames are unique or edit the name manually.
+    \item \textbf{Image Not Loading:} Verify the image path is correct and the file exists. Check console logs for \texttt{Invalid image path} errors.
+    \item \textbf{Effects Not Generating:} Ensure \texttt{effects\_with\_placeholders.csv} exists and contains valid effect templates.
+    \item \textbf{UI Not Responding:} Check for errors in the console and ensure all dependencies are installed.
+\end{itemize}
+
+This interface streamlines card creation for TTCG, combining manual input with automated features like image cycling and effect generation. Experiment with different combinations to build your card collection!

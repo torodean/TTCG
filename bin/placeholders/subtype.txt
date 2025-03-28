@@ -1,3 +1,4 @@
+avian
 dragon
 beast
 elemental
