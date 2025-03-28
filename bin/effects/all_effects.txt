@@ -7,6 +7,8 @@ Add one air card from your deck to your hand.
 Add one air card from your discard pile to your hand.
 Add one aquatic card from your deck to your hand.
 Add one aquatic card from your discard pile to your hand.
+Add one avian card from your deck to your hand.
+Add one avian card from your discard pile to your hand.
 Add one beast card from your deck to your hand.
 Add one beast card from your discard pile to your hand.
 Add one botanic card from your deck to your hand.
@@ -37,6 +39,8 @@ Add one light card from your deck to your hand.
 Add one light card from your discard pile to your hand.
 Add one machine card from your deck to your hand.
 Add one machine card from your discard pile to your hand.
+Add one nature card from your deck to your hand.
+Add one nature card from your discard pile to your hand.
 Add one rank 1 air card from your deck to your hand.
 Add one rank 1 air card from your deck to your hand.
 Add one rank 1 air card from your discard pile to your hand.
@@ -45,6 +49,10 @@ Add one rank 1 aquatic card from your deck to your hand.
 Add one rank 1 aquatic card from your deck to your hand.
 Add one rank 1 aquatic card from your discard pile to your hand.
 Add one rank 1 aquatic card from your discard pile to your hand.
+Add one rank 1 avian card from your deck to your hand.
+Add one rank 1 avian card from your deck to your hand.
+Add one rank 1 avian card from your discard pile to your hand.
+Add one rank 1 avian card from your discard pile to your hand.
 Add one rank 1 beast card from your deck to your hand.
 Add one rank 1 beast card from your deck to your hand.
 Add one rank 1 beast card from your discard pile to your hand.
@@ -105,6 +113,10 @@ Add one rank 1 machine card from your deck to your hand.
 Add one rank 1 machine card from your deck to your hand.
 Add one rank 1 machine card from your discard pile to your hand.
 Add one rank 1 machine card from your discard pile to your hand.
+Add one rank 1 nature card from your deck to your hand.
+Add one rank 1 nature card from your deck to your hand.
+Add one rank 1 nature card from your discard pile to your hand.
+Add one rank 1 nature card from your discard pile to your hand.
 Add one rank 1 reptile card from your deck to your hand.
 Add one rank 1 reptile card from your deck to your hand.
 Add one rank 1 reptile card from your discard pile to your hand.
@@ -141,6 +153,10 @@ Add one rank 2 aquatic card from your deck to your hand.
 Add one rank 2 aquatic card from your deck to your hand.
 Add one rank 2 aquatic card from your discard pile to your hand.
 Add one rank 2 aquatic card from your discard pile to your hand.
+Add one rank 2 avian card from your deck to your hand.
+Add one rank 2 avian card from your deck to your hand.
+Add one rank 2 avian card from your discard pile to your hand.
+Add one rank 2 avian card from your discard pile to your hand.
 Add one rank 2 beast card from your deck to your hand.
 Add one rank 2 beast card from your deck to your hand.
 Add one rank 2 beast card from your discard pile to your hand.
@@ -201,10 +217,16 @@ Add one rank 2 machine card from your deck to your hand.
 Add one rank 2 machine card from your deck to your hand.
 Add one rank 2 machine card from your discard pile to your hand.
 Add one rank 2 machine card from your discard pile to your hand.
+Add one rank 2 nature card from your deck to your hand.
+Add one rank 2 nature card from your deck to your hand.
+Add one rank 2 nature card from your discard pile to your hand.
+Add one rank 2 nature card from your discard pile to your hand.
 Add one rank 2 or higher air card from your deck to your hand.
 Add one rank 2 or higher air card from your discard pile to your hand.
 Add one rank 2 or higher aquatic card from your deck to your hand.
 Add one rank 2 or higher aquatic card from your discard pile to your hand.
+Add one rank 2 or higher avian card from your deck to your hand.
+Add one rank 2 or higher avian card from your discard pile to your hand.
 Add one rank 2 or higher beast card from your deck to your hand.
 Add one rank 2 or higher beast card from your discard pile to your hand.
 Add one rank 2 or higher botanic card from your deck to your hand.
@@ -235,6 +257,8 @@ Add one rank 2 or higher light card from your deck to your hand.
 Add one rank 2 or higher light card from your discard pile to your hand.
 Add one rank 2 or higher machine card from your deck to your hand.
 Add one rank 2 or higher machine card from your discard pile to your hand.
+Add one rank 2 or higher nature card from your deck to your hand.
+Add one rank 2 or higher nature card from your discard pile to your hand.
 Add one rank 2 or higher reptile card from your deck to your hand.
 Add one rank 2 or higher reptile card from your discard pile to your hand.
 Add one rank 2 or higher spell card from your deck to your hand.
@@ -253,6 +277,8 @@ Add one rank 2 or lower air card from your deck to your hand.
 Add one rank 2 or lower air card from your discard pile to your hand.
 Add one rank 2 or lower aquatic card from your deck to your hand.
 Add one rank 2 or lower aquatic card from your discard pile to your hand.
+Add one rank 2 or lower avian card from your deck to your hand.
+Add one rank 2 or lower avian card from your discard pile to your hand.
 Add one rank 2 or lower beast card from your deck to your hand.
 Add one rank 2 or lower beast card from your discard pile to your hand.
 Add one rank 2 or lower botanic card from your deck to your hand.
@@ -283,6 +309,8 @@ Add one rank 2 or lower light card from your deck to your hand.
 Add one rank 2 or lower light card from your discard pile to your hand.
 Add one rank 2 or lower machine card from your deck to your hand.
 Add one rank 2 or lower machine card from your discard pile to your hand.
+Add one rank 2 or lower nature card from your deck to your hand.
+Add one rank 2 or lower nature card from your discard pile to your hand.
 Add one rank 2 or lower reptile card from your deck to your hand.
 Add one rank 2 or lower reptile card from your discard pile to your hand.
 Add one rank 2 or lower spell card from your deck to your hand.
@@ -333,6 +361,10 @@ Add one rank 3 aquatic card from your deck to your hand.
 Add one rank 3 aquatic card from your deck to your hand.
 Add one rank 3 aquatic card from your discard pile to your hand.
 Add one rank 3 aquatic card from your discard pile to your hand.
+Add one rank 3 avian card from your deck to your hand.
+Add one rank 3 avian card from your deck to your hand.
+Add one rank 3 avian card from your discard pile to your hand.
+Add one rank 3 avian card from your discard pile to your hand.
 Add one rank 3 beast card from your deck to your hand.
 Add one rank 3 beast card from your deck to your hand.
 Add one rank 3 beast card from your discard pile to your hand.
@@ -393,10 +425,16 @@ Add one rank 3 machine card from your deck to your hand.
 Add one rank 3 machine card from your deck to your hand.
 Add one rank 3 machine card from your discard pile to your hand.
 Add one rank 3 machine card from your discard pile to your hand.
+Add one rank 3 nature card from your deck to your hand.
+Add one rank 3 nature card from your deck to your hand.
+Add one rank 3 nature card from your discard pile to your hand.
+Add one rank 3 nature card from your discard pile to your hand.
 Add one rank 3 or higher air card from your deck to your hand.
 Add one rank 3 or higher air card from your discard pile to your hand.
 Add one rank 3 or higher aquatic card from your deck to your hand.
 Add one rank 3 or higher aquatic card from your discard pile to your hand.
+Add one rank 3 or higher avian card from your deck to your hand.
+Add one rank 3 or higher avian card from your discard pile to your hand.
 Add one rank 3 or higher beast card from your deck to your hand.
 Add one rank 3 or higher beast card from your discard pile to your hand.
 Add one rank 3 or higher botanic card from your deck to your hand.
@@ -427,6 +465,8 @@ Add one rank 3 or higher light card from your deck to your hand.
 Add one rank 3 or higher light card from your discard pile to your hand.
 Add one rank 3 or higher machine card from your deck to your hand.
 Add one rank 3 or higher machine card from your discard pile to your hand.
+Add one rank 3 or higher nature card from your deck to your hand.
+Add one rank 3 or higher nature card from your discard pile to your hand.
 Add one rank 3 or higher reptile card from your deck to your hand.
 Add one rank 3 or higher reptile card from your discard pile to your hand.
 Add one rank 3 or higher spell card from your deck to your hand.
@@ -445,6 +485,8 @@ Add one rank 3 or lower air card from your deck to your hand.
 Add one rank 3 or lower air card from your discard pile to your hand.
 Add one rank 3 or lower aquatic card from your deck to your hand.
 Add one rank 3 or lower aquatic card from your discard pile to your hand.
+Add one rank 3 or lower avian card from your deck to your hand.
+Add one rank 3 or lower avian card from your discard pile to your hand.
 Add one rank 3 or lower beast card from your deck to your hand.
 Add one rank 3 or lower beast card from your discard pile to your hand.
 Add one rank 3 or lower botanic card from your deck to your hand.
@@ -475,6 +517,8 @@ Add one rank 3 or lower light card from your deck to your hand.
 Add one rank 3 or lower light card from your discard pile to your hand.
 Add one rank 3 or lower machine card from your deck to your hand.
 Add one rank 3 or lower machine card from your discard pile to your hand.
+Add one rank 3 or lower nature card from your deck to your hand.
+Add one rank 3 or lower nature card from your discard pile to your hand.
 Add one rank 3 or lower reptile card from your deck to your hand.
 Add one rank 3 or lower reptile card from your discard pile to your hand.
 Add one rank 3 or lower spell card from your deck to your hand.
@@ -525,6 +569,10 @@ Add one rank 4 aquatic card from your deck to your hand.
 Add one rank 4 aquatic card from your deck to your hand.
 Add one rank 4 aquatic card from your discard pile to your hand.
 Add one rank 4 aquatic card from your discard pile to your hand.
+Add one rank 4 avian card from your deck to your hand.
+Add one rank 4 avian card from your deck to your hand.
+Add one rank 4 avian card from your discard pile to your hand.
+Add one rank 4 avian card from your discard pile to your hand.
 Add one rank 4 beast card from your deck to your hand.
 Add one rank 4 beast card from your deck to your hand.
 Add one rank 4 beast card from your discard pile to your hand.
@@ -585,10 +633,16 @@ Add one rank 4 machine card from your deck to your hand.
 Add one rank 4 machine card from your deck to your hand.
 Add one rank 4 machine card from your discard pile to your hand.
 Add one rank 4 machine card from your discard pile to your hand.
+Add one rank 4 nature card from your deck to your hand.
+Add one rank 4 nature card from your deck to your hand.
+Add one rank 4 nature card from your discard pile to your hand.
+Add one rank 4 nature card from your discard pile to your hand.
 Add one rank 4 or higher air card from your deck to your hand.
 Add one rank 4 or higher air card from your discard pile to your hand.
 Add one rank 4 or higher aquatic card from your deck to your hand.
 Add one rank 4 or higher aquatic card from your discard pile to your hand.
+Add one rank 4 or higher avian card from your deck to your hand.
+Add one rank 4 or higher avian card from your discard pile to your hand.
 Add one rank 4 or higher beast card from your deck to your hand.
 Add one rank 4 or higher beast card from your discard pile to your hand.
 Add one rank 4 or higher botanic card from your deck to your hand.
@@ -619,6 +673,8 @@ Add one rank 4 or higher light card from your deck to your hand.
 Add one rank 4 or higher light card from your discard pile to your hand.
 Add one rank 4 or higher machine card from your deck to your hand.
 Add one rank 4 or higher machine card from your discard pile to your hand.
+Add one rank 4 or higher nature card from your deck to your hand.
+Add one rank 4 or higher nature card from your discard pile to your hand.
 Add one rank 4 or higher reptile card from your deck to your hand.
 Add one rank 4 or higher reptile card from your discard pile to your hand.
 Add one rank 4 or higher spell card from your deck to your hand.
@@ -637,6 +693,8 @@ Add one rank 4 or lower air card from your deck to your hand.
 Add one rank 4 or lower air card from your discard pile to your hand.
 Add one rank 4 or lower aquatic card from your deck to your hand.
 Add one rank 4 or lower aquatic card from your discard pile to your hand.
+Add one rank 4 or lower avian card from your deck to your hand.
+Add one rank 4 or lower avian card from your discard pile to your hand.
 Add one rank 4 or lower beast card from your deck to your hand.
 Add one rank 4 or lower beast card from your discard pile to your hand.
 Add one rank 4 or lower botanic card from your deck to your hand.
@@ -667,6 +725,8 @@ Add one rank 4 or lower light card from your deck to your hand.
 Add one rank 4 or lower light card from your discard pile to your hand.
 Add one rank 4 or lower machine card from your deck to your hand.
 Add one rank 4 or lower machine card from your discard pile to your hand.
+Add one rank 4 or lower nature card from your deck to your hand.
+Add one rank 4 or lower nature card from your discard pile to your hand.
 Add one rank 4 or lower reptile card from your deck to your hand.
 Add one rank 4 or lower reptile card from your discard pile to your hand.
 Add one rank 4 or lower spell card from your deck to your hand.
@@ -705,6 +765,10 @@ Add one rank 5 aquatic card from your deck to your hand.
 Add one rank 5 aquatic card from your deck to your hand.
 Add one rank 5 aquatic card from your discard pile to your hand.
 Add one rank 5 aquatic card from your discard pile to your hand.
+Add one rank 5 avian card from your deck to your hand.
+Add one rank 5 avian card from your deck to your hand.
+Add one rank 5 avian card from your discard pile to your hand.
+Add one rank 5 avian card from your discard pile to your hand.
 Add one rank 5 beast card from your deck to your hand.
 Add one rank 5 beast card from your deck to your hand.
 Add one rank 5 beast card from your discard pile to your hand.
@@ -765,6 +829,10 @@ Add one rank 5 machine card from your deck to your hand.
 Add one rank 5 machine card from your deck to your hand.
 Add one rank 5 machine card from your discard pile to your hand.
 Add one rank 5 machine card from your discard pile to your hand.
+Add one rank 5 nature card from your deck to your hand.
+Add one rank 5 nature card from your deck to your hand.
+Add one rank 5 nature card from your discard pile to your hand.
+Add one rank 5 nature card from your discard pile to your hand.
 Add one rank 5 reptile card from your deck to your hand.
 Add one rank 5 reptile card from your deck to your hand.
 Add one rank 5 reptile card from your discard pile to your hand.
@@ -799,6 +867,8 @@ Add up to four air cards from your deck to your hand.
 Add up to four air cards from your discard pile to your hand.
 Add up to four aquatic cards from your deck to your hand.
 Add up to four aquatic cards from your discard pile to your hand.
+Add up to four avian cards from your deck to your hand.
+Add up to four avian cards from your discard pile to your hand.
 Add up to four beast cards from your deck to your hand.
 Add up to four beast cards from your discard pile to your hand.
 Add up to four botanic cards from your deck to your hand.
@@ -829,6 +899,8 @@ Add up to four light cards from your deck to your hand.
 Add up to four light cards from your discard pile to your hand.
 Add up to four machine cards from your deck to your hand.
 Add up to four machine cards from your discard pile to your hand.
+Add up to four nature cards from your deck to your hand.
+Add up to four nature cards from your discard pile to your hand.
 Add up to four rank 1 air cards from your deck to your hand.
 Add up to four rank 1 air cards from your deck to your hand.
 Add up to four rank 1 air cards from your discard pile to your hand.
@@ -837,6 +909,10 @@ Add up to four rank 1 aquatic cards from your deck to your hand.
 Add up to four rank 1 aquatic cards from your deck to your hand.
 Add up to four rank 1 aquatic cards from your discard pile to your hand.
 Add up to four rank 1 aquatic cards from your discard pile to your hand.
+Add up to four rank 1 avian cards from your deck to your hand.
+Add up to four rank 1 avian cards from your deck to your hand.
+Add up to four rank 1 avian cards from your discard pile to your hand.
+Add up to four rank 1 avian cards from your discard pile to your hand.
 Add up to four rank 1 beast cards from your deck to your hand.
 Add up to four rank 1 beast cards from your deck to your hand.
 Add up to four rank 1 beast cards from your discard pile to your hand.
@@ -897,6 +973,10 @@ Add up to four rank 1 machine cards from your deck to your hand.
 Add up to four rank 1 machine cards from your deck to your hand.
 Add up to four rank 1 machine cards from your discard pile to your hand.
 Add up to four rank 1 machine cards from your discard pile to your hand.
+Add up to four rank 1 nature cards from your deck to your hand.
+Add up to four rank 1 nature cards from your deck to your hand.
+Add up to four rank 1 nature cards from your discard pile to your hand.
+Add up to four rank 1 nature cards from your discard pile to your hand.
 Add up to four rank 1 reptile cards from your deck to your hand.
 Add up to four rank 1 reptile cards from your deck to your hand.
 Add up to four rank 1 reptile cards from your discard pile to your hand.
@@ -933,6 +1013,10 @@ Add up to four rank 2 aquatic cards from your deck to your hand.
 Add up to four rank 2 aquatic cards from your deck to your hand.
 Add up to four rank 2 aquatic cards from your discard pile to your hand.
 Add up to four rank 2 aquatic cards from your discard pile to your hand.
+Add up to four rank 2 avian cards from your deck to your hand.
+Add up to four rank 2 avian cards from your deck to your hand.
+Add up to four rank 2 avian cards from your discard pile to your hand.
+Add up to four rank 2 avian cards from your discard pile to your hand.
 Add up to four rank 2 beast cards from your deck to your hand.
 Add up to four rank 2 beast cards from your deck to your hand.
 Add up to four rank 2 beast cards from your discard pile to your hand.
@@ -993,10 +1077,16 @@ Add up to four rank 2 machine cards from your deck to your hand.
 Add up to four rank 2 machine cards from your deck to your hand.
 Add up to four rank 2 machine cards from your discard pile to your hand.
 Add up to four rank 2 machine cards from your discard pile to your hand.
+Add up to four rank 2 nature cards from your deck to your hand.
+Add up to four rank 2 nature cards from your deck to your hand.
+Add up to four rank 2 nature cards from your discard pile to your hand.
+Add up to four rank 2 nature cards from your discard pile to your hand.
 Add up to four rank 2 or higher air cards from your deck to your hand.
 Add up to four rank 2 or higher air cards from your discard pile to your hand.
 Add up to four rank 2 or higher aquatic cards from your deck to your hand.
 Add up to four rank 2 or higher aquatic cards from your discard pile to your hand.
+Add up to four rank 2 or higher avian cards from your deck to your hand.
+Add up to four rank 2 or higher avian cards from your discard pile to your hand.
 Add up to four rank 2 or higher beast cards from your deck to your hand.
 Add up to four rank 2 or higher beast cards from your discard pile to your hand.
 Add up to four rank 2 or higher botanic cards from your deck to your hand.
@@ -1027,6 +1117,8 @@ Add up to four rank 2 or higher light cards from your deck to your hand.
 Add up to four rank 2 or higher light cards from your discard pile to your hand.
 Add up to four rank 2 or higher machine cards from your deck to your hand.
 Add up to four rank 2 or higher machine cards from your discard pile to your hand.
+Add up to four rank 2 or higher nature cards from your deck to your hand.
+Add up to four rank 2 or higher nature cards from your discard pile to your hand.
 Add up to four rank 2 or higher reptile cards from your deck to your hand.
 Add up to four rank 2 or higher reptile cards from your discard pile to your hand.
 Add up to four rank 2 or higher spell cards from your deck to your hand.
@@ -1045,6 +1137,8 @@ Add up to four rank 2 or lower air cards from your deck to your hand.
 Add up to four rank 2 or lower air cards from your discard pile to your hand.
 Add up to four rank 2 or lower aquatic cards from your deck to your hand.
 Add up to four rank 2 or lower aquatic cards from your discard pile to your hand.
+Add up to four rank 2 or lower avian cards from your deck to your hand.
+Add up to four rank 2 or lower avian cards from your discard pile to your hand.
 Add up to four rank 2 or lower beast cards from your deck to your hand.
 Add up to four rank 2 or lower beast cards from your discard pile to your hand.
 Add up to four rank 2 or lower botanic cards from your deck to your hand.
@@ -1075,6 +1169,8 @@ Add up to four rank 2 or lower light cards from your deck to your hand.
 Add up to four rank 2 or lower light cards from your discard pile to your hand.
 Add up to four rank 2 or lower machine cards from your deck to your hand.
 Add up to four rank 2 or lower machine cards from your discard pile to your hand.
+Add up to four rank 2 or lower nature cards from your deck to your hand.
+Add up to four rank 2 or lower nature cards from your discard pile to your hand.
 Add up to four rank 2 or lower reptile cards from your deck to your hand.
 Add up to four rank 2 or lower reptile cards from your discard pile to your hand.
 Add up to four rank 2 or lower spell cards from your deck to your hand.
@@ -1125,6 +1221,10 @@ Add up to four rank 3 aquatic cards from your deck to your hand.
 Add up to four rank 3 aquatic cards from your deck to your hand.
 Add up to four rank 3 aquatic cards from your discard pile to your hand.
 Add up to four rank 3 aquatic cards from your discard pile to your hand.
+Add up to four rank 3 avian cards from your deck to your hand.
+Add up to four rank 3 avian cards from your deck to your hand.
+Add up to four rank 3 avian cards from your discard pile to your hand.
+Add up to four rank 3 avian cards from your discard pile to your hand.
 Add up to four rank 3 beast cards from your deck to your hand.
 Add up to four rank 3 beast cards from your deck to your hand.
 Add up to four rank 3 beast cards from your discard pile to your hand.
@@ -1185,10 +1285,16 @@ Add up to four rank 3 machine cards from your deck to your hand.
 Add up to four rank 3 machine cards from your deck to your hand.
 Add up to four rank 3 machine cards from your discard pile to your hand.
 Add up to four rank 3 machine cards from your discard pile to your hand.
+Add up to four rank 3 nature cards from your deck to your hand.
+Add up to four rank 3 nature cards from your deck to your hand.
+Add up to four rank 3 nature cards from your discard pile to your hand.
+Add up to four rank 3 nature cards from your discard pile to your hand.
 Add up to four rank 3 or higher air cards from your deck to your hand.
 Add up to four rank 3 or higher air cards from your discard pile to your hand.
 Add up to four rank 3 or higher aquatic cards from your deck to your hand.
 Add up to four rank 3 or higher aquatic cards from your discard pile to your hand.
+Add up to four rank 3 or higher avian cards from your deck to your hand.
+Add up to four rank 3 or higher avian cards from your discard pile to your hand.
 Add up to four rank 3 or higher beast cards from your deck to your hand.
 Add up to four rank 3 or higher beast cards from your discard pile to your hand.
 Add up to four rank 3 or higher botanic cards from your deck to your hand.
@@ -1219,6 +1325,8 @@ Add up to four rank 3 or higher light cards from your deck to your hand.
 Add up to four rank 3 or higher light cards from your discard pile to your hand.
 Add up to four rank 3 or higher machine cards from your deck to your hand.
 Add up to four rank 3 or higher machine cards from your discard pile to your hand.
+Add up to four rank 3 or higher nature cards from your deck to your hand.
+Add up to four rank 3 or higher nature cards from your discard pile to your hand.
 Add up to four rank 3 or higher reptile cards from your deck to your hand.
 Add up to four rank 3 or higher reptile cards from your discard pile to your hand.
 Add up to four rank 3 or higher spell cards from your deck to your hand.
@@ -1237,6 +1345,8 @@ Add up to four rank 3 or lower air cards from your deck to your hand.
 Add up to four rank 3 or lower air cards from your discard pile to your hand.
 Add up to four rank 3 or lower aquatic cards from your deck to your hand.
 Add up to four rank 3 or lower aquatic cards from your discard pile to your hand.
+Add up to four rank 3 or lower avian cards from your deck to your hand.
+Add up to four rank 3 or lower avian cards from your discard pile to your hand.
 Add up to four rank 3 or lower beast cards from your deck to your hand.
 Add up to four rank 3 or lower beast cards from your discard pile to your hand.
 Add up to four rank 3 or lower botanic cards from your deck to your hand.
@@ -1267,6 +1377,8 @@ Add up to four rank 3 or lower light cards from your deck to your hand.
 Add up to four rank 3 or lower light cards from your discard pile to your hand.
 Add up to four rank 3 or lower machine cards from your deck to your hand.
 Add up to four rank 3 or lower machine cards from your discard pile to your hand.
+Add up to four rank 3 or lower nature cards from your deck to your hand.
+Add up to four rank 3 or lower nature cards from your discard pile to your hand.
 Add up to four rank 3 or lower reptile cards from your deck to your hand.
 Add up to four rank 3 or lower reptile cards from your discard pile to your hand.
 Add up to four rank 3 or lower spell cards from your deck to your hand.
@@ -1317,6 +1429,10 @@ Add up to four rank 4 aquatic cards from your deck to your hand.
 Add up to four rank 4 aquatic cards from your deck to your hand.
 Add up to four rank 4 aquatic cards from your discard pile to your hand.
 Add up to four rank 4 aquatic cards from your discard pile to your hand.
+Add up to four rank 4 avian cards from your deck to your hand.
+Add up to four rank 4 avian cards from your deck to your hand.
+Add up to four rank 4 avian cards from your discard pile to your hand.
+Add up to four rank 4 avian cards from your discard pile to your hand.
 Add up to four rank 4 beast cards from your deck to your hand.
 Add up to four rank 4 beast cards from your deck to your hand.
 Add up to four rank 4 beast cards from your discard pile to your hand.
@@ -1377,10 +1493,16 @@ Add up to four rank 4 machine cards from your deck to your hand.
 Add up to four rank 4 machine cards from your deck to your hand.
 Add up to four rank 4 machine cards from your discard pile to your hand.
 Add up to four rank 4 machine cards from your discard pile to your hand.
+Add up to four rank 4 nature cards from your deck to your hand.
+Add up to four rank 4 nature cards from your deck to your hand.
+Add up to four rank 4 nature cards from your discard pile to your hand.
+Add up to four rank 4 nature cards from your discard pile to your hand.
 Add up to four rank 4 or higher air cards from your deck to your hand.
 Add up to four rank 4 or higher air cards from your discard pile to your hand.
 Add up to four rank 4 or higher aquatic cards from your deck to your hand.
 Add up to four rank 4 or higher aquatic cards from your discard pile to your hand.
+Add up to four rank 4 or higher avian cards from your deck to your hand.
+Add up to four rank 4 or higher avian cards from your discard pile to your hand.
 Add up to four rank 4 or higher beast cards from your deck to your hand.
 Add up to four rank 4 or higher beast cards from your discard pile to your hand.
 Add up to four rank 4 or higher botanic cards from your deck to your hand.
@@ -1411,6 +1533,8 @@ Add up to four rank 4 or higher light cards from your deck to your hand.
 Add up to four rank 4 or higher light cards from your discard pile to your hand.
 Add up to four rank 4 or higher machine cards from your deck to your hand.
 Add up to four rank 4 or higher machine cards from your discard pile to your hand.
+Add up to four rank 4 or higher nature cards from your deck to your hand.
+Add up to four rank 4 or higher nature cards from your discard pile to your hand.
 Add up to four rank 4 or higher reptile cards from your deck to your hand.
 Add up to four rank 4 or higher reptile cards from your discard pile to your hand.
 Add up to four rank 4 or higher spell cards from your deck to your hand.
@@ -1429,6 +1553,8 @@ Add up to four rank 4 or lower air cards from your deck to your hand.
 Add up to four rank 4 or lower air cards from your discard pile to your hand.
 Add up to four rank 4 or lower aquatic cards from your deck to your hand.
 Add up to four rank 4 or lower aquatic cards from your discard pile to your hand.
+Add up to four rank 4 or lower avian cards from your deck to your hand.
+Add up to four rank 4 or lower avian cards from your discard pile to your hand.
 Add up to four rank 4 or lower beast cards from your deck to your hand.
 Add up to four rank 4 or lower beast cards from your discard pile to your hand.
 Add up to four rank 4 or lower botanic cards from your deck to your hand.
@@ -1459,6 +1585,8 @@ Add up to four rank 4 or lower light cards from your deck to your hand.
 Add up to four rank 4 or lower light cards from your discard pile to your hand.
 Add up to four rank 4 or lower machine cards from your deck to your hand.
 Add up to four rank 4 or lower machine cards from your discard pile to your hand.
+Add up to four rank 4 or lower nature cards from your deck to your hand.
+Add up to four rank 4 or lower nature cards from your discard pile to your hand.
 Add up to four rank 4 or lower reptile cards from your deck to your hand.
 Add up to four rank 4 or lower reptile cards from your discard pile to your hand.
 Add up to four rank 4 or lower spell cards from your deck to your hand.
@@ -1497,6 +1625,10 @@ Add up to four rank 5 aquatic cards from your deck to your hand.
 Add up to four rank 5 aquatic cards from your deck to your hand.
 Add up to four rank 5 aquatic cards from your discard pile to your hand.
 Add up to four rank 5 aquatic cards from your discard pile to your hand.
+Add up to four rank 5 avian cards from your deck to your hand.
+Add up to four rank 5 avian cards from your deck to your hand.
+Add up to four rank 5 avian cards from your discard pile to your hand.
+Add up to four rank 5 avian cards from your discard pile to your hand.
 Add up to four rank 5 beast cards from your deck to your hand.
 Add up to four rank 5 beast cards from your deck to your hand.
 Add up to four rank 5 beast cards from your discard pile to your hand.
@@ -1557,6 +1689,10 @@ Add up to four rank 5 machine cards from your deck to your hand.
 Add up to four rank 5 machine cards from your deck to your hand.
 Add up to four rank 5 machine cards from your discard pile to your hand.
 Add up to four rank 5 machine cards from your discard pile to your hand.
+Add up to four rank 5 nature cards from your deck to your hand.
+Add up to four rank 5 nature cards from your deck to your hand.
+Add up to four rank 5 nature cards from your discard pile to your hand.
+Add up to four rank 5 nature cards from your discard pile to your hand.
 Add up to four rank 5 reptile cards from your deck to your hand.
 Add up to four rank 5 reptile cards from your deck to your hand.
 Add up to four rank 5 reptile cards from your discard pile to your hand.
@@ -1591,6 +1727,8 @@ Add up to three air cards from your deck to your hand.
 Add up to three air cards from your discard pile to your hand.
 Add up to three aquatic cards from your deck to your hand.
 Add up to three aquatic cards from your discard pile to your hand.
+Add up to three avian cards from your deck to your hand.
+Add up to three avian cards from your discard pile to your hand.
 Add up to three beast cards from your deck to your hand.
 Add up to three beast cards from your discard pile to your hand.
 Add up to three botanic cards from your deck to your hand.
@@ -1621,6 +1759,8 @@ Add up to three light cards from your deck to your hand.
 Add up to three light cards from your discard pile to your hand.
 Add up to three machine cards from your deck to your hand.
 Add up to three machine cards from your discard pile to your hand.
+Add up to three nature cards from your deck to your hand.
+Add up to three nature cards from your discard pile to your hand.
 Add up to three rank 1 air cards from your deck to your hand.
 Add up to three rank 1 air cards from your deck to your hand.
 Add up to three rank 1 air cards from your discard pile to your hand.
@@ -1629,6 +1769,10 @@ Add up to three rank 1 aquatic cards from your deck to your hand.
 Add up to three rank 1 aquatic cards from your deck to your hand.
 Add up to three rank 1 aquatic cards from your discard pile to your hand.
 Add up to three rank 1 aquatic cards from your discard pile to your hand.
+Add up to three rank 1 avian cards from your deck to your hand.
+Add up to three rank 1 avian cards from your deck to your hand.
+Add up to three rank 1 avian cards from your discard pile to your hand.
+Add up to three rank 1 avian cards from your discard pile to your hand.
 Add up to three rank 1 beast cards from your deck to your hand.
 Add up to three rank 1 beast cards from your deck to your hand.
 Add up to three rank 1 beast cards from your discard pile to your hand.
@@ -1689,6 +1833,10 @@ Add up to three rank 1 machine cards from your deck to your hand.
 Add up to three rank 1 machine cards from your deck to your hand.
 Add up to three rank 1 machine cards from your discard pile to your hand.
 Add up to three rank 1 machine cards from your discard pile to your hand.
+Add up to three rank 1 nature cards from your deck to your hand.
+Add up to three rank 1 nature cards from your deck to your hand.
+Add up to three rank 1 nature cards from your discard pile to your hand.
+Add up to three rank 1 nature cards from your discard pile to your hand.
 Add up to three rank 1 reptile cards from your deck to your hand.
 Add up to three rank 1 reptile cards from your deck to your hand.
 Add up to three rank 1 reptile cards from your discard pile to your hand.
@@ -1725,6 +1873,10 @@ Add up to three rank 2 aquatic cards from your deck to your hand.
 Add up to three rank 2 aquatic cards from your deck to your hand.
 Add up to three rank 2 aquatic cards from your discard pile to your hand.
 Add up to three rank 2 aquatic cards from your discard pile to your hand.
+Add up to three rank 2 avian cards from your deck to your hand.
+Add up to three rank 2 avian cards from your deck to your hand.
+Add up to three rank 2 avian cards from your discard pile to your hand.
+Add up to three rank 2 avian cards from your discard pile to your hand.
 Add up to three rank 2 beast cards from your deck to your hand.
 Add up to three rank 2 beast cards from your deck to your hand.
 Add up to three rank 2 beast cards from your discard pile to your hand.
@@ -1785,10 +1937,16 @@ Add up to three rank 2 machine cards from your deck to your hand.
 Add up to three rank 2 machine cards from your deck to your hand.
 Add up to three rank 2 machine cards from your discard pile to your hand.
 Add up to three rank 2 machine cards from your discard pile to your hand.
+Add up to three rank 2 nature cards from your deck to your hand.
+Add up to three rank 2 nature cards from your deck to your hand.
+Add up to three rank 2 nature cards from your discard pile to your hand.
+Add up to three rank 2 nature cards from your discard pile to your hand.
 Add up to three rank 2 or higher air cards from your deck to your hand.
 Add up to three rank 2 or higher air cards from your discard pile to your hand.
 Add up to three rank 2 or higher aquatic cards from your deck to your hand.
 Add up to three rank 2 or higher aquatic cards from your discard pile to your hand.
+Add up to three rank 2 or higher avian cards from your deck to your hand.
+Add up to three rank 2 or higher avian cards from your discard pile to your hand.
 Add up to three rank 2 or higher beast cards from your deck to your hand.
 Add up to three rank 2 or higher beast cards from your discard pile to your hand.
 Add up to three rank 2 or higher botanic cards from your deck to your hand.
@@ -1819,6 +1977,8 @@ Add up to three rank 2 or higher light cards from your deck to your hand.
 Add up to three rank 2 or higher light cards from your discard pile to your hand.
 Add up to three rank 2 or higher machine cards from your deck to your hand.
 Add up to three rank 2 or higher machine cards from your discard pile to your hand.
+Add up to three rank 2 or higher nature cards from your deck to your hand.
+Add up to three rank 2 or higher nature cards from your discard pile to your hand.
 Add up to three rank 2 or higher reptile cards from your deck to your hand.
 Add up to three rank 2 or higher reptile cards from your discard pile to your hand.
 Add up to three rank 2 or higher spell cards from your deck to your hand.
@@ -1837,6 +1997,8 @@ Add up to three rank 2 or lower air cards from your deck to your hand.
 Add up to three rank 2 or lower air cards from your discard pile to your hand.
 Add up to three rank 2 or lower aquatic cards from your deck to your hand.
 Add up to three rank 2 or lower aquatic cards from your discard pile to your hand.
+Add up to three rank 2 or lower avian cards from your deck to your hand.
+Add up to three rank 2 or lower avian cards from your discard pile to your hand.
 Add up to three rank 2 or lower beast cards from your deck to your hand.
 Add up to three rank 2 or lower beast cards from your discard pile to your hand.
 Add up to three rank 2 or lower botanic cards from your deck to your hand.
@@ -1867,6 +2029,8 @@ Add up to three rank 2 or lower light cards from your deck to your hand.
 Add up to three rank 2 or lower light cards from your discard pile to your hand.
 Add up to three rank 2 or lower machine cards from your deck to your hand.
 Add up to three rank 2 or lower machine cards from your discard pile to your hand.
+Add up to three rank 2 or lower nature cards from your deck to your hand.
+Add up to three rank 2 or lower nature cards from your discard pile to your hand.
 Add up to three rank 2 or lower reptile cards from your deck to your hand.
 Add up to three rank 2 or lower reptile cards from your discard pile to your hand.
 Add up to three rank 2 or lower spell cards from your deck to your hand.
@@ -1917,6 +2081,10 @@ Add up to three rank 3 aquatic cards from your deck to your hand.
 Add up to three rank 3 aquatic cards from your deck to your hand.
 Add up to three rank 3 aquatic cards from your discard pile to your hand.
 Add up to three rank 3 aquatic cards from your discard pile to your hand.
+Add up to three rank 3 avian cards from your deck to your hand.
+Add up to three rank 3 avian cards from your deck to your hand.
+Add up to three rank 3 avian cards from your discard pile to your hand.
+Add up to three rank 3 avian cards from your discard pile to your hand.
 Add up to three rank 3 beast cards from your deck to your hand.
 Add up to three rank 3 beast cards from your deck to your hand.
 Add up to three rank 3 beast cards from your discard pile to your hand.
@@ -1977,10 +2145,16 @@ Add up to three rank 3 machine cards from your deck to your hand.
 Add up to three rank 3 machine cards from your deck to your hand.
 Add up to three rank 3 machine cards from your discard pile to your hand.
 Add up to three rank 3 machine cards from your discard pile to your hand.
+Add up to three rank 3 nature cards from your deck to your hand.
+Add up to three rank 3 nature cards from your deck to your hand.
+Add up to three rank 3 nature cards from your discard pile to your hand.
+Add up to three rank 3 nature cards from your discard pile to your hand.
 Add up to three rank 3 or higher air cards from your deck to your hand.
 Add up to three rank 3 or higher air cards from your discard pile to your hand.
 Add up to three rank 3 or higher aquatic cards from your deck to your hand.
 Add up to three rank 3 or higher aquatic cards from your discard pile to your hand.
+Add up to three rank 3 or higher avian cards from your deck to your hand.
+Add up to three rank 3 or higher avian cards from your discard pile to your hand.
 Add up to three rank 3 or higher beast cards from your deck to your hand.
 Add up to three rank 3 or higher beast cards from your discard pile to your hand.
 Add up to three rank 3 or higher botanic cards from your deck to your hand.
@@ -2011,6 +2185,8 @@ Add up to three rank 3 or higher light cards from your deck to your hand.
 Add up to three rank 3 or higher light cards from your discard pile to your hand.
 Add up to three rank 3 or higher machine cards from your deck to your hand.
 Add up to three rank 3 or higher machine cards from your discard pile to your hand.
+Add up to three rank 3 or higher nature cards from your deck to your hand.
+Add up to three rank 3 or higher nature cards from your discard pile to your hand.
 Add up to three rank 3 or higher reptile cards from your deck to your hand.
 Add up to three rank 3 or higher reptile cards from your discard pile to your hand.
 Add up to three rank 3 or higher spell cards from your deck to your hand.
@@ -2029,6 +2205,8 @@ Add up to three rank 3 or lower air cards from your deck to your hand.
 Add up to three rank 3 or lower air cards from your discard pile to your hand.
 Add up to three rank 3 or lower aquatic cards from your deck to your hand.
 Add up to three rank 3 or lower aquatic cards from your discard pile to your hand.
+Add up to three rank 3 or lower avian cards from your deck to your hand.
+Add up to three rank 3 or lower avian cards from your discard pile to your hand.
 Add up to three rank 3 or lower beast cards from your deck to your hand.
 Add up to three rank 3 or lower beast cards from your discard pile to your hand.
 Add up to three rank 3 or lower botanic cards from your deck to your hand.
@@ -2059,6 +2237,8 @@ Add up to three rank 3 or lower light cards from your deck to your hand.
 Add up to three rank 3 or lower light cards from your discard pile to your hand.
 Add up to three rank 3 or lower machine cards from your deck to your hand.
 Add up to three rank 3 or lower machine cards from your discard pile to your hand.
+Add up to three rank 3 or lower nature cards from your deck to your hand.
+Add up to three rank 3 or lower nature cards from your discard pile to your hand.
 Add up to three rank 3 or lower reptile cards from your deck to your hand.
 Add up to three rank 3 or lower reptile cards from your discard pile to your hand.
 Add up to three rank 3 or lower spell cards from your deck to your hand.
@@ -2109,6 +2289,10 @@ Add up to three rank 4 aquatic cards from your deck to your hand.
 Add up to three rank 4 aquatic cards from your deck to your hand.
 Add up to three rank 4 aquatic cards from your discard pile to your hand.
 Add up to three rank 4 aquatic cards from your discard pile to your hand.
+Add up to three rank 4 avian cards from your deck to your hand.
+Add up to three rank 4 avian cards from your deck to your hand.
+Add up to three rank 4 avian cards from your discard pile to your hand.
+Add up to three rank 4 avian cards from your discard pile to your hand.
 Add up to three rank 4 beast cards from your deck to your hand.
 Add up to three rank 4 beast cards from your deck to your hand.
 Add up to three rank 4 beast cards from your discard pile to your hand.
@@ -2169,10 +2353,16 @@ Add up to three rank 4 machine cards from your deck to your hand.
 Add up to three rank 4 machine cards from your deck to your hand.
 Add up to three rank 4 machine cards from your discard pile to your hand.
 Add up to three rank 4 machine cards from your discard pile to your hand.
+Add up to three rank 4 nature cards from your deck to your hand.
+Add up to three rank 4 nature cards from your deck to your hand.
+Add up to three rank 4 nature cards from your discard pile to your hand.
+Add up to three rank 4 nature cards from your discard pile to your hand.
 Add up to three rank 4 or higher air cards from your deck to your hand.
 Add up to three rank 4 or higher air cards from your discard pile to your hand.
 Add up to three rank 4 or higher aquatic cards from your deck to your hand.
 Add up to three rank 4 or higher aquatic cards from your discard pile to your hand.
+Add up to three rank 4 or higher avian cards from your deck to your hand.
+Add up to three rank 4 or higher avian cards from your discard pile to your hand.
 Add up to three rank 4 or higher beast cards from your deck to your hand.
 Add up to three rank 4 or higher beast cards from your discard pile to your hand.
 Add up to three rank 4 or higher botanic cards from your deck to your hand.
@@ -2203,6 +2393,8 @@ Add up to three rank 4 or higher light cards from your deck to your hand.
 Add up to three rank 4 or higher light cards from your discard pile to your hand.
 Add up to three rank 4 or higher machine cards from your deck to your hand.
 Add up to three rank 4 or higher machine cards from your discard pile to your hand.
+Add up to three rank 4 or higher nature cards from your deck to your hand.
+Add up to three rank 4 or higher nature cards from your discard pile to your hand.
 Add up to three rank 4 or higher reptile cards from your deck to your hand.
 Add up to three rank 4 or higher reptile cards from your discard pile to your hand.
 Add up to three rank 4 or higher spell cards from your deck to your hand.
@@ -2221,6 +2413,8 @@ Add up to three rank 4 or lower air cards from your deck to your hand.
 Add up to three rank 4 or lower air cards from your discard pile to your hand.
 Add up to three rank 4 or lower aquatic cards from your deck to your hand.
 Add up to three rank 4 or lower aquatic cards from your discard pile to your hand.
+Add up to three rank 4 or lower avian cards from your deck to your hand.
+Add up to three rank 4 or lower avian cards from your discard pile to your hand.
 Add up to three rank 4 or lower beast cards from your deck to your hand.
 Add up to three rank 4 or lower beast cards from your discard pile to your hand.
 Add up to three rank 4 or lower botanic cards from your deck to your hand.
@@ -2251,6 +2445,8 @@ Add up to three rank 4 or lower light cards from your deck to your hand.
 Add up to three rank 4 or lower light cards from your discard pile to your hand.
 Add up to three rank 4 or lower machine cards from your deck to your hand.
 Add up to three rank 4 or lower machine cards from your discard pile to your hand.
+Add up to three rank 4 or lower nature cards from your deck to your hand.
+Add up to three rank 4 or lower nature cards from your discard pile to your hand.
 Add up to three rank 4 or lower reptile cards from your deck to your hand.
 Add up to three rank 4 or lower reptile cards from your discard pile to your hand.
 Add up to three rank 4 or lower spell cards from your deck to your hand.
@@ -2289,6 +2485,10 @@ Add up to three rank 5 aquatic cards from your deck to your hand.
 Add up to three rank 5 aquatic cards from your deck to your hand.
 Add up to three rank 5 aquatic cards from your discard pile to your hand.
 Add up to three rank 5 aquatic cards from your discard pile to your hand.
+Add up to three rank 5 avian cards from your deck to your hand.
+Add up to three rank 5 avian cards from your deck to your hand.
+Add up to three rank 5 avian cards from your discard pile to your hand.
+Add up to three rank 5 avian cards from your discard pile to your hand.
 Add up to three rank 5 beast cards from your deck to your hand.
 Add up to three rank 5 beast cards from your deck to your hand.
 Add up to three rank 5 beast cards from your discard pile to your hand.
@@ -2349,6 +2549,10 @@ Add up to three rank 5 machine cards from your deck to your hand.
 Add up to three rank 5 machine cards from your deck to your hand.
 Add up to three rank 5 machine cards from your discard pile to your hand.
 Add up to three rank 5 machine cards from your discard pile to your hand.
+Add up to three rank 5 nature cards from your deck to your hand.
+Add up to three rank 5 nature cards from your deck to your hand.
+Add up to three rank 5 nature cards from your discard pile to your hand.
+Add up to three rank 5 nature cards from your discard pile to your hand.
 Add up to three rank 5 reptile cards from your deck to your hand.
 Add up to three rank 5 reptile cards from your deck to your hand.
 Add up to three rank 5 reptile cards from your discard pile to your hand.
@@ -2383,6 +2587,8 @@ Add up to two air cards from your deck to your hand.
 Add up to two air cards from your discard pile to your hand.
 Add up to two aquatic cards from your deck to your hand.
 Add up to two aquatic cards from your discard pile to your hand.
+Add up to two avian cards from your deck to your hand.
+Add up to two avian cards from your discard pile to your hand.
 Add up to two beast cards from your deck to your hand.
 Add up to two beast cards from your discard pile to your hand.
 Add up to two botanic cards from your deck to your hand.
@@ -2413,6 +2619,8 @@ Add up to two light cards from your deck to your hand.
 Add up to two light cards from your discard pile to your hand.
 Add up to two machine cards from your deck to your hand.
 Add up to two machine cards from your discard pile to your hand.
+Add up to two nature cards from your deck to your hand.
+Add up to two nature cards from your discard pile to your hand.
 Add up to two rank 1 air cards from your deck to your hand.
 Add up to two rank 1 air cards from your deck to your hand.
 Add up to two rank 1 air cards from your discard pile to your hand.
@@ -2421,6 +2629,10 @@ Add up to two rank 1 aquatic cards from your deck to your hand.
 Add up to two rank 1 aquatic cards from your deck to your hand.
 Add up to two rank 1 aquatic cards from your discard pile to your hand.
 Add up to two rank 1 aquatic cards from your discard pile to your hand.
+Add up to two rank 1 avian cards from your deck to your hand.
+Add up to two rank 1 avian cards from your deck to your hand.
+Add up to two rank 1 avian cards from your discard pile to your hand.
+Add up to two rank 1 avian cards from your discard pile to your hand.
 Add up to two rank 1 beast cards from your deck to your hand.
 Add up to two rank 1 beast cards from your deck to your hand.
 Add up to two rank 1 beast cards from your discard pile to your hand.
@@ -2481,6 +2693,10 @@ Add up to two rank 1 machine cards from your deck to your hand.
 Add up to two rank 1 machine cards from your deck to your hand.
 Add up to two rank 1 machine cards from your discard pile to your hand.
 Add up to two rank 1 machine cards from your discard pile to your hand.
+Add up to two rank 1 nature cards from your deck to your hand.
+Add up to two rank 1 nature cards from your deck to your hand.
+Add up to two rank 1 nature cards from your discard pile to your hand.
+Add up to two rank 1 nature cards from your discard pile to your hand.
 Add up to two rank 1 reptile cards from your deck to your hand.
 Add up to two rank 1 reptile cards from your deck to your hand.
 Add up to two rank 1 reptile cards from your discard pile to your hand.
@@ -2517,6 +2733,10 @@ Add up to two rank 2 aquatic cards from your deck to your hand.
 Add up to two rank 2 aquatic cards from your deck to your hand.
 Add up to two rank 2 aquatic cards from your discard pile to your hand.
 Add up to two rank 2 aquatic cards from your discard pile to your hand.
+Add up to two rank 2 avian cards from your deck to your hand.
+Add up to two rank 2 avian cards from your deck to your hand.
+Add up to two rank 2 avian cards from your discard pile to your hand.
+Add up to two rank 2 avian cards from your discard pile to your hand.
 Add up to two rank 2 beast cards from your deck to your hand.
 Add up to two rank 2 beast cards from your deck to your hand.
 Add up to two rank 2 beast cards from your discard pile to your hand.
@@ -2577,10 +2797,16 @@ Add up to two rank 2 machine cards from your deck to your hand.
 Add up to two rank 2 machine cards from your deck to your hand.
 Add up to two rank 2 machine cards from your discard pile to your hand.
 Add up to two rank 2 machine cards from your discard pile to your hand.
+Add up to two rank 2 nature cards from your deck to your hand.
+Add up to two rank 2 nature cards from your deck to your hand.
+Add up to two rank 2 nature cards from your discard pile to your hand.
+Add up to two rank 2 nature cards from your discard pile to your hand.
 Add up to two rank 2 or higher air cards from your deck to your hand.
 Add up to two rank 2 or higher air cards from your discard pile to your hand.
 Add up to two rank 2 or higher aquatic cards from your deck to your hand.
 Add up to two rank 2 or higher aquatic cards from your discard pile to your hand.
+Add up to two rank 2 or higher avian cards from your deck to your hand.
+Add up to two rank 2 or higher avian cards from your discard pile to your hand.
 Add up to two rank 2 or higher beast cards from your deck to your hand.
 Add up to two rank 2 or higher beast cards from your discard pile to your hand.
 Add up to two rank 2 or higher botanic cards from your deck to your hand.
@@ -2611,6 +2837,8 @@ Add up to two rank 2 or higher light cards from your deck to your hand.
 Add up to two rank 2 or higher light cards from your discard pile to your hand.
 Add up to two rank 2 or higher machine cards from your deck to your hand.
 Add up to two rank 2 or higher machine cards from your discard pile to your hand.
+Add up to two rank 2 or higher nature cards from your deck to your hand.
+Add up to two rank 2 or higher nature cards from your discard pile to your hand.
 Add up to two rank 2 or higher reptile cards from your deck to your hand.
 Add up to two rank 2 or higher reptile cards from your discard pile to your hand.
 Add up to two rank 2 or higher spell cards from your deck to your hand.
@@ -2629,6 +2857,8 @@ Add up to two rank 2 or lower air cards from your deck to your hand.
 Add up to two rank 2 or lower air cards from your discard pile to your hand.
 Add up to two rank 2 or lower aquatic cards from your deck to your hand.
 Add up to two rank 2 or lower aquatic cards from your discard pile to your hand.
+Add up to two rank 2 or lower avian cards from your deck to your hand.
+Add up to two rank 2 or lower avian cards from your discard pile to your hand.
 Add up to two rank 2 or lower beast cards from your deck to your hand.
 Add up to two rank 2 or lower beast cards from your discard pile to your hand.
 Add up to two rank 2 or lower botanic cards from your deck to your hand.
@@ -2659,6 +2889,8 @@ Add up to two rank 2 or lower light cards from your deck to your hand.
 Add up to two rank 2 or lower light cards from your discard pile to your hand.
 Add up to two rank 2 or lower machine cards from your deck to your hand.
 Add up to two rank 2 or lower machine cards from your discard pile to your hand.
+Add up to two rank 2 or lower nature cards from your deck to your hand.
+Add up to two rank 2 or lower nature cards from your discard pile to your hand.
 Add up to two rank 2 or lower reptile cards from your deck to your hand.
 Add up to two rank 2 or lower reptile cards from your discard pile to your hand.
 Add up to two rank 2 or lower spell cards from your deck to your hand.
@@ -2709,6 +2941,10 @@ Add up to two rank 3 aquatic cards from your deck to your hand.
 Add up to two rank 3 aquatic cards from your deck to your hand.
 Add up to two rank 3 aquatic cards from your discard pile to your hand.
 Add up to two rank 3 aquatic cards from your discard pile to your hand.
+Add up to two rank 3 avian cards from your deck to your hand.
+Add up to two rank 3 avian cards from your deck to your hand.
+Add up to two rank 3 avian cards from your discard pile to your hand.
+Add up to two rank 3 avian cards from your discard pile to your hand.
 Add up to two rank 3 beast cards from your deck to your hand.
 Add up to two rank 3 beast cards from your deck to your hand.
 Add up to two rank 3 beast cards from your discard pile to your hand.
@@ -2769,10 +3005,16 @@ Add up to two rank 3 machine cards from your deck to your hand.
 Add up to two rank 3 machine cards from your deck to your hand.
 Add up to two rank 3 machine cards from your discard pile to your hand.
 Add up to two rank 3 machine cards from your discard pile to your hand.
+Add up to two rank 3 nature cards from your deck to your hand.
+Add up to two rank 3 nature cards from your deck to your hand.
+Add up to two rank 3 nature cards from your discard pile to your hand.
+Add up to two rank 3 nature cards from your discard pile to your hand.
 Add up to two rank 3 or higher air cards from your deck to your hand.
 Add up to two rank 3 or higher air cards from your discard pile to your hand.
 Add up to two rank 3 or higher aquatic cards from your deck to your hand.
 Add up to two rank 3 or higher aquatic cards from your discard pile to your hand.
+Add up to two rank 3 or higher avian cards from your deck to your hand.
+Add up to two rank 3 or higher avian cards from your discard pile to your hand.
 Add up to two rank 3 or higher beast cards from your deck to your hand.
 Add up to two rank 3 or higher beast cards from your discard pile to your hand.
 Add up to two rank 3 or higher botanic cards from your deck to your hand.
@@ -2803,6 +3045,8 @@ Add up to two rank 3 or higher light cards from your deck to your hand.
 Add up to two rank 3 or higher light cards from your discard pile to your hand.
 Add up to two rank 3 or higher machine cards from your deck to your hand.
 Add up to two rank 3 or higher machine cards from your discard pile to your hand.
+Add up to two rank 3 or higher nature cards from your deck to your hand.
+Add up to two rank 3 or higher nature cards from your discard pile to your hand.
 Add up to two rank 3 or higher reptile cards from your deck to your hand.
 Add up to two rank 3 or higher reptile cards from your discard pile to your hand.
 Add up to two rank 3 or higher spell cards from your deck to your hand.
@@ -2821,6 +3065,8 @@ Add up to two rank 3 or lower air cards from your deck to your hand.
 Add up to two rank 3 or lower air cards from your discard pile to your hand.
 Add up to two rank 3 or lower aquatic cards from your deck to your hand.
 Add up to two rank 3 or lower aquatic cards from your discard pile to your hand.
+Add up to two rank 3 or lower avian cards from your deck to your hand.
+Add up to two rank 3 or lower avian cards from your discard pile to your hand.
 Add up to two rank 3 or lower beast cards from your deck to your hand.
 Add up to two rank 3 or lower beast cards from your discard pile to your hand.
 Add up to two rank 3 or lower botanic cards from your deck to your hand.
@@ -2851,6 +3097,8 @@ Add up to two rank 3 or lower light cards from your deck to your hand.
 Add up to two rank 3 or lower light cards from your discard pile to your hand.
 Add up to two rank 3 or lower machine cards from your deck to your hand.
 Add up to two rank 3 or lower machine cards from your discard pile to your hand.
+Add up to two rank 3 or lower nature cards from your deck to your hand.
+Add up to two rank 3 or lower nature cards from your discard pile to your hand.
 Add up to two rank 3 or lower reptile cards from your deck to your hand.
 Add up to two rank 3 or lower reptile cards from your discard pile to your hand.
 Add up to two rank 3 or lower spell cards from your deck to your hand.
@@ -2901,6 +3149,10 @@ Add up to two rank 4 aquatic cards from your deck to your hand.
 Add up to two rank 4 aquatic cards from your deck to your hand.
 Add up to two rank 4 aquatic cards from your discard pile to your hand.
 Add up to two rank 4 aquatic cards from your discard pile to your hand.
+Add up to two rank 4 avian cards from your deck to your hand.
+Add up to two rank 4 avian cards from your deck to your hand.
+Add up to two rank 4 avian cards from your discard pile to your hand.
+Add up to two rank 4 avian cards from your discard pile to your hand.
 Add up to two rank 4 beast cards from your deck to your hand.
 Add up to two rank 4 beast cards from your deck to your hand.
 Add up to two rank 4 beast cards from your discard pile to your hand.
@@ -2961,10 +3213,16 @@ Add up to two rank 4 machine cards from your deck to your hand.
 Add up to two rank 4 machine cards from your deck to your hand.
 Add up to two rank 4 machine cards from your discard pile to your hand.
 Add up to two rank 4 machine cards from your discard pile to your hand.
+Add up to two rank 4 nature cards from your deck to your hand.
+Add up to two rank 4 nature cards from your deck to your hand.
+Add up to two rank 4 nature cards from your discard pile to your hand.
+Add up to two rank 4 nature cards from your discard pile to your hand.
 Add up to two rank 4 or higher air cards from your deck to your hand.
 Add up to two rank 4 or higher air cards from your discard pile to your hand.
 Add up to two rank 4 or higher aquatic cards from your deck to your hand.
 Add up to two rank 4 or higher aquatic cards from your discard pile to your hand.
+Add up to two rank 4 or higher avian cards from your deck to your hand.
+Add up to two rank 4 or higher avian cards from your discard pile to your hand.
 Add up to two rank 4 or higher beast cards from your deck to your hand.
 Add up to two rank 4 or higher beast cards from your discard pile to your hand.
 Add up to two rank 4 or higher botanic cards from your deck to your hand.
@@ -2995,6 +3253,8 @@ Add up to two rank 4 or higher light cards from your deck to your hand.
 Add up to two rank 4 or higher light cards from your discard pile to your hand.
 Add up to two rank 4 or higher machine cards from your deck to your hand.
 Add up to two rank 4 or higher machine cards from your discard pile to your hand.
+Add up to two rank 4 or higher nature cards from your deck to your hand.
+Add up to two rank 4 or higher nature cards from your discard pile to your hand.
 Add up to two rank 4 or higher reptile cards from your deck to your hand.
 Add up to two rank 4 or higher reptile cards from your discard pile to your hand.
 Add up to two rank 4 or higher spell cards from your deck to your hand.
@@ -3013,6 +3273,8 @@ Add up to two rank 4 or lower air cards from your deck to your hand.
 Add up to two rank 4 or lower air cards from your discard pile to your hand.
 Add up to two rank 4 or lower aquatic cards from your deck to your hand.
 Add up to two rank 4 or lower aquatic cards from your discard pile to your hand.
+Add up to two rank 4 or lower avian cards from your deck to your hand.
+Add up to two rank 4 or lower avian cards from your discard pile to your hand.
 Add up to two rank 4 or lower beast cards from your deck to your hand.
 Add up to two rank 4 or lower beast cards from your discard pile to your hand.
 Add up to two rank 4 or lower botanic cards from your deck to your hand.
@@ -3043,6 +3305,8 @@ Add up to two rank 4 or lower light cards from your deck to your hand.
 Add up to two rank 4 or lower light cards from your discard pile to your hand.
 Add up to two rank 4 or lower machine cards from your deck to your hand.
 Add up to two rank 4 or lower machine cards from your discard pile to your hand.
+Add up to two rank 4 or lower nature cards from your deck to your hand.
+Add up to two rank 4 or lower nature cards from your discard pile to your hand.
 Add up to two rank 4 or lower reptile cards from your deck to your hand.
 Add up to two rank 4 or lower reptile cards from your discard pile to your hand.
 Add up to two rank 4 or lower spell cards from your deck to your hand.
@@ -3081,6 +3345,10 @@ Add up to two rank 5 aquatic cards from your deck to your hand.
 Add up to two rank 5 aquatic cards from your deck to your hand.
 Add up to two rank 5 aquatic cards from your discard pile to your hand.
 Add up to two rank 5 aquatic cards from your discard pile to your hand.
+Add up to two rank 5 avian cards from your deck to your hand.
+Add up to two rank 5 avian cards from your deck to your hand.
+Add up to two rank 5 avian cards from your discard pile to your hand.
+Add up to two rank 5 avian cards from your discard pile to your hand.
 Add up to two rank 5 beast cards from your deck to your hand.
 Add up to two rank 5 beast cards from your deck to your hand.
 Add up to two rank 5 beast cards from your discard pile to your hand.
@@ -3141,6 +3409,10 @@ Add up to two rank 5 machine cards from your deck to your hand.
 Add up to two rank 5 machine cards from your deck to your hand.
 Add up to two rank 5 machine cards from your discard pile to your hand.
 Add up to two rank 5 machine cards from your discard pile to your hand.
+Add up to two rank 5 nature cards from your deck to your hand.
+Add up to two rank 5 nature cards from your deck to your hand.
+Add up to two rank 5 nature cards from your discard pile to your hand.
+Add up to two rank 5 nature cards from your discard pile to your hand.
 Add up to two rank 5 reptile cards from your deck to your hand.
 Add up to two rank 5 reptile cards from your deck to your hand.
 Add up to two rank 5 reptile cards from your discard pile to your hand.
@@ -3178,6 +3450,7 @@ Both players discard three cards.
 Both players discard two cards.
 Both players gain four points for each air card they control.
 Both players gain four points for each aquatic card they control.
+Both players gain four points for each avian card they control.
 Both players gain four points for each beast card they control.
 Both players gain four points for each botanic card they control.
 Both players gain four points for each dark card they control.
@@ -3191,6 +3464,7 @@ Both players gain four points for each ghost card they control.
 Both players gain four points for each insect card they control.
 Both players gain four points for each light card they control.
 Both players gain four points for each machine card they control.
+Both players gain four points for each nature card they control.
 Both players gain four points for each reptile card they control.
 Both players gain four points for each spell card they control.
 Both players gain four points for each spellcaster card they control.
@@ -3199,6 +3473,7 @@ Both players gain four points for each warrior card they control.
 Both players gain four points for each water card they control.
 Both players gain one point for each air card they control.
 Both players gain one point for each aquatic card they control.
+Both players gain one point for each avian card they control.
 Both players gain one point for each beast card they control.
 Both players gain one point for each botanic card they control.
 Both players gain one point for each dark card they control.
@@ -3212,6 +3487,7 @@ Both players gain one point for each ghost card they control.
 Both players gain one point for each insect card they control.
 Both players gain one point for each light card they control.
 Both players gain one point for each machine card they control.
+Both players gain one point for each nature card they control.
 Both players gain one point for each reptile card they control.
 Both players gain one point for each spell card they control.
 Both players gain one point for each spellcaster card they control.
@@ -3220,6 +3496,7 @@ Both players gain one point for each warrior card they control.
 Both players gain one point for each water card they control.
 Both players gain three points for each air card they control.
 Both players gain three points for each aquatic card they control.
+Both players gain three points for each avian card they control.
 Both players gain three points for each beast card they control.
 Both players gain three points for each botanic card they control.
 Both players gain three points for each dark card they control.
@@ -3233,6 +3510,7 @@ Both players gain three points for each ghost card they control.
 Both players gain three points for each insect card they control.
 Both players gain three points for each light card they control.
 Both players gain three points for each machine card they control.
+Both players gain three points for each nature card they control.
 Both players gain three points for each reptile card they control.
 Both players gain three points for each spell card they control.
 Both players gain three points for each spellcaster card they control.
@@ -3241,6 +3519,7 @@ Both players gain three points for each warrior card they control.
 Both players gain three points for each water card they control.
 Both players gain two points for each air card they control.
 Both players gain two points for each aquatic card they control.
+Both players gain two points for each avian card they control.
 Both players gain two points for each beast card they control.
 Both players gain two points for each botanic card they control.
 Both players gain two points for each dark card they control.
@@ -3254,6 +3533,7 @@ Both players gain two points for each ghost card they control.
 Both players gain two points for each insect card they control.
 Both players gain two points for each light card they control.
 Both players gain two points for each machine card they control.
+Both players gain two points for each nature card they control.
 Both players gain two points for each reptile card they control.
 Both players gain two points for each spell card they control.
 Both players gain two points for each spellcaster card they control.
@@ -3270,6 +3550,7 @@ Both players mill three cards from their deck.
 Both players mill two cards from their deck.
 Counter the effect of a air card.
 Counter the effect of a aquatic card.
+Counter the effect of a avian card.
 Counter the effect of a beast card.
 Counter the effect of a botanic card.
 Counter the effect of a dark card.
@@ -3283,6 +3564,7 @@ Counter the effect of a ghost card.
 Counter the effect of a insect card.
 Counter the effect of a light card.
 Counter the effect of a machine card.
+Counter the effect of a nature card.
 Counter the effect of a rank 1 card.
 Counter the effect of a rank 1 creature card.
 Counter the effect of a rank 1 spell card.
@@ -3312,6 +3594,11 @@ Destroy exactly four aquatic cards from your side of the field to gain one point
 Destroy exactly four aquatic cards from your side of the field to gain three points.
 Destroy exactly four aquatic cards from your side of the field to gain two points.
 Destroy exactly four aquatic cards on the field.
+Destroy exactly four avian cards from your side of the field to gain four points.
+Destroy exactly four avian cards from your side of the field to gain one point.
+Destroy exactly four avian cards from your side of the field to gain three points.
+Destroy exactly four avian cards from your side of the field to gain two points.
+Destroy exactly four avian cards on the field.
 Destroy exactly four beast cards from your side of the field to gain four points.
 Destroy exactly four beast cards from your side of the field to gain one point.
 Destroy exactly four beast cards from your side of the field to gain three points.
@@ -3379,6 +3666,11 @@ Destroy exactly four machine cards from your side of the field to gain one point
 Destroy exactly four machine cards from your side of the field to gain three points.
 Destroy exactly four machine cards from your side of the field to gain two points.
 Destroy exactly four machine cards on the field.
+Destroy exactly four nature cards from your side of the field to gain four points.
+Destroy exactly four nature cards from your side of the field to gain one point.
+Destroy exactly four nature cards from your side of the field to gain three points.
+Destroy exactly four nature cards from your side of the field to gain two points.
+Destroy exactly four nature cards on the field.
 Destroy exactly four rank 1 cards from your side of the field to gain four points.
 Destroy exactly four rank 1 cards from your side of the field to gain one point.
 Destroy exactly four rank 1 cards from your side of the field to gain three points.
@@ -3485,6 +3777,11 @@ Destroy exactly one aquatic card from your side of the field to gain one point.
 Destroy exactly one aquatic card from your side of the field to gain three points.
 Destroy exactly one aquatic card from your side of the field to gain two points.
 Destroy exactly one aquatic card on the field.
+Destroy exactly one avian card from your side of the field to gain four points.
+Destroy exactly one avian card from your side of the field to gain one point.
+Destroy exactly one avian card from your side of the field to gain three points.
+Destroy exactly one avian card from your side of the field to gain two points.
+Destroy exactly one avian card on the field.
 Destroy exactly one beast card from your side of the field to gain four points.
 Destroy exactly one beast card from your side of the field to gain one point.
 Destroy exactly one beast card from your side of the field to gain three points.
@@ -3552,6 +3849,11 @@ Destroy exactly one machine card from your side of the field to gain one point.
 Destroy exactly one machine card from your side of the field to gain three points.
 Destroy exactly one machine card from your side of the field to gain two points.
 Destroy exactly one machine card on the field.
+Destroy exactly one nature card from your side of the field to gain four points.
+Destroy exactly one nature card from your side of the field to gain one point.
+Destroy exactly one nature card from your side of the field to gain three points.
+Destroy exactly one nature card from your side of the field to gain two points.
+Destroy exactly one nature card on the field.
 Destroy exactly one rank 1 card from your side of the field to gain four points.
 Destroy exactly one rank 1 card from your side of the field to gain one point.
 Destroy exactly one rank 1 card from your side of the field to gain three points.
@@ -3658,6 +3960,11 @@ Destroy exactly three aquatic cards from your side of the field to gain one poin
 Destroy exactly three aquatic cards from your side of the field to gain three points.
 Destroy exactly three aquatic cards from your side of the field to gain two points.
 Destroy exactly three aquatic cards on the field.
+Destroy exactly three avian cards from your side of the field to gain four points.
+Destroy exactly three avian cards from your side of the field to gain one point.
+Destroy exactly three avian cards from your side of the field to gain three points.
+Destroy exactly three avian cards from your side of the field to gain two points.
+Destroy exactly three avian cards on the field.
 Destroy exactly three beast cards from your side of the field to gain four points.
 Destroy exactly three beast cards from your side of the field to gain one point.
 Destroy exactly three beast cards from your side of the field to gain three points.
@@ -3725,6 +4032,11 @@ Destroy exactly three machine cards from your side of the field to gain one poin
 Destroy exactly three machine cards from your side of the field to gain three points.
 Destroy exactly three machine cards from your side of the field to gain two points.
 Destroy exactly three machine cards on the field.
+Destroy exactly three nature cards from your side of the field to gain four points.
+Destroy exactly three nature cards from your side of the field to gain one point.
+Destroy exactly three nature cards from your side of the field to gain three points.
+Destroy exactly three nature cards from your side of the field to gain two points.
+Destroy exactly three nature cards on the field.
 Destroy exactly three rank 1 cards from your side of the field to gain four points.
 Destroy exactly three rank 1 cards from your side of the field to gain one point.
 Destroy exactly three rank 1 cards from your side of the field to gain three points.
@@ -3831,6 +4143,11 @@ Destroy exactly two aquatic cards from your side of the field to gain one point.
 Destroy exactly two aquatic cards from your side of the field to gain three points.
 Destroy exactly two aquatic cards from your side of the field to gain two points.
 Destroy exactly two aquatic cards on the field.
+Destroy exactly two avian cards from your side of the field to gain four points.
+Destroy exactly two avian cards from your side of the field to gain one point.
+Destroy exactly two avian cards from your side of the field to gain three points.
+Destroy exactly two avian cards from your side of the field to gain two points.
+Destroy exactly two avian cards on the field.
 Destroy exactly two beast cards from your side of the field to gain four points.
 Destroy exactly two beast cards from your side of the field to gain one point.
 Destroy exactly two beast cards from your side of the field to gain three points.
@@ -3898,6 +4215,11 @@ Destroy exactly two machine cards from your side of the field to gain one point.
 Destroy exactly two machine cards from your side of the field to gain three points.
 Destroy exactly two machine cards from your side of the field to gain two points.
 Destroy exactly two machine cards on the field.
+Destroy exactly two nature cards from your side of the field to gain four points.
+Destroy exactly two nature cards from your side of the field to gain one point.
+Destroy exactly two nature cards from your side of the field to gain three points.
+Destroy exactly two nature cards from your side of the field to gain two points.
+Destroy exactly two nature cards on the field.
 Destroy exactly two rank 1 cards from your side of the field to gain four points.
 Destroy exactly two rank 1 cards from your side of the field to gain one point.
 Destroy exactly two rank 1 cards from your side of the field to gain three points.
@@ -3998,6 +4320,8 @@ Destroy one air card on the field.
 Destroy one air card you control to destroy one other card on the field.
 Destroy one aquatic card on the field.
 Destroy one aquatic card you control to destroy one other card on the field.
+Destroy one avian card on the field.
+Destroy one avian card you control to destroy one other card on the field.
 Destroy one beast card on the field.
 Destroy one beast card you control to destroy one other card on the field.
 Destroy one botanic card on the field.
@@ -4024,6 +4348,8 @@ Destroy one light card on the field.
 Destroy one light card you control to destroy one other card on the field.
 Destroy one machine card on the field.
 Destroy one machine card you control to destroy one other card on the field.
+Destroy one nature card on the field.
+Destroy one nature card you control to destroy one other card on the field.
 Destroy one rank 1 air card you own to play one rank 2 air card from your deck.
 Destroy one rank 1 air card you own to play one rank 2 air card from your discard pile.
 Destroy one rank 1 air card you own to play one rank 3 air card from your deck.
@@ -4040,6 +4366,14 @@ Destroy one rank 1 aquatic card you own to play one rank 4 aquatic card from you
 Destroy one rank 1 aquatic card you own to play one rank 4 aquatic card from your discard pile.
 Destroy one rank 1 aquatic card you own to play one rank 5 aquatic card from your deck.
 Destroy one rank 1 aquatic card you own to play one rank 5 aquatic card from your discard pile.
+Destroy one rank 1 avian card you own to play one rank 2 avian card from your deck.
+Destroy one rank 1 avian card you own to play one rank 2 avian card from your discard pile.
+Destroy one rank 1 avian card you own to play one rank 3 avian card from your deck.
+Destroy one rank 1 avian card you own to play one rank 3 avian card from your discard pile.
+Destroy one rank 1 avian card you own to play one rank 4 avian card from your deck.
+Destroy one rank 1 avian card you own to play one rank 4 avian card from your discard pile.
+Destroy one rank 1 avian card you own to play one rank 5 avian card from your deck.
+Destroy one rank 1 avian card you own to play one rank 5 avian card from your discard pile.
 Destroy one rank 1 beast card you own to play one rank 2 beast card from your deck.
 Destroy one rank 1 beast card you own to play one rank 2 beast card from your discard pile.
 Destroy one rank 1 beast card you own to play one rank 3 beast card from your deck.
@@ -4148,6 +4482,14 @@ Destroy one rank 1 machine card you own to play one rank 4 machine card from you
 Destroy one rank 1 machine card you own to play one rank 4 machine card from your discard pile.
 Destroy one rank 1 machine card you own to play one rank 5 machine card from your deck.
 Destroy one rank 1 machine card you own to play one rank 5 machine card from your discard pile.
+Destroy one rank 1 nature card you own to play one rank 2 nature card from your deck.
+Destroy one rank 1 nature card you own to play one rank 2 nature card from your discard pile.
+Destroy one rank 1 nature card you own to play one rank 3 nature card from your deck.
+Destroy one rank 1 nature card you own to play one rank 3 nature card from your discard pile.
+Destroy one rank 1 nature card you own to play one rank 4 nature card from your deck.
+Destroy one rank 1 nature card you own to play one rank 4 nature card from your discard pile.
+Destroy one rank 1 nature card you own to play one rank 5 nature card from your deck.
+Destroy one rank 1 nature card you own to play one rank 5 nature card from your discard pile.
 Destroy one rank 1 reptile card you own to play one rank 2 reptile card from your deck.
 Destroy one rank 1 reptile card you own to play one rank 2 reptile card from your discard pile.
 Destroy one rank 1 reptile card you own to play one rank 3 reptile card from your deck.
@@ -4206,6 +4548,14 @@ Destroy one rank 2 aquatic card you own to play one rank 4 aquatic card from you
 Destroy one rank 2 aquatic card you own to play one rank 4 aquatic card from your discard pile.
 Destroy one rank 2 aquatic card you own to play one rank 5 aquatic card from your deck.
 Destroy one rank 2 aquatic card you own to play one rank 5 aquatic card from your discard pile.
+Destroy one rank 2 avian card you own to play one rank 2 avian card from your deck.
+Destroy one rank 2 avian card you own to play one rank 2 avian card from your discard pile.
+Destroy one rank 2 avian card you own to play one rank 3 avian card from your deck.
+Destroy one rank 2 avian card you own to play one rank 3 avian card from your discard pile.
+Destroy one rank 2 avian card you own to play one rank 4 avian card from your deck.
+Destroy one rank 2 avian card you own to play one rank 4 avian card from your discard pile.
+Destroy one rank 2 avian card you own to play one rank 5 avian card from your deck.
+Destroy one rank 2 avian card you own to play one rank 5 avian card from your discard pile.
 Destroy one rank 2 beast card you own to play one rank 2 beast card from your deck.
 Destroy one rank 2 beast card you own to play one rank 2 beast card from your discard pile.
 Destroy one rank 2 beast card you own to play one rank 3 beast card from your deck.
@@ -4314,6 +4664,14 @@ Destroy one rank 2 machine card you own to play one rank 4 machine card from you
 Destroy one rank 2 machine card you own to play one rank 4 machine card from your discard pile.
 Destroy one rank 2 machine card you own to play one rank 5 machine card from your deck.
 Destroy one rank 2 machine card you own to play one rank 5 machine card from your discard pile.
+Destroy one rank 2 nature card you own to play one rank 2 nature card from your deck.
+Destroy one rank 2 nature card you own to play one rank 2 nature card from your discard pile.
+Destroy one rank 2 nature card you own to play one rank 3 nature card from your deck.
+Destroy one rank 2 nature card you own to play one rank 3 nature card from your discard pile.
+Destroy one rank 2 nature card you own to play one rank 4 nature card from your deck.
+Destroy one rank 2 nature card you own to play one rank 4 nature card from your discard pile.
+Destroy one rank 2 nature card you own to play one rank 5 nature card from your deck.
+Destroy one rank 2 nature card you own to play one rank 5 nature card from your discard pile.
 Destroy one rank 2 reptile card you own to play one rank 2 reptile card from your deck.
 Destroy one rank 2 reptile card you own to play one rank 2 reptile card from your discard pile.
 Destroy one rank 2 reptile card you own to play one rank 3 reptile card from your deck.
@@ -4372,6 +4730,14 @@ Destroy one rank 3 aquatic card you own to play one rank 4 aquatic card from you
 Destroy one rank 3 aquatic card you own to play one rank 4 aquatic card from your discard pile.
 Destroy one rank 3 aquatic card you own to play one rank 5 aquatic card from your deck.
 Destroy one rank 3 aquatic card you own to play one rank 5 aquatic card from your discard pile.
+Destroy one rank 3 avian card you own to play one rank 2 avian card from your deck.
+Destroy one rank 3 avian card you own to play one rank 2 avian card from your discard pile.
+Destroy one rank 3 avian card you own to play one rank 3 avian card from your deck.
+Destroy one rank 3 avian card you own to play one rank 3 avian card from your discard pile.
+Destroy one rank 3 avian card you own to play one rank 4 avian card from your deck.
+Destroy one rank 3 avian card you own to play one rank 4 avian card from your discard pile.
+Destroy one rank 3 avian card you own to play one rank 5 avian card from your deck.
+Destroy one rank 3 avian card you own to play one rank 5 avian card from your discard pile.
 Destroy one rank 3 beast card you own to play one rank 2 beast card from your deck.
 Destroy one rank 3 beast card you own to play one rank 2 beast card from your discard pile.
 Destroy one rank 3 beast card you own to play one rank 3 beast card from your deck.
@@ -4480,6 +4846,14 @@ Destroy one rank 3 machine card you own to play one rank 4 machine card from you
 Destroy one rank 3 machine card you own to play one rank 4 machine card from your discard pile.
 Destroy one rank 3 machine card you own to play one rank 5 machine card from your deck.
 Destroy one rank 3 machine card you own to play one rank 5 machine card from your discard pile.
+Destroy one rank 3 nature card you own to play one rank 2 nature card from your deck.
+Destroy one rank 3 nature card you own to play one rank 2 nature card from your discard pile.
+Destroy one rank 3 nature card you own to play one rank 3 nature card from your deck.
+Destroy one rank 3 nature card you own to play one rank 3 nature card from your discard pile.
+Destroy one rank 3 nature card you own to play one rank 4 nature card from your deck.
+Destroy one rank 3 nature card you own to play one rank 4 nature card from your discard pile.
+Destroy one rank 3 nature card you own to play one rank 5 nature card from your deck.
+Destroy one rank 3 nature card you own to play one rank 5 nature card from your discard pile.
 Destroy one rank 3 reptile card you own to play one rank 2 reptile card from your deck.
 Destroy one rank 3 reptile card you own to play one rank 2 reptile card from your discard pile.
 Destroy one rank 3 reptile card you own to play one rank 3 reptile card from your deck.
@@ -4538,6 +4912,14 @@ Destroy one rank 4 aquatic card you own to play one rank 4 aquatic card from you
 Destroy one rank 4 aquatic card you own to play one rank 4 aquatic card from your discard pile.
 Destroy one rank 4 aquatic card you own to play one rank 5 aquatic card from your deck.
 Destroy one rank 4 aquatic card you own to play one rank 5 aquatic card from your discard pile.
+Destroy one rank 4 avian card you own to play one rank 2 avian card from your deck.
+Destroy one rank 4 avian card you own to play one rank 2 avian card from your discard pile.
+Destroy one rank 4 avian card you own to play one rank 3 avian card from your deck.
+Destroy one rank 4 avian card you own to play one rank 3 avian card from your discard pile.
+Destroy one rank 4 avian card you own to play one rank 4 avian card from your deck.
+Destroy one rank 4 avian card you own to play one rank 4 avian card from your discard pile.
+Destroy one rank 4 avian card you own to play one rank 5 avian card from your deck.
+Destroy one rank 4 avian card you own to play one rank 5 avian card from your discard pile.
 Destroy one rank 4 beast card you own to play one rank 2 beast card from your deck.
 Destroy one rank 4 beast card you own to play one rank 2 beast card from your discard pile.
 Destroy one rank 4 beast card you own to play one rank 3 beast card from your deck.
@@ -4646,6 +5028,14 @@ Destroy one rank 4 machine card you own to play one rank 4 machine card from you
 Destroy one rank 4 machine card you own to play one rank 4 machine card from your discard pile.
 Destroy one rank 4 machine card you own to play one rank 5 machine card from your deck.
 Destroy one rank 4 machine card you own to play one rank 5 machine card from your discard pile.
+Destroy one rank 4 nature card you own to play one rank 2 nature card from your deck.
+Destroy one rank 4 nature card you own to play one rank 2 nature card from your discard pile.
+Destroy one rank 4 nature card you own to play one rank 3 nature card from your deck.
+Destroy one rank 4 nature card you own to play one rank 3 nature card from your discard pile.
+Destroy one rank 4 nature card you own to play one rank 4 nature card from your deck.
+Destroy one rank 4 nature card you own to play one rank 4 nature card from your discard pile.
+Destroy one rank 4 nature card you own to play one rank 5 nature card from your deck.
+Destroy one rank 4 nature card you own to play one rank 5 nature card from your discard pile.
 Destroy one rank 4 reptile card you own to play one rank 2 reptile card from your deck.
 Destroy one rank 4 reptile card you own to play one rank 2 reptile card from your discard pile.
 Destroy one rank 4 reptile card you own to play one rank 3 reptile card from your deck.
@@ -4694,6 +5084,14 @@ Destroy one rank 5 aquatic card you own to play one rank 4 aquatic card from you
 Destroy one rank 5 aquatic card you own to play one rank 4 aquatic card from your discard pile.
 Destroy one rank 5 aquatic card you own to play one rank 5 aquatic card from your deck.
 Destroy one rank 5 aquatic card you own to play one rank 5 aquatic card from your discard pile.
+Destroy one rank 5 avian card you own to play one rank 2 avian card from your deck.
+Destroy one rank 5 avian card you own to play one rank 2 avian card from your discard pile.
+Destroy one rank 5 avian card you own to play one rank 3 avian card from your deck.
+Destroy one rank 5 avian card you own to play one rank 3 avian card from your discard pile.
+Destroy one rank 5 avian card you own to play one rank 4 avian card from your deck.
+Destroy one rank 5 avian card you own to play one rank 4 avian card from your discard pile.
+Destroy one rank 5 avian card you own to play one rank 5 avian card from your deck.
+Destroy one rank 5 avian card you own to play one rank 5 avian card from your discard pile.
 Destroy one rank 5 beast card you own to play one rank 2 beast card from your deck.
 Destroy one rank 5 beast card you own to play one rank 2 beast card from your discard pile.
 Destroy one rank 5 beast card you own to play one rank 3 beast card from your deck.
@@ -4802,6 +5200,14 @@ Destroy one rank 5 machine card you own to play one rank 4 machine card from you
 Destroy one rank 5 machine card you own to play one rank 4 machine card from your discard pile.
 Destroy one rank 5 machine card you own to play one rank 5 machine card from your deck.
 Destroy one rank 5 machine card you own to play one rank 5 machine card from your discard pile.
+Destroy one rank 5 nature card you own to play one rank 2 nature card from your deck.
+Destroy one rank 5 nature card you own to play one rank 2 nature card from your discard pile.
+Destroy one rank 5 nature card you own to play one rank 3 nature card from your deck.
+Destroy one rank 5 nature card you own to play one rank 3 nature card from your discard pile.
+Destroy one rank 5 nature card you own to play one rank 4 nature card from your deck.
+Destroy one rank 5 nature card you own to play one rank 4 nature card from your discard pile.
+Destroy one rank 5 nature card you own to play one rank 5 nature card from your deck.
+Destroy one rank 5 nature card you own to play one rank 5 nature card from your discard pile.
 Destroy one rank 5 reptile card you own to play one rank 2 reptile card from your deck.
 Destroy one rank 5 reptile card you own to play one rank 2 reptile card from your discard pile.
 Destroy one rank 5 reptile card you own to play one rank 3 reptile card from your deck.
@@ -4848,6 +5254,7 @@ Destroy one water card on the field.
 Destroy one water card you control to destroy one other card on the field.
 Destroy this card to destroy one air card on the field.
 Destroy this card to destroy one aquatic card on the field.
+Destroy this card to destroy one avian card on the field.
 Destroy this card to destroy one beast card on the field.
 Destroy this card to destroy one botanic card on the field.
 Destroy this card to destroy one dark card on the field.
@@ -4861,6 +5268,7 @@ Destroy this card to destroy one ghost card on the field.
 Destroy this card to destroy one insect card on the field.
 Destroy this card to destroy one light card on the field.
 Destroy this card to destroy one machine card on the field.
+Destroy this card to destroy one nature card on the field.
 Destroy this card to destroy one rank 1 card on the field.
 Destroy this card to destroy one rank 1 creature card on the field.
 Destroy this card to destroy one rank 1 spell card on the field.
@@ -4882,6 +5290,7 @@ Destroy this card to destroy one warrior card on the field.
 Destroy this card to destroy one water card on the field.
 Destroy this card to destroy up to four air cards on the field.
 Destroy this card to destroy up to four aquatic cards on the field.
+Destroy this card to destroy up to four avian cards on the field.
 Destroy this card to destroy up to four beast cards on the field.
 Destroy this card to destroy up to four botanic cards on the field.
 Destroy this card to destroy up to four dark cards on the field.
@@ -4895,6 +5304,7 @@ Destroy this card to destroy up to four ghost cards on the field.
 Destroy this card to destroy up to four insect cards on the field.
 Destroy this card to destroy up to four light cards on the field.
 Destroy this card to destroy up to four machine cards on the field.
+Destroy this card to destroy up to four nature cards on the field.
 Destroy this card to destroy up to four rank 1 cards on the field.
 Destroy this card to destroy up to four rank 1 creature cards on the field.
 Destroy this card to destroy up to four rank 1 spell cards on the field.
@@ -4916,6 +5326,7 @@ Destroy this card to destroy up to four warrior cards on the field.
 Destroy this card to destroy up to four water cards on the field.
 Destroy this card to destroy up to three air cards on the field.
 Destroy this card to destroy up to three aquatic cards on the field.
+Destroy this card to destroy up to three avian cards on the field.
 Destroy this card to destroy up to three beast cards on the field.
 Destroy this card to destroy up to three botanic cards on the field.
 Destroy this card to destroy up to three dark cards on the field.
@@ -4929,6 +5340,7 @@ Destroy this card to destroy up to three ghost cards on the field.
 Destroy this card to destroy up to three insect cards on the field.
 Destroy this card to destroy up to three light cards on the field.
 Destroy this card to destroy up to three machine cards on the field.
+Destroy this card to destroy up to three nature cards on the field.
 Destroy this card to destroy up to three rank 1 cards on the field.
 Destroy this card to destroy up to three rank 1 creature cards on the field.
 Destroy this card to destroy up to three rank 1 spell cards on the field.
@@ -4950,6 +5362,7 @@ Destroy this card to destroy up to three warrior cards on the field.
 Destroy this card to destroy up to three water cards on the field.
 Destroy this card to destroy up to two air cards on the field.
 Destroy this card to destroy up to two aquatic cards on the field.
+Destroy this card to destroy up to two avian cards on the field.
 Destroy this card to destroy up to two beast cards on the field.
 Destroy this card to destroy up to two botanic cards on the field.
 Destroy this card to destroy up to two dark cards on the field.
@@ -4963,6 +5376,7 @@ Destroy this card to destroy up to two ghost cards on the field.
 Destroy this card to destroy up to two insect cards on the field.
 Destroy this card to destroy up to two light cards on the field.
 Destroy this card to destroy up to two machine cards on the field.
+Destroy this card to destroy up to two nature cards on the field.
 Destroy this card to destroy up to two rank 1 cards on the field.
 Destroy this card to destroy up to two rank 1 creature cards on the field.
 Destroy this card to destroy up to two rank 1 spell cards on the field.
@@ -4987,6 +5401,8 @@ Destroy two air cards you own to play one air card from your deck.
 Destroy two air cards you own to play one air card from your discard pile.
 Destroy two aquatic cards you own to play one aquatic card from your deck.
 Destroy two aquatic cards you own to play one aquatic card from your discard pile.
+Destroy two avian cards you own to play one avian card from your deck.
+Destroy two avian cards you own to play one avian card from your discard pile.
 Destroy two beast cards you own to play one beast card from your deck.
 Destroy two beast cards you own to play one beast card from your discard pile.
 Destroy two botanic cards you own to play one botanic card from your deck.
@@ -5013,6 +5429,8 @@ Destroy two light cards you own to play one light card from your deck.
 Destroy two light cards you own to play one light card from your discard pile.
 Destroy two machine cards you own to play one machine card from your deck.
 Destroy two machine cards you own to play one machine card from your discard pile.
+Destroy two nature cards you own to play one nature card from your deck.
+Destroy two nature cards you own to play one nature card from your discard pile.
 Destroy two rank 1 cards you own to play one rank 1 card from your deck.
 Destroy two rank 1 cards you own to play one rank 1 card from your discard pile.
 Destroy two rank 1 creature cards you own to play one rank 1 creature card from your deck.
@@ -5053,6 +5471,7 @@ Destroy two water cards you own to play one water card from your deck.
 Destroy two water cards you own to play one water card from your discard pile.
 Destroy up to four air cards on the field.
 Destroy up to four aquatic cards on the field.
+Destroy up to four avian cards on the field.
 Destroy up to four beast cards on the field.
 Destroy up to four botanic cards on the field.
 Destroy up to four dark cards on the field.
@@ -5066,6 +5485,7 @@ Destroy up to four ghost cards on the field.
 Destroy up to four insect cards on the field.
 Destroy up to four light cards on the field.
 Destroy up to four machine cards on the field.
+Destroy up to four nature cards on the field.
 Destroy up to four rank 1 cards on the field.
 Destroy up to four rank 1 creature cards on the field.
 Destroy up to four rank 1 spell cards on the field.
@@ -5087,6 +5507,7 @@ Destroy up to four warrior cards on the field.
 Destroy up to four water cards on the field.
 Destroy up to three air cards on the field.
 Destroy up to three aquatic cards on the field.
+Destroy up to three avian cards on the field.
 Destroy up to three beast cards on the field.
 Destroy up to three botanic cards on the field.
 Destroy up to three dark cards on the field.
@@ -5100,6 +5521,7 @@ Destroy up to three ghost cards on the field.
 Destroy up to three insect cards on the field.
 Destroy up to three light cards on the field.
 Destroy up to three machine cards on the field.
+Destroy up to three nature cards on the field.
 Destroy up to three rank 1 cards on the field.
 Destroy up to three rank 1 creature cards on the field.
 Destroy up to three rank 1 spell cards on the field.
@@ -5121,6 +5543,7 @@ Destroy up to three warrior cards on the field.
 Destroy up to three water cards on the field.
 Destroy up to two air cards on the field.
 Destroy up to two aquatic cards on the field.
+Destroy up to two avian cards on the field.
 Destroy up to two beast cards on the field.
 Destroy up to two botanic cards on the field.
 Destroy up to two dark cards on the field.
@@ -5134,6 +5557,7 @@ Destroy up to two ghost cards on the field.
 Destroy up to two insect cards on the field.
 Destroy up to two light cards on the field.
 Destroy up to two machine cards on the field.
+Destroy up to two nature cards on the field.
 Destroy up to two rank 1 cards on the field.
 Destroy up to two rank 1 creature cards on the field.
 Destroy up to two rank 1 spell cards on the field.
@@ -5167,6 +5591,13 @@ Discard one aquatic card from your hand to play up to two aquatic card from your
 Discard one aquatic card to add one aquatic card from your deck to your hand.
 Discard one aquatic card to add one aquatic card from your discard pile to your hand.
 Discard one aquatic card to counter the effect of a aquatic card.
+Discard one avian card from your hand to play one avian card from your deck.
+Discard one avian card from your hand to play one avian card from your discard pile.
+Discard one avian card from your hand to play up to two avian card from your deck.
+Discard one avian card from your hand to play up to two avian card from your discard pile.
+Discard one avian card to add one avian card from your deck to your hand.
+Discard one avian card to add one avian card from your discard pile to your hand.
+Discard one avian card to counter the effect of a avian card.
 Discard one beast card from your hand to play one beast card from your deck.
 Discard one beast card from your hand to play one beast card from your discard pile.
 Discard one beast card from your hand to play up to two beast card from your deck.
@@ -5258,6 +5689,13 @@ Discard one machine card from your hand to play up to two machine card from your
 Discard one machine card to add one machine card from your deck to your hand.
 Discard one machine card to add one machine card from your discard pile to your hand.
 Discard one machine card to counter the effect of a machine card.
+Discard one nature card from your hand to play one nature card from your deck.
+Discard one nature card from your hand to play one nature card from your discard pile.
+Discard one nature card from your hand to play up to two nature card from your deck.
+Discard one nature card from your hand to play up to two nature card from your discard pile.
+Discard one nature card to add one nature card from your deck to your hand.
+Discard one nature card to add one nature card from your discard pile to your hand.
+Discard one nature card to counter the effect of a nature card.
 Discard one rank 1 card from your hand to play one rank 1 card from your deck.
 Discard one rank 1 card from your hand to play one rank 1 card from your discard pile.
 Discard one rank 1 card from your hand to play up to two rank 1 card from your deck.
@@ -5395,6 +5833,8 @@ Discard this card to add one air card from your deck to your hand.
 Discard this card to add one air card from your discard pile to your hand.
 Discard this card to add one aquatic card from your deck to your hand.
 Discard this card to add one aquatic card from your discard pile to your hand.
+Discard this card to add one avian card from your deck to your hand.
+Discard this card to add one avian card from your discard pile to your hand.
 Discard this card to add one beast card from your deck to your hand.
 Discard this card to add one beast card from your discard pile to your hand.
 Discard this card to add one botanic card from your deck to your hand.
@@ -5425,6 +5865,8 @@ Discard this card to add one light card from your deck to your hand.
 Discard this card to add one light card from your discard pile to your hand.
 Discard this card to add one machine card from your deck to your hand.
 Discard this card to add one machine card from your discard pile to your hand.
+Discard this card to add one nature card from your deck to your hand.
+Discard this card to add one nature card from your discard pile to your hand.
 Discard this card to add one rank 1 air card from your deck to your hand.
 Discard this card to add one rank 1 air card from your deck to your hand.
 Discard this card to add one rank 1 air card from your discard pile to your hand.
@@ -5433,6 +5875,10 @@ Discard this card to add one rank 1 aquatic card from your deck to your hand.
 Discard this card to add one rank 1 aquatic card from your deck to your hand.
 Discard this card to add one rank 1 aquatic card from your discard pile to your hand.
 Discard this card to add one rank 1 aquatic card from your discard pile to your hand.
+Discard this card to add one rank 1 avian card from your deck to your hand.
+Discard this card to add one rank 1 avian card from your deck to your hand.
+Discard this card to add one rank 1 avian card from your discard pile to your hand.
+Discard this card to add one rank 1 avian card from your discard pile to your hand.
 Discard this card to add one rank 1 beast card from your deck to your hand.
 Discard this card to add one rank 1 beast card from your deck to your hand.
 Discard this card to add one rank 1 beast card from your discard pile to your hand.
@@ -5493,6 +5939,10 @@ Discard this card to add one rank 1 machine card from your deck to your hand.
 Discard this card to add one rank 1 machine card from your deck to your hand.
 Discard this card to add one rank 1 machine card from your discard pile to your hand.
 Discard this card to add one rank 1 machine card from your discard pile to your hand.
+Discard this card to add one rank 1 nature card from your deck to your hand.
+Discard this card to add one rank 1 nature card from your deck to your hand.
+Discard this card to add one rank 1 nature card from your discard pile to your hand.
+Discard this card to add one rank 1 nature card from your discard pile to your hand.
 Discard this card to add one rank 1 reptile card from your deck to your hand.
 Discard this card to add one rank 1 reptile card from your deck to your hand.
 Discard this card to add one rank 1 reptile card from your discard pile to your hand.
@@ -5529,6 +5979,10 @@ Discard this card to add one rank 2 aquatic card from your deck to your hand.
 Discard this card to add one rank 2 aquatic card from your deck to your hand.
 Discard this card to add one rank 2 aquatic card from your discard pile to your hand.
 Discard this card to add one rank 2 aquatic card from your discard pile to your hand.
+Discard this card to add one rank 2 avian card from your deck to your hand.
+Discard this card to add one rank 2 avian card from your deck to your hand.
+Discard this card to add one rank 2 avian card from your discard pile to your hand.
+Discard this card to add one rank 2 avian card from your discard pile to your hand.
 Discard this card to add one rank 2 beast card from your deck to your hand.
 Discard this card to add one rank 2 beast card from your deck to your hand.
 Discard this card to add one rank 2 beast card from your discard pile to your hand.
@@ -5589,10 +6043,16 @@ Discard this card to add one rank 2 machine card from your deck to your hand.
 Discard this card to add one rank 2 machine card from your deck to your hand.
 Discard this card to add one rank 2 machine card from your discard pile to your hand.
 Discard this card to add one rank 2 machine card from your discard pile to your hand.
+Discard this card to add one rank 2 nature card from your deck to your hand.
+Discard this card to add one rank 2 nature card from your deck to your hand.
+Discard this card to add one rank 2 nature card from your discard pile to your hand.
+Discard this card to add one rank 2 nature card from your discard pile to your hand.
 Discard this card to add one rank 2 or higher air card from your deck to your hand.
 Discard this card to add one rank 2 or higher air card from your discard pile to your hand.
 Discard this card to add one rank 2 or higher aquatic card from your deck to your hand.
 Discard this card to add one rank 2 or higher aquatic card from your discard pile to your hand.
+Discard this card to add one rank 2 or higher avian card from your deck to your hand.
+Discard this card to add one rank 2 or higher avian card from your discard pile to your hand.
 Discard this card to add one rank 2 or higher beast card from your deck to your hand.
 Discard this card to add one rank 2 or higher beast card from your discard pile to your hand.
 Discard this card to add one rank 2 or higher botanic card from your deck to your hand.
@@ -5623,6 +6083,8 @@ Discard this card to add one rank 2 or higher light card from your deck to your 
 Discard this card to add one rank 2 or higher light card from your discard pile to your hand.
 Discard this card to add one rank 2 or higher machine card from your deck to your hand.
 Discard this card to add one rank 2 or higher machine card from your discard pile to your hand.
+Discard this card to add one rank 2 or higher nature card from your deck to your hand.
+Discard this card to add one rank 2 or higher nature card from your discard pile to your hand.
 Discard this card to add one rank 2 or higher reptile card from your deck to your hand.
 Discard this card to add one rank 2 or higher reptile card from your discard pile to your hand.
 Discard this card to add one rank 2 or higher spell card from your deck to your hand.
@@ -5641,6 +6103,8 @@ Discard this card to add one rank 2 or lower air card from your deck to your han
 Discard this card to add one rank 2 or lower air card from your discard pile to your hand.
 Discard this card to add one rank 2 or lower aquatic card from your deck to your hand.
 Discard this card to add one rank 2 or lower aquatic card from your discard pile to your hand.
+Discard this card to add one rank 2 or lower avian card from your deck to your hand.
+Discard this card to add one rank 2 or lower avian card from your discard pile to your hand.
 Discard this card to add one rank 2 or lower beast card from your deck to your hand.
 Discard this card to add one rank 2 or lower beast card from your discard pile to your hand.
 Discard this card to add one rank 2 or lower botanic card from your deck to your hand.
@@ -5671,6 +6135,8 @@ Discard this card to add one rank 2 or lower light card from your deck to your h
 Discard this card to add one rank 2 or lower light card from your discard pile to your hand.
 Discard this card to add one rank 2 or lower machine card from your deck to your hand.
 Discard this card to add one rank 2 or lower machine card from your discard pile to your hand.
+Discard this card to add one rank 2 or lower nature card from your deck to your hand.
+Discard this card to add one rank 2 or lower nature card from your discard pile to your hand.
 Discard this card to add one rank 2 or lower reptile card from your deck to your hand.
 Discard this card to add one rank 2 or lower reptile card from your discard pile to your hand.
 Discard this card to add one rank 2 or lower spell card from your deck to your hand.
@@ -5721,6 +6187,10 @@ Discard this card to add one rank 3 aquatic card from your deck to your hand.
 Discard this card to add one rank 3 aquatic card from your deck to your hand.
 Discard this card to add one rank 3 aquatic card from your discard pile to your hand.
 Discard this card to add one rank 3 aquatic card from your discard pile to your hand.
+Discard this card to add one rank 3 avian card from your deck to your hand.
+Discard this card to add one rank 3 avian card from your deck to your hand.
+Discard this card to add one rank 3 avian card from your discard pile to your hand.
+Discard this card to add one rank 3 avian card from your discard pile to your hand.
 Discard this card to add one rank 3 beast card from your deck to your hand.
 Discard this card to add one rank 3 beast card from your deck to your hand.
 Discard this card to add one rank 3 beast card from your discard pile to your hand.
@@ -5781,10 +6251,16 @@ Discard this card to add one rank 3 machine card from your deck to your hand.
 Discard this card to add one rank 3 machine card from your deck to your hand.
 Discard this card to add one rank 3 machine card from your discard pile to your hand.
 Discard this card to add one rank 3 machine card from your discard pile to your hand.
+Discard this card to add one rank 3 nature card from your deck to your hand.
+Discard this card to add one rank 3 nature card from your deck to your hand.
+Discard this card to add one rank 3 nature card from your discard pile to your hand.
+Discard this card to add one rank 3 nature card from your discard pile to your hand.
 Discard this card to add one rank 3 or higher air card from your deck to your hand.
 Discard this card to add one rank 3 or higher air card from your discard pile to your hand.
 Discard this card to add one rank 3 or higher aquatic card from your deck to your hand.
 Discard this card to add one rank 3 or higher aquatic card from your discard pile to your hand.
+Discard this card to add one rank 3 or higher avian card from your deck to your hand.
+Discard this card to add one rank 3 or higher avian card from your discard pile to your hand.
 Discard this card to add one rank 3 or higher beast card from your deck to your hand.
 Discard this card to add one rank 3 or higher beast card from your discard pile to your hand.
 Discard this card to add one rank 3 or higher botanic card from your deck to your hand.
@@ -5815,6 +6291,8 @@ Discard this card to add one rank 3 or higher light card from your deck to your 
 Discard this card to add one rank 3 or higher light card from your discard pile to your hand.
 Discard this card to add one rank 3 or higher machine card from your deck to your hand.
 Discard this card to add one rank 3 or higher machine card from your discard pile to your hand.
+Discard this card to add one rank 3 or higher nature card from your deck to your hand.
+Discard this card to add one rank 3 or higher nature card from your discard pile to your hand.
 Discard this card to add one rank 3 or higher reptile card from your deck to your hand.
 Discard this card to add one rank 3 or higher reptile card from your discard pile to your hand.
 Discard this card to add one rank 3 or higher spell card from your deck to your hand.
@@ -5833,6 +6311,8 @@ Discard this card to add one rank 3 or lower air card from your deck to your han
 Discard this card to add one rank 3 or lower air card from your discard pile to your hand.
 Discard this card to add one rank 3 or lower aquatic card from your deck to your hand.
 Discard this card to add one rank 3 or lower aquatic card from your discard pile to your hand.
+Discard this card to add one rank 3 or lower avian card from your deck to your hand.
+Discard this card to add one rank 3 or lower avian card from your discard pile to your hand.
 Discard this card to add one rank 3 or lower beast card from your deck to your hand.
 Discard this card to add one rank 3 or lower beast card from your discard pile to your hand.
 Discard this card to add one rank 3 or lower botanic card from your deck to your hand.
@@ -5863,6 +6343,8 @@ Discard this card to add one rank 3 or lower light card from your deck to your h
 Discard this card to add one rank 3 or lower light card from your discard pile to your hand.
 Discard this card to add one rank 3 or lower machine card from your deck to your hand.
 Discard this card to add one rank 3 or lower machine card from your discard pile to your hand.
+Discard this card to add one rank 3 or lower nature card from your deck to your hand.
+Discard this card to add one rank 3 or lower nature card from your discard pile to your hand.
 Discard this card to add one rank 3 or lower reptile card from your deck to your hand.
 Discard this card to add one rank 3 or lower reptile card from your discard pile to your hand.
 Discard this card to add one rank 3 or lower spell card from your deck to your hand.
@@ -5913,6 +6395,10 @@ Discard this card to add one rank 4 aquatic card from your deck to your hand.
 Discard this card to add one rank 4 aquatic card from your deck to your hand.
 Discard this card to add one rank 4 aquatic card from your discard pile to your hand.
 Discard this card to add one rank 4 aquatic card from your discard pile to your hand.
+Discard this card to add one rank 4 avian card from your deck to your hand.
+Discard this card to add one rank 4 avian card from your deck to your hand.
+Discard this card to add one rank 4 avian card from your discard pile to your hand.
+Discard this card to add one rank 4 avian card from your discard pile to your hand.
 Discard this card to add one rank 4 beast card from your deck to your hand.
 Discard this card to add one rank 4 beast card from your deck to your hand.
 Discard this card to add one rank 4 beast card from your discard pile to your hand.
@@ -5973,10 +6459,16 @@ Discard this card to add one rank 4 machine card from your deck to your hand.
 Discard this card to add one rank 4 machine card from your deck to your hand.
 Discard this card to add one rank 4 machine card from your discard pile to your hand.
 Discard this card to add one rank 4 machine card from your discard pile to your hand.
+Discard this card to add one rank 4 nature card from your deck to your hand.
+Discard this card to add one rank 4 nature card from your deck to your hand.
+Discard this card to add one rank 4 nature card from your discard pile to your hand.
+Discard this card to add one rank 4 nature card from your discard pile to your hand.
 Discard this card to add one rank 4 or higher air card from your deck to your hand.
 Discard this card to add one rank 4 or higher air card from your discard pile to your hand.
 Discard this card to add one rank 4 or higher aquatic card from your deck to your hand.
 Discard this card to add one rank 4 or higher aquatic card from your discard pile to your hand.
+Discard this card to add one rank 4 or higher avian card from your deck to your hand.
+Discard this card to add one rank 4 or higher avian card from your discard pile to your hand.
 Discard this card to add one rank 4 or higher beast card from your deck to your hand.
 Discard this card to add one rank 4 or higher beast card from your discard pile to your hand.
 Discard this card to add one rank 4 or higher botanic card from your deck to your hand.
@@ -6007,6 +6499,8 @@ Discard this card to add one rank 4 or higher light card from your deck to your 
 Discard this card to add one rank 4 or higher light card from your discard pile to your hand.
 Discard this card to add one rank 4 or higher machine card from your deck to your hand.
 Discard this card to add one rank 4 or higher machine card from your discard pile to your hand.
+Discard this card to add one rank 4 or higher nature card from your deck to your hand.
+Discard this card to add one rank 4 or higher nature card from your discard pile to your hand.
 Discard this card to add one rank 4 or higher reptile card from your deck to your hand.
 Discard this card to add one rank 4 or higher reptile card from your discard pile to your hand.
 Discard this card to add one rank 4 or higher spell card from your deck to your hand.
@@ -6025,6 +6519,8 @@ Discard this card to add one rank 4 or lower air card from your deck to your han
 Discard this card to add one rank 4 or lower air card from your discard pile to your hand.
 Discard this card to add one rank 4 or lower aquatic card from your deck to your hand.
 Discard this card to add one rank 4 or lower aquatic card from your discard pile to your hand.
+Discard this card to add one rank 4 or lower avian card from your deck to your hand.
+Discard this card to add one rank 4 or lower avian card from your discard pile to your hand.
 Discard this card to add one rank 4 or lower beast card from your deck to your hand.
 Discard this card to add one rank 4 or lower beast card from your discard pile to your hand.
 Discard this card to add one rank 4 or lower botanic card from your deck to your hand.
@@ -6055,6 +6551,8 @@ Discard this card to add one rank 4 or lower light card from your deck to your h
 Discard this card to add one rank 4 or lower light card from your discard pile to your hand.
 Discard this card to add one rank 4 or lower machine card from your deck to your hand.
 Discard this card to add one rank 4 or lower machine card from your discard pile to your hand.
+Discard this card to add one rank 4 or lower nature card from your deck to your hand.
+Discard this card to add one rank 4 or lower nature card from your discard pile to your hand.
 Discard this card to add one rank 4 or lower reptile card from your deck to your hand.
 Discard this card to add one rank 4 or lower reptile card from your discard pile to your hand.
 Discard this card to add one rank 4 or lower spell card from your deck to your hand.
@@ -6093,6 +6591,10 @@ Discard this card to add one rank 5 aquatic card from your deck to your hand.
 Discard this card to add one rank 5 aquatic card from your deck to your hand.
 Discard this card to add one rank 5 aquatic card from your discard pile to your hand.
 Discard this card to add one rank 5 aquatic card from your discard pile to your hand.
+Discard this card to add one rank 5 avian card from your deck to your hand.
+Discard this card to add one rank 5 avian card from your deck to your hand.
+Discard this card to add one rank 5 avian card from your discard pile to your hand.
+Discard this card to add one rank 5 avian card from your discard pile to your hand.
 Discard this card to add one rank 5 beast card from your deck to your hand.
 Discard this card to add one rank 5 beast card from your deck to your hand.
 Discard this card to add one rank 5 beast card from your discard pile to your hand.
@@ -6153,6 +6655,10 @@ Discard this card to add one rank 5 machine card from your deck to your hand.
 Discard this card to add one rank 5 machine card from your deck to your hand.
 Discard this card to add one rank 5 machine card from your discard pile to your hand.
 Discard this card to add one rank 5 machine card from your discard pile to your hand.
+Discard this card to add one rank 5 nature card from your deck to your hand.
+Discard this card to add one rank 5 nature card from your deck to your hand.
+Discard this card to add one rank 5 nature card from your discard pile to your hand.
+Discard this card to add one rank 5 nature card from your discard pile to your hand.
 Discard this card to add one rank 5 reptile card from your deck to your hand.
 Discard this card to add one rank 5 reptile card from your deck to your hand.
 Discard this card to add one rank 5 reptile card from your discard pile to your hand.
@@ -6205,6 +6711,7 @@ Draw two cards, then discard two cards of your choice.
 Draw two cards.
 For the next four turns, air cards you control cannot be destroyed.
 For the next four turns, aquatic cards you control cannot be destroyed.
+For the next four turns, avian cards you control cannot be destroyed.
 For the next four turns, beast cards you control cannot be destroyed.
 For the next four turns, botanic cards you control cannot be destroyed.
 For the next four turns, dark cards you control cannot be destroyed.
@@ -6218,6 +6725,7 @@ For the next four turns, ghost cards you control cannot be destroyed.
 For the next four turns, insect cards you control cannot be destroyed.
 For the next four turns, light cards you control cannot be destroyed.
 For the next four turns, machine cards you control cannot be destroyed.
+For the next four turns, nature cards you control cannot be destroyed.
 For the next four turns, reptile cards you control cannot be destroyed.
 For the next four turns, spell cards you control cannot be destroyed.
 For the next four turns, spellcaster cards you control cannot be destroyed.
@@ -6226,6 +6734,7 @@ For the next four turns, warrior cards you control cannot be destroyed.
 For the next four turns, water cards you control cannot be destroyed.
 For the next one turn, air card you control cannot be destroyed.
 For the next one turn, aquatic card you control cannot be destroyed.
+For the next one turn, avian card you control cannot be destroyed.
 For the next one turn, beast card you control cannot be destroyed.
 For the next one turn, botanic card you control cannot be destroyed.
 For the next one turn, dark card you control cannot be destroyed.
@@ -6239,6 +6748,7 @@ For the next one turn, ghost card you control cannot be destroyed.
 For the next one turn, insect card you control cannot be destroyed.
 For the next one turn, light card you control cannot be destroyed.
 For the next one turn, machine card you control cannot be destroyed.
+For the next one turn, nature card you control cannot be destroyed.
 For the next one turn, reptile card you control cannot be destroyed.
 For the next one turn, spell card you control cannot be destroyed.
 For the next one turn, spellcaster card you control cannot be destroyed.
@@ -6247,6 +6757,7 @@ For the next one turn, warrior card you control cannot be destroyed.
 For the next one turn, water card you control cannot be destroyed.
 For the next three turns, air cards you control cannot be destroyed.
 For the next three turns, aquatic cards you control cannot be destroyed.
+For the next three turns, avian cards you control cannot be destroyed.
 For the next three turns, beast cards you control cannot be destroyed.
 For the next three turns, botanic cards you control cannot be destroyed.
 For the next three turns, dark cards you control cannot be destroyed.
@@ -6260,6 +6771,7 @@ For the next three turns, ghost cards you control cannot be destroyed.
 For the next three turns, insect cards you control cannot be destroyed.
 For the next three turns, light cards you control cannot be destroyed.
 For the next three turns, machine cards you control cannot be destroyed.
+For the next three turns, nature cards you control cannot be destroyed.
 For the next three turns, reptile cards you control cannot be destroyed.
 For the next three turns, spell cards you control cannot be destroyed.
 For the next three turns, spellcaster cards you control cannot be destroyed.
@@ -6268,6 +6780,7 @@ For the next three turns, warrior cards you control cannot be destroyed.
 For the next three turns, water cards you control cannot be destroyed.
 For the next two turns, air cards you control cannot be destroyed.
 For the next two turns, aquatic cards you control cannot be destroyed.
+For the next two turns, avian cards you control cannot be destroyed.
 For the next two turns, beast cards you control cannot be destroyed.
 For the next two turns, botanic cards you control cannot be destroyed.
 For the next two turns, dark cards you control cannot be destroyed.
@@ -6281,6 +6794,7 @@ For the next two turns, ghost cards you control cannot be destroyed.
 For the next two turns, insect cards you control cannot be destroyed.
 For the next two turns, light cards you control cannot be destroyed.
 For the next two turns, machine cards you control cannot be destroyed.
+For the next two turns, nature cards you control cannot be destroyed.
 For the next two turns, reptile cards you control cannot be destroyed.
 For the next two turns, spell cards you control cannot be destroyed.
 For the next two turns, spellcaster cards you control cannot be destroyed.
@@ -6293,6 +6807,7 @@ Force your opponent to discard three cards of their choice from their hand.
 Force your opponent to discard two cards of their choice from their hand.
 Gain four points for each air card on the field.
 Gain four points for each aquatic card on the field.
+Gain four points for each avian card on the field.
 Gain four points for each beast card on the field.
 Gain four points for each botanic card on the field.
 Gain four points for each card under this one.
@@ -6307,6 +6822,7 @@ Gain four points for each ghost card on the field.
 Gain four points for each insect card on the field.
 Gain four points for each light card on the field.
 Gain four points for each machine card on the field.
+Gain four points for each nature card on the field.
 Gain four points for each rank 1 card on the field.
 Gain four points for each rank 1 creature card on the field.
 Gain four points for each rank 1 spell card on the field.
@@ -6329,6 +6845,7 @@ Gain four points for each water card on the field.
 Gain four points.
 Gain one point for each air card on the field.
 Gain one point for each aquatic card on the field.
+Gain one point for each avian card on the field.
 Gain one point for each beast card on the field.
 Gain one point for each botanic card on the field.
 Gain one point for each card under this one.
@@ -6343,6 +6860,7 @@ Gain one point for each ghost card on the field.
 Gain one point for each insect card on the field.
 Gain one point for each light card on the field.
 Gain one point for each machine card on the field.
+Gain one point for each nature card on the field.
 Gain one point for each rank 1 card on the field.
 Gain one point for each rank 1 creature card on the field.
 Gain one point for each rank 1 spell card on the field.
@@ -6365,6 +6883,7 @@ Gain one point for each water card on the field.
 Gain one point.
 Gain three points for each air card on the field.
 Gain three points for each aquatic card on the field.
+Gain three points for each avian card on the field.
 Gain three points for each beast card on the field.
 Gain three points for each botanic card on the field.
 Gain three points for each card under this one.
@@ -6379,6 +6898,7 @@ Gain three points for each ghost card on the field.
 Gain three points for each insect card on the field.
 Gain three points for each light card on the field.
 Gain three points for each machine card on the field.
+Gain three points for each nature card on the field.
 Gain three points for each rank 1 card on the field.
 Gain three points for each rank 1 creature card on the field.
 Gain three points for each rank 1 spell card on the field.
@@ -6401,6 +6921,7 @@ Gain three points for each water card on the field.
 Gain three points.
 Gain two points for each air card on the field.
 Gain two points for each aquatic card on the field.
+Gain two points for each avian card on the field.
 Gain two points for each beast card on the field.
 Gain two points for each botanic card on the field.
 Gain two points for each card under this one.
@@ -6415,6 +6936,7 @@ Gain two points for each ghost card on the field.
 Gain two points for each insect card on the field.
 Gain two points for each light card on the field.
 Gain two points for each machine card on the field.
+Gain two points for each nature card on the field.
 Gain two points for each rank 1 card on the field.
 Gain two points for each rank 1 creature card on the field.
 Gain two points for each rank 1 spell card on the field.
@@ -6447,6 +6969,8 @@ Place one air card from your deck under this card.
 Place one air card from your discard pile under this card.
 Place one aquatic card from your deck under this card.
 Place one aquatic card from your discard pile under this card.
+Place one avian card from your deck under this card.
+Place one avian card from your discard pile under this card.
 Place one beast card from your deck under this card.
 Place one beast card from your discard pile under this card.
 Place one botanic card from your deck under this card.
@@ -6473,6 +6997,8 @@ Place one light card from your deck under this card.
 Place one light card from your discard pile under this card.
 Place one machine card from your deck under this card.
 Place one machine card from your discard pile under this card.
+Place one nature card from your deck under this card.
+Place one nature card from your discard pile under this card.
 Place one rank 1 card from your deck under this card.
 Place one rank 1 card from your discard pile under this card.
 Place one rank 1 creature card from your deck under this card.
@@ -6520,6 +7046,9 @@ Return one air card from your discard pile to your hand.
 Return one aquatic card from the discard pile to the top of your deck.
 Return one aquatic card from the field to the owner's hand.
 Return one aquatic card from your discard pile to your hand.
+Return one avian card from the discard pile to the top of your deck.
+Return one avian card from the field to the owner's hand.
+Return one avian card from your discard pile to your hand.
 Return one beast card from the discard pile to the top of your deck.
 Return one beast card from the field to the owner's hand.
 Return one beast card from your discard pile to your hand.
@@ -6559,6 +7088,9 @@ Return one light card from your discard pile to your hand.
 Return one machine card from the discard pile to the top of your deck.
 Return one machine card from the field to the owner's hand.
 Return one machine card from your discard pile to your hand.
+Return one nature card from the discard pile to the top of your deck.
+Return one nature card from the field to the owner's hand.
+Return one nature card from your discard pile to your hand.
 Return one rank 1 card from the discard pile to the top of your deck.
 Return one rank 1 card from your discard pile to your hand.
 Return one rank 1 creature card from the discard pile to the top of your deck.
@@ -6605,6 +7137,7 @@ Return one water card from the field to the owner's hand.
 Return one water card from your discard pile to your hand.
 Return up to four air cards from your discard pile to your hand.
 Return up to four aquatic cards from your discard pile to your hand.
+Return up to four avian cards from your discard pile to your hand.
 Return up to four beast cards from your discard pile to your hand.
 Return up to four botanic cards from your discard pile to your hand.
 Return up to four dark cards from your discard pile to your hand.
@@ -6618,6 +7151,7 @@ Return up to four ghost cards from your discard pile to your hand.
 Return up to four insect cards from your discard pile to your hand.
 Return up to four light cards from your discard pile to your hand.
 Return up to four machine cards from your discard pile to your hand.
+Return up to four nature cards from your discard pile to your hand.
 Return up to four rank 1 cards from your discard pile to your hand.
 Return up to four rank 1 creature cards from your discard pile to your hand.
 Return up to four rank 1 spell cards from your discard pile to your hand.
@@ -6639,6 +7173,7 @@ Return up to four warrior cards from your discard pile to your hand.
 Return up to four water cards from your discard pile to your hand.
 Return up to three air cards from your discard pile to your hand.
 Return up to three aquatic cards from your discard pile to your hand.
+Return up to three avian cards from your discard pile to your hand.
 Return up to three beast cards from your discard pile to your hand.
 Return up to three botanic cards from your discard pile to your hand.
 Return up to three dark cards from your discard pile to your hand.
@@ -6652,6 +7187,7 @@ Return up to three ghost cards from your discard pile to your hand.
 Return up to three insect cards from your discard pile to your hand.
 Return up to three light cards from your discard pile to your hand.
 Return up to three machine cards from your discard pile to your hand.
+Return up to three nature cards from your discard pile to your hand.
 Return up to three rank 1 cards from your discard pile to your hand.
 Return up to three rank 1 creature cards from your discard pile to your hand.
 Return up to three rank 1 spell cards from your discard pile to your hand.
@@ -6673,6 +7209,7 @@ Return up to three warrior cards from your discard pile to your hand.
 Return up to three water cards from your discard pile to your hand.
 Return up to two air cards from your discard pile to your hand.
 Return up to two aquatic cards from your discard pile to your hand.
+Return up to two avian cards from your discard pile to your hand.
 Return up to two beast cards from your discard pile to your hand.
 Return up to two botanic cards from your discard pile to your hand.
 Return up to two dark cards from your discard pile to your hand.
@@ -6686,6 +7223,7 @@ Return up to two ghost cards from your discard pile to your hand.
 Return up to two insect cards from your discard pile to your hand.
 Return up to two light cards from your discard pile to your hand.
 Return up to two machine cards from your discard pile to your hand.
+Return up to two nature cards from your discard pile to your hand.
 Return up to two rank 1 cards from your discard pile to your hand.
 Return up to two rank 1 creature cards from your discard pile to your hand.
 Return up to two rank 1 spell cards from your discard pile to your hand.
@@ -6707,6 +7245,7 @@ Return up to two warrior cards from your discard pile to your hand.
 Return up to two water cards from your discard pile to your hand.
 Reveal the top four cards of your deck and play one air card from among them.
 Reveal the top four cards of your deck and play one aquatic card from among them.
+Reveal the top four cards of your deck and play one avian card from among them.
 Reveal the top four cards of your deck and play one beast card from among them.
 Reveal the top four cards of your deck and play one botanic card from among them.
 Reveal the top four cards of your deck and play one dark card from among them.
@@ -6720,6 +7259,7 @@ Reveal the top four cards of your deck and play one ghost card from among them.
 Reveal the top four cards of your deck and play one insect card from among them.
 Reveal the top four cards of your deck and play one light card from among them.
 Reveal the top four cards of your deck and play one machine card from among them.
+Reveal the top four cards of your deck and play one nature card from among them.
 Reveal the top four cards of your deck and play one rank 1 card from among them.
 Reveal the top four cards of your deck and play one rank 1 creature card from among them.
 Reveal the top four cards of your deck and play one rank 1 spell card from among them.
@@ -6741,6 +7281,7 @@ Reveal the top four cards of your deck and play one warrior card from among them
 Reveal the top four cards of your deck and play one water card from among them.
 Reveal the top three cards of your deck and play one air card from among them.
 Reveal the top three cards of your deck and play one aquatic card from among them.
+Reveal the top three cards of your deck and play one avian card from among them.
 Reveal the top three cards of your deck and play one beast card from among them.
 Reveal the top three cards of your deck and play one botanic card from among them.
 Reveal the top three cards of your deck and play one dark card from among them.
@@ -6754,6 +7295,7 @@ Reveal the top three cards of your deck and play one ghost card from among them.
 Reveal the top three cards of your deck and play one insect card from among them.
 Reveal the top three cards of your deck and play one light card from among them.
 Reveal the top three cards of your deck and play one machine card from among them.
+Reveal the top three cards of your deck and play one nature card from among them.
 Reveal the top three cards of your deck and play one rank 1 card from among them.
 Reveal the top three cards of your deck and play one rank 1 creature card from among them.
 Reveal the top three cards of your deck and play one rank 1 spell card from among them.
@@ -6775,6 +7317,7 @@ Reveal the top three cards of your deck and play one warrior card from among the
 Reveal the top three cards of your deck and play one water card from among them.
 Reveal the top two cards of your deck and play one air card from among them.
 Reveal the top two cards of your deck and play one aquatic card from among them.
+Reveal the top two cards of your deck and play one avian card from among them.
 Reveal the top two cards of your deck and play one beast card from among them.
 Reveal the top two cards of your deck and play one botanic card from among them.
 Reveal the top two cards of your deck and play one dark card from among them.
@@ -6788,6 +7331,7 @@ Reveal the top two cards of your deck and play one ghost card from among them.
 Reveal the top two cards of your deck and play one insect card from among them.
 Reveal the top two cards of your deck and play one light card from among them.
 Reveal the top two cards of your deck and play one machine card from among them.
+Reveal the top two cards of your deck and play one nature card from among them.
 Reveal the top two cards of your deck and play one rank 1 card from among them.
 Reveal the top two cards of your deck and play one rank 1 creature card from among them.
 Reveal the top two cards of your deck and play one rank 1 spell card from among them.
@@ -6813,6 +7357,7 @@ Send up to three cards from under another card to the discard pile.
 Send up to two cards from under another card to the discard pile.
 Skip your next turn to destroy all air cards on the field.
 Skip your next turn to destroy all aquatic cards on the field.
+Skip your next turn to destroy all avian cards on the field.
 Skip your next turn to destroy all beast cards on the field.
 Skip your next turn to destroy all botanic cards on the field.
 Skip your next turn to destroy all dark cards on the field.
@@ -6826,6 +7371,7 @@ Skip your next turn to destroy all ghost cards on the field.
 Skip your next turn to destroy all insect cards on the field.
 Skip your next turn to destroy all light cards on the field.
 Skip your next turn to destroy all machine cards on the field.
+Skip your next turn to destroy all nature cards on the field.
 Skip your next turn to destroy all rank 1 cards on the field.
 Skip your next turn to destroy all rank 1 creature cards on the field.
 Skip your next turn to destroy all rank 1 spell cards on the field.
@@ -6849,6 +7395,8 @@ Swap one air card you control with one air card from your deck.
 Swap one air card you control with one air card from your discard pile.
 Swap one aquatic card you control with one aquatic card from your deck.
 Swap one aquatic card you control with one aquatic card from your discard pile.
+Swap one avian card you control with one avian card from your deck.
+Swap one avian card you control with one avian card from your discard pile.
 Swap one beast card you control with one beast card from your deck.
 Swap one beast card you control with one beast card from your discard pile.
 Swap one botanic card you control with one botanic card from your deck.
@@ -6875,6 +7423,8 @@ Swap one light card you control with one light card from your deck.
 Swap one light card you control with one light card from your discard pile.
 Swap one machine card you control with one machine card from your deck.
 Swap one machine card you control with one machine card from your discard pile.
+Swap one nature card you control with one nature card from your deck.
+Swap one nature card you control with one nature card from your discard pile.
 Swap one rank 1 card you control with one rank 1 card from your deck.
 Swap one rank 1 card you control with one rank 1 card from your discard pile.
 Swap one rank 1 creature card you control with one rank 1 creature card from your deck.
@@ -6915,6 +7465,7 @@ Swap one water card you control with one water card from your deck.
 Swap one water card you control with one water card from your discard pile.
 Swap the attack and defense of one air card on the field.
 Swap the attack and defense of one aquatic card on the field.
+Swap the attack and defense of one avian card on the field.
 Swap the attack and defense of one beast card on the field.
 Swap the attack and defense of one botanic card on the field.
 Swap the attack and defense of one dark card on the field.
@@ -6928,6 +7479,7 @@ Swap the attack and defense of one ghost card on the field.
 Swap the attack and defense of one insect card on the field.
 Swap the attack and defense of one light card on the field.
 Swap the attack and defense of one machine card on the field.
+Swap the attack and defense of one nature card on the field.
 Swap the attack and defense of one rank 1 card on the field.
 Swap the attack and defense of one rank 1 creature card on the field.
 Swap the attack and defense of one rank 1 spell card on the field.
@@ -6990,6 +7542,20 @@ This turn, all aquatic cards gain 50 attack.
 This turn, all aquatic cards gain 50 defense.
 This turn, all aquatic cards gain 500 attack.
 This turn, all aquatic cards gain 500 defense.
+This turn, all avian cards gain 100 attack.
+This turn, all avian cards gain 100 defense.
+This turn, all avian cards gain 200 attack.
+This turn, all avian cards gain 200 defense.
+This turn, all avian cards gain 25 attack.
+This turn, all avian cards gain 25 defense.
+This turn, all avian cards gain 300 attack.
+This turn, all avian cards gain 300 defense.
+This turn, all avian cards gain 400 attack.
+This turn, all avian cards gain 400 defense.
+This turn, all avian cards gain 50 attack.
+This turn, all avian cards gain 50 defense.
+This turn, all avian cards gain 500 attack.
+This turn, all avian cards gain 500 defense.
 This turn, all beast cards gain 100 attack.
 This turn, all beast cards gain 100 defense.
 This turn, all beast cards gain 200 attack.
@@ -7172,6 +7738,20 @@ This turn, all machine cards gain 50 attack.
 This turn, all machine cards gain 50 defense.
 This turn, all machine cards gain 500 attack.
 This turn, all machine cards gain 500 defense.
+This turn, all nature cards gain 100 attack.
+This turn, all nature cards gain 100 defense.
+This turn, all nature cards gain 200 attack.
+This turn, all nature cards gain 200 defense.
+This turn, all nature cards gain 25 attack.
+This turn, all nature cards gain 25 defense.
+This turn, all nature cards gain 300 attack.
+This turn, all nature cards gain 300 defense.
+This turn, all nature cards gain 400 attack.
+This turn, all nature cards gain 400 defense.
+This turn, all nature cards gain 50 attack.
+This turn, all nature cards gain 50 defense.
+This turn, all nature cards gain 500 attack.
+This turn, all nature cards gain 500 defense.
 This turn, all rank 1 cards gain 100 attack.
 This turn, all rank 1 cards gain 100 defense.
 This turn, all rank 1 cards gain 200 attack.
@@ -7384,6 +7964,7 @@ This turn, all water cards gain 500 attack.
 This turn, all water cards gain 500 defense.
 This turn, change one air card to any other type.
 This turn, change one aquatic card to any other subtype.
+This turn, change one avian card to any other subtype.
 This turn, change one beast card to any other subtype.
 This turn, change one botanic card to any other subtype.
 This turn, change one dark card to any other type.
@@ -7397,6 +7978,7 @@ This turn, change one ghost card to any other subtype.
 This turn, change one insect card to any other subtype.
 This turn, change one light card to any other type.
 This turn, change one machine card to any other subtype.
+This turn, change one nature card to any other type.
 This turn, change one reptile card to any other subtype.
 This turn, change one spell card to any other type.
 This turn, change one spellcaster card to any other subtype.
@@ -7405,6 +7987,7 @@ This turn, change one warrior card to any other subtype.
 This turn, change one water card to any other type.
 This turn, double the attack of one air card you control.
 This turn, double the attack of one aquatic card you control.
+This turn, double the attack of one avian card you control.
 This turn, double the attack of one beast card you control.
 This turn, double the attack of one botanic card you control.
 This turn, double the attack of one dark card you control.
@@ -7418,6 +8001,7 @@ This turn, double the attack of one ghost card you control.
 This turn, double the attack of one insect card you control.
 This turn, double the attack of one light card you control.
 This turn, double the attack of one machine card you control.
+This turn, double the attack of one nature card you control.
 This turn, double the attack of one reptile card you control.
 This turn, double the attack of one spell card you control.
 This turn, double the attack of one spellcaster card you control.
@@ -7426,6 +8010,7 @@ This turn, double the attack of one warrior card you control.
 This turn, double the attack of one water card you control.
 This turn, increase the rank of one air card you control by one.
 This turn, increase the rank of one aquatic card you control by one.
+This turn, increase the rank of one avian card you control by one.
 This turn, increase the rank of one beast card you control by one.
 This turn, increase the rank of one botanic card you control by one.
 This turn, increase the rank of one dark card you control by one.
@@ -7439,6 +8024,7 @@ This turn, increase the rank of one ghost card you control by one.
 This turn, increase the rank of one insect card you control by one.
 This turn, increase the rank of one light card you control by one.
 This turn, increase the rank of one machine card you control by one.
+This turn, increase the rank of one nature card you control by one.
 This turn, increase the rank of one rank 1 card you control by one.
 This turn, increase the rank of one rank 1 creature card you control by one.
 This turn, increase the rank of one rank 1 spell card you control by one.
@@ -7468,6 +8054,11 @@ Until your next turn, all aquatic cards you control become rank 2.
 Until your next turn, all aquatic cards you control become rank 3.
 Until your next turn, all aquatic cards you control become rank 4.
 Until your next turn, all aquatic cards you control become rank 5.
+Until your next turn, all avian cards you control become rank 1.
+Until your next turn, all avian cards you control become rank 2.
+Until your next turn, all avian cards you control become rank 3.
+Until your next turn, all avian cards you control become rank 4.
+Until your next turn, all avian cards you control become rank 5.
 Until your next turn, all beast cards you control become rank 1.
 Until your next turn, all beast cards you control become rank 2.
 Until your next turn, all beast cards you control become rank 3.
@@ -7533,6 +8124,11 @@ Until your next turn, all machine cards you control become rank 2.
 Until your next turn, all machine cards you control become rank 3.
 Until your next turn, all machine cards you control become rank 4.
 Until your next turn, all machine cards you control become rank 5.
+Until your next turn, all nature cards you control become rank 1.
+Until your next turn, all nature cards you control become rank 2.
+Until your next turn, all nature cards you control become rank 3.
+Until your next turn, all nature cards you control become rank 4.
+Until your next turn, all nature cards you control become rank 5.
 Until your next turn, all reptile cards you control become rank 1.
 Until your next turn, all reptile cards you control become rank 2.
 Until your next turn, all reptile cards you control become rank 3.
@@ -7565,6 +8161,7 @@ Until your next turn, all water cards you control become rank 4.
 Until your next turn, all water cards you control become rank 5.
 When a air card is destroyed, gain one point.
 When a aquatic card is destroyed, gain one point.
+When a avian card is destroyed, gain one point.
 When a beast card is destroyed, gain one point.
 When a botanic card is destroyed, gain one point.
 When a dark card is destroyed, gain one point.
@@ -7578,6 +8175,7 @@ When a ghost card is destroyed, gain one point.
 When a insect card is destroyed, gain one point.
 When a light card is destroyed, gain one point.
 When a machine card is destroyed, gain one point.
+When a nature card is destroyed, gain one point.
 When a reptile card is destroyed, gain one point.
 When a spell card is destroyed, gain one point.
 When a spellcaster card is destroyed, gain one point.
@@ -7590,6 +8188,7 @@ When this card is sent to the discard pile, your opponent takes three points of 
 When this card is sent to the discard pile, your opponent takes two points of damage.
 Whenever a air card is discarded, draw one card.
 Whenever a aquatic card is discarded, draw one card.
+Whenever a avian card is discarded, draw one card.
 Whenever a beast card is discarded, draw one card.
 Whenever a botanic card is discarded, draw one card.
 Whenever a dark card is discarded, draw one card.
@@ -7603,6 +8202,7 @@ Whenever a ghost card is discarded, draw one card.
 Whenever a insect card is discarded, draw one card.
 Whenever a light card is discarded, draw one card.
 Whenever a machine card is discarded, draw one card.
+Whenever a nature card is discarded, draw one card.
 Whenever a rank 1 card is discarded, draw one card.
 Whenever a rank 1 creature card is discarded, draw one card.
 Whenever a rank 1 spell card is discarded, draw one card.
@@ -7679,6 +8279,34 @@ While this card is on the field, all aquatic cards lose 50 attack.
 While this card is on the field, all aquatic cards lose 50 defense.
 While this card is on the field, all aquatic cards lose 500 attack.
 While this card is on the field, all aquatic cards lose 500 defense.
+While this card is on the field, all avian cards gain 100 attack.
+While this card is on the field, all avian cards gain 100 defense.
+While this card is on the field, all avian cards gain 200 attack.
+While this card is on the field, all avian cards gain 200 defense.
+While this card is on the field, all avian cards gain 25 attack.
+While this card is on the field, all avian cards gain 25 defense.
+While this card is on the field, all avian cards gain 300 attack.
+While this card is on the field, all avian cards gain 300 defense.
+While this card is on the field, all avian cards gain 400 attack.
+While this card is on the field, all avian cards gain 400 defense.
+While this card is on the field, all avian cards gain 50 attack.
+While this card is on the field, all avian cards gain 50 defense.
+While this card is on the field, all avian cards gain 500 attack.
+While this card is on the field, all avian cards gain 500 defense.
+While this card is on the field, all avian cards lose 100 attack.
+While this card is on the field, all avian cards lose 100 defense.
+While this card is on the field, all avian cards lose 200 attack.
+While this card is on the field, all avian cards lose 200 defense.
+While this card is on the field, all avian cards lose 25 attack.
+While this card is on the field, all avian cards lose 25 defense.
+While this card is on the field, all avian cards lose 300 attack.
+While this card is on the field, all avian cards lose 300 defense.
+While this card is on the field, all avian cards lose 400 attack.
+While this card is on the field, all avian cards lose 400 defense.
+While this card is on the field, all avian cards lose 50 attack.
+While this card is on the field, all avian cards lose 50 defense.
+While this card is on the field, all avian cards lose 500 attack.
+While this card is on the field, all avian cards lose 500 defense.
 While this card is on the field, all beast cards gain 100 attack.
 While this card is on the field, all beast cards gain 100 defense.
 While this card is on the field, all beast cards gain 200 attack.
@@ -8043,6 +8671,34 @@ While this card is on the field, all machine cards lose 50 attack.
 While this card is on the field, all machine cards lose 50 defense.
 While this card is on the field, all machine cards lose 500 attack.
 While this card is on the field, all machine cards lose 500 defense.
+While this card is on the field, all nature cards gain 100 attack.
+While this card is on the field, all nature cards gain 100 defense.
+While this card is on the field, all nature cards gain 200 attack.
+While this card is on the field, all nature cards gain 200 defense.
+While this card is on the field, all nature cards gain 25 attack.
+While this card is on the field, all nature cards gain 25 defense.
+While this card is on the field, all nature cards gain 300 attack.
+While this card is on the field, all nature cards gain 300 defense.
+While this card is on the field, all nature cards gain 400 attack.
+While this card is on the field, all nature cards gain 400 defense.
+While this card is on the field, all nature cards gain 50 attack.
+While this card is on the field, all nature cards gain 50 defense.
+While this card is on the field, all nature cards gain 500 attack.
+While this card is on the field, all nature cards gain 500 defense.
+While this card is on the field, all nature cards lose 100 attack.
+While this card is on the field, all nature cards lose 100 defense.
+While this card is on the field, all nature cards lose 200 attack.
+While this card is on the field, all nature cards lose 200 defense.
+While this card is on the field, all nature cards lose 25 attack.
+While this card is on the field, all nature cards lose 25 defense.
+While this card is on the field, all nature cards lose 300 attack.
+While this card is on the field, all nature cards lose 300 defense.
+While this card is on the field, all nature cards lose 400 attack.
+While this card is on the field, all nature cards lose 400 defense.
+While this card is on the field, all nature cards lose 50 attack.
+While this card is on the field, all nature cards lose 50 defense.
+While this card is on the field, all nature cards lose 500 attack.
+While this card is on the field, all nature cards lose 500 defense.
 While this card is on the field, all rank 1 cards gain 100 attack.
 While this card is on the field, all rank 1 cards gain 100 defense.
 While this card is on the field, all rank 1 cards gain 200 attack.
@@ -8465,6 +9121,7 @@ While this card is on the field, all water cards lose 500 attack.
 While this card is on the field, all water cards lose 500 defense.
 While this card is on the field, aquatic cards cannot be targeted by effects.
 While this card is on the field, attack and defense changes are inverted.
+While this card is on the field, avian cards cannot be targeted by effects.
 While this card is on the field, beast cards cannot be targeted by effects.
 While this card is on the field, botanic cards cannot be targeted by effects.
 While this card is on the field, dark cards cannot be targeted by effects.
@@ -8478,6 +9135,7 @@ While this card is on the field, ghost cards cannot be targeted by effects.
 While this card is on the field, insect cards cannot be targeted by effects.
 While this card is on the field, light cards cannot be targeted by effects.
 While this card is on the field, machine cards cannot be targeted by effects.
+While this card is on the field, nature cards cannot be targeted by effects.
 While this card is on the field, reptile cards cannot be targeted by effects.
 While this card is on the field, spell cards cannot be targeted by effects.
 While this card is on the field, spellcaster cards cannot be targeted by effects.
@@ -8486,6 +9144,7 @@ While this card is on the field, warrior cards cannot be targeted by effects.
 While this card is on the field, water cards cannot be targeted by effects.
 You can play one extra air card this turn.
 You can play one extra aquatic card this turn.
+You can play one extra avian card this turn.
 You can play one extra beast card this turn.
 You can play one extra botanic card this turn.
 You can play one extra dark card this turn.
@@ -8499,6 +9158,7 @@ You can play one extra ghost card this turn.
 You can play one extra insect card this turn.
 You can play one extra light card this turn.
 You can play one extra machine card this turn.
+You can play one extra nature card this turn.
 You can play one extra rank 1 card this turn.
 You can play one extra rank 1 creature card this turn.
 You can play one extra rank 1 spell card this turn.
@@ -8522,6 +9182,8 @@ You can rank up one of your air creature using a creature from your deck.
 You can rank up one of your air creature using a creature from your discard pile.
 You can rank up one of your aquatic creature using a creature from your deck.
 You can rank up one of your aquatic creature using a creature from your discard pile.
+You can rank up one of your avian creature using a creature from your deck.
+You can rank up one of your avian creature using a creature from your discard pile.
 You can rank up one of your beast creature using a creature from your deck.
 You can rank up one of your beast creature using a creature from your discard pile.
 You can rank up one of your botanic creature using a creature from your deck.
@@ -8548,6 +9210,8 @@ You can rank up one of your light creature using a creature from your deck.
 You can rank up one of your light creature using a creature from your discard pile.
 You can rank up one of your machine creature using a creature from your deck.
 You can rank up one of your machine creature using a creature from your discard pile.
+You can rank up one of your nature creature using a creature from your deck.
+You can rank up one of your nature creature using a creature from your discard pile.
 You can rank up one of your reptile creature using a creature from your deck.
 You can rank up one of your reptile creature using a creature from your discard pile.
 You can rank up one of your spellcaster creature using a creature from your deck.
@@ -8562,6 +9226,8 @@ You can rank up this creature using a air creature from your deck.
 You can rank up this creature using a air creature from your discard pile.
 You can rank up this creature using a aquatic creature from your deck.
 You can rank up this creature using a aquatic creature from your discard pile.
+You can rank up this creature using a avian creature from your deck.
+You can rank up this creature using a avian creature from your discard pile.
 You can rank up this creature using a beast creature from your deck.
 You can rank up this creature using a beast creature from your discard pile.
 You can rank up this creature using a botanic creature from your deck.
@@ -8588,6 +9254,8 @@ You can rank up this creature using a light creature from your deck.
 You can rank up this creature using a light creature from your discard pile.
 You can rank up this creature using a machine creature from your deck.
 You can rank up this creature using a machine creature from your discard pile.
+You can rank up this creature using a nature creature from your deck.
+You can rank up this creature using a nature creature from your discard pile.
 You can rank up this creature using a reptile creature from your deck.
 You can rank up this creature using a reptile creature from your discard pile.
 You can rank up this creature using a spellcaster creature from your deck.
@@ -8604,6 +9272,7 @@ You can send up to three cards under this card to the discard pile.
 You can send up to two cards under this card to the discard pile.
 Your opponent cannot play air cards next turn.
 Your opponent cannot play aquatic cards next turn.
+Your opponent cannot play avian cards next turn.
 Your opponent cannot play beast cards next turn.
 Your opponent cannot play botanic cards next turn.
 Your opponent cannot play dark cards next turn.
@@ -8617,6 +9286,7 @@ Your opponent cannot play ghost cards next turn.
 Your opponent cannot play insect cards next turn.
 Your opponent cannot play light cards next turn.
 Your opponent cannot play machine cards next turn.
+Your opponent cannot play nature cards next turn.
 Your opponent cannot play reptile cards next turn.
 Your opponent cannot play spell cards next turn.
 Your opponent cannot play spellcaster cards next turn.
