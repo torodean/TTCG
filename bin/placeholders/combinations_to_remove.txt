@@ -3,7 +3,7 @@
 5 or lower
 5 or higher
 all point
-spell creature
+spell unit
 rank 4 spell
 rank 5 spell
 Add all rank
@@ -30,3 +30,5 @@ exactly all
 attack and defense of one spell
 the next all
 Reveal the top card of your deck and play one
+above rank 1
+below rank 5

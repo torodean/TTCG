@@ -194,6 +194,19 @@ def dedupe_file(file_path, verbose=False):
     except Exception as e:
         print(f"Error processing file: {e}")
         exit(1)
+        
+        
+def capitalize_list(string_list):
+    """
+    Takes a list of strings and returns a new list with each string's first letter capitalized.
+    
+    Args:
+        string_list (list): A list of strings to be capitalized
+        
+    Returns:
+        list: A new list with capitalized strings
+    """
+    return [s.capitalize() for s in string_list]
 
 
 if __name__ == "__main__":
@@ -268,6 +281,9 @@ if __name__ == "__main__":
     
     # alphabetize the output effect combinations.
     all_combinations = alphabetize_strings(all_combinations)
+    
+    # Make sure the first letter of each string is capitalized.
+    all_combinations = capitalize_list(all_combinations)
     
     if not args.test_mode:
         write_combinations_to_file(all_combinations, args.output_file)

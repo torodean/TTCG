@@ -46,17 +46,17 @@ three spell: three spells
 four spell: four spells
 five spell: five spells
                 
-# Numbered creature(s) cleanup
-one creature(s): one creature
-two creature(s): two creatures
-three creature(s): three creatures
-four creature(s): four creatures
-five creature(s): five creatures
-one creatures: one creature
-two creature: two creatures
-three creature: three creatures
-four creature: four creatures
-five creature: five creatures
+# Numbered unit(s) cleanup
+one unit(s): one unit
+two unit(s): two units
+three unit(s): three units
+four unit(s): four units
+five unit(s): five units
+one units: one unit
+two unit: two units
+three unit: three units
+four unit: four units
+five unit: five units
 
 # Numbered turn(s) cleanup
 one turn(s): one turn
@@ -75,12 +75,12 @@ spell(s): spells
 target(s): targets
 point(s): points
 card(s): cards
-creature(s): creatures
+unit(s): units
 spellss: spells
 targetss: targets
 pointss: points
 cardss: cards
-creaturess: creatures
+unitss: units
 turnss: turns
         
 # Duplicate card        
@@ -94,5 +94,6 @@ spellscaster: spellcaster
 spells cards: spell cards
 up to one: one
 your other card on: your other cards on
-your other creature on: your other creatures on
+your other unit on: your other units on
 your other spell on: your other spells on
+exactly one: one
