@@ -3,6 +3,9 @@ from PIL import Image, ImageDraw, ImageFont
 import textwrap
 import argparse
 import random
+import csv
+import os
+from ttcg_tools import output_text
 
 
 def create_base_card(card_type, card_level, width=750, height=1050, card_image=None, transparency=100):
@@ -44,7 +47,7 @@ def create_base_card(card_type, card_level, width=750, height=1050, card_image=N
         base_image_path = f"../images/card pngs/{card_type.lower()}-{transparency}.png"
         
     # Print base image path for debugging.
-    print(f"base_image_path: {base_image_path}")
+    output_text(f"base_image_path set to: {base_image_path}", "note")
         
     try:
         base_img = Image.open(base_image_path).convert("RGBA")
@@ -300,7 +303,13 @@ def create_card(card_data, output_folder, output_file_name=None):
     draw_single_line_text(draw, card_data["name"], (70, 35), (585, 70))
     
     # Draw subtypes in a box from (70, 90) to (585, 120)
-    draw_single_line_text(draw, card_data["subtype"], (70, 90), (585, 120))
+    card_type = card_data["type"]
+    card_subtype = card_data["subtype"]
+    if card_type == "Spell":
+        subtypes_line = f"{card_type}"
+    else:
+        subtypes_line = f"{card_type}, {card_subtype}"
+    draw_single_line_text(draw, subtypes_line, (70, 90), (585, 120))
     
     # Draw ATK and def in the boxes.
     atk_x_min, atk_x_max = 135, 215    
@@ -333,7 +342,70 @@ def create_card(card_data, output_folder, output_file_name=None):
 
     # Save the card
     img.save(output_file)
-    print(f"Card saved as {output_file}")
+    output_text(f"Card saved as {output_file}", "success")
+
+
+def process_csv_to_cards(csv_file_path, output_folder):
+    """
+    Read a CSV file of card data and create cards by calling create_card for each entry.
+
+    Args:
+        csv_file_path (str): Path to the CSV file containing card data.
+        output_folder: The folder to output images to.
+
+    Returns:
+        None
+
+    Raises:
+        FileNotFoundError: If the CSV file does not exist.
+        ValueError: If the CSV file format is invalid (e.g., wrong number of columns).
+
+    The CSV file is expected to have the following columns in order:
+    NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY;TRANSPARENCY
+
+    For each row, it constructs a card_data dictionary and calls create_card(card_data, args.output).
+    """
+    if not os.path.isfile(csv_file_path):
+        raise FileNotFoundError(f"The CSV file '{csv_file_path}' does not exist")
+
+    with open(csv_file_path, 'r', encoding='utf-8') as csvfile:
+        # Use semicolon as delimiter
+        csv_reader = csv.reader(csvfile, delimiter=';')
+        
+        # Skip header row if present (assuming first row is header)
+        header = next(csv_reader)
+        expected_columns = 12  # NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY;TRANSPARENCY
+        if len(header) != expected_columns:
+            raise ValueError(f"CSV header has {len(header)} columns, expected {expected_columns}")
+
+        # Process each row
+        for row in csv_reader:
+            if len(row) != expected_columns:
+                raise ValueError(f"Row has {len(row)} columns, expected {expected_columns}")
+
+            # Extract data from the row
+            name, card_type, subtypes, level, image, attack, defense, effect1, effect2, serial, rarity, transparency = row
+
+            # Handle subtypes (convert to string, could be empty or comma-separated)
+            subtype_str = subtypes if subtypes else ""
+
+            # Create card data dictionary
+            card_data = {
+                "name": name,
+                "level": level,
+                "type": card_type,
+                "subtype": subtype_str,
+                "attack": attack,
+                "defense": defense,
+                "effect1": effect1,
+                "effect2": effect2,
+                "image": image,
+                "transparency": transparency,
+                "serial": serial
+            }
+
+            # Call create_card with the constructed card_data and args.output
+            create_card(card_data, output_folder)
 
 
 def parse_args():
@@ -365,12 +437,19 @@ def parse_args():
                         help="The serial number for the card.")
     parser.add_argument('-T', "--transparency", type=int, default=100,
                         help="The transparency of some card art fields (valid options are 50, 60, 75, and 100)")
+    parser.add_argument('-S', "--spreadsheet", type=str, default=None,
+                        help="Create's all cards loaded from a spreadsheet (in dev).")
 
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     args = parse_args()
+    
+    # Run the complete processing for a csv file.
+    if args.spreadsheet is not None:
+        process_csv_to_cards(args.spreadsheet, args.output)
+        exit(1)
 
     # Handle random atk/def based on level
     total_stats = args.level * 100
@@ -387,7 +466,7 @@ if __name__ == "__main__":
 
     # Make sure the transparency option is valid.
     if args.transparency not in (50, 60, 75, 100):
-        print(f"Invalid transparency option entered: {args.transparency}")
+        output_text(f"Invalid transparency option entered: {args.transparency}")
         args.transparency = 100
 
     # Construct type string with subtype

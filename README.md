@@ -30,3 +30,8 @@ For a comprehensive overview of this project, please see the documentation in th
 ## Contact
 
 For all inquiries, comments, questions, suggestions, etc... Please contact us via the following email: truetradingcardgame@gmail.com 
+
+
+## License
+
+Copyright Antonius Torode, 2025. All rights reserved. This project is not open source and may not be used, copied, modified, or distributed without explicit permission from the author.

@@ -5,4 +5,5 @@ air
 light
 dark
 electric
+nature
 spell

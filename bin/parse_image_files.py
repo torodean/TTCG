@@ -5,6 +5,9 @@ import shutil
 from tkinter import Tk, Label, Button, Canvas, messagebox, Frame
 from PIL import Image, ImageTk
 
+from ttcg_tools import output_text
+
+
 # Configuration
 SOURCE_FOLDER = "../images/unsorted"           # Folders containing images (and subfolders)
 FIXED_FOLDER = "../images/needs_fixed"         # Destination folder for images needing fixes
@@ -13,6 +16,7 @@ EXCLUDE_FOLDERS = ["images/needs_fixed", "images/card pngs", "images/generated_c
 TYPES = ["earth", "fire", "water", "air", "nature", "electric", "light", "dark"]
 UNITS_BASE_FOLDER = "../images/units"
 SPELLS_BASE_FOLDER = "../images/spells"
+
 
 class ImageViewer:
     def __init__(self, root):
@@ -77,12 +81,16 @@ class ImageViewer:
         # Display the first image
         self.display_image()
 
+
     def ensure_directories_exist(self):
-        """Create all necessary destination directories at startup."""
+        """
+        Create all necessary destination directories at startup.
+        """
         os.makedirs(FIXED_FOLDER, exist_ok=True)
         for type_name in TYPES:
             os.makedirs(os.path.join(UNITS_BASE_FOLDER, type_name), exist_ok=True)
             os.makedirs(os.path.join(SPELLS_BASE_FOLDER, type_name), exist_ok=True)
+
 
     def load_images(self, folder, exclude_top_level=False):
         """
@@ -108,6 +116,7 @@ class ImageViewer:
                     image_list.append(os.path.join(root, file))
         
         return image_list
+
 
     def display_image(self):
         """
@@ -142,13 +151,19 @@ class ImageViewer:
         
         self.root.title(f"Image Viewer - {os.path.basename(image_path)} ({self.current_index + 1}/{len(self.image_files)})")
 
+
     def next_image(self):
-        """Advance to the next image in the list."""
+        """
+        Advance to the next image in the list.
+        """
         self.current_index += 1
         self.display_image()
 
+
     def mark_needs_fixed(self):
-        """Move the current image to the FIXED_FOLDER and advance to the next image."""
+        """
+        Move the current image to the FIXED_FOLDER and advance to the next image.
+        """
         if self.current_index >= len(self.image_files):
             return
         
@@ -157,13 +172,14 @@ class ImageViewer:
         
         try:
             shutil.move(current_image, destination)
-            print(f"Moved {current_image} to {destination}")
+            output_text(f"Moved {current_image} to {destination}", "note")
             self.image_files.pop(self.current_index)
             if self.current_index >= len(self.image_files):
                 self.current_index = len(self.image_files) - 1 if self.image_files else 0
             self.display_image()
         except Exception as e:
             messagebox.showerror("Error", f"Failed to move {current_image}: {e}")
+
 
     def move_to_type(self, category, type_name):
         """
@@ -183,7 +199,7 @@ class ImageViewer:
         
         try:
             shutil.move(current_image, destination)
-            print(f"Moved {current_image} to {destination}")
+            output_text(f"Moved {current_image} to {destination}", "note")
             self.image_files.pop(self.current_index)
             if self.current_index >= len(self.image_files):
                 self.current_index = len(self.image_files) - 1 if self.image_files else 0
@@ -191,16 +207,17 @@ class ImageViewer:
         except Exception as e:
             messagebox.showerror("Error", f"Failed to move {current_image}: {e}")
 
+
 if __name__ == "__main__":
     try:
         import tkinter
         from PIL import Image, ImageTk
     except ImportError:
-        print("Required libraries not found. Install them with: pip install pillow")
+        output_text("Required libraries not found. Install them with: pip install pillow", "error")
         exit(1)
     
     if not os.path.exists(OVERLAY_IMAGE):
-        print(f"Overlay image {OVERLAY_IMAGE} not found!")
+        output_text(f"Overlay image {OVERLAY_IMAGE} not found!", "error")
         exit(1)
     
     root = Tk()

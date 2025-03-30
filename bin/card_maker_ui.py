@@ -5,10 +5,20 @@ import tkinter as tk
 import random
 from tkinter import ttk
 from tkinter import filedialog
+from pathlib import Path
 
 # Used for randomly generating effects.
 from generate_random_effects import load_and_filter_csv
 from generate_random_effects import get_random_effect
+
+# Inports from ttcg_tools
+from ttcg_tools import output_text
+from ttcg_tools import check_line_in_file
+from ttcg_tools import get_relative_path
+from ttcg_tools import rename_file
+
+# Used for flipping and correcting images.
+from flip_image import flip_image
 
 # Used for generating card preview.
 from create_card import create_card
@@ -25,10 +35,83 @@ import csv
 
 # Global var to determine when preview should be generated vs not.
 SKIP_PREVIEW = False
+# Get script's directory (useful for relative paths)
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
+TYPE_LIST = ["Spell", "Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature"]
+    
 
 
+def get_next_image(current_path):
+    """
+    Get the next image file in a directory or the first image if a directory is provided.
+    
+    Args:
+        current_path (str or Path): File path to an image or directory path.
+            If a file path, returns the next image in the directory.
+            If a directory path, returns the first image in the directory.
+    
+    Returns:
+        str: Full path to the next image file (or first file if at the end),
+             or None if no image files are found or path is invalid.
+    
+    Notes:
+        - Supported image extensions: .jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp
+        - Files are sorted alphabetically
+        - If input is an image file and it's the last in the directory,
+          returns the first image file
+        - Case-insensitive extension matching
+    
+    Examples:
+        >>> get_next_image("/path/to/directory")
+        '/path/to/directory/image1.jpg'
+        >>> get_next_image("/path/to/directory/image1.jpg")
+        '/path/to/directory/image2.jpg'
+    """
+    # Define common image extensions
+    image_extensions = {'.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp'}
+    
+    # Convert input to Path object
+    path = Path(current_path)
+    
+    # If it's a directory, return the first image file
+    if path.is_dir():
+        for file in sorted(os.listdir(path)):
+            file_path = path / file
+            if file_path.is_file() and file_path.suffix.lower() in image_extensions:
+                return str(file_path)
+        return None  # Return None if no image files found
+    
+    # If it's a file, get its directory and find the next image
+    if path.is_file():
+        directory = path.parent
+        files = []
+        
+        # Collect all image files in the directory
+        for file in sorted(os.listdir(directory)):
+            file_path = directory / file
+            if file_path.is_file() and file_path.suffix.lower() in image_extensions:
+                files.append(file_path)
+        
+        if not files:
+            return None  # No image files in directory
+        
+        # Find current file's position
+        try:
+            current_index = files.index(path)
+            # Return next file, or first file if at the end
+            next_index = (current_index + 1) % len(files)
+            return str(files[next_index])
+        except ValueError:
+            # If current file isn't an image, return first image
+            return str(files[0]) if files else None
+    
+    return None  # Return None if path doesn't exist
+    
+    
 def get_card_data():
-    """Collect card data from GUI widgets into a dictionary.
+    """
+    Collect card data from GUI widgets into a dictionary.
 
     This function gathers input from various Tkinter widgets in the card creator UI and
     returns a dictionary containing the card's attributes. Empty or invalid inputs are
@@ -62,10 +145,42 @@ def get_card_data():
         "effect2": WIDGETS["effect2_entry"].get("1.0", tk.END).strip() or "",
         "image": WIDGETS["image_entry"].get().strip() or "default.png",
         "transparency": WIDGETS["transparency_var"].get(),
-        "serial": WIDGETS["serial_entry"].get().strip() or ""
+        "serial": WIDGETS["serial_entry"].get().strip() or "",
+        "rarity": "0" # Rarity is not handled in this app so default to 0.
     }
-    print("Collected card data:", card_data)  # Debug statement
+    output_text(f"Collected card data: {card_data}", "note")  # Debug statement
     return card_data
+
+
+def check_for_effect_combination_in_file(file_path, effect_1, effect_2):
+    """
+    Check if a specific effect combination exists in a file. 
+    This will check for both possible orders of the input effect combination.
+    
+    Args:
+        file_path (str): Path to the file to check.
+        effect_1 (str): The first effect to search for.
+        effect_2 (str): The second effect to search for.
+    
+    Returns:
+        bool: True if the combination is found, False otherwise.
+    
+    Raises:
+        FileNotFoundError: If the file does not exist.
+        IOError: If there’s an issue reading the file.
+    """
+    try:
+        effect_combo_1 = f"{effect_1};{effect_2}"
+        effect_combo_2 = f"{effect_2};{effect_1}"
+        with open(file_path, 'r', encoding='utf-8') as file:
+            for line in file:
+                if effect_combo_1 in line or effect_combo_2 in line:
+                    return True
+        return False
+    except FileNotFoundError:
+        raise FileNotFoundError(f"The file '{file_path}' was not found.")
+    except IOError as e:
+        raise IOError(f"Error reading file '{file_path}': {e}")
 
 
 def save_to_card_list(filename):
@@ -73,7 +188,7 @@ def save_to_card_list(filename):
     Save card data from the UI to a spreadsheet.
 
     This function collects card details from the GUI widgets and saves them to a CSV file
-    with the header 'NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY'.
+    with the header 'NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY;TRANSPARENCY'.
     Data is appended to the file, and the header is written if the file doesn’t exist.
 
     Args:
@@ -84,9 +199,16 @@ def save_to_card_list(filename):
     """
     # Collect card data from UI
     card_data = get_card_data()
+    card_name = card_data.get("name", "").strip()
+    
+    # Check if the name already exists
+    if is_name_in_card_list(card_name):
+        output_text(f"Card name '{card_name}' already exists in {filename}! Skipping", "error")
+        load_next_image()  # Still load next image even if skipped
+        return
 
     # Define the header
-    header = ["NAME", "TYPE", "SUBTYPES", "LEVEL", "IMAGE", "ATTACK", "DEFENSE", "EFFECT1", "EFFECT2", "SERIAL", "RARITY"]
+    header = ["NAME", "TYPE", "SUBTYPES", "LEVEL", "IMAGE", "ATTACK", "DEFENSE", "EFFECT1", "EFFECT2", "SERIAL", "RARITY", "TRANSPARENCY"]
 
     # Check if file exists to determine if header needs to be written
     file_exists = os.path.isfile(filename)
@@ -98,26 +220,51 @@ def save_to_card_list(filename):
         # Write header if the file is new
         if not file_exists:
             writer.writerow(header)
-
+            
+        # Adjust subtypes for spell cards - it should have none.   
+        if card_data["type"].lower() == "spell":
+            card_data["subtype"] = ""
+        
+        # Rename the image file based on the new name selected.
+        image_path = card_data.get("image", "")
+        output_text(f"Full image path: {image_path}", "note")
+        new_image_name = card_data.get("name", "")
+        output_text(f"Image name: {new_image_name}", "note")
+        if new_image_name not in image_path and "Unnamed" not in new_image_name:
+            image_path = rename_file(image_path, new_image_name)
+            WIDGETS["image_entry"].delete(0, tk.END)
+            WIDGETS["image_entry"].insert(0, image_path)  # Update UI with new path
+        
+        # Generate relative path for images.
+        rel_image_path = get_relative_path(SCRIPT_DIR, image_path)
+        output_text(f"Relative path for image set to: {rel_image_path}", "note")
+        
         # Prepare the row data, adding a default 'RARITY' since it’s not in card_data
         row = [
             card_data.get("name", ""),
             card_data.get("type", ""),
             card_data.get("subtype", ""),
             card_data.get("level", ""),
-            card_data.get("image", ""),
+            rel_image_path,
             card_data.get("attack", ""),
             card_data.get("defense", ""),
             card_data.get("effect1", ""),
             card_data.get("effect2", ""),
             card_data.get("serial", ""),
-            "Common"  # Default rarity (modify if rarity is added to UI)
+            card_data.get("rarity", ""),
+            card_data.get("transparency", "")
         ]
 
-        # Write the row to the CSV
-        writer.writerow(row)
-
-    print(f"Card saved to {filename}:", card_data)  # Debug output
+        # Write the row to the CSV if it's not a duplicate.
+        if not check_line_in_file(filename, ";".join(str(r) for r in row)):
+            if not check_for_effect_combination_in_file(filename, row[7], row[8]):
+                writer.writerow(row)
+                output_text(f"Card data saved to {filename}: {card_data}", "success")
+                load_next_image()
+            else:
+                output_text(f"Effect combination already exists in output file! Skipping", "error") 
+        else:
+            output_text(f"Card already exists in output file! Skipping", "error") 
 
 
 def reset_ui():
@@ -160,7 +307,7 @@ def browse_image():
         WIDGETS["image_entry"].delete(0, tk.END)
         WIDGETS["image_entry"].insert(0, filename)
         
-    update_name_from_image()
+    update_name_from_image()    
     update_preview()
 
 
@@ -209,32 +356,77 @@ def update_preview():
         WIDGETS["preview_canvas"].image = photo
 
 
-def randomize_atk_def():
+def generate_stat_pair(stat_bonus):
     """
-    Randomize ATK and DEF values based on the selected level.
+    Generate two random values between -stat_bonus and stat_bonus (inclusive).
+    
+    Args:
+        stat_bonus (int): The maximum absolute value for the random range.
+        
+    Returns:
+        tuple: A pair of integers (value1, value2) where each is between -stat_bonus and stat_bonus.
+    """
+    value1 = random.randint(-stat_bonus, stat_bonus) * 10
+    value2 = random.randint(-stat_bonus, stat_bonus) * 10
+    return (value1, value2)
+
+
+def get_sign(value):
+    """
+    Return the sign of a number as a string.
+    
+    Args:
+        value (int or float): The number to check.
+        
+    Returns:
+        str: "+" if value is >= 0, "" if value < 0.
+        
+    Note: This returns "" for negative numbers because they will already have a negative on them.
+    """
+    return "+" if value >= 0 else ""
+
+
+def randomize_atk_def(isSpell=False):
+    """
+    Randomize ATK and DEF values based on the selected level and type.
 
     This function generates random ATK and DEF values in increments of 5, ensuring their sum
     equals 5 times the selected level. The values are then populated into the provided entry widgets.
+    For spells, the values are slightly different and instead range as bonuses from +/- 5*level.
+    
+    Args:
+        isSpell (bool): Sets the generation to spell mode.
     """
     # Get the selected level, default to 1 if empty or invalid
     level_str = WIDGETS["level_combo"].get().strip()
+    card_type = WIDGETS["type_combo"].get().strip().lower()
     level = int(level_str) if level_str in [str(i) for i in range(1, 6)] else 1
 
-    # Calculate total points (5 * level)
-    total_points = 500 * level
-
-    # Generate ATK in increments of 5, leaving at least 0 for DEF
-    max_atk = total_points  # ATK can be 0 to total_points
-    atk = random.randrange(0, max_atk + 5, 5)  # Start at 0, step by 5, inclusive of max_atk
-
-    # DEF is the remainder to ensure atk + def = total_points
-    def_ = total_points - atk
-
-    # Clear and populate the entry fields
+    # Clear the entry fields
     WIDGETS["atk_entry"].delete(0, tk.END)
-    WIDGETS["atk_entry"].insert(0, str(atk))
     WIDGETS["def_entry"].delete(0, tk.END)
-    WIDGETS["def_entry"].insert(0, str(def_))
+
+    # Calculate total points (5 * level)
+    if (card_type == "spell"):
+        # Get stat bonuses.
+        card_atk, card_def = generate_stat_pair(level)
+    
+        # Populate the entry fields.
+        WIDGETS["atk_entry"].insert(0, f"{get_sign(card_atk)}{card_atk}")
+        WIDGETS["def_entry"].insert(0, f"{get_sign(card_def)}{card_def}")
+    else:
+        total_points = 500 * level
+
+        # Generate ATK in increments of 5, leaving at least 0 for DEF
+        max_atk = total_points  # ATK can be 0 to total_points
+        card_atk = random.randrange(0, max_atk + 5, 5)  # Start at 0, step by 5, inclusive of max_atk
+
+        # DEF is the remainder to ensure atk + def = total_points
+        card_def = total_points - card_atk
+    
+        # Populate the entry fields.
+        WIDGETS["atk_entry"].insert(0, str(card_atk))
+        WIDGETS["def_entry"].insert(0, str(card_def))
 
 
 def get_selected_subtypes():
@@ -250,7 +442,7 @@ def get_selected_subtypes():
 
 def generate_effects(effect_buttons, input_file, columns, subtypes):
     """
-    Generate 15 random effects and populate the effect buttons.
+    Generate 18 random effects and populate the effect buttons.
 
     This function loads effects from a CSV file, filters them based on specified columns,
     and generates 10 unique random effects: up to 5 using subtypes as search strings,
@@ -271,7 +463,7 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
     generated_effects = []
 
     # Target: Up to 5 effects with subtypes, rest without
-    target_with_subtypes = 6
+    target_with_subtypes = 10
 
     # Generate up to 5 effects using subtypes as search strings
     if subtypes:  # Only if subtypes are provided
@@ -287,7 +479,7 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
             generated_effects.append(effect)
 
     # Generate remaining effects without search strings (up to 10 total)
-    remaining = 15 - len(generated_effects)
+    remaining = 18 - len(generated_effects)
     for _ in range(remaining):
         if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
             break  # Stop if no more unique effects are available
@@ -305,6 +497,63 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
             btn.config(text=generated_effects[i])
         else:
             btn.config(text="")
+
+
+def is_name_in_card_list(card_name, filename="card_list/card_list.csv"):
+    """
+    Check if a card name already exists in the card_list.csv file.
+
+    Args:
+        card_name (str): The name to check against the 'NAME' column in the CSV.
+        filename (str): Path to the CSV file (e.g., 'card_list.csv').
+
+    Returns:
+        bool: True if the card name is found in the file, False otherwise.
+    """
+    # Resolve the filename to an absolute path relative to the script directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    abs_filename = os.path.join(script_dir, filename) if not os.path.isabs(filename) else filename
+    output_text(f"Checking file: {abs_filename}", "note")
+
+    # If the file doesn’t exist, no names can match
+    if not os.path.isfile(abs_filename):
+        output_text(f"File {abs_filename} does not exist", "warning")
+        return False
+
+    # Open and read the CSV file
+    try:
+        with open(abs_filename, mode='r', encoding='utf-8') as f:
+            reader = csv.reader(f, delimiter=';')
+            
+            # Get the header row to find the 'NAME' column index
+            try:
+                header = next(reader)
+                output_text(f"Header: {header}", "note")
+                name_index = header.index("NAME")
+            except StopIteration:
+                output_text("File is empty", "warning")
+                return False
+            except ValueError:
+                output_text("CSV file does not contain a 'NAME' column in the header", "error")
+                raise ValueError("CSV file does not contain a 'NAME' column in the header")
+
+            # Check each row for a matching name
+            for row in reader:
+                #output_text(f"Row: {row}", "note")
+                if len(row) > name_index:
+                    csv_name = row[name_index].strip()
+                    if csv_name == card_name.strip():
+                        output_text(f"Found match: '{csv_name}' == '{card_name}'", "success")
+                        return True
+                else:
+                    output_text(f"Skipping malformed row: {row}", "warning")
+    
+    except Exception as e:
+        output_text(f"Error reading {abs_filename}: {str(e)}", "error")
+        return False
+
+    output_text(f"No match found for '{card_name}' in {abs_filename}", "note")
+    return False
 
 
 def assign_effect(effect_text):
@@ -365,11 +614,11 @@ def generate_serial_number(card_data):
         f"{name}{card_type}{level}{subtypes}{attack}{defense}{effect1}{effect2}{image}{rarity}"
     )
 
-    print(f"attribute_string: {attribute_string}")
+    output_text(f"Created attribute_string: {attribute_string}", "note")
 
     # TODO: Implement serial number generation logic here
     serial_number = hashlib.sha256(attribute_string.encode('utf-8')).hexdigest() # Testing with hash
-    print(f"Full serial_number: {serial_number}")
+    output_text(f"Created serial_number: {serial_number}", "note")
     
     serial_number = serial_number[:14]
     card_data["serial"] = serial_number
@@ -390,11 +639,12 @@ def update_serial_number(new_serial):
     Returns:
         None
     """
-    print(f"Updating serial number to: {new_serial}")    # Debug output
+    output_text(f"Updating serial number to: {new_serial}", "note")
     WIDGETS["serial_entry"].configure(state="normal")    # Enable editing
     WIDGETS["serial_entry"].delete(0, tk.END)            # Clear current text
     WIDGETS["serial_entry"].insert(0, new_serial)        # Insert new serial
     WIDGETS["serial_entry"].configure(state="disabled")  # Disable again
+    output_text(f"Updated serial number!", "success")
 
 
 def get_gui_metadata():
@@ -427,31 +677,139 @@ def get_gui_metadata():
     return metadata
 
 
-def update_name_from_image():
+def update_name_from_image(force_update=False):
+    """
+    Update the card name and type based on the image path provided in the UI.
+
+    This function retrieves the image path from the 'image_entry' widget and the current name from
+    the 'name_entry' widget. It checks if the image path contains any type from TYPE_LIST and
+    updates the 'type_combo' widget accordingly. If the current name is 'Unnamed' and a valid
+    image path is provided, it extracts the filename (without path or extension) and updates
+    the 'name_entry' widget with it. Various status messages are output via output_text() to
+    indicate success, warnings, or errors.
+    
+    Args:
+        force_update (bool): Update the name regardless of what the name field currently is.
+
+    Behavior:
+        - Updates 'type_combo' if a TYPE_LIST item is found in the image path (case-insensitive).
+        - Updates 'name_entry' to the filename if the current name is 'Unnamed' and the image is valid.
+        - Skips name update if the filename starts with '_' (indicating a default hash name).
+        - Outputs messages for invalid image paths, missing paths, or unchanged names.
+
+    Raises:
+        No exceptions are raised directly, but Image.open() may trigger FileNotFoundError, IOError,
+        or ValueError if the image path is invalid, which are caught and handled with error messages.
+    """
     image_path = WIDGETS["image_entry"].get()
     current_name = WIDGETS["name_entry"].get().strip()
+        
+    # Check if any item from TYPE_LIST is in card_data["image"] and update type_combo
+    image_value = image_path.strip()  # Remove extra whitespace
+    for type_item in TYPE_LIST:
+        if type_item.lower() in image_value.lower():
+            output_text(f"Setting type_combo to: {type_item}", "note")
+            WIDGETS["type_combo"].set(type_item)
+            break  # Stop after the first match
+    else:
+        output_text(f"No match from TYPE_LIST found in {image_value}", "warning")
     
-    if current_name == "Unnamed" and image_path:
+    if (current_name == "Unnamed" and image_path) or (force_update and image_path):
         # Check if the image_path points to a valid image file
         try:
             # Attempt to open the image to verify it's valid
             with Image.open(image_path):
                 # Extract just the filename without path or extension
                 filename = os.path.splitext(os.path.basename(image_path))[0]
-                if filename[0] == "_":
+                if filename[0] == "_":                    
+                    WIDGETS["name_entry"].delete(0, tk.END)
+                    WIDGETS["name_entry"].insert(0, "Unknown")
                     return # This is the case for un-named images with default hash names.
                 # Update the name_entry with the extracted filename
                 WIDGETS["name_entry"].delete(0, tk.END)
                 WIDGETS["name_entry"].insert(0, filename)
-                print(f"Name updated to: {filename}")
+                output_text(f"Name updated to: {filename}", "note")
         except (FileNotFoundError, IOError, ValueError):
             # If image_path isn't valid, don't update and print a message
-            print(f"Invalid image path: {image_path}")
+            output_text(f"Invalid image path: {image_path}", "error")
     elif not image_path:
-        print("No image path provided")
+        output_text("No image path provided", "error")
     else:
-        print(f"Name not updated: current name is '{current_name}', not 'Unnamed'")
+        output_text(f"Name not updated: current name is '{current_name}', not 'Unnamed'", "warning")    
+
+
+def load_next_image(image_file=None, filename="card_list/card_list.csv"):
+    """
+    Select and load the next image file within the folder of the currently
+    selected/loaded image file whose name isn’t already in card_list.csv.
+    Clears the effect fields to prep the UI for a new card.
     
+    Args:
+        image_file (str, optional): The current image file to use for loading the next. 
+            Defaults to gathering this field from the UI.
+        filename (str, optional): Path to the CSV file to check names against. 
+            Defaults to 'card_list.csv'.
+    """
+    output_text("Loading next image file!", "note")
+    
+    # Get the current image
+    if image_file is None:
+        current_image_file = WIDGETS["image_entry"].get().strip()
+    else:
+        current_image_file = image_file
+       
+    output_text(f"Current image file: {current_image_file}", "note")
+    
+    # Track checked images to avoid infinite loops
+    checked_images = set([current_image_file]) if current_image_file else set()
+    next_image_file = get_next_image(current_image_file)
+    output_text(f"Next image file (initial): {next_image_file}", "note")
+
+    # Clear the current image entry
+    WIDGETS["image_entry"].delete(0, tk.END)
+
+    # Loop to find an image with a unique name
+    while next_image_file is not None:
+        # Set the image entry and update the name
+        WIDGETS["image_entry"].insert(0, next_image_file)
+        update_name_from_image(force_update=True)  # This sets name_entry
+        
+        # Get the name from the UI
+        potential_name = WIDGETS["name_entry"].get().strip()
+        output_text(f"Checking name: {potential_name}", "note")
+
+        # Check if the name is already in the card list
+        if not is_name_in_card_list(potential_name):
+            output_text(f"Loaded image with unique name: {next_image_file}", "success")
+            break  # Name is unique, keep this image
+        
+        # Name exists, try the next image
+        output_text(f"Name '{potential_name}' already exists, trying next image", "warning")
+        checked_images.add(next_image_file)
+        next_image_file = get_next_image(next_image_file)
+        output_text(f"Next image file: {next_image_file}", "note")
+
+        # Prevent infinite loop: if we've checked all images or cycled back, stop
+        if next_image_file in checked_images or next_image_file == current_image_file:
+            output_text("No unique image name found in directory!", "warning")
+            next_image_file = None
+            break
+        
+        # Clear image entry for the next iteration
+        WIDGETS["image_entry"].delete(0, tk.END)
+
+    # Finalize the UI state
+    if next_image_file is None:
+        output_text("No next image file with a unique name found!", "warning")
+        WIDGETS["image_entry"].insert(0, "")  # Clear the field
+    
+    # Clear effect fields
+    WIDGETS["effect1_entry"].delete("1.0", tk.END)
+    WIDGETS["effect2_entry"].delete("1.0", tk.END)
+    
+    # Final update of name and preview (redundant if loop succeeded, but ensures consistency)
+    update_name_from_image(force_update=True)
+    update_preview()
 
 
 def main():
@@ -506,7 +864,7 @@ def main():
     ttk.Label(left_frame, text="Type:").grid(row=1, column=0, pady=8, padx=5, sticky="e")
     type_combo = ttk.Combobox(
         left_frame,
-        values=["Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature"],
+        values=TYPE_LIST,
         width=27,
         font=("Helvetica", 12),
     )
@@ -549,6 +907,28 @@ def main():
         left_frame, text="Browse", command=lambda: browse_image()
     )
     browse_btn.grid(row=5, column=1, pady=8, padx=5, sticky="w")
+    
+    # Add Next Image button
+    next_img_btn = ttk.Button(
+        left_frame, 
+        text="Next Image", 
+        command=lambda: [
+            load_next_image(),
+            update_preview()
+        ]
+    )
+    next_img_btn.grid(row=5, column=1, pady=8, padx=(105, 0), sticky="w")  # Adjusted padx
+    
+    # Add Flip Image button
+    flip_btn = ttk.Button(
+        left_frame, 
+        text="Flip Image", 
+        command=lambda: [
+            flip_image(image_entry.get()),
+            update_preview()
+        ]
+    )
+    flip_btn.grid(row=5, column=1, pady=8, padx=(205, 0), sticky="w")  # Adjusted padx
 
     # ATK
     ttk.Label(left_frame, text="ATK:").grid(row=6, column=0, pady=8, padx=5, sticky="e")
@@ -597,7 +977,7 @@ def main():
     #Transparency selection
     transparency_frame = ttk.LabelFrame(preview_frame, text="Transparency", padding="8")
     transparency_frame.grid(row=0, column=0, pady=8, sticky="ew")
-    transparency_var = tk.IntVar(value=60)  # Default to 100%
+    transparency_var = tk.IntVar(value=50)  # Default to 100%
 
     transparency_values = [50, 60, 75, 100]
     for i, value in enumerate(transparency_values):
@@ -665,9 +1045,9 @@ def main():
     )
     generate_btn.grid(row=0, column=0, pady=12, padx=10, sticky="ew")  # Increased padding
 
-    # Effect buttons (15)
+    # Effect buttons (18)
     effect_buttons = []
-    for i in range(15):
+    for i in range(18):
         btn = ttk.Button(
             effects_frame,
             text="",
