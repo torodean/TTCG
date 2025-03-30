@@ -98,7 +98,8 @@
 	    \item \textbf{Draw Phase}: At the start of every turn (except the first player's first turn), the player draws a card.
 	    \item \textbf{Main Phase}:
 	    \begin{itemize}
-	        \item A player may play up to two cards to their field (unless a card specifies otherwise).
+	        \item A player may play up to two cards to their field (unless a card specifies otherwise).	        
+			\item Cards played or ranked up by effects must respect the unit-stack and spell-stack field limits.
 	        \item A card effect that plays a card to the field does not count toward this limit.
 	    \end{itemize}
 	    \item \textbf{Battle Phase}: Combat and attacks occur.
@@ -116,6 +117,7 @@
 \begin{itemize}
     \item A card can only be played to the field in face up vertical position.
     \item When a card on the field activates an effect, the card is tapped (swapped to horizontal position).
+    \item Tapping indicates one of the two effects has been used, preventing the other until untapped.
     \item \textbf{Spell Cards:}
     \begin{itemize}
         \item A Spell card effect can be used immediately after the card is played.
@@ -140,7 +142,7 @@
     \item All rules and effects are able to be overruled if a card effect explicitly states that it does so.
     \item Most effects can be activated at any time while the card is face-up on the field.
     \item If multiple effects trigger at the same time, they activate in reverse order of activation. If an effect is no longer valid because of this order, the effect simply does nothing (but still counts as activated).
-    \item Tapped units cards cannot activate effects.
+    \item Tapped units cards cannot activate effects unless they specifically state otherwise.
     \item \textbf{Unit Cards:}
     \begin{itemize}
         \item When a unit effect is activated, that card is tapped immediately, then the effect activates.
@@ -161,16 +163,21 @@
     \begin{itemize}
         \item Normal: A Normal effect is one that can be activated during your turn by tapping the card.
         \item Continuous: This effect is activated like a normal effect, but stays active while the card is on the field.
+        \begin{itemize}
+			\item Continuous effects remain active after tapping; tapping only prevents the second effect’s activation.
+			\item When a continuous effect is untapped, its effect is no longer active.
+			\item Re-tapping can reactivate the continuous effect if chosen.
+        \end{itemize}
 		\item Counter: This effect can be activated at any time in response to an opponents action.
 		\item Equip: This card is 'equip' to another card and remains active until the other card or this card is destroyed. 
 		\begin{itemize}
 			\item When a card is destroyed, all equip cards connected to that card are destroyed with it.
-			\item If an equip card is leveled up, it is no longer considered active or equip to what it was before leveling up.
+			\item If an equip card is ranked up, it is no longer considered active or equip to what it was before ranking up.
 			\item You can equip a card to either players card, but the equip card always goes to the discard pile of the players who had the card in their deck at the start of the game.
 		\end{itemize}
 		\item Latent: This effect is triggered only when this card is currently untapped and meets some specific trigger condition. 
-		\item Dormant: This is an effect that can only be activated when the card is tapped. These effects cannot be activated the same turn the card was tapped.
-  		\item Passive: This effect is always active and is triggered whenever the effect conditions are met.
+		\item Dormant: This is an effect that can only be activated when the card is tapped and can only be activated on a turn after the card was tapped.
+  		\item Passive: This effect is always active and is triggered whenever the effect conditions are met, whether tapped or untapped.
     \end{itemize}
 \end{itemize}
 
@@ -183,8 +190,8 @@
 
 \subsection{Leveling Up}
 \begin{itemize}
-    \item Any card with a level rank/level than one can only be played to the field by leveling up another card of the same type.
-    \item To rank/level up a card, place a card with the same type and one rank higher on top of that card.
+    \item Any card with a rank higher than one can only be played to the field by ranking up another card of the same type.
+    \item To rank up a card, place a card with the same type and one rank higher on top of that card.
     \item All cards under the card played are considered underneath that card and are immediately untapped.
     \item All cards underneath another card remain on the field.
     \item Cards underneath another card cannot be tapped or have their effects activated.
@@ -201,12 +208,13 @@
 \subsection{Battle Phase}
 \begin{itemize}
     \item The last part of a players turn is the battle phase.
+    \item Cards cannot be played to the field during the battle phase.
     \item Every unit a player owns can attack once during the owner players Battle Phase.
     \item If the opponent controls any units, the attacker must target one of them.
     \item If an opponent has no units remaining, a unit can attack the opponent directly.
     \item When a unit attacks, the attack value is used to determine its strength.
     \item When a unit is defending, the defense value is used to determine its strength.
-    \item During an attack, whichever unit has the higher power/attack prevails, and the other is destroyed (unless a card states otherwise) and sent to the discard pile.
+    \item During an attack, whichever unit has the higher attack prevails, and the other is destroyed (unless a card states otherwise) and sent to the discard pile.
     \item When a card is destroyed in battle, the card directly underneath it becomes an active card.
 \end{itemize}
 
@@ -221,8 +229,8 @@
 \begin{itemize}
     \item Every player starts the game with 20 points.
     \item To gain points, you must destroy units on your opponents side of the field.
-    \item When a unit is destroyed, the owner of that unit loses points equal to the level of that unit.
-    \item During a players battle phase, if there are no units on the opponents side of the field, a unit can attack directly and the opposing player loses points equal to the level of the attacking unit.
+    \item When a unit is destroyed, the owner of that unit loses points equal to the rank of that unit.
+    \item During a players battle phase, if there are no units on the opponents side of the field, a unit can attack directly and the opposing player loses points equal to the rank of the attacking unit.
     \item Players can also gain or lose points based on various card effects.
 \end{itemize}
 
@@ -236,8 +244,9 @@
 \subsection{Field Limitations}
 \begin{itemize}
     \item A players field is split into two parts (upper for units, and lower for spell cards).
-    \item A players upper field can support a maximum of 5 unit cards.
-    \item A players lower field can support a maximum of 5 spell cards.
+    \item Cards under other cards (within stacks) don’t count toward unit or spell limits.
+    \item A players upper field can support a maximum of 5 unit card stacks.
+    \item A players lower field can support a maximum of 5 spell card stacks.
 \end{itemize}
 
 
@@ -250,7 +259,7 @@
 \subsection{Hand Size Limit}
 \begin{itemize}
     \item Players may hold a maximum of 10 cards in their hand.
-    \item At the end of their turn, if a player has more than 10 cards, they must discard down to 10.
+    \item At the end of their turn, if a player has more than 10 cards, they must discard down to 10. This occurs after Battle Phase, before the next turn begins.
 \end{itemize}
 
 
