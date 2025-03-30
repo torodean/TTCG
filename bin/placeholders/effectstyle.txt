@@ -1,0 +1,9 @@
+continuous
+counter
+dormant
+latent
+passive
+equip
+overload
+echo
+pulse

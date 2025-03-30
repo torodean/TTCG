@@ -7,6 +7,13 @@ import argparse
 from ttcg_tools import generate_combinations
 from ttcg_tools import get_command_string
 
+# Load some needed constants from ttcg_constants
+from ttcg_constants import DEFAULT_PLACEHOLDERS_FOLDER
+from ttcg_constants import DEFAULT_ALL_EFFECTS_FILE
+from ttcg_constants import DEFAULT_ALL_EFFECT_TEMPLATES_FILE
+from ttcg_constants import DEFAULT_COMBOS_TO_REMOVE_FILE
+from ttcg_constants import DEFAULT_PHRASES_TO_REPLACE_FILE
+
 
 def write_combinations_to_file(combinations, output_file):
     """
@@ -213,22 +220,22 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate all possible combinations for placeholders in a sentence.")
     parser.add_argument('-s', "--sentence", default=None, 
                         help="Sentence with placeholders enclosed in <>.")
-    parser.add_argument('-f', "--file", nargs='?', const="effects/all_effect_templates.txt", default=None,
-                        help="A file of sentences with placeholders enclosed in <>. Defaults to 'default.txt' if no file specified.")    
-    parser.add_argument('-p', "--placeholder_dir", default="placeholders", 
+    parser.add_argument('-f', "--file", nargs='?', const=DEFAULT_ALL_EFFECT_TEMPLATES_FILE, default=None,
+                        help="A file of sentences with placeholders enclosed in <>. Defaults to None if no file specified.")    
+    parser.add_argument('-p', "--placeholder_dir", default=DEFAULT_PLACEHOLDERS_FOLDER, 
                         help="Directory containing placeholder text files.")
-    parser.add_argument('-o', "--output_file", default="effects/all_effects.txt",
+    parser.add_argument('-o', "--output_file", default=DEFAULT_ALL_EFFECTS_FILE,
                         help="The file to output the effects to.")
     parser.add_argument('-t', "--test_mode", default=False, action='store_true', 
                         help="Test mode will only output the combinations to terminal.")
     parser.add_argument('-v', "--verbose", default=False, action='store_true',
                         help="Adds extra output during program processing.")
-    parser.add_argument('-d', '--dedupe', nargs='?', const='effects/all_effects.txt', default=None,
-                        help="Remove duplicate lines from the specified file (or 'effects/all_effects.txt' if none given) and exit.")
-    parser.add_argument('-c', '--combinations_to_remove', default='placeholders/combinations_to_remove.txt',
-                    help="List file containing phrases to remove from resulting combinations (default: 'placeholders/combinations_to_remove.txt').")
-    parser.add_argument('-r', '--replacements_file', default='placeholders/phrase_replacements.txt',
-                    help="Configuration file containing phrase replacements (format: 'old phrase: new phrase') (default: 'placeholders/phrase_replacements.txt').")
+    parser.add_argument('-d', '--dedupe', nargs='?', const=DEFAULT_ALL_EFFECTS_FILE, default=None,
+                        help=f"Remove duplicate lines from the specified file (or '{DEFAULT_ALL_EFFECTS_FILE}' if none given) and exit.")
+    parser.add_argument('-c', '--combinations_to_remove', default=DEFAULT_COMBOS_TO_REMOVE_FILE,
+                    help=f"List file containing phrases to remove from resulting combinations (default: '{DEFAULT_COMBOS_TO_REMOVE_FILE}').")
+    parser.add_argument('-r', '--replacements_file', default=DEFAULT_PHRASES_TO_REPLACE_FILE,
+                    help=f"Configuration file containing phrase replacements (format: 'old phrase: new phrase') (default: '{DEFAULT_PHRASES_TO_REPLACE_FILE}').")
     args = parser.parse_args()
 
     # Print the command using the generic method

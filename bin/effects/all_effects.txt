@@ -5673,258 +5673,258 @@ Destroy up to two spellcaster cards on the field.
 Destroy up to two undead cards on the field.
 Destroy up to two warrior cards on the field.
 Destroy up to two water cards on the field.
-Discard one air card from your hand to play one air card from your deck.
-Discard one air card from your hand to play one air card from your discard pile.
-Discard one air card from your hand to play up to two air card from your deck.
-Discard one air card from your hand to play up to two air card from your discard pile.
 Discard one air card to add one air card from your deck to your hand.
 Discard one air card to add one air card from your discard pile to your hand.
 Discard one air card to counter the effect of a air card.
-Discard one aquatic card from your hand to play one aquatic card from your deck.
-Discard one aquatic card from your hand to play one aquatic card from your discard pile.
-Discard one aquatic card from your hand to play up to two aquatic card from your deck.
-Discard one aquatic card from your hand to play up to two aquatic card from your discard pile.
+Discard one air card to play one air card from your deck.
+Discard one air card to play one air card from your discard pile.
+Discard one air card to play up to two air card from your deck.
+Discard one air card to play up to two air card from your discard pile.
 Discard one aquatic card to add one aquatic card from your deck to your hand.
 Discard one aquatic card to add one aquatic card from your discard pile to your hand.
 Discard one aquatic card to counter the effect of a aquatic card.
-Discard one avian card from your hand to play one avian card from your deck.
-Discard one avian card from your hand to play one avian card from your discard pile.
-Discard one avian card from your hand to play up to two avian card from your deck.
-Discard one avian card from your hand to play up to two avian card from your discard pile.
+Discard one aquatic card to play one aquatic card from your deck.
+Discard one aquatic card to play one aquatic card from your discard pile.
+Discard one aquatic card to play up to two aquatic card from your deck.
+Discard one aquatic card to play up to two aquatic card from your discard pile.
 Discard one avian card to add one avian card from your deck to your hand.
 Discard one avian card to add one avian card from your discard pile to your hand.
 Discard one avian card to counter the effect of a avian card.
-Discard one beast card from your hand to play one beast card from your deck.
-Discard one beast card from your hand to play one beast card from your discard pile.
-Discard one beast card from your hand to play up to two beast card from your deck.
-Discard one beast card from your hand to play up to two beast card from your discard pile.
+Discard one avian card to play one avian card from your deck.
+Discard one avian card to play one avian card from your discard pile.
+Discard one avian card to play up to two avian card from your deck.
+Discard one avian card to play up to two avian card from your discard pile.
 Discard one beast card to add one beast card from your deck to your hand.
 Discard one beast card to add one beast card from your discard pile to your hand.
 Discard one beast card to counter the effect of a beast card.
-Discard one botanic card from your hand to play one botanic card from your deck.
-Discard one botanic card from your hand to play one botanic card from your discard pile.
-Discard one botanic card from your hand to play up to two botanic card from your deck.
-Discard one botanic card from your hand to play up to two botanic card from your discard pile.
+Discard one beast card to play one beast card from your deck.
+Discard one beast card to play one beast card from your discard pile.
+Discard one beast card to play up to two beast card from your deck.
+Discard one beast card to play up to two beast card from your discard pile.
 Discard one botanic card to add one botanic card from your deck to your hand.
 Discard one botanic card to add one botanic card from your discard pile to your hand.
 Discard one botanic card to counter the effect of a botanic card.
-Discard one dark card from your hand to play one dark card from your deck.
-Discard one dark card from your hand to play one dark card from your discard pile.
-Discard one dark card from your hand to play up to two dark card from your deck.
-Discard one dark card from your hand to play up to two dark card from your discard pile.
+Discard one botanic card to play one botanic card from your deck.
+Discard one botanic card to play one botanic card from your discard pile.
+Discard one botanic card to play up to two botanic card from your deck.
+Discard one botanic card to play up to two botanic card from your discard pile.
 Discard one dark card to add one dark card from your deck to your hand.
 Discard one dark card to add one dark card from your discard pile to your hand.
 Discard one dark card to counter the effect of a dark card.
-Discard one dragon card from your hand to play one dragon card from your deck.
-Discard one dragon card from your hand to play one dragon card from your discard pile.
-Discard one dragon card from your hand to play up to two dragon card from your deck.
-Discard one dragon card from your hand to play up to two dragon card from your discard pile.
+Discard one dark card to play one dark card from your deck.
+Discard one dark card to play one dark card from your discard pile.
+Discard one dark card to play up to two dark card from your deck.
+Discard one dark card to play up to two dark card from your discard pile.
 Discard one dragon card to add one dragon card from your deck to your hand.
 Discard one dragon card to add one dragon card from your discard pile to your hand.
 Discard one dragon card to counter the effect of a dragon card.
-Discard one earth card from your hand to play one earth card from your deck.
-Discard one earth card from your hand to play one earth card from your discard pile.
-Discard one earth card from your hand to play up to two earth card from your deck.
-Discard one earth card from your hand to play up to two earth card from your discard pile.
+Discard one dragon card to play one dragon card from your deck.
+Discard one dragon card to play one dragon card from your discard pile.
+Discard one dragon card to play up to two dragon card from your deck.
+Discard one dragon card to play up to two dragon card from your discard pile.
 Discard one earth card to add one earth card from your deck to your hand.
 Discard one earth card to add one earth card from your discard pile to your hand.
 Discard one earth card to counter the effect of a earth card.
-Discard one electric card from your hand to play one electric card from your deck.
-Discard one electric card from your hand to play one electric card from your discard pile.
-Discard one electric card from your hand to play up to two electric card from your deck.
-Discard one electric card from your hand to play up to two electric card from your discard pile.
+Discard one earth card to play one earth card from your deck.
+Discard one earth card to play one earth card from your discard pile.
+Discard one earth card to play up to two earth card from your deck.
+Discard one earth card to play up to two earth card from your discard pile.
 Discard one electric card to add one electric card from your deck to your hand.
 Discard one electric card to add one electric card from your discard pile to your hand.
 Discard one electric card to counter the effect of a electric card.
-Discard one elemental card from your hand to play one elemental card from your deck.
-Discard one elemental card from your hand to play one elemental card from your discard pile.
-Discard one elemental card from your hand to play up to two elemental card from your deck.
-Discard one elemental card from your hand to play up to two elemental card from your discard pile.
+Discard one electric card to play one electric card from your deck.
+Discard one electric card to play one electric card from your discard pile.
+Discard one electric card to play up to two electric card from your deck.
+Discard one electric card to play up to two electric card from your discard pile.
 Discard one elemental card to add one elemental card from your deck to your hand.
 Discard one elemental card to add one elemental card from your discard pile to your hand.
 Discard one elemental card to counter the effect of a elemental card.
-Discard one fairy card from your hand to play one fairy card from your deck.
-Discard one fairy card from your hand to play one fairy card from your discard pile.
-Discard one fairy card from your hand to play up to two fairy card from your deck.
-Discard one fairy card from your hand to play up to two fairy card from your discard pile.
+Discard one elemental card to play one elemental card from your deck.
+Discard one elemental card to play one elemental card from your discard pile.
+Discard one elemental card to play up to two elemental card from your deck.
+Discard one elemental card to play up to two elemental card from your discard pile.
 Discard one fairy card to add one fairy card from your deck to your hand.
 Discard one fairy card to add one fairy card from your discard pile to your hand.
 Discard one fairy card to counter the effect of a fairy card.
-Discard one fire card from your hand to play one fire card from your deck.
-Discard one fire card from your hand to play one fire card from your discard pile.
-Discard one fire card from your hand to play up to two fire card from your deck.
-Discard one fire card from your hand to play up to two fire card from your discard pile.
+Discard one fairy card to play one fairy card from your deck.
+Discard one fairy card to play one fairy card from your discard pile.
+Discard one fairy card to play up to two fairy card from your deck.
+Discard one fairy card to play up to two fairy card from your discard pile.
 Discard one fire card to add one fire card from your deck to your hand.
 Discard one fire card to add one fire card from your discard pile to your hand.
 Discard one fire card to counter the effect of a fire card.
-Discard one ghost card from your hand to play one ghost card from your deck.
-Discard one ghost card from your hand to play one ghost card from your discard pile.
-Discard one ghost card from your hand to play up to two ghost card from your deck.
-Discard one ghost card from your hand to play up to two ghost card from your discard pile.
+Discard one fire card to play one fire card from your deck.
+Discard one fire card to play one fire card from your discard pile.
+Discard one fire card to play up to two fire card from your deck.
+Discard one fire card to play up to two fire card from your discard pile.
 Discard one ghost card to add one ghost card from your deck to your hand.
 Discard one ghost card to add one ghost card from your discard pile to your hand.
 Discard one ghost card to counter the effect of a ghost card.
-Discard one insect card from your hand to play one insect card from your deck.
-Discard one insect card from your hand to play one insect card from your discard pile.
-Discard one insect card from your hand to play up to two insect card from your deck.
-Discard one insect card from your hand to play up to two insect card from your discard pile.
+Discard one ghost card to play one ghost card from your deck.
+Discard one ghost card to play one ghost card from your discard pile.
+Discard one ghost card to play up to two ghost card from your deck.
+Discard one ghost card to play up to two ghost card from your discard pile.
 Discard one insect card to add one insect card from your deck to your hand.
 Discard one insect card to add one insect card from your discard pile to your hand.
 Discard one insect card to counter the effect of a insect card.
-Discard one light card from your hand to play one light card from your deck.
-Discard one light card from your hand to play one light card from your discard pile.
-Discard one light card from your hand to play up to two light card from your deck.
-Discard one light card from your hand to play up to two light card from your discard pile.
+Discard one insect card to play one insect card from your deck.
+Discard one insect card to play one insect card from your discard pile.
+Discard one insect card to play up to two insect card from your deck.
+Discard one insect card to play up to two insect card from your discard pile.
 Discard one light card to add one light card from your deck to your hand.
 Discard one light card to add one light card from your discard pile to your hand.
 Discard one light card to counter the effect of a light card.
-Discard one machine card from your hand to play one machine card from your deck.
-Discard one machine card from your hand to play one machine card from your discard pile.
-Discard one machine card from your hand to play up to two machine card from your deck.
-Discard one machine card from your hand to play up to two machine card from your discard pile.
+Discard one light card to play one light card from your deck.
+Discard one light card to play one light card from your discard pile.
+Discard one light card to play up to two light card from your deck.
+Discard one light card to play up to two light card from your discard pile.
 Discard one machine card to add one machine card from your deck to your hand.
 Discard one machine card to add one machine card from your discard pile to your hand.
 Discard one machine card to counter the effect of a machine card.
-Discard one nature card from your hand to play one nature card from your deck.
-Discard one nature card from your hand to play one nature card from your discard pile.
-Discard one nature card from your hand to play up to two nature card from your deck.
-Discard one nature card from your hand to play up to two nature card from your discard pile.
+Discard one machine card to play one machine card from your deck.
+Discard one machine card to play one machine card from your discard pile.
+Discard one machine card to play up to two machine card from your deck.
+Discard one machine card to play up to two machine card from your discard pile.
 Discard one nature card to add one nature card from your deck to your hand.
 Discard one nature card to add one nature card from your discard pile to your hand.
 Discard one nature card to counter the effect of a nature card.
-Discard one rank 1 card from your hand to play one rank 1 card from your deck.
-Discard one rank 1 card from your hand to play one rank 1 card from your discard pile.
-Discard one rank 1 card from your hand to play up to two rank 1 card from your deck.
-Discard one rank 1 card from your hand to play up to two rank 1 card from your discard pile.
+Discard one nature card to play one nature card from your deck.
+Discard one nature card to play one nature card from your discard pile.
+Discard one nature card to play up to two nature card from your deck.
+Discard one nature card to play up to two nature card from your discard pile.
 Discard one rank 1 card to add one rank 1 card from your deck to your hand.
 Discard one rank 1 card to add one rank 1 card from your discard pile to your hand.
 Discard one rank 1 card to counter the effect of a rank 1 card.
-Discard one rank 1 spell card from your hand to play one rank 1 spell card from your deck.
-Discard one rank 1 spell card from your hand to play one rank 1 spell card from your discard pile.
-Discard one rank 1 spell card from your hand to play up to two rank 1 spell card from your deck.
-Discard one rank 1 spell card from your hand to play up to two rank 1 spell card from your discard pile.
+Discard one rank 1 card to play one rank 1 card from your deck.
+Discard one rank 1 card to play one rank 1 card from your discard pile.
+Discard one rank 1 card to play up to two rank 1 card from your deck.
+Discard one rank 1 card to play up to two rank 1 card from your discard pile.
 Discard one rank 1 spell card to add one rank 1 spell card from your deck to your hand.
 Discard one rank 1 spell card to add one rank 1 spell card from your discard pile to your hand.
 Discard one rank 1 spell card to counter the effect of a rank 1 spell card.
-Discard one rank 1 unit card from your hand to play one rank 1 unit card from your deck.
-Discard one rank 1 unit card from your hand to play one rank 1 unit card from your discard pile.
-Discard one rank 1 unit card from your hand to play up to two rank 1 unit card from your deck.
-Discard one rank 1 unit card from your hand to play up to two rank 1 unit card from your discard pile.
+Discard one rank 1 spell card to play one rank 1 spell card from your deck.
+Discard one rank 1 spell card to play one rank 1 spell card from your discard pile.
+Discard one rank 1 spell card to play up to two rank 1 spell card from your deck.
+Discard one rank 1 spell card to play up to two rank 1 spell card from your discard pile.
 Discard one rank 1 unit card to add one rank 1 unit card from your deck to your hand.
 Discard one rank 1 unit card to add one rank 1 unit card from your discard pile to your hand.
 Discard one rank 1 unit card to counter the effect of a rank 1 unit card.
-Discard one rank 2 card from your hand to play one rank 2 card from your deck.
-Discard one rank 2 card from your hand to play one rank 2 card from your discard pile.
-Discard one rank 2 card from your hand to play up to two rank 2 card from your deck.
-Discard one rank 2 card from your hand to play up to two rank 2 card from your discard pile.
+Discard one rank 1 unit card to play one rank 1 unit card from your deck.
+Discard one rank 1 unit card to play one rank 1 unit card from your discard pile.
+Discard one rank 1 unit card to play up to two rank 1 unit card from your deck.
+Discard one rank 1 unit card to play up to two rank 1 unit card from your discard pile.
 Discard one rank 2 card to add one rank 2 card from your deck to your hand.
 Discard one rank 2 card to add one rank 2 card from your discard pile to your hand.
 Discard one rank 2 card to counter the effect of a rank 2 card.
-Discard one rank 2 spell card from your hand to play one rank 2 spell card from your deck.
-Discard one rank 2 spell card from your hand to play one rank 2 spell card from your discard pile.
-Discard one rank 2 spell card from your hand to play up to two rank 2 spell card from your deck.
-Discard one rank 2 spell card from your hand to play up to two rank 2 spell card from your discard pile.
+Discard one rank 2 card to play one rank 2 card from your deck.
+Discard one rank 2 card to play one rank 2 card from your discard pile.
+Discard one rank 2 card to play up to two rank 2 card from your deck.
+Discard one rank 2 card to play up to two rank 2 card from your discard pile.
 Discard one rank 2 spell card to add one rank 2 spell card from your deck to your hand.
 Discard one rank 2 spell card to add one rank 2 spell card from your discard pile to your hand.
 Discard one rank 2 spell card to counter the effect of a rank 2 spell card.
-Discard one rank 2 unit card from your hand to play one rank 2 unit card from your deck.
-Discard one rank 2 unit card from your hand to play one rank 2 unit card from your discard pile.
-Discard one rank 2 unit card from your hand to play up to two rank 2 unit card from your deck.
-Discard one rank 2 unit card from your hand to play up to two rank 2 unit card from your discard pile.
+Discard one rank 2 spell card to play one rank 2 spell card from your deck.
+Discard one rank 2 spell card to play one rank 2 spell card from your discard pile.
+Discard one rank 2 spell card to play up to two rank 2 spell card from your deck.
+Discard one rank 2 spell card to play up to two rank 2 spell card from your discard pile.
 Discard one rank 2 unit card to add one rank 2 unit card from your deck to your hand.
 Discard one rank 2 unit card to add one rank 2 unit card from your discard pile to your hand.
 Discard one rank 2 unit card to counter the effect of a rank 2 unit card.
-Discard one rank 3 card from your hand to play one rank 3 card from your deck.
-Discard one rank 3 card from your hand to play one rank 3 card from your discard pile.
-Discard one rank 3 card from your hand to play up to two rank 3 card from your deck.
-Discard one rank 3 card from your hand to play up to two rank 3 card from your discard pile.
+Discard one rank 2 unit card to play one rank 2 unit card from your deck.
+Discard one rank 2 unit card to play one rank 2 unit card from your discard pile.
+Discard one rank 2 unit card to play up to two rank 2 unit card from your deck.
+Discard one rank 2 unit card to play up to two rank 2 unit card from your discard pile.
 Discard one rank 3 card to add one rank 3 card from your deck to your hand.
 Discard one rank 3 card to add one rank 3 card from your discard pile to your hand.
 Discard one rank 3 card to counter the effect of a rank 3 card.
-Discard one rank 3 spell card from your hand to play one rank 3 spell card from your deck.
-Discard one rank 3 spell card from your hand to play one rank 3 spell card from your discard pile.
-Discard one rank 3 spell card from your hand to play up to two rank 3 spell card from your deck.
-Discard one rank 3 spell card from your hand to play up to two rank 3 spell card from your discard pile.
+Discard one rank 3 card to play one rank 3 card from your deck.
+Discard one rank 3 card to play one rank 3 card from your discard pile.
+Discard one rank 3 card to play up to two rank 3 card from your deck.
+Discard one rank 3 card to play up to two rank 3 card from your discard pile.
 Discard one rank 3 spell card to add one rank 3 spell card from your deck to your hand.
 Discard one rank 3 spell card to add one rank 3 spell card from your discard pile to your hand.
 Discard one rank 3 spell card to counter the effect of a rank 3 spell card.
-Discard one rank 3 unit card from your hand to play one rank 3 unit card from your deck.
-Discard one rank 3 unit card from your hand to play one rank 3 unit card from your discard pile.
-Discard one rank 3 unit card from your hand to play up to two rank 3 unit card from your deck.
-Discard one rank 3 unit card from your hand to play up to two rank 3 unit card from your discard pile.
+Discard one rank 3 spell card to play one rank 3 spell card from your deck.
+Discard one rank 3 spell card to play one rank 3 spell card from your discard pile.
+Discard one rank 3 spell card to play up to two rank 3 spell card from your deck.
+Discard one rank 3 spell card to play up to two rank 3 spell card from your discard pile.
 Discard one rank 3 unit card to add one rank 3 unit card from your deck to your hand.
 Discard one rank 3 unit card to add one rank 3 unit card from your discard pile to your hand.
 Discard one rank 3 unit card to counter the effect of a rank 3 unit card.
-Discard one rank 4 card from your hand to play one rank 4 card from your deck.
-Discard one rank 4 card from your hand to play one rank 4 card from your discard pile.
-Discard one rank 4 card from your hand to play up to two rank 4 card from your deck.
-Discard one rank 4 card from your hand to play up to two rank 4 card from your discard pile.
+Discard one rank 3 unit card to play one rank 3 unit card from your deck.
+Discard one rank 3 unit card to play one rank 3 unit card from your discard pile.
+Discard one rank 3 unit card to play up to two rank 3 unit card from your deck.
+Discard one rank 3 unit card to play up to two rank 3 unit card from your discard pile.
 Discard one rank 4 card to add one rank 4 card from your deck to your hand.
 Discard one rank 4 card to add one rank 4 card from your discard pile to your hand.
 Discard one rank 4 card to counter the effect of a rank 4 card.
-Discard one rank 4 unit card from your hand to play one rank 4 unit card from your deck.
-Discard one rank 4 unit card from your hand to play one rank 4 unit card from your discard pile.
-Discard one rank 4 unit card from your hand to play up to two rank 4 unit card from your deck.
-Discard one rank 4 unit card from your hand to play up to two rank 4 unit card from your discard pile.
+Discard one rank 4 card to play one rank 4 card from your deck.
+Discard one rank 4 card to play one rank 4 card from your discard pile.
+Discard one rank 4 card to play up to two rank 4 card from your deck.
+Discard one rank 4 card to play up to two rank 4 card from your discard pile.
 Discard one rank 4 unit card to add one rank 4 unit card from your deck to your hand.
 Discard one rank 4 unit card to add one rank 4 unit card from your discard pile to your hand.
 Discard one rank 4 unit card to counter the effect of a rank 4 unit card.
-Discard one rank 5 card from your hand to play one rank 5 card from your deck.
-Discard one rank 5 card from your hand to play one rank 5 card from your discard pile.
-Discard one rank 5 card from your hand to play up to two rank 5 card from your deck.
-Discard one rank 5 card from your hand to play up to two rank 5 card from your discard pile.
+Discard one rank 4 unit card to play one rank 4 unit card from your deck.
+Discard one rank 4 unit card to play one rank 4 unit card from your discard pile.
+Discard one rank 4 unit card to play up to two rank 4 unit card from your deck.
+Discard one rank 4 unit card to play up to two rank 4 unit card from your discard pile.
 Discard one rank 5 card to add one rank 5 card from your deck to your hand.
 Discard one rank 5 card to add one rank 5 card from your discard pile to your hand.
 Discard one rank 5 card to counter the effect of a rank 5 card.
-Discard one rank 5 unit card from your hand to play one rank 5 unit card from your deck.
-Discard one rank 5 unit card from your hand to play one rank 5 unit card from your discard pile.
-Discard one rank 5 unit card from your hand to play up to two rank 5 unit card from your deck.
-Discard one rank 5 unit card from your hand to play up to two rank 5 unit card from your discard pile.
+Discard one rank 5 card to play one rank 5 card from your deck.
+Discard one rank 5 card to play one rank 5 card from your discard pile.
+Discard one rank 5 card to play up to two rank 5 card from your deck.
+Discard one rank 5 card to play up to two rank 5 card from your discard pile.
 Discard one rank 5 unit card to add one rank 5 unit card from your deck to your hand.
 Discard one rank 5 unit card to add one rank 5 unit card from your discard pile to your hand.
 Discard one rank 5 unit card to counter the effect of a rank 5 unit card.
-Discard one reptile card from your hand to play one reptile card from your deck.
-Discard one reptile card from your hand to play one reptile card from your discard pile.
-Discard one reptile card from your hand to play up to two reptile card from your deck.
-Discard one reptile card from your hand to play up to two reptile card from your discard pile.
+Discard one rank 5 unit card to play one rank 5 unit card from your deck.
+Discard one rank 5 unit card to play one rank 5 unit card from your discard pile.
+Discard one rank 5 unit card to play up to two rank 5 unit card from your deck.
+Discard one rank 5 unit card to play up to two rank 5 unit card from your discard pile.
 Discard one reptile card to add one reptile card from your deck to your hand.
 Discard one reptile card to add one reptile card from your discard pile to your hand.
 Discard one reptile card to counter the effect of a reptile card.
-Discard one spell card from your hand to play one spell card from your deck.
-Discard one spell card from your hand to play one spell card from your discard pile.
-Discard one spell card from your hand to play up to two spells card from your deck.
-Discard one spell card from your hand to play up to two spells card from your discard pile.
+Discard one reptile card to play one reptile card from your deck.
+Discard one reptile card to play one reptile card from your discard pile.
+Discard one reptile card to play up to two reptile card from your deck.
+Discard one reptile card to play up to two reptile card from your discard pile.
 Discard one spell card to add one spell card from your deck to your hand.
 Discard one spell card to add one spell card from your discard pile to your hand.
 Discard one spell card to counter the effect of a spell card.
-Discard one spellcaster card from your hand to play one spellcaster card from your deck.
-Discard one spellcaster card from your hand to play one spellcaster card from your discard pile.
-Discard one spellcaster card from your hand to play up to two spellcaster card from your deck.
-Discard one spellcaster card from your hand to play up to two spellcaster card from your discard pile.
+Discard one spell card to play one spell card from your deck.
+Discard one spell card to play one spell card from your discard pile.
+Discard one spell card to play up to two spells card from your deck.
+Discard one spell card to play up to two spells card from your discard pile.
 Discard one spellcaster card to add one spellcaster card from your deck to your hand.
 Discard one spellcaster card to add one spellcaster card from your discard pile to your hand.
 Discard one spellcaster card to counter the effect of a spellcaster card.
-Discard one undead card from your hand to play one undead card from your deck.
-Discard one undead card from your hand to play one undead card from your discard pile.
-Discard one undead card from your hand to play up to two undead card from your deck.
-Discard one undead card from your hand to play up to two undead card from your discard pile.
+Discard one spellcaster card to play one spellcaster card from your deck.
+Discard one spellcaster card to play one spellcaster card from your discard pile.
+Discard one spellcaster card to play up to two spellcaster card from your deck.
+Discard one spellcaster card to play up to two spellcaster card from your discard pile.
 Discard one undead card to add one undead card from your deck to your hand.
 Discard one undead card to add one undead card from your discard pile to your hand.
 Discard one undead card to counter the effect of a undead card.
-Discard one warrior card from your hand to play one warrior card from your deck.
-Discard one warrior card from your hand to play one warrior card from your discard pile.
-Discard one warrior card from your hand to play up to two warrior card from your deck.
-Discard one warrior card from your hand to play up to two warrior card from your discard pile.
+Discard one undead card to play one undead card from your deck.
+Discard one undead card to play one undead card from your discard pile.
+Discard one undead card to play up to two undead card from your deck.
+Discard one undead card to play up to two undead card from your discard pile.
 Discard one warrior card to add one warrior card from your deck to your hand.
 Discard one warrior card to add one warrior card from your discard pile to your hand.
 Discard one warrior card to counter the effect of a warrior card.
-Discard one water card from your hand to play one water card from your deck.
-Discard one water card from your hand to play one water card from your discard pile.
-Discard one water card from your hand to play up to two water card from your deck.
-Discard one water card from your hand to play up to two water card from your discard pile.
+Discard one warrior card to play one warrior card from your deck.
+Discard one warrior card to play one warrior card from your discard pile.
+Discard one warrior card to play up to two warrior card from your deck.
+Discard one warrior card to play up to two warrior card from your discard pile.
 Discard one water card to add one water card from your deck to your hand.
 Discard one water card to add one water card from your discard pile to your hand.
 Discard one water card to counter the effect of a water card.
+Discard one water card to play one water card from your deck.
+Discard one water card to play one water card from your discard pile.
+Discard one water card to play up to two water card from your deck.
+Discard one water card to play up to two water card from your discard pile.
 Discard this card to add one air card from your deck to your hand.
 Discard this card to add one air card from your discard pile to your hand.
 Discard this card to add one aquatic card from your deck to your hand.
@@ -7141,54 +7141,71 @@ Play one card under this one.
 Play one spell under this one.
 Play one unit under this one.
 Return one air card from the discard pile to the top of your deck.
+Return one air card from the field to the owner's deck.
 Return one air card from the field to the owner's hand.
 Return one air card from your discard pile to your hand.
 Return one aquatic card from the discard pile to the top of your deck.
+Return one aquatic card from the field to the owner's deck.
 Return one aquatic card from the field to the owner's hand.
 Return one aquatic card from your discard pile to your hand.
 Return one avian card from the discard pile to the top of your deck.
+Return one avian card from the field to the owner's deck.
 Return one avian card from the field to the owner's hand.
 Return one avian card from your discard pile to your hand.
 Return one beast card from the discard pile to the top of your deck.
+Return one beast card from the field to the owner's deck.
 Return one beast card from the field to the owner's hand.
 Return one beast card from your discard pile to your hand.
 Return one botanic card from the discard pile to the top of your deck.
+Return one botanic card from the field to the owner's deck.
 Return one botanic card from the field to the owner's hand.
 Return one botanic card from your discard pile to your hand.
 Return one dark card from the discard pile to the top of your deck.
+Return one dark card from the field to the owner's deck.
 Return one dark card from the field to the owner's hand.
 Return one dark card from your discard pile to your hand.
 Return one dragon card from the discard pile to the top of your deck.
+Return one dragon card from the field to the owner's deck.
 Return one dragon card from the field to the owner's hand.
 Return one dragon card from your discard pile to your hand.
 Return one earth card from the discard pile to the top of your deck.
+Return one earth card from the field to the owner's deck.
 Return one earth card from the field to the owner's hand.
 Return one earth card from your discard pile to your hand.
 Return one electric card from the discard pile to the top of your deck.
+Return one electric card from the field to the owner's deck.
 Return one electric card from the field to the owner's hand.
 Return one electric card from your discard pile to your hand.
 Return one elemental card from the discard pile to the top of your deck.
+Return one elemental card from the field to the owner's deck.
 Return one elemental card from the field to the owner's hand.
 Return one elemental card from your discard pile to your hand.
 Return one fairy card from the discard pile to the top of your deck.
+Return one fairy card from the field to the owner's deck.
 Return one fairy card from the field to the owner's hand.
 Return one fairy card from your discard pile to your hand.
 Return one fire card from the discard pile to the top of your deck.
+Return one fire card from the field to the owner's deck.
 Return one fire card from the field to the owner's hand.
 Return one fire card from your discard pile to your hand.
 Return one ghost card from the discard pile to the top of your deck.
+Return one ghost card from the field to the owner's deck.
 Return one ghost card from the field to the owner's hand.
 Return one ghost card from your discard pile to your hand.
 Return one insect card from the discard pile to the top of your deck.
+Return one insect card from the field to the owner's deck.
 Return one insect card from the field to the owner's hand.
 Return one insect card from your discard pile to your hand.
 Return one light card from the discard pile to the top of your deck.
+Return one light card from the field to the owner's deck.
 Return one light card from the field to the owner's hand.
 Return one light card from your discard pile to your hand.
 Return one machine card from the discard pile to the top of your deck.
+Return one machine card from the field to the owner's deck.
 Return one machine card from the field to the owner's hand.
 Return one machine card from your discard pile to your hand.
 Return one nature card from the discard pile to the top of your deck.
+Return one nature card from the field to the owner's deck.
 Return one nature card from the field to the owner's hand.
 Return one nature card from your discard pile to your hand.
 Return one rank 1 card from the discard pile to the top of your deck.
@@ -7218,21 +7235,27 @@ Return one rank 5 card from your discard pile to your hand.
 Return one rank 5 unit card from the discard pile to the top of your deck.
 Return one rank 5 unit card from your discard pile to your hand.
 Return one reptile card from the discard pile to the top of your deck.
+Return one reptile card from the field to the owner's deck.
 Return one reptile card from the field to the owner's hand.
 Return one reptile card from your discard pile to your hand.
 Return one spell card from the discard pile to the top of your deck.
+Return one spell card from the field to the owner's deck.
 Return one spell card from the field to the owner's hand.
 Return one spell card from your discard pile to your hand.
 Return one spellcaster card from the discard pile to the top of your deck.
+Return one spellcaster card from the field to the owner's deck.
 Return one spellcaster card from the field to the owner's hand.
 Return one spellcaster card from your discard pile to your hand.
 Return one undead card from the discard pile to the top of your deck.
+Return one undead card from the field to the owner's deck.
 Return one undead card from the field to the owner's hand.
 Return one undead card from your discard pile to your hand.
 Return one warrior card from the discard pile to the top of your deck.
+Return one warrior card from the field to the owner's deck.
 Return one warrior card from the field to the owner's hand.
 Return one warrior card from your discard pile to your hand.
 Return one water card from the discard pile to the top of your deck.
+Return one water card from the field to the owner's deck.
 Return one water card from the field to the owner's hand.
 Return one water card from your discard pile to your hand.
 Return up to four air cards from your discard pile to your hand.
@@ -8739,6 +8762,18 @@ When a aquatic card is destroyed, gain one point.
 When a avian card is destroyed, gain one point.
 When a beast card is destroyed, gain one point.
 When a botanic card is destroyed, gain one point.
+When a card is sent from the deck to the deck, destroy one card.
+When a card is sent from the deck to the deck, gain one point.
+When a card is sent from the deck to the deck, untap one card.
+When a card is sent from the deck to the hand, destroy one card.
+When a card is sent from the deck to the hand, gain one point.
+When a card is sent from the deck to the hand, untap one card.
+When a card is sent from the discard pile to the deck, destroy one card.
+When a card is sent from the discard pile to the deck, gain one point.
+When a card is sent from the discard pile to the deck, untap one card.
+When a card is sent from the discard pile to the hand, destroy one card.
+When a card is sent from the discard pile to the hand, gain one point.
+When a card is sent from the discard pile to the hand, untap one card.
 When a dark card is destroyed, gain one point.
 When a dragon card is destroyed, gain one point.
 When a earth card is destroyed, gain one point.
@@ -8753,8 +8788,32 @@ When a machine card is destroyed, gain one point.
 When a nature card is destroyed, gain one point.
 When a reptile card is destroyed, gain one point.
 When a spell card is destroyed, gain one point.
+When a spell is sent from the deck to the deck, destroy one card.
+When a spell is sent from the deck to the deck, gain one point.
+When a spell is sent from the deck to the deck, untap one card.
+When a spell is sent from the deck to the hand, destroy one card.
+When a spell is sent from the deck to the hand, gain one point.
+When a spell is sent from the deck to the hand, untap one card.
+When a spell is sent from the discard pile to the deck, destroy one card.
+When a spell is sent from the discard pile to the deck, gain one point.
+When a spell is sent from the discard pile to the deck, untap one card.
+When a spell is sent from the discard pile to the hand, destroy one card.
+When a spell is sent from the discard pile to the hand, gain one point.
+When a spell is sent from the discard pile to the hand, untap one card.
 When a spellcaster card is destroyed, gain one point.
 When a undead card is destroyed, gain one point.
+When a unit is sent from the deck to the deck, destroy one card.
+When a unit is sent from the deck to the deck, gain one point.
+When a unit is sent from the deck to the deck, untap one card.
+When a unit is sent from the deck to the hand, destroy one card.
+When a unit is sent from the deck to the hand, gain one point.
+When a unit is sent from the deck to the hand, untap one card.
+When a unit is sent from the discard pile to the deck, destroy one card.
+When a unit is sent from the discard pile to the deck, gain one point.
+When a unit is sent from the discard pile to the deck, untap one card.
+When a unit is sent from the discard pile to the hand, destroy one card.
+When a unit is sent from the discard pile to the hand, gain one point.
+When a unit is sent from the discard pile to the hand, untap one card.
 When a warrior card is destroyed, gain one point.
 When a water card is destroyed, gain one point.
 When this card is sent to the discard pile, your opponent takes four points of damage.

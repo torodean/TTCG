@@ -5,6 +5,7 @@ import itertools
 
 # Import some constants from the ttxg_constants file.
 from ttcg_constants import VALID_OVERLAY_STYLES
+from ttcg_constants import DEFAULT_PLACEHOLDERS_FOLDER
 
 
 def output_text(text, option="text"):
@@ -44,7 +45,7 @@ def output_text(text, option="text"):
         print(text)
 
 
-def load_placeholder_values(placeholder_dir, placeholder, visited=None):
+def load_placeholder_values(placeholder, placeholder_dir=DEFAULT_PLACEHOLDERS_FOLDER, visited=None):
     """
     Loads and resolves values for a placeholder from a text file, handling nested placeholders recursively.
 
@@ -54,20 +55,14 @@ def load_placeholder_values(placeholder_dir, placeholder, visited=None):
     cycle is detected or if the file is missing/empty.
 
     Args:
-        placeholder_dir (str): Directory path containing placeholder text files (e.g., 'placeholders/').
         placeholder (str): Name of the placeholder to load values for (e.g., 'number'), without angle brackets.
+        placeholder_dir (str): Directory path containing placeholder text files (e.g., 'placeholders/').
         visited (set, optional): Set of placeholders already processed in the recursion stack to detect cycles.
                                  Defaults to None, initializing an empty set if not provided.
 
     Returns:
         list: A list of resolved string values for the placeholder. If the file doesn’t exist, is empty, or a cycle is
               detected, returns a single-element list containing the unresolved placeholder (e.g., ['<placeholder>']).
-
-    Examples:
-        >>> load_placeholder_values('placeholders/', 'number')
-        ['1', '2', '3']  # Assuming placeholders/number.txt contains "1\n2\n3"
-        >>> load_placeholder_values('placeholders/', 'missing')
-        ['<missing>']  # If placeholders/missing.txt doesn’t exist
     """
     if visited is None:
         visited = set()
@@ -102,7 +97,7 @@ def load_placeholder_values(placeholder_dir, placeholder, visited=None):
     return resolved_values
 
 
-def generate_combinations(sentence, placeholder_dir, visited=None):
+def generate_combinations(sentence, placeholder_dir=DEFAULT_PLACEHOLDERS_FOLDER, visited=None):
     """
     Generate all possible combinations by replacing placeholders in the sentence with their corresponding values,
     handling nested placeholders and offsets (e.g., <rank+1>, <rank-1>) recursively.
@@ -141,7 +136,7 @@ def generate_combinations(sentence, placeholder_dir, visited=None):
         
         if base not in placeholder_values:
             # Load values for the base placeholder (e.g., "rank")
-            placeholder_values[base] = load_placeholder_values(placeholder_dir, base, visited)
+            placeholder_values[base] = load_placeholder_values(base, placeholder_dir, visited)
             base_to_offsets[base] = set()
         
         # Track this offset for the base
@@ -321,6 +316,23 @@ def rename_file(file_path, new_name):
     return new_file_path
     
     
+def text_in_placeholder_string(placeholder_string, check_string):
+    """
+    This will determine if any combination of a string containing a placeholder exists within another string.
+    
+    Args:
+        placeholder_string (str): The string containing placeholders.
+        check_string (str): The string to check if one of the placeholder string variations exists in.
+        
+    Returns:
+        bool: True if any placeholder combination is found in check_string, False otherwise.
+    """
+    all_combinations = generate_combinations(placeholder_string)
+    if any(combo in check_string for combo in all_combinations):
+        return True
+    return False
+    
+
 def deduce_effect_style_from_effect_text(effect_text):
     """
     This method will return the effect style (i some cases) based on the effect text.
@@ -357,8 +369,11 @@ def deduce_effect_style_from_effect_text(effect_text):
         return "latent"
 
     # Passive style - effects that trigger whenever conditions are met
-    if "You can rank up this card using a" in effect_text:
+    if "you can rank up this card using a" in effect_text:
         return "passive"
+
+    if text_in_placeholder_string("discard one <typeslevels> card", effect_text):
+        return "overload"
 
     # If no specific style is matched, return None (default for Normal or unclear cases)
     return None

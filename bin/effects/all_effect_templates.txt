@@ -20,10 +20,10 @@ Destroy this card to destroy up to <number> <typeslevels> card(s) on the field.
 Destroy this card to shuffle your discard pile into your deck.
 Destroy two <typeslevels> cards you own to play one <typeslevels> card from your <pile>.
 Destroy up to <number> <typeslevels> card(s) on the field.
-Discard one <typeslevels> card from your hand to play one <typeslevels> card from your <pile>.
-Discard one <typeslevels> card from your hand to play up to two <typeslevels> cards from your <pile>.
 Discard one <typeslevels> card to add one <typeslevels> card from your <pile> to your hand.
 Discard one <typeslevels> card to counter the effect of a <typeslevels> card.
+Discard one <typeslevels> card to play one <typeslevels> card from your <pile>.
+Discard one <typeslevels> card to play up to two <typeslevels> cards from your <pile>.
 Discard this card to add one <target> from your <pile> to your hand.
 Draw <number> card(s), then discard <number-1> card(s) of your choice.
 Draw <number> card(s), then discard <number-2> card(s) of your choice.
@@ -39,7 +39,7 @@ Lose <number> point(s) to draw <number> card(s).
 Once per turn, while this card is under another, you can untap a card above this one.
 Place one <typeslevels> card from your <pile> under this card.
 Play one <card> under this one.
-Return one <types> card from the field to the owner's hand.
+Return one <types> card from the field to the owner's <handdeck>.
 Return one <typeslevels> card from the discard pile to the top of your deck.
 Return up to <number> <typeslevels> card(s) from your discard pile to your hand.
 Reveal the top <number+1> card(s) of your deck and play one <typeslevels> card from among them.
@@ -60,6 +60,9 @@ This turn, change one <type> card to any other type.
 This turn, double the attack of one <types> card you control.
 This turn, increase the rank of one <typeslevels> card you control by one.
 Until your next turn, all <types> card(s) you control become rank <rank>.
+When a <card> is sent from the <pile> to the <handdeck>, destroy one card.
+When a <card> is sent from the <pile> to the <handdeck>, gain one point.
+When a <card> is sent from the <pile> to the <handdeck>, untap one card.
 When a <types> card is destroyed, gain one point.
 When this card is sent to the discard pile, your opponent takes <number> point(s) of damage.
 Whenever a <typeslevels> card is discarded, draw one card.

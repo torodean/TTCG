@@ -47,6 +47,7 @@ SKIP_PREVIEW = False
 # Get script's directory (useful for relative paths)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
+NUMBER_OF_EFFECT_BOXES = 24
     
 
 def get_next_image(current_path):
@@ -464,7 +465,7 @@ def get_selected_subtypes():
 
 def generate_effects(effect_buttons, input_file, columns, subtypes):
     """
-    Generate 23 random effects and populate the effect buttons.
+    Generate NUMBER_OF_EFFECT_BOXES random effects and populate the effect buttons.
 
     This function loads effects from a CSV file, filters them based on specified columns,
     and generates 10 unique random effects: up to 5 using subtypes as search strings,
@@ -483,25 +484,28 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
     # Track used effects to avoid duplicates
     used_effects = set()
     generated_effects = []
+    
+    # These are some strings that aren't really useful for the units of the same subtypes.
+    strings_to_omit = ["lose <atkdef>", "destroy up to <number> <typeslevels>"]
 
     # Target: Up to 12 effects with subtypes, rest without
-    target_with_subtypes = 12
+    target_with_subtypes = NUMBER_OF_EFFECT_BOXES // 2
 
     # Generate up to 5 effects using subtypes as search strings
     if subtypes:  # Only if subtypes are provided
         for _ in range(target_with_subtypes):
             if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
                 break  # Stop if no more unique effects are available
-            effect = get_random_effect(possible_effect_values, search_strings=subtypes)
+            effect = get_random_effect(possible_effect_values, search_strings=subtypes, omit_strings=strings_to_omit)
             while effect in used_effects:
-                effect = get_random_effect(possible_effect_values, search_strings=subtypes)
+                effect = get_random_effect(possible_effect_values, search_strings=subtypes, omit_strings=strings_to_omit)
                 if len(used_effects) >= len(possible_effect_values):
                     break  # Avoid infinite loop
             used_effects.add(effect)
             generated_effects.append(effect)
 
     # Generate remaining effects without search strings (up to 10 total)
-    remaining = 23 - len(generated_effects)
+    remaining = NUMBER_OF_EFFECT_BOXES - len(generated_effects)
     for _ in range(remaining):
         if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
             break  # Stop if no more unique effects are available
@@ -1112,9 +1116,9 @@ def main():
     )
     generate_btn.grid(row=0, column=0, pady=12, padx=10, sticky="ew")  # Increased padding
 
-    # Effect buttons (23)
+    # Effect buttons (NUMBER_OF_EFFECT_BOXES)
     effect_buttons = []
-    for i in range(23):
+    for i in range(NUMBER_OF_EFFECT_BOXES):
         btn = ttk.Button(
             effects_frame,
             text="",
