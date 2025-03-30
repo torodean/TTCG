@@ -5,15 +5,18 @@ import shutil
 from tkinter import Tk, Label, Button, Canvas, messagebox, Frame
 from PIL import Image, ImageTk
 
+# Import common methods to use from ttcg_tools.
 from ttcg_tools import output_text
 
+# Inport constants to use from ttcg_constants.
+from ttcg_constants import TYPE_LIST
 
-# Configuration
-SOURCE_FOLDER = "../images/unsorted"           # Folders containing images (and subfolders)
-FIXED_FOLDER = "../images/needs_fixed"         # Destination folder for images needing fixes
+
+# Configuration for this app.
+SOURCE_FOLDER = "../images/unsorted"              # Folders containing images (and subfolders)
+FIXED_FOLDER = "../images/needs_fixed"            # Destination folder for images needing fixes
 OVERLAY_IMAGE = "../images/card pngs/fire-50.png" # Transparent overlay image (displayed actual size)
 EXCLUDE_FOLDERS = ["images/needs_fixed", "images/card pngs", "images/generated_cards", "images/icons", "images/sample cards"]
-TYPES = ["earth", "fire", "water", "air", "nature", "electric", "light", "dark"]
 UNITS_BASE_FOLDER = "../images/units"
 SPELLS_BASE_FOLDER = "../images/spells"
 
@@ -58,9 +61,9 @@ class ImageViewer:
         self.units_frame = Frame(self.side_panel)
         self.units_frame.pack(side="left", padx=5)
         Label(self.units_frame, text="Units").pack()
-        for type_name in TYPES:
-            btn = Button(self.units_frame, text=type_name.capitalize(),
-                        command=lambda t=type_name: self.move_to_type("units", t))
+        for type_name in TYPE_LIST:
+            btn = Button(self.units_frame, text=type_name,
+                        command=lambda t=type_name.lower(): self.move_to_type("units", t))
             btn.pack(fill="x", pady=2)
         # Add Next button under Units with spacing
         self.next_button = Button(self.units_frame, text="Next", command=self.next_image)
@@ -70,9 +73,9 @@ class ImageViewer:
         self.spells_frame = Frame(self.side_panel)
         self.spells_frame.pack(side="left", padx=5)
         Label(self.spells_frame, text="Spells").pack()
-        for type_name in TYPES:
-            btn = Button(self.spells_frame, text=type_name.capitalize(),
-                        command=lambda t=type_name: self.move_to_type("spells", t))
+        for type_name in TYPE_LIST:
+            btn = Button(self.spells_frame, text=type_name,
+                        command=lambda t=type_name.lower(): self.move_to_type("spells", t))
             btn.pack(fill="x", pady=2)
         # Add Needs Fixed button under Spells with spacing
         self.fix_button = Button(self.spells_frame, text="Needs Fixed", command=self.mark_needs_fixed)
@@ -87,9 +90,9 @@ class ImageViewer:
         Create all necessary destination directories at startup.
         """
         os.makedirs(FIXED_FOLDER, exist_ok=True)
-        for type_name in TYPES:
-            os.makedirs(os.path.join(UNITS_BASE_FOLDER, type_name), exist_ok=True)
-            os.makedirs(os.path.join(SPELLS_BASE_FOLDER, type_name), exist_ok=True)
+        for type_name in TYPE_LIST:
+            os.makedirs(os.path.join(UNITS_BASE_FOLDER, type_name.lower()), exist_ok=True)
+            os.makedirs(os.path.join(SPELLS_BASE_FOLDER, type_name.lower()), exist_ok=True)
 
 
     def load_images(self, folder, exclude_top_level=False):

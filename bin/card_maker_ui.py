@@ -17,6 +17,12 @@ from ttcg_tools import check_line_in_file
 from ttcg_tools import get_relative_path
 from ttcg_tools import rename_file
 
+# Import needed constants from ttcg_constants
+from ttcg_constants import TYPE_LIST
+from ttcg_constants import CARD_LIST_HEADER
+from ttcg_constants import SUBTYPES_LIST
+from ttcg_constants import VALID_IMAGE_EXTENSIONS
+
 # Used for flipping and correcting images.
 from flip_image import flip_image
 
@@ -38,9 +44,7 @@ SKIP_PREVIEW = False
 # Get script's directory (useful for relative paths)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
-TYPE_LIST = ["Spell", "Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature"]
     
-
 
 def get_next_image(current_path):
     """
@@ -69,7 +73,7 @@ def get_next_image(current_path):
         '/path/to/directory/image2.jpg'
     """
     # Define common image extensions
-    image_extensions = {'.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp'}
+    image_extensions = VALID_IMAGE_EXTENSIONS
     
     # Convert input to Path object
     path = Path(current_path)
@@ -208,7 +212,7 @@ def save_to_card_list(filename):
         return
 
     # Define the header
-    header = ["NAME", "TYPE", "SUBTYPES", "LEVEL", "IMAGE", "ATTACK", "DEFENSE", "EFFECT1", "EFFECT2", "SERIAL", "RARITY", "TRANSPARENCY"]
+    header = CARD_LIST_HEADER
 
     # Check if file exists to determine if header needs to be written
     file_exists = os.path.isfile(filename)
@@ -875,7 +879,7 @@ def main():
     subtypes_frame = ttk.LabelFrame(left_frame, text="Subtypes", padding="8")
     subtypes_frame.grid(row=2, column=0, columnspan=2, pady=8, sticky="ew")
     subtype_vars = [tk.BooleanVar() for _ in range(14)]
-    subtype_labels = ["Avian", "Dragon", "Beast", "Elemental", "Aquatic", "Warrior", "Spellcaster", "Machine", "Ghost", "Insect", "Reptile", "Fairy", "Undead", "Botanic"]
+    subtype_labels = SUBTYPES_LIST
     for i, label in enumerate(subtype_labels):
         ttk.Checkbutton(subtypes_frame, text=label, variable=subtype_vars[i]).grid(
             row=i // 3, column=i % 3, padx=8, pady=5, sticky="w"

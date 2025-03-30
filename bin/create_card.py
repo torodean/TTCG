@@ -5,13 +5,19 @@ import argparse
 import random
 import csv
 import os
+
+# Import common methods from ttcg_tools.
 from ttcg_tools import output_text
 
-VALID_OVERLAY_POSITIONS = ["top", "bottom"]
-VALID_OVERLAY_STYLES = ["continuous", "counter", "dormant", "latent", "passive", "equip"]
+# Import constants from ttcg_tools_constants.
+from ttcg_constants import VALID_OVERLAY_POSITIONS
+from ttcg_constants import VALID_OVERLAY_STYLES
+from ttcg_constants import VALID_TRANSLUCENT_VALUES
+from ttcg_constants import DEFAULT_CARD_WIDTH
+from ttcg_constants import DEFAULT_CARD_HEIGHT
 
 
-def add_effect_overlay_image(final_img, style, position, width=750, height=1050):
+def add_effect_overlay_image(final_img, style, position, width=DEFAULT_CARD_WIDTH, height=DEFAULT_CARD_HEIGHT):
     """
     This method will add an effect overlay to an image.
     
@@ -50,7 +56,14 @@ def add_effect_overlay_image(final_img, style, position, width=750, height=1050)
     return final_img
 
 
-def create_base_card(card_type, card_level, width=750, height=1050, card_image=None, transparency=100, effect1_style=None, effect2_style=None):
+def create_base_card(card_type, 
+                     card_level, 
+                     width=DEFAULT_CARD_WIDTH, 
+                     height=DEFAULT_CARD_HEIGHT, 
+                     card_image=None, 
+                     transparency=100, 
+                     effect1_style=None, 
+                     effect2_style=None):
     """
     Creates the base card image based on type and level, with a type-specific background
     and a level-specific overlay, and an optional card image behind everything resized to width.
@@ -339,7 +352,7 @@ def create_card(card_data, output_folder, output_file_name=None):
         - The output file is named `<type>_<name>.png`, with spaces in the name replaced by underscores.
     """
     # TTCG card dimensions: 2.5" x 3.5" at 300 DPI = 750 x 1050 pixels
-    width, height = 750, 1050
+    width, height = DEFAULT_CARD_WIDTH, DEFAULT_CARD_HEIGHT
     
     img = create_base_card(card_data["type"], 
                            card_data["level"], 
@@ -521,7 +534,7 @@ if __name__ == "__main__":
         defense = args.defense
 
     # Make sure the transparency option is valid.
-    if args.transparency not in (50, 60, 75, 100):
+    if args.transparency not in VALID_TRANSLUCENT_VALUES:
         output_text(f"Invalid transparency option entered: {args.transparency}")
         args.transparency = 100
 
