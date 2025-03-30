@@ -446,7 +446,7 @@ The primary goal of \texttt{create\_card.py} is to automate the creation of visu
 \begin{itemize}
 	\item Customization of card attributes like name, type, level, and effects via command-line arguments.
 	\item Dynamic rendering of text with automatic font size adjustment and horizontal squishing to fit designated boxes.
-	\item Generation of standardized 750x1050 pixel card images with transparent overlays for seamless integration into game assets.
+	\item Generation of standardized 750x1050 pixel card images with translucent overlays for seamless integration into game assets.
 \end{itemize}
 It serves as a flexible tool for designers to produce and iterate on card designs efficiently.
 
@@ -466,7 +466,7 @@ usage: create_card.py [-h] [-l {1,2,3,4,5}] [-t TYPE] [-n NAME]
                       [-s SUBTYPE [SUBTYPE ...]] [-1 EFFECT1]
                       [--effect1_style EFFECT1_STYLE] [-2 EFFECT2]
                       [--effect2_style EFFECT2_STYLE] [-a ATTACK] [-d DEFENSE]
-                      [-i IMAGE] [-o OUTPUT] [--serial SERIAL] [-T TRANSPARENCY]
+                      [-i IMAGE] [-o OUTPUT] [--serial SERIAL] [-T TRANSLUCENCY]
                       [-S SPREADSHEET]
 
 Create a TTCG trading card.
@@ -498,8 +498,8 @@ options:
   -o OUTPUT, --output OUTPUT
                         The folder to output images to.
   --serial SERIAL       The serial number for the card.
-  -T TRANSPARENCY, --transparency TRANSPARENCY
-                        The transparency of some card art fields (valid options are
+  -T TRANSLUCENCY, --translucency TRANSLUCENCY
+                        The translucency of some card art fields (valid options are
                         50, 60, 75, and 100).
   -S SPREADSHEET, --spreadsheet SPREADSHEET
                         Create's all cards loaded from a spreadsheet (in dev).
