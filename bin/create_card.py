@@ -7,8 +7,50 @@ import csv
 import os
 from ttcg_tools import output_text
 
+VALID_OVERLAY_POSITIONS = ["top", "bottom"]
+VALID_OVERLAY_STYLES = ["continuous", "counter", "dormant", "latent", "passive", "equip"]
 
-def create_base_card(card_type, card_level, width=750, height=1050, card_image=None, transparency=100):
+
+def add_effect_overlay_image(final_img, style, position, width=750, height=1050):
+    """
+    This method will add an effect overlay to an image.
+    
+    Args:
+        final_image (Image): The image to add the overlay to.
+        style (str): The overlay style to use. Valid options are "continuous", 
+            "counter", "dormant", "equip", "latent", "passive"
+        position (str): The position to place the overlay. This is either the effect 1 
+            box or effect two box. Valid options are "top" or "bottom"        
+        
+    Returns:
+        final_image (Image): The image with the added overlay or the original 
+            image if the overlay was not successfully added.
+    """
+    if position not in VALID_OVERLAY_POSITIONS:
+        output_text(f"Invalid overlay position argument: {position}", "error")
+        output_text(f"Valid overlay positions are: {VALID_OVERLAY_POSITIONS}", "warning")
+        return final_img
+        
+    if style not in VALID_OVERLAY_STYLES:
+        output_text(f"Invalid overlay style argument: {style}", "error")
+        output_text(f"Valid overlay styles are: {VALID_OVERLAY_STYLES}", "warning")
+        return final_img
+    
+    base_image_path = f"../images/card pngs/{style}-{position}.png"
+    try:
+        base_img = Image.open(base_image_path).convert("RGBA")
+        if base_img.size != (width, height):
+            base_img = base_img.resize((width, height), Image.Resampling.LANCZOS)
+        # Ensure we're using the alpha channel correctly
+        final_img = Image.alpha_composite(final_img, base_img)
+    except FileNotFoundError:
+        # If no type image found, keep just the original
+        pass
+    
+    return final_img
+
+
+def create_base_card(card_type, card_level, width=750, height=1050, card_image=None, transparency=100, effect1_style=None, effect2_style=None):
     """
     Creates the base card image based on type and level, with a type-specific background
     and a level-specific overlay, and an optional card image behind everything resized to width.
@@ -20,6 +62,8 @@ def create_base_card(card_type, card_level, width=750, height=1050, card_image=N
         height (int): The height of the card (Defaults to 1050).
         card_image (str): The main image to use behind the card. (Defaults to None).
         transparency (int): The transparency to use for minor features of the card art. 
+        effect1_style (str): The style to use for effect one.
+        effect2_style (str): The style to use for effect two.
     
     Returns:
         Image: The base card image with optional background image, type background, and level overlay.
@@ -58,6 +102,12 @@ def create_base_card(card_type, card_level, width=750, height=1050, card_image=N
     except FileNotFoundError:
         # If no type image found, keep just the card_image or transparent
         pass
+        
+    if effect1_style is not None:
+        final_img = add_effect_overlay_image(final_img, effect1_style, "top")
+        
+    if effect2_style is not None:
+        final_img = add_effect_overlay_image(final_img, effect2_style, "bottom")
 
     # Overlay level-specific PNG
     level_image_path = f"../images/card pngs/{card_level} star.png"
@@ -296,7 +346,9 @@ def create_card(card_data, output_folder, output_file_name=None):
                            width, 
                            height, 
                            card_data["image"], 
-                           card_data["transparency"])
+                           card_data["transparency"],
+                           card_data["effect1_style"],
+                           card_data["effect2_style"])
     draw = ImageDraw.Draw(img)
 
     # Draw name in a box from (70, 35) to (585, 70)
@@ -418,15 +470,19 @@ def parse_args():
     parser.add_argument('-t', "--type", type=str, default="fire",
                         help="Card type (e.g., earth, air, fire, water, etc)")
     parser.add_argument('-n', "--name", type=str, default="Card Name",
-                        help="Card name")
+                        help="Card name.")
     parser.add_argument('-s', "--subtype", type=str, nargs="+", default=["Dragon", "Warrior"],
                         help="Subtypes (space-separated, e.g., Dragon Spirit)")
     parser.add_argument('-1', "--effect1", type=str, default="Effect 1",
-                        help="First effect text")
+                        help="First effect text.")
+    parser.add_argument("--effect1_style", type=str, default=None,
+                        help=f"First effect style. Valid styles are {VALID_OVERLAY_STYLES}")
     parser.add_argument('-2', "--effect2", type=str, default="Effect 2",
-                        help="Second effect text")
+                        help="Second effect text.")
+    parser.add_argument("--effect2_style", type=str, default=None,
+                        help="Second effect style. Valid styles same as effect1_style.")
     parser.add_argument('-a', "--attack", type=int, default=None,
-                        help="Attack value (defaults to random based on level)")
+                        help="Attack value (defaults to random based on level).")
     parser.add_argument('-d', "--defense", type=int, default=None,
                         help="Defense value (defaults to random based on level, sums with atk to level*500)")
     parser.add_argument('-i', "--image", type=str, default=None,
@@ -436,7 +492,7 @@ def parse_args():
     parser.add_argument("--serial", type=str, default="ABCD1234567890",
                         help="The serial number for the card.")
     parser.add_argument('-T', "--transparency", type=int, default=100,
-                        help="The transparency of some card art fields (valid options are 50, 60, 75, and 100)")
+                        help="The transparency of some card art fields (valid options are 50, 60, 75, and 100).")
     parser.add_argument('-S', "--spreadsheet", type=str, default=None,
                         help="Create's all cards loaded from a spreadsheet (in dev).")
 
@@ -483,7 +539,9 @@ if __name__ == "__main__":
         "attack": str(attack),
         "defense": str(defense),
         "effect1": args.effect1,
+        "effect1_style": args.effect1_style,
         "effect2": args.effect2,
+        "effect2_style": args.effect2_style,
         "image": args.image,
         "transparency": args.transparency,
         "serial": args.serial

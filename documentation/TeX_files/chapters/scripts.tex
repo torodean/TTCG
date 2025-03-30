@@ -76,19 +76,40 @@ Both files are optional; if missing, the script proceeds without filtering or re
 \subsection{Usage}
 Invoke the script via the command line:
 \begin{lstlisting}[style=terminalstyle]
-python3 create_effect_combinations.py [-s SENTENCE | -f FILE] [-p DIR] [-o OUT] [-t] [-d [FILE]] [-c CONFIG] [-r REPLACEMENTS]
+$ python3 create_effect_combinations.py -h
+usage: create_effect_combinations.py [-h] [-s SENTENCE] [-f [FILE]]
+                                     [-p PLACEHOLDER_DIR] [-o OUTPUT_FILE] [-t]
+                                     [-v] [-d [DEDUPE]] [-c COMBINATIONS_TO_REMOVE]
+                                     [-r REPLACEMENTS_FILE]
+
+Generate all possible combinations for placeholders in a sentence.
+
+options:
+  -h, --help            show this help message and exit
+  -s SENTENCE, --sentence SENTENCE
+                        Sentence with placeholders enclosed in <>.
+  -f [FILE], --file [FILE]
+                        A file of sentences with placeholders enclosed in <>.
+                        Defaults to 'default.txt' if no file specified.
+  -p PLACEHOLDER_DIR, --placeholder_dir PLACEHOLDER_DIR
+                        Directory containing placeholder text files.
+  -o OUTPUT_FILE, --output_file OUTPUT_FILE
+                        The file to output the effects to.
+  -t, --test_mode       Test mode will only output the combinations to terminal.
+  -v, --verbose         Adds extra output during program processing.
+  -d [DEDUPE], --dedupe [DEDUPE]
+                        Remove duplicate lines from the specified file (or
+                        'effects/all_effects.txt' if none given) and exit.
+  -c COMBINATIONS_TO_REMOVE, --combinations_to_remove COMBINATIONS_TO_REMOVE
+                        List file containing phrases to remove from resulting
+                        combinations (default:
+                        'placeholders/combinations_to_remove.txt').
+  -r REPLACEMENTS_FILE, --replacements_file REPLACEMENTS_FILE
+                        Configuration file containing phrase replacements (format:
+                        'old phrase: new phrase') (default:
+                        'placeholders/phrase_replacements.txt').
+
 \end{lstlisting}
-Key arguments include:
-\begin{itemize}
-    \item \texttt{-s/--sentence}: Process a single sentence (e.g., "Draw \texttt{<number>} cards").
-    \item \texttt{-f/--file}: Process a file of sentences (default: \texttt{effects/all\_effect\_templates.txt}).
-    \item \texttt{-p/--placeholder\_dir}: Directory with placeholder files (default: \texttt{placeholders}).
-    \item \texttt{-o/--output\_file}: Output file (default: \texttt{effects/all\_effects.txt}).
-    \item \texttt{-t/--test\_mode}: Display results in terminal instead of writing to a file.
-    \item \texttt{-d/--dedupe}: Deduplicate a file and exit (default: \texttt{effects/all\_effects.txt}).
-    \item \texttt{-c/--combinations\_to\_remove}: File listing phrases to remove (default: \texttt{placeholders/combinations\_to\_remove.txt}).
-    \item \texttt{-r/--replacements\_file}: File with phrase replacements (default: \texttt{placeholders/phrase\_replacements.txt}).
-\end{itemize}
 Exactly one of \texttt{-s} or \texttt{-f} must be provided.
 
 \subsection{Example}
@@ -169,18 +190,36 @@ The script offers the following key features:
 \subsection{Usage}
 Invoke the script via the command line:
 \begin{lstlisting}[style=terminalstyle]
-python3 add_csv_field.py -i INPUT -o OUTPUT -c COLUMN [-p DIR] [-t TEXT | -e EXACT] [-m MATCH\_COLUMN]
+$ python3 add_csv_field.py -h
+usage: add_csv_field.py [-h] [-i INPUT] [-p PLACEHOLDER_DIR] [-o OUTPUT] -c COLUMN
+                        [-t TEXT] [-e EXACT] [-m MATCH_COLUMN] [-d DELETE]
+
+Convert effects file to CSV with custom pattern check.
+
+options:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        Input file (text or CSV) containing effects (defaults to
+                        'effects/effects_with_placeholders.csv').
+  -p PLACEHOLDER_DIR, --placeholder_dir PLACEHOLDER_DIR
+                        Directory containing placeholder files (defaults to
+                        'placeholders').
+  -o OUTPUT, --output OUTPUT
+                        Output CSV file (defaults to
+                        'effects/effects_with_placeholders.csv').
+  -c COLUMN, --column COLUMN
+                        Name of the column to update or add (e.g., 'HasMyString').
+  -t TEXT, --text TEXT  Pattern to search for (e.g., 'some text <placeholder> more
+                        text').
+  -e EXACT, --exact EXACT
+                        Exact line to match and set the specified column to True.
+  -m MATCH_COLUMN, --match_column MATCH_COLUMN
+                        An extra identifier for specifying a column which must be
+                        true to evaluate as a match.
+  -d DELETE, --delete DELETE
+                        Exact string to match for deleting entire lines.
+
 \end{lstlisting}
-Key arguments include:
-\begin{itemize}
-    \item \texttt{-i/--input}: Input file (text or CSV) with effects (default: \texttt{effects/effects\_with\_placeholders.csv}).
-    \item \texttt{-o/--output}: Output CSV file (default: \texttt{effects/effects\_with\_placeholders.csv}).
-    \item \texttt{-c/--column}: Name of the column to add or update (required, e.g., \texttt{HasDraw}).
-    \item \texttt{-p/--placeholder\_dir}: Directory with placeholder files (default: \texttt{placeholders}).
-    \item \texttt{-t/--text}: Pattern to match, including placeholders (e.g., \texttt{Draw <number> cards}).
-    \item \texttt{-e/--exact}: Exact substring to match (e.g., \texttt{Draw two}).
-    \item \texttt{-m/--match\_column}: An extra identifier for specifying a column which must be true to evaluate as a match..
-\end{itemize} 
 Exactly one of \texttt{-t} or \texttt{-e} must be provided.
 
 \subsection{Example}
@@ -281,7 +320,18 @@ The script offers the following features:
 \subsection{Usage}
 Invoke the script via the command line:
 \begin{lstlisting}[style=terminalstyle]
-python3 alphabetize_file.py [-i INPUT] [-o OUTPUT]
+$ python3 alphabetize_file.py -h
+usage: alphabetize_file.py [-h] [-i INPUT] [-o OUTPUT]
+
+Alphabetize lines in a file.
+
+options:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        Input file to alphabetize (defaults to 'input.txt').
+  -o OUTPUT, --output OUTPUT
+                        Output file for sorted lines (defaults to 'output.txt').
+
 \end{lstlisting}
 Key arguments include:
 \begin{itemize}
@@ -402,7 +452,7 @@ It serves as a flexible tool for designers to produce and iterate on card design
 
 \subsection{Features}
 \begin{itemize}
-	\item \textbf{Card Base Creation}: Constructs a base image using type-specific PNGs (e.g., \texttt{fire.png}) and overlays level-specific star images (e.g., \texttt{1 star.png}).
+	\item \textbf{Card Base Creation}: Constructs a base image using type-specific PNGs (e.g., \texttt{fire.png}), overlays level-specific star images (e.g., \texttt{1 star.png}), and overlays the optional effect style images.
 	\item \textbf{Text Rendering}: Supports single-line text with optional squishing and centering (name, subtype, attack, defense) and wrapped, center-aligned text for effects.
 	\item \textbf{Fallback Handling}: Uses a white background or skips overlays if image files are missing, ensuring graceful error handling.
 	\item \textbf{Stat Generation}: Automatically calculates random attack and defense stats based on level if not provided (total stats = level $\times$ 500).
@@ -411,9 +461,51 @@ It serves as a flexible tool for designers to produce and iterate on card design
 \subsection{Usage}
 Run the script from the command line with optional arguments:
 \begin{lstlisting}[style=terminalstyle]
-	python3 create_card.py --name "Card Name" --type TYPE --level LEVEL --subtype SUBTYPE --effect1 "Effect 1" --effect2 "Effect 2" [--attack ATK] [--defense DEF] [--image IMAGE]
+$ python3 create_card.py -h
+usage: create_card.py [-h] [-l {1,2,3,4,5}] [-t TYPE] [-n NAME]
+                      [-s SUBTYPE [SUBTYPE ...]] [-1 EFFECT1]
+                      [--effect1_style EFFECT1_STYLE] [-2 EFFECT2]
+                      [--effect2_style EFFECT2_STYLE] [-a ATTACK] [-d DEFENSE]
+                      [-i IMAGE] [-o OUTPUT] [--serial SERIAL] [-T TRANSPARENCY]
+                      [-S SPREADSHEET]
+
+Create a TTCG trading card.
+
+options:
+  -h, --help            show this help message and exit
+  -l {1,2,3,4,5}, --level {1,2,3,4,5}
+                        Card level (1-5)
+  -t TYPE, --type TYPE  Card type (e.g., earth, air, fire, water, etc)
+  -n NAME, --name NAME  Card name.
+  -s SUBTYPE [SUBTYPE ...], --subtype SUBTYPE [SUBTYPE ...]
+                        Subtypes (space-separated, e.g., Dragon Spirit)
+  -1 EFFECT1, --effect1 EFFECT1
+                        First effect text.
+  --effect1_style EFFECT1_STYLE
+                        First effect style. Valid styles are ['continuous',
+                        'counter', 'dormant', 'latent', 'passive', 'equip']
+  -2 EFFECT2, --effect2 EFFECT2
+                        Second effect text.
+  --effect2_style EFFECT2_STYLE
+                        Second effect style. Valid styles same as effect1_style.
+  -a ATTACK, --attack ATTACK
+                        Attack value (defaults to random based on level).
+  -d DEFENSE, --defense DEFENSE
+                        Defense value (defaults to random based on level, sums with
+                        atk to level*500)
+  -i IMAGE, --image IMAGE
+                        The image file for this card.
+  -o OUTPUT, --output OUTPUT
+                        The folder to output images to.
+  --serial SERIAL       The serial number for the card.
+  -T TRANSPARENCY, --transparency TRANSPARENCY
+                        The transparency of some card art fields (valid options are
+                        50, 60, 75, and 100).
+  -S SPREADSHEET, --spreadsheet SPREADSHEET
+                        Create's all cards loaded from a spreadsheet (in dev).
+
 \end{lstlisting}
-Defaults include \texttt{"fire"} type, level 1, and random stats.
+Defaults include \texttt{"fire"} type, level 1, and random stats, which is primarily used for testing.
 
 \subsection{Requirements}
 \begin{itemize}
@@ -471,7 +563,21 @@ It serves as the central hub for TTCG card prototyping, bridging user input with
 \subsection{Usage}
 Run the script from the command line with an optional argument:
 \begin{lstlisting}[style=terminalstyle]
-python3 card_maker_ui.py [-i INPUT_FILE]
+$ python3 card_maker_ui.py -h
+usage: card_maker_ui.py [-h] [-i INPUT_FILE] [-o OUTPUT_FILE]
+
+User Interface for card generation.
+
+options:
+  -h, --help            show this help message and exit
+  -i INPUT_FILE, --input_file INPUT_FILE
+                        Path to the input CSV file to process for effects. If not
+                        provided, defaults to
+                        'effects/effects_with_placeholders.csv'. The file should
+                        contain a header row with column names.
+  -o OUTPUT_FILE, --output_file OUTPUT_FILE
+                        Path to the output CSV file for saving card data. Defaults
+                        to 'card_list.csv'.
 \end{lstlisting}
 The \texttt{-i} argument specifies the effects CSV file (default: \texttt{effects/effects\_with\_placeholders.csv}). Default UI values include ``Fire'' type, level 1, ``Unnamed'' name, and 0 ATK/DEF.
 
