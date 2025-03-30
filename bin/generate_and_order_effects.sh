@@ -8,6 +8,10 @@ rm -rf effects/effects_with_placeholders.csv
 python3 create_effect_combinations.py -f
 sleep 1
 
+#alphabetize the effects generated.
+python3 alphabetize_file.py -i effects/all_effect_templates.txt -o effects/all_effect_templates.txt
+sleep 1
+
 # Generate csv, and add UNIT to csv.
 python3 add_csv_field.py -c UNIT -t "<subtype> " -i "effects/all_effects.txt"
 sleep 1 # Give the file time to generate.
