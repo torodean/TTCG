@@ -999,7 +999,7 @@ def main():
     effect1_style_var = tk.StringVar(value="None")
     effect1_style_value = VALID_OVERLAY_STYLES 
     for i, value in enumerate(effect1_style_value):
-        display_text = "None" if value is None else value  # Use "None" as text for None
+        display_text = "None" if value is None else value.capitalize()  # Use "None" as text for None
         ttk.Checkbutton(
             effect1_style_frame,
             text=display_text,
@@ -1020,7 +1020,7 @@ def main():
     effect2_style_var = tk.StringVar(value="None")
     effect2_style_value = VALID_OVERLAY_STYLES 
     for i, value in enumerate(effect2_style_value):
-        display_text = "None" if value is None else value  # Use "None" as text for None
+        display_text = "None" if value is None else value.capitalize()  # Use "None" as text for None
         ttk.Checkbutton(
             effect2_style_frame,
             text=display_text,

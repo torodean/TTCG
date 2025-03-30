@@ -5,7 +5,7 @@ SUBTYPES_LIST = ["Avian", "Dragon", "Beast", "Elemental", "Aquatic", "Warrior", 
 
 # Valid options for effect overlay's (the positions are top and bottom representing effects 1 and 2 respectively).
 VALID_OVERLAY_POSITIONS = ["top", "bottom"]
-VALID_OVERLAY_STYLES = [None, "continuous", "counter", "dormant", "latent", "passive", "equip"]
+VALID_OVERLAY_STYLES = [None, "continuous", "counter", "dormant", "latent", "passive", "equip", "overload", "echo", "pulse"]
 
 # Valid translucent values for card art.
 VALID_TRANSLUCENT_VALUES = [50, 60, 75, 100]
