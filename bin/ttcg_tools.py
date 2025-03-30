@@ -3,6 +3,9 @@ import sys
 import re
 import itertools
 
+# Import some constants from the ttxg_constants file.
+from ttcg_constants import VALID_OVERLAY_STYLES
+
 
 def output_text(text, option="text"):
     """
@@ -316,3 +319,46 @@ def rename_file(file_path, new_name):
     os.rename(file_path, new_file_path)
     
     return new_file_path
+    
+    
+def deduce_effect_style_from_effect_text(effect_text):
+    """
+    This method will return the effect style (i some cases) based on the effect text.
+    This method will search for common patterns that occur only in certain styles of 
+    effects and then return the appropriate one.
+    
+    Args:
+        effect_text (str): This is the effect text to process.
+        
+    Returns:
+        effect_style (str): This is the appropriate effect style.
+    """
+    # Convert effect_text to lowercase for case-insensitive matching
+    effect_text = effect_text.lower()
+
+    # Equip style - unique phrases related to equipping cards
+    if "equip card" in effect_text:
+        return "equip"
+
+    # Continuous style - effects that persist while the card is on the field
+    if "while this card is on the field" in effect_text:
+        return "continuous"
+
+    # Counter style - explicit countering of effects
+    if "counter" in effect_text:
+        return "counter"
+
+    # Dormant style - effects tied to the card being tapped
+    if "while this card is tapped" in effect_text:
+        return "dormant"
+
+    # Latent style - effects tied to the card being untapped with a trigger
+    if "when this card is sent to" in effect_text or "discard this card" in effect_text: 
+        return "latent"
+
+    # Passive style - effects that trigger whenever conditions are met
+    # TODO
+
+    # If no specific style is matched, return None (default for Normal or unclear cases)
+    return None
+
