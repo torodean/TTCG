@@ -17,6 +17,14 @@ from ttcg_tools import check_line_in_file
 from ttcg_tools import get_relative_path
 from ttcg_tools import rename_file
 
+# Import needed constants from ttcg_constants
+from ttcg_constants import TYPE_LIST
+from ttcg_constants import CARD_LIST_HEADER
+from ttcg_constants import SUBTYPES_LIST
+from ttcg_constants import VALID_IMAGE_EXTENSIONS
+from ttcg_constants import VALID_OVERLAY_STYLES
+from ttcg_constants import VALID_TRANSLUCENT_VALUES
+
 # Used for flipping and correcting images.
 from flip_image import flip_image
 
@@ -38,9 +46,7 @@ SKIP_PREVIEW = False
 # Get script's directory (useful for relative paths)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
-TYPE_LIST = ["Spell", "Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature"]
     
-
 
 def get_next_image(current_path):
     """
@@ -69,7 +75,7 @@ def get_next_image(current_path):
         '/path/to/directory/image2.jpg'
     """
     # Define common image extensions
-    image_extensions = {'.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp'}
+    image_extensions = VALID_IMAGE_EXTENSIONS
     
     # Convert input to Path object
     path = Path(current_path)
@@ -127,6 +133,8 @@ def get_card_data():
             - "defense" (str): Defense value (defaults to "0" if empty).
             - "effect1" (str): First effect text (empty if none provided).
             - "effect2" (str): Second effect text (empty if none provided).
+            - "effect1_style (str): The first effect style to use.
+            - "effect2_style (str): The second effect style to use.
             - "image" (str): Image file path (defaults to "default.png" if empty).
             - "serial" (str): Serial number (always empty in this context).
 
@@ -136,18 +144,23 @@ def get_card_data():
     """
     card_data = {
         "type": WIDGETS["type_combo"].get().strip() or "Unknown",
-        "level": int(WIDGETS["level_combo"].get().strip() or 1),
+        "level": WIDGETS["level_var"].get() or 1,
         "name": WIDGETS["name_entry"].get().strip() or "Unnamed",
         "subtype": ", ".join(get_selected_subtypes()),
         "attack": WIDGETS["atk_entry"].get().strip() or "0",
         "defense": WIDGETS["def_entry"].get().strip() or "0",
         "effect1": WIDGETS["effect1_entry"].get("1.0", tk.END).strip() or "",
+        "effect1_style": WIDGETS["effect1_style_var"].get().strip() or None,
         "effect2": WIDGETS["effect2_entry"].get("1.0", tk.END).strip() or "",
+        "effect2_style": WIDGETS["effect2_style_var"].get().strip() or None,
         "image": WIDGETS["image_entry"].get().strip() or "default.png",
-        "transparency": WIDGETS["transparency_var"].get(),
+        "translucency": WIDGETS["translucent_var"].get(),
         "serial": WIDGETS["serial_entry"].get().strip() or "",
         "rarity": "0" # Rarity is not handled in this app so default to 0.
     }
+    
+    # Fix some invalid values.
+    
     output_text(f"Collected card data: {card_data}", "note")  # Debug statement
     return card_data
 
@@ -188,7 +201,7 @@ def save_to_card_list(filename):
     Save card data from the UI to a spreadsheet.
 
     This function collects card details from the GUI widgets and saves them to a CSV file
-    with the header 'NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY;TRANSPARENCY'.
+    with the header matching {CARD_LIST_HEADER}.
     Data is appended to the file, and the header is written if the file doesn’t exist.
 
     Args:
@@ -208,7 +221,7 @@ def save_to_card_list(filename):
         return
 
     # Define the header
-    header = ["NAME", "TYPE", "SUBTYPES", "LEVEL", "IMAGE", "ATTACK", "DEFENSE", "EFFECT1", "EFFECT2", "SERIAL", "RARITY", "TRANSPARENCY"]
+    header = CARD_LIST_HEADER
 
     # Check if file exists to determine if header needs to be written
     file_exists = os.path.isfile(filename)
@@ -252,8 +265,14 @@ def save_to_card_list(filename):
             card_data.get("effect2", ""),
             card_data.get("serial", ""),
             card_data.get("rarity", ""),
-            card_data.get("transparency", "")
-        ]
+            card_data.get("translucency", ""),
+            card_data.get("effect1_style", ""),
+            card_data.get("effect2_style", "")
+        ]                
+            
+        # Just a sanity check in case additions are added.
+        if len(CARD_LIST_HEADER) != len(row):
+            output_text(f"ERROR: row data inconsistent with CARD_LIST_HEADER: {row} -> {CARD_LIST_HEADER}", "error")
 
         # Write the row to the CSV if it's not a duplicate.
         if not check_line_in_file(filename, ";".join(str(r) for r in row)):
@@ -276,7 +295,7 @@ def reset_ui():
 
     # Reset widgets to default values
     WIDGETS['type_combo'].set("Fire")
-    WIDGETS["level_combo"].set("1")
+    WIDGETS["level_var"].set(1)
     WIDGETS["name_entry"].delete(0, tk.END)
     WIDGETS["name_entry"].insert(0, "Unnamed")
     for var in WIDGETS["subtype_vars"]:
@@ -333,7 +352,7 @@ def update_preview():
     # Use a temporary folder for output
     with tempfile.TemporaryDirectory() as temp_dir:
         # Generate the card image
-        output_file_name = f"{card_data['type'].replace(' ', '_')}_card_{card_data['name'].replace(' ', '_')}-{card_data['transparency']}.png"
+        output_file_name = f"{card_data['type'].replace(' ', '_')}_card_{card_data['name'].replace(' ', '_')}-{card_data['translucency']}.png"
         create_card(card_data, temp_dir, output_file_name)
         
         # Load the generated image
@@ -398,7 +417,7 @@ def randomize_atk_def(isSpell=False):
         isSpell (bool): Sets the generation to spell mode.
     """
     # Get the selected level, default to 1 if empty or invalid
-    level_str = WIDGETS["level_combo"].get().strip()
+    level_str = str(WIDGETS["level_var"].get()).strip()
     card_type = WIDGETS["type_combo"].get().strip().lower()
     level = int(level_str) if level_str in [str(i) for i in range(1, 6)] else 1
 
@@ -442,7 +461,7 @@ def get_selected_subtypes():
 
 def generate_effects(effect_buttons, input_file, columns, subtypes):
     """
-    Generate 18 random effects and populate the effect buttons.
+    Generate 23 random effects and populate the effect buttons.
 
     This function loads effects from a CSV file, filters them based on specified columns,
     and generates 10 unique random effects: up to 5 using subtypes as search strings,
@@ -462,8 +481,8 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
     used_effects = set()
     generated_effects = []
 
-    # Target: Up to 5 effects with subtypes, rest without
-    target_with_subtypes = 10
+    # Target: Up to 12 effects with subtypes, rest without
+    target_with_subtypes = 12
 
     # Generate up to 5 effects using subtypes as search strings
     if subtypes:  # Only if subtypes are provided
@@ -479,7 +498,7 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
             generated_effects.append(effect)
 
     # Generate remaining effects without search strings (up to 10 total)
-    remaining = 18 - len(generated_effects)
+    remaining = 23 - len(generated_effects)
     for _ in range(remaining):
         if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
             break  # Stop if no more unique effects are available
@@ -668,7 +687,7 @@ def get_gui_metadata():
         metadata.append("UNIT")
 
     # Get the selected level and add LEVEL_#
-    selected_level = WIDGETS["level_combo"].get().strip()
+    selected_level = str(WIDGETS["level_var"].get()).strip()
     if selected_level in [str(i) for i in range(1, 6)]:  # Validate it’s 1-5
         metadata.append(f"LEVEL_{selected_level}")
     else:
@@ -806,6 +825,8 @@ def load_next_image(image_file=None, filename="card_list/card_list.csv"):
     # Clear effect fields
     WIDGETS["effect1_entry"].delete("1.0", tk.END)
     WIDGETS["effect2_entry"].delete("1.0", tk.END)
+    WIDGETS["effect1_style_var"].set(None)
+    WIDGETS["effect2_style_var"].set(None)
     
     # Final update of name and preview (redundant if loop succeeded, but ensures consistency)
     update_name_from_image(force_update=True)
@@ -874,34 +895,39 @@ def main():
     # Subtypes checkboxes
     subtypes_frame = ttk.LabelFrame(left_frame, text="Subtypes", padding="8")
     subtypes_frame.grid(row=2, column=0, columnspan=2, pady=8, sticky="ew")
-    subtype_vars = [tk.BooleanVar() for _ in range(14)]
-    subtype_labels = ["Avian", "Dragon", "Beast", "Elemental", "Aquatic", "Warrior", "Spellcaster", "Machine", "Ghost", "Insect", "Reptile", "Fairy", "Undead", "Botanic"]
+    subtype_vars = [tk.BooleanVar() for _ in range(len(SUBTYPES_LIST))]
+    subtype_labels = SUBTYPES_LIST
     for i, label in enumerate(subtype_labels):
         ttk.Checkbutton(subtypes_frame, text=label, variable=subtype_vars[i]).grid(
             row=i // 3, column=i % 3, padx=8, pady=5, sticky="w"
         )
 
-    # Level dropdown
+    # Level checkboxes
     ttk.Label(left_frame, text="Level:").grid(row=3, column=0, pady=8, padx=5, sticky="e")
-    level_combo = ttk.Combobox(
-        left_frame,
-        values=[str(i) for i in range(1, 6)],
-        width=27,
-        font=("Helvetica", 12),
-    )
-    level_combo.grid(row=3, column=1, pady=8, padx=5, sticky="w")
-    level_combo.set("1")
-    level_combo.bind(
-        "<<ComboboxSelected>>",
-        lambda e: [
-            randomize_atk_def(),
-            update_preview()
-        ]
-    )
+
+
+    level_frame = ttk.LabelFrame(left_frame, text="Level", padding="8")  # Changed to left_frame
+    level_frame.grid(row=3, column=0, columnspan=2, pady=8, sticky="ew")  # row=10, spans both columns
+    # Single variable to track the selected level (1-5)
+    level_var = tk.IntVar(value=1)  # Default to level 1
+
+    # Create 5 checkboxes
+    for i in range(1, 6):
+        ttk.Checkbutton(
+            level_frame,
+            text=str(i),
+            variable=level_var,
+            onvalue=i,   # When checked, set level_var to this value
+            offvalue=0,  # When unchecked, set to 0 (but we enforce one always on)
+            command=lambda: [randomize_atk_def(), update_preview()]
+        ).grid(row=3, column=i, pady=8, padx=5, sticky="w")
+
+    # Ensure one is always selected by initializing with level 1
+    level_var.set(1)
 
     # Image with browse button
     ttk.Label(left_frame, text="Image:").grid(row=4, column=0, pady=8, padx=5, sticky="e")
-    image_entry = ttk.Entry(left_frame, width=30, font=("Helvetica", 12))
+    image_entry = ttk.Entry(left_frame, width=35, font=("Helvetica", 12))
     image_entry.grid(row=4, column=1, pady=8, padx=5, sticky="w")    
     browse_btn = ttk.Button(
         left_frame, text="Browse", command=lambda: browse_image()
@@ -955,36 +981,68 @@ def main():
 
     # Effect 1
     ttk.Label(left_frame, text="Effect 1:").grid(row=9, column=0, pady=8, padx=5, sticky="e")
-    effect1_entry = tk.Text(left_frame, height=3, width=30, font=("Helvetica", 12))
+    effect1_entry = tk.Text(left_frame, height=3, width=35, font=("Helvetica", 12))
     effect1_entry.grid(row=9, column=1, pady=8, padx=5, sticky="w")
+    
+    # Effect 1 style(s)
+    effect1_style_frame = ttk.LabelFrame(left_frame, text="Effect 1 Style", padding="8")  # Changed to left_frame
+    effect1_style_frame.grid(row=10, column=0, columnspan=2, pady=8, sticky="ew")  # row=10, spans both columns
+    effect1_style_var = tk.StringVar(value="None")
+    effect1_style_value = VALID_OVERLAY_STYLES 
+    for i, value in enumerate(effect1_style_value):
+        display_text = "None" if value is None else value  # Use "None" as text for None
+        ttk.Checkbutton(
+            effect1_style_frame,
+            text=display_text,
+            variable=effect1_style_var,
+            onvalue="None" if value is None else value,  # Convert None to "None" for UI,
+            offvalue=-1,  # Unique off value to ensure mutual exclusivity
+            command=update_preview
+        ).grid(row=i // 4, column=i % 4, padx=5, sticky="w")  
 
     # Effect 2
-    ttk.Label(left_frame, text="Effect 2:").grid(row=10, column=0, pady=8, padx=5, sticky="e")
-    effect2_entry = tk.Text(left_frame, height=3, width=30, font=("Helvetica", 12))
-    effect2_entry.grid(row=10, column=1, pady=8, padx=5, sticky="w")
+    ttk.Label(left_frame, text="Effect 2:").grid(row=11, column=0, pady=8, padx=5, sticky="e")
+    effect2_entry = tk.Text(left_frame, height=3, width=35, font=("Helvetica", 12))
+    effect2_entry.grid(row=11, column=1, pady=8, padx=5, sticky="w")
+    
+    # Effect 2 style(s)
+    effect2_style_frame = ttk.LabelFrame(left_frame, text="Effect 2 Style", padding="8")  # Changed to left_frame
+    effect2_style_frame.grid(row=12, column=0, columnspan=2, pady=8, sticky="ew")  # row=10, spans both columns
+    effect2_style_var = tk.StringVar(value="None")
+    effect2_style_value = VALID_OVERLAY_STYLES 
+    for i, value in enumerate(effect2_style_value):
+        display_text = "None" if value is None else value  # Use "None" as text for None
+        ttk.Checkbutton(
+            effect2_style_frame,
+            text=display_text,
+            variable=effect2_style_var,
+            onvalue="None" if value is None else value,  # Convert None to "None" for UI,
+            offvalue=-1,  # Unique off value to ensure mutual exclusivity
+            command=update_preview
+        ).grid(row=i // 4, column=i % 4, padx=5, sticky="w")  
 
     # Serial Number (non-editable)
-    ttk.Label(left_frame, text="Serial #:").grid(row=11, column=0, pady=8, padx=5, sticky="e")
+    ttk.Label(left_frame, text="Serial #:").grid(row=13, column=0, pady=8, padx=5, sticky="e")
     serial_entry = ttk.Entry(left_frame, width=30, font=("Helvetica", 12))
     serial_entry.insert(0, "AUTO-GENERATED")
     serial_entry.configure(state="disabled")
-    serial_entry.grid(row=11, column=1, pady=8, padx=5, sticky="w")
+    serial_entry.grid(row=13, column=1, pady=8, padx=5, sticky="w")
 
     # Middle Section
     preview_frame = ttk.LabelFrame(main_frame, text="Card Preview", padding="15")
     preview_frame.grid(row=0, column=1, padx=15, sticky="nsew")
     
-    #Transparency selection
-    transparency_frame = ttk.LabelFrame(preview_frame, text="Transparency", padding="8")
-    transparency_frame.grid(row=0, column=0, pady=8, sticky="ew")
-    transparency_var = tk.IntVar(value=50)  # Default to 100%
+    # Translucency selection
+    translucent_frame = ttk.LabelFrame(preview_frame, text="Translucency", padding="8")
+    translucent_frame.grid(row=0, column=0, pady=8, sticky="ew")
+    translucent_var = tk.IntVar(value=50)  # Default to 100%
 
-    transparency_values = [50, 60, 75, 100]
-    for i, value in enumerate(transparency_values):
+    translucent_value = VALID_TRANSLUCENT_VALUES
+    for i, value in enumerate(translucent_value):
         ttk.Checkbutton(
-            transparency_frame,
+            translucent_frame,
             text=f"{value}%",
-            variable=transparency_var,
+            variable=translucent_var,
             onvalue=value,
             offvalue=-1,  # Unique off value to ensure mutual exclusivity
             command=update_preview
@@ -1045,9 +1103,9 @@ def main():
     )
     generate_btn.grid(row=0, column=0, pady=12, padx=10, sticky="ew")  # Increased padding
 
-    # Effect buttons (18)
+    # Effect buttons (23)
     effect_buttons = []
-    for i in range(18):
+    for i in range(23):
         btn = ttk.Button(
             effects_frame,
             text="",
@@ -1074,7 +1132,7 @@ def main():
     global WIDGETS
     WIDGETS = {
         "type_combo": type_combo,
-        "level_combo": level_combo,
+        "level_var": level_var,
         "name_entry": name_entry,
         "subtype_vars": subtype_vars,
         "subtype_labels": subtype_labels,
@@ -1084,8 +1142,10 @@ def main():
         "effect2_entry": effect2_entry,
         "image_entry": image_entry,
         "preview_canvas": preview_canvas,
-        "transparency_var": transparency_var,
-        "serial_entry" : serial_entry
+        "translucent_var": translucent_var,
+        "serial_entry" : serial_entry,
+        "effect1_style_var": effect1_style_var,
+        "effect2_style_var": effect2_style_var
     }
 
     # Initial preview update
