@@ -353,11 +353,12 @@ def deduce_effect_style_from_effect_text(effect_text):
         return "dormant"
 
     # Latent style - effects tied to the card being untapped with a trigger
-    if "when this card is sent to" in effect_text or "discard this card" in effect_text: 
+    if "when this card is sent to" in effect_text or "discard this card" in effect_text or "while this card is under another" in effect_text: 
         return "latent"
 
     # Passive style - effects that trigger whenever conditions are met
-    # TODO
+    if "You can rank up this card using a" in effect_text:
+        return "passive"
 
     # If no specific style is matched, return None (default for Normal or unclear cases)
     return None
