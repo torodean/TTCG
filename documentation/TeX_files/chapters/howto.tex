@@ -334,7 +334,7 @@ Below is an example command (without an image specified) with the matching outpu
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{images/sample_generated_output.png} 
-	\caption{On the left is a sample card with a fake name, subtypes, and some dummy text in the effect slots. On the right is a sample level one card with transparency, and other areas filled in appropriately. This is to demonstrate the output of the \textit{create\_card.py} script.}
+	\caption{On the left is a sample card with a fake name, subtypes, and some dummy text in the effect slots. On the right is a sample level one card with translucency, and other areas filled in appropriately. This is to demonstrate the output of the \textit{create\_card.py} script.}
 	\label{fig:sample_generated_output}
 \end{figure}
 
@@ -415,7 +415,7 @@ python3 card_maker_ui.py
 
     \item \textbf{Adjust Transparency:}
           \begin{itemize}
-              \item In the \texttt{Card Preview} section, select a transparency level (50\%, 60\%, 75\%, or 100\%) using the checkboxes. The preview updates instantly.
+              \item In the \texttt{Card Preview} section, select a translucency level (50\%, 60\%, 75\%, or 100\%) using the checkboxes. The preview updates instantly.
           \end{itemize}
 
     \item \textbf{Preview the Card:}
@@ -458,8 +458,8 @@ python3 create_card.py -S card_list/card_list.csv
 \begin{itemize}
     \item Cards are saved to \texttt{card\_list/card\_list.csv} in the format:
 \begin{lstlisting}
-NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY;TRANSPARENCY
-Ember Foxling;Fire;Beast;1;../images/units/fire/Ember Foxling.jpg;360;140;...;...;a7626d4dd0045a;0;50
+NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY;TRANSLUCENCY;EFFECT1_STYLE;EFFECT2_STYLE
+Ember Foxling;Fire;Beast;1;../images/units/fire/Ember Foxling.jpg;360;140;...;...;a7626d4dd0045a;0;50;None;None
 \end{lstlisting}
     \item The \texttt{IMAGE} field uses a relative path from the script directory.
     \item \texttt{RARITY} defaults to 0 (not editable in the UI yet).

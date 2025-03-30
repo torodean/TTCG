@@ -8,6 +8,10 @@ rm -rf effects/effects_with_placeholders.csv
 python3 create_effect_combinations.py -f
 sleep 1
 
+#alphabetize the effects generated.
+python3 alphabetize_file.py -i effects/all_effect_templates.txt -o effects/all_effect_templates.txt
+sleep 1
+
 # Generate csv, and add UNIT to csv.
 python3 add_csv_field.py -c UNIT -t "<subtype> " -i "effects/all_effects.txt"
 sleep 1 # Give the file time to generate.
@@ -108,6 +112,7 @@ python3 add_csv_field.py -c SPELL -t "Tap exactly <number> <card>"
 python3 add_csv_field.py -c SPELL -t "The equip card cannot"
 python3 add_csv_field.py -c SPELL -t "The equip card gains"
 python3 add_csv_field.py -c SPELL -t "The equip card can be"
+python3 add_csv_field.py -c SPELL -t "For each <card> under this one"
 
 # Handle some exact matches (used for one off effects)
 python3 add_csv_field.py -c SPELL -e "While this card is on the field, attack and defense changes are inverted."
@@ -167,6 +172,7 @@ for level in LEVEL_{1..3}; do
 	python3 add_csv_field.py -c "$level" -m SPELL -t "The equip card gains"
 	python3 add_csv_field.py -c "$level" -m SPELL -t "While this card is tapped, gain one point"
 	python3 add_csv_field.py -c "$level" -m SPELL -t "The equip card can be"
+	python3 add_csv_field.py -c "$level" -m SPELL -t "For each <card> under this one"
 done
 
 # Some various <number> effect combinations for spells.
@@ -268,6 +274,10 @@ python3 add_csv_field.py -c UNIT -t "Activate the effect of another unit"
 python3 add_csv_field.py -c UNIT -t "Place one rank <rank> unit card from your"
 python3 add_csv_field.py -c UNIT -t "This card gains <atkdef> for each card"
 python3 add_csv_field.py -c UNIT -t "While this card is tapped"
+python3 add_csv_field.py -c UNIT -t "For each <card> under this one"
+python3 add_csv_field.py -c UNIT -t "Once per turn, while this card is under another"
+python3 add_csv_field.py -c UNIT -t "While this card is under another"
+python3 add_csv_field.py -c UNIT -t "You can rank up this card using a <types> card"
 
 
 
@@ -338,6 +348,10 @@ for level in LEVEL_{1..5}; do
     python3 add_csv_field.py -c "$level" -m UNIT -t "This turn, double the attack of one <subtype>"
     python3 add_csv_field.py -c "$level" -m UNIT -t "Destroy this card to shuffle your discard pile"
     python3 add_csv_field.py -c "$level" -m UNIT -t "Take one of your other <card>s on the field"
+	python3 add_csv_field.py -c "$level" -m UNIT -t "For each <card> under this one"
+	python3 add_csv_field.py -c "$level" -m UNIT -t "Once per turn, while this card is under another"
+	python3 add_csv_field.py -c "$level" -m UNIT -t "While this card is under another"
+    python3 add_csv_field.py -c "$level" -m UNIT -t "You can rank up this card using a <types> card"
 done
 
 # Some various <number> effect combinations for units.

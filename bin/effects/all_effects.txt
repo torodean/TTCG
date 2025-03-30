@@ -6805,6 +6805,9 @@ Draw two cards, then discard one card of your choice.
 Draw two cards, then discard three cards of your choice.
 Draw two cards, then discard two cards of your choice.
 Draw two cards.
+For each card under this one, destroy one card on the field.
+For each spell under this one, destroy one spell on the field.
+For each unit under this one, destroy one unit on the field.
 For the next four turns, air cards you control cannot be destroyed.
 For the next four turns, aquatic cards you control cannot be destroyed.
 For the next four turns, avian cards you control cannot be destroyed.
@@ -7061,6 +7064,7 @@ Lose three points to destroy three cards on the field.
 Lose three points to draw three cards.
 Lose two points to destroy two cards on the field.
 Lose two points to draw two cards.
+Once per turn, while this card is under another, you can untap a card above this one.
 Place one air card from your deck under this card.
 Place one air card from your discard pile under this card.
 Place one aquatic card from your deck under this card.
@@ -9722,6 +9726,7 @@ While this card is tapped, only cards below rank 1 can attack.
 While this card is tapped, only cards below rank 2 can attack.
 While this card is tapped, only cards below rank 3 can attack.
 While this card is tapped, only cards below rank 4 can attack.
+While this card is under another, you can send this to the discard pile in place of a card above it.
 You can play one extra air card this turn.
 You can play one extra aquatic card this turn.
 You can play one extra avian card this turn.
@@ -9804,48 +9809,71 @@ You can rank up one of your warrior card using a unit from your deck.
 You can rank up one of your warrior card using a unit from your discard pile.
 You can rank up one of your water card using a unit from your deck.
 You can rank up one of your water card using a unit from your discard pile.
+You can rank up this card using a air card.
 You can rank up this card using a air unit from your deck.
 You can rank up this card using a air unit from your discard pile.
+You can rank up this card using a aquatic card.
 You can rank up this card using a aquatic unit from your deck.
 You can rank up this card using a aquatic unit from your discard pile.
+You can rank up this card using a avian card.
 You can rank up this card using a avian unit from your deck.
 You can rank up this card using a avian unit from your discard pile.
+You can rank up this card using a beast card.
 You can rank up this card using a beast unit from your deck.
 You can rank up this card using a beast unit from your discard pile.
+You can rank up this card using a botanic card.
 You can rank up this card using a botanic unit from your deck.
 You can rank up this card using a botanic unit from your discard pile.
+You can rank up this card using a dark card.
 You can rank up this card using a dark unit from your deck.
 You can rank up this card using a dark unit from your discard pile.
+You can rank up this card using a dragon card.
 You can rank up this card using a dragon unit from your deck.
 You can rank up this card using a dragon unit from your discard pile.
+You can rank up this card using a earth card.
 You can rank up this card using a earth unit from your deck.
 You can rank up this card using a earth unit from your discard pile.
+You can rank up this card using a electric card.
 You can rank up this card using a electric unit from your deck.
 You can rank up this card using a electric unit from your discard pile.
+You can rank up this card using a elemental card.
 You can rank up this card using a elemental unit from your deck.
 You can rank up this card using a elemental unit from your discard pile.
+You can rank up this card using a fairy card.
 You can rank up this card using a fairy unit from your deck.
 You can rank up this card using a fairy unit from your discard pile.
+You can rank up this card using a fire card.
 You can rank up this card using a fire unit from your deck.
 You can rank up this card using a fire unit from your discard pile.
+You can rank up this card using a ghost card.
 You can rank up this card using a ghost unit from your deck.
 You can rank up this card using a ghost unit from your discard pile.
+You can rank up this card using a insect card.
 You can rank up this card using a insect unit from your deck.
 You can rank up this card using a insect unit from your discard pile.
+You can rank up this card using a light card.
 You can rank up this card using a light unit from your deck.
 You can rank up this card using a light unit from your discard pile.
+You can rank up this card using a machine card.
 You can rank up this card using a machine unit from your deck.
 You can rank up this card using a machine unit from your discard pile.
+You can rank up this card using a nature card.
 You can rank up this card using a nature unit from your deck.
 You can rank up this card using a nature unit from your discard pile.
+You can rank up this card using a reptile card.
 You can rank up this card using a reptile unit from your deck.
 You can rank up this card using a reptile unit from your discard pile.
+You can rank up this card using a spell card.
+You can rank up this card using a spellcaster card.
 You can rank up this card using a spellcaster unit from your deck.
 You can rank up this card using a spellcaster unit from your discard pile.
+You can rank up this card using a undead card.
 You can rank up this card using a undead unit from your deck.
 You can rank up this card using a undead unit from your discard pile.
+You can rank up this card using a warrior card.
 You can rank up this card using a warrior unit from your deck.
 You can rank up this card using a warrior unit from your discard pile.
+You can rank up this card using a water card.
 You can rank up this card using a water unit from your deck.
 You can rank up this card using a water unit from your discard pile.
 You can send one card under this card to the discard pile.

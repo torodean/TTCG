@@ -6806,6 +6806,9 @@ Draw two cards, then discard one card of your choice.;False;True;True;False;True
 Draw two cards, then discard three cards of your choice.;False;True;True;False;True;False;False
 Draw two cards, then discard two cards of your choice.;False;True;True;False;True;False;False
 Draw two cards.;False;True;True;False;True;False;False
+For each card under this one, destroy one card on the field.;True;True;True;True;True;True;True
+For each spell under this one, destroy one spell on the field.;True;True;True;True;True;True;True
+For each unit under this one, destroy one unit on the field.;True;True;True;True;True;True;True
 For the next four turns, air cards you control cannot be destroyed.;False;True;False;True;False;True;True
 For the next four turns, aquatic cards you control cannot be destroyed.;True;False;False;True;False;True;True
 For the next four turns, avian cards you control cannot be destroyed.;True;False;False;True;False;True;True
@@ -7062,6 +7065,7 @@ Lose three points to destroy three cards on the field.;True;True;False;True;True
 Lose three points to draw three cards.;True;True;False;True;True;True;False
 Lose two points to destroy two cards on the field.;True;True;True;False;True;False;False
 Lose two points to draw two cards.;True;True;True;True;True;False;False
+Once per turn, while this card is under another, you can untap a card above this one.;True;False;True;True;True;True;True
 Place one air card from your deck under this card.;False;True;True;True;True;False;False
 Place one air card from your discard pile under this card.;False;True;True;True;True;False;False
 Place one aquatic card from your deck under this card.;True;False;True;True;True;True;True
@@ -9723,6 +9727,7 @@ While this card is tapped, only cards below rank 1 can attack.;True;True;True;Fa
 While this card is tapped, only cards below rank 2 can attack.;True;True;True;True;True;False;False
 While this card is tapped, only cards below rank 3 can attack.;True;True;False;True;True;True;False
 While this card is tapped, only cards below rank 4 can attack.;True;True;False;True;True;True;True
+While this card is under another, you can send this to the discard pile in place of a card above it.;True;False;True;True;True;True;True
 You can play one extra air card this turn.;False;True;True;True;True;True;True
 You can play one extra aquatic card this turn.;True;False;True;True;True;True;True
 You can play one extra avian card this turn.;True;False;True;True;True;True;True
@@ -9805,48 +9810,71 @@ You can rank up one of your warrior card using a unit from your deck.;True;False
 You can rank up one of your warrior card using a unit from your discard pile.;True;False;True;True;True;True;True
 You can rank up one of your water card using a unit from your deck.;False;True;True;True;True;False;False
 You can rank up one of your water card using a unit from your discard pile.;False;True;True;True;True;False;False
+You can rank up this card using a air card.;True;True;True;True;True;True;True
 You can rank up this card using a air unit from your deck.;False;True;False;False;False;False;False
 You can rank up this card using a air unit from your discard pile.;False;True;False;False;False;False;False
+You can rank up this card using a aquatic card.;True;False;True;True;True;True;True
 You can rank up this card using a aquatic unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a aquatic unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a avian card.;True;False;True;True;True;True;True
 You can rank up this card using a avian unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a avian unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a beast card.;True;False;True;True;True;True;True
 You can rank up this card using a beast unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a beast unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a botanic card.;True;False;True;True;True;True;True
 You can rank up this card using a botanic unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a botanic unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a dark card.;True;True;True;True;True;True;True
 You can rank up this card using a dark unit from your deck.;False;True;False;False;False;False;False
 You can rank up this card using a dark unit from your discard pile.;False;True;False;False;False;False;False
+You can rank up this card using a dragon card.;True;False;True;True;True;True;True
 You can rank up this card using a dragon unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a dragon unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a earth card.;True;True;True;True;True;True;True
 You can rank up this card using a earth unit from your deck.;False;True;False;False;False;False;False
 You can rank up this card using a earth unit from your discard pile.;False;True;False;False;False;False;False
+You can rank up this card using a electric card.;True;True;True;True;True;True;True
 You can rank up this card using a electric unit from your deck.;False;True;False;False;False;False;False
 You can rank up this card using a electric unit from your discard pile.;False;True;False;False;False;False;False
+You can rank up this card using a elemental card.;True;False;True;True;True;True;True
 You can rank up this card using a elemental unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a elemental unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a fairy card.;True;False;True;True;True;True;True
 You can rank up this card using a fairy unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a fairy unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a fire card.;True;True;True;True;True;True;True
 You can rank up this card using a fire unit from your deck.;False;True;False;False;False;False;False
 You can rank up this card using a fire unit from your discard pile.;False;True;False;False;False;False;False
+You can rank up this card using a ghost card.;True;False;True;True;True;True;True
 You can rank up this card using a ghost unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a ghost unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a insect card.;True;False;True;True;True;True;True
 You can rank up this card using a insect unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a insect unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a light card.;True;True;True;True;True;True;True
 You can rank up this card using a light unit from your deck.;False;True;False;False;False;False;False
 You can rank up this card using a light unit from your discard pile.;False;True;False;False;False;False;False
+You can rank up this card using a machine card.;True;False;True;True;True;True;True
 You can rank up this card using a machine unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a machine unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a nature card.;True;True;True;True;True;True;True
 You can rank up this card using a nature unit from your deck.;False;True;False;False;False;False;False
 You can rank up this card using a nature unit from your discard pile.;False;True;False;False;False;False;False
+You can rank up this card using a reptile card.;True;False;True;True;True;True;True
 You can rank up this card using a reptile unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a reptile unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a spell card.;True;True;True;True;True;True;True
+You can rank up this card using a spellcaster card.;True;False;True;True;True;True;True
 You can rank up this card using a spellcaster unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a spellcaster unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a undead card.;True;False;True;True;True;True;True
 You can rank up this card using a undead unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a undead unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a warrior card.;True;False;True;True;True;True;True
 You can rank up this card using a warrior unit from your deck.;True;False;False;False;False;False;False
 You can rank up this card using a warrior unit from your discard pile.;True;False;False;False;False;False;False
+You can rank up this card using a water card.;True;True;True;True;True;True;True
 You can rank up this card using a water unit from your deck.;False;True;False;False;False;False;False
 You can rank up this card using a water unit from your discard pile.;False;True;False;False;False;False;False
 You can send one card under this card to the discard pile.;True;True;True;False;True;False;False

@@ -16,6 +16,7 @@ from ttcg_tools import output_text
 from ttcg_tools import check_line_in_file
 from ttcg_tools import get_relative_path
 from ttcg_tools import rename_file
+from ttcg_tools import deduce_effect_style_from_effect_text
 
 # Import needed constants from ttcg_constants
 from ttcg_constants import TYPE_LIST
@@ -308,6 +309,8 @@ def reset_ui():
     WIDGETS["effect2_entry"].delete("1.0", tk.END)
     WIDGETS["image_entry"].delete(0, tk.END)
     WIDGETS["image_entry"].insert(0, "")
+    WIDGETS["effect1_style_var"].set(None)
+    WIDGETS["effect2_style_var"].set(None)
 
     # Re-enable preview and update once
     SKIP_PREVIEW = False
@@ -582,11 +585,17 @@ def assign_effect(effect_text):
     current_effect1 = WIDGETS["effect1_entry"].get("1.0", tk.END).strip()
     current_effect2 = WIDGETS["effect2_entry"].get("1.0", tk.END).strip()
     if not current_effect1:
+        effect_style = deduce_effect_style_from_effect_text(effect_text)
         WIDGETS["effect1_entry"].delete("1.0", tk.END)
         WIDGETS["effect1_entry"].insert("1.0", effect_text)
+        if effect_style is not None:
+            WIDGETS['effect1_style_var'].set(effect_style)
     elif not current_effect2:
+        effect_style = deduce_effect_style_from_effect_text(effect_text)
         WIDGETS["effect2_entry"].delete("1.0", tk.END)
         WIDGETS["effect2_entry"].insert("1.0", effect_text)
+        if effect_style is not None:
+            WIDGETS['effect2_style_var'].set(effect_style)
 
 
 def generate_serial_number(card_data):
@@ -990,7 +999,7 @@ def main():
     effect1_style_var = tk.StringVar(value="None")
     effect1_style_value = VALID_OVERLAY_STYLES 
     for i, value in enumerate(effect1_style_value):
-        display_text = "None" if value is None else value  # Use "None" as text for None
+        display_text = "None" if value is None else value.capitalize()  # Use "None" as text for None
         ttk.Checkbutton(
             effect1_style_frame,
             text=display_text,
@@ -1011,7 +1020,7 @@ def main():
     effect2_style_var = tk.StringVar(value="None")
     effect2_style_value = VALID_OVERLAY_STYLES 
     for i, value in enumerate(effect2_style_value):
-        display_text = "None" if value is None else value  # Use "None" as text for None
+        display_text = "None" if value is None else value.capitalize()  # Use "None" as text for None
         ttk.Checkbutton(
             effect2_style_frame,
             text=display_text,
