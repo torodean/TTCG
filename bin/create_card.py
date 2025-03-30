@@ -15,6 +15,7 @@ from ttcg_constants import VALID_OVERLAY_STYLES
 from ttcg_constants import VALID_TRANSLUCENT_VALUES
 from ttcg_constants import DEFAULT_CARD_WIDTH
 from ttcg_constants import DEFAULT_CARD_HEIGHT
+from ttcg_constants import CARD_LIST_HEADER
 
 
 def add_effect_overlay_image(final_img, style, position, width=DEFAULT_CARD_WIDTH, height=DEFAULT_CARD_HEIGHT):
@@ -32,6 +33,9 @@ def add_effect_overlay_image(final_img, style, position, width=DEFAULT_CARD_WIDT
         final_image (Image): The image with the added overlay or the original 
             image if the overlay was not successfully added.
     """
+    if style is None or style.lower() == "none":
+        return final_img
+    
     if position not in VALID_OVERLAY_POSITIONS:
         output_text(f"Invalid overlay position argument: {position}", "error")
         output_text(f"Valid overlay positions are: {VALID_OVERLAY_POSITIONS}", "warning")
@@ -61,7 +65,7 @@ def create_base_card(card_type,
                      width=DEFAULT_CARD_WIDTH, 
                      height=DEFAULT_CARD_HEIGHT, 
                      card_image=None, 
-                     transparency=100, 
+                     translucency=100, 
                      effect1_style=None, 
                      effect2_style=None):
     """
@@ -74,14 +78,14 @@ def create_base_card(card_type,
         width (int): The width of the card (Defaults to 750).
         height (int): The height of the card (Defaults to 1050).
         card_image (str): The main image to use behind the card. (Defaults to None).
-        transparency (int): The transparency to use for minor features of the card art. 
+        translucency (int): The translucency to use for minor features of the card art. 
         effect1_style (str): The style to use for effect one.
         effect2_style (str): The style to use for effect two.
     
     Returns:
         Image: The base card image with optional background image, type background, and level overlay.
     """
-    # Start with transparent canvas
+    # Start with translucent canvas
     final_img = Image.new("RGBA", (width, height), (0, 0, 0, 0))
 
     # Add card_image as bottom layer if provided, resized to width only
@@ -98,10 +102,10 @@ def create_base_card(card_type,
             pass
 
     # Get base image based on type (case-insensitive)
-    if transparency == 100:
+    if translucency == 100:
         base_image_path = f"../images/card pngs/{card_type.lower()}.png"
     else:
-        base_image_path = f"../images/card pngs/{card_type.lower()}-{transparency}.png"
+        base_image_path = f"../images/card pngs/{card_type.lower()}-{translucency}.png"
         
     # Print base image path for debugging.
     output_text(f"base_image_path set to: {base_image_path}", "note")
@@ -113,7 +117,7 @@ def create_base_card(card_type,
         # Ensure we're using the alpha channel correctly
         final_img = Image.alpha_composite(final_img, base_img)
     except FileNotFoundError:
-        # If no type image found, keep just the card_image or transparent
+        # If no type image found, keep just the card_image or translucent
         pass
         
     if effect1_style is not None:
@@ -339,6 +343,8 @@ def create_card(card_data, output_folder, output_file_name=None):
             - effect2 (str): Second effect text, drawn as wrapped text.
             - image (str): The image file for this card.
             - serial (str): The serial number for this card.
+            - effect1_style (str): The style to use for the effect one box (default = None).
+            - effect2_style (str): The style to use for the effect two box (default = None).
         output_folder (str): Path to the folder where the card image will be saved.
         output_file_name (str): An optional output file name to use. This should not include the output folder path.
 
@@ -359,7 +365,7 @@ def create_card(card_data, output_folder, output_file_name=None):
                            width, 
                            height, 
                            card_data["image"], 
-                           card_data["transparency"],
+                           card_data["translucency"],
                            card_data["effect1_style"],
                            card_data["effect2_style"])
     draw = ImageDraw.Draw(img)
@@ -426,7 +432,7 @@ def process_csv_to_cards(csv_file_path, output_folder):
         ValueError: If the CSV file format is invalid (e.g., wrong number of columns).
 
     The CSV file is expected to have the following columns in order:
-    NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY;TRANSPARENCY
+    {CARD_LIST_HEADER}
 
     For each row, it constructs a card_data dictionary and calls create_card(card_data, args.output).
     """
@@ -439,7 +445,7 @@ def process_csv_to_cards(csv_file_path, output_folder):
         
         # Skip header row if present (assuming first row is header)
         header = next(csv_reader)
-        expected_columns = 12  # NAME;TYPE;SUBTYPES;LEVEL;IMAGE;ATTACK;DEFENSE;EFFECT1;EFFECT2;SERIAL;RARITY;TRANSPARENCY
+        expected_columns = len(CARD_LIST_HEADER)
         if len(header) != expected_columns:
             raise ValueError(f"CSV header has {len(header)} columns, expected {expected_columns}")
 
@@ -449,7 +455,8 @@ def process_csv_to_cards(csv_file_path, output_folder):
                 raise ValueError(f"Row has {len(row)} columns, expected {expected_columns}")
 
             # Extract data from the row
-            name, card_type, subtypes, level, image, attack, defense, effect1, effect2, serial, rarity, transparency = row
+            name, card_type, subtypes, level, image, attack, defense, 
+            effect1, effect2, serial, rarity, translucency, effect1_style, effect2_style = row
 
             # Handle subtypes (convert to string, could be empty or comma-separated)
             subtype_str = subtypes if subtypes else ""
@@ -465,8 +472,10 @@ def process_csv_to_cards(csv_file_path, output_folder):
                 "effect1": effect1,
                 "effect2": effect2,
                 "image": image,
-                "transparency": transparency,
-                "serial": serial
+                "translucency": translucency,
+                "serial": serial,
+                "effect1_style": effect1_style,
+                "effect2_style": effect2_style
             }
 
             # Call create_card with the constructed card_data and args.output
@@ -504,8 +513,8 @@ def parse_args():
                         help="The folder to output images to.")
     parser.add_argument("--serial", type=str, default="ABCD1234567890",
                         help="The serial number for the card.")
-    parser.add_argument('-T', "--transparency", type=int, default=100,
-                        help="The transparency of some card art fields (valid options are 50, 60, 75, and 100).")
+    parser.add_argument('-T', "--translucency", type=int, default=100,
+                        help="The translucency of some card art fields (valid options are 50, 60, 75, and 100).")
     parser.add_argument('-S', "--spreadsheet", type=str, default=None,
                         help="Create's all cards loaded from a spreadsheet (in dev).")
 
@@ -533,10 +542,10 @@ if __name__ == "__main__":
         attack = args.attack
         defense = args.defense
 
-    # Make sure the transparency option is valid.
-    if args.transparency not in VALID_TRANSLUCENT_VALUES:
-        output_text(f"Invalid transparency option entered: {args.transparency}")
-        args.transparency = 100
+    # Make sure the translucency option is valid.
+    if args.translucency not in VALID_TRANSLUCENT_VALUES:
+        output_text(f"Invalid translucency option entered: {args.translucency}")
+        args.translucency = 100
 
     # Construct type string with subtype
     subtype_str = ""
@@ -556,7 +565,7 @@ if __name__ == "__main__":
         "effect2": args.effect2,
         "effect2_style": args.effect2_style,
         "image": args.image,
-        "transparency": args.transparency,
+        "translucency": args.translucency,
         "serial": args.serial
     }
 
