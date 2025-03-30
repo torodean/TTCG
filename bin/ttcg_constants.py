@@ -8,7 +8,7 @@ VALID_OVERLAY_POSITIONS = ["top", "bottom"]
 VALID_OVERLAY_STYLES = [None, "continuous", "counter", "dormant", "latent", "passive", "equip", "overload", "echo", "pulse"]
 
 # Valid translucent values for card art.
-VALID_TRANSLUCENT_VALUES = [50, 60, 75, 100]
+VALID_TRANSLUCENT_VALUES = [30, 50, 60, 75, 100]
 
 # Base card values
 DEFAULT_CARD_WIDTH = 750
