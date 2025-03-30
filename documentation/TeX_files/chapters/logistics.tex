@@ -77,6 +77,11 @@ The secondary types, of which each unit card is assigned one or more, are listed
 \section{Effect Variations}
 Effects are the core mechanics that drive strategic interaction in the game, modifying the state of play through targeted actions and conditional triggers. Each effect is composed of three key elements: \textit{targets}, which define what the effect applies to; \textit{actions}, which specify what happens to those targets; and \textit{conditions}, which determine when or how the effect can be activated. Targets range from specific cards (e.g., "rank 2 units" or "card(s) under this card") to broad categories (e.g., "all cards" or "opponent’s cards"), allowing for precise or sweeping impacts. Actions encompass a variety of outcomes, such as destroying cards, drawing resources, or modifying stats, shaping the game’s flow and player decisions. Conditions impose requirements or timing, like discarding a card, losing points, or waiting for an attack, adding depth and tactical nuance. Together, these elements create a flexible system where effects can be combined to produce diverse and dynamic gameplay scenarios.
 
+
+\subsection{Effect Types}
+A list of the various effect types can be found in section \ref{CardEffectsRuleSection}.
+
+
 \subsection{Unit Effect Variations}
 // TODO
 
@@ -105,7 +110,8 @@ Many effects have a condition that must be met in order to use the effect or as 
 	\item["When a card effect activates\dots"] The effect activates when another card effect activates. The follow-up effect occurs before the card effect that triggered this card. This is typically known as a counter effect.
 	\item["Destroy one card to\dots"] The player must destroy a card they control to activate the effect. The follow-up effect activates after the destruction.
 	\item["Destroy this card to\dots"] The player must destroy this card from the field to trigger its effect, often a one-time cost. The follow-up effect activates after destruction.
-	\item["Skip your next turn to\dots"] The player must skip their next turn to activate the effect, a significant cost for a powerful outcome. The follow-up effect activates after the turn is skipped. 
+	\item["Skip your next turn to\dots"] The player must skip their next turn to activate the effect, a significant cost for a powerful outcome. The follow-up effect activates after the turn is skipped.
+	\item["Tap\dots", "Untap\dots" ]
 \end{description}
 
     
@@ -167,10 +173,6 @@ Effect actions define what an effect does to the targeted cards or entities. The
 	\item[Modify] Alters a card’s stats, rank, or type (e.g., increasing rank or doubling Attack).
 	\item[Rank Up] Stacking a card of one higher rank on top of a card.
 \end{description}
-
-
-
-
 
 
 

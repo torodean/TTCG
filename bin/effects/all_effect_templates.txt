@@ -3,8 +3,8 @@ Activate the effect of a card under this card.
 Add up to <number> <target>(s) from your <pile> to your hand.
 Both players discard <number> card(s).
 Both players discard their hand and draw the same number of cards they discarded.
-Both players gain <number> point(s) for each <types> card they control.
-Both players lose <number> point(s).
+Both players <gainlose> <number> point(s) for each <types> card they control.
+Both players <gainlose> <number> point(s).
 Both players mill <number> card(s) from their deck.
 Counter the effect of a <typeslevels> card.
 Destroy exactly <number> <card>(s) controlled by each player.
@@ -42,7 +42,7 @@ Skip your next turn to destroy all <typeslevels> cards on the field.
 Swap one <typeslevels> card you control with one <typeslevels> card from your <pile>.
 Swap the attack and defense of one <typeslevels> card on the field.
 Take one of your other <card>(s) on the field and move it under this card.
-This turn, all <typeslevels> card(s) gain <atkdef>.
+This turn, all <typeslevels> card(s) <gainlose> <atkdef>.
 This turn, change one <subtype> card to any other subtype.
 This turn, change one <type> card to any other type.
 This turn, double the attack of one <types> card you control.
@@ -52,14 +52,23 @@ When a <types> card is destroyed, gain one point.
 When this card is sent to the discard pile, your opponent takes <number> point(s) of damage.
 Whenever a <typeslevels> card is discarded, draw one card.
 While this card is on the field, <types> cards cannot be targeted by effects.
-While this card is on the field, all <typeslevels> card(s) gain <atkdef>.
-While this card is on the field, all <typeslevels> card(s) lose <atkdef>.
+While this card is on the field, all <typeslevels> card(s) <gainlose> <atkdef>.
 While this card is on the field, attack and defense changes are inverted.
 You can play one extra <typeslevels> card this turn.
-You can rank up one of your <types> creatures using a creature from your <pile>.
-You can rank up this creature using a <types> creature from your <pile>.
+You can rank up one of your <types> cards using a unit from your <pile>.
+You can rank up this card using a <types> unit from your <pile>.
 You can send up to <number> card(s) under this card to the discard pile.
 Your opponent cannot play <types> cards next turn.
 Your opponent loses <number> point(s).
 Activate the effect of another <card> on the field.
 This card gains <atkdef> for each card under it.
+While this card is tapped, only cards <abovebelow> rank <rank> can attack.
+<tapuntap> up to <number> <card>(s) on the field.
+<tapuntap> exactly <number> <card>(s) on the field.
+<tapuntap> exactly <number> <card>(s) controlled by each player.
+While this card is tapped, gain one point each time a card is send to your discard pile.
+The equip card gains <atkdef>.
+The equip card cannot be destroyed by battle.
+The equip card cannot be destroyed by any card <abovebelow> rank <rank>.
+The equip card cannot be targetted by a <card> effect.
+The equip card can be untapped at the start of the owners turn.
