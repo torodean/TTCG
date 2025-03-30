@@ -452,11 +452,11 @@ def process_csv_to_cards(csv_file_path, output_folder):
         # Process each row
         for row in csv_reader:
             if len(row) != expected_columns:
+                output_text(f"Row: {row}", "program")
                 raise ValueError(f"Row has {len(row)} columns, expected {expected_columns}")
 
             # Extract data from the row
-            name, card_type, subtypes, level, image, attack, defense, 
-            effect1, effect2, serial, rarity, translucency, effect1_style, effect2_style = row
+            name, card_type, subtypes, level, image, attack, defense, effect1, effect2, serial, rarity, translucency, effect1_style, effect2_style = row
 
             # Handle subtypes (convert to string, could be empty or comma-separated)
             subtype_str = subtypes if subtypes else ""
