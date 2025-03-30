@@ -105,6 +105,9 @@ python3 add_csv_field.py -c SPELL -t "Tap up to <number> <card>"
 python3 add_csv_field.py -c SPELL -t "Untap exactly <number> <card>"
 python3 add_csv_field.py -c SPELL -t "Untap up to <number> <card>"
 python3 add_csv_field.py -c SPELL -t "Tap exactly <number> <card>"
+python3 add_csv_field.py -c SPELL -t "The equip card cannot"
+python3 add_csv_field.py -c SPELL -t "The equip card gains"
+python3 add_csv_field.py -c SPELL -t "The equip card can be"
 
 # Handle some exact matches (used for one off effects)
 python3 add_csv_field.py -c SPELL -e "While this card is on the field, attack and defense changes are inverted."
@@ -160,6 +163,10 @@ for level in LEVEL_{1..3}; do
     python3 add_csv_field.py -c "$level" -m SPELL -t "Discard this card to add one <card>"
     python3 add_csv_field.py -c "$level" -m SPELL -t "Destroy this card to shuffle your discard pile"
     python3 add_csv_field.py -c "$level" -m SPELL -t "Take one of your other <card>s on the field"
+	python3 add_csv_field.py -c "$level" -m SPELL -t "The equip card cannot"
+	python3 add_csv_field.py -c "$level" -m SPELL -t "The equip card gains"
+	python3 add_csv_field.py -c "$level" -m SPELL -t "While this card is tapped, gain one point"
+	python3 add_csv_field.py -c "$level" -m SPELL -t "The equip card can be"
 done
 
 # Some various <number> effect combinations for spells.

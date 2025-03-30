@@ -67,3 +67,8 @@ While this card is tapped, only cards <abovebelow> rank <rank> can attack.
 <tapuntap> exactly <number> <card>(s) on the field.
 <tapuntap> exactly <number> <card>(s) controlled by each player.
 While this card is tapped, gain one point each time a card is send to your discard pile.
+The equip card gains <atkdef>.
+The equip card cannot be destroyed by battle.
+The equip card cannot be destroyed by any card <abovebelow> rank <rank>.
+The equip card cannot be targetted by a <card> effect.
+The equip card can be untapped at the start of the owners turn.
