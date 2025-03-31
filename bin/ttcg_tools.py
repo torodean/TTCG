@@ -6,6 +6,7 @@ import itertools
 # Import some constants from the ttxg_constants file.
 from ttcg_constants import VALID_OVERLAY_STYLES
 from ttcg_constants import DEFAULT_PLACEHOLDERS_FOLDER
+from ttcg_constants import EFFECT_STYLE_TEXT_FOLDER
 
 
 def output_text(text, option="text"):
@@ -335,46 +336,50 @@ def text_in_placeholder_string(placeholder_string, check_string):
 
 def deduce_effect_style_from_effect_text(effect_text):
     """
-    This method will return the effect style (i some cases) based on the effect text.
-    This method will search for common patterns that occur only in certain styles of 
-    effects and then return the appropriate one.
+    This method will return the effect style based on the effect text by comparing
+    against patterns stored in style-specific text files.
     
     Args:
         effect_text (str): This is the effect text to process.
         
     Returns:
-        effect_style (str): This is the appropriate effect style.
+        effect_style (str): This is the appropriate effect style or None if no match.
     """
     # Convert effect_text to lowercase for case-insensitive matching
     effect_text = effect_text.lower()
-
-    # Equip style - unique phrases related to equipping cards
-    if "equip card" in effect_text:
-        return "equip"
-
-    # Continuous style - effects that persist while the card is on the field
-    if "while this card is on the field" in effect_text:
-        return "continuous"
-
-    # Counter style - explicit countering of effects
-    if "counter" in effect_text:
-        return "counter"
-
-    # Dormant style - effects tied to the card being tapped
-    if "while this card is tapped" in effect_text:
-        return "dormant"
-
-    # Latent style - effects tied to the card being untapped with a trigger
-    if "when this card is sent to" in effect_text or "discard this card" in effect_text or "while this card is under another" in effect_text: 
-        return "latent"
-
-    # Passive style - effects that trigger whenever conditions are met
-    if "you can rank up this card using a" in effect_text:
-        return "passive"
-
-    if text_in_placeholder_string("discard one <typeslevels> card", effect_text):
-        return "overload"
-
-    # If no specific style is matched, return None (default for Normal or unclear cases)
-    return None
+    
+    # Store matches to check for multiple
+    matched_styles = []
+    
+    # Check each valid style
+    for style in VALID_OVERLAY_STYLES:
+        if style is None:
+            continue
+            
+        # Construct file path using the EFFECT_STYLE_TEXT_FOLDER variable
+        file_path = os.path.join(EFFECT_STYLE_TEXT_FOLDER, f"{style}.txt")
+        
+        try:
+            # Read patterns from file
+            with open(file_path, 'r') as f:
+                patterns = [line.strip().lower() for line in f if line.strip()]
+                
+            # Check each pattern using text_in_placeholder_string
+            for pattern in patterns:
+                if text_in_placeholder_string(pattern, effect_text):
+                    matched_styles.append(style)
+                    break  # Move to next style after first match in file
+                    
+        except FileNotFoundError:
+            # Skip if style file doesn't exist
+            continue
+    
+    # Handle results
+    if len(matched_styles) > 1:
+        output_text(f"Error: Multiple effect styles matched for text '{effect_text}': {matched_styles}", "error")
+        return matched_styles[0]  # Return first match despite error
+    elif len(matched_styles) == 1:
+        return matched_styles[0]
+    else:
+        return None
 
