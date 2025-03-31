@@ -435,10 +435,18 @@ No arguments are currently required, though future iterations may introduce opti
 
 \section{Analyze Card Type and Effect Mentions}
 \subsection{Overview}
-The Python script \texttt{analyze\_card\_stats.py} is a utility designed to analyze card data from a CSV file in the TTCG (Trading Card Template Generator) format and generate visualizations of type, subtype, and effect mention frequencies. Utilizing libraries such as \texttt{csv}, \texttt{matplotlib}, and \texttt{numpy}, the script processes card data to count occurrences of types and subtypes, tracks mentions of these terms in effect texts, and produces bar plots (and an optional 3D plot) to visualize the results. This tool is particularly useful for game designers seeking to understand the distribution and interactions of card attributes in a deck.
+The Python script \texttt{parse\_image\_files.py} is a utility designed to analyze card data from a CSV file in the TTCG (Trading Card Template Generator) format and generate visualizations of type, subtype, and effect mention frequencies. Utilizing libraries such as \texttt{csv}, \texttt{matplotlib}, and \texttt{numpy}, the script processes card data to count occurrences of types and subtypes, tracks mentions of these terms in effect texts, and produces bar plots (and an optional 3D plot) to visualize the results (see figure \ref{fig:card_stat_plot} for an example plot). This tool is particularly useful for game designers seeking to understand the distribution and interactions of card attributes in a deck.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/subtype_counts.png}
+	\caption{Screenshot of one plot output by the \texttt{parse\_image\_files.py} script.}
+	\label{fig:card_stat_plot}
+\end{figure}
+
 
 \subsection{Purpose}
-The primary purpose of \texttt{analyze\_card\_stats.py} is to provide statistical insights into the card collection, enabling:
+The primary purpose of \texttt{parse\_image\_files.py} is to provide statistical insights into the card collection, enabling:
 \begin{itemize}
 	\item Quantification of card types and subtypes across the dataset.
 	\item Analysis of how often types and subtypes are referenced in card effects.
