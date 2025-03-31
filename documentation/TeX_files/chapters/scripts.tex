@@ -433,6 +433,76 @@ No arguments are currently required, though future iterations may introduce opti
 
 
 
+\section{Analyze Card Type and Effect Mentions}
+\subsection{Overview}
+The Python script \texttt{analyze\_card\_stats.py} is a utility designed to analyze card data from a CSV file in the TTCG (Trading Card Template Generator) format and generate visualizations of type, subtype, and effect mention frequencies. Utilizing libraries such as \texttt{csv}, \texttt{matplotlib}, and \texttt{numpy}, the script processes card data to count occurrences of types and subtypes, tracks mentions of these terms in effect texts, and produces bar plots (and an optional 3D plot) to visualize the results. This tool is particularly useful for game designers seeking to understand the distribution and interactions of card attributes in a deck.
+
+\subsection{Purpose}
+The primary purpose of \texttt{analyze\_card\_stats.py} is to provide statistical insights into the card collection, enabling:
+\begin{itemize}
+	\item Quantification of card types and subtypes across the dataset.
+	\item Analysis of how often types and subtypes are referenced in card effects.
+	\item Visualization of type-effect interactions for balancing and design evaluation.
+	\item Optional 3D visualization of type vs. effect mention frequencies for deeper analysis.
+\end{itemize}
+It serves as an analytical tool to support data-driven decisions in card development.
+
+\subsection{Features}
+\begin{itemize}
+	\item \textbf{Data Reading}: Loads card data from a semicolon-delimited CSV file using \texttt{read\_cards}, expecting columns like \texttt{TYPE}, \texttt{SUBTYPES}, \texttt{EFFECT1}, and \texttt{EFFECT2}.
+	\item \textbf{Type and Subtype Counting}: Counts occurrences of predefined types (\texttt{TYPE\_LIST}) and subtypes (\texttt{SUBTYPES\_LIST}) using \texttt{Counter} from \texttt{collections}.
+	\item \textbf{Effect Mention Analysis}: Tracks mentions of types and subtypes in combined \texttt{EFFECT1} and \texttt{EFFECT2} texts, case-insensitively.
+	\item \textbf{Interaction Analysis}: Computes two-dimensional counts of types mentioning types/subtypes and subtypes mentioned per type.
+	\item \textbf{Visualization}: Generates bar plots for type counts, subtype counts, effect mentions, and subtype mentions per type, with an optional 3D bar plot for type-effect interactions.
+\end{itemize}
+
+\subsection{Usage}
+Run the script from the command line with an optional argument:
+\begin{lstlisting}[style=terminalstyle]
+$ python3 analyze_card_stats.py -h
+usage: analyze_card_stats.py [-h] [--plot-3d]
+
+Analyze and plot card type and effect mention frequencies.
+
+options:
+  -h, --help   show this help message and exit
+  --plot-3d    Generate an additional 3D plot of type vs. effect type frequencies.
+\end{lstlisting}
+By default, it reads from \texttt{DEFAULT\_CARD\_LIST\_FILE} (a constant from \texttt{ttcg\_constants}) and saves plots to the \texttt{card\_list/} directory. The \texttt{--plot-3d} flag adds a 3D visualization.
+
+\subsection{Requirements}
+\begin{itemize}
+	\item Python 3.x with libraries: \texttt{matplotlib} (\texttt{pip install matplotlib}), \texttt{numpy} (\texttt{pip install numpy}).
+	\item CSV file specified by \texttt{DEFAULT\_CARD\_LIST\_FILE} with columns \texttt{TYPE}, \texttt{SUBTYPES}, \texttt{EFFECT1}, and \texttt{EFFECT2}.
+	\item Constants \texttt{TYPE\_LIST} and \texttt{SUBTYPES\_LIST} defined in \texttt{ttcg\_constants}.
+	\item Write permissions to the \texttt{card\_list/} directory for saving plots.
+\end{itemize}
+
+\subsection{Implementation Details}
+The script is structured as follows:
+\begin{itemize}
+	\item \texttt{read\_cards(file\_path)}: Reads the CSV into a list of dictionaries.
+	\item \texttt{count\_types(cards)}: Counts occurrences of each type in \texttt{TYPE\_LIST}.
+	\item \texttt{count\_subtypes(cards)}: Counts subtypes from comma-separated \texttt{SUBTYPES} fields.
+	\item \texttt{count\_effect\_mentions(cards)}: Counts mentions of types and subtypes in effect texts.
+	\item \texttt{count\_type\_effect\_interactions(cards)}: Builds a 2D dictionary of type vs. effect term mentions.
+	\item \texttt{count\_subtype\_mentions\_per\_type(cards)}: Tracks subtype mentions per card type.
+	\item \texttt{plot\_data(...)}: Generates four bar plots and an optional 3D plot using \texttt{matplotlib}.
+	\item \texttt{main()}: Orchestrates the analysis and visualization, printing results via \texttt{output\_text}.
+\end{itemize}
+Plots are saved as PNG files, with bar colors distinguishing types (e.g., lightcoral) from subtypes (e.g., lightgreen) in effect mentions.
+
+\subsection{Limitations}
+\begin{itemize}
+	\item Assumes a fixed CSV format with semicolon delimiters and specific column names.
+	\item Does not validate the existence of the \texttt{card\_list/} directory before saving plots.
+	\item The 3D plot’s readability may degrade with large numbers of types or subtypes.
+	\item Case-insensitive matching in effects may overcount terms if they appear as substrings (e.g., "fire" in "fireball").
+\end{itemize}
+
+
+
+
 
 
 
