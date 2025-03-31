@@ -191,5 +191,5 @@ The `bin` directory serves as the central hub for executable scripts used in the
 
 ## Usage Notes
 - **Execution**: Run scripts from the `bin` directory, ensuring relative paths to `placeholders` and `effects` are correct (e.g., `../placeholders/`).
-- **Customization**: Modify files in `placeholders` and `effects` to adjust script behavior without altering code.
+- **Customization**: Modify files in `placeholders`, `effect_style_text` and `effects` to adjust script behavior without altering code.
 - **Dependencies**: Ensure Python 3 and Bash are installed. Scripts assume a Unix-like environment.
