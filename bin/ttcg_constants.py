@@ -19,3 +19,11 @@ CARD_LIST_HEADER = ["NAME", "TYPE", "SUBTYPES", "LEVEL", "IMAGE", "ATTACK", "DEF
 
 # Used for image processing. We only really use the uncommented ones.
 VALID_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png'] #, '.gif', '.bmp', '.tiff', '.webp']
+
+# File paths for the various files. This is relative to this directory.
+DEFAULT_CARD_LIST_FILE = "card_list/card_list.csv"
+DEFAULT_PLACEHOLDERS_FOLDER = "placeholders"
+DEFAULT_ALL_EFFECTS_FILE = "effects/all_effects.txt"
+DEFAULT_ALL_EFFECT_TEMPLATES_FILE = "effects/all_effect_templates.txt"
+DEFAULT_COMBOS_TO_REMOVE_FILE = "placeholders/combinations_to_remove.txt"
+DEFAULT_PHRASES_TO_REPLACE_FILE = "placeholders/phrase_replacements.txt"

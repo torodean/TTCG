@@ -140,6 +140,20 @@ The `bin` directory serves as the central hub for executable scripts used in the
   - `Pillow` (for image processing, install with `pip install pillow`)
   - `tkinter` (standard library, for GUI)
   
+### `plot_type_occurances.py`
+- **Purpose**: Analyzes and visualizes card data from a TTCG-format CSV file, generating plots to show distributions of types, subtypes, and effect mentions, aiding in card design balance and identification of underrepresented categories.
+- **Key Features**: Produces multiple bar plots including type counts, subtype counts, effect mentions, and per-type subtype mentions in effects; optional 3D plot (still a work in progress) showing type vs. type/subtype effect interactions with color-coded frequency; supports comma-separated subtypes in the `SUBTYPES` column; uses `matplotlib` for visualization and `numpy` for 3D plotting calculations.
+- **Usage**: `python3 plot_type_occurances.py [--plot-3d]`
+- **Input**: Reads card data from a CSV file specified by `DEFAULT_CARD_LIST_FILE` in `ttcg_constants` (e.g., a semicolon-delimited file with columns like `TYPE`, `SUBTYPES`, `EFFECT1`, `EFFECT2`); optional `--plot-3d` flag to generate the 3D plot.
+- **Dependencies**: Requires `matplotlib` (`pip install matplotlib`) and `numpy` (`pip install numpy`) for plotting and array operations; uses custom `ttcg_tools` for `output_text` logging and `ttcg_constants` for `TYPE_LIST`, `SUBTYPES_LIST`, and `DEFAULT_CARD_LIST_FILE`.
+- **Output**: Saves plots to the `card_list/` directory:
+  - `type_counts.png`: Bar plot of card counts by type.
+  - `subtype_counts.png`: Bar plot of card counts by subtype (multi-subtype cards count once per subtype).
+  - `effect_mentions.png`: Bar plot of cards mentioning each type/subtype in effects.
+  - `<type>_subtype_mentions.png`: One bar plot per type (e.g., `fire_subtype_mentions.png`) showing subtype mentions in effects.
+  - `type_effect_3d.png` (if `--plot-3d`): 3D bar plot of type vs. type/subtype effect frequencies with `viridis` colormap.
+  - Console output of counts for types, subtypes, and effect mentions via `output_text`.
+  
 ### `ttcg_tools.py`
 - **Purpose**: Provides a collection of shared utility functions and tools used across multiple TTCG-related scripts to streamline common tasks and ensure consistency.
 - **Key Features**: Centralizes reusable code for tasks such as data processing, file handling, and configuration management, reducing duplication across scripts.

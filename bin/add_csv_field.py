@@ -48,7 +48,7 @@ def check_pattern_existence(effect, pattern, placeholder_dir):
         if f"<{placeholder_name}>" in effect:
             return True
         
-        resolved_values = load_placeholder_values(placeholder_dir, placeholder_name)
+        resolved_values = load_placeholder_values(placeholder_name, placeholder_dir)
         return any(value in effect for value in resolved_values if value != f"<{placeholder_name}>")
     
     # Handle patterns with placeholders (e.g., "Destroy <number> <type> cards")

@@ -25,6 +25,7 @@ from ttcg_constants import SUBTYPES_LIST
 from ttcg_constants import VALID_IMAGE_EXTENSIONS
 from ttcg_constants import VALID_OVERLAY_STYLES
 from ttcg_constants import VALID_TRANSLUCENT_VALUES
+from ttcg_constants import DEFAULT_CARD_LIST_FILE
 
 # Used for flipping and correcting images.
 from flip_image import flip_image
@@ -47,6 +48,7 @@ SKIP_PREVIEW = False
 # Get script's directory (useful for relative paths)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
+NUMBER_OF_EFFECT_BOXES = 24
     
 
 def get_next_image(current_path):
@@ -197,7 +199,7 @@ def check_for_effect_combination_in_file(file_path, effect_1, effect_2):
         raise IOError(f"Error reading file '{file_path}': {e}")
 
 
-def save_to_card_list(filename):
+def save_to_card_list(filename=DEFAULT_CARD_LIST_FILE):
     """
     Save card data from the UI to a spreadsheet.
 
@@ -388,8 +390,8 @@ def generate_stat_pair(stat_bonus):
     Returns:
         tuple: A pair of integers (value1, value2) where each is between -stat_bonus and stat_bonus.
     """
-    value1 = random.randint(-stat_bonus, stat_bonus) * 10
-    value2 = random.randint(-stat_bonus, stat_bonus) * 10
+    value1 = random.randint(-stat_bonus, stat_bonus) * 5
+    value2 = random.randint(-stat_bonus, stat_bonus) * 5
     return (value1, value2)
 
 
@@ -431,7 +433,7 @@ def randomize_atk_def(isSpell=False):
     # Calculate total points (5 * level)
     if (card_type == "spell"):
         # Get stat bonuses.
-        card_atk, card_def = generate_stat_pair(level)
+        card_atk, card_def = generate_stat_pair(level*2)
     
         # Populate the entry fields.
         WIDGETS["atk_entry"].insert(0, f"{get_sign(card_atk)}{card_atk}")
@@ -464,18 +466,18 @@ def get_selected_subtypes():
 
 def generate_effects(effect_buttons, input_file, columns, subtypes):
     """
-    Generate 23 random effects and populate the effect buttons.
+    Generate NUMBER_OF_EFFECT_BOXES random effects and populate the effect buttons.
 
     This function loads effects from a CSV file, filters them based on specified columns,
-    and generates 10 unique random effects: up to 5 using subtypes as search strings,
-    and the rest without. If fewer than 5 unique effects match the subtypes, it continues
+    and generates 10 unique random effects: up to 5 using subtypes or spell search values as search strings,
+    and the rest without. If fewer than 5 unique effects match the criteria, it continues
     with unfiltered effects to reach 10 total, without resetting.
 
     Args:
         effect_buttons (list): List of ttk.Button objects to populate with effects.
         input_file (str): Path to the input CSV file containing effect data.
         columns (list of str): List of column names to filter on (rows where these are 'True').
-        subtypes (list of str): List of selected subtypes to use as search strings for up to 5 effects.
+        subtypes (list of str): List of selected subtypes to use as search strings for up to 5 effects (for units).
     """
     # Load CSV and filter for rows where specified columns are 'True'
     possible_effect_values = load_and_filter_csv(input_file, columns)
@@ -483,25 +485,50 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
     # Track used effects to avoid duplicates
     used_effects = set()
     generated_effects = []
+    strings_to_omit = []
+    
+    # Determine if we're generating for a spell or unit
+    is_spell = WIDGETS["type_combo"].get().strip().lower() == "spell"
+    
+    if not is_spell:
+        # Unit-specific logic
+        strings_to_omit = ["lose <atkdef>", "destroy up to <number> <typeslevels>"]
+        target_with_subtypes = NUMBER_OF_EFFECT_BOXES // 2
 
-    # Target: Up to 12 effects with subtypes, rest without
-    target_with_subtypes = 12
+        # Generate up to half the effects using subtypes as search strings
+        if subtypes:  # Only if subtypes are provided
+            for _ in range(target_with_subtypes):
+                if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
+                    break  # Stop if no more unique effects are available
+                effect = get_random_effect(possible_effect_values, search_strings=subtypes, omit_strings=strings_to_omit)
+                while effect in used_effects:
+                    effect = get_random_effect(possible_effect_values, search_strings=subtypes, omit_strings=strings_to_omit)
+                    if len(used_effects) >= len(possible_effect_values):
+                        break  # Avoid infinite loop
+                used_effects.add(effect)
+                generated_effects.append(effect)
+    else:
+        # Spell-specific logic
+        # Get selected spell search values from spell_search_vars
+        spell_search_vars = WIDGETS["spell_search_vars"]  # List of StringVar objects
+        spell_search_values = [var.get() for var in spell_search_vars if var.get()]  # Filter out empty strings
+        target_with_search = NUMBER_OF_EFFECT_BOXES // 2
 
-    # Generate up to 5 effects using subtypes as search strings
-    if subtypes:  # Only if subtypes are provided
-        for _ in range(target_with_subtypes):
-            if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
-                break  # Stop if no more unique effects are available
-            effect = get_random_effect(possible_effect_values, search_strings=subtypes)
-            while effect in used_effects:
-                effect = get_random_effect(possible_effect_values, search_strings=subtypes)
-                if len(used_effects) >= len(possible_effect_values):
-                    break  # Avoid infinite loop
-            used_effects.add(effect)
-            generated_effects.append(effect)
+        # Generate up to half the effects using spell search values as search strings
+        if spell_search_values:  # Only if spell search values are selected
+            for _ in range(target_with_search):
+                if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
+                    break  # Stop if no more unique effects are available
+                effect = get_random_effect(possible_effect_values, search_strings=spell_search_values)
+                while effect in used_effects:
+                    effect = get_random_effect(possible_effect_values, search_strings=spell_search_values)
+                    if len(used_effects) >= len(possible_effect_values):
+                        break  # Avoid infinite loop
+                used_effects.add(effect)
+                generated_effects.append(effect)
 
     # Generate remaining effects without search strings (up to 10 total)
-    remaining = 23 - len(generated_effects)
+    remaining = NUMBER_OF_EFFECT_BOXES - len(generated_effects)
     for _ in range(remaining):
         if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
             break  # Stop if no more unique effects are available
@@ -521,9 +548,9 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
             btn.config(text="")
 
 
-def is_name_in_card_list(card_name, filename="card_list/card_list.csv"):
+def is_name_in_card_list(card_name, filename=DEFAULT_CARD_LIST_FILE):
     """
-    Check if a card name already exists in the card_list.csv file.
+    Check if a card name already exists in the DEFAULT_CARD_LIST_FILE file.
 
     Args:
         card_name (str): The name to check against the 'NAME' column in the CSV.
@@ -766,17 +793,17 @@ def update_name_from_image(force_update=False):
         output_text(f"Name not updated: current name is '{current_name}', not 'Unnamed'", "warning")    
 
 
-def load_next_image(image_file=None, filename="card_list/card_list.csv"):
+def load_next_image(image_file=None, filename=DEFAULT_CARD_LIST_FILE):
     """
     Select and load the next image file within the folder of the currently
-    selected/loaded image file whose name isn’t already in card_list.csv.
+    selected/loaded image file whose name isn’t already in DEFAULT_CARD_LIST_FILE.
     Clears the effect fields to prep the UI for a new card.
     
     Args:
         image_file (str, optional): The current image file to use for loading the next. 
             Defaults to gathering this field from the UI.
         filename (str, optional): Path to the CSV file to check names against. 
-            Defaults to 'card_list.csv'.
+            Defaults to DEFAULT_CARD_LIST_FILE.
     """
     output_text("Loading next image file!", "note")
     
@@ -860,8 +887,8 @@ def main():
     parser.add_argument(
         "-o",
         "--output_file",
-        default="card_list/card_list.csv",
-        help="Path to the output CSV file for saving card data. Defaults to 'card_list.csv'."
+        default=DEFAULT_CARD_LIST_FILE,
+        help=f"Path to the output CSV file for saving card data. Defaults to '{DEFAULT_CARD_LIST_FILE}'."
     )
     
     args = parser.parse_args()
@@ -1083,7 +1110,23 @@ def main():
         command=lambda: reset_ui()
     )
     reset_btn.grid(row=3, column=0, pady=8, padx=5, sticky="ew")
-
+    
+    # Spell Search Area
+    spell_search_frame = ttk.LabelFrame(preview_frame, text="Spell Search", padding="8")
+    spell_search_frame.grid(row=4, column=0, pady=8, sticky="ew")
+    spell_search_list = TYPE_LIST + SUBTYPES_LIST
+    spell_search_vars = [tk.StringVar(value="") for _ in range(len(spell_search_list))]  # Default to empty string
+    for i, value in enumerate(spell_search_list):
+        display_text = value.capitalize()
+        ttk.Checkbutton(
+            spell_search_frame,
+            text=display_text,
+            variable=spell_search_vars[i],
+            onvalue=value,  # e.g., "Spell", "Fire"
+            offvalue="",   # Empty string when unchecked
+            command=update_preview
+        ).grid(row=i // 4, column=i % 4, padx=5, sticky="w")
+        
     # Right - Effects Generator window
     effects_frame = ttk.LabelFrame(main_frame, text="Effects Generator", padding="15")
     effects_frame.grid(row=0, column=2, padx=15, sticky="nsew")
@@ -1112,9 +1155,9 @@ def main():
     )
     generate_btn.grid(row=0, column=0, pady=12, padx=10, sticky="ew")  # Increased padding
 
-    # Effect buttons (23)
+    # Effect buttons (NUMBER_OF_EFFECT_BOXES)
     effect_buttons = []
-    for i in range(23):
+    for i in range(NUMBER_OF_EFFECT_BOXES):
         btn = ttk.Button(
             effects_frame,
             text="",
@@ -1154,7 +1197,8 @@ def main():
         "translucent_var": translucent_var,
         "serial_entry" : serial_entry,
         "effect1_style_var": effect1_style_var,
-        "effect2_style_var": effect2_style_var
+        "effect2_style_var": effect2_style_var,
+        "spell_search_vars": spell_search_vars
     }
 
     # Initial preview update
