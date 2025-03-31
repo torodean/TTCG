@@ -165,6 +165,10 @@ The `bin` directory serves as the central hub for executable scripts used in the
 
 ## Related Directories
 
+### `card_list/`
+- **Purpose**: Stores the main `card_list.csv` filr for storing created cards and other files related to this list (such as statistical graphs and card effect analysis).
+- **Contents**: One `card_list.csv` file as well as plots related to this file.
+
 ### `placeholders/`
 - **Purpose**: Contains all placeholder files (e.g., `type.txt`, `number.txt`) and configuration files for `create_effect_combinations.py` (`combinations_to_remove.txt`, `phrase_replacements.txt`).
 - **Contents**: 
@@ -179,6 +183,11 @@ The `bin` directory serves as the central hub for executable scripts used in the
   - **Effect Lists**: Generated outputs like `all_effects.txt` from `create_effect_combinations.py`.
   - **CSVs**: Annotated files like `effects_with_placeholders.csv` from `add_csv_field.py` or `generate_and_order_effects.sh`.
 - **Usage**: Scripts read from and write to this directory (e.g., `-f` and `-o` arguments).
+
+### `effect_style_text/`
+- **Purpose**: Stores text files defining patterns for identifying card effect styles (e.g., "continuous," "equip") used by `deduce_effect_style_from_effect_text`.
+- **Contents**: One `.txt` file per style (e.g., `overload.txt`) with unique phrases (e.g., "discard one <typeslevels> card").
+- **Usage**: Read by scripts to assign styles to effect text; path set via `EFFECT_STYLE_TEXT_FOLDER` variable. See `effect_style_text/README.md` for details.
 
 ## Usage Notes
 - **Execution**: Run scripts from the `bin` directory, ensuring relative paths to `placeholders` and `effects` are correct (e.g., `../placeholders/`).
