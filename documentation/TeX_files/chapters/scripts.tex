@@ -558,6 +558,7 @@ It serves as the central hub for TTCG card prototyping, bridging user input with
 	\item \textbf{Dynamic Updates}: Automatically refreshes the preview using \texttt{create\_card.py} on input changes, with a \texttt{SKIP\_PREVIEW} flag to optimize reset operations.
 	\item \textbf{Effect Generation}: Produces up to ten random effects from a CSV file, filtered by type and subtypes, assignable to card fields with a single click.
 	\item \textbf{Stat Randomization}: Generates ATK and DEF values (total = level $\times$ 500) via a ``Randomize'' button or level selection, ensuring balanced stats.
+ 	\item \textbf{Auto-Filling}: The UI is intuitively designed to auto-fill some values, such as random ATK and DEF values, automatic type and name selection (when a named images are selected), and spell styles (for various keywords).
 \end{itemize}
 
 \subsection{Usage}
@@ -584,9 +585,15 @@ The \texttt{-i} argument specifies the effects CSV file (default: \texttt{effect
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{images/ui_sample.png}
-	\caption{Screenshot of the \texttt{card\_maker\_ui.py} interface, showcasing a card preview with ``Nature'' type, level 4, and randomized ATK/DEF values.}
+	\caption{Screenshot of the \texttt{card\_maker\_ui.py} interface, showcasing a random card being created.}
 	\label{fig:card_maker_ui_screenshot}
 \end{figure}
+
+The UI consists of three main panels (see figure \ref{fig:card_maker_ui_screenshot}). The panel on the left is the primary stat panel for the card being created. This panel houses fields like the name, subtypes, level, image path, effects, effect styles, etc. These are the core elements that make up the card. 
+
+The middle panel consists of a preview window, transparency selection (for various card art features), a save button, a reset button, and a spell search field. The preview displays a continually updating preview of what the card looks like based on the core input and transparency values. The update occurs whenever a main input loses focus (i.e. after the user typed in a name and selected away from the name text box). The reset button simple resets the UI to default values. The save button saves all card input to the appropriate \texttt{csv} file for storing complete card data. The spell search features is used when a card of type spell is being generated. The values selected in this spell search are used when generating random effects for the spells. Every option that is selected will be targetted as a keyword when generating effects for a spell card.
+
+The panel on the right consists of the effect generation feature. The main generate effects button will generate a list of random effects from the list of all effects. If a unit is being created (non-spell type card), the effects will generate based on effects that are appropriate for units. When a subtype is selected for a unit, the first half of the effects will generate using the list of subtypes as keywords for which effects should be generated. When a spell is being created, this feature instead looks at the spell search rather than subtypes (since spells don't have a subtype).
 
 \subsection{Requirements}
 \begin{itemize}
