@@ -28,6 +28,11 @@ For a comprehensive overview of this project, please see the documentation in th
   - `git push`
 - **Usage**: To use this script, simply run it with `./commitAll.sh <commit_message>`.
 
+### `ttcg-setup.sh`
+- **Purpose**: This script will setup the needed packages for the TTCG project (still in dev).
+- **Usage**: To use this script, simply run it with the following:
+  - To make the script executable (if not already) run `chmod a+x ttcg-setup.sh`.
+  - To run the script: `./ttcg-setup.sh`
 
 
 ## Contact
