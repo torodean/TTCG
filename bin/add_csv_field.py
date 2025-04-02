@@ -5,7 +5,11 @@ import os
 import re
 import csv
 
+# For progress/status messages.
+from tqdm import tqdm
+
 # load needed methods from ttcg_tools
+from ttcg_tools import output_text
 from ttcg_tools import load_placeholder_values
 from ttcg_tools import generate_combinations
 from ttcg_tools import get_command_string
@@ -72,7 +76,7 @@ def check_pattern_existence(effect, pattern, placeholder_dir):
     return pattern in effect
 
 
-def process_effects_file(input_file, output_file, placeholder_dir, column_name, pattern, exact_line=None, match_column=None):
+def process_effects_file(input_file, output_file, placeholder_dir, column_name, patterns, exact_lines=None, match_column=None):
     """
     Processes an effects file and generates a CSV with a column indicating pattern or exact match existence.
 
@@ -88,8 +92,8 @@ def process_effects_file(input_file, output_file, placeholder_dir, column_name, 
         output_file (str): Path to the output CSV file to write results.
         placeholder_dir (str): Directory path containing placeholder text files (e.g., 'placeholders/').
         column_name (str): Name of the column to add or update (e.g., 'HasDraw').
-        pattern (str): Pattern to match against effects, may include placeholders (e.g., 'Draw <number> cards').
-        exact_line (str, optional): Exact substring to match instead of a pattern. If provided, overrides pattern matching.
+        patterns (list of str, optional): Patterns to match against effects, may include placeholders (e.g., 'Draw <number> cards').
+        exact_lines (list of str, optional): Exact substrings to match instead of a pattern. If provided, overrides pattern matching.
                                     Defaults to None.
         match_column (str, optional): Name of an existing CSV column that must be 'True' for pattern matching to proceed.
                                       Ignored for text inputs or if None. Defaults to None.
@@ -101,18 +105,10 @@ def process_effects_file(input_file, output_file, placeholder_dir, column_name, 
         FileNotFoundError: If the input file does not exist.
         ValueError: If `match_column` is specified but not found in the CSV header.
         Exception: For other processing errors (e.g., malformed CSV), with an error message.
-
-    Examples:
-        >>> process_effects_file('effects.txt', 'out.csv', 'placeholders/', 'HasDraw', 'Draw <number> cards')
-        # Creates out.csv with EFFECTNAME and HasDraw columns from effects.txt
-        >>> process_effects_file('in.csv', 'out.csv', 'placeholders/', 'HasSpell', 'Cast <type>', match_column='UNIT')
-        # Updates out.csv with HasSpell column, only where UNIT is 'True'
-        >>> process_effects_file('in.csv', 'out.csv', 'placeholders/', 'HasSpell', 'Cast <type>', exact_line='Cast spell')
-        # Updates out.csv with HasSpell column based on exact match 'Cast spell', ignoring match_column
     """
-    if exact_line is not None:
-        set_exact_match_to_true(input_file, output_file, column_name, exact_line)
-    else:
+    if exact_lines is not None:
+        set_exact_match_to_true(input_file, output_file, column_name, exact_lines)
+    elif patterns is not None:
         # Existing pattern-matching logic here
         try:
             is_csv = input_file.endswith('.csv')
@@ -124,18 +120,21 @@ def process_effects_file(input_file, output_file, placeholder_dir, column_name, 
                     rows = list(reader)
                 
                 if column_name in header:
-                    print(f"'{column_name}' exists in '{input_file}'. Updating False to True where pattern matches.")
+                    output_text(f"'{column_name}' exists in '{input_file}'. Updating False to True where pattern(s) matches.", "note")
                     col_idx = header.index(column_name)
                     effect_col = header.index('EFFECTNAME') if 'EFFECTNAME' in header else 0
                     if match_column is not None:
                         match_idx = header.index(match_column)  # Raises ValueError if not found
-                    for row in rows:
+                    for row in tqdm(rows, desc=f"Processing rows"):
                         effect = row[effect_col]
                         if match_column is not None:
                             col_match = row[match_idx]
                             if col_match != 'True':
                                 continue
-                        pattern_exists = check_pattern_existence(effect, pattern, placeholder_dir)
+                        for pattern in patterns:
+                            pattern_exists = check_pattern_existence(effect, pattern, placeholder_dir)
+                            if pattern_exists:
+                                break    
                         if pattern_exists and row[col_idx] != "True":
                             row[col_idx] = "True"
                 else:
@@ -146,7 +145,7 @@ def process_effects_file(input_file, output_file, placeholder_dir, column_name, 
                     if match_column is not None:
                         match_idx = header.index(match_column)  # Raises ValueError if not found
                     updated_rows = []
-                    for row in rows:
+                    for row in tqdm(rows, desc=f"Processing rows"):
                         effect = row[effect_col]
                         if len(row) <= col_idx:
                             row.extend([''] * (col_idx - len(row) + 1))
@@ -154,7 +153,10 @@ def process_effects_file(input_file, output_file, placeholder_dir, column_name, 
                             col_match = row[match_idx]
                             if col_match != 'True':
                                 continue
-                        pattern_exists = check_pattern_existence(effect, pattern, placeholder_dir)
+                        for pattern in patterns:
+                            pattern_exists = check_pattern_existence(effect, pattern, placeholder_dir)
+                            if pattern_exists:
+                                break
                         row[col_idx] = "True" if pattern_exists else "False"
                         updated_rows.append(row)
                     rows = updated_rows
@@ -165,8 +167,11 @@ def process_effects_file(input_file, output_file, placeholder_dir, column_name, 
                 
                 header = ["EFFECTNAME", column_name]
                 rows = []
-                for effect in effects:
-                    pattern_exists = check_pattern_existence(effect, pattern, placeholder_dir)
+                for effect in tqdm(effects, desc=f"Processing effects"):
+                    for pattern in patterns:
+                        pattern_exists = check_pattern_existence(effect, pattern, placeholder_dir)
+                        if pattern_exists:
+                            break    
                     rows.append([effect, str(pattern_exists)])
             
             with open(output_file, 'w', newline='') as f:
@@ -182,9 +187,11 @@ def process_effects_file(input_file, output_file, placeholder_dir, column_name, 
         except Exception as e:
             print(f"Error processing file: {e}")
             exit(1)
+    else:
+        output_text("Error: No patterns provided.", "error")
 
 
-def set_exact_match_to_true(input_file, output_file, column_name, exact_line):
+def set_exact_match_to_true(input_file, output_file, column_name, exact_lines):
     """
     Searches for an exact substring in effect strings and sets a specified column to True in the output CSV.
 
@@ -197,7 +204,7 @@ def set_exact_match_to_true(input_file, output_file, column_name, exact_line):
         input_file (str): Path to the input file (text or CSV) containing effects.
         output_file (str): Path to the output CSV file to write results.
         column_name (str): Name of the column to update or create (e.g., 'HasExactMatch').
-        exact_line (str): Exact substring to search for within the effects (e.g., 'Draw two').
+        exact_lines (list of str): Exact substring to search for within the effects (e.g., 'Draw two').
 
     Returns:
         None: Writes results to `output_file` and prints status messages; does not return a value.
@@ -227,10 +234,11 @@ def set_exact_match_to_true(input_file, output_file, column_name, exact_line):
             
             col_idx = header.index(column_name)
             effect_col = header.index('EFFECTNAME') if 'EFFECTNAME' in header else 0
-            for row in rows:
+            for row in tqdm(rows, desc=f"Processing rows"):
                 effect = row[effect_col]
-                if exact_line in effect:
-                    row[col_idx] = "True"
+                for exact_line in exact_lines:
+                    if exact_line in effect:
+                        row[col_idx] = "True"
         
         else:
             with open(input_file, 'r') as f:
@@ -238,28 +246,29 @@ def set_exact_match_to_true(input_file, output_file, column_name, exact_line):
             
             header = ["EFFECTNAME", column_name]
             rows = []
-            for effect in effects:
-                rows.append([effect, "True" if exact_line in effect else "False"])
+            for effect in tqdm(effects, desc=f"Processing effects"):
+                for exact_line in exact_lines:
+                    rows.append([effect, "True" if exact_line in effect else "False"])
         
         with open(output_file, 'w', newline='') as f:
             writer = csv.writer(f, delimiter=';')
             writer.writerow(header)
             writer.writerows(rows)
         
-        print(f"Processed '{input_file}' into '{output_file}', set '{column_name}' to True for substring match '{exact_line}'.")
+        output_text(f"Processed '{input_file}' into '{output_file}', set '{column_name}' to True for substring match '{exact_lines}'.", "note")
     
     except FileNotFoundError:
-        print(f"Error: Input file '{input_file}' not found.")
+        output_text(f"Error: Input file '{input_file}' not found.", "error")
         exit(1)
     except ValueError as e:
-        print(f"Error: {e}")
+        output_text(f"Error: {e}", "error")
         exit(1)
     except Exception as e:
-        print(f"Error processing file: {e}")
+        output_text(f"Error processing file: {e}", "error")
         exit(1)
 
 
-def delete_matching_lines(input_file, output_file, search_string):
+def delete_matching_lines(input_file, output_file, search_strings):
     """
     Deletes lines from a file that contain an exact match to the search string.
     
@@ -270,7 +279,7 @@ def delete_matching_lines(input_file, output_file, search_string):
     Args:
         input_file (str): Path to the input file (text or CSV).
         output_file (str): Path to the output file to write remaining lines.
-        search_string (str): Exact string to match for line deletion.
+        search_strings (list of str): Exact strings to match for line deletion.
 
     Returns:
         None: Writes filtered results to output_file and prints status messages.
@@ -289,7 +298,7 @@ def delete_matching_lines(input_file, output_file, search_string):
                 rows = list(reader)
                 
                 effect_col = header.index('EFFECTNAME') if 'EFFECTNAME' in header else 0
-                filtered_rows = [row for row in rows if search_string not in row[effect_col]]
+                filtered_rows = [row for row in rows if not any(s in row[effect_col] for s in search_strings)]
                 
             with open(output_file, 'w', newline='') as f:
                 writer = csv.writer(f, delimiter=';')
@@ -298,20 +307,20 @@ def delete_matching_lines(input_file, output_file, search_string):
         else:
             with open(input_file, 'r') as f:
                 lines = [line.strip() for line in f if line.strip()]
-                filtered_lines = [line for line in lines if search_string not in line]
+                filtered_lines = [line for line in lines if not any(s in line for s in search_strings)]
                 
             with open(output_file, 'w') as f:
                 f.write('\n'.join(filtered_lines))
                 if filtered_lines:  # Add newline at end if not empty
                     f.write('\n')
         
-        print(f"Processed '{input_file}', removed lines matching '{search_string}', wrote to '{output_file}'.")
+        output_text(f"Processed '{input_file}', removed lines matching '{search_strings}', wrote to '{output_file}'.", "note")
         
     except FileNotFoundError:
-        print(f"Error: Input file '{input_file}' not found.")
+        output_text(f"Error: Input file '{input_file}' not found.", "error")
         exit(1)
     except Exception as e:
-        print(f"Error processing file: {e}")
+        output_text(f"Error processing file: {e}", "error")
         exit(1)
 
 
@@ -326,14 +335,19 @@ def main():
     parser.add_argument('-c', '--column', required=True,
                         help="Name of the column to update or add (e.g., 'HasMyString').")
     parser.add_argument('-t', '--text',
+                        nargs='+',  # Accept one or more arguments
                         help="Pattern to search for (e.g., 'some text <placeholder> more text').")
-    parser.add_argument('-e', '--exact', help="Exact line to match and set the specified column to True.")
+    parser.add_argument('-e', '--exact',
+                        nargs='+',  # Accept one or more arguments 
+                        help="Exact line to match and set the specified column to True.")
     parser.add_argument('-m', '--match_column', help="An extra identifier for specifying a column which must be true to evaluate as a match.")
-    parser.add_argument('-d', '--delete', help="Exact string to match for deleting entire lines.")
+    parser.add_argument('-d', '--delete',                         
+                        nargs='+',  # Accept one or more arguments 
+                        help="Exact string to match for deleting entire lines.")
     args = parser.parse_args()
 
     # Print the command using the generic method
-    print(get_command_string(args))
+    output_text(get_command_string(args), "program")
 
     # Ensure exactly one of -t/--text, -e/--exact, or -d/--delete is provided
     provided_options = sum(1 for opt in [args.text, args.exact, args.delete] if opt is not None)
