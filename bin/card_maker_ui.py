@@ -6,6 +6,7 @@ import random
 from tkinter import ttk
 from tkinter import filedialog
 from pathlib import Path
+import threading
 
 # Used for randomly generating effects.
 from generate_random_effects import load_and_filter_csv
@@ -17,6 +18,8 @@ from ttcg_tools import check_line_in_file
 from ttcg_tools import get_relative_path
 from ttcg_tools import rename_file
 from ttcg_tools import deduce_effect_style_from_effect_text
+from ttcg_tools import get_sequence_combinations
+from ttcg_tools import get_combination_id
 
 # Import needed constants from ttcg_constants
 from ttcg_constants import TYPE_LIST
@@ -26,6 +29,7 @@ from ttcg_constants import VALID_IMAGE_EXTENSIONS
 from ttcg_constants import VALID_OVERLAY_STYLES
 from ttcg_constants import VALID_TRANSLUCENT_VALUES
 from ttcg_constants import DEFAULT_CARD_LIST_FILE
+from ttcg_constants import ALL_TYPES_LIST_LOWER
 
 # Used for flipping and correcting images.
 from flip_image import flip_image
@@ -45,9 +49,12 @@ import csv
 
 # Global var to determine when preview should be generated vs not.
 SKIP_PREVIEW = False
+
 # Get script's directory (useful for relative paths)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
+
+# The number of effect boxes in the UI. Used in various places so it's a global var here.
 NUMBER_OF_EFFECT_BOXES = 24
     
 
@@ -625,6 +632,14 @@ def assign_effect(effect_text):
             WIDGETS['effect2_style_var'].set(effect_style)
 
 
+def pre_process_list_combinations():
+    """
+    This method will pre-process the list combinations which are needed for the generate_serial_number 
+    method. This calls the get_sequence_combinations(LIST) method with the  
+    """
+    pass
+
+
 def generate_serial_number(card_data):
     """
     Generate a unique serial number for a trading card based on its attributes.
@@ -871,6 +886,16 @@ def load_next_image(image_file=None, filename=DEFAULT_CARD_LIST_FILE):
     update_preview()
 
 
+def preprocess_all_types_list():
+    """
+    This method will pre-process the ALL_TYPES_LIST_LOWER combinations into a buffer
+    so that the SN generation method can use it without having to load it initially.
+    """
+    output_text("Pre-processing started for ALL_TYPE combinations...", "program")
+    get_sequence_combinations(ALL_TYPES_LIST_LOWER)
+    output_text("Pre-processing Finished for ALL_TYPE combinations...", "program")
+
+
 def main():
     """
     Set up and run the Card Creator GUI.
@@ -894,6 +919,11 @@ def main():
     )
     
     args = parser.parse_args()
+    
+    # Start preprocessing combinations into RAM.
+    # Create and start the thread
+    processing_thread = threading.Thread(target=preprocess_all_types_list)
+    processing_thread.start()
     
     root = tk.Tk()
     root.title("Game Card Creator")

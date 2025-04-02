@@ -7,6 +7,7 @@ import itertools
 from ttcg_constants import VALID_OVERLAY_STYLES
 from ttcg_constants import DEFAULT_PLACEHOLDERS_FOLDER
 from ttcg_constants import EFFECT_STYLE_TEXT_FOLDER
+from ttcg_constants import TYPE_LIST_LOWER
 
 
 def output_text(text, option="text"):
@@ -384,35 +385,72 @@ def deduce_effect_style_from_effect_text(effect_text):
         return None
 
 
+def has_at_most_one_from_source(source_list, target_list, num_of_matches=1):
+    """
+    Returns True if exactly one item from source_list appears in target_list.
+    """
+    source_set = set(source_list)
+    matches = sum(1 for item in target_list if item in source_set)
+    return matches == num_of_matches
+
+
 ALL_SEQUENCE_BUFFER = {}
 PRINT_ALL_SEQUENCES = False
 
 
-def get_sequence_combinations(current_list):
+def get_sequence_combinations(current_list, check_types=True, max_output_size=5):
     """
     Generate all unique sorted combinations of items from the given list.
     
     Args:
         current_list (list): List of items to generate combinations from.
+        check_types (bool): This check will enable a check to make sure only one type from 
+            TYPE_LIST_LOWER exists in the output. This is used for SN generation and other places.
+        max_output_size (int): The maximum size for the output items to be.
     
     Returns:
         list: Sorted list of unique combinations.
     """
+    # Sort the input list for consistency.
+    current_list = sorted(cl.lower().strip() for cl in current_list)
+    
+    # check if the data is already in the buffer.
+    item_tuple = tuple(current_list)
+    if item_tuple in ALL_SEQUENCE_BUFFER:
+        return ALL_SEQUENCE_BUFFER[item_tuple]
+    
+    # Create the initial list to parse. if check_types is on, we assume that the new_list will
+    # only contain individual lists with one of the main TYPES.
     list_to_parse = current_list
-    new_list = [[c] for c in current_list]
+    if check_types:
+        new_list = [[c] for c in TYPE_LIST_LOWER]
+    else:
+        new_list = [[c] for c in current_list]
+    
+    # Loop over the data and generate combinations.
     while len(list_to_parse) > 0:
         for i, item in enumerate(list_to_parse):
             additions_list = []
             for i2, item2 in enumerate(new_list):
+                if len(item2) >= max_output_size:
+                    continue
                 if item not in item2:
                     new_item = sorted([item] + [x for x in item2])
                     if new_item not in new_list:
-                        new_item_str = ", ".join(new_item)
-                        additions_list.append(new_item)
+                        if check_types:
+                            # Check against types list: there can only ever be one item from 
+                            # TYPE_LIST_LOWER in the output.
+                            if has_at_most_one_from_source(TYPE_LIST_LOWER, new_item):
+                                additions_list.append(new_item)
+                        else:
+                            additions_list.append(new_item)
             new_list = new_list + additions_list
             list_to_parse = list_to_parse[1:]
             
-    return sorted(new_list)
+    # Sort and return the output as well as adding it to the buffer.
+    sorted_output = sorted(new_list)
+    ALL_SEQUENCE_BUFFER[item_tuple] = sorted_output
+    return sorted_output
 
 
 def get_combination_id(input_string, item_list, num_digits=3, print_combos=False):
@@ -439,15 +477,9 @@ def get_combination_id(input_string, item_list, num_digits=3, print_combos=False
     
     # Convert both lists to lowercase for case-insensitive comparison and strip whitespace
     item_list = sorted(i.lower().strip() for i in item_list)
-    input_items = sorted([s.strip().lower() for s in input_string.split(",")])
+    input_items = sorted([s.strip().lower() for s in input_string.split(",")])    
     
-    item_tuple = tuple(item_list)
-    if item_tuple in ALL_SEQUENCE_BUFFER:
-        all_combinations = ALL_SEQUENCE_BUFFER[item_tuple]
-    else:
-        ALL_SEQUENCE_BUFFER[item_tuple] = get_sequence_combinations(item_list)
-        
-    all_combinations = ALL_SEQUENCE_BUFFER[item_tuple]
+    all_combinations = get_sequence_combinations(item_list)
 
     # Use PRINT_ALL_SEQUENCES to prevent printing this multiple times.
     if not PRINT_ALL_SEQUENCES and print_combos:
