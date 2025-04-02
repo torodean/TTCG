@@ -383,3 +383,93 @@ def deduce_effect_style_from_effect_text(effect_text):
     else:
         return None
 
+
+ALL_SEQUENCE_BUFFER = {}
+PRINT_ALL_SEQUENCES = False
+
+
+def get_sequence_combinations(current_list):
+    """
+    Generate all unique sorted combinations of items from the given list.
+    
+    Args:
+        current_list (list): List of items to generate combinations from.
+    
+    Returns:
+        list: Sorted list of unique combinations.
+    """
+    list_to_parse = current_list
+    new_list = [[c] for c in current_list]
+    while len(list_to_parse) > 0:
+        for i, item in enumerate(list_to_parse):
+            additions_list = []
+            for i2, item2 in enumerate(new_list):
+                if item not in item2:
+                    new_item = sorted([item] + [x for x in item2])
+                    if new_item not in new_list:
+                        new_item_str = ", ".join(new_item)
+                        additions_list.append(new_item)
+            new_list = new_list + additions_list
+            list_to_parse = list_to_parse[1:]
+            
+    return sorted(new_list)
+
+
+def get_combination_id(input_string, item_list, num_digits=3, print_combos=False):
+    """
+    Generate a unique combination ID for a given input string based on predefined item combinations.
+    
+    Args:
+        input_string (str): Comma-separated string of input items.
+        item_list (list): List of available items to match against.
+        num_digits (int, optional): Number of digits for the generated ID. Defaults to 3.
+        print_combos (bool, optional): Whether to print all generated combinations. Defaults to False.
+    
+    Returns:
+        str: A unique base-36 encoded combination ID.
+    
+    Raises:
+        ValueError: If the number of digits is insufficient for encoding.
+    """
+    global PRINT_ALL_SEQUENCES  # Declare PRINT_ALL_SEQUENCES as global
+    if "" not in item_list:
+        item_list.insert(0, "")
+        
+    CHARACTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    
+    # Convert both lists to lowercase for case-insensitive comparison and strip whitespace
+    item_list = sorted(i.lower().strip() for i in item_list)
+    input_items = sorted([s.strip().lower() for s in input_string.split(",")])
+    
+    item_tuple = tuple(item_list)
+    if item_tuple in ALL_SEQUENCE_BUFFER:
+        all_combinations = ALL_SEQUENCE_BUFFER[item_tuple]
+    else:
+        ALL_SEQUENCE_BUFFER[item_tuple] = get_sequence_combinations(item_list)
+        
+    all_combinations = ALL_SEQUENCE_BUFFER[item_tuple]
+
+    # Use PRINT_ALL_SEQUENCES to prevent printing this multiple times.
+    if not PRINT_ALL_SEQUENCES and print_combos:
+        for combo in all_combinations:
+            print(combo)
+        PRINT_ALL_SEQUENCES = True
+        
+    index = all_combinations.index(input_items)
+    
+    print(f"index: {index}")
+    
+    # Fixed base-36 conversion: encode full number, then truncate if needed
+    result = ""
+    temp_value = index
+    while temp_value > 0:
+        result = CHARACTERS[temp_value % 36] + result
+        temp_value //= 36
+    if not result:  # Handle index 0
+        result = "0"
+    # Pad or truncate to num_digits
+    if len(result) < num_digits:
+        result = "0" * (num_digits - len(result)) + result
+    elif len(result) > num_digits:
+        ValueError(f"ERROR: Not enough digits assigned for combinations.")
+    return result
