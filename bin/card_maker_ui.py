@@ -662,17 +662,19 @@ def generate_serial_number(card_data):
     attack = card_data.get('attack', '')
     defense = card_data.get('defense', '')
     effect1 = card_data.get('effect1', '')
+    effect1_style = card_data.get('effect1_style', '')
     effect2 = card_data.get('effect2', '')
+    effect2_style = card_data.get('effect2_style', '')
         
     # Placeholder: Combine attributes into a unique string
-    attribute_string = (
-        f"{name}{card_type}{level}{subtypes}{attack}{defense}{effect1}{effect2}{image}{rarity}"
+    card_attributes = (
+        f"{name}-{card_type}-{subtypes}-{level}-{image}-{attack}-{defense}-{effect1}-{effect1_style}-{effect2}-{effect2_style}-{rarity}"
     )
 
-    output_text(f"Created attribute_string: {attribute_string}", "note")
+    output_text(f"Creating serial number for: {card_attributes}", "note")
 
     # TODO: Implement serial number generation logic here
-    serial_number = hashlib.sha256(attribute_string.encode('utf-8')).hexdigest() # Testing with hash
+    serial_number = hashlib.sha256(card_attributes.encode('utf-8')).hexdigest() # Testing with hash
     output_text(f"Created serial_number: {serial_number}", "note")
     
     serial_number = serial_number[:14]

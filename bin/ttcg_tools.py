@@ -382,4 +382,3 @@ def deduce_effect_style_from_effect_text(effect_text):
         return matched_styles[0]
     else:
         return None
-
