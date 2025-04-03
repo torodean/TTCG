@@ -39,3 +39,5 @@ DEFAULT_FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 # Characters to be used in serial number generation. These are all values that show up nicely without 
 # having to worry about what letters are what or the font effecting the serial number display size.
 CHARACTERS = "0123456789AaBbCcDdEeFfGHhiKkLMmNnoPRrSsTtUuVvWwXxYZz"
+
+EXTRA_EFFECT_KEYWORDS = ["Discard", "Destroy", "Draw", "Mill"]

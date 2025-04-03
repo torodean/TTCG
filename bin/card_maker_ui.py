@@ -35,6 +35,7 @@ from ttcg_constants import VALID_TRANSLUCENT_VALUES
 from ttcg_constants import DEFAULT_CARD_LIST_FILE
 from ttcg_constants import ALL_TYPES_LIST_LOWER
 from ttcg_constants import DEFAULT_SERIAL_LIST_FILE
+from ttcg_constants import EXTRA_EFFECT_KEYWORDS
 
 # Used for flipping and correcting images.
 from flip_image import flip_image
@@ -510,36 +511,41 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
     
     if not is_spell:
         # Unit-specific logic
+        # Get selected effect search values from effect_search_vars
+        effect_search_vars = WIDGETS["effect_search_vars"]  # List of StringVar objects
+        effect_search_values = [var.get() for var in effect_search_vars if var.get()]  # Filter out empty strings
         strings_to_omit = ["lose <atkdef>", "destroy up to <number> <typeslevels>"]
-        target_with_subtypes = NUMBER_OF_EFFECT_BOXES // 2
+        target_with_search_terms = NUMBER_OF_EFFECT_BOXES // 2
 
-        # Generate up to half the effects using subtypes as search strings
-        if subtypes:  # Only if subtypes are provided
-            for _ in range(target_with_subtypes):
+        search_terms = effect_search_values + subtypes      
+        
+        # Generate up to half the effects using search_terms as search strings
+        if search_terms:  # Only if search_terms are provided
+            for _ in range(target_with_search_terms):
                 if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
                     break  # Stop if no more unique effects are available
-                effect = get_random_effect(possible_effect_values, search_strings=subtypes, omit_strings=strings_to_omit)
+                effect = get_random_effect(possible_effect_values, search_strings=search_terms, omit_strings=strings_to_omit)
                 while effect in used_effects:
-                    effect = get_random_effect(possible_effect_values, search_strings=subtypes, omit_strings=strings_to_omit)
+                    effect = get_random_effect(possible_effect_values, search_strings=search_terms, omit_strings=strings_to_omit)
                     if len(used_effects) >= len(possible_effect_values):
                         break  # Avoid infinite loop
                 used_effects.add(effect)
                 generated_effects.append(effect)
     else:
         # Spell-specific logic
-        # Get selected spell search values from spell_search_vars
-        spell_search_vars = WIDGETS["spell_search_vars"]  # List of StringVar objects
-        spell_search_values = [var.get() for var in spell_search_vars if var.get()]  # Filter out empty strings
+        # Get selected effect search values from effect_search_vars
+        effect_search_vars = WIDGETS["effect_search_vars"]  # List of StringVar objects
+        effect_search_values = [var.get() for var in effect_search_vars if var.get()]  # Filter out empty strings
         target_with_search = NUMBER_OF_EFFECT_BOXES // 2
 
         # Generate up to half the effects using spell search values as search strings
-        if spell_search_values:  # Only if spell search values are selected
+        if effect_search_values:  # Only if spell search values are selected
             for _ in range(target_with_search):
                 if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
                     break  # Stop if no more unique effects are available
-                effect = get_random_effect(possible_effect_values, search_strings=spell_search_values)
+                effect = get_random_effect(possible_effect_values, search_strings=effect_search_values)
                 while effect in used_effects:
-                    effect = get_random_effect(possible_effect_values, search_strings=spell_search_values)
+                    effect = get_random_effect(possible_effect_values, search_strings=effect_search_values)
                     if len(used_effects) >= len(possible_effect_values):
                         break  # Avoid infinite loop
                 used_effects.add(effect)
@@ -1236,16 +1242,16 @@ def main():
     reset_btn.grid(row=3, column=0, pady=8, padx=5, sticky="ew")
     
     # Spell Search Area
-    spell_search_frame = ttk.LabelFrame(preview_frame, text="Spell Search", padding="8")
-    spell_search_frame.grid(row=4, column=0, pady=8, sticky="ew")
-    spell_search_list = TYPE_LIST + SUBTYPES_LIST
-    spell_search_vars = [tk.StringVar(value="") for _ in range(len(spell_search_list))]  # Default to empty string
-    for i, value in enumerate(spell_search_list):
+    effect_search_frame = ttk.LabelFrame(preview_frame, text="Effect Keywords For Search", padding="8")
+    effect_search_frame.grid(row=4, column=0, pady=8, sticky="ew")
+    effect_search_list = TYPE_LIST + SUBTYPES_LIST + EXTRA_EFFECT_KEYWORDS
+    effect_search_vars = [tk.StringVar(value="") for _ in range(len(effect_search_list))]  # Default to empty string
+    for i, value in enumerate(effect_search_list):
         display_text = value.capitalize()
         ttk.Checkbutton(
-            spell_search_frame,
+            effect_search_frame,
             text=display_text,
-            variable=spell_search_vars[i],
+            variable=effect_search_vars[i],
             onvalue=value,  # e.g., "Spell", "Fire"
             offvalue="",   # Empty string when unchecked
             command=update_preview
@@ -1322,7 +1328,7 @@ def main():
         "serial_entry" : serial_entry,
         "effect1_style_var": effect1_style_var,
         "effect2_style_var": effect2_style_var,
-        "spell_search_vars": spell_search_vars
+        "effect_search_vars": effect_search_vars
     }
 
     # Initial preview update
