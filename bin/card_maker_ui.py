@@ -6,6 +6,7 @@ import random
 from tkinter import ttk
 from tkinter import filedialog
 from pathlib import Path
+import threading
 
 # Used for randomly generating effects.
 from generate_random_effects import load_and_filter_csv
@@ -17,6 +18,10 @@ from ttcg_tools import check_line_in_file
 from ttcg_tools import get_relative_path
 from ttcg_tools import rename_file
 from ttcg_tools import deduce_effect_style_from_effect_text
+from ttcg_tools import get_sequence_combinations, ALL_SEQUENCE_BUFFER
+from ttcg_tools import get_combination_id
+from ttcg_tools import get_number_id
+from ttcg_tools import get_index_in_baseN
 
 # Import needed constants from ttcg_constants
 from ttcg_constants import TYPE_LIST
@@ -26,6 +31,7 @@ from ttcg_constants import VALID_IMAGE_EXTENSIONS
 from ttcg_constants import VALID_OVERLAY_STYLES
 from ttcg_constants import VALID_TRANSLUCENT_VALUES
 from ttcg_constants import DEFAULT_CARD_LIST_FILE
+from ttcg_constants import ALL_TYPES_LIST_LOWER
 
 # Used for flipping and correcting images.
 from flip_image import flip_image
@@ -45,10 +51,16 @@ import csv
 
 # Global var to determine when preview should be generated vs not.
 SKIP_PREVIEW = False
+
 # Get script's directory (useful for relative paths)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
+
+# The number of effect boxes in the UI. Used in various places so it's a global var here.
 NUMBER_OF_EFFECT_BOXES = 24
+
+# For global threading.
+processing_thread = None
     
 
 def get_next_image(current_path):
@@ -625,7 +637,7 @@ def assign_effect(effect_text):
             WIDGETS['effect2_style_var'].set(effect_style)
 
 
-def generate_serial_number(card_data):
+def generate_serial_number(card_data, waitForThreads=False):
     """
     Generate a unique serial number for a trading card based on its attributes.
 
@@ -643,7 +655,9 @@ def generate_serial_number(card_data):
             - attack (str): Attack value (e.g., '1500').
             - defense (str): Defense value (e.g., '1200').
             - effect1 (str): First effect text (e.g., 'Draw 1 card').
+            - effect1_style (str): The effect1_style string.
             - effect2 (str): Second effect text (e.g., 'Gain 2 life').
+            - effect2_style (str): The effect1_style string.
 
     Returns:
         str: A unique serial number (e.g., 'FRA-DRWA-5f3a2b', 'e80b50170989').
@@ -652,6 +666,12 @@ def generate_serial_number(card_data):
         - The serial number should be concise (e.g., 8-12 characters) yet unique.
         - Implementation details (e.g., hash, counter, UUID) are left to the user.
     """
+    if waitForThreads:
+        wait_for_preprocessing()
+    
+    if not PREPROCESSING_FINISHED:
+        return "Loading.."
+    
     # Extract attributes from card_data
     name = card_data.get('name', '')
     card_type = card_data.get('type', '')
@@ -673,11 +693,41 @@ def generate_serial_number(card_data):
 
     output_text(f"Creating serial number for: {card_attributes}", "note")
 
-    # TODO: Implement serial number generation logic here
-    serial_number = hashlib.sha256(card_attributes.encode('utf-8')).hexdigest() # Testing with hash
-    output_text(f"Created serial_number: {serial_number}", "note")
+    if subtypes == "":
+        all_types = card_type
+    else:
+        all_types = card_type + ", " + subtypes
+    all_types_id = get_combination_id(all_types, ALL_TYPES_LIST_LOWER)
+    effect1_style_id = get_index_in_baseN(effect1_style, VALID_OVERLAY_STYLES)
+    effect2_style_id = get_index_in_baseN(effect2_style, VALID_OVERLAY_STYLES)
     
-    serial_number = serial_number[:14]
+    if effect1 == "":
+        effect1_id = "0"
+    else:
+        effect1_id = effect1[0]
+    
+    if effect2 == "":
+        effect2_id = "0"
+    else:
+        effect2_id = effect2[0]
+
+    serial_number = ""                             # Create the initial SN string.
+    serial_number += name[0].capitalize()          # Add the first letter of the name.
+    serial_number += str(level)                    # Add the level.
+    serial_number += all_types_id                  # Add the unique type+subtype identifier.
+    
+    # Since level is included as part of the SN, the atk and defense can be generated on a scale relative to the level.
+    serial_number += get_number_id(int(attack), level)  # Add the attack value identifier.
+    serial_number += get_number_id(int(defense), level) # Add the attack value identifier.
+    
+    serial_number += effect1_id                    # Add the first letter of the effect1.
+    serial_number += effect1_style_id              # Add the unique identifier for the the effect1 style.
+    serial_number += effect2_id                    # Add the first letter of the effect2.
+    serial_number += effect2_style_id              # Add the unique identifier for the the effect1 style.
+    serial_number += str(rarity)                   # Add the rarity of the card.
+    serial_number += "0"                           # One pad bit for expansion (Allows 36 possibilities with all other options the same).
+
+    output_text(f"Created serial_number: {serial_number}", "note")
     card_data["serial"] = serial_number
     
     return serial_number
@@ -871,6 +921,57 @@ def load_next_image(image_file=None, filename=DEFAULT_CARD_LIST_FILE):
     update_preview()
 
 
+PREPROCESSING_FINISHED = False
+
+def preprocess_all_types_list():
+    """
+    This method will pre-process the ALL_TYPES_LIST_LOWER combinations into a buffer
+    so that the SN generation method can use it without having to load it initially.
+    """
+    global PREPROCESSING_FINISHED  # Declare the variable as global to modify it.
+    output_text("Pre-processing started for ALL_TYPE combinations...", "program")
+    get_sequence_combinations(ALL_TYPES_LIST_LOWER)
+    output_text("Pre-processing Finished for ALL_TYPE combinations...", "program")
+    PREPROCESSING_FINISHED = True
+
+
+def wait_for_preprocessing():
+    """
+    Wait for the preprocessing thread to complete before proceeding.
+
+    This function checks if a global `processing_thread` exists and, if so, blocks execution
+    until the thread finishes using `join()`. It provides feedback on the thread's status
+    via print statements. If no thread is defined, it indicates that there’s nothing to wait for.
+
+    Global Variables:
+        processing_thread (threading.Thread or None): The thread object to wait for, expected
+            to be set globally before calling this function.
+
+    Returns:
+        None
+
+    Notes:
+        - Assumes `processing_thread` is a `threading.Thread` object initialized elsewhere
+          (e.g., in `main()`).
+        - Prints status messages to stdout for debugging or user feedback.
+    """
+    global processing_thread
+    if processing_thread is not None:
+        processing_thread.join()
+    else:
+        output_text("No preprocessing thread to wait for!", "warning")
+
+
+def initialize_preprocessing():
+    """
+    Starts the preprocessing for the various combinations for serial number generation.
+    """
+    global processing_thread
+    output_text("Initializing preprocessing...", "program")
+    processing_thread = threading.Thread(target=preprocess_all_types_list)
+    processing_thread.start()
+
+
 def main():
     """
     Set up and run the Card Creator GUI.
@@ -894,6 +995,9 @@ def main():
     )
     
     args = parser.parse_args()
+    
+    # Start preprocessing combinations into RAM. Create and start the thread.
+    initialize_preprocessing()
     
     root = tk.Tk()
     root.title("Game Card Creator")

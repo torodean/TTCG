@@ -2,11 +2,19 @@ import os
 import sys
 import re
 import itertools
+from tqdm import tqdm
 
 # Import some constants from the ttxg_constants file.
 from ttcg_constants import VALID_OVERLAY_STYLES
 from ttcg_constants import DEFAULT_PLACEHOLDERS_FOLDER
 from ttcg_constants import EFFECT_STYLE_TEXT_FOLDER
+from ttcg_constants import TYPE_LIST_LOWER
+from ttcg_constants import CHARACTERS
+
+
+# Global variables used by these methods.
+ALL_SEQUENCE_BUFFER = {}
+PRINT_ALL_SEQUENCES = False
 
 
 def output_text(text, option="text"):
@@ -36,8 +44,16 @@ def output_text(text, option="text"):
         "test": "\033[35m",     # Magenta - Testing
         "program": "\033[38;5;208m"  # Orange - Program-specific output
     }
-
+    
     text = str(text)  # Ensure text is a string
+    
+    if option == "error":
+        if "error" not in text.lower():
+            text = f"ERROR: {text}"
+    elif option == "warning":
+        if "error" not in text.lower():
+            text = f"WARNING: {text}"
+    
     if option in color_codes:
         color_code = color_codes[option]
         reset_code = color_codes["text"]
@@ -384,38 +400,73 @@ def deduce_effect_style_from_effect_text(effect_text):
         return None
 
 
-ALL_SEQUENCE_BUFFER = {}
-PRINT_ALL_SEQUENCES = False
+def has_at_most_one_from_source(source_list, target_list, num_of_matches=1):
+    """
+    Returns True if exactly one item from source_list appears in target_list.
+    """
+    source_set = set(source_list)
+    matches = sum(1 for item in target_list if item in source_set)
+    return matches == num_of_matches
 
 
-def get_sequence_combinations(current_list):
+def get_sequence_combinations(current_list, check_types=True, max_output_size=6):
     """
     Generate all unique sorted combinations of items from the given list.
     
     Args:
         current_list (list): List of items to generate combinations from.
+        check_types (bool): This check will enable a check to make sure only one type from 
+            TYPE_LIST_LOWER exists in the output. This is used for SN generation and other places.
+        max_output_size (int): The maximum size for the output items to be.
     
     Returns:
         list: Sorted list of unique combinations.
     """
+    # Sort the input list for consistency.
+    current_list = sorted(cl.lower().strip() for cl in current_list)
+    
+    # check if the data is already in the buffer.
+    item_tuple = tuple(current_list)
+    if item_tuple in ALL_SEQUENCE_BUFFER:
+        return ALL_SEQUENCE_BUFFER[item_tuple]
+    
+    output_text("Calling get_sequence_combinations... This may take some time!", "warning")
+    
+    # Create the initial list to parse. if check_types is on, we assume that the new_list will
+    # only contain individual lists with one of the main TYPES.
     list_to_parse = current_list
-    new_list = [[c] for c in current_list]
+    if check_types:
+        new_list = [[c] for c in TYPE_LIST_LOWER]
+    else:
+        new_list = [[c] for c in current_list]
+    
+    # Loop over the data and generate combinations.
     while len(list_to_parse) > 0:
         for i, item in enumerate(list_to_parse):
             additions_list = []
             for i2, item2 in enumerate(new_list):
+                if len(item2) >= max_output_size:
+                    continue
                 if item not in item2:
                     new_item = sorted([item] + [x for x in item2])
                     if new_item not in new_list:
-                        new_item_str = ", ".join(new_item)
-                        additions_list.append(new_item)
+                        if check_types:
+                            # Check against types list: there can only ever be one item from 
+                            # TYPE_LIST_LOWER in the output.
+                            if has_at_most_one_from_source(TYPE_LIST_LOWER, new_item):
+                                additions_list.append(new_item)
+                        else:
+                            additions_list.append(new_item)
             new_list = new_list + additions_list
             list_to_parse = list_to_parse[1:]
             
-    return sorted(new_list)
+    # Sort and return the output as well as adding it to the buffer.
+    sorted_output = sorted(new_list)
+    ALL_SEQUENCE_BUFFER[item_tuple] = sorted_output
+    return sorted_output
 
 
-def get_combination_id(input_string, item_list, num_digits=3, print_combos=False):
+def get_combination_id(input_string, item_list, num_digits=4, print_combos=False, N=len(CHARACTERS)):
     """
     Generate a unique combination ID for a given input string based on predefined item combinations.
     
@@ -426,45 +477,33 @@ def get_combination_id(input_string, item_list, num_digits=3, print_combos=False
         print_combos (bool, optional): Whether to print all generated combinations. Defaults to False.
     
     Returns:
-        str: A unique base-36 encoded combination ID.
+        str: A unique base-N encoded combination ID.
     
     Raises:
         ValueError: If the number of digits is insufficient for encoding.
     """
     global PRINT_ALL_SEQUENCES  # Declare PRINT_ALL_SEQUENCES as global
-    if "" not in item_list:
-        item_list.insert(0, "")
-        
-    CHARACTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     
     # Convert both lists to lowercase for case-insensitive comparison and strip whitespace
     item_list = sorted(i.lower().strip() for i in item_list)
-    input_items = sorted([s.strip().lower() for s in input_string.split(",")])
+    input_items = sorted([s.strip().lower() for s in input_string.split(",")])    
     
-    item_tuple = tuple(item_list)
-    if item_tuple in ALL_SEQUENCE_BUFFER:
-        all_combinations = ALL_SEQUENCE_BUFFER[item_tuple]
-    else:
-        ALL_SEQUENCE_BUFFER[item_tuple] = get_sequence_combinations(item_list)
-        
-    all_combinations = ALL_SEQUENCE_BUFFER[item_tuple]
+    all_combinations = get_sequence_combinations(item_list)
 
     # Use PRINT_ALL_SEQUENCES to prevent printing this multiple times.
     if not PRINT_ALL_SEQUENCES and print_combos:
         for combo in all_combinations:
-            print(combo)
+            output_text(f"{combo}", "note")
         PRINT_ALL_SEQUENCES = True
         
     index = all_combinations.index(input_items)
     
-    print(f"index: {index}")
-    
-    # Fixed base-36 conversion: encode full number, then truncate if needed
+    # Fixed base-N conversion: encode full number, then truncate if needed
     result = ""
     temp_value = index
     while temp_value > 0:
-        result = CHARACTERS[temp_value % 36] + result
-        temp_value //= 36
+        result = CHARACTERS[temp_value % N] + result
+        temp_value //= N
     if not result:  # Handle index 0
         result = "0"
     # Pad or truncate to num_digits
@@ -472,4 +511,76 @@ def get_combination_id(input_string, item_list, num_digits=3, print_combos=False
         result = "0" * (num_digits - len(result)) + result
     elif len(result) > num_digits:
         ValueError(f"ERROR: Not enough digits assigned for combinations.")
+    return result
+    
+    
+
+def get_number_id(number, level=5, N=len(CHARACTERS) ):
+    """
+    Generates a unique (ish) ID for a number by dividing the range 0-2500 into N equal parts.
+    This assigns the input number to the closest part, used for card stats where max attack/defense is 2500.
+    
+    Args:
+        number (int or float): The input number to convert to an ID (typically 0-2500).
+        level (int): Optional specifier for level to adjust max.
+        N (int): The base number to use.
+    
+    Returns:
+        int: An ID from 0 to 35 representing which of the N segments the number falls into.
+    """
+    # Maximum value for card stats (500 * level, assuming max level 5 = 2500)
+    max_value = level * 500
+    
+    # Calculate the size of each segment (2500 divided into N parts)
+    segment_size = max_value / N
+    
+    # Ensure the number stays within bounds (0 to 2500)
+    clamped_number = max(0, min(number, max_value))
+    
+    # Calculate which segment this number falls into
+    # Use integer division to get the segment index (0 to N-1)
+    segment_index = int(clamped_number // segment_size)
+    
+    # Handle the edge case where number equals max_value
+    # Without this, 2500 would give N, which is out of our 0 to N - 1 range
+    if segment_index >= N:
+        segment_index = N - 1
+    
+    return CHARACTERS[segment_index]
+    
+    
+def get_index_in_baseN(search_string, search_list, N=len(CHARACTERS)):
+    """
+    Find the index of a string in a list and return it in base N notation.
+    
+    Args:
+        search_string (str or None): The string to search for in the list, or None.
+        search_list (list): The list to search in, containing strings or other elements.
+        N (int): The base to use for conversions.
+    
+    Returns:
+        str: The index of the search_string in base N using CHARACTERS, or "0" if not found or input is None.
+    """
+    # Handle None input or empty list by returning "0" (base N for 0)
+    if search_string is None or not search_list:
+        return "0"
+    
+    # Find the index of the search_string in the list, default to -1 if not found
+    try:
+        index = search_list.index(search_string)
+    except ValueError:
+        return "0"  # Return "0" if the string isn't in the list
+    
+    # Convert the index to base N
+    if index == 0:
+        return "0"  # Special case for index 0
+    
+    result = ""
+    num = index
+    while num > 0:
+        # Get the remainder when divided by N and map to CHARACTERS
+        digit = num % N
+        result = CHARACTERS[digit] + result
+        num //= N  # Integer division for next digit
+    
     return result

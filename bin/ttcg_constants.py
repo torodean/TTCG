@@ -1,7 +1,11 @@
 
 # List of all valid card types and subtypes.
 TYPE_LIST = ["Spell", "Earth", "Fire", "Water", "Air", "Light", "Dark", "Electric", "Nature"]
+TYPE_LIST_LOWER = [l.lower() for l in TYPE_LIST]
 SUBTYPES_LIST = ["Avian", "Dragon", "Beast", "Elemental", "Aquatic", "Warrior", "Spellcaster", "Machine", "Ghost", "Insect", "Reptile", "Fairy", "Undead", "Botanic"]
+SUBTYPES_LIST_LOWER = [l.lower() for l in SUBTYPES_LIST]
+ALL_TYPES_LIST = TYPE_LIST + SUBTYPES_LIST
+ALL_TYPES_LIST_LOWER = [l.lower() for l in ALL_TYPES_LIST]
 
 # Valid options for effect overlay's (the positions are top and bottom representing effects 1 and 2 respectively).
 VALID_OVERLAY_POSITIONS = ["top", "bottom"]
@@ -28,3 +32,7 @@ DEFAULT_ALL_EFFECT_TEMPLATES_FILE = "effects/all_effect_templates.txt"
 DEFAULT_COMBOS_TO_REMOVE_FILE = "placeholders/combinations_to_remove.txt"
 DEFAULT_PHRASES_TO_REPLACE_FILE = "placeholders/phrase_replacements.txt"
 EFFECT_STYLE_TEXT_FOLDER = "effect_style_text"
+
+# Characters to be used in serial number generation. These are all values that show up nicely without 
+# having to worry about what letters are what or the font effecting the serial number display size.
+CHARACTERS = "0123456789AaBbCcDdEeFfGHhiKkLMmNnoPRrSsTtUuVvWwXxYZz"
