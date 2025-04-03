@@ -400,7 +400,7 @@ ALL_SEQUENCE_BUFFER = {}
 PRINT_ALL_SEQUENCES = False
 
 
-def get_sequence_combinations(current_list, check_types=True, max_output_size=5):
+def get_sequence_combinations(current_list, check_types=True, max_output_size=6):
     """
     Generate all unique sorted combinations of items from the given list.
     
@@ -488,8 +488,6 @@ def get_combination_id(input_string, item_list, num_digits=4, print_combos=False
         PRINT_ALL_SEQUENCES = True
         
     index = all_combinations.index(input_items)
-    
-    print(f"index: {index}")
     
     # Fixed base-36 conversion: encode full number, then truncate if needed
     result = ""
