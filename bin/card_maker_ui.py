@@ -729,8 +729,14 @@ def generate_serial_number(card_data, waitForThreads=False):
     serial_number += all_types_id                  # Add the unique type+subtype identifier.
     
     # Since level is included as part of the SN, the atk and defense can be generated on a scale relative to the level.
-    serial_number += get_number_id(int(attack), level)  # Add the attack value identifier.
-    serial_number += get_number_id(int(defense), level) # Add the attack value identifier.
+    if "+" in attack or "-" in attack: # Spell stats
+        # For spells, this value x ranges from -level*10 < x < level*10. So if we add level*10 to the value x, we have
+        # 0 < x < 2level*10 => 0 < x < level*20, so, the per level value can be treated as 20. 
+        serial_number += get_number_id(int(attack[1:])+level*10, level, per_level_val=20)  # Add the attack value identifier.
+        serial_number += get_number_id(int(defense[1:])+level*10, level, per_level_val=20) # Add the attack value identifier.    
+    else: # Unit stats
+        serial_number += get_number_id(int(attack), level)  # Add the attack value identifier.
+        serial_number += get_number_id(int(defense), level) # Add the attack value identifier.
     
     serial_number += effect1_id                    # Add the first letter of the effect1.
     serial_number += effect1_style_id              # Add the unique identifier for the the effect1 style.

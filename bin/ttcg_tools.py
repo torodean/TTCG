@@ -515,7 +515,7 @@ def get_combination_id(input_string, item_list, num_digits=4, print_combos=False
     
     
 
-def get_number_id(number, level=5, N=len(CHARACTERS) ):
+def get_number_id(number, level=5, per_level_val=500 , N=len(CHARACTERS)):
     """
     Generates a unique (ish) ID for a number by dividing the range 0-2500 into N equal parts.
     This assigns the input number to the closest part, used for card stats where max attack/defense is 2500.
@@ -523,13 +523,14 @@ def get_number_id(number, level=5, N=len(CHARACTERS) ):
     Args:
         number (int or float): The input number to convert to an ID (typically 0-2500).
         level (int): Optional specifier for level to adjust max.
+        per_level_val (int): The change in value per level.
         N (int): The base number to use.
     
     Returns:
         int: An ID from 0 to 35 representing which of the N segments the number falls into.
     """
     # Maximum value for card stats (500 * level, assuming max level 5 = 2500)
-    max_value = level * 500
+    max_value = level * per_level_val
     
     # Calculate the size of each segment (2500 divided into N parts)
     segment_size = max_value / N
