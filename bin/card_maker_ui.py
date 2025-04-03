@@ -357,9 +357,12 @@ def browse_image():
     update_preview()
 
 
-def update_preview():
+def update_preview(force_update=False):
     """
     Gather UI input, create a card image, and display it in the preview window.
+    
+    Args:
+        force_update (bool): True to force an update.
 
     This function collects card data from the GUI, generates a card image using create_card,
     saves it to a temporary folder, and updates the preview canvas with the resulting image.
@@ -369,13 +372,13 @@ def update_preview():
     
     # Skip preview update during reset
     global SKIP_PREVIEW
-    if SKIP_PREVIEW:
+    if SKIP_PREVIEW and not force_update:
         return
         
     # Collect card data from UI
     card_data = get_card_data()
     
-    if card_data == LAST_UPDATE_CARD_DATA:
+    if card_data == LAST_UPDATE_CARD_DATA and not force_update:
         return
     else:
         LAST_UPDATE_CARD_DATA = card_data
@@ -1131,7 +1134,7 @@ def main():
         text="Flip Image", 
         command=lambda: [
             flip_image(image_entry.get()),
-            update_preview()
+            update_preview(True)
         ]
     )
     flip_btn.grid(row=5, column=1, pady=8, padx=(205, 0), sticky="w")  # Adjusted padx
