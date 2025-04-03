@@ -44,8 +44,16 @@ def output_text(text, option="text"):
         "test": "\033[35m",     # Magenta - Testing
         "program": "\033[38;5;208m"  # Orange - Program-specific output
     }
-
+    
     text = str(text)  # Ensure text is a string
+    
+    if option == "error":
+        if "error" not in text.lower():
+            text = f"ERROR: {text}"
+    elif option == "warning":
+        if "error" not in text.lower():
+            text = f"WARNING: {text}"
+    
     if option in color_codes:
         color_code = color_codes[option]
         reset_code = color_codes["text"]
@@ -414,15 +422,15 @@ def get_sequence_combinations(current_list, check_types=True, max_output_size=6)
     Returns:
         list: Sorted list of unique combinations.
     """
-    print("get_sequence_combinations")
     # Sort the input list for consistency.
     current_list = sorted(cl.lower().strip() for cl in current_list)
-    print(current_list)
     
     # check if the data is already in the buffer.
     item_tuple = tuple(current_list)
     if item_tuple in ALL_SEQUENCE_BUFFER:
         return ALL_SEQUENCE_BUFFER[item_tuple]
+    
+    output_text("Calling get_sequence_combinations... This may take some time!", "warning")
     
     # Create the initial list to parse. if check_types is on, we assume that the new_list will
     # only contain individual lists with one of the main TYPES.
@@ -458,7 +466,7 @@ def get_sequence_combinations(current_list, check_types=True, max_output_size=6)
     return sorted_output
 
 
-def get_combination_id(input_string, item_list, num_digits=4, print_combos=False):
+def get_combination_id(input_string, item_list, num_digits=4, print_combos=False, N=len(CHARACTERS)):
     """
     Generate a unique combination ID for a given input string based on predefined item combinations.
     
@@ -469,7 +477,7 @@ def get_combination_id(input_string, item_list, num_digits=4, print_combos=False
         print_combos (bool, optional): Whether to print all generated combinations. Defaults to False.
     
     Returns:
-        str: A unique base-len(CHARACTERS) encoded combination ID.
+        str: A unique base-N encoded combination ID.
     
     Raises:
         ValueError: If the number of digits is insufficient for encoding.
@@ -485,17 +493,17 @@ def get_combination_id(input_string, item_list, num_digits=4, print_combos=False
     # Use PRINT_ALL_SEQUENCES to prevent printing this multiple times.
     if not PRINT_ALL_SEQUENCES and print_combos:
         for combo in all_combinations:
-            print(combo)
+            output_text(f"{combo}", "note")
         PRINT_ALL_SEQUENCES = True
         
     index = all_combinations.index(input_items)
     
-    # Fixed base-len(CHARACTERS) conversion: encode full number, then truncate if needed
+    # Fixed base-N conversion: encode full number, then truncate if needed
     result = ""
     temp_value = index
     while temp_value > 0:
-        result = CHARACTERS[temp_value % len(CHARACTERS)] + result
-        temp_value //= len(CHARACTERS)
+        result = CHARACTERS[temp_value % N] + result
+        temp_value //= N
     if not result:  # Handle index 0
         result = "0"
     # Pad or truncate to num_digits
@@ -507,42 +515,43 @@ def get_combination_id(input_string, item_list, num_digits=4, print_combos=False
     
     
 
-def get_number_id(number, level=5):
+def get_number_id(number, level=5, N=len(CHARACTERS) ):
     """
-    Generates a unique (ish) ID for a number by dividing the range 0-2500 into len(CHARACTERS) equal parts.
+    Generates a unique (ish) ID for a number by dividing the range 0-2500 into N equal parts.
     This assigns the input number to the closest part, used for card stats where max attack/defense is 2500.
     
     Args:
         number (int or float): The input number to convert to an ID (typically 0-2500).
         level (int): Optional specifier for level to adjust max.
+        N (int): The base number to use.
     
     Returns:
-        int: An ID from 0 to 35 representing which of the len(CHARACTERS) segments the number falls into.
+        int: An ID from 0 to 35 representing which of the N segments the number falls into.
     """
     # Maximum value for card stats (500 * level, assuming max level 5 = 2500)
     max_value = level * 500
     
-    # Calculate the size of each segment (2500 divided into len(CHARACTERS) parts)
-    segment_size = max_value / len(CHARACTERS) 
+    # Calculate the size of each segment (2500 divided into N parts)
+    segment_size = max_value / N
     
     # Ensure the number stays within bounds (0 to 2500)
     clamped_number = max(0, min(number, max_value))
     
     # Calculate which segment this number falls into
-    # Use integer division to get the segment index (0 to len(CHARACTERS)-1)
+    # Use integer division to get the segment index (0 to N-1)
     segment_index = int(clamped_number // segment_size)
     
     # Handle the edge case where number equals max_value
-    # Without this, 2500 would give len(CHARACTERS), which is out of our 0 to len(CHARACTERS) - 1 range
-    if segment_index >= len(CHARACTERS):
-        segment_index = len(CHARACTERS) - 1
+    # Without this, 2500 would give N, which is out of our 0 to N - 1 range
+    if segment_index >= N:
+        segment_index = N - 1
     
     return CHARACTERS[segment_index]
     
     
 def get_index_in_baseN(search_string, search_list, N=len(CHARACTERS)):
     """
-    Find the index of a string in a list and return it in base len(CHARACTERS) notation.
+    Find the index of a string in a list and return it in base N notation.
     
     Args:
         search_string (str or None): The string to search for in the list, or None.
@@ -550,9 +559,9 @@ def get_index_in_baseN(search_string, search_list, N=len(CHARACTERS)):
         N (int): The base to use for conversions.
     
     Returns:
-        str: The index of the search_string in base len(CHARACTERS) using CHARACTERS, or "0" if not found or input is None.
+        str: The index of the search_string in base N using CHARACTERS, or "0" if not found or input is None.
     """
-    # Handle None input or empty list by returning "0" (base len(CHARACTERS) for 0)
+    # Handle None input or empty list by returning "0" (base N for 0)
     if search_string is None or not search_list:
         return "0"
     
@@ -562,16 +571,16 @@ def get_index_in_baseN(search_string, search_list, N=len(CHARACTERS)):
     except ValueError:
         return "0"  # Return "0" if the string isn't in the list
     
-    # Convert the index to base len(CHARACTERS)
+    # Convert the index to base N
     if index == 0:
         return "0"  # Special case for index 0
     
     result = ""
     num = index
     while num > 0:
-        # Get the remainder when divided by len(CHARACTERS) and map to CHARACTERS
-        digit = num % len(CHARACTERS)
+        # Get the remainder when divided by N and map to CHARACTERS
+        digit = num % N
         result = CHARACTERS[digit] + result
-        num //= len(CHARACTERS)  # Integer division for next digit
+        num //= N  # Integer division for next digit
     
     return result

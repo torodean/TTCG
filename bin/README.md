@@ -1,9 +1,18 @@
 # Bin Directory README
 
+
+
 ## Overview
 The `bin` directory serves as the central hub for executable scripts used in the effect generation and management workflow. These scripts, primarily written in Python 3 and Bash, automate the creation, annotation, sorting, and organization of effect descriptions (e.g., for game design or simulations). The tools interact with the `placeholders` directory (for placeholder values and configurations) and the `effects` directory (for effect templates and outputs), forming a cohesive system for processing effect-related data.
 
+
+
+
+
 ## Scripts
+
+
+
 
 ### `add_csv_field.py`
 - **Purpose**: Processes text or semicolon-delimited CSV files containing effect descriptions, adding or updating a custom column to indicate matches against a specified pattern (with placeholders) or exact substring, or deleting lines matching a string.
@@ -32,17 +41,29 @@ The `bin` directory serves as the central hub for executable scripts used in the
 - For CSV inputs, `-e` requires the column to pre-exist, while `-t` can create it.
 - Errors (e.g., missing files, invalid columns) are reported with descriptive messages.
 
+
+
+
+
 ### `alphabetize_file.py`
 - **Purpose**: Reads lines from a text file, sorts them alphabetically, and writes the result to an output file.
 - **Key Features**: Simple sorting utility, ignores empty lines, and handles basic file errors.
 - **Usage**: `python3 alphabetize_file.py [-i INPUT] [-o OUTPUT]`
 - **Dependencies**: None beyond Python 3.
 
+
+
+
+
 ### `flip_image.py`
 - **Purpose**: Flips an image horizontally and saves the result, optionally overwriting the original file.
 - **Key Features**: Horizontal image flipping, optional output path, error handling for image processing.
 - **Usage**: `python3 flip_image.py INPUT_FILE [-o OUTPUT]`
 - **Dependencies**: Pillow (PIL) library for image processing.
+
+
+
+
 
 ### `create_effect_combinations.py`
 - **Purpose**: Generates all possible combinations of effect templates by replacing placeholders with values from a directory, with options for filtering, phrase replacement, deduplication, and alphabetization.
@@ -74,11 +95,19 @@ The `bin` directory serves as the central hub for executable scripts used in the
 - Output is appended to the file unless in test mode or deduplication mode.
 - Errors (e.g., missing files) are handled with descriptive messages.
   
+  
+  
+  
+  
 ### `generate_and_order_effects.sh`
 - **Purpose**: Orchestrates the generation and categorization of effects, coordinating other scripts to produce and annotate a comprehensive effect list.
 - **Key Features**: Cleans up old files, generates effects, and adds metadata columns (e.g., UNIT, SPELL) based on patterns or exact matches.
 - **Usage**: `./generate_and_order_effects.sh`
 - **Dependencies**: Requires `create_effect_combinations.py`, `add_csv_field.py`, and files in `../effects/` and `../placeholders/`.
+
+
+
+
 
 ### `create_card.py`
 - **Purpose**: Generates a trading card image in TTCG format with customizable text, type, level, effects, and stats, overlaying them on a type-specific background and level-specific star overlay.
@@ -88,6 +117,11 @@ The `bin` directory serves as the central hub for executable scripts used in the
 - **Dependencies**: Requires `Pillow` for image processing (`pip install Pillow`); assumes helper functions like `create_base_card`, `draw_single_line_text`, and `draw_wrapped_text`.
 - **Output**: Saves a PNG card image to `<output_folder>/<type>_<name>.png` (spaces replaced with underscores), e.g., `ttcg_card_Card_Name.png`; defaults to `../images/generated_cards/` if `-o` is not specified.
 
+
+
+
+
+
 ### `card_maker_ui.py`
 - **Purpose**: Provides a Tkinter-based GUI for creating trading cards in TTCG format, allowing real-time preview, effect generation, and data saving, with customizable attributes like type, level, name, subtypes, stats, effects, and image.
 - **Key Features**: Interactive UI with dropdowns (type, level), checkboxes (subtypes), text entries (name, stats, effects), and buttons for randomization, reset, and saving; generates a 400x580 pixel preview (resized from 750x1050) using `create_card`; supports random ATK/DEF based on level and effect generation from a CSV file; centralizes widget access via a global `WIDGETS` dictionary.
@@ -95,6 +129,10 @@ The `bin` directory serves as the central hub for executable scripts used in the
 - **Input**: Optional command-line argument `-i/--input_file` for the effects CSV (defaults to `effects/effects_with_placeholders.csv`); GUI inputs for card details with defaults (e.g., "Fire" type, level 1, "Unnamed", 0 ATK/DEF).
 - **Dependencies**: Requires `Pillow` (`pip install Pillow`) for image processing, `tkinter` (standard library), and custom modules `create_card.py` and `generate_random_effects.py`; assumes effect CSV and image assets in `../images/card pngs/`.
 - **Output**: Displays a live card preview in the GUI; saves card data to console (placeholder for spreadsheet implementation); generated card images stored temporarily via `tempfile`.
+
+
+
+
 
 ### `generate_random_effects.py`
 - **Purpose**: Filters a CSV file to find rows where specified columns are "True", then generates and prints random pairs from the first column of the filtered rows.
@@ -111,6 +149,10 @@ The `bin` directory serves as the central hub for executable scripts used in the
   - Python 3.x
   - `pandas` (for CSV processing)
   - `argparse`, `random`, `sys` (standard library)
+  
+  
+  
+  
   
 ### `parse_image_files.py`
 - **Purpose**: Displays images from a specified folder one at a time with a transparent overlay image (`fire.png`) on top, allowing users to:
@@ -140,6 +182,10 @@ The `bin` directory serves as the central hub for executable scripts used in the
   - `Pillow` (for image processing, install with `pip install pillow`)
   - `tkinter` (standard library, for GUI)
   
+  
+  
+  
+  
 ### `plot_type_occurances.py`
 - **Purpose**: Analyzes and visualizes card data from a TTCG-format CSV file, generating plots to show distributions of types, subtypes, and effect mentions, aiding in card design balance and identification of underrepresented categories.
 - **Key Features**: Produces multiple bar plots including type counts, subtype counts, effect mentions, and per-type subtype mentions in effects; optional 3D plot (still a work in progress) showing type vs. type/subtype effect interactions with color-coded frequency; supports comma-separated subtypes in the `SUBTYPES` column; uses `matplotlib` for visualization and `numpy` for 3D plotting calculations.
@@ -154,20 +200,67 @@ The `bin` directory serves as the central hub for executable scripts used in the
   - `type_effect_3d.png` (if `--plot-3d`): 3D bar plot of type vs. type/subtype effect frequencies with `viridis` colormap.
   - Console output of counts for types, subtypes, and effect mentions via `output_text`.
   
+  
+  
+  
+  
+## `regen_serial_numbers.py`
+- **Purpose**: Reads a card database file, regenerates serial numbers for each card using the `generate_serial_number` method from `card_maker_ui`, and saves the updated data to a new file.  
+- **Key Features**:  
+  - Parses a CSV file containing card data.  
+  - Uses `generate_serial_number` from `card_maker_ui` to generate new serials.  
+  - Ensures original data structure is maintained while updating serial numbers.  
+  - Writes updated data to a new file to prevent overwriting the original.  
+- **Usage**:  
+  - `python3 regenerate_serials.py [--input_file INPUT_FILE]`
+    - `--input_file`: Path to the card database file (defaults to `DEFAULT_CARD_LIST_FILE` from `ttcg_constants`)
+- **Dependencies**:
+  - Requires `argparse` (for command-line arguments), `csv` (for file processing), and `card_maker_ui` (for serial number generation and preprocessing).
+- **Output**: 
+  - Creates a new CSV file (`*_updated.csv`) with regenerated serial numbers.
+  - Prints the output file path to the console.
+
+
+
+
+
 ### `ttcg_tools.py`
 - **Purpose**: Provides a collection of shared utility functions and tools used across multiple TTCG-related scripts to streamline common tasks and ensure consistency.
 - **Key Features**: Centralizes reusable code for tasks such as data processing, file handling, and configuration management, reducing duplication across scripts.
 - **Usage**: Import into other scripts with `import ttcg_tools` or `from ttcg_tools import <function>`; specific functions depend on the current implementation.
 - **Notes**: Designed as a dynamic library, so its contents evolve with the needs of other scripts; check the source for the latest available utilities.
 
+
+
+
+
+### `ttcg_tools.py`
+- **Purpose**: Provides a collection of shared constants and variables to be used consistently across the TTCG project.
+- **Key Features**: Centralizes reusable constants.
+- **Usage**: Import into other scripts with `import ttcg_constants` or `from ttcg_constants import <variable>`; specific variable depend on the current implementation.
+
+
+
+
+
 ### Other Scripts
 - Additional scripts in this directory may support related tasks (e.g., data validation, conversion).
 
+
+
+
+
 ## Related Directories
+
+
+
 
 ### `card_list/`
 - **Purpose**: Stores the main `card_list.csv` filr for storing created cards and other files related to this list (such as statistical graphs and card effect analysis).
 - **Contents**: One `card_list.csv` file as well as plots related to this file.
+
+
+
 
 ### `placeholders/`
 - **Purpose**: Contains all placeholder files (e.g., `type.txt`, `number.txt`) and configuration files for `create_effect_combinations.py` (`combinations_to_remove.txt`, `phrase_replacements.txt`).
@@ -175,6 +268,9 @@ The `bin` directory serves as the central hub for executable scripts used in the
   - Placeholder files provide values for substitution/matching (e.g., `number.txt`: `1`, `2`, `3`).
   - Configuration files customize filtering and refinement (see `placeholders/README.md` for details).
 - **Usage**: Referenced by scripts via the `-p/--placeholder_dir` argument (defaults to `placeholders`).
+
+
+
 
 ### `effects/`
 - **Purpose**: Houses effect-related data, including templates, generated effect lists, and CSV outputs.
@@ -184,10 +280,14 @@ The `bin` directory serves as the central hub for executable scripts used in the
   - **CSVs**: Annotated files like `effects_with_placeholders.csv` from `add_csv_field.py` or `generate_and_order_effects.sh`.
 - **Usage**: Scripts read from and write to this directory (e.g., `-f` and `-o` arguments).
 
+
+
 ### `effect_style_text/`
 - **Purpose**: Stores text files defining patterns for identifying card effect styles (e.g., "continuous," "equip") used by `deduce_effect_style_from_effect_text`.
 - **Contents**: One `.txt` file per style (e.g., `overload.txt`) with unique phrases (e.g., "discard one <typeslevels> card").
 - **Usage**: Read by scripts to assign styles to effect text; path set via `EFFECT_STYLE_TEXT_FOLDER` variable. See `effect_style_text/README.md` for details.
+
+
 
 ## Usage Notes
 - **Execution**: Run scripts from the `bin` directory, ensuring relative paths to `placeholders` and `effects` are correct (e.g., `../placeholders/`).

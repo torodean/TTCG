@@ -58,6 +58,9 @@ output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
 
 # The number of effect boxes in the UI. Used in various places so it's a global var here.
 NUMBER_OF_EFFECT_BOXES = 24
+
+# For global threading.
+processing_thread = None
     
 
 def get_next_image(current_path):
@@ -634,15 +637,7 @@ def assign_effect(effect_text):
             WIDGETS['effect2_style_var'].set(effect_style)
 
 
-def pre_process_list_combinations():
-    """
-    This method will pre-process the list combinations which are needed for the generate_serial_number 
-    method. This calls the get_sequence_combinations(LIST) method with the  
-    """
-    pass
-
-
-def generate_serial_number(card_data):
+def generate_serial_number(card_data, waitForThreads=False):
     """
     Generate a unique serial number for a trading card based on its attributes.
 
@@ -660,7 +655,9 @@ def generate_serial_number(card_data):
             - attack (str): Attack value (e.g., '1500').
             - defense (str): Defense value (e.g., '1200').
             - effect1 (str): First effect text (e.g., 'Draw 1 card').
+            - effect1_style (str): The effect1_style string.
             - effect2 (str): Second effect text (e.g., 'Gain 2 life').
+            - effect2_style (str): The effect1_style string.
 
     Returns:
         str: A unique serial number (e.g., 'FRA-DRWA-5f3a2b', 'e80b50170989').
@@ -669,6 +666,9 @@ def generate_serial_number(card_data):
         - The serial number should be concise (e.g., 8-12 characters) yet unique.
         - Implementation details (e.g., hash, counter, UUID) are left to the user.
     """
+    if waitForThreads:
+        wait_for_preprocessing()
+    
     if not PREPROCESSING_FINISHED:
         return "Loading.."
     
@@ -935,6 +935,43 @@ def preprocess_all_types_list():
     PREPROCESSING_FINISHED = True
 
 
+def wait_for_preprocessing():
+    """
+    Wait for the preprocessing thread to complete before proceeding.
+
+    This function checks if a global `processing_thread` exists and, if so, blocks execution
+    until the thread finishes using `join()`. It provides feedback on the thread's status
+    via print statements. If no thread is defined, it indicates that there’s nothing to wait for.
+
+    Global Variables:
+        processing_thread (threading.Thread or None): The thread object to wait for, expected
+            to be set globally before calling this function.
+
+    Returns:
+        None
+
+    Notes:
+        - Assumes `processing_thread` is a `threading.Thread` object initialized elsewhere
+          (e.g., in `main()`).
+        - Prints status messages to stdout for debugging or user feedback.
+    """
+    global processing_thread
+    if processing_thread is not None:
+        processing_thread.join()
+    else:
+        output_text("No preprocessing thread to wait for!", "warning")
+
+
+def initialize_preprocessing():
+    """
+    Starts the preprocessing for the various combinations for serial number generation.
+    """
+    global processing_thread
+    output_text("Initializing preprocessing...", "program")
+    processing_thread = threading.Thread(target=preprocess_all_types_list)
+    processing_thread.start()
+
+
 def main():
     """
     Set up and run the Card Creator GUI.
@@ -959,10 +996,8 @@ def main():
     
     args = parser.parse_args()
     
-    # Start preprocessing combinations into RAM.
-    # Create and start the thread
-    processing_thread = threading.Thread(target=preprocess_all_types_list)
-    processing_thread.start()
+    # Start preprocessing combinations into RAM. Create and start the thread.
+    initialize_preprocessing()
     
     root = tk.Tk()
     root.title("Game Card Creator")
