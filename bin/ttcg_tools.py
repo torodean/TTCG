@@ -2,12 +2,14 @@ import os
 import sys
 import re
 import itertools
+from tqdm import tqdm
 
 # Import some constants from the ttxg_constants file.
 from ttcg_constants import VALID_OVERLAY_STYLES
 from ttcg_constants import DEFAULT_PLACEHOLDERS_FOLDER
 from ttcg_constants import EFFECT_STYLE_TEXT_FOLDER
 from ttcg_constants import TYPE_LIST_LOWER
+from ttcg_constants import CHARACTERS
 
 
 def output_text(text, option="text"):
@@ -453,7 +455,7 @@ def get_sequence_combinations(current_list, check_types=True, max_output_size=5)
     return sorted_output
 
 
-def get_combination_id(input_string, item_list, num_digits=3, print_combos=False):
+def get_combination_id(input_string, item_list, num_digits=4, print_combos=False):
     """
     Generate a unique combination ID for a given input string based on predefined item combinations.
     
@@ -472,8 +474,6 @@ def get_combination_id(input_string, item_list, num_digits=3, print_combos=False
     global PRINT_ALL_SEQUENCES  # Declare PRINT_ALL_SEQUENCES as global
     if "" not in item_list:
         item_list.insert(0, "")
-        
-    CHARACTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     
     # Convert both lists to lowercase for case-insensitive comparison and strip whitespace
     item_list = sorted(i.lower().strip() for i in item_list)
@@ -495,8 +495,8 @@ def get_combination_id(input_string, item_list, num_digits=3, print_combos=False
     result = ""
     temp_value = index
     while temp_value > 0:
-        result = CHARACTERS[temp_value % 36] + result
-        temp_value //= 36
+        result = CHARACTERS[temp_value % len(CHARACTERS)] + result
+        temp_value //= len(CHARACTERS)
     if not result:  # Handle index 0
         result = "0"
     # Pad or truncate to num_digits
@@ -504,4 +504,74 @@ def get_combination_id(input_string, item_list, num_digits=3, print_combos=False
         result = "0" * (num_digits - len(result)) + result
     elif len(result) > num_digits:
         ValueError(f"ERROR: Not enough digits assigned for combinations.")
+    return result
+    
+    
+
+def get_number_id(number, level=5):
+    """
+    Generates a unique (ish) ID for a number by dividing the range 0-2500 into 36 equal parts.
+    This assigns the input number to the closest part, used for card stats where max attack/defense is 2500.
+    
+    Args:
+        number (int or float): The input number to convert to an ID (typically 0-2500).
+        level (int): Optional specifier for level to adjust max.
+    
+    Returns:
+        int: An ID from 0 to 35 representing which of the 36 segments the number falls into.
+    """
+    # Maximum value for card stats (500 * level, assuming max level 5 = 2500)
+    max_value = level * 500
+    
+    # Calculate the size of each segment (2500 divided into 36 parts)
+    segment_size = max_value / 36  # Approximately 69.444...
+    
+    # Ensure the number stays within bounds (0 to 2500)
+    clamped_number = max(0, min(number, max_value))
+    
+    # Calculate which segment this number falls into
+    # Use integer division to get the segment index (0-35)
+    segment_index = int(clamped_number // segment_size)
+    
+    # Handle the edge case where number equals max_value
+    # Without this, 2500 would give 36, which is out of our 0-35 range
+    if segment_index >= 36:
+        segment_index = 35
+    
+    return CHARACTERS[segment_index]
+    
+    
+def get_index_in_base36(search_string, search_list):
+    """
+    Find the index of a string in a list and return it in base 36 notation.
+    
+    Args:
+        search_string (str or None): The string to search for in the list, or None.
+        search_list (list): The list to search in, containing strings or other elements.
+    
+    Returns:
+        str: The index of the search_string in base 36 using CHARACTERS, or "0" if not found or input is None.
+    """
+    # Handle None input or empty list by returning "0" (base 36 for 0)
+    if search_string is None or not search_list:
+        return "0"
+    
+    # Find the index of the search_string in the list, default to -1 if not found
+    try:
+        index = search_list.index(search_string)
+    except ValueError:
+        return "0"  # Return "0" if the string isn't in the list
+    
+    # Convert the index to base 36
+    if index == 0:
+        return "0"  # Special case for index 0
+    
+    result = ""
+    num = index
+    while num > 0:
+        # Get the remainder when divided by 36 and map to CHARACTERS
+        digit = num % 36
+        result = CHARACTERS[digit] + result
+        num //= 36  # Integer division for next digit
+    
     return result

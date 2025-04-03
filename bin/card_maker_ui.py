@@ -20,6 +20,8 @@ from ttcg_tools import rename_file
 from ttcg_tools import deduce_effect_style_from_effect_text
 from ttcg_tools import get_sequence_combinations
 from ttcg_tools import get_combination_id
+from ttcg_tools import get_number_id
+from ttcg_tools import get_index_in_base36
 
 # Import needed constants from ttcg_constants
 from ttcg_constants import TYPE_LIST
@@ -667,6 +669,9 @@ def generate_serial_number(card_data):
         - The serial number should be concise (e.g., 8-12 characters) yet unique.
         - Implementation details (e.g., hash, counter, UUID) are left to the user.
     """
+    if not PREPROCESSING_FINISHED:
+        return "Loading.."
+    
     # Extract attributes from card_data
     name = card_data.get('name', '')
     card_type = card_data.get('type', '')
@@ -688,8 +693,38 @@ def generate_serial_number(card_data):
 
     output_text(f"Creating serial number for: {card_attributes}", "note")
 
+    all_types = card_type + ", " + subtypes
+    all_types_id = get_combination_id(all_types, ALL_TYPES_LIST_LOWER)
+    effect1_style_id = get_index_in_base36(effect1_style, VALID_OVERLAY_STYLES)
+    effect2_style_id = get_index_in_base36(effect2_style, VALID_OVERLAY_STYLES)
+    
+    if effect1 == "":
+        effect1_id = "0"
+    else:
+        effect1_id = effect1[0]
+    
+    if effect2 == "":
+        effect2_id = "0"
+    else:
+        effect2_id = effect2[0]
+
+    serial_number = ""                             # Create the initial SN string.
+    serial_number += name[0].capitalize()          # Add the first letter of the name.
+    serial_number += str(level)                    # Add the level.
+    serial_number += all_types_id                  # Add the unique type+subtype identifier.
+    
+    # Since level is included as part of the SN, the atk and defense can be generated on a scale relative to the level.
+    serial_number += get_number_id(int(attack), level)  # Add the attack value identifier.
+    serial_number += get_number_id(int(defense), level) # Add the attack value identifier.
+    
+    serial_number += effect1_id                    # Add the first letter of the effect1.
+    serial_number += effect1_style_id              # Add the unique identifier for the the effect1 style.
+    serial_number += effect2_id                    # Add the first letter of the effect2.
+    serial_number += effect2_style_id              # Add the unique identifier for the the effect1 style.
+    serial_number += str(rarity)
+    
     # TODO: Implement serial number generation logic here
-    serial_number = hashlib.sha256(card_attributes.encode('utf-8')).hexdigest() # Testing with hash
+    #serial_number = hashlib.sha256(card_attributes.encode('utf-8')).hexdigest() # Testing with hash
     output_text(f"Created serial_number: {serial_number}", "note")
     
     serial_number = serial_number[:14]
@@ -886,14 +921,18 @@ def load_next_image(image_file=None, filename=DEFAULT_CARD_LIST_FILE):
     update_preview()
 
 
+PREPROCESSING_FINISHED = False
+
 def preprocess_all_types_list():
     """
     This method will pre-process the ALL_TYPES_LIST_LOWER combinations into a buffer
     so that the SN generation method can use it without having to load it initially.
     """
+    global PREPROCESSING_FINISHED  # Declare the variable as global to modify it.
     output_text("Pre-processing started for ALL_TYPE combinations...", "program")
     get_sequence_combinations(ALL_TYPES_LIST_LOWER)
     output_text("Pre-processing Finished for ALL_TYPE combinations...", "program")
+    PREPROCESSING_FINISHED = True
 
 
 def main():

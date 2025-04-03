@@ -32,3 +32,6 @@ DEFAULT_ALL_EFFECT_TEMPLATES_FILE = "effects/all_effect_templates.txt"
 DEFAULT_COMBOS_TO_REMOVE_FILE = "placeholders/combinations_to_remove.txt"
 DEFAULT_PHRASES_TO_REPLACE_FILE = "placeholders/phrase_replacements.txt"
 EFFECT_STYLE_TEXT_FOLDER = "effect_style_text"
+
+# Characters to be used in serial number generation.
+CHARACTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
