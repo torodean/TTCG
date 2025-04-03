@@ -33,5 +33,6 @@ DEFAULT_COMBOS_TO_REMOVE_FILE = "placeholders/combinations_to_remove.txt"
 DEFAULT_PHRASES_TO_REPLACE_FILE = "placeholders/phrase_replacements.txt"
 EFFECT_STYLE_TEXT_FOLDER = "effect_style_text"
 
-# Characters to be used in serial number generation.
-CHARACTERS = "0123456789AaBbCcDdEeFfGHhiKkLMmNnOoPRrSsTtUuVvWwXxYZz"
+# Characters to be used in serial number generation. These are all values that show up nicely without 
+# having to worry about what letters are what or the font effecting the serial number display size.
+CHARACTERS = "0123456789AaBbCcDdEeFfGHhiKkLMmNnoPRrSsTtUuVvWwXxYZz"
