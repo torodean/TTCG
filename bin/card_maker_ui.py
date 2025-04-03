@@ -22,6 +22,8 @@ from ttcg_tools import get_sequence_combinations, ALL_SEQUENCE_BUFFER
 from ttcg_tools import get_combination_id
 from ttcg_tools import get_number_id
 from ttcg_tools import get_index_in_baseN
+from ttcg_tools import sn_in_list
+from ttcg_tools import save_sn_to_list
 
 # Import needed constants from ttcg_constants
 from ttcg_constants import TYPE_LIST
@@ -32,6 +34,7 @@ from ttcg_constants import VALID_OVERLAY_STYLES
 from ttcg_constants import VALID_TRANSLUCENT_VALUES
 from ttcg_constants import DEFAULT_CARD_LIST_FILE
 from ttcg_constants import ALL_TYPES_LIST_LOWER
+from ttcg_constants import DEFAULT_SERIAL_LIST_FILE
 
 # Used for flipping and correcting images.
 from flip_image import flip_image
@@ -278,7 +281,7 @@ def save_to_card_list(filename=DEFAULT_CARD_LIST_FILE):
             card_data.get("defense", ""),
             card_data.get("effect1", ""),
             card_data.get("effect2", ""),
-            card_data.get("serial", ""),
+            card_data.get("serial", ""),   # If this index changes, mdify the sn value below.
             card_data.get("rarity", ""),
             card_data.get("translucency", ""),
             card_data.get("effect1_style", ""),
@@ -294,6 +297,9 @@ def save_to_card_list(filename=DEFAULT_CARD_LIST_FILE):
             if not check_for_effect_combination_in_file(filename, row[7], row[8]):
                 writer.writerow(row)
                 output_text(f"Card data saved to {filename}: {card_data}", "success")
+                sn = row[9]
+                save_sn_to_list(sn, DEFAULT_SERIAL_LIST_FILE)
+                output_text(f"Serial number {sn} saved to {DEFAULT_SERIAL_LIST_FILE}", "success")
                 load_next_image()
             else:
                 output_text(f"Effect combination already exists in output file! Skipping", "error") 
@@ -725,7 +731,19 @@ def generate_serial_number(card_data, waitForThreads=False):
     serial_number += effect2_id                    # Add the first letter of the effect2.
     serial_number += effect2_style_id              # Add the unique identifier for the the effect1 style.
     serial_number += str(rarity)                   # Add the rarity of the card.
-    serial_number += "0"                           # One pad bit for expansion (Allows 36 possibilities with all other options the same).
+    
+    # Update the pad bit.
+    pad_bit_index = 0 
+    pad_bit = "0"
+    temp_serial_number = serial_number + pad_bit   # Create what the serial number is without any pad bit modifications.
+    while sn_in_list(temp_serial_number, DEFAULT_SERIAL_LIST_FILE):
+        pad_bit_index += 1                         # Increment the index
+        if pad_bit_index >= len(CHARACTERS):       # Prevent index out of bounds
+            raise ValueError("No unique serial number available - all padding options exhausted")
+        pad_bit = CHARACTERS[pad_bit_index]        # Increment pad bit.
+        temp_serial_number = serial_number + pad_bit  
+    
+    serial_number += pad_bit                       # One pad bit for expansion (Allows 36 possibilities with all other options the same).
 
     output_text(f"Created serial_number: {serial_number}", "note")
     card_data["serial"] = serial_number

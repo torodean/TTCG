@@ -584,3 +584,48 @@ def get_index_in_baseN(search_string, search_list, N=len(CHARACTERS)):
         num //= N  # Integer division for next digit
     
     return result
+    
+
+def sn_in_list(serial_number, filename):
+    """
+    Check if a serial number exists in a text file with one serial number per line.
+    
+    Args:
+        serial_number (str): The serial number to check
+        filename (str): Path to the file containing serial numbers
+        
+    Returns:
+        bool: True if serial number exists in file, False otherwise
+    """
+    try:
+        with open(filename, 'r') as file:
+            # Read all lines and strip whitespace, compare with serial_number
+            serial_numbers = [line.strip() for line in file]
+            return serial_number in serial_numbers
+    except FileNotFoundError:
+        # Handle case where file doesn't exist
+        return False
+    except Exception as e:
+        # Handle other potential errors (permissions, etc.)
+        output_text(f"Error reading serial number list: {e}", "Error")
+        return False
+        
+        
+def save_sn_to_list(serial_number, filename):
+    """
+    Save a serial number to a text file, appending it as a new line.
+    
+    Args:
+        serial_number (str): The serial number to save
+        filename (str): Path to the file containing serial numbers
+        
+    Returns:
+        bool: True if save was successful, False otherwise
+    """
+    try:
+        with open(filename, 'a') as file:  # 'a' mode appends to end of file
+            file.write(f"{serial_number}\n")  # Add newline to maintain one SN per line
+        return True
+    except IOError as e:
+        output_text(f"Error saving serial number to file: {e}", "Error")
+        return False
