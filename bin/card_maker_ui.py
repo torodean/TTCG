@@ -721,13 +721,10 @@ def generate_serial_number(card_data):
     serial_number += effect1_style_id              # Add the unique identifier for the the effect1 style.
     serial_number += effect2_id                    # Add the first letter of the effect2.
     serial_number += effect2_style_id              # Add the unique identifier for the the effect1 style.
-    serial_number += str(rarity)
-    
-    # TODO: Implement serial number generation logic here
-    #serial_number = hashlib.sha256(card_attributes.encode('utf-8')).hexdigest() # Testing with hash
+    serial_number += str(rarity)                   # Add the rarity of the card.
+    serial_number += "0"                           # One pad bit for expansion (Allows 36 possibilities with all other options the same).
+
     output_text(f"Created serial_number: {serial_number}", "note")
-    
-    serial_number = serial_number[:14]
     card_data["serial"] = serial_number
     
     return serial_number

@@ -402,7 +402,7 @@ def create_card(card_data, output_folder, output_file_name=None):
     draw_wrapped_text(draw, card_data["effect2"], (70, 870), (680, 970), initial_font_size=30)
     
     # Draw the serial number and trademark.
-    draw_single_line_text(draw, card_data["serial"], (550, 1007), (722, 1022), initial_font_size=20)
+    draw_single_line_text(draw, card_data["serial"], (530, 1007), (722, 1022), initial_font_size=20)
     draw_single_line_text(draw, "© True Trading Card Game Company", (31, 1007), (600, 1022), initial_font_size=20)
 
     # Create the output card name.
@@ -511,7 +511,7 @@ def parse_args():
                         help="The image file for this card.")
     parser.add_argument('-o', "--output", type=str, default="../images/generated_cards",
                         help="The folder to output images to.")
-    parser.add_argument("--serial", type=str, default="ABCD1234567890",
+    parser.add_argument("--serial", type=str, default="ABCD1234567890X",
                         help="The serial number for the card.")
     parser.add_argument('-T', "--translucency", type=int, default=100,
                         help="The translucency of some card art fields (valid options are 50, 60, 75, and 100).")
