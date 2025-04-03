@@ -40,4 +40,4 @@ DEFAULT_FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 # having to worry about what letters are what or the font effecting the serial number display size.
 CHARACTERS = "0123456789AaBbCcDdEeFfGHhiKkLMmNnoPRrSsTtUuVvWwXxYZz"
 
-EXTRA_EFFECT_KEYWORDS = ["Discard", "Destroy", "Draw", "Mill"]
+EXTRA_EFFECT_KEYWORDS = ["Discard", "Destroy", "Draw", "Mill", "Counter", "Equip", "Destroy this"]

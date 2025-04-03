@@ -55,6 +55,7 @@ import csv
 
 # Global var to determine when preview should be generated vs not.
 SKIP_PREVIEW = False
+LAST_UPDATE_CARD_DATA = None
 
 # Get script's directory (useful for relative paths)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -134,13 +135,16 @@ def get_next_image(current_path):
     return None  # Return None if path doesn't exist
     
     
-def get_card_data():
+def get_card_data(print_data=False):
     """
     Collect card data from GUI widgets into a dictionary.
 
     This function gathers input from various Tkinter widgets in the card creator UI and
     returns a dictionary containing the card's attributes. Empty or invalid inputs are
     replaced with default values to ensure consistent output.
+
+    Args:
+        print_data (bool): Set true to print the card data.
 
     Returns:
         dict: A dictionary with the following keys and values:
@@ -178,9 +182,8 @@ def get_card_data():
         "rarity": "0" # Rarity is not handled in this app so default to 0.
     }
     
-    # Fix some invalid values.
-    
-    output_text(f"Collected card data: {card_data}", "note")  # Debug statement
+    if print_data:
+        output_text(f"Collected card data: {card_data}", "note")
     return card_data
 
 
@@ -361,6 +364,9 @@ def update_preview():
     This function collects card data from the GUI, generates a card image using create_card,
     saves it to a temporary folder, and updates the preview canvas with the resulting image.
     """
+    # Stores the last card data where an update was triggered.
+    global LAST_UPDATE_CARD_DATA
+    
     # Skip preview update during reset
     global SKIP_PREVIEW
     if SKIP_PREVIEW:
@@ -368,6 +374,11 @@ def update_preview():
         
     # Collect card data from UI
     card_data = get_card_data()
+    
+    if card_data == LAST_UPDATE_CARD_DATA:
+        return
+    else:
+        LAST_UPDATE_CARD_DATA = card_data
     
     #Set the serial number.
     serial_number = generate_serial_number(card_data)
@@ -377,7 +388,7 @@ def update_preview():
     with tempfile.TemporaryDirectory() as temp_dir:
         # Generate the card image
         output_file_name = f"{card_data['type'].replace(' ', '_')}_card_{card_data['name'].replace(' ', '_')}-{card_data['translucency']}.png"
-        create_card(card_data, temp_dir, output_file_name)
+        create_card(card_data, temp_dir, output_file_name, tmp_file=True)
         
         # Load the generated image
         output_file = f"{temp_dir}/{output_file_name}"
@@ -514,7 +525,9 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
         # Get selected effect search values from effect_search_vars
         effect_search_vars = WIDGETS["effect_search_vars"]  # List of StringVar objects
         effect_search_values = [var.get() for var in effect_search_vars if var.get()]  # Filter out empty strings
+        
         strings_to_omit = ["lose <atkdef>", "destroy up to <number> <typeslevels>"]
+        
         target_with_search_terms = NUMBER_OF_EFFECT_BOXES // 2
 
         search_terms = subtypes + effect_search_values      
@@ -601,7 +614,6 @@ def is_name_in_card_list(card_name, filename=DEFAULT_CARD_LIST_FILE):
             # Get the header row to find the 'NAME' column index
             try:
                 header = next(reader)
-                output_text(f"Header: {header}", "note")
                 name_index = header.index("NAME")
             except StopIteration:
                 output_text("File is empty", "warning")
@@ -757,7 +769,7 @@ def generate_serial_number(card_data, waitForThreads=False):
     
     serial_number += pad_bit                       # One pad bit for expansion (Allows 36 possibilities with all other options the same).
 
-    output_text(f"Created serial_number: {serial_number}", "note")
+    #output_text(f"Created serial_number: {serial_number}", "note")
     card_data["serial"] = serial_number
     
     return serial_number
@@ -776,12 +788,12 @@ def update_serial_number(new_serial):
     Returns:
         None
     """
-    output_text(f"Updating serial number to: {new_serial}", "note")
+    #output_text(f"Updating serial number to: {new_serial}", "note")
     WIDGETS["serial_entry"].configure(state="normal")    # Enable editing
     WIDGETS["serial_entry"].delete(0, tk.END)            # Clear current text
     WIDGETS["serial_entry"].insert(0, new_serial)        # Insert new serial
     WIDGETS["serial_entry"].configure(state="disabled")  # Disable again
-    output_text(f"Updated serial number!", "success")
+    #output_text(f"Updated serial number!", "success")
 
 
 def get_gui_metadata():
@@ -858,10 +870,6 @@ def update_name_from_image(force_update=False):
             with Image.open(image_path):
                 # Extract just the filename without path or extension
                 filename = os.path.splitext(os.path.basename(image_path))[0]
-                if filename[0] == "_":                    
-                    WIDGETS["name_entry"].delete(0, tk.END)
-                    WIDGETS["name_entry"].insert(0, "Unknown")
-                    return # This is the case for un-named images with default hash names.
                 # Update the name_entry with the extracted filename
                 WIDGETS["name_entry"].delete(0, tk.END)
                 WIDGETS["name_entry"].insert(0, filename)

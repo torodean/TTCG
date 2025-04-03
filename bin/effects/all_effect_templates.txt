@@ -97,3 +97,4 @@ You can rank up this card using a <types> unit from your <pile>.
 You can send up to <number> card(s) under this card to the discard pile.
 Your opponent cannot play <types> cards next turn.
 Your opponent loses <number> point(s).
+While this card is on the field, <type> cards can rank up using <type> cards.

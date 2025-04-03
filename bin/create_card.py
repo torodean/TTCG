@@ -110,7 +110,7 @@ def create_base_card(card_type,
         base_image_path = f"{DEFAULT_CARD_ELEMENTS_FOLDER}/{card_type.lower()}-{translucency}.png"
         
     # Print base image path for debugging.
-    output_text(f"base_image_path set to: {base_image_path}", "note")
+    #output_text(f"base_image_path set to: {base_image_path}", "note")
         
     try:
         base_img = Image.open(base_image_path).convert("RGBA")
@@ -324,7 +324,7 @@ def draw_wrapped_text(draw, text, top_left, bottom_right, initial_font_size=50, 
     draw.text((x1 + x_offset, y1 + y_offset), wrapped_text, font=font, fill=color, align="center")
 
 
-def create_card(card_data, output_folder, output_file_name=None):
+def create_card(card_data, output_folder, output_file_name=None, tmp_file=False):
     """
     Creates a TTCG trading card image with specified details and saves it to a file.
 
@@ -349,6 +349,7 @@ def create_card(card_data, output_folder, output_file_name=None):
             - effect2_style (str): The style to use for the effect two box (default = None).
         output_folder (str): Path to the folder where the card image will be saved.
         output_file_name (str): An optional output file name to use. This should not include the output folder path.
+        tmp_file (bool): True if this is saving a temporary file (disables output).
 
     Returns:
         None: The function saves the card image to a file and prints the file path.
@@ -416,7 +417,8 @@ def create_card(card_data, output_folder, output_file_name=None):
 
     # Save the card
     img.save(output_file)
-    output_text(f"Card saved as {output_file}", "success")
+    if not tmp_file:
+        output_text(f"Card saved as {output_file}", "success")
 
 
 def process_csv_to_cards(csv_file_path, output_folder):

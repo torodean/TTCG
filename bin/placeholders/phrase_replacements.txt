@@ -97,3 +97,4 @@ your other card on: your other cards on
 your other unit on: your other units on
 your other spell on: your other spells on
 exactly one: one
+For the next one turn: Until the end of the next turn

@@ -128,7 +128,8 @@ python3 add_csv_field.py -c SPELL -t \
 	"While this card is on the field, <type> cards you control" \
 	"For each <card> tapped this turn, draw <number-1> card" \
 	"Whenever a <typeslevels> card is played, shuffle <number> card" \
-	"For each <type> card destroyed this turn, add one"
+	"For each <type> card destroyed this turn, add one" \
+	"While this card is on the field, <type> cards can rank up using <type>"
 
 # Handle some exact matches (used for one off effects)
 python3 add_csv_field.py -c SPELL -e \
@@ -204,7 +205,8 @@ for level in LEVEL_{1..3}; do
         "When a <type> card is placed under this one, destroy" \
         "While this card is on the field, <type> cards you control" \
         "For each <type> card destroyed this turn, add one" \
-        "Swap this cards rank with another card"
+        "Swap this cards rank with another card" \
+	    "While this card is on the field, <type> cards can rank up using <type>"
 done
 
 # Some various <number> effect combinations for spells.
