@@ -34,4 +34,4 @@ DEFAULT_PHRASES_TO_REPLACE_FILE = "placeholders/phrase_replacements.txt"
 EFFECT_STYLE_TEXT_FOLDER = "effect_style_text"
 
 # Characters to be used in serial number generation.
-CHARACTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+CHARACTERS = "0123456789AaBbCcDdEeFfGHhiKkLMmNnOoPRrSsTtUuVvWwXxYZz"

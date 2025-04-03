@@ -12,6 +12,11 @@ from ttcg_constants import TYPE_LIST_LOWER
 from ttcg_constants import CHARACTERS
 
 
+# Global variables used by these methods.
+ALL_SEQUENCE_BUFFER = {}
+PRINT_ALL_SEQUENCES = False
+
+
 def output_text(text, option="text"):
     """
     Print text to the console in a specified color using ANSI escape codes.
@@ -396,10 +401,6 @@ def has_at_most_one_from_source(source_list, target_list, num_of_matches=1):
     return matches == num_of_matches
 
 
-ALL_SEQUENCE_BUFFER = {}
-PRINT_ALL_SEQUENCES = False
-
-
 def get_sequence_combinations(current_list, check_types=True, max_output_size=6):
     """
     Generate all unique sorted combinations of items from the given list.
@@ -413,8 +414,10 @@ def get_sequence_combinations(current_list, check_types=True, max_output_size=6)
     Returns:
         list: Sorted list of unique combinations.
     """
+    print("get_sequence_combinations")
     # Sort the input list for consistency.
     current_list = sorted(cl.lower().strip() for cl in current_list)
+    print(current_list)
     
     # check if the data is already in the buffer.
     item_tuple = tuple(current_list)
@@ -466,14 +469,12 @@ def get_combination_id(input_string, item_list, num_digits=4, print_combos=False
         print_combos (bool, optional): Whether to print all generated combinations. Defaults to False.
     
     Returns:
-        str: A unique base-36 encoded combination ID.
+        str: A unique base-len(CHARACTERS) encoded combination ID.
     
     Raises:
         ValueError: If the number of digits is insufficient for encoding.
     """
     global PRINT_ALL_SEQUENCES  # Declare PRINT_ALL_SEQUENCES as global
-    if "" not in item_list:
-        item_list.insert(0, "")
     
     # Convert both lists to lowercase for case-insensitive comparison and strip whitespace
     item_list = sorted(i.lower().strip() for i in item_list)
@@ -489,7 +490,7 @@ def get_combination_id(input_string, item_list, num_digits=4, print_combos=False
         
     index = all_combinations.index(input_items)
     
-    # Fixed base-36 conversion: encode full number, then truncate if needed
+    # Fixed base-len(CHARACTERS) conversion: encode full number, then truncate if needed
     result = ""
     temp_value = index
     while temp_value > 0:
@@ -508,7 +509,7 @@ def get_combination_id(input_string, item_list, num_digits=4, print_combos=False
 
 def get_number_id(number, level=5):
     """
-    Generates a unique (ish) ID for a number by dividing the range 0-2500 into 36 equal parts.
+    Generates a unique (ish) ID for a number by dividing the range 0-2500 into len(CHARACTERS) equal parts.
     This assigns the input number to the closest part, used for card stats where max attack/defense is 2500.
     
     Args:
@@ -516,41 +517,42 @@ def get_number_id(number, level=5):
         level (int): Optional specifier for level to adjust max.
     
     Returns:
-        int: An ID from 0 to 35 representing which of the 36 segments the number falls into.
+        int: An ID from 0 to 35 representing which of the len(CHARACTERS) segments the number falls into.
     """
     # Maximum value for card stats (500 * level, assuming max level 5 = 2500)
     max_value = level * 500
     
-    # Calculate the size of each segment (2500 divided into 36 parts)
-    segment_size = max_value / 36  # Approximately 69.444...
+    # Calculate the size of each segment (2500 divided into len(CHARACTERS) parts)
+    segment_size = max_value / len(CHARACTERS) 
     
     # Ensure the number stays within bounds (0 to 2500)
     clamped_number = max(0, min(number, max_value))
     
     # Calculate which segment this number falls into
-    # Use integer division to get the segment index (0-35)
+    # Use integer division to get the segment index (0 to len(CHARACTERS)-1)
     segment_index = int(clamped_number // segment_size)
     
     # Handle the edge case where number equals max_value
-    # Without this, 2500 would give 36, which is out of our 0-35 range
-    if segment_index >= 36:
-        segment_index = 35
+    # Without this, 2500 would give len(CHARACTERS), which is out of our 0 to len(CHARACTERS) - 1 range
+    if segment_index >= len(CHARACTERS):
+        segment_index = len(CHARACTERS) - 1
     
     return CHARACTERS[segment_index]
     
     
-def get_index_in_base36(search_string, search_list):
+def get_index_in_baseN(search_string, search_list, N=len(CHARACTERS)):
     """
-    Find the index of a string in a list and return it in base 36 notation.
+    Find the index of a string in a list and return it in base len(CHARACTERS) notation.
     
     Args:
         search_string (str or None): The string to search for in the list, or None.
         search_list (list): The list to search in, containing strings or other elements.
+        N (int): The base to use for conversions.
     
     Returns:
-        str: The index of the search_string in base 36 using CHARACTERS, or "0" if not found or input is None.
+        str: The index of the search_string in base len(CHARACTERS) using CHARACTERS, or "0" if not found or input is None.
     """
-    # Handle None input or empty list by returning "0" (base 36 for 0)
+    # Handle None input or empty list by returning "0" (base len(CHARACTERS) for 0)
     if search_string is None or not search_list:
         return "0"
     
@@ -560,16 +562,16 @@ def get_index_in_base36(search_string, search_list):
     except ValueError:
         return "0"  # Return "0" if the string isn't in the list
     
-    # Convert the index to base 36
+    # Convert the index to base len(CHARACTERS)
     if index == 0:
         return "0"  # Special case for index 0
     
     result = ""
     num = index
     while num > 0:
-        # Get the remainder when divided by 36 and map to CHARACTERS
-        digit = num % 36
+        # Get the remainder when divided by len(CHARACTERS) and map to CHARACTERS
+        digit = num % len(CHARACTERS)
         result = CHARACTERS[digit] + result
-        num //= 36  # Integer division for next digit
+        num //= len(CHARACTERS)  # Integer division for next digit
     
     return result

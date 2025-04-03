@@ -18,10 +18,10 @@ from ttcg_tools import check_line_in_file
 from ttcg_tools import get_relative_path
 from ttcg_tools import rename_file
 from ttcg_tools import deduce_effect_style_from_effect_text
-from ttcg_tools import get_sequence_combinations
+from ttcg_tools import get_sequence_combinations, ALL_SEQUENCE_BUFFER
 from ttcg_tools import get_combination_id
 from ttcg_tools import get_number_id
-from ttcg_tools import get_index_in_base36
+from ttcg_tools import get_index_in_baseN
 
 # Import needed constants from ttcg_constants
 from ttcg_constants import TYPE_LIST
@@ -693,10 +693,13 @@ def generate_serial_number(card_data):
 
     output_text(f"Creating serial number for: {card_attributes}", "note")
 
-    all_types = card_type + ", " + subtypes
+    if subtypes == "":
+        all_types = card_type
+    else:
+        all_types = card_type + ", " + subtypes
     all_types_id = get_combination_id(all_types, ALL_TYPES_LIST_LOWER)
-    effect1_style_id = get_index_in_base36(effect1_style, VALID_OVERLAY_STYLES)
-    effect2_style_id = get_index_in_base36(effect2_style, VALID_OVERLAY_STYLES)
+    effect1_style_id = get_index_in_baseN(effect1_style, VALID_OVERLAY_STYLES)
+    effect2_style_id = get_index_in_baseN(effect2_style, VALID_OVERLAY_STYLES)
     
     if effect1 == "":
         effect1_id = "0"

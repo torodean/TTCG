@@ -213,17 +213,23 @@ Effect actions define what an effect does to the targeted cards or entities. The
 \section{Serial Number Generation for Trading Cards}
 \label{sec:serial_number_generation}
 
-The serial number (SN) for each trading card is a concise, unique identifier generated from the card's attributes, designed to distinguish potentially millions of unique cards while maintaining a compact format of characters. This section details the algorithm implemented in the Python function \texttt{generate\_serial\_number}, which leverages card attributes such as name, type, subtypes, level, attack, defense, effects, styles, and rarity. This method is found in the \texttt{card\_maker\_ui.py} script (see \ref{sec:card_maker_ui})
+The serial number (SN) for each trading card is a concise, unique identifier generated from the card's attributes, designed to distinguish potentially millions of unique cards while maintaining a compact format of characters. This section details the algorithm implemented in the Python function \texttt{generate\_serial\_number}, which leverages card attributes such as name, type, subtypes, level, attack, defense, effects, styles, and rarity. This method is found in the \texttt{card\_maker\_ui.py} script (see \ref{sec:card_maker_ui}).
+
+The base $N$ is a set of characters which are chosen for their unique appearance with the selected font. Some characters clash with others and it is hard to tell which ones are which. Some characters also cause the positioning of the serial number to chance (based on how the font display is programmed). For The characters chosen in $N$, both of these were considered and undesired characters were removed. The important part is that a unique serial number can be generated with a sufficiently large $N$. At the time of writing this, the selected characters are (subject to change) as follows:
+
+\begin{quotation}
+	0123456789AaBbCcDdEeFfGHhiKkLMmNnOoPRrSsTtUuVvWwXxYZz
+\end{quotation}
 
 \subsection{Overview of the Serial Number Format}
 The serial number is constructed as a string by concatenating encoded representations of the card's attributes in a fixed order. Each component is derived as follows:
 \begin{itemize}
 	\item \textbf{Initial Character}: The first letter of the card's name, capitalized (e.g., ``D'' for ``Dragon'').
 	\item \textbf{Level}: The card's level as a single digit (e.g., ``5'' for level 5).
-	\item \textbf{Type and Subtypes ID}: A base-36 encoded index representing the combination of the card's type and subtypes, derived from a precomputed list of valid combinations. A maximum total of 6 total types can be input.
-	\item \textbf{Attack and Defense IDs}: Single characters in base-36 representing the attack and defense values, scaled relative to the card's level.
+	\item \textbf{Type and Subtypes ID}: A base-$N$ encoded index representing the combination of the card's type and subtypes, derived from a precomputed list of valid combinations. A maximum total of 6 total types can be input.
+	\item \textbf{Attack and Defense IDs}: Single characters in base-$N$ representing the attack and defense values, scaled relative to the card's level.
 	\item \textbf{Effect IDs}: The first character of each effect text (or ``0'' if no effect).
-	\item \textbf{Effect Style IDs}: Base-36 encoded indices of the effect styles from a predefined list.
+	\item \textbf{Effect Style IDs}: Base-$N$ encoded indices of the effect styles from a predefined list.
 	\item \textbf{Rarity}: A single integer representing the card's rarity (e.g., ``0'' for base rarity).
 	\item \textbf{Padding}: A final ``0'' character reserved for future expansion.
 \end{itemize}
@@ -237,31 +243,31 @@ The type and subtypes are combined into a comma-separated string (e.g., ``Fire, 
 	\item Caches results in \texttt{ALL\_SEQUENCE\_BUFFER} to avoid recomputation.
 	\item Returns a sorted list of combinations, such as [``'', ``Dragon'', ``Fire'', ``Fire, Dragon'', \ldots].
 \end{itemize}
-The \texttt{get\_combination\_id} function finds the index of the input combination in this list and converts it to a fixed-length base-36 string using the character set $C = \{0, 1, \ldots, 9, A, \ldots, Z\}$, where $|C| = 36$. For an index $i$, the base-36 representation is computed as:
+The \texttt{get\_combination\_id} function finds the index of the input combination in this list and converts it to a fixed-length base-$N$ string using the character set $C = \{0, 1, \ldots, 9, A, \ldots, Z\}$, where $|C| = N$. For an index $i$, the base-$N$ representation is computed as:
 \begin{align}
-	\text{result} = \bigoplus_{k} C[i \mod 36], \quad i = \lfloor i / 36 \rfloor,
+	\text{result} = \bigoplus_{k} C[i \mod N], \quad i = \lfloor i / N \rfloor,
 \end{align}
 where $\bigoplus$ denotes string concatenation from right to left, and the result is padded with leading zeros to 4 digits (e.g., index 10 becomes ``000A'').
 
 \subsubsection{Attack and Defense IDs}
-The attack and defense values (integers from 0 to $500 \times \text{level}$) are mapped to one of 36 segments using \texttt{get\_number\_id}. The maximum value is $M = 500 \times \text{level}$, and the segment size is:
+The attack and defense values (integers from 0 to $500 \times \text{level}$) are mapped to one of $N$ segments using \texttt{get\_number\_id}. The maximum value is $M = 500 \times \text{level}$, and the segment size is:
 \begin{align}
-S = \frac{M}{36}.
+S = \frac{M}{N}.
 \end{align}
 The segment index is calculated as:
 \begin{align}
-	\text{index} = \frac{36}{M}\max\left(0, \left\lfloor \min(\text{value}, M) \right\rfloor\right),
+	\text{index} = \frac{N}{M}\max\left(0, \left\lfloor \min(\text{value}, M) \right\rfloor\right),
 \end{align}
 and mapped to a character in $C$ (e.g., 1500 at level 5 might map to ``K'').
 
 \subsubsection{Effect and Style IDs}
-For effects, the first character is used (e.g., ``D'' for ``Draw 1 card''), or ``0'' if the effect is empty. Effect styles are encoded via \texttt{get\_index\_in\_base36}, which finds the index of the style in \texttt{VALID\_OVERLAY\_STYLES} and converts it to base-36 (e.g., index 1 becomes ``1'', 36 becomes ``10'').
+For effects, the first character is used (e.g., ``D'' for ``Draw 1 card''), or ``0'' if the effect is empty. Effect styles are encoded via \texttt{get\_index\_in\_baseN}, which finds the index of the style in \texttt{VALID\_OVERLAY\_STYLES} and converts it to base-$N$ (e.g., index 1 becomes ``1'', $N$ becomes ``10'').
 
 \subsection{Uniqueness and Conciseness}
 Uniqueness is achieved by:
 \begin{itemize}
 	\item Using a deterministic combination of all card attributes.
-	\item Leveraging the large combinatorial space of base-36 encoding (e.g., $36^4 = 1,679,616$ possible type/subtype IDs).
+	\item Leveraging the large combinatorial space of base-$N$ encoding (e.g., if $N=36$, then $36^4 = 1,679,616$ possible type/subtype IDs).
 	\item Including level-specific scaling for attack and defense, reducing overlap across levels.
 \end{itemize}
 The SN length is kept concise (currently set to 15 characters) by using single characters where possible and fixed-length encoding for variable components.
