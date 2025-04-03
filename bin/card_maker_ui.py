@@ -517,7 +517,7 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
         strings_to_omit = ["lose <atkdef>", "destroy up to <number> <typeslevels>"]
         target_with_search_terms = NUMBER_OF_EFFECT_BOXES // 2
 
-        search_terms = effect_search_values + subtypes      
+        search_terms = subtypes + effect_search_values      
         
         # Generate up to half the effects using search_terms as search strings
         if search_terms:  # Only if search_terms are provided
