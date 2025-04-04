@@ -36,6 +36,7 @@ from ttcg_constants import DEFAULT_CARD_LIST_FILE
 from ttcg_constants import ALL_TYPES_LIST_LOWER
 from ttcg_constants import DEFAULT_SERIAL_LIST_FILE
 from ttcg_constants import EXTRA_EFFECT_KEYWORDS
+from ttcg_constants import CHARACTERS
 
 # Used for flipping and correcting images.
 from flip_image import flip_image
@@ -66,6 +67,9 @@ NUMBER_OF_EFFECT_BOXES = 24
 
 # For global threading.
 processing_thread = None
+
+# Store sthe load_mode globally. This is set to true with the -L flag.
+LOAD_CARD_MODE = False
     
 
 def get_next_image(current_path):
@@ -212,6 +216,49 @@ def check_for_effect_combination_in_file(file_path, effect_1, effect_2):
         raise IOError(f"Error reading file '{file_path}': {e}")
 
 
+def overwrite_card_in_file(filename, row):
+    """
+    Overwrite an existing card in the CSV file if the name matches.
+
+    Args:
+        filename (str): Path to the CSV file.
+        row (list): List containing the new card data in the order of CARD_LIST_HEADER.
+
+    Returns:
+        bool: True if the card was overwritten, False if not found.
+    """
+    if not LOAD_CARD_MODE:
+        output_text("ERROR: Cards not not editable: -L was not specified!", "error")
+
+    card_name = row[0].strip()  # NAME is at index 0
+    lines = []
+    found = False
+
+    # Read existing file
+    if os.path.isfile(filename):
+        with open(filename, 'r', newline='', encoding='utf-8') as f:
+            reader = csv.reader(f, delimiter=';')
+            header = next(reader)  # Preserve header
+            lines.append(header)
+            for existing_row in reader:
+                if existing_row[0].strip() == card_name:  # Match by NAME
+                    found = True
+                    lines.append(row)  # Use the provided row directly
+                else:
+                    lines.append(existing_row)
+
+    if not found:
+        return False
+
+    # Write back to file
+    with open(filename, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f, delimiter=';')
+        writer.writerows(lines)
+    
+    output_text(f"Overwrote card '{card_name}' in {filename}", "success")
+    return True
+
+
 def save_to_card_list(filename=DEFAULT_CARD_LIST_FILE):
     """
     Save card data from the UI to a spreadsheet.
@@ -231,7 +278,7 @@ def save_to_card_list(filename=DEFAULT_CARD_LIST_FILE):
     card_name = card_data.get("name", "").strip()
     
     # Check if the name already exists
-    if is_name_in_card_list(card_name):
+    if not LOAD_CARD_MODE and is_name_in_card_list(card_name):
         output_text(f"Card name '{card_name}' already exists in {filename}! Skipping", "error")
         load_next_image()  # Still load next image even if skipped
         return
@@ -289,6 +336,16 @@ def save_to_card_list(filename=DEFAULT_CARD_LIST_FILE):
         # Just a sanity check in case additions are added.
         if len(CARD_LIST_HEADER) != len(row):
             output_text(f"ERROR: row data inconsistent with CARD_LIST_HEADER: {row} -> {CARD_LIST_HEADER}", "error")
+
+        if LOAD_CARD_MODE:
+            # Overwrite existing line if name matches
+            if overwrite_card_in_file(filename, row):
+                output_text(f"Card data saved to {filename}: {card_data}", "success")
+                sn = row[9]
+                save_sn_to_list(sn, DEFAULT_SERIAL_LIST_FILE)
+                output_text(f"Serial number {sn} saved to {DEFAULT_SERIAL_LIST_FILE}", "success")
+                load_next_image()
+                return  # Exit after overwriting
 
         # Write the row to the CSV if it's not a duplicate.
         if not check_line_in_file(filename, ";".join(str(r) for r in row)):
@@ -762,7 +819,12 @@ def generate_serial_number(card_data, waitForThreads=False):
         if pad_bit_index >= len(CHARACTERS):       # Prevent index out of bounds
             raise ValueError("No unique serial number available - all padding options exhausted")
         pad_bit = CHARACTERS[pad_bit_index]        # Increment pad bit.
-        temp_serial_number = serial_number + pad_bit  
+        temp_serial_number = serial_number + pad_bit
+        
+    # We expect the card to exist if we are loading in an existing card.
+    if LOAD_CARD_MODE:
+        pad_bit_index -= 1
+        pad_bit = CHARACTERS[pad_bit_index]        # De-increment pad bit.
     
     serial_number += pad_bit                       # One pad bit for expansion (Allows 36 possibilities with all other options the same).
 
@@ -960,6 +1022,78 @@ def load_next_image(image_file=None, filename=DEFAULT_CARD_LIST_FILE):
     update_preview()
 
 
+def load_selected_card(csv_file, listbox, headers):
+    """
+    Load the selected card from the CSV file into the UI widgets.
+
+    Args:
+        csv_file (str): Path to the CSV file containing card data.
+        listbox (tk.Listbox): The Listbox widget with card entries.
+        headers (list): The header row from the CSV file (not used directly here, but passed for consistency).
+    """
+    # Get the selected index from the Listbox
+    selection = listbox.curselection()
+    if not selection:
+        return  # No selection made
+
+    selected_index = selection[0]
+
+    # Read the CSV file and find the selected row
+    try:
+        with open(csv_file, 'r', newline='') as f:
+            reader = csv.DictReader(f, fieldnames=CARD_LIST_HEADER, delimiter=';')
+            next(reader)  # Skip header row since DictReader uses fieldnames
+            for i, row in enumerate(reader):
+                if i == selected_index:
+                    # Populate UI widgets with row data
+                    WIDGETS["name_entry"].delete(0, tk.END)
+                    WIDGETS["name_entry"].insert(0, row.get("NAME", "Unnamed"))
+
+                    WIDGETS["type_combo"].set(row.get("TYPE", "fire"))
+
+                    level = int(row.get("LEVEL", 1)) if row.get("LEVEL", "1").isdigit() else 1
+                    WIDGETS["level_var"].set(level)
+
+                    WIDGETS["atk_entry"].delete(0, tk.END)
+                    WIDGETS["atk_entry"].insert(0, row.get("ATTACK", "0"))
+
+                    WIDGETS["def_entry"].delete(0, tk.END)
+                    WIDGETS["def_entry"].insert(0, row.get("DEFENSE", "0"))
+
+                    WIDGETS["image_entry"].delete(0, tk.END)
+                    WIDGETS["image_entry"].insert(0, row.get("IMAGE", ""))
+
+                    WIDGETS["effect1_entry"].delete("1.0", tk.END)
+                    WIDGETS["effect1_entry"].insert("1.0", row.get("EFFECT1", ""))
+
+                    WIDGETS["effect2_entry"].delete("1.0", tk.END)
+                    WIDGETS["effect2_entry"].insert("1.0", row.get("EFFECT2", ""))
+
+                    WIDGETS["serial_entry"].configure(state="normal")  # Enable for editing
+                    WIDGETS["serial_entry"].delete(0, tk.END)
+                    WIDGETS["serial_entry"].insert(0, row.get("SERIAL", ""))
+                    WIDGETS["serial_entry"].configure(state="disabled")  # Disable again
+
+                    translucency = int(row.get("TRANSPARENCY", 50)) if row.get("TRANSPARENCY", "50").isdigit() else 50
+                    WIDGETS["translucent_var"].set(translucency)
+
+                    WIDGETS["effect1_style_var"].set(row.get("EFFECT1_STYLE", "None") or "None")
+                    WIDGETS["effect2_style_var"].set(row.get("EFFECT2_STYLE", "None") or "None")
+
+                    # Handle subtypes (comma-separated string to BooleanVars)
+                    subtypes = [s.strip() for s in row.get("SUBTYPES", "").split(",") if s.strip()]
+                    for i, subtype in enumerate(WIDGETS["subtype_labels"]):
+                        WIDGETS["subtype_vars"][i].set(subtype in subtypes)
+
+                    # Update the preview
+                    update_preview()
+                    break
+    except FileNotFoundError:
+        output_text(f"Error: Could not find file '{csv_file}'.", "error")
+    except Exception as e:
+        output_text(f"Error loading card: {e}", "error")
+
+
 PREPROCESSING_FINISHED = False
 
 def preprocess_all_types_list():
@@ -1036,7 +1170,7 @@ def main():
         "-L",
         "--load_mode",
         action="store_true",
-        help="Enable loading mode to load and overwrite existing values from the output CSV. (IN DEV)"
+        help="Enable loading mode to load and overwrite existing values from the output CSV."
     )
     
     args = parser.parse_args()
@@ -1057,6 +1191,10 @@ def main():
     
     # Check for and initialize loading mode
     if args.load_mode:
+        # Set global load mode for various features.        
+        global LOAD_CARD_MODE
+        LOAD_CARD_MODE = True
+        
         # Create load_frame to the left of main_frame
         load_frame = ttk.LabelFrame(root, text="Load Card", padding="15")
         load_frame.grid(row=0, column=0, sticky="nsew")
