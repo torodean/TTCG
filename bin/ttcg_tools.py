@@ -402,7 +402,15 @@ def deduce_effect_style_from_effect_text(effect_text):
 
 def has_at_most_one_from_source(source_list, target_list, num_of_matches=1):
     """
-    Returns True if exactly one item from source_list appears in target_list.
+    Returns True if exactly num_of_matches item(s) from source_list appears in target_list.
+
+    Args:
+        source_list (list): The source list to search for items.
+        target_list (list): The target list to search for items.
+        num_of_matches (int): The number of matches to check against between the lists.
+
+    Returns
+        bool: True if the matches found equal num_of_matches.
     """
     source_set = set(source_list)
     matches = sum(1 for item in target_list if item in source_set)
