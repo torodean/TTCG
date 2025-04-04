@@ -15,6 +15,7 @@ if [[ $(uname) == Linux ]]; then
     pip3 install csv
     pip3 install argparse
     pip3 install pytest
+    pip3 install tqdm
 
 else
     echo "Setup not yet configured for your system!"
