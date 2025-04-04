@@ -7,6 +7,7 @@ import sys
     
 # Import methods from ttcg_tools for use.
 from ttcg_tools import generate_combinations
+from ttcg_tools import output_text
 
 
 def load_and_filter_csv(file_path, columns):
@@ -43,8 +44,7 @@ def load_and_filter_csv(file_path, columns):
         if filtered_df.empty:
             sys.exit(f"Error: No rows found where all specified columns ({', '.join(columns)}) are 'True'")
         
-        print(f"Filtering on: {columns}")
-        print(f"Filtered rows:\n{filtered_df}")
+        output_text(f"Filtering on: {columns}")
 
         # Extract and return the first column values as a list
         return filtered_df.iloc[:, 0].tolist()
@@ -207,9 +207,9 @@ def main():
     pairs = get_random_pairs(first_col_values, num_pairs=args.pairs)
     
     # Print the results in a readable format
-    print(f"Found {len(first_col_values)} matching rows. Here are 10 random pairs from the first column:")
-    for i, (val1, val2) in enumerate(pairs, 1):
-        print(f"{i}. {val1} - {val2}")
+    #output_text(f"Found {len(first_col_values)} matching rows. Here are 10 random pairs from the first column:")
+    #for i, (val1, val2) in enumerate(pairs, 1):
+    #    output_text(f"{i}. {val1} - {val2}")
 
 if __name__ == "__main__":
     main()

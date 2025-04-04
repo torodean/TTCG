@@ -22,6 +22,8 @@ from ttcg_tools import get_sequence_combinations, ALL_SEQUENCE_BUFFER
 from ttcg_tools import get_combination_id
 from ttcg_tools import get_number_id
 from ttcg_tools import get_index_in_baseN
+from ttcg_tools import sn_in_list
+from ttcg_tools import save_sn_to_list
 
 # Import needed constants from ttcg_constants
 from ttcg_constants import TYPE_LIST
@@ -32,6 +34,9 @@ from ttcg_constants import VALID_OVERLAY_STYLES
 from ttcg_constants import VALID_TRANSLUCENT_VALUES
 from ttcg_constants import DEFAULT_CARD_LIST_FILE
 from ttcg_constants import ALL_TYPES_LIST_LOWER
+from ttcg_constants import DEFAULT_SERIAL_LIST_FILE
+from ttcg_constants import EXTRA_EFFECT_KEYWORDS
+from ttcg_constants import CHARACTERS
 
 # Used for flipping and correcting images.
 from flip_image import flip_image
@@ -51,6 +56,7 @@ import csv
 
 # Global var to determine when preview should be generated vs not.
 SKIP_PREVIEW = False
+LAST_UPDATE_CARD_DATA = None
 
 # Get script's directory (useful for relative paths)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -61,6 +67,9 @@ NUMBER_OF_EFFECT_BOXES = 24
 
 # For global threading.
 processing_thread = None
+
+# Store sthe load_mode globally. This is set to true with the -L flag.
+LOAD_CARD_MODE = False
     
 
 def get_next_image(current_path):
@@ -82,12 +91,6 @@ def get_next_image(current_path):
         - If input is an image file and it's the last in the directory,
           returns the first image file
         - Case-insensitive extension matching
-    
-    Examples:
-        >>> get_next_image("/path/to/directory")
-        '/path/to/directory/image1.jpg'
-        >>> get_next_image("/path/to/directory/image1.jpg")
-        '/path/to/directory/image2.jpg'
     """
     # Define common image extensions
     image_extensions = VALID_IMAGE_EXTENSIONS
@@ -130,13 +133,16 @@ def get_next_image(current_path):
     return None  # Return None if path doesn't exist
     
     
-def get_card_data():
+def get_card_data(print_data=False):
     """
     Collect card data from GUI widgets into a dictionary.
 
     This function gathers input from various Tkinter widgets in the card creator UI and
     returns a dictionary containing the card's attributes. Empty or invalid inputs are
     replaced with default values to ensure consistent output.
+
+    Args:
+        print_data (bool): Set true to print the card data.
 
     Returns:
         dict: A dictionary with the following keys and values:
@@ -174,9 +180,8 @@ def get_card_data():
         "rarity": "0" # Rarity is not handled in this app so default to 0.
     }
     
-    # Fix some invalid values.
-    
-    output_text(f"Collected card data: {card_data}", "note")  # Debug statement
+    if print_data:
+        output_text(f"Collected card data: {card_data}", "note")
     return card_data
 
 
@@ -211,6 +216,49 @@ def check_for_effect_combination_in_file(file_path, effect_1, effect_2):
         raise IOError(f"Error reading file '{file_path}': {e}")
 
 
+def overwrite_card_in_file(filename, row):
+    """
+    Overwrite an existing card in the CSV file if the name matches.
+
+    Args:
+        filename (str): Path to the CSV file.
+        row (list): List containing the new card data in the order of CARD_LIST_HEADER.
+
+    Returns:
+        bool: True if the card was overwritten, False if not found.
+    """
+    if not LOAD_CARD_MODE:
+        output_text("ERROR: Cards not not editable: -L was not specified!", "error")
+
+    card_name = row[0].strip()  # NAME is at index 0
+    lines = []
+    found = False
+
+    # Read existing file
+    if os.path.isfile(filename):
+        with open(filename, 'r', newline='', encoding='utf-8') as f:
+            reader = csv.reader(f, delimiter=';')
+            header = next(reader)  # Preserve header
+            lines.append(header)
+            for existing_row in reader:
+                if existing_row[0].strip() == card_name:  # Match by NAME
+                    found = True
+                    lines.append(row)  # Use the provided row directly
+                else:
+                    lines.append(existing_row)
+
+    if not found:
+        return False
+
+    # Write back to file
+    with open(filename, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f, delimiter=';')
+        writer.writerows(lines)
+    
+    output_text(f"Overwrote card '{card_name}' in {filename}", "success")
+    return True
+
+
 def save_to_card_list(filename=DEFAULT_CARD_LIST_FILE):
     """
     Save card data from the UI to a spreadsheet.
@@ -230,7 +278,7 @@ def save_to_card_list(filename=DEFAULT_CARD_LIST_FILE):
     card_name = card_data.get("name", "").strip()
     
     # Check if the name already exists
-    if is_name_in_card_list(card_name):
+    if not LOAD_CARD_MODE and is_name_in_card_list(card_name):
         output_text(f"Card name '{card_name}' already exists in {filename}! Skipping", "error")
         load_next_image()  # Still load next image even if skipped
         return
@@ -278,7 +326,7 @@ def save_to_card_list(filename=DEFAULT_CARD_LIST_FILE):
             card_data.get("defense", ""),
             card_data.get("effect1", ""),
             card_data.get("effect2", ""),
-            card_data.get("serial", ""),
+            card_data.get("serial", ""),   # If this index changes, mdify the sn value below.
             card_data.get("rarity", ""),
             card_data.get("translucency", ""),
             card_data.get("effect1_style", ""),
@@ -289,11 +337,24 @@ def save_to_card_list(filename=DEFAULT_CARD_LIST_FILE):
         if len(CARD_LIST_HEADER) != len(row):
             output_text(f"ERROR: row data inconsistent with CARD_LIST_HEADER: {row} -> {CARD_LIST_HEADER}", "error")
 
+        if LOAD_CARD_MODE:
+            # Overwrite existing line if name matches
+            if overwrite_card_in_file(filename, row):
+                output_text(f"Card data saved to {filename}: {card_data}", "success")
+                sn = row[9]
+                save_sn_to_list(sn, DEFAULT_SERIAL_LIST_FILE)
+                output_text(f"Serial number {sn} saved to {DEFAULT_SERIAL_LIST_FILE}", "success")
+                load_next_image()
+                return  # Exit after overwriting
+
         # Write the row to the CSV if it's not a duplicate.
         if not check_line_in_file(filename, ";".join(str(r) for r in row)):
             if not check_for_effect_combination_in_file(filename, row[7], row[8]):
                 writer.writerow(row)
                 output_text(f"Card data saved to {filename}: {card_data}", "success")
+                sn = row[9]
+                save_sn_to_list(sn, DEFAULT_SERIAL_LIST_FILE)
+                output_text(f"Serial number {sn} saved to {DEFAULT_SERIAL_LIST_FILE}", "success")
                 load_next_image()
             else:
                 output_text(f"Effect combination already exists in output file! Skipping", "error") 
@@ -347,20 +408,31 @@ def browse_image():
     update_preview()
 
 
-def update_preview():
+def update_preview(force_update=False):
     """
     Gather UI input, create a card image, and display it in the preview window.
+    
+    Args:
+        force_update (bool): True to force an update.
 
     This function collects card data from the GUI, generates a card image using create_card,
     saves it to a temporary folder, and updates the preview canvas with the resulting image.
     """
+    # Stores the last card data where an update was triggered.
+    global LAST_UPDATE_CARD_DATA
+    
     # Skip preview update during reset
     global SKIP_PREVIEW
-    if SKIP_PREVIEW:
+    if SKIP_PREVIEW and not force_update:
         return
         
     # Collect card data from UI
     card_data = get_card_data()
+    
+    if card_data == LAST_UPDATE_CARD_DATA and not force_update:
+        return
+    else:
+        LAST_UPDATE_CARD_DATA = card_data
     
     #Set the serial number.
     serial_number = generate_serial_number(card_data)
@@ -370,7 +442,7 @@ def update_preview():
     with tempfile.TemporaryDirectory() as temp_dir:
         # Generate the card image
         output_file_name = f"{card_data['type'].replace(' ', '_')}_card_{card_data['name'].replace(' ', '_')}-{card_data['translucency']}.png"
-        create_card(card_data, temp_dir, output_file_name)
+        create_card(card_data, temp_dir, output_file_name, tmp_file=True)
         
         # Load the generated image
         output_file = f"{temp_dir}/{output_file_name}"
@@ -504,36 +576,43 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
     
     if not is_spell:
         # Unit-specific logic
+        # Get selected effect search values from effect_search_vars
+        effect_search_vars = WIDGETS["effect_search_vars"]  # List of StringVar objects
+        effect_search_values = [var.get() for var in effect_search_vars if var.get()]  # Filter out empty strings
+        
         strings_to_omit = ["lose <atkdef>", "destroy up to <number> <typeslevels>"]
-        target_with_subtypes = NUMBER_OF_EFFECT_BOXES // 2
+        
+        target_with_search_terms = NUMBER_OF_EFFECT_BOXES // 2
 
-        # Generate up to half the effects using subtypes as search strings
-        if subtypes:  # Only if subtypes are provided
-            for _ in range(target_with_subtypes):
+        search_terms = subtypes + effect_search_values      
+        
+        # Generate up to half the effects using search_terms as search strings
+        if search_terms:  # Only if search_terms are provided
+            for _ in range(target_with_search_terms):
                 if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
                     break  # Stop if no more unique effects are available
-                effect = get_random_effect(possible_effect_values, search_strings=subtypes, omit_strings=strings_to_omit)
+                effect = get_random_effect(possible_effect_values, search_strings=search_terms, omit_strings=strings_to_omit)
                 while effect in used_effects:
-                    effect = get_random_effect(possible_effect_values, search_strings=subtypes, omit_strings=strings_to_omit)
+                    effect = get_random_effect(possible_effect_values, search_strings=search_terms, omit_strings=strings_to_omit)
                     if len(used_effects) >= len(possible_effect_values):
                         break  # Avoid infinite loop
                 used_effects.add(effect)
                 generated_effects.append(effect)
     else:
         # Spell-specific logic
-        # Get selected spell search values from spell_search_vars
-        spell_search_vars = WIDGETS["spell_search_vars"]  # List of StringVar objects
-        spell_search_values = [var.get() for var in spell_search_vars if var.get()]  # Filter out empty strings
+        # Get selected effect search values from effect_search_vars
+        effect_search_vars = WIDGETS["effect_search_vars"]  # List of StringVar objects
+        effect_search_values = [var.get() for var in effect_search_vars if var.get()]  # Filter out empty strings
         target_with_search = NUMBER_OF_EFFECT_BOXES // 2
 
         # Generate up to half the effects using spell search values as search strings
-        if spell_search_values:  # Only if spell search values are selected
+        if effect_search_values:  # Only if spell search values are selected
             for _ in range(target_with_search):
                 if not possible_effect_values or len(used_effects) >= len(possible_effect_values):
                     break  # Stop if no more unique effects are available
-                effect = get_random_effect(possible_effect_values, search_strings=spell_search_values)
+                effect = get_random_effect(possible_effect_values, search_strings=effect_search_values)
                 while effect in used_effects:
-                    effect = get_random_effect(possible_effect_values, search_strings=spell_search_values)
+                    effect = get_random_effect(possible_effect_values, search_strings=effect_search_values)
                     if len(used_effects) >= len(possible_effect_values):
                         break  # Avoid infinite loop
                 used_effects.add(effect)
@@ -589,7 +668,6 @@ def is_name_in_card_list(card_name, filename=DEFAULT_CARD_LIST_FILE):
             # Get the header row to find the 'NAME' column index
             try:
                 header = next(reader)
-                output_text(f"Header: {header}", "note")
                 name_index = header.index("NAME")
             except StopIteration:
                 output_text("File is empty", "warning")
@@ -717,17 +795,40 @@ def generate_serial_number(card_data, waitForThreads=False):
     serial_number += all_types_id                  # Add the unique type+subtype identifier.
     
     # Since level is included as part of the SN, the atk and defense can be generated on a scale relative to the level.
-    serial_number += get_number_id(int(attack), level)  # Add the attack value identifier.
-    serial_number += get_number_id(int(defense), level) # Add the attack value identifier.
+    if "+" in attack or "-" in attack: # Spell stats
+        # For spells, this value x ranges from -level*10 < x < level*10. So if we add level*10 to the value x, we have
+        # 0 < x < 2level*10 => 0 < x < level*20, so, the per level value can be treated as 20. 
+        serial_number += get_number_id(int(attack[1:])+level*10, level, per_level_val=20)  # Add the attack value identifier.
+        serial_number += get_number_id(int(defense[1:])+level*10, level, per_level_val=20) # Add the attack value identifier.    
+    else: # Unit stats
+        serial_number += get_number_id(int(attack), level)  # Add the attack value identifier.
+        serial_number += get_number_id(int(defense), level) # Add the attack value identifier.
     
     serial_number += effect1_id                    # Add the first letter of the effect1.
     serial_number += effect1_style_id              # Add the unique identifier for the the effect1 style.
     serial_number += effect2_id                    # Add the first letter of the effect2.
     serial_number += effect2_style_id              # Add the unique identifier for the the effect1 style.
     serial_number += str(rarity)                   # Add the rarity of the card.
-    serial_number += "0"                           # One pad bit for expansion (Allows 36 possibilities with all other options the same).
+    
+    # Update the pad bit.
+    pad_bit_index = 0 
+    pad_bit = "0"
+    temp_serial_number = serial_number + pad_bit   # Create what the serial number is without any pad bit modifications.
+    while sn_in_list(temp_serial_number, DEFAULT_SERIAL_LIST_FILE):
+        pad_bit_index += 1                         # Increment the index
+        if pad_bit_index >= len(CHARACTERS):       # Prevent index out of bounds
+            raise ValueError("No unique serial number available - all padding options exhausted")
+        pad_bit = CHARACTERS[pad_bit_index]        # Increment pad bit.
+        temp_serial_number = serial_number + pad_bit
+        
+    # We expect the card to exist if we are loading in an existing card.
+    if LOAD_CARD_MODE:
+        pad_bit_index -= 1
+        pad_bit = CHARACTERS[pad_bit_index]        # De-increment pad bit.
+    
+    serial_number += pad_bit                       # One pad bit for expansion (Allows 36 possibilities with all other options the same).
 
-    output_text(f"Created serial_number: {serial_number}", "note")
+    #output_text(f"Created serial_number: {serial_number}", "note")
     card_data["serial"] = serial_number
     
     return serial_number
@@ -746,12 +847,12 @@ def update_serial_number(new_serial):
     Returns:
         None
     """
-    output_text(f"Updating serial number to: {new_serial}", "note")
+    #output_text(f"Updating serial number to: {new_serial}", "note")
     WIDGETS["serial_entry"].configure(state="normal")    # Enable editing
     WIDGETS["serial_entry"].delete(0, tk.END)            # Clear current text
     WIDGETS["serial_entry"].insert(0, new_serial)        # Insert new serial
     WIDGETS["serial_entry"].configure(state="disabled")  # Disable again
-    output_text(f"Updated serial number!", "success")
+    #output_text(f"Updated serial number!", "success")
 
 
 def get_gui_metadata():
@@ -810,6 +911,10 @@ def update_name_from_image(force_update=False):
     """
     image_path = WIDGETS["image_entry"].get()
     current_name = WIDGETS["name_entry"].get().strip()
+    
+    # Image path not set yet.
+    if image_path == "":
+        return
         
     # Check if any item from TYPE_LIST is in card_data["image"] and update type_combo
     image_value = image_path.strip()  # Remove extra whitespace
@@ -828,10 +933,6 @@ def update_name_from_image(force_update=False):
             with Image.open(image_path):
                 # Extract just the filename without path or extension
                 filename = os.path.splitext(os.path.basename(image_path))[0]
-                if filename[0] == "_":                    
-                    WIDGETS["name_entry"].delete(0, tk.END)
-                    WIDGETS["name_entry"].insert(0, "Unknown")
-                    return # This is the case for un-named images with default hash names.
                 # Update the name_entry with the extracted filename
                 WIDGETS["name_entry"].delete(0, tk.END)
                 WIDGETS["name_entry"].insert(0, filename)
@@ -921,6 +1022,78 @@ def load_next_image(image_file=None, filename=DEFAULT_CARD_LIST_FILE):
     update_preview()
 
 
+def load_selected_card(csv_file, listbox, headers):
+    """
+    Load the selected card from the CSV file into the UI widgets.
+
+    Args:
+        csv_file (str): Path to the CSV file containing card data.
+        listbox (tk.Listbox): The Listbox widget with card entries.
+        headers (list): The header row from the CSV file (not used directly here, but passed for consistency).
+    """
+    # Get the selected index from the Listbox
+    selection = listbox.curselection()
+    if not selection:
+        return  # No selection made
+
+    selected_index = selection[0]
+
+    # Read the CSV file and find the selected row
+    try:
+        with open(csv_file, 'r', newline='') as f:
+            reader = csv.DictReader(f, fieldnames=CARD_LIST_HEADER, delimiter=';')
+            next(reader)  # Skip header row since DictReader uses fieldnames
+            for i, row in enumerate(reader):
+                if i == selected_index:
+                    # Populate UI widgets with row data
+                    WIDGETS["name_entry"].delete(0, tk.END)
+                    WIDGETS["name_entry"].insert(0, row.get("NAME", "Unnamed"))
+
+                    WIDGETS["type_combo"].set(row.get("TYPE", "fire"))
+
+                    level = int(row.get("LEVEL", 1)) if row.get("LEVEL", "1").isdigit() else 1
+                    WIDGETS["level_var"].set(level)
+
+                    WIDGETS["atk_entry"].delete(0, tk.END)
+                    WIDGETS["atk_entry"].insert(0, row.get("ATTACK", "0"))
+
+                    WIDGETS["def_entry"].delete(0, tk.END)
+                    WIDGETS["def_entry"].insert(0, row.get("DEFENSE", "0"))
+
+                    WIDGETS["image_entry"].delete(0, tk.END)
+                    WIDGETS["image_entry"].insert(0, row.get("IMAGE", ""))
+
+                    WIDGETS["effect1_entry"].delete("1.0", tk.END)
+                    WIDGETS["effect1_entry"].insert("1.0", row.get("EFFECT1", ""))
+
+                    WIDGETS["effect2_entry"].delete("1.0", tk.END)
+                    WIDGETS["effect2_entry"].insert("1.0", row.get("EFFECT2", ""))
+
+                    WIDGETS["serial_entry"].configure(state="normal")  # Enable for editing
+                    WIDGETS["serial_entry"].delete(0, tk.END)
+                    WIDGETS["serial_entry"].insert(0, row.get("SERIAL", ""))
+                    WIDGETS["serial_entry"].configure(state="disabled")  # Disable again
+
+                    translucency = int(row.get("TRANSPARENCY", 50)) if row.get("TRANSPARENCY", "50").isdigit() else 50
+                    WIDGETS["translucent_var"].set(translucency)
+
+                    WIDGETS["effect1_style_var"].set(row.get("EFFECT1_STYLE", "None") or "None")
+                    WIDGETS["effect2_style_var"].set(row.get("EFFECT2_STYLE", "None") or "None")
+
+                    # Handle subtypes (comma-separated string to BooleanVars)
+                    subtypes = [s.strip() for s in row.get("SUBTYPES", "").split(",") if s.strip()]
+                    for i, subtype in enumerate(WIDGETS["subtype_labels"]):
+                        WIDGETS["subtype_vars"][i].set(subtype in subtypes)
+
+                    # Update the preview
+                    update_preview()
+                    break
+    except FileNotFoundError:
+        output_text(f"Error: Could not find file '{csv_file}'.", "error")
+    except Exception as e:
+        output_text(f"Error loading card: {e}", "error")
+
+
 PREPROCESSING_FINISHED = False
 
 def preprocess_all_types_list():
@@ -993,6 +1166,12 @@ def main():
         default=DEFAULT_CARD_LIST_FILE,
         help=f"Path to the output CSV file for saving card data. Defaults to '{DEFAULT_CARD_LIST_FILE}'."
     )
+    parser.add_argument(
+        "-L",
+        "--load_mode",
+        action="store_true",
+        help="Enable loading mode to load and overwrite existing values from the output CSV."
+    )
     
     args = parser.parse_args()
     
@@ -1007,7 +1186,65 @@ def main():
     PREVIEW_HEIGHT = int(580)
 
     main_frame = ttk.Frame(root, padding="15")
-    main_frame.grid(row=0, column=0, sticky="nsew")
+    main_frame_column = 0  # Default column for main_frame
+    
+    
+    # Check for and initialize loading mode
+    if args.load_mode:
+        # Set global load mode for various features.        
+        global LOAD_CARD_MODE
+        LOAD_CARD_MODE = True
+        
+        # Create load_frame to the left of main_frame
+        load_frame = ttk.LabelFrame(root, text="Load Card", padding="15")
+        load_frame.grid(row=0, column=0, sticky="nsew")
+        main_frame_column = 1  # Shift main_frame to column 1
+        
+        # Fixed width for the Listbox (adjust as needed)
+        LOAD_FRAME_WIDTH = 225  # Placeholder; set your desired width here
+        
+        # Create Listbox for selectable lines
+        load_listbox = tk.Listbox(
+            load_frame,
+            width=LOAD_FRAME_WIDTH // 10,  # Approximate width in characters (adjust based on font)
+            height=PREVIEW_HEIGHT // 20,   # Approximate height in lines (adjust to match window)
+            font=("Helvetica", 12),
+            selectmode="single"  # One line selectable at a time
+        )
+        load_listbox.grid(row=0, column=0, pady=5, padx=5, sticky="nsew")
+        
+        # Scrollbar for Listbox
+        scrollbar = ttk.Scrollbar(load_frame, orient="vertical", command=load_listbox.yview)
+        scrollbar.grid(row=0, column=1, sticky="ns")
+        load_listbox.config(yscrollcommand=scrollbar.set)
+        
+        # Load CSV lines into Listbox
+        try:
+            with open(args.output_file, 'r', newline='') as csvfile:
+                reader = csv.reader(csvfile, delimiter=';')
+                headers = next(reader)  # Skip header row if present
+                for row in reader:
+                    # Display a concise representation of each row (customize as needed)
+                    display_text = f"{row[0]}"  # e.g., use Name or ID column; adjust index
+                    load_listbox.insert(tk.END, display_text)
+        except FileNotFoundError:
+            load_listbox.insert(tk.END, "None.")
+
+        # Load button
+        load_btn = ttk.Button(
+            load_frame,
+            text="Load Card",
+            command=lambda: load_selected_card(args.output_file, load_listbox, headers)
+        )
+        load_btn.grid(row=1, column=0, pady=8, padx=5, sticky="ew")
+
+        # Configure load_frame grid weights
+        load_frame.columnconfigure(0, weight=1)
+        load_frame.rowconfigure(0, weight=1)  # Listbox expands vertically
+        load_frame.rowconfigure(1, weight=0)  # Button stays fixed
+    
+    
+    main_frame.grid(row=0, column=main_frame_column, sticky="nsew")
 
     left_frame = ttk.LabelFrame(main_frame, text="Card Details", padding="15")
     left_frame.grid(row=0, column=0, sticky="nsew")
@@ -1093,7 +1330,7 @@ def main():
         text="Flip Image", 
         command=lambda: [
             flip_image(image_entry.get()),
-            update_preview()
+            update_preview(True)
         ]
     )
     flip_btn.grid(row=5, column=1, pady=8, padx=(205, 0), sticky="w")  # Adjusted padx
@@ -1218,16 +1455,16 @@ def main():
     reset_btn.grid(row=3, column=0, pady=8, padx=5, sticky="ew")
     
     # Spell Search Area
-    spell_search_frame = ttk.LabelFrame(preview_frame, text="Spell Search", padding="8")
-    spell_search_frame.grid(row=4, column=0, pady=8, sticky="ew")
-    spell_search_list = TYPE_LIST + SUBTYPES_LIST
-    spell_search_vars = [tk.StringVar(value="") for _ in range(len(spell_search_list))]  # Default to empty string
-    for i, value in enumerate(spell_search_list):
+    effect_search_frame = ttk.LabelFrame(preview_frame, text="Effect Keywords For Search", padding="8")
+    effect_search_frame.grid(row=4, column=0, pady=8, sticky="ew")
+    effect_search_list = TYPE_LIST + SUBTYPES_LIST + EXTRA_EFFECT_KEYWORDS
+    effect_search_vars = [tk.StringVar(value="") for _ in range(len(effect_search_list))]  # Default to empty string
+    for i, value in enumerate(effect_search_list):
         display_text = value.capitalize()
         ttk.Checkbutton(
-            spell_search_frame,
+            effect_search_frame,
             text=display_text,
-            variable=spell_search_vars[i],
+            variable=effect_search_vars[i],
             onvalue=value,  # e.g., "Spell", "Fire"
             offvalue="",   # Empty string when unchecked
             command=update_preview
@@ -1304,7 +1541,7 @@ def main():
         "serial_entry" : serial_entry,
         "effect1_style_var": effect1_style_var,
         "effect2_style_var": effect2_style_var,
-        "spell_search_vars": spell_search_vars
+        "effect_search_vars": effect_search_vars
     }
 
     # Initial preview update

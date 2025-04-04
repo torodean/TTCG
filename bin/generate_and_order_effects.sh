@@ -128,7 +128,9 @@ python3 add_csv_field.py -c SPELL -t \
 	"While this card is on the field, <type> cards you control" \
 	"For each <card> tapped this turn, draw <number-1> card" \
 	"Whenever a <typeslevels> card is played, shuffle <number> card" \
-	"For each <type> card destroyed this turn, add one"
+	"For each <type> card destroyed this turn, add one" \
+	"While this card is on the field, <type> cards can rank up using <type>" \
+	"Play up to <number> rank"
 
 # Handle some exact matches (used for one off effects)
 python3 add_csv_field.py -c SPELL -e \
@@ -204,6 +206,8 @@ for level in LEVEL_{1..3}; do
         "When a <type> card is placed under this one, destroy" \
         "While this card is on the field, <type> cards you control" \
         "For each <type> card destroyed this turn, add one" \
+        "Swap this cards rank with another card" \
+	    "While this card is on the field, <type> cards can rank up using <type>" \
         "Swap this cards rank with another card"
 done
 
@@ -251,7 +255,7 @@ for l in "LEVEL_1 1 2" "LEVEL_2 2 3" "LEVEL_3 3 4"; do
             "When this card is destroyed, place up to ${NUMS[m]} <typeslevels> card" \
             "For each <card> tapped this turn, draw ${NUMS[m-1]} card" \
             "Whenever a <typeslevels> card is played, shuffle ${NUMS[m]} card" \
-            "Swap this cards rank with another card"
+	        "Play up to ${NUMS[m]} rank"
     done
 done
 
@@ -283,7 +287,10 @@ for l in "LEVEL_1 1 2" "LEVEL_2 2 4" "LEVEL_3 4 5"; do
             "Skip your next turn to destroy all rank ${m}" \
             "While this card is tapped, only cards <abovebelow> rank ${m}" \
             "Copy the effect of one rank ${m} spell card in your discard pile" \
-            "This turn, rank ${m} <card>s you control can be untapped once by paying one point"
+            "This turn, rank ${m} <card>s you control can be untapped once by paying one point" \
+	        "Play one rank ${m}" \
+	        "Play up to two rank ${m}" \
+	        "Play up to three rank ${m}"
     done
 done
 

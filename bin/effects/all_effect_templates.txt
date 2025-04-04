@@ -11,7 +11,8 @@ Both players discard <number> card(s).
 Both players discard their hand and draw the same number of cards they discarded.
 Both players mill <number> card(s) from their deck.
 Copy the effect of one <types> card in your discard pile.
-Counter the effect of a <typeslevels> card.
+Counter the effect of a <type> card.
+Counter the effect of a rank <rank> <card>.
 Destroy exactly <number> <card>(s) controlled by each player.
 Destroy exactly <number> <types> card(s) from your side of the field to gain <number+1> points.
 Destroy exactly <number> <typeslevels> card(s) on the field.
@@ -21,7 +22,8 @@ Destroy this card to destroy up to <number> <typeslevels> card(s) on the field.
 Destroy this card to shuffle your discard pile into your deck.
 Destroy two <types> cards you own to play one <types> card from your <pile>.
 Destroy up to <number> <typeslevels> card(s) on the field.
-Discard one <types> card to counter the effect of a <typeslevels> card.
+Discard one <types> card to counter the effect of a <type> card.
+Discard one <types> card to counter the effect of a rank <rank> <card>.
 Discard one <typeslevels> card to add one <typeslevels> card from your <pile> to your hand.
 Discard one <typeslevels> card to play one <typeslevels> card from your <pile>.
 Discard one <typeslevels> card to play up to two <typeslevels> cards from your <pile>.
@@ -92,8 +94,11 @@ While this card is under another, all <types> cards you control gain <atkdef>.
 While this card is under another, you can send this to the discard pile in place of a card above it.
 You can play one extra <typeslevels> card this turn.
 You can rank up one of your <types> cards using a unit from your <pile>.
-You can rank up this card using a <types> card.
+You can rank up this card using a <type> card.
+You can rank up this card using a <subtype> card of any type.
 You can rank up this card using a <types> unit from your <pile>.
 You can send up to <number> card(s) under this card to the discard pile.
 Your opponent cannot play <types> cards next turn.
 Your opponent loses <number> point(s).
+While this card is on the field, <type> cards can rank up using <type> cards.
+Play up to <number> rank <rank> <typpes> cards directly from your <pile>.

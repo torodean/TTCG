@@ -32,7 +32,12 @@ DEFAULT_ALL_EFFECT_TEMPLATES_FILE = "effects/all_effect_templates.txt"
 DEFAULT_COMBOS_TO_REMOVE_FILE = "placeholders/combinations_to_remove.txt"
 DEFAULT_PHRASES_TO_REPLACE_FILE = "placeholders/phrase_replacements.txt"
 EFFECT_STYLE_TEXT_FOLDER = "effect_style_text"
+DEFAULT_CARD_ELEMENTS_FOLDER = "../images/card pngs"
+DEFAULT_SERIAL_LIST_FILE = "card_list/serials.txt"
+DEFAULT_FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
 # Characters to be used in serial number generation. These are all values that show up nicely without 
 # having to worry about what letters are what or the font effecting the serial number display size.
 CHARACTERS = "0123456789AaBbCcDdEeFfGHhiKkLMmNnoPRrSsTtUuVvWwXxYZz"
+
+EXTRA_EFFECT_KEYWORDS = ["Discard", "Destroy", "Draw", "Mill", "Counter", "Equip", "Destroy this"]

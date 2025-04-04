@@ -32,3 +32,9 @@ the next all
 Reveal the top card of your deck and play one
 above rank 1
 below rank 5
+deck to the deck
+discard pile to the discard pile
+above rank 5
+below rank 1
+spell cards you control gain
+spell cards you control lose

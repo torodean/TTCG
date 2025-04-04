@@ -292,6 +292,23 @@ python3 generate_random_effects.py my_effects.csv -c UNIT
 
 
 
+\section{Alphabetizing the Card List}
+To alphabetize the card list in \texttt{card\_list/card\_list.csv} while preserving the header row, run this command in the terminal from the directory containing \texttt{alphabetize\_file.py}:
+
+\begin{lstlisting}[style=terminalstyle]
+python3 alphabetize_file.py -i card_list/card_list.csv -o card_list/card_list.csv -H
+\end{lstlisting}
+
+Here, \texttt{-i} specifies the input file, \texttt{-o} the output file (overwriting the input), and \texttt{-H} keeps the header unsorted. For example, a file with ``Name, Zebra, Apple, Monkey'' becomes ``Name, Apple, Monkey, Zebra'' after sorting.
+
+
+
+
+
+
+
+
+
 
 
 
@@ -345,6 +362,15 @@ Below is an example command (without an image specified) with the matching outpu
 	\item Ensure type images (e.g., \texttt{fire.png}) exist in \texttt{../images/card pngs/}, or it falls back to a default.
 	\item Use \texttt{-o} to save cards elsewhere; ensure the folder exists or the script may fail.
 \end{itemize}
+
+
+
+
+
+
+
+
+
 
 
 

@@ -16,6 +16,8 @@ from ttcg_constants import VALID_TRANSLUCENT_VALUES
 from ttcg_constants import DEFAULT_CARD_WIDTH
 from ttcg_constants import DEFAULT_CARD_HEIGHT
 from ttcg_constants import CARD_LIST_HEADER
+from ttcg_constants import DEFAULT_CARD_ELEMENTS_FOLDER
+from ttcg_constants import DEFAULT_FONT_PATH
 
 
 def add_effect_overlay_image(final_img, style, position, width=DEFAULT_CARD_WIDTH, height=DEFAULT_CARD_HEIGHT):
@@ -46,7 +48,7 @@ def add_effect_overlay_image(final_img, style, position, width=DEFAULT_CARD_WIDT
         output_text(f"Valid overlay styles are: {VALID_OVERLAY_STYLES}", "warning")
         return final_img
     
-    base_image_path = f"../images/card pngs/{style}-{position}.png"
+    base_image_path = f"{DEFAULT_CARD_ELEMENTS_FOLDER}/{style}-{position}.png"
     try:
         base_img = Image.open(base_image_path).convert("RGBA")
         if base_img.size != (width, height):
@@ -103,12 +105,12 @@ def create_base_card(card_type,
 
     # Get base image based on type (case-insensitive)
     if translucency == 100:
-        base_image_path = f"../images/card pngs/{card_type.lower()}.png"
+        base_image_path = f"{DEFAULT_CARD_ELEMENTS_FOLDER}/{card_type.lower()}.png"
     else:
-        base_image_path = f"../images/card pngs/{card_type.lower()}-{translucency}.png"
+        base_image_path = f"{DEFAULT_CARD_ELEMENTS_FOLDER}/{card_type.lower()}-{translucency}.png"
         
     # Print base image path for debugging.
-    output_text(f"base_image_path set to: {base_image_path}", "note")
+    #output_text(f"base_image_path set to: {base_image_path}", "note")
         
     try:
         base_img = Image.open(base_image_path).convert("RGBA")
@@ -127,7 +129,7 @@ def create_base_card(card_type,
         final_img = add_effect_overlay_image(final_img, effect2_style, "bottom")
 
     # Overlay level-specific PNG
-    level_image_path = f"../images/card pngs/{card_level} star.png"
+    level_image_path = f"{DEFAULT_CARD_ELEMENTS_FOLDER}/{card_level} star.png"
     try:
         level_img = Image.open(level_image_path).convert("RGBA")
         if level_img.size != (width, height):
@@ -195,7 +197,7 @@ def draw_single_line_text(draw, text, top_left, bottom_right, initial_font_size=
     box_height = y2 - y1
 
     # Use DejaVu Sans font
-    font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+    font_path = DEFAULT_FONT_PATH
     try:
         font = ImageFont.truetype(font_path, initial_font_size)
     except:
@@ -283,7 +285,7 @@ def draw_wrapped_text(draw, text, top_left, bottom_right, initial_font_size=50, 
     box_height = y2 - y1
 
     # Use DejaVu Sans font
-    font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+    font_path = DEFAULT_FONT_PATH
     try:
         font = ImageFont.truetype(font_path, initial_font_size)
     except:
@@ -322,7 +324,7 @@ def draw_wrapped_text(draw, text, top_left, bottom_right, initial_font_size=50, 
     draw.text((x1 + x_offset, y1 + y_offset), wrapped_text, font=font, fill=color, align="center")
 
 
-def create_card(card_data, output_folder, output_file_name=None):
+def create_card(card_data, output_folder, output_file_name=None, tmp_file=False):
     """
     Creates a TTCG trading card image with specified details and saves it to a file.
 
@@ -347,6 +349,7 @@ def create_card(card_data, output_folder, output_file_name=None):
             - effect2_style (str): The style to use for the effect two box (default = None).
         output_folder (str): Path to the folder where the card image will be saved.
         output_file_name (str): An optional output file name to use. This should not include the output folder path.
+        tmp_file (bool): True if this is saving a temporary file (disables output).
 
     Returns:
         None: The function saves the card image to a file and prints the file path.
@@ -355,7 +358,7 @@ def create_card(card_data, output_folder, output_file_name=None):
         - The card dimensions are fixed at 750x1050 pixels (2.5" x 3.5" at 300 DPI).
         - Text is drawn in specific boxes using helper functions (`create_base_card`,
           `draw_single_line_text`, `draw_wrapped_text`), which are assumed to be defined elsewhere.
-        - The output file is named `<type>_<name>.png`, with spaces in the name replaced by underscores.
+        - The output file is named `<serial>.png`, with spaces in the name replaced by underscores.
     """
     # TTCG card dimensions: 2.5" x 3.5" at 300 DPI = 750 x 1050 pixels
     width, height = DEFAULT_CARD_WIDTH, DEFAULT_CARD_HEIGHT
@@ -407,13 +410,15 @@ def create_card(card_data, output_folder, output_file_name=None):
 
     # Create the output card name.
     if output_file_name == None:
-        output_file = f"{output_folder}/{card_data['type'].replace(' ', '_')}_card_{card_data['name'].replace(' ', '_')}.png"
+        serial_num = card_data["serial"]
+        output_file = f"{output_folder}/{serial_num}.png"
     else:
         output_file = f"{output_folder}/{output_file_name}"        
 
     # Save the card
     img.save(output_file)
-    output_text(f"Card saved as {output_file}", "success")
+    if not tmp_file:
+        output_text(f"Card saved as {output_file}", "success")
 
 
 def process_csv_to_cards(csv_file_path, output_folder):

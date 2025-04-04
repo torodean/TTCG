@@ -638,7 +638,16 @@ It serves as the central hub for TTCG card prototyping, bridging user input with
 	\item \textbf{Effect Generation}: Produces up to ten random effects from a CSV file, filtered by type and subtypes, assignable to card fields with a single click.
 	\item \textbf{Stat Randomization}: Generates ATK and DEF values (total = level $\times$ 500) via a ``Randomize'' button or level selection, ensuring balanced stats.
  	\item \textbf{Auto-Filling}: The UI is intuitively designed to auto-fill some values, such as random ATK and DEF values, automatic type and name selection (when a named images are selected), and spell styles (for various keywords).
+ 	\item \textbf{Loading and Editing}: The \texttt{-L} option modifies the user interface specifically for loading and modifying existing cards in the card list. This mode will override certain safeguards normally in place to allow replacing and editing existing cards (see figure \ref{card_maker_ui_load_mode_screenshot}).
 \end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/ui_load_mode_sample.png}
+	\caption{Screenshot of the \texttt{card\_maker\_ui.py} interface when the \texttt{-L} (load card) mode is enabled, showcasing a random card being loaded in.}
+	\label{fig:card_maker_ui_load_mode_screenshot}
+\end{figure}
+
 
 \subsection{Usage}
 Run the script from the command line with an optional argument:
@@ -658,6 +667,7 @@ options:
   -o OUTPUT_FILE, --output_file OUTPUT_FILE
                         Path to the output CSV file for saving card data. Defaults
                         to 'card_list.csv'.
+  -L, --load_mode       Enable loading mode to load and overwrite existing values from the output CSV.
 \end{lstlisting}
 The \texttt{-i} argument specifies the effects CSV file (default: \texttt{effects/effects\_with\_placeholders.csv}). Default UI values include ``Fire'' type, level 1, ``Unnamed'' name, and 0 ATK/DEF.
 

@@ -48,7 +48,7 @@ The `bin` directory serves as the central hub for executable scripts used in the
 ### `alphabetize_file.py`
 - **Purpose**: Reads lines from a text file, sorts them alphabetically, and writes the result to an output file.
 - **Key Features**: Simple sorting utility, ignores empty lines, and handles basic file errors.
-- **Usage**: `python3 alphabetize_file.py [-i INPUT] [-o OUTPUT]`
+- **Usage**: `python3 alphabetize_file.py [-i INPUT] [-o OUTPUT] [-H]`
 - **Dependencies**: None beyond Python 3.
 
 
