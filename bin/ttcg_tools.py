@@ -623,10 +623,14 @@ def save_sn_to_list(serial_number, filename):
     Returns:
         bool: True if save was successful, False otherwise
     """
+    if serial_number.strip() == "":
+        output_text(f"Serial number should not be empty!", "Error")
+        return False
+
     try:
         with open(filename, 'a') as file:  # 'a' mode appends to end of file
             file.write(f"{serial_number}\n")  # Add newline to maintain one SN per line
         return True
     except IOError as e:
-        output_text(f"Error saving serial number to file: {e}", "Error")
+        output_text(f"Saving serial number to file: {e}", "Error")
         return False
