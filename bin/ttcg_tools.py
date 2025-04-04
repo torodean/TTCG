@@ -402,7 +402,15 @@ def deduce_effect_style_from_effect_text(effect_text):
 
 def has_at_most_one_from_source(source_list, target_list, num_of_matches=1):
     """
-    Returns True if exactly one item from source_list appears in target_list.
+    Returns True if exactly num_of_matches item(s) from source_list appears in target_list.
+
+    Args:
+        source_list (list): The source list to search for items.
+        target_list (list): The target list to search for items.
+        num_of_matches (int): The number of matches to check against between the lists.
+
+    Returns
+        bool: True if the matches found equal num_of_matches.
     """
     source_set = set(source_list)
     matches = sum(1 for item in target_list if item in source_set)
@@ -598,17 +606,21 @@ def sn_in_list(serial_number, filename):
     Returns:
         bool: True if serial number exists in file, False otherwise
     """
+    if serial_number.strip() == "":
+        output_text(f"Serial number should not be empty!", "error")
+        return False
+ 
     try:
         with open(filename, 'r') as file:
             # Read all lines and strip whitespace, compare with serial_number
             serial_numbers = [line.strip() for line in file]
-            return serial_number in serial_numbers
+            return serial_number.strip() in serial_numbers
     except FileNotFoundError:
         # Handle case where file doesn't exist
         return False
     except Exception as e:
         # Handle other potential errors (permissions, etc.)
-        output_text(f"Error reading serial number list: {e}", "Error")
+        output_text(f"Error reading serial number list: {e}", "error")
         return False
         
         
@@ -623,10 +635,14 @@ def save_sn_to_list(serial_number, filename):
     Returns:
         bool: True if save was successful, False otherwise
     """
+    if serial_number.strip() == "":
+        output_text(f"Serial number should not be empty!", "error")
+        return False
+
     try:
         with open(filename, 'a') as file:  # 'a' mode appends to end of file
             file.write(f"{serial_number}\n")  # Add newline to maintain one SN per line
         return True
     except IOError as e:
-        output_text(f"Error saving serial number to file: {e}", "Error")
+        output_text(f"Saving serial number to file: {e}", "error")
         return False
