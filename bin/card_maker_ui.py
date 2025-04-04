@@ -87,12 +87,6 @@ def get_next_image(current_path):
         - If input is an image file and it's the last in the directory,
           returns the first image file
         - Case-insensitive extension matching
-    
-    Examples:
-        >>> get_next_image("/path/to/directory")
-        '/path/to/directory/image1.jpg'
-        >>> get_next_image("/path/to/directory/image1.jpg")
-        '/path/to/directory/image2.jpg'
     """
     # Define common image extensions
     image_extensions = VALID_IMAGE_EXTENSIONS
@@ -855,6 +849,10 @@ def update_name_from_image(force_update=False):
     """
     image_path = WIDGETS["image_entry"].get()
     current_name = WIDGETS["name_entry"].get().strip()
+    
+    # Image path not set yet.
+    if image_path == "":
+        return
         
     # Check if any item from TYPE_LIST is in card_data["image"] and update type_combo
     image_value = image_path.strip()  # Remove extra whitespace

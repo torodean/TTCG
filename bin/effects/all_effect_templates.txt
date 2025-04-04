@@ -94,7 +94,8 @@ While this card is under another, all <types> cards you control gain <atkdef>.
 While this card is under another, you can send this to the discard pile in place of a card above it.
 You can play one extra <typeslevels> card this turn.
 You can rank up one of your <types> cards using a unit from your <pile>.
-You can rank up this card using a <types> card.
+You can rank up this card using a <type> card.
+You can rank up this card using a <subtype> card of any type.
 You can rank up this card using a <types> unit from your <pile>.
 You can send up to <number> card(s) under this card to the discard pile.
 Your opponent cannot play <types> cards next turn.
