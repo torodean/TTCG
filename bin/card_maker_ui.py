@@ -1032,6 +1032,12 @@ def main():
         default=DEFAULT_CARD_LIST_FILE,
         help=f"Path to the output CSV file for saving card data. Defaults to '{DEFAULT_CARD_LIST_FILE}'."
     )
+    parser.add_argument(
+        "-L",
+        "--load_mode",
+        action="store_true",
+        help="Enable loading mode to load and overwrite existing values from the output CSV. (IN DEV)"
+    )
     
     args = parser.parse_args()
     
@@ -1046,7 +1052,61 @@ def main():
     PREVIEW_HEIGHT = int(580)
 
     main_frame = ttk.Frame(root, padding="15")
-    main_frame.grid(row=0, column=0, sticky="nsew")
+    main_frame_column = 0  # Default column for main_frame
+    
+    
+    # Check for and initialize loading mode
+    if args.load_mode:
+        # Create load_frame to the left of main_frame
+        load_frame = ttk.LabelFrame(root, text="Load Card", padding="15")
+        load_frame.grid(row=0, column=0, sticky="nsew")
+        main_frame_column = 1  # Shift main_frame to column 1
+        
+        # Fixed width for the Listbox (adjust as needed)
+        LOAD_FRAME_WIDTH = 225  # Placeholder; set your desired width here
+        
+        # Create Listbox for selectable lines
+        load_listbox = tk.Listbox(
+            load_frame,
+            width=LOAD_FRAME_WIDTH // 10,  # Approximate width in characters (adjust based on font)
+            height=PREVIEW_HEIGHT // 20,   # Approximate height in lines (adjust to match window)
+            font=("Helvetica", 12),
+            selectmode="single"  # One line selectable at a time
+        )
+        load_listbox.grid(row=0, column=0, pady=5, padx=5, sticky="nsew")
+        
+        # Scrollbar for Listbox
+        scrollbar = ttk.Scrollbar(load_frame, orient="vertical", command=load_listbox.yview)
+        scrollbar.grid(row=0, column=1, sticky="ns")
+        load_listbox.config(yscrollcommand=scrollbar.set)
+        
+        # Load CSV lines into Listbox
+        try:
+            with open(args.output_file, 'r', newline='') as csvfile:
+                reader = csv.reader(csvfile, delimiter=';')
+                headers = next(reader)  # Skip header row if present
+                for row in reader:
+                    # Display a concise representation of each row (customize as needed)
+                    display_text = f"{row[0]}"  # e.g., use Name or ID column; adjust index
+                    load_listbox.insert(tk.END, display_text)
+        except FileNotFoundError:
+            load_listbox.insert(tk.END, "None.")
+
+        # Load button
+        load_btn = ttk.Button(
+            load_frame,
+            text="Load Card",
+            command=lambda: load_selected_card(args.output_file, load_listbox, headers)
+        )
+        load_btn.grid(row=1, column=0, pady=8, padx=5, sticky="ew")
+
+        # Configure load_frame grid weights
+        load_frame.columnconfigure(0, weight=1)
+        load_frame.rowconfigure(0, weight=1)  # Listbox expands vertically
+        load_frame.rowconfigure(1, weight=0)  # Button stays fixed
+    
+    
+    main_frame.grid(row=0, column=main_frame_column, sticky="nsew")
 
     left_frame = ttk.LabelFrame(main_frame, text="Card Details", padding="15")
     left_frame.grid(row=0, column=0, sticky="nsew")
