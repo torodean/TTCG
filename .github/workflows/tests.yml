@@ -25,6 +25,8 @@ jobs:
       run: |
         # Install pytest
         pip install pytest
+        pip install tqdm
+        pip install regex
 
     - name: Run tests
       run: |
