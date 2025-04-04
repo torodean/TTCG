@@ -598,17 +598,21 @@ def sn_in_list(serial_number, filename):
     Returns:
         bool: True if serial number exists in file, False otherwise
     """
+    if serial_number.strip() == "":
+        output_text(f"Serial number should not be empty!", "error")
+        return False
+ 
     try:
         with open(filename, 'r') as file:
             # Read all lines and strip whitespace, compare with serial_number
             serial_numbers = [line.strip() for line in file]
-            return serial_number in serial_numbers
+            return serial_number.strip() in serial_numbers
     except FileNotFoundError:
         # Handle case where file doesn't exist
         return False
     except Exception as e:
         # Handle other potential errors (permissions, etc.)
-        output_text(f"Error reading serial number list: {e}", "Error")
+        output_text(f"Error reading serial number list: {e}", "error")
         return False
         
         
@@ -624,7 +628,7 @@ def save_sn_to_list(serial_number, filename):
         bool: True if save was successful, False otherwise
     """
     if serial_number.strip() == "":
-        output_text(f"Serial number should not be empty!", "Error")
+        output_text(f"Serial number should not be empty!", "error")
         return False
 
     try:
@@ -632,5 +636,5 @@ def save_sn_to_list(serial_number, filename):
             file.write(f"{serial_number}\n")  # Add newline to maintain one SN per line
         return True
     except IOError as e:
-        output_text(f"Saving serial number to file: {e}", "Error")
+        output_text(f"Saving serial number to file: {e}", "error")
         return False
