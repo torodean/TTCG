@@ -7,6 +7,8 @@ from unittest.mock import mock_open, patch
 
 sys.path.append('../')
 
+import ttcg_constants
+
 # Uncomment these as tests are finished.
 #from ttcg_tools import load_placeholder_values
 #from ttcg_tools import generate_combinations
@@ -35,7 +37,7 @@ def test_get_index_in_baseN_none_input(mock_characters):
     Test that None input returns '0'.
     """
     with pytest.MonkeyPatch().context() as mp:
-        mp.setattr("builtins.CHARACTERS", mock_characters)  # Mock CHARACTERS
+        mp.setattr("ttcg_constants.CHARACTERS", mock_characters)  # Mock CHARACTERS
         result = get_index_in_baseN(None, ["a", "b", "c"], N=len(mock_characters))
         assert result == "0"
 
@@ -44,14 +46,14 @@ def test_get_index_in_baseN_empty_list(mock_characters):
     Test that empty list returns '0'
     ."""
     with pytest.MonkeyPatch().context() as mp:
-        mp.setattr("builtins.CHARACTERS", mock_characters)
+        mp.setattr("ttcg_constants.CHARACTERS", mock_characters)
         result = get_index_in_baseN("a", [], N=len(mock_characters))
         assert result == "0"
 
 def test_get_index_in_baseN_not_found(mock_characters):
     """Test that string not in list returns '0'"""
     with pytest.MonkeyPatch().context() as mp:
-        mp.setattr("builtins.CHARACTERS", mock_characters)
+        mp.setattr("ttcg_constants.CHARACTERS", mock_characters)
         result = get_index_in_baseN("x", ["a", "b", "c"], N=len(mock_characters))
         assert result == "0"
 
@@ -60,7 +62,7 @@ def test_get_index_in_baseN_index_zero(mock_characters):
     Test that index 0 returns '0' in any base.
     """
     with pytest.MonkeyPatch().context() as mp:
-        mp.setattr("builtins.CHARACTERS", mock_characters)
+        mp.setattr("ttcg_constants.CHARACTERS", mock_characters)
         result = get_index_in_baseN("a", ["a", "b", "c"], N=len(mock_characters))
         assert result == "0"
 
@@ -69,7 +71,7 @@ def test_get_index_in_baseN_base_conversion(mock_characters):
     Test base-N conversion for various indices.
     """
     with pytest.MonkeyPatch().context() as mp:
-        mp.setattr("builtins.CHARACTERS", mock_characters)
+        mp.setattr("ttcg_constants.CHARACTERS", mock_characters)
         N = len(mock_characters)  # e.g., 16 for "0123456789ABCDEF"
         search_list = list("abcdefghijklmnop")  # 16 items
         
@@ -88,7 +90,7 @@ def test_get_index_in_baseN_small_base(mock_characters):
     Test conversion with a smaller base.
     """
     with pytest.MonkeyPatch().context() as mp:
-        mp.setattr("builtins.CHARACTERS", mock_characters)
+        mp.setattr("ttcg_constants.CHARACTERS", mock_characters)
         search_list = ["a", "b", "c", "d"]
         # Use base 2
         result = get_index_in_baseN("c", search_list, N=2)
@@ -101,7 +103,7 @@ def test_get_index_in_baseN_large_index(mock_characters):
     Test conversion of a larger index in base N.
     """
     with pytest.MonkeyPatch().context() as mp:
-        mp.setattr("builtins.CHARACTERS", mock_characters)
+        mp.setattr("ttcg_constants.CHARACTERS", mock_characters)
         N = len(mock_characters)
         search_list = [str(i) for i in range(N + 1)]  # 0 to N items
         # Index N in base N should be "10"
@@ -113,7 +115,7 @@ def test_get_index_in_baseN_custom_n(mock_characters):
     Test with N different from len(CHARACTERS).
     """
     with pytest.MonkeyPatch().context() as mp:
-        mp.setattr("builtins.CHARACTERS", mock_characters)
+        mp.setattr("ttcg_constants.CHARACTERS", mock_characters)
         search_list = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"]
         # Use N=10, regardless of len(CHARACTERS)
         assert get_index_in_baseN("a", search_list, N=10) == "0"
