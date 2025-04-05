@@ -18,15 +18,245 @@ from ttcg_tools import get_command_string
 from ttcg_tools import check_line_in_file
 from ttcg_tools import get_relative_path
 from ttcg_tools import rename_file
-#from ttcg_tools import text_in_placeholder_string
-#from ttcg_tools import deduce_effect_style_from_effect_text
-#from ttcg_tools import has_at_most_one_from_source
+from ttcg_tools import text_in_placeholder_string
+from ttcg_tools import deduce_effect_style_from_effect_text
+from ttcg_tools import has_at_most_one_from_source
 #from ttcg_tools import get_sequence_combinations
 #from ttcg_tools import get_combination_id
 #from ttcg_tools import get_number_id
 from ttcg_tools import get_index_in_baseN
 from ttcg_tools import sn_in_list
 from ttcg_tools import save_sn_to_list
+
+
+# Mock data for VALID_OVERLAY_STYLES
+VALID_OVERLAY_STYLES = ['fire', 'water', 'earth']
+
+def test_deduce_effect_style_from_effect_text_single_match():
+    """
+    Test case where exactly one effect style matches the effect text.
+    The function should return the filename (style) where the match is found.
+    """
+    effect_text = "This is a fire effect"
+    
+    # Mocking the file reading process for the "fire" style
+    with patch("builtins.open", mock_open(read_data="fire")):
+        # Mocking os.path.join to simulate the file path and using VALID_OVERLAY_STYLES
+        with patch("os.path.join", side_effect=lambda folder, filename: f"{folder}/{filename}.txt"):
+            with patch("ttcg_tools.VALID_OVERLAY_STYLES", VALID_OVERLAY_STYLES):
+                result = deduce_effect_style_from_effect_text(effect_text)
+                assert result == "fire"  # The function should return the name of the file where the match was found
+
+
+def test_deduce_effect_style_from_effect_text_multiple_matches():
+    """
+    Test case where multiple effect styles match the effect text.
+    The function should return the filename (style) of the first match found.
+    """
+    effect_text = "This is a fire and water effect"
+    
+    # Mocking the file reading process for multiple styles ("fire" and "water")
+    with patch("builtins.open", mock_open(read_data="fire\nwater")):
+        # Mocking os.path.join to simulate the file path and using VALID_OVERLAY_STYLES
+        with patch("os.path.join", side_effect=lambda folder, filename: f"{folder}/{filename}.txt"):
+            with patch("ttcg_tools.VALID_OVERLAY_STYLES", VALID_OVERLAY_STYLES):
+                result = deduce_effect_style_from_effect_text(effect_text)
+                assert result == "fire"  # The function should return the first matched file
+
+
+def test_deduce_effect_style_from_effect_text_no_match():
+    """
+    Test case where no effect style matches the effect text.
+    The function should return None.
+    """
+    effect_text = "This is an unknown effect"
+    
+    # Mocking file reading for valid styles ("fire" and "water") with no match
+    with patch("builtins.open", mock_open(read_data="fire\nwater")):
+        # Mocking os.path.join to simulate the file path and using VALID_OVERLAY_STYLES
+        with patch("os.path.join", side_effect=lambda folder, filename: f"{folder}/{filename}.txt"):
+            with patch("ttcg_tools.VALID_OVERLAY_STYLES", VALID_OVERLAY_STYLES):
+                result = deduce_effect_style_from_effect_text(effect_text)
+                assert result is None  # Should return None if no match is found
+
+
+def test_deduce_effect_style_from_effect_text_file_not_found():
+    """
+    Test case where the file for a specific effect style is not found.
+    The function should continue without errors and return None.
+    """
+    effect_text = "This is a fire effect"
+    
+    # Mocking FileNotFoundError for one of the styles
+    with patch("builtins.open", side_effect=FileNotFoundError):
+        # Mocking os.path.join to simulate the file path and using VALID_OVERLAY_STYLES
+        with patch("os.path.join", side_effect=lambda folder, filename: f"{folder}/{filename}.txt"):
+            with patch("ttcg_tools.VALID_OVERLAY_STYLES", VALID_OVERLAY_STYLES):
+                result = deduce_effect_style_from_effect_text(effect_text)
+                assert result is None  # Should return None if the file cannot be found
+
+
+def test_deduce_effect_style_from_effect_text_case_insensitive():
+    """
+    Test case where the effect text is case-insensitive, and the matching should still work.
+    """
+    effect_text = "THIS IS A FIRE EFFECT"
+    
+    # Mocking the file reading process for a valid style ("fire")
+    with patch("builtins.open", mock_open(read_data="fire")):
+        # Mocking os.path.join to simulate the file path and using VALID_OVERLAY_STYLES
+        with patch("os.path.join", side_effect=lambda folder, filename: f"{folder}/{filename}.txt"):
+            with patch("ttcg_tools.VALID_OVERLAY_STYLES", VALID_OVERLAY_STYLES):
+                result = deduce_effect_style_from_effect_text(effect_text)
+                assert result == "fire"  # Case-insensitive matching should return the correct file
+
+
+def test_has_at_most_one_from_source_single_match():
+    """
+    Test case where there is exactly one match between the source and target lists.
+    The function should return True.
+    """
+    source_list = ["apple", "banana", "cherry"]
+    target_list = ["banana", "date"]
+    result = has_at_most_one_from_source(source_list, target_list, num_of_matches=1)
+    assert result is True
+
+
+def test_has_at_most_one_from_source_multiple_matches():
+    """
+    Test case where there are multiple matches between the source and target lists.
+    The function should return False because we're looking for exactly one match.
+    """
+    source_list = ["apple", "banana", "cherry"]
+    target_list = ["banana", "cherry"]
+    result = has_at_most_one_from_source(source_list, target_list, num_of_matches=1)
+    assert result is False
+
+
+def test_has_at_most_one_from_source_no_matches():
+    """
+    Test case where there are no matches between the source and target lists.
+    The function should return False because we're looking for exactly one match.
+    """
+    source_list = ["apple", "banana", "cherry"]
+    target_list = ["date", "elderberry"]
+    result = has_at_most_one_from_source(source_list, target_list, num_of_matches=1)
+    assert result is False
+
+
+def test_has_at_most_one_from_source_zero_matches_expected():
+    """
+    Test case where the expected number of matches is 0, and there are no matches.
+    The function should return True.
+    """
+    source_list = ["apple", "banana", "cherry"]
+    target_list = ["date", "elderberry"]
+    result = has_at_most_one_from_source(source_list, target_list, num_of_matches=0)
+    assert result is True
+
+
+def test_has_at_most_one_from_source_exact_match():
+    """
+    Test case where the expected number of matches is 1, and there is exactly one match.
+    The function should return True.
+    """
+    source_list = ["apple", "banana", "cherry"]
+    target_list = ["apple", "elderberry"]
+    result = has_at_most_one_from_source(source_list, target_list, num_of_matches=1)
+    assert result is True
+
+
+def test_has_at_most_one_from_source_with_duplicates_in_target():
+    """
+    Test case where the target list contains duplicates of a match, but we're only expecting one match.
+    The function should return False, since there are more than one match.
+    """
+    source_list = ["apple", "banana", "cherry"]
+    target_list = ["apple", "apple", "elderberry"]
+    result = has_at_most_one_from_source(source_list, target_list, num_of_matches=1)
+    assert result is False
+
+
+
+def mock_generate_combinations(value, placeholder_dir="", visited=None):
+    """
+    Mock function to simulate resolving nested placeholders.
+    """
+    if "<number>" in value:
+        return [value.replace("<number>", str(i)) for i in range(1, 3)]  # e.g., ["1", "2"]
+    return [value]
+
+
+def test_text_in_placeholder_string_basic_match():
+    """
+    Test that the function correctly matches a generated combination of a placeholder.
+    Specifically, it checks if "<number>" is found in the check string when replaced with "1".
+    """
+    placeholder_string = "<number>"
+    check_string = "The number is 1"
+    with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+        result = text_in_placeholder_string(placeholder_string, check_string)
+    assert result is True
+
+
+def test_text_in_placeholder_string_no_match():
+    """
+    Test that the function correctly returns False when no placeholder combination matches the check string.
+    Specifically, it checks if "<number>" doesn't match "The level is 2".
+    """
+    placeholder_string = "<number>"
+    check_string = "The level is 4"
+    with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+        result = text_in_placeholder_string(placeholder_string, check_string)
+    assert result is False
+
+
+def test_text_in_placeholder_string_multiple_combinations():
+    """
+    Test that the function matches the placeholder when the check string contains one of the generated combinations.
+    It verifies that either "1" or "2" (from "<number>") is found in the check string.
+    """
+    placeholder_string = "<number>"
+    check_string = "The number is 2"
+    with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+        result = text_in_placeholder_string(placeholder_string, check_string)
+    assert result is True
+
+
+def test_text_in_placeholder_string_no_multiple_combinations():
+    """
+    Test that the function returns False when none of the placeholder combinations match the check string.
+    Specifically, it checks if "<number>" doesn't match "The number is 3".
+    """
+    placeholder_string = "<number>"
+    check_string = "The number is 3"
+    with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+        result = text_in_placeholder_string(placeholder_string, check_string)
+    assert result is False
+
+
+def test_text_in_placeholder_string_empty_combinations():
+    """
+    Test that the function returns False when no combinations are generated for the placeholder.
+    Specifically, it checks if "<unknown>" doesn't generate any combinations to match the check string.
+    """
+    placeholder_string = "<unknown>"
+    check_string = "No match here"
+    with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+        result = text_in_placeholder_string(placeholder_string, check_string)
+    assert result is False
+
+
+def test_text_in_placeholder_string_different_placeholder():
+    """
+    Test that the function correctly matches a placeholder if it's found in a different format.
+    Specifically, it checks if "<number>" is matched when the check string has "Number 1".
+    """
+    placeholder_string = "<number>"
+    check_string = "Number 1"
+    with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+        result = text_in_placeholder_string(placeholder_string, check_string)
+    assert result is True
 
 
 def test_rename_file_valid_rename():
@@ -370,15 +600,6 @@ def test_generate_combinations_custom_dir():
 #        visited = {"rank"}
 #        result = generate_combinations("<rank+1>", visited=visited)
 #        assert result == ["<rank+1>"]  # Unresolved due to visited
-
-
-def mock_generate_combinations(value, placeholder_dir, visited):
-    """
-    Mock function to simulate resolving nested placeholders.
-    """
-    if "<number>" in value:
-        return [value.replace("<number>", str(i)) for i in range(1, 3)]  # e.g., ["1", "2"]
-    return [value]
 
 
 def test_load_placeholder_values_file_not_found():

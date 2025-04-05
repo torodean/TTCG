@@ -355,7 +355,8 @@ def text_in_placeholder_string(placeholder_string, check_string):
 def deduce_effect_style_from_effect_text(effect_text):
     """
     This method will return the effect style based on the effect text by comparing
-    against patterns stored in style-specific text files.
+    against patterns stored in style-specific text files. This method returns the name of the file
+    which has the first matching effect style.
     
     Args:
         effect_text (str): This is the effect text to process.
