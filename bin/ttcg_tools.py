@@ -434,7 +434,7 @@ def get_sequence_combinations(current_list, check_types=True, max_output_size=6)
         list: Sorted list of unique combinations.
     """
     # Sort the input list for consistency.
-    current_list = sorted(cl.lower().strip() for cl in current_list)
+    current_list = sorted(set(cl.lower().strip() for cl in current_list)) 
     
     # check if the data is already in the buffer.
     item_tuple = tuple(current_list)

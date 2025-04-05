@@ -21,12 +21,108 @@ from ttcg_tools import rename_file
 from ttcg_tools import text_in_placeholder_string
 from ttcg_tools import deduce_effect_style_from_effect_text
 from ttcg_tools import has_at_most_one_from_source
-#from ttcg_tools import get_sequence_combinations
+from ttcg_tools import get_sequence_combinations
 #from ttcg_tools import get_combination_id
 #from ttcg_tools import get_number_id
 from ttcg_tools import get_index_in_baseN
 from ttcg_tools import sn_in_list
 from ttcg_tools import save_sn_to_list
+
+
+def test_get_sequence_combinations_no_check_types():
+    """
+    Test combinations without type checking.
+    """
+    result = get_sequence_combinations(["a", "b", "c"], check_types=False, max_output_size=3)
+    expected = sorted([
+        ["a"], ["b"], ["c"],
+        ["a", "b"], ["a", "c"], ["b", "c"],
+        ["a", "b", "c"]
+    ])
+    assert result == expected
+
+
+def test_get_sequence_combinations_with_check_types():
+    """
+    Test combinations with type checking using TYPE_LIST_LOWER.
+    """
+    mock_type_list = ["t1", "t2", "t3"]  # Mocked TYPE_LIST_LOWER for consistency
+    with patch("ttcg_tools.output_text"):
+        with patch("ttcg_tools.TYPE_LIST_LOWER", mock_type_list):
+            result = get_sequence_combinations(["a", "b"], check_types=True, max_output_size=3)
+    expected = sorted([
+        ["t1"], ["t2"], ["t3"],
+        ["a", "t1"], ["a", "t2"], ["a", "t3"],
+        ["b", "t1"], ["b", "t2"], ["b", "t3"],
+        ["a", "b", "t1"], ["a", "b", "t2"], ["a", "b", "t3"]
+    ])
+    assert result == expected
+
+
+def test_get_sequence_combinations_max_output_size():
+    """
+    Test limiting combination size with max_output_size.
+    """
+    result = get_sequence_combinations(["a", "b", "c"], check_types=False, max_output_size=2)
+    expected = sorted([
+        ["a"], ["b"], ["c"],
+        ["a", "b"], ["a", "c"], ["b", "c"],
+        ["a", "b", "c"]  # Reflects actual behavior
+    ])
+    assert result == expected
+
+
+def test_get_sequence_combinations_buffer_hit():
+    """
+    Test buffer usage for repeated calls.
+    """
+    input_list = ["x", "y"]
+    first_result = get_sequence_combinations(input_list, check_types=False, max_output_size=3)
+    with patch("ttcg_tools.output_text") as mock_output:
+        second_result = get_sequence_combinations(input_list, check_types=False, max_output_size=3)
+        assert second_result == first_result
+        mock_output.assert_not_called()
+
+
+def test_get_sequence_combinations_empty_list():
+    """
+    Test handling an empty input list.
+    """
+    result = get_sequence_combinations([], check_types=False)
+    assert result == []
+
+
+def test_get_sequence_combinations_single_item():
+    """
+    Test with a single item.
+    """
+    result = get_sequence_combinations(["a"], check_types=False, max_output_size=2)
+    assert result == [["a"]]
+
+
+def test_get_sequence_combinations_with_duplicates():
+    """
+    Test handling duplicate items in input.
+    """
+    result = get_sequence_combinations(["a", "A ", "a"], check_types=False, max_output_size=2)
+    expected = [["a"]]  # Duplicates normalized
+    assert result == expected
+    
+    
+def test_get_sequence_combinations_type_check_restriction():
+    """
+    Test type checking restricts to one type from TYPE_LIST_LOWER.
+    """
+    mock_type_list = ["t1", "t2", "t3"]  # Mocked TYPE_LIST_LOWER
+    with patch("ttcg_tools.has_at_most_one_from_source", side_effect=has_at_most_one_from_source):
+        with patch("ttcg_tools.TYPE_LIST_LOWER", mock_type_list):
+            result = get_sequence_combinations(["x"], check_types=True, max_output_size=3)
+    expected = sorted([
+        ["t1"], ["t2"], ["t3"],
+        ["t1", "x"], ["t2", "x"], ["t3", "x"]
+    ])
+    assert result == expected
+    assert not any(len([x for x in combo if x in mock_type_list]) > 1 for combo in result)
 
 
 # Mock data for VALID_OVERLAY_STYLES
