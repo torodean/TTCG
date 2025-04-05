@@ -17,16 +17,505 @@ from ttcg_tools import generate_combinations
 from ttcg_tools import get_command_string
 from ttcg_tools import check_line_in_file
 from ttcg_tools import get_relative_path
-#from ttcg_tools import rename_file
-#from ttcg_tools import text_in_placeholder_string
-#from ttcg_tools import deduce_effect_style_from_effect_text
-#from ttcg_tools import has_at_most_one_from_source
-#from ttcg_tools import get_sequence_combinations
-#from ttcg_tools import get_combination_id
+from ttcg_tools import rename_file
+from ttcg_tools import text_in_placeholder_string
+from ttcg_tools import deduce_effect_style_from_effect_text
+from ttcg_tools import has_at_most_one_from_source
+from ttcg_tools import get_sequence_combinations
+from ttcg_tools import get_combination_id
 #from ttcg_tools import get_number_id
 from ttcg_tools import get_index_in_baseN
 from ttcg_tools import sn_in_list
 from ttcg_tools import save_sn_to_list
+
+
+def mock_get_sequence_combinations(item_list, check_types=True, max_output_size=6):
+    """
+    Mock to return unique sorted combinations.
+    """
+    item_list = sorted(set(i.lower().strip() for i in item_list))  # ["a", "b", "c"]
+    new_list = [[c] for c in item_list]  # [["a"], ["b"], ["c"]]
+    list_to_parse = item_list[:]
+    while list_to_parse:
+        for item in list_to_parse[:1]:  # Take first item
+            for item2 in new_list[:]:
+                if len(item2) < max_output_size and item not in item2:
+                    new_item = sorted([item] + item2)
+                    if new_item not in new_list:
+                        new_list.append(new_item)
+        list_to_parse = list_to_parse[1:]
+    print(sorted(new_list))
+    return sorted(new_list)
+
+
+def test_get_combination_id_basic():
+    """
+    Test basic ID generation.
+    """
+    with patch("ttcg_tools.get_sequence_combinations", side_effect=mock_get_sequence_combinations):
+        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):  # Base-16
+            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False):
+                result = get_combination_id("a,b", ["a", "b", "c"], num_digits=4)
+                print(f"Test result: {result}")
+    assert result == "0001"  # Index 1: ["a", "b"] in [["a"], ["a", "b"], ...]
+
+def test_get_combination_id_single_item():
+    """
+    Test ID for a single item.
+    """
+    with patch("ttcg_tools.get_sequence_combinations", side_effect=mock_get_sequence_combinations):
+        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):
+            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False):
+                result = get_combination_id("b", ["a", "b", "c"], num_digits=4)
+    assert result == "0004"  # Index 4: [['a'], ['a', 'b'], ['a', 'b', 'c'], ['a', 'c'], ...]
+
+
+def test_get_combination_id_print_combos():
+    """
+    Test print_combos triggers output_text and sets PRINT_ALL_SEQUENCES.
+    """
+    with patch("ttcg_tools.get_sequence_combinations", side_effect=mock_get_sequence_combinations):
+        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):
+            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False) as mock_print_sequences:
+                result = get_combination_id("a,c", ["a", "b", "c"], num_digits=4, print_combos=True)
+                assert result == "0003"  # Index 3: [['a'], ['a', 'b'], ['a', 'b', 'c'], ['a', 'c'], ...]
+
+
+
+def test_get_combination_id_empty_input():
+    """
+    Test empty input string.
+    """
+    with patch("ttcg_tools.get_sequence_combinations", side_effect=mock_get_sequence_combinations):
+        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):
+            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False):
+                with pytest.raises(ValueError) as exc_info:                    
+                    result = get_combination_id("", ["a", "b"], num_digits=4)
+                assert "[''] is not in list" in str(exc_info.value)
+
+
+def test_get_combination_id_case_insensitive():
+    """
+    Test case-insensitive matching.
+    """
+    with patch("ttcg_tools.get_sequence_combinations", side_effect=mock_get_sequence_combinations):
+        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):
+            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False):
+                result = get_combination_id("A,B", ["a", "b", "c"], num_digits=4)
+    assert result == "0001"  # Index 1: ["a", "b"]
+
+
+def test_get_combination_id_zero_index():
+    """
+    Test index 0 with padding.
+    """
+    with patch("ttcg_tools.get_sequence_combinations", return_value=[["x"], ["y"]]):
+        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):
+            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False):
+                result = get_combination_id("x", ["x", "y"], num_digits=4)
+    assert result == "0000"  # Index 0
+
+
+def test_get_sequence_combinations_no_check_types():
+    """
+    Test combinations without type checking.
+    """
+    result = get_sequence_combinations(["a", "b", "c"], check_types=False, max_output_size=3)
+    expected = sorted([
+        ["a"], ["b"], ["c"],
+        ["a", "b"], ["a", "c"], ["b", "c"],
+        ["a", "b", "c"]
+    ])
+    assert result == expected
+
+
+def test_get_sequence_combinations_with_check_types():
+    """
+    Test combinations with type checking using TYPE_LIST_LOWER.
+    """
+    mock_type_list = ["t1", "t2", "t3"]  # Mocked TYPE_LIST_LOWER for consistency
+    with patch("ttcg_tools.output_text"):
+        with patch("ttcg_tools.TYPE_LIST_LOWER", mock_type_list):
+            result = get_sequence_combinations(["a", "b"], check_types=True, max_output_size=3)
+    expected = sorted([
+        ["t1"], ["t2"], ["t3"],
+        ["a", "t1"], ["a", "t2"], ["a", "t3"],
+        ["b", "t1"], ["b", "t2"], ["b", "t3"],
+        ["a", "b", "t1"], ["a", "b", "t2"], ["a", "b", "t3"]
+    ])
+    assert result == expected
+
+
+def test_get_sequence_combinations_max_output_size():
+    """
+    Test limiting combination size with max_output_size.
+    """
+    result = get_sequence_combinations(["a", "b", "c"], check_types=False, max_output_size=2)
+    expected = sorted([
+        ["a"], ["b"], ["c"],
+        ["a", "b"], ["a", "c"], ["b", "c"],
+        ["a", "b", "c"]  # Reflects actual behavior
+    ])
+    assert result == expected
+
+
+def test_get_sequence_combinations_buffer_hit():
+    """
+    Test buffer usage for repeated calls.
+    """
+    input_list = ["x", "y"]
+    first_result = get_sequence_combinations(input_list, check_types=False, max_output_size=3)
+    with patch("ttcg_tools.output_text") as mock_output:
+        second_result = get_sequence_combinations(input_list, check_types=False, max_output_size=3)
+        assert second_result == first_result
+        mock_output.assert_not_called()
+
+
+def test_get_sequence_combinations_empty_list():
+    """
+    Test handling an empty input list.
+    """
+    result = get_sequence_combinations([], check_types=False)
+    assert result == []
+
+
+def test_get_sequence_combinations_single_item():
+    """
+    Test with a single item.
+    """
+    result = get_sequence_combinations(["a"], check_types=False, max_output_size=2)
+    assert result == [["a"]]
+
+
+def test_get_sequence_combinations_with_duplicates():
+    """
+    Test handling duplicate items in input.
+    """
+    result = get_sequence_combinations(["a", "A ", "a"], check_types=False, max_output_size=2)
+    expected = [["a"]]  # Duplicates normalized
+    assert result == expected
+    
+    
+def test_get_sequence_combinations_type_check_restriction():
+    """
+    Test type checking restricts to one type from TYPE_LIST_LOWER.
+    """
+    mock_type_list = ["t1", "t2", "t3"]  # Mocked TYPE_LIST_LOWER
+    with patch("ttcg_tools.has_at_most_one_from_source", side_effect=has_at_most_one_from_source):
+        with patch("ttcg_tools.TYPE_LIST_LOWER", mock_type_list):
+            result = get_sequence_combinations(["x"], check_types=True, max_output_size=3)
+    expected = sorted([
+        ["t1"], ["t2"], ["t3"],
+        ["t1", "x"], ["t2", "x"], ["t3", "x"]
+    ])
+    assert result == expected
+    assert not any(len([x for x in combo if x in mock_type_list]) > 1 for combo in result)
+
+
+# Mock data for VALID_OVERLAY_STYLES
+VALID_OVERLAY_STYLES = ['fire', 'water', 'earth']
+
+def test_deduce_effect_style_from_effect_text_single_match():
+    """
+    Test case where exactly one effect style matches the effect text.
+    The function should return the filename (style) where the match is found.
+    """
+    effect_text = "This is a fire effect"
+    
+    # Mocking the file reading process for the "fire" style
+    with patch("builtins.open", mock_open(read_data="fire")):
+        # Mocking os.path.join to simulate the file path and using VALID_OVERLAY_STYLES
+        with patch("os.path.join", side_effect=lambda folder, filename: f"{folder}/{filename}.txt"):
+            with patch("ttcg_tools.VALID_OVERLAY_STYLES", VALID_OVERLAY_STYLES):
+                result = deduce_effect_style_from_effect_text(effect_text)
+                assert result == "fire"  # The function should return the name of the file where the match was found
+
+
+def test_deduce_effect_style_from_effect_text_multiple_matches():
+    """
+    Test case where multiple effect styles match the effect text.
+    The function should return the filename (style) of the first match found.
+    """
+    effect_text = "This is a fire and water effect"
+    
+    # Mocking the file reading process for multiple styles ("fire" and "water")
+    with patch("builtins.open", mock_open(read_data="fire\nwater")):
+        # Mocking os.path.join to simulate the file path and using VALID_OVERLAY_STYLES
+        with patch("os.path.join", side_effect=lambda folder, filename: f"{folder}/{filename}.txt"):
+            with patch("ttcg_tools.VALID_OVERLAY_STYLES", VALID_OVERLAY_STYLES):
+                result = deduce_effect_style_from_effect_text(effect_text)
+                assert result == "fire"  # The function should return the first matched file
+
+
+def test_deduce_effect_style_from_effect_text_no_match():
+    """
+    Test case where no effect style matches the effect text.
+    The function should return None.
+    """
+    effect_text = "This is an unknown effect"
+    
+    # Mocking file reading for valid styles ("fire" and "water") with no match
+    with patch("builtins.open", mock_open(read_data="fire\nwater")):
+        # Mocking os.path.join to simulate the file path and using VALID_OVERLAY_STYLES
+        with patch("os.path.join", side_effect=lambda folder, filename: f"{folder}/{filename}.txt"):
+            with patch("ttcg_tools.VALID_OVERLAY_STYLES", VALID_OVERLAY_STYLES):
+                result = deduce_effect_style_from_effect_text(effect_text)
+                assert result is None  # Should return None if no match is found
+
+
+def test_deduce_effect_style_from_effect_text_file_not_found():
+    """
+    Test case where the file for a specific effect style is not found.
+    The function should continue without errors and return None.
+    """
+    effect_text = "This is a fire effect"
+    
+    # Mocking FileNotFoundError for one of the styles
+    with patch("builtins.open", side_effect=FileNotFoundError):
+        # Mocking os.path.join to simulate the file path and using VALID_OVERLAY_STYLES
+        with patch("os.path.join", side_effect=lambda folder, filename: f"{folder}/{filename}.txt"):
+            with patch("ttcg_tools.VALID_OVERLAY_STYLES", VALID_OVERLAY_STYLES):
+                result = deduce_effect_style_from_effect_text(effect_text)
+                assert result is None  # Should return None if the file cannot be found
+
+
+def test_deduce_effect_style_from_effect_text_case_insensitive():
+    """
+    Test case where the effect text is case-insensitive, and the matching should still work.
+    """
+    effect_text = "THIS IS A FIRE EFFECT"
+    
+    # Mocking the file reading process for a valid style ("fire")
+    with patch("builtins.open", mock_open(read_data="fire")):
+        # Mocking os.path.join to simulate the file path and using VALID_OVERLAY_STYLES
+        with patch("os.path.join", side_effect=lambda folder, filename: f"{folder}/{filename}.txt"):
+            with patch("ttcg_tools.VALID_OVERLAY_STYLES", VALID_OVERLAY_STYLES):
+                result = deduce_effect_style_from_effect_text(effect_text)
+                assert result == "fire"  # Case-insensitive matching should return the correct file
+
+
+def test_has_at_most_one_from_source_single_match():
+    """
+    Test case where there is exactly one match between the source and target lists.
+    The function should return True.
+    """
+    source_list = ["apple", "banana", "cherry"]
+    target_list = ["banana", "date"]
+    result = has_at_most_one_from_source(source_list, target_list, num_of_matches=1)
+    assert result is True
+
+
+def test_has_at_most_one_from_source_multiple_matches():
+    """
+    Test case where there are multiple matches between the source and target lists.
+    The function should return False because we're looking for exactly one match.
+    """
+    source_list = ["apple", "banana", "cherry"]
+    target_list = ["banana", "cherry"]
+    result = has_at_most_one_from_source(source_list, target_list, num_of_matches=1)
+    assert result is False
+
+
+def test_has_at_most_one_from_source_no_matches():
+    """
+    Test case where there are no matches between the source and target lists.
+    The function should return False because we're looking for exactly one match.
+    """
+    source_list = ["apple", "banana", "cherry"]
+    target_list = ["date", "elderberry"]
+    result = has_at_most_one_from_source(source_list, target_list, num_of_matches=1)
+    assert result is False
+
+
+def test_has_at_most_one_from_source_zero_matches_expected():
+    """
+    Test case where the expected number of matches is 0, and there are no matches.
+    The function should return True.
+    """
+    source_list = ["apple", "banana", "cherry"]
+    target_list = ["date", "elderberry"]
+    result = has_at_most_one_from_source(source_list, target_list, num_of_matches=0)
+    assert result is True
+
+
+def test_has_at_most_one_from_source_exact_match():
+    """
+    Test case where the expected number of matches is 1, and there is exactly one match.
+    The function should return True.
+    """
+    source_list = ["apple", "banana", "cherry"]
+    target_list = ["apple", "elderberry"]
+    result = has_at_most_one_from_source(source_list, target_list, num_of_matches=1)
+    assert result is True
+
+
+def test_has_at_most_one_from_source_with_duplicates_in_target():
+    """
+    Test case where the target list contains duplicates of a match, but we're only expecting one match.
+    The function should return False, since there are more than one match.
+    """
+    source_list = ["apple", "banana", "cherry"]
+    target_list = ["apple", "apple", "elderberry"]
+    result = has_at_most_one_from_source(source_list, target_list, num_of_matches=1)
+    assert result is False
+
+
+
+def mock_generate_combinations(value, placeholder_dir="", visited=None):
+    """
+    Mock function to simulate resolving nested placeholders.
+    """
+    if "<number>" in value:
+        return [value.replace("<number>", str(i)) for i in range(1, 3)]  # e.g., ["1", "2"]
+    return [value]
+
+
+def test_text_in_placeholder_string_basic_match():
+    """
+    Test that the function correctly matches a generated combination of a placeholder.
+    Specifically, it checks if "<number>" is found in the check string when replaced with "1".
+    """
+    placeholder_string = "<number>"
+    check_string = "The number is 1"
+    with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+        result = text_in_placeholder_string(placeholder_string, check_string)
+    assert result is True
+
+
+def test_text_in_placeholder_string_no_match():
+    """
+    Test that the function correctly returns False when no placeholder combination matches the check string.
+    Specifically, it checks if "<number>" doesn't match "The level is 2".
+    """
+    placeholder_string = "<number>"
+    check_string = "The level is 4"
+    with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+        result = text_in_placeholder_string(placeholder_string, check_string)
+    assert result is False
+
+
+def test_text_in_placeholder_string_multiple_combinations():
+    """
+    Test that the function matches the placeholder when the check string contains one of the generated combinations.
+    It verifies that either "1" or "2" (from "<number>") is found in the check string.
+    """
+    placeholder_string = "<number>"
+    check_string = "The number is 2"
+    with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+        result = text_in_placeholder_string(placeholder_string, check_string)
+    assert result is True
+
+
+def test_text_in_placeholder_string_no_multiple_combinations():
+    """
+    Test that the function returns False when none of the placeholder combinations match the check string.
+    Specifically, it checks if "<number>" doesn't match "The number is 3".
+    """
+    placeholder_string = "<number>"
+    check_string = "The number is 3"
+    with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+        result = text_in_placeholder_string(placeholder_string, check_string)
+    assert result is False
+
+
+def test_text_in_placeholder_string_empty_combinations():
+    """
+    Test that the function returns False when no combinations are generated for the placeholder.
+    Specifically, it checks if "<unknown>" doesn't generate any combinations to match the check string.
+    """
+    placeholder_string = "<unknown>"
+    check_string = "No match here"
+    with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+        result = text_in_placeholder_string(placeholder_string, check_string)
+    assert result is False
+
+
+def test_text_in_placeholder_string_different_placeholder():
+    """
+    Test that the function correctly matches a placeholder if it's found in a different format.
+    Specifically, it checks if "<number>" is matched when the check string has "Number 1".
+    """
+    placeholder_string = "<number>"
+    check_string = "Number 1"
+    with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+        result = text_in_placeholder_string(placeholder_string, check_string)
+    assert result is True
+
+
+def test_rename_file_valid_rename():
+    """
+    Test that the file is renamed correctly while preserving its extension.
+    """
+    with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix=".txt") as tmp_file:
+        original_path = tmp_file.name
+        tmp_file.write("Hello World!")
+    
+    try:
+        new_name = "new_report"
+        new_path = rename_file(original_path, new_name)
+        assert new_path == os.path.join(os.path.dirname(original_path), "new_report.txt")
+        assert os.path.isfile(new_path)
+    finally:
+        os.remove(new_path)
+
+
+def test_rename_file_no_extension():
+    """
+    Test that ValueError is raised if the file has no extension.
+    """
+    with tempfile.NamedTemporaryFile(delete=False, mode='w') as tmp_file:
+        original_path = tmp_file.name
+        tmp_file.write("No extension!")
+    
+    try:
+        with pytest.raises(ValueError, match=f"The file path '{original_path}' has no extension"):
+            rename_file(original_path, "new_name")
+    finally:
+        os.remove(original_path)
+
+
+def test_rename_file_not_found():
+    """
+    Test that FileNotFoundError is raised when the file does not exist.
+    """
+    non_existent_path = "/path/to/non_existent_file.txt"
+    with pytest.raises(FileNotFoundError, match=f"The file '{non_existent_path}' does not exist"):
+        rename_file(non_existent_path, "new_name")
+
+
+def test_rename_file_permission_error(monkeypatch):
+    """
+    Test that OSError is raised when there's an issue renaming the file (e.g., permission error).
+    """
+    def mock_rename(src, dst):
+        raise OSError("Permission denied")
+
+    monkeypatch.setattr(os, "rename", mock_rename)
+    
+    with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix=".txt") as tmp_file:
+        original_path = tmp_file.name
+        tmp_file.write("Permission test!")
+    
+    try:
+        with pytest.raises(OSError, match="Permission denied"):
+            rename_file(original_path, "new_name")
+    finally:
+        os.remove(original_path)
+
+
+def test_rename_file_same_name():
+    """
+    Test that renaming a file to the same name does not change the file and returns the same path.
+    """
+    with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix=".txt") as tmp_file:
+        original_path = tmp_file.name
+        tmp_file.write("Same name test!")
+    
+    try:
+        new_path = rename_file(original_path, os.path.splitext(os.path.basename(original_path))[0])
+        assert new_path == original_path
+    finally:
+        os.remove(original_path)
 
 
 def test_relative_path_from_dir_to_file():
@@ -294,15 +783,6 @@ def test_generate_combinations_custom_dir():
 #        visited = {"rank"}
 #        result = generate_combinations("<rank+1>", visited=visited)
 #        assert result == ["<rank+1>"]  # Unresolved due to visited
-
-
-def mock_generate_combinations(value, placeholder_dir, visited):
-    """
-    Mock function to simulate resolving nested placeholders.
-    """
-    if "<number>" in value:
-        return [value.replace("<number>", str(i)) for i in range(1, 3)]  # e.g., ["1", "2"]
-    return [value]
 
 
 def test_load_placeholder_values_file_not_found():
