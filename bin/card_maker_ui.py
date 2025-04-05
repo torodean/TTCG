@@ -63,7 +63,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 output_text(f"SCRIPT_DIR set to: {SCRIPT_DIR}", "program")
 
 # The number of effect boxes in the UI. Used in various places so it's a global var here.
-NUMBER_OF_EFFECT_BOXES = 24
+NUMBER_OF_EFFECT_BOXES = 50
 
 # For global threading.
 processing_thread = None
@@ -548,7 +548,42 @@ def get_selected_subtypes():
     return selected
 
 
-def generate_effects(effect_buttons, input_file, columns, subtypes):
+def adjust_listbox_width():
+    """
+    Adjust the width of the effect_listbox to the length of its longest string,
+    only increasing it if necessary.
+    Assumes WIDGETS is a global dictionary containing the effect_listbox.
+    """
+    global WIDGETS
+    try:
+        listbox = WIDGETS["effect_listbox"]
+        # Get all items in the Listbox
+        items = listbox.get(0, tk.END)
+        if not items:
+            # Set a default width if the Listbox is empty (only if not set)
+            current_width = listbox.cget("width")
+            if current_width == 0:  # Default is 20 if unset, but check for safety
+                listbox.config(width=20)
+            return
+        
+        # Find the length of the longest item
+        max_length = max(len(str(item)) for item in items)
+        # Adjusted width with your scaling factor
+        adjusted_width = int(max_length * 0.85)
+        
+        # Get the current width
+        current_width = listbox.cget("width")
+        
+        # Only increase width if the new width is larger
+        if adjusted_width > current_width:
+            listbox.config(width=adjusted_width)
+    except KeyError:
+        output_text("Error: 'effect_listbox' not found in WIDGETS", "error")
+    except Exception as e:
+        output_text(f"Error adjusting Listbox width: {e}", "error")
+
+
+def generate_effects(input_file, columns, subtypes):
     """
     Generate NUMBER_OF_EFFECT_BOXES random effects and populate the effect buttons.
 
@@ -558,7 +593,6 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
     with unfiltered effects to reach 10 total, without resetting.
 
     Args:
-        effect_buttons (list): List of ttk.Button objects to populate with effects.
         input_file (str): Path to the input CSV file containing effect data.
         columns (list of str): List of column names to filter on (rows where these are 'True').
         subtypes (list of str): List of selected subtypes to use as search strings for up to 5 effects (for units).
@@ -631,12 +665,13 @@ def generate_effects(effect_buttons, input_file, columns, subtypes):
         used_effects.add(effect)
         generated_effects.append(effect)
 
-    # Set the button texts, filling remaining buttons with empty strings if needed
-    for i, btn in enumerate(effect_buttons):
+    # Set the Listbox text, filling remaining
+    WIDGETS['effect_listbox'].delete(0, tk.END)  # Clear existing items
+    for i in range(NUMBER_OF_EFFECT_BOXES):
         if i < len(generated_effects):
-            btn.config(text=generated_effects[i])
-        else:
-            btn.config(text="")
+            WIDGETS['effect_listbox'].insert(tk.END, generated_effects[i])
+            
+    adjust_listbox_width()
 
 
 def is_name_in_card_list(card_name, filename=DEFAULT_CARD_LIST_FILE):
@@ -1094,6 +1129,18 @@ def load_selected_card(csv_file, listbox, headers):
         output_text(f"Error loading card: {e}", "error")
 
 
+def on_effect_select(event):
+    """
+    Handle selection in the effects Listbox.
+    """
+    listbox = event.widget
+    selection = listbox.curselection()  # Get selected index
+    if selection:  # Ensure something is selected
+        effect_name = listbox.get(selection[0])  # Get the selected effect
+        assign_effect(effect_name)
+        update_preview()
+
+
 PREPROCESSING_FINISHED = False
 
 def preprocess_all_types_list():
@@ -1489,7 +1536,7 @@ def main():
         style="Standout.TButton",  # Apply the custom style
         command=lambda: [
             generate_effects(
-                effect_buttons, args.input_file,
+                args.input_file,
                 get_gui_metadata(),
                 get_selected_subtypes()
             ),
@@ -1498,21 +1545,22 @@ def main():
     )
     generate_btn.grid(row=0, column=0, pady=12, padx=10, sticky="ew")  # Increased padding
 
-    # Effect buttons (NUMBER_OF_EFFECT_BOXES)
-    effect_buttons = []
-    for i in range(NUMBER_OF_EFFECT_BOXES):
-        btn = ttk.Button(
-            effects_frame,
-            text="",
-            command=lambda i=i: [
-                assign_effect(effect_buttons[i].cget("text")),
-                update_preview()
-            ]
-        )
-        btn.grid(row=i + 1, column=0, pady=5, padx=5, sticky="ew")
-        effect_buttons.append(btn)
+    # Create the Listbox for effect generation.
+    effect_listbox = tk.Listbox(
+        effects_frame,
+        width = 100,
+        height=NUMBER_OF_EFFECT_BOXES,  # Visible rows, adjust as needed
+        selectmode="single"  # Single selection mode
+    )
+    effect_listbox.grid(row=1, column=0, pady=5, padx=5, sticky="ew")
+
+    # Horizontal scrollbar for listbox.
+    scrollbar_horiz = ttk.Scrollbar(effects_frame, orient="horizontal", command=effect_listbox.xview)
+    scrollbar_horiz.grid(row=2, column=0, pady=5, sticky="ew")
+    effect_listbox.config(xscrollcommand=scrollbar_horiz.set)
 
     # Bind additional UI updates
+    effect_listbox.bind("<<ListboxSelect>>", on_effect_select)
     type_combo.bind("<<ComboboxSelected>>", lambda e: update_preview())
     name_entry.bind("<FocusOut>", lambda e: update_preview())
     atk_entry.bind("<FocusOut>", lambda e: update_preview())
@@ -1541,7 +1589,8 @@ def main():
         "serial_entry" : serial_entry,
         "effect1_style_var": effect1_style_var,
         "effect2_style_var": effect2_style_var,
-        "effect_search_vars": effect_search_vars
+        "effect_search_vars": effect_search_vars,
+        "effect_listbox" : effect_listbox
     }
 
     # Initial preview update
