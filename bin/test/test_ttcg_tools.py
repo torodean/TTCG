@@ -22,11 +22,98 @@ from ttcg_tools import text_in_placeholder_string
 from ttcg_tools import deduce_effect_style_from_effect_text
 from ttcg_tools import has_at_most_one_from_source
 from ttcg_tools import get_sequence_combinations
-#from ttcg_tools import get_combination_id
+from ttcg_tools import get_combination_id
 #from ttcg_tools import get_number_id
 from ttcg_tools import get_index_in_baseN
 from ttcg_tools import sn_in_list
 from ttcg_tools import save_sn_to_list
+
+
+def mock_get_sequence_combinations(item_list, check_types=True, max_output_size=6):
+    """
+    Mock to return unique sorted combinations.
+    """
+    item_list = sorted(set(i.lower().strip() for i in item_list))  # ["a", "b", "c"]
+    new_list = [[c] for c in item_list]  # [["a"], ["b"], ["c"]]
+    list_to_parse = item_list[:]
+    while list_to_parse:
+        for item in list_to_parse[:1]:  # Take first item
+            for item2 in new_list[:]:
+                if len(item2) < max_output_size and item not in item2:
+                    new_item = sorted([item] + item2)
+                    if new_item not in new_list:
+                        new_list.append(new_item)
+        list_to_parse = list_to_parse[1:]
+    print(sorted(new_list))
+    return sorted(new_list)
+
+
+def test_get_combination_id_basic():
+    """
+    Test basic ID generation.
+    """
+    with patch("ttcg_tools.get_sequence_combinations", side_effect=mock_get_sequence_combinations):
+        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):  # Base-16
+            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False):
+                result = get_combination_id("a,b", ["a", "b", "c"], num_digits=4)
+                print(f"Test result: {result}")
+    assert result == "0001"  # Index 1: ["a", "b"] in [["a"], ["a", "b"], ...]
+
+def test_get_combination_id_single_item():
+    """
+    Test ID for a single item.
+    """
+    with patch("ttcg_tools.get_sequence_combinations", side_effect=mock_get_sequence_combinations):
+        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):
+            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False):
+                result = get_combination_id("b", ["a", "b", "c"], num_digits=4)
+    assert result == "0004"  # Index 4: [['a'], ['a', 'b'], ['a', 'b', 'c'], ['a', 'c'], ...]
+
+
+def test_get_combination_id_print_combos():
+    """
+    Test print_combos triggers output_text and sets PRINT_ALL_SEQUENCES.
+    """
+    with patch("ttcg_tools.get_sequence_combinations", side_effect=mock_get_sequence_combinations):
+        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):
+            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False) as mock_print_sequences:
+                result = get_combination_id("a,c", ["a", "b", "c"], num_digits=4, print_combos=True)
+                assert result == "0003"  # Index 3: [['a'], ['a', 'b'], ['a', 'b', 'c'], ['a', 'c'], ...]
+
+
+
+def test_get_combination_id_empty_input():
+    """
+    Test empty input string.
+    """
+    with patch("ttcg_tools.get_sequence_combinations", side_effect=mock_get_sequence_combinations):
+        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):
+            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False):
+                with pytest.raises(ValueError) as exc_info:                    
+                    result = get_combination_id("", ["a", "b"], num_digits=4)
+                assert "[''] is not in list" in str(exc_info.value)
+
+
+def test_get_combination_id_case_insensitive():
+    """
+    Test case-insensitive matching.
+    """
+    with patch("ttcg_tools.get_sequence_combinations", side_effect=mock_get_sequence_combinations):
+        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):
+            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False):
+                result = get_combination_id("A,B", ["a", "b", "c"], num_digits=4)
+    assert result == "0001"  # Index 1: ["a", "b"]
+
+
+def test_get_combination_id_zero_index():
+    """
+    Test index 0 with padding.
+    """
+    with patch("ttcg_tools.get_sequence_combinations", return_value=[["x"], ["y"]]):
+        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):
+            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False):
+                result = get_combination_id("x", ["x", "y"], num_digits=4)
+    assert result == "0000"  # Index 0
 
 
 def test_get_sequence_combinations_no_check_types():
