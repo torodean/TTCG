@@ -27,6 +27,7 @@ jobs:
         pip install pytest
         pip install tqdm
         pip install regex
+        pip install argparse
 
     - name: Run tests
       run: |

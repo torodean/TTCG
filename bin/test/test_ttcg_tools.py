@@ -15,7 +15,7 @@ import ttcg_constants
 from ttcg_tools import load_placeholder_values
 from ttcg_tools import generate_combinations
 from ttcg_tools import get_command_string
-#from ttcg_tools import check_line_in_file
+from ttcg_tools import check_line_in_file
 #from ttcg_tools import get_relative_path
 #from ttcg_tools import rename_file
 #from ttcg_tools import text_in_placeholder_string
@@ -27,6 +27,68 @@ from ttcg_tools import get_command_string
 from ttcg_tools import get_index_in_baseN
 from ttcg_tools import sn_in_list
 from ttcg_tools import save_sn_to_list
+
+
+def test_check_line_found_exact_match():
+    """
+    Test that the function returns True when the exact line exists in the file.
+    """
+    with tempfile.NamedTemporaryFile(mode='w+', delete=False) as tmp:
+        tmp.write("first line\nsecond line\nthird line\n")
+        tmp_path = tmp.name
+
+    try:
+        assert check_line_in_file(tmp_path, "second line") is True
+    finally:
+        os.remove(tmp_path)
+
+
+def test_check_line_not_found():
+    """
+    Test that the function returns False when the line does not exist in the file.
+    """
+    with tempfile.NamedTemporaryFile(mode='w+', delete=False) as tmp:
+        tmp.write("alpha\nbeta\ngamma\n")
+        tmp_path = tmp.name
+
+    try:
+        assert check_line_in_file(tmp_path, "delta") is False
+    finally:
+        os.remove(tmp_path)
+
+
+def test_check_line_with_whitespace():
+    """
+    Test that leading/trailing whitespace is ignored when matching lines.
+    """
+    with tempfile.NamedTemporaryFile(mode='w+', delete=False) as tmp:
+        tmp.write("  padded line with spaces  \n")
+        tmp_path = tmp.name
+
+    try:
+        assert check_line_in_file(tmp_path, "padded line with spaces") is True
+    finally:
+        os.remove(tmp_path)
+
+
+def test_check_line_file_not_found():
+    """
+    Test that FileNotFoundError is raised when the file does not exist.
+    """
+    with pytest.raises(FileNotFoundError):
+        check_line_in_file("non_existent_file.txt", "anything")
+
+
+def test_check_line_io_error(monkeypatch):
+    """
+    Test that IOError is raised if an error occurs while reading the file.
+    """
+    def mock_open(*args, **kwargs):
+        raise IOError("Mocked read error")
+
+    monkeypatch.setattr("builtins.open", mock_open)
+    with pytest.raises(IOError, match="Mocked read error"):
+        check_line_in_file("fake.txt", "line")
 
 
 @patch("sys.argv", ["script.py"])
