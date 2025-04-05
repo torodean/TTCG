@@ -17,7 +17,7 @@ from ttcg_tools import generate_combinations
 from ttcg_tools import get_command_string
 from ttcg_tools import check_line_in_file
 from ttcg_tools import get_relative_path
-#from ttcg_tools import rename_file
+from ttcg_tools import rename_file
 #from ttcg_tools import text_in_placeholder_string
 #from ttcg_tools import deduce_effect_style_from_effect_text
 #from ttcg_tools import has_at_most_one_from_source
@@ -27,6 +27,82 @@ from ttcg_tools import get_relative_path
 from ttcg_tools import get_index_in_baseN
 from ttcg_tools import sn_in_list
 from ttcg_tools import save_sn_to_list
+
+
+def test_rename_file_valid_rename():
+    """
+    Test that the file is renamed correctly while preserving its extension.
+    """
+    with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix=".txt") as tmp_file:
+        original_path = tmp_file.name
+        tmp_file.write("Hello World!")
+    
+    try:
+        new_name = "new_report"
+        new_path = rename_file(original_path, new_name)
+        assert new_path == os.path.join(os.path.dirname(original_path), "new_report.txt")
+        assert os.path.isfile(new_path)
+    finally:
+        os.remove(new_path)
+
+
+def test_rename_file_no_extension():
+    """
+    Test that ValueError is raised if the file has no extension.
+    """
+    with tempfile.NamedTemporaryFile(delete=False, mode='w') as tmp_file:
+        original_path = tmp_file.name
+        tmp_file.write("No extension!")
+    
+    try:
+        with pytest.raises(ValueError, match=f"The file path '{original_path}' has no extension"):
+            rename_file(original_path, "new_name")
+    finally:
+        os.remove(original_path)
+
+
+def test_rename_file_not_found():
+    """
+    Test that FileNotFoundError is raised when the file does not exist.
+    """
+    non_existent_path = "/path/to/non_existent_file.txt"
+    with pytest.raises(FileNotFoundError, match=f"The file '{non_existent_path}' does not exist"):
+        rename_file(non_existent_path, "new_name")
+
+
+def test_rename_file_permission_error(monkeypatch):
+    """
+    Test that OSError is raised when there's an issue renaming the file (e.g., permission error).
+    """
+    def mock_rename(src, dst):
+        raise OSError("Permission denied")
+
+    monkeypatch.setattr(os, "rename", mock_rename)
+    
+    with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix=".txt") as tmp_file:
+        original_path = tmp_file.name
+        tmp_file.write("Permission test!")
+    
+    try:
+        with pytest.raises(OSError, match="Permission denied"):
+            rename_file(original_path, "new_name")
+    finally:
+        os.remove(original_path)
+
+
+def test_rename_file_same_name():
+    """
+    Test that renaming a file to the same name does not change the file and returns the same path.
+    """
+    with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix=".txt") as tmp_file:
+        original_path = tmp_file.name
+        tmp_file.write("Same name test!")
+    
+    try:
+        new_path = rename_file(original_path, os.path.splitext(os.path.basename(original_path))[0])
+        assert new_path == original_path
+    finally:
+        os.remove(original_path)
 
 
 def test_relative_path_from_dir_to_file():
