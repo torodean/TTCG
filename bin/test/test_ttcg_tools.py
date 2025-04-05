@@ -16,7 +16,7 @@ from ttcg_tools import load_placeholder_values
 from ttcg_tools import generate_combinations
 from ttcg_tools import get_command_string
 from ttcg_tools import check_line_in_file
-#from ttcg_tools import get_relative_path
+from ttcg_tools import get_relative_path
 #from ttcg_tools import rename_file
 #from ttcg_tools import text_in_placeholder_string
 #from ttcg_tools import deduce_effect_style_from_effect_text
@@ -27,6 +27,69 @@ from ttcg_tools import check_line_in_file
 from ttcg_tools import get_index_in_baseN
 from ttcg_tools import sn_in_list
 from ttcg_tools import save_sn_to_list
+
+
+def test_relative_path_from_dir_to_file():
+    """
+    Test relative path calculation when from_path is a directory and to_path is a file.
+    """
+    with tempfile.TemporaryDirectory() as base_dir:
+        file_dir = os.path.join(base_dir, "data")
+        os.mkdir(file_dir)
+        file_path = os.path.join(file_dir, "file.txt")
+        with open(file_path, "w"):
+            pass
+        rel = get_relative_path(base_dir, file_path)
+        assert rel == os.path.join("data", "file.txt")
+
+
+def test_relative_path_from_file_to_file():
+    """
+    Test relative path calculation when from_path is a file.
+    """
+    with tempfile.TemporaryDirectory() as base_dir:
+        src_path = os.path.join(base_dir, "src.py")
+        target_dir = os.path.join(base_dir, "nested")
+        os.mkdir(target_dir)
+        target_file = os.path.join(target_dir, "target.txt")
+
+        with open(src_path, "w"), open(target_file, "w"):
+            pass
+
+        rel = get_relative_path(src_path, target_file)
+        assert rel == os.path.join("nested", "target.txt")
+
+
+def test_relative_path_upwards():
+    """
+    Test relative path that moves upward in the directory hierarchy.
+    """
+    with tempfile.TemporaryDirectory() as base_dir:
+        sub_dir = os.path.join(base_dir, "subdir")
+        os.mkdir(sub_dir)
+        file_in_root = os.path.join(base_dir, "file.txt")
+        with open(file_in_root, "w"):
+            pass
+        rel = get_relative_path(sub_dir, file_in_root)
+        assert rel == os.path.join("..", "file.txt")
+
+
+def test_relative_path_same_path():
+    """
+    Test relative path when both paths are the same file.
+    """
+    with tempfile.NamedTemporaryFile() as tmp:
+        rel = get_relative_path(tmp.name, tmp.name)
+        assert rel == os.path.basename(tmp.name)
+
+
+def test_relative_path_invalid_path(monkeypatch):
+    """
+    Test that ValueError is raised when relpath fails internally.
+    """
+    monkeypatch.setattr("os.path.relpath", lambda a, b: (_ for _ in ()).throw(ValueError("relpath error")))
+    with pytest.raises(ValueError, match="relpath error"):
+        get_relative_path("/fake/from", "/fake/to")
 
 
 def test_check_line_found_exact_match():
@@ -91,32 +154,46 @@ def test_check_line_io_error(monkeypatch):
         check_line_in_file("fake.txt", "line")
 
 
-@patch("sys.argv", ["script.py"])
 def test_get_command_string_with_all_args():
-    args = argparse.Namespace(input="data.txt", output="result.txt", verbose=True, threads=4)
-    cmd = get_command_string(args)
-    assert cmd == "python3 script.py --input data.txt --output result.txt --verbose --threads 4"
+    """
+    Test that all non-null arguments are converted to flags with values,
+    and boolean flags are included when True.
+    """
+    with patch("sys.argv", ["script.py"]):
+        args = argparse.Namespace(input="data.txt", output="result.txt", verbose=True, threads=4)
+        cmd = get_command_string(args)
+        assert cmd == "python3 script.py --input data.txt --output result.txt --verbose --threads 4"
 
 
-@patch("sys.argv", ["main.py"])
 def test_get_command_string_with_flags_and_none():
-    args = argparse.Namespace(input=None, debug=False, verbose=True)
-    cmd = get_command_string(args)
-    assert cmd == "python3 main.py --verbose"
+    """
+    Test that arguments set to None or False are excluded from the command string.
+    """
+    with patch("sys.argv", ["main.py"]):
+        args = argparse.Namespace(input=None, debug=False, verbose=True)
+        cmd = get_command_string(args)
+        assert cmd == "python3 main.py --verbose"
 
 
-@patch("sys.argv", ["run.py"])
 def test_get_command_string_with_short_flags():
-    args = argparse.Namespace(v=True, o="output.log")
-    cmd = get_command_string(args)
-    assert cmd == "python3 run.py -v -o output.log"
+    """
+    Test that single-character argument names are converted to short flags (e.g., -v).
+    """
+    with patch("sys.argv", ["run.py"]):
+        args = argparse.Namespace(v=True, o="output.log")
+        cmd = get_command_string(args)
+        assert cmd == "python3 run.py -v -o output.log"
 
 
-@patch("sys.argv", ["execute.py"])
 def test_get_command_string_empty_args():
-    args = argparse.Namespace()
-    cmd = get_command_string(args)
-    assert cmd == "python3 execute.py"
+    """
+    Test that the command string only includes the script name when no arguments are set.
+    """
+    with patch("sys.argv", ["execute.py"]):
+        args = argparse.Namespace()
+        cmd = get_command_string(args)
+        assert cmd == "python3 execute.py"
+
 
 
 # Mock load_placeholder_values
