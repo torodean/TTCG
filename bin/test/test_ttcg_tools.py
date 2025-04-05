@@ -46,6 +46,7 @@ def test_generate_combinations_no_placeholders():
     result = generate_combinations("plain text")
     assert result == ["plain text"]
 
+
 def test_generate_combinations_single_placeholder():
     """
     Test a sentence with one simple placeholder.
@@ -53,6 +54,7 @@ def test_generate_combinations_single_placeholder():
     with patch("ttcg_tools.load_placeholder_values", side_effect=mock_load_placeholder_values):
         result = generate_combinations("Rank <rank>")
         assert result == ["Rank 1", "Rank 2", "Rank 3"]
+
 
 def test_generate_combinations_multiple_placeholders():
     """
@@ -66,6 +68,7 @@ def test_generate_combinations_multiple_placeholders():
             "3 red", "3 blue"
         ]
 
+
 def test_generate_combinations_with_offset():
     """
     Test a sentence with an offset placeholder.
@@ -74,11 +77,13 @@ def test_generate_combinations_with_offset():
         result = generate_combinations("Rank <rank+1>")
         assert result == ["Rank 2", "Rank 3", "Rank 4"]
 
+
 def test_generate_combinations_negative_offset():
     """Test a sentence with a negative offset"""
     with patch("ttcg_tools.load_placeholder_values", side_effect=mock_load_placeholder_values):
         result = generate_combinations("Rank <rank-1>")
         assert result == ["Rank 0", "Rank 1", "Rank 2"]
+
 
 def test_generate_combinations_mixed_offsets():
     """Test a sentence with mixed offsets and plain placeholders"""
@@ -90,6 +95,7 @@ def test_generate_combinations_mixed_offsets():
             "3 to 3", "3 to 4", "3 to 5"
         ]
 
+
 def test_generate_combinations_non_numeric_values():
     """
     Test handling of non-numeric placeholder values with offsets.
@@ -97,6 +103,7 @@ def test_generate_combinations_non_numeric_values():
     with patch("ttcg_tools.load_placeholder_values", return_value=["red", "blue"]):
         result = generate_combinations("Color <color+1>")
         assert result == ["Color red", "Color blue"]  # Offset ignored for non-numeric
+
 
 def test_generate_combinations_custom_dir():
     """
@@ -107,6 +114,7 @@ def test_generate_combinations_custom_dir():
         result = generate_combinations("<rank>", placeholder_dir=custom_dir)
         mock_load.assert_called_with("rank", custom_dir, {"rank"})
         assert result == ["1", "2", "3"]
+
 
 # TODO - This feature is currently un-used and actually needs fixed in generate_combinations...
 #def test_generate_combinations_visited_cycle():
@@ -136,6 +144,7 @@ def test_load_placeholder_values_file_not_found():
         result = load_placeholder_values("missing")
         assert result == ["<missing>"]
 
+
 def test_load_placeholder_values_empty_file():
     """
     Test when the file exists but is empty.
@@ -145,6 +154,7 @@ def test_load_placeholder_values_empty_file():
         with patch("builtins.open", mock_open(read_data=mock_file_content)):
             result = load_placeholder_values("empty")
             assert result == ["<empty>"]
+
 
 def test_load_placeholder_values_only_whitespace():
     """
@@ -156,6 +166,7 @@ def test_load_placeholder_values_only_whitespace():
             result = load_placeholder_values("whitespace")
             assert result == ["<whitespace>"]
 
+
 def test_load_placeholder_values_simple_values():
     """
     Test loading simple values without nested placeholders.
@@ -165,6 +176,7 @@ def test_load_placeholder_values_simple_values():
         with patch("builtins.open", mock_open(read_data=mock_file_content)):
             result = load_placeholder_values("simple")
             assert result == ["value1", "value2", "value3"]  # _ removed
+
 
 def test_load_placeholder_values_nested_placeholders():
     """
@@ -177,6 +189,7 @@ def test_load_placeholder_values_nested_placeholders():
                 result = load_placeholder_values("nested")
                 assert result == ["test1", "test2", "plain"]
 
+
 def test_load_placeholder_values_recursion_cycle():
     """
     Test handling of a recursion cycle.
@@ -187,6 +200,7 @@ def test_load_placeholder_values_recursion_cycle():
             with patch("ttcg_tools.generate_combinations", side_effect=lambda v, d, vis: load_placeholder_values("nested", d, vis)):
                 result = load_placeholder_values("nested")
                 assert result == ["<nested>"]
+
 
 def test_load_placeholder_values_custom_dir():
     """
@@ -200,6 +214,7 @@ def test_load_placeholder_values_custom_dir():
             mock_exists.assert_called_once_with(os.path.join(custom_dir, "custom.txt"))
             mock_file.assert_called_once_with(os.path.join(custom_dir, "custom.txt"), 'r')
             assert result == ["custom value"]
+
 
 def test_load_placeholder_values_visited_state():
     """
@@ -221,6 +236,7 @@ def mock_characters():
     # Example CHARACTERS for testing; can be any string
     return "0123456789ABCDEF"  # Base 16 for simplicity, but tests won't depend on this
 
+
 def test_get_index_in_baseN_none_input(mock_characters):
     """
     Test that None input returns '0'.
@@ -229,6 +245,7 @@ def test_get_index_in_baseN_none_input(mock_characters):
         mp.setattr("ttcg_constants.CHARACTERS", mock_characters)  # Mock CHARACTERS
         result = get_index_in_baseN(None, ["a", "b", "c"], N=len(mock_characters))
         assert result == "0"
+
 
 def test_get_index_in_baseN_empty_list(mock_characters):
     """
@@ -239,6 +256,7 @@ def test_get_index_in_baseN_empty_list(mock_characters):
         result = get_index_in_baseN("a", [], N=len(mock_characters))
         assert result == "0"
 
+
 def test_get_index_in_baseN_not_found(mock_characters):
     """
     Test that string not in list returns '0'.
@@ -248,6 +266,7 @@ def test_get_index_in_baseN_not_found(mock_characters):
         result = get_index_in_baseN("x", ["a", "b", "c"], N=len(mock_characters))
         assert result == "0"
 
+
 def test_get_index_in_baseN_index_zero(mock_characters):
     """
     Test that index 0 returns '0' in any base.
@@ -256,6 +275,7 @@ def test_get_index_in_baseN_index_zero(mock_characters):
         mp.setattr("ttcg_constants.CHARACTERS", mock_characters)
         result = get_index_in_baseN("a", ["a", "b", "c"], N=len(mock_characters))
         assert result == "0"
+
 
 def test_get_index_in_baseN_base_conversion(mock_characters):
     """
@@ -276,6 +296,7 @@ def test_get_index_in_baseN_base_conversion(mock_characters):
         if len(search_list) > N:
             assert get_index_in_baseN(search_list[N], search_list, N=N) == "10"
 
+
 def test_get_index_in_baseN_small_base(mock_characters):
     """
     Test conversion with a smaller base.
@@ -289,6 +310,7 @@ def test_get_index_in_baseN_small_base(mock_characters):
         result = get_index_in_baseN("d", search_list, N=2)
         assert result == "11"  # 3 in base 2
 
+
 def test_get_index_in_baseN_large_index(mock_characters):
     """
     Test conversion of a larger index in base N.
@@ -300,6 +322,7 @@ def test_get_index_in_baseN_large_index(mock_characters):
         # Index N in base N should be "10"
         result = get_index_in_baseN(str(N), search_list, N=N)
         assert result == "10"
+
 
 def test_get_index_in_baseN_custom_n(mock_characters):
     """
@@ -315,6 +338,7 @@ def test_get_index_in_baseN_custom_n(mock_characters):
         assert get_index_in_baseN("l", search_list, N=10) == "11"
 
 
+
 def test_sn_in_list_serial_number_found():
     """
     Test that function returns True when serial number exists in file.
@@ -323,6 +347,7 @@ def test_sn_in_list_serial_number_found():
     with patch('builtins.open', mock_open(read_data=mock_file_content)):
         result = sn_in_list("SN67890", "test_file.txt")
         assert result == True
+
 
 def test_sn_in_list_serial_number_not_found():
     """
@@ -333,6 +358,7 @@ def test_sn_in_list_serial_number_not_found():
         result = sn_in_list("SN99999", "test_file.txt")
         assert result == False
 
+
 def test_sn_in_list_empty_file():
     """
     Test behavior with an empty file.
@@ -342,6 +368,7 @@ def test_sn_in_list_empty_file():
         result = sn_in_list("SN12345", "test_file.txt")
         assert result == False
 
+
 def test_sn_in_list_file_not_found():
     """
     Test that function returns False when file doesn't exist.
@@ -350,6 +377,7 @@ def test_sn_in_list_file_not_found():
         result = sn_in_list("SN12345", "test_file.txt")
         assert result == False
 
+
 def test_sn_in_list_other_exception():
     """
     Test handling of other exceptions during file reading.
@@ -357,6 +385,7 @@ def test_sn_in_list_other_exception():
     with patch('builtins.open', side_effect=PermissionError("Access denied")):
         result = sn_in_list("SN12345", "test_file.txt")
         assert result == False
+
 
 def test_sn_in_list_whitespace_handling():
     """
@@ -371,6 +400,7 @@ def test_sn_in_list_whitespace_handling():
         # Test with input serial number that has whitespace
         result = sn_in_list("  SN67890  ", "test_file.txt")
         assert result == True
+
 
 def test_sn_in_list_empty_serial_number():
     """
@@ -387,6 +417,7 @@ def test_sn_in_list_empty_serial_number():
         assert result == False
         mock_file.assert_not_called()
 
+
 def test_save_sn_to_list_successful_write():
     """
     Test that serial number is successfully appended to file.
@@ -396,6 +427,7 @@ def test_save_sn_to_list_successful_write():
         assert result == True
         mock_file.assert_called_once_with("test_file.txt", 'a')
         mock_file().write.assert_called_once_with("SN12345\n")
+
 
 def test_save_sn_to_list_empty_serial_number():
     """
@@ -412,6 +444,7 @@ def test_save_sn_to_list_empty_serial_number():
         assert result == False
         mock_file.assert_not_called()
 
+
 def test_save_sn_to_list_io_error():
     """
     Test handling of IOError during file operation.
@@ -419,6 +452,8 @@ def test_save_sn_to_list_io_error():
     with patch('builtins.open', side_effect=IOError("File system full")):
         result = save_sn_to_list("SN12345", "test_file.txt")
         assert result == False
+
+
 
 def test_save_sn_to_list_special_characters():
     """
