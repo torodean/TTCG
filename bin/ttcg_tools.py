@@ -96,7 +96,7 @@ def load_placeholder_values(placeholder, placeholder_dir=DEFAULT_PLACEHOLDERS_FO
     
     raw_values = []
     with open(file_path, 'r') as f:
-        raw_values = [line.strip().replace('_', '') for line in f if line.strip()]
+        raw_values = [line.replace('_', ' ').strip() for line in f if line.strip()]
     
     if not raw_values:
         visited.remove(placeholder)
@@ -158,6 +158,8 @@ def generate_combinations(sentence, placeholder_dir=DEFAULT_PLACEHOLDERS_FOLDER,
         
         # Track this offset for the base
         base_to_offsets[base].add(offset_value)
+        # Add the base to the list of visited items.
+        visited.add(base)
     
     # Generate values for all placeholders, including offsets
     all_placeholder_values = {}
