@@ -3,7 +3,9 @@ import os
 import sys
 import tempfile
 import pytest
+import argparse
 from unittest.mock import mock_open, patch
+from types import SimpleNamespace
 
 sys.path.append('../')
 
@@ -12,7 +14,7 @@ import ttcg_constants
 # Uncomment these as tests are finished.
 from ttcg_tools import load_placeholder_values
 from ttcg_tools import generate_combinations
-#from ttcg_tools import get_command_string
+from ttcg_tools import get_command_string
 #from ttcg_tools import check_line_in_file
 #from ttcg_tools import get_relative_path
 #from ttcg_tools import rename_file
@@ -27,6 +29,34 @@ from ttcg_tools import sn_in_list
 from ttcg_tools import save_sn_to_list
 
 
+@patch("sys.argv", ["script.py"])
+def test_get_command_string_with_all_args():
+    args = argparse.Namespace(input="data.txt", output="result.txt", verbose=True, threads=4)
+    cmd = get_command_string(args)
+    assert cmd == "python3 script.py --input data.txt --output result.txt --verbose --threads 4"
+
+
+@patch("sys.argv", ["main.py"])
+def test_get_command_string_with_flags_and_none():
+    args = argparse.Namespace(input=None, debug=False, verbose=True)
+    cmd = get_command_string(args)
+    assert cmd == "python3 main.py --verbose"
+
+
+@patch("sys.argv", ["run.py"])
+def test_get_command_string_with_short_flags():
+    args = argparse.Namespace(v=True, o="output.log")
+    cmd = get_command_string(args)
+    assert cmd == "python3 run.py -v -o output.log"
+
+
+@patch("sys.argv", ["execute.py"])
+def test_get_command_string_empty_args():
+    args = argparse.Namespace()
+    cmd = get_command_string(args)
+    assert cmd == "python3 execute.py"
+
+
 # Mock load_placeholder_values
 def mock_load_placeholder_values(placeholder, placeholder_dir, visited):
     """
@@ -38,7 +68,7 @@ def mock_load_placeholder_values(placeholder, placeholder_dir, visited):
         return ["red", "blue"]
     return [f"<{placeholder}>"]  # Default for unknown placeholders
 
-# Tests
+
 def test_generate_combinations_no_placeholders():
     """
     Test a sentence with no placeholders.
@@ -135,7 +165,7 @@ def mock_generate_combinations(value, placeholder_dir, visited):
         return [value.replace("<number>", str(i)) for i in range(1, 3)]  # e.g., ["1", "2"]
     return [value]
 
-# Tests
+
 def test_load_placeholder_values_file_not_found():
     """
     Test when the placeholder file doesn’t exist.
