@@ -10,8 +10,8 @@ sys.path.append('../')
 import ttcg_constants
 
 # Uncomment these as tests are finished.
-#from ttcg_tools import load_placeholder_values
-#from ttcg_tools import generate_combinations
+from ttcg_tools import load_placeholder_values
+from ttcg_tools import generate_combinations
 #from ttcg_tools import get_command_string
 #from ttcg_tools import check_line_in_file
 #from ttcg_tools import get_relative_path
@@ -25,6 +25,104 @@ import ttcg_constants
 from ttcg_tools import get_index_in_baseN
 from ttcg_tools import sn_in_list
 from ttcg_tools import save_sn_to_list
+
+
+# Mock generate_combinations (since it’s not provided)
+def mock_generate_combinations(value, placeholder_dir, visited):
+    """
+    Mock function to simulate resolving nested placeholders.
+    """
+    if "<number>" in value:
+        return [value.replace("<number>", str(i)) for i in range(1, 3)]  # e.g., ["1", "2"]
+    return [value]
+
+# Tests
+def test_load_placeholder_values_file_not_found():
+    """
+    Test when the placeholder file doesn’t exist.
+    """
+    with patch("os.path.exists", return_value=False):
+        result = load_placeholder_values("missing")
+        assert result == ["<missing>"]
+
+def test_load_placeholder_values_empty_file():
+    """
+    Test when the file exists but is empty.
+    """
+    mock_file_content = ""
+    with patch("os.path.exists", return_value=True):
+        with patch("builtins.open", mock_open(read_data=mock_file_content)):
+            result = load_placeholder_values("empty")
+            assert result == ["<empty>"]
+
+def test_load_placeholder_values_only_whitespace():
+    """
+    Test when the file contains only whitespace lines.
+    """
+    mock_file_content = "\n  \n\t\n"
+    with patch("os.path.exists", return_value=True):
+        with patch("builtins.open", mock_open(read_data=mock_file_content)):
+            result = load_placeholder_values("whitespace")
+            assert result == ["<whitespace>"]
+
+def test_load_placeholder_values_simple_values():
+    """
+    Test loading simple values without nested placeholders.
+    """
+    mock_file_content = "value1\nvalue2\n_value3_\n"
+    with patch("os.path.exists", return_value=True):
+        with patch("builtins.open", mock_open(read_data=mock_file_content)):
+            result = load_placeholder_values("simple")
+            assert result == ["value1", "value2", "value3"]  # _ removed
+
+def test_load_placeholder_values_nested_placeholders():
+    """
+    Test resolving nested placeholders with generate_combinations.
+    """
+    mock_file_content = "test<number>\nplain\n"
+    with patch("os.path.exists", return_value=True):
+        with patch("builtins.open", mock_open(read_data=mock_file_content)):
+            with patch("ttcg_tools.generate_combinations", side_effect=mock_generate_combinations):
+                result = load_placeholder_values("nested")
+                assert result == ["test1", "test2", "plain"]
+
+def test_load_placeholder_values_recursion_cycle():
+    """
+    Test handling of a recursion cycle.
+    """
+    mock_file_content = "<nested>"  # Self-reference indirectly via visited
+    with patch("os.path.exists", return_value=True):
+        with patch("builtins.open", mock_open(read_data=mock_file_content)):
+            with patch("ttcg_tools.generate_combinations", side_effect=lambda v, d, vis: load_placeholder_values("nested", d, vis)):
+                result = load_placeholder_values("nested")
+                assert result == ["<nested>"]
+
+def test_load_placeholder_values_custom_dir():
+    """
+    Test using a custom placeholder_dir.
+    """
+    mock_file_content = "custom_value\n"
+    custom_dir = "custom/path/"
+    with patch("os.path.exists", return_value=True) as mock_exists:
+        with patch("builtins.open", mock_open(read_data=mock_file_content)) as mock_file:
+            result = load_placeholder_values("custom", placeholder_dir=custom_dir)
+            mock_exists.assert_called_once_with(os.path.join(custom_dir, "custom.txt"))
+            mock_file.assert_called_once_with(os.path.join(custom_dir, "custom.txt"), 'r')
+            assert result == ["custom value"]
+
+def test_load_placeholder_values_visited_state():
+    """
+    Test that visited set is properly managed (no side effects).
+    """
+    mock_file_content = "value1\n<other>\n"
+    with patch("os.path.exists", return_value=True):
+        with patch("builtins.open", mock_open(read_data=mock_file_content)):
+            with patch("ttcg_tools.generate_combinations", return_value=["other_value"]):
+                visited = set(["external"])
+                result = load_placeholder_values("test", visited=visited)
+                assert result == ["value1", "other_value"]
+                assert visited == {"external"}  # Original set unchanged
+
 
 # Mock CHARACTERS as a fixture to make tests flexible
 @pytest.fixture
@@ -51,7 +149,9 @@ def test_get_index_in_baseN_empty_list(mock_characters):
         assert result == "0"
 
 def test_get_index_in_baseN_not_found(mock_characters):
-    """Test that string not in list returns '0'"""
+    """
+    Test that string not in list returns '0'.
+    """
     with pytest.MonkeyPatch().context() as mp:
         mp.setattr("ttcg_constants.CHARACTERS", mock_characters)
         result = get_index_in_baseN("x", ["a", "b", "c"], N=len(mock_characters))
