@@ -158,6 +158,8 @@ def generate_combinations(sentence, placeholder_dir=DEFAULT_PLACEHOLDERS_FOLDER,
         
         # Track this offset for the base
         base_to_offsets[base].add(offset_value)
+        # Add the base to the list of visited items.
+        visited.add(base)
     
     # Generate values for all placeholders, including offsets
     all_placeholder_values = {}

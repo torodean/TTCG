@@ -27,7 +27,98 @@ from ttcg_tools import sn_in_list
 from ttcg_tools import save_sn_to_list
 
 
-# Mock generate_combinations (since it’s not provided)
+# Mock load_placeholder_values
+def mock_load_placeholder_values(placeholder, placeholder_dir, visited):
+    """
+    Mock function to return placeholder values.
+    """
+    if placeholder == "rank":
+        return ["1", "2", "3"]
+    if placeholder == "color":
+        return ["red", "blue"]
+    return [f"<{placeholder}>"]  # Default for unknown placeholders
+
+# Tests
+def test_generate_combinations_no_placeholders():
+    """
+    Test a sentence with no placeholders.
+    """
+    result = generate_combinations("plain text")
+    assert result == ["plain text"]
+
+def test_generate_combinations_single_placeholder():
+    """
+    Test a sentence with one simple placeholder.
+    """
+    with patch("ttcg_tools.load_placeholder_values", side_effect=mock_load_placeholder_values):
+        result = generate_combinations("Rank <rank>")
+        assert result == ["Rank 1", "Rank 2", "Rank 3"]
+
+def test_generate_combinations_multiple_placeholders():
+    """
+    Test a sentence with multiple placeholders.
+    """
+    with patch("ttcg_tools.load_placeholder_values", side_effect=mock_load_placeholder_values):
+        result = generate_combinations("<rank> <color>")
+        assert result == [
+            "1 red", "1 blue",
+            "2 red", "2 blue",
+            "3 red", "3 blue"
+        ]
+
+def test_generate_combinations_with_offset():
+    """
+    Test a sentence with an offset placeholder.
+    """
+    with patch("ttcg_tools.load_placeholder_values", side_effect=mock_load_placeholder_values):
+        result = generate_combinations("Rank <rank+1>")
+        assert result == ["Rank 2", "Rank 3", "Rank 4"]
+
+def test_generate_combinations_negative_offset():
+    """Test a sentence with a negative offset"""
+    with patch("ttcg_tools.load_placeholder_values", side_effect=mock_load_placeholder_values):
+        result = generate_combinations("Rank <rank-1>")
+        assert result == ["Rank 0", "Rank 1", "Rank 2"]
+
+def test_generate_combinations_mixed_offsets():
+    """Test a sentence with mixed offsets and plain placeholders"""
+    with patch("ttcg_tools.load_placeholder_values", side_effect=mock_load_placeholder_values):
+        result = generate_combinations("<rank> to <rank+2>")
+        assert result == [
+            "1 to 3", "1 to 4", "1 to 5",
+            "2 to 3", "2 to 4", "2 to 5",
+            "3 to 3", "3 to 4", "3 to 5"
+        ]
+
+def test_generate_combinations_non_numeric_values():
+    """
+    Test handling of non-numeric placeholder values with offsets.
+    """
+    with patch("ttcg_tools.load_placeholder_values", return_value=["red", "blue"]):
+        result = generate_combinations("Color <color+1>")
+        assert result == ["Color red", "Color blue"]  # Offset ignored for non-numeric
+
+def test_generate_combinations_custom_dir():
+    """
+    Test using a custom placeholder_dir.
+    """
+    with patch("ttcg_tools.load_placeholder_values", side_effect=mock_load_placeholder_values) as mock_load:
+        custom_dir = "custom/path/"
+        result = generate_combinations("<rank>", placeholder_dir=custom_dir)
+        mock_load.assert_called_with("rank", custom_dir, {"rank"})
+        assert result == ["1", "2", "3"]
+
+# TODO - This feature is currently un-used and actually needs fixed in generate_combinations...
+#def test_generate_combinations_visited_cycle():
+#    """
+#    Test handling of a potential cycle with visited set.
+#    """
+#    with patch("ttcg_tools.load_placeholder_values", side_effect=mock_load_placeholder_values):
+#        visited = {"rank"}
+#        result = generate_combinations("<rank+1>", visited=visited)
+#        assert result == ["<rank+1>"]  # Unresolved due to visited
+
+
 def mock_generate_combinations(value, placeholder_dir, visited):
     """
     Mock function to simulate resolving nested placeholders.
