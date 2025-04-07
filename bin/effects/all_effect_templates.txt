@@ -102,3 +102,5 @@ Your opponent cannot play <types> cards next turn.
 Your opponent loses <number> point(s).
 While this card is on the field, <type> cards can rank up using <type> cards.
 Play up to <number> rank <rank> <typpes> cards directly from your <pile>.
+Mill <number> card(s).
+Discard <number> card(s).
