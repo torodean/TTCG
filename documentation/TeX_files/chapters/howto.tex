@@ -4,6 +4,61 @@ This chapter provides a practical guide to generating and managing effect descri
 
 
 
+
+
+
+
+\section{Working with This Project in Git}
+
+This project is hosted on GitHub at the following url:
+\begin{center}
+\url{https://github.com/torodean/TTCG}
+\end{center}
+The following guidelines outline the workflow for contributing to the project using Git.
+
+\subsection{Repository Structure and Main Branch}
+The main branch serves as the primary stable branch of the project. It is configured to run automatic unit tests using GitHub Workflows. These tests are defined in the \texttt{test.yml} file located in the \texttt{.github/workflows} directory. The unit tests themselves reside in the \texttt{bin/test} directory and are executed as part of the continuous integration pipeline whenever changes are pushed to the \texttt{main} branch.
+
+All scripts and executables in the \texttt{bin} folder are designed to be run from within that directory. Ensure your working directory is set to \texttt{bin} when executing any code located there.
+
+\subsection{Contributing to the Project}
+To make changes or contribute new features, follow these steps:
+
+\begin{enumerate}
+    \item \textbf{Create a New Branch}: Start by creating a new branch from \texttt{main} with a descriptive name that reflects the purpose of your changes (e.g., \texttt{feature/add-new-module} or \texttt{fix/bug-issue-123}).
+    \begin{verbatim}
+    git checkout main
+    git pull
+    git checkout -b <branch-name>
+    \end{verbatim}
+
+    \item \textbf{Work in Your Branch}: Implement your changes or modifications in this branch. Ensure that any code added to the \texttt{bin} folder is executable from that directory.
+
+    \item \textbf{Run and Verify Tests}: Before submitting your changes, verify that all unit tests pass locally. The tests can be found in \texttt{bin/tests}. Running them locally ensures compatibility with the automated testing in the GitHub Workflow.
+
+    \item \textbf{Commit and Push}: Once your changes are complete and tests pass, commit your work and push the branch to the GitHub repository.
+    \begin{verbatim}
+    git add .
+    git commit -m "Descriptive commit message"
+    git push origin <branch-name>
+    \end{verbatim}
+
+    \item \textbf{Create a Merge Request}: On GitHub, create a merge request (pull request) from your branch to \texttt{main}. Provide a clear description of your changes in the merge request. The merge request will trigger the automated unit tests defined in \texttt{test.yml}. Ensure all tests pass before requesting a review.
+
+    \item \textbf{Review Process}: A project maintainer will review your merge request. Address any feedback or requested changes by pushing additional commits to your branch. Once approved, your changes will be merged into \texttt{main}.
+\end{enumerate}
+
+By following this workflow, we ensure that the \texttt{main} branch remains stable and that all contributions are thoroughly tested and reviewed.
+
+
+
+
+
+
+
+
+
+
 \section{Add and Auto-Generate Effect Strings from Templates}
 
 This section guides you through creating effect descriptions from templates using scripts in the \texttt{bin/} directory. You’ll combine placeholder values from \texttt{placeholders/} with templates from \texttt{effects/} to generate a list of effects.
