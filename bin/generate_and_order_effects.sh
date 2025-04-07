@@ -23,114 +23,116 @@ python3 add_csv_field.py -c SPELL -t \
     "Your opponent loses <number> point" \
     "Gain <number> point" \
     "Both players" \
-	"Add up to <number> rank <rank> <card>" \
-	"Add up to <number> rank <rank> or higher <card>" \
-	"Add up to <number> rank <rank> or lower <card>" \
-	"Counter the effect of a rank <rank> <card>" \
-	"Destroy all rank <rank> <card>" \
-	"Destroy exactly <number> <card>" \
-	"Destroy up to <number> <card>" \
-	"Destroy exactly <number> rank <rank> <card>" \
-	"Destroy up to <number> rank <rank> <card>" \
-	"Discard one rank <rank> <card>" \
-	"Discard this card to add one <card>" \
-	"Discard this card to add one rank <rank> <card>" \
-	"Discard this card to add one rank <rank> or higher <card>" \
-	"Discard this card to add one rank <rank> or lower <card>" \
-	"Draw <number> card" \
-	"Lose <number> point" \
-	"Return one rank <rank> <card>" \
-	"Reveal the top card of your deck and play one rank <rank> <card>" \
-	"Reveal the top <number> cards of your deck and play one rank <rank> <card>" \
-	"This turn, all rank <rank> <card>" \
-	"This turn, increase the rank of one rank <rank> <card>" \
-	"While this card is on the field, all rank <rank> <card>" \
-	"Add <number> <card>" \
-	"Discard one rank <rank> <card>" \
-	"Return one <type> card" \
-	"Counter the effect of a <type> card" \
-	"Counter the effect of a rank <rank> <card>" \
-	"Destroy exactly <number> <type> card" \
-	"Destroy exactly <number> rank <rank> <card>" \
-	"Destroy exactly <number> <card> controlled by each player" \
-	"Destroy up to <number> <type> card" \
-	"Destroy up to <number> rank <rank> <card>" \
-	"Discard one <type> card" \
-	"Discard one rank <rank> <card>" \
-	"Discard one <type> card to play up to two" \
-	"Discard one rank <rank> <card> to play up to two" \
-	"Discard one <type> card to add one" \
-	"Discard one rank <rank> <card> to add one" \
-	"Discard one <type> card to counter" \
-	"Discard one rank <rank> <card> to counter" \
-	"Return one <type> card" \
-	"Return one rank <rank> <card>" \
-	"Reveal the top <number> card" \
-	"This turn, all <type> card" \
-	"This turn, all rank <rank> <card>" \
-	"This turn, change one <type>" \
-	"While this card is on the field, all <type>" \
-	"While this card is on the field, all rank <rank> <card>" \
-	"You can play one extra <type>" \
-	"You can play one extra rank <rank> <card>" \
-	"Your opponent cannot play <type>" \
-	"Take one of your other <card>s on the field" \
-	"Play one <card> under this one" \
-	"Swap one <typeslevels> card you control with one <typeslevels> card from your <pile>" \
-	"Return up to <number> <typeslevels> cards from your discard pile to your hand" \
-	"Return one <typeslevels> card from your discard pile to your hand" \
-	"Both players <gainlose> <number> points for each <type> card they control" \
-	"Both players <gainlose> one point for each <type> card they control" \
-	"Whenever a <typeslevels> card is discarded" \
-	"Until your next turn, all <type> card" \
-	"Swap the attack and defense of one <type> card" \
-	"Swap the attack and defense of one rank <rank> <card>" \
-	"Force your opponent to discard <number> card" \
-	"Place one <type> card from your <pile> under" \
-	"Place one rank <rank> <card> from your <pile> under" \
-	"Skip your next turn to destroy all <type>" \
-	"Skip your next turn to destroy all rank <rank> <card>" \
-	"For the next <number> turns, <type> cards" \
-	"Activate the effect of a card under this card" \
-	"Activate the effect of a card under another card" \
-	"Activate the effect of another card" \
-	"Add one rank <rank> <card>" \
-	"Add one rank <rank> or higher <card>" \
-	"Add one rank <rank> or lower <card>" \
-	"Add up to <number> <card>" \
-	"Destroy one rank <rank> <card>" \
-	"Destroy two rank <rank> <card>" \
-	"Return up to <number> rank <rank> <card>" \
-	"Swap one rank <rank> card you control" \
-	"Whenever a rank <rank> card is discarded" \
-	"While this card is tapped" \
-	"Tap up to <number> <card>" \
-	"Untap exactly <number> <card>" \
-	"Untap up to <number> <card>" \
-	"Tap exactly <number> <card>" \
-	"The equip card cannot" \
-	"The equip card gains" \
-	"The equip card can be" \
-	"For each <card> under this one" \
-	"When a <card> is sent from the <pile>" \
-	"Move up to <number> cards to any other column." \
-	"Move one card to any other column." \
-	"Whenever your opponent plays a <types> card, they lose one point and you gain one point." \
-	"While this card is on the field, reduce the attack of all <type> card." \
-	"Copy the effect of one spell card in your discard pile." \
-	"Copy the effect of one rank <rank> spell card in your discard pile." \
-	"Once per turn, while this card is untapped, you can destroy one card under it to gain one point." \
-	"Destroy one <card> you control to gain points" \
-	"This turn, <typeslevels> cards you control can be untapped once by paying one point" \
-	"While this card is under another, all <type> cards you control gain <atkdef>." \
-	"When a <type> card is placed under this one, destroy" \
-	"When this card is destroyed, place up to <number> <typeslevels> card" \
-	"While this card is on the field, <type> cards you control" \
-	"For each <card> tapped this turn, draw <number-1> card" \
-	"Whenever a <typeslevels> card is played, shuffle <number> card" \
-	"For each <type> card destroyed this turn, add one" \
-	"While this card is on the field, <type> cards can rank up using <type>" \
-	"Play up to <number> rank"
+    "Add up to <number> rank <rank> <card>" \
+    "Add up to <number> rank <rank> or higher <card>" \
+    "Add up to <number> rank <rank> or lower <card>" \
+    "Counter the effect of a rank <rank> <card>" \
+    "Destroy all rank <rank> <card>" \
+    "Destroy exactly <number> <card>" \
+    "Destroy up to <number> <card>" \
+    "Destroy exactly <number> rank <rank> <card>" \
+    "Destroy up to <number> rank <rank> <card>" \
+    "Discard one rank <rank> <card>" \
+    "Discard this card to add one <card>" \
+    "Discard this card to add one rank <rank> <card>" \
+    "Discard this card to add one rank <rank> or higher <card>" \
+    "Discard this card to add one rank <rank> or lower <card>" \
+    "Draw <number> card" \
+    "Lose <number> point" \
+    "Return one rank <rank> <card>" \
+    "Reveal the top card of your deck and play one rank <rank> <card>" \
+    "Reveal the top <number> cards of your deck and play one rank <rank> <card>" \
+    "This turn, all rank <rank> <card>" \
+    "This turn, increase the rank of one rank <rank> <card>" \
+    "While this card is on the field, all rank <rank> <card>" \
+    "Add <number> <card>" \
+    "Discard one rank <rank> <card>" \
+    "Return one <type> card" \
+    "Counter the effect of a <type> card" \
+    "Counter the effect of a rank <rank> <card>" \
+    "Destroy exactly <number> <type> card" \
+    "Destroy exactly <number> rank <rank> <card>" \
+    "Destroy exactly <number> <card> controlled by each player" \
+    "Destroy up to <number> <type> card" \
+    "Destroy up to <number> rank <rank> <card>" \
+    "Discard one <type> card" \
+    "Discard one rank <rank> <card>" \
+    "Discard one <type> card to play up to two" \
+    "Discard one rank <rank> <card> to play up to two" \
+    "Discard one <type> card to add one" \
+    "Discard one rank <rank> <card> to add one" \
+    "Discard one <type> card to counter" \
+    "Discard one rank <rank> <card> to counter" \
+    "Return one <type> card" \
+    "Return one rank <rank> <card>" \
+    "Reveal the top <number> card" \
+    "This turn, all <type> card" \
+    "This turn, all rank <rank> <card>" \
+    "This turn, change one <type>" \
+    "While this card is on the field, all <type>" \
+    "While this card is on the field, all rank <rank> <card>" \
+    "You can play one extra <type>" \
+    "You can play one extra rank <rank> <card>" \
+    "Your opponent cannot play <type>" \
+    "Take one of your other <card>s on the field" \
+    "Play one <card> under this one" \
+    "Swap one <typeslevels> card you control with one <typeslevels> card from your <pile>" \
+    "Return up to <number> <typeslevels> cards from your discard pile to your hand" \
+    "Return one <typeslevels> card from your discard pile to your hand" \
+    "Both players <gainlose> <number> points for each <type> card they control" \
+    "Both players <gainlose> one point for each <type> card they control" \
+    "Whenever a <typeslevels> card is discarded" \
+    "Until your next turn, all <type> card" \
+    "Swap the attack and defense of one <type> card" \
+    "Swap the attack and defense of one rank <rank> <card>" \
+    "Force your opponent to discard <number> card" \
+    "Place one <type> card from your <pile> under" \
+    "Place one rank <rank> <card> from your <pile> under" \
+    "Skip your next turn to destroy all <type>" \
+    "Skip your next turn to destroy all rank <rank> <card>" \
+    "For the next <number> turns, <type> cards" \
+    "Activate the effect of a card under this card" \
+    "Activate the effect of a card under another card" \
+    "Activate the effect of another card" \
+    "Add one rank <rank> <card>" \
+    "Add one rank <rank> or higher <card>" \
+    "Add one rank <rank> or lower <card>" \
+    "Add up to <number> <card>" \
+    "Destroy one rank <rank> <card>" \
+    "Destroy two rank <rank> <card>" \
+    "Return up to <number> rank <rank> <card>" \
+    "Swap one rank <rank> card you control" \
+    "Whenever a rank <rank> card is discarded" \
+    "While this card is tapped" \
+    "Tap up to <number> <card>" \
+    "Untap exactly <number> <card>" \
+    "Untap up to <number> <card>" \
+    "Tap exactly <number> <card>" \
+    "The equip card cannot" \
+    "The equip card gains" \
+    "The equip card can be" \
+    "For each <card> under this one" \
+    "When a <card> is sent from the <pile>" \
+    "Move up to <number> cards to any other column." \
+    "Move one card to any other column." \
+    "Whenever your opponent plays a <types> card, they lose one point and you gain one point." \
+    "While this card is on the field, reduce the attack of all <type> card." \
+    "Copy the effect of one spell card in your discard pile." \
+    "Copy the effect of one rank <rank> spell card in your discard pile." \
+    "Once per turn, while this card is untapped, you can destroy one card under it to gain one point." \
+    "Destroy one <card> you control to gain points" \
+    "This turn, <typeslevels> cards you control can be untapped once by paying one point" \
+    "While this card is under another, all <type> cards you control gain <atkdef>." \
+    "When a <type> card is placed under this one, destroy" \
+    "When this card is destroyed, place up to <number> <typeslevels> card" \
+    "While this card is on the field, <type> cards you control" \
+    "For each <card> tapped this turn, draw <number-1> card" \
+    "Whenever a <typeslevels> card is played, shuffle <number> card" \
+    "For each <type> card destroyed this turn, add one" \
+    "While this card is on the field, <type> cards can rank up using <type>" \
+    "Play up to <number> rank" \
+    "Mill <number> card" \
+    "Discard <number> card"
 
 # Handle some exact matches (used for one off effects)
 python3 add_csv_field.py -c SPELL -e \
@@ -207,7 +209,7 @@ for level in LEVEL_{1..3}; do
         "While this card is on the field, <type> cards you control" \
         "For each <type> card destroyed this turn, add one" \
         "Swap this cards rank with another card" \
-	    "While this card is on the field, <type> cards can rank up using <type>" \
+        "While this card is on the field, <type> cards can rank up using <type>" \
         "Swap this cards rank with another card"
 done
 
@@ -255,7 +257,9 @@ for l in "LEVEL_1 1 2" "LEVEL_2 2 3" "LEVEL_3 3 4"; do
             "When this card is destroyed, place up to ${NUMS[m]} <typeslevels> card" \
             "For each <card> tapped this turn, draw ${NUMS[m-1]} card" \
             "Whenever a <typeslevels> card is played, shuffle ${NUMS[m]} card" \
-	        "Play up to ${NUMS[m]} rank"
+            "Play up to ${NUMS[m]} rank" \
+            "Mill ${NUMS[m]} card" \
+            "Discard ${NUMS[m]} card"
     done
 done
 
@@ -288,9 +292,9 @@ for l in "LEVEL_1 1 2" "LEVEL_2 2 4" "LEVEL_3 4 5"; do
             "While this card is tapped, only cards <abovebelow> rank ${m}" \
             "Copy the effect of one rank ${m} spell card in your discard pile" \
             "This turn, rank ${m} <card>s you control can be untapped once by paying one point" \
-	        "Play one rank ${m}" \
-	        "Play up to two rank ${m}" \
-	        "Play up to three rank ${m}"
+            "Play one rank ${m}" \
+            "Play up to two rank ${m}" \
+            "Play up to three rank ${m}"
     done
 done
 
@@ -340,7 +344,9 @@ python3 add_csv_field.py -c UNIT -t \
     "While this card is on the field, <subtype> cards you control" \
     "For each <subtype> card destroyed this turn, add one" \
     "Whenever a card is moved from under this card, both players mill <number> card" \
-    "Swap this cards rank with another card"
+    "Swap this cards rank with another card" \
+    "Mill <number> card" \
+    "Discard <number> card"
 
 
 
@@ -481,6 +487,8 @@ for l in "LEVEL_1 1 2" "LEVEL_2 1 3" "LEVEL_3 2 4" "LEVEL_4 3 5" "LEVEL_5 4 5"; 
             "Skip your next turn to destroy all rank ${m}" \
             "While this card is tapped, only cards <abovebelow> rank ${m}" \
             "When this card is destroyed, place up to ${NUMS[m]} <subtype> card" \
-            "Whenever a card is moved from under this card, both players mill ${NUMS[m]} card"
+            "Whenever a card is moved from under this card, both players mill ${NUMS[m]} card" \
+            "Mill ${NUMS[m]} card" \
+            "Discard ${NUMS[m]} card"
     done
 done
