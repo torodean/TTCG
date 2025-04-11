@@ -9,7 +9,7 @@ ALL_TYPES_LIST_LOWER = [l.lower() for l in ALL_TYPES_LIST]
 
 # Valid options for effect overlay's (the positions are top and bottom representing effects 1 and 2 respectively).
 VALID_OVERLAY_POSITIONS = ["top", "bottom"]
-VALID_OVERLAY_STYLES = [None, "continuous", "counter", "dormant", "latent", "passive", "equip", "overload", "echo", "pulse"]
+VALID_OVERLAY_STYLES = [None, "continuous", "counter", "primed", "latent", "passive", "equip", "overload", "echo", "surge"]
 
 # Valid translucent values for card art.
 VALID_TRANSLUCENT_VALUES = [30, 50, 60, 75, 100]
