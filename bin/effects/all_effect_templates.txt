@@ -1,7 +1,7 @@
 <tapuntap> exactly <number> <card>(s) controlled by each player.
 <tapuntap> exactly <number> <card>(s) on the field.
 <tapuntap> up to <number> <card>(s) on the field.
-Activate the effect of a card under another card.
+Activate the effect of a dormant card.
 Activate the effect of a card under this card.
 Activate the effect of another <card> on the field.
 Add up to <number> <target>(s) from your <pile> to your hand.
@@ -43,7 +43,7 @@ Lose <number> point(s) to destroy <number> card(s) on the field.
 Lose <number> point(s) to draw <number> card(s).
 Lose <number> point(s) to untap up to <number> <types> card(s) you control.
 Move up to <number> card(s) to any other column.
-Once per turn, while this card is under another, you can untap a card above this one.
+Once per turn, while this card is dormant, you can untap a card above this one.
 Once per turn, while this card is untapped, you can destroy one card under it to gain one point.
 Place one <types> card from your <pile> under this card.
 Play one <card> under this one.
@@ -51,7 +51,7 @@ Return one <types> card from the discard pile to the top of your deck.
 Return one <types> card from the field to the owner's <handdeck>.
 Return up to <number> <types> card(s) from your discard pile to your hand.
 Reveal the top <number+1> card(s) of your deck and play one <types> card from among them.
-Send up to <number> card(s) from under another card to the discard pile.
+Send up to <number> dormant card(s) to the discard pile.
 Skip your next turn to destroy all <typeslevels> cards on the field.
 Swap one <types> card you control with one <types> card from your <pile>.
 Swap the attack and defense of one <types> card on the field.
@@ -90,8 +90,8 @@ While this card is on the field, attack and defense changes are inverted.
 While this card is on the field, reduce the attack of all <types> cards your opponent controls by <atkdef>.
 While this card is tapped, gain one point each time a card is send to your discard pile.
 While this card is tapped, only cards <abovebelow> rank <rank> can attack.
-While this card is under another, all <types> cards you control gain <atkdef>.
-While this card is under another, you can send this to the discard pile in place of a card above it.
+While this card is dormant, all <types> cards you control gain <atkdef>.
+While this card is dormant, you can send this to the discard pile in place of a card above it.
 You can play one extra <typeslevels> card this turn.
 You can rank up one of your <types> cards using a unit from your <pile>.
 You can rank up this card using a <type> card.
@@ -104,3 +104,4 @@ While this card is on the field, <type> cards can rank up using <type> cards.
 Play up to <number> rank <rank> <typpes> cards directly from your <pile>.
 Mill <number> card(s).
 Discard <number> card(s).
+Destroy <number> dormant card(s).
