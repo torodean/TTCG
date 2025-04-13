@@ -26,8 +26,7 @@ def add_effect_overlay_image(final_img, style, position, width=DEFAULT_CARD_WIDT
     
     Args:
         final_image (Image): The image to add the overlay to.
-        style (str): The overlay style to use. Valid options are "continuous", 
-            "counter", "dormant", "equip", "latent", "passive"
+        style (str): The overlay style to use. Valid options are in the VALID_OVERLAY_STYLES variable.
         position (str): The position to place the overlay. This is either the effect 1 
             box or effect two box. Valid options are "top" or "bottom"        
         
@@ -521,7 +520,7 @@ def parse_args():
     parser.add_argument('-T', "--translucency", type=int, default=100,
                         help="The translucency of some card art fields (valid options are 50, 60, 75, and 100).")
     parser.add_argument('-S', "--spreadsheet", type=str, default=None,
-                        help="Create's all cards loaded from a spreadsheet (in dev).")
+                        help="Create's all cards loaded from a spreadsheet.")
 
     return parser.parse_args()
 

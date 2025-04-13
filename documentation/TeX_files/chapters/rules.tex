@@ -51,6 +51,7 @@
     \item[ROW] One of the two horizontal areas on the field (upper for units, lower for spells).
     \item[STACK] A group of cards physically layered under another card of the same type (including the top card).
     \item[SWAP] The act of exchanging the positions or stats of two cards.
+    \item[DORMATN] A card is considered dormant when it is physically under another card (not the top card of a stack).
 \end{description}
 
 
@@ -156,7 +157,7 @@
     \item \textbf{Effect Conditions:}
     \begin{itemize}
         \item If a card effect activates when the card is sent to the discard pile or deck, it can only be activated if the card was initially untapped.
-        \item Cards in the hand, deck, underneath other cards, and in the discard pile are considered untapped.
+        \item Cards in the hand, deck, underneath other cards (dormant), and in the discard pile are considered untapped.
         \item A card effect cannot be activated when (in response to) it is destroyed (unless a card states otherwise).
     \end{itemize}
     \item \textbf{Effect Types:} 
@@ -177,10 +178,10 @@
 \begin{itemize}
     \item Any card with a rank higher than one can only be played to the field by ranking up another card of the same type.
     \item To rank up a card, place a card with the same type and one rank higher on top of that card.
-    \item All cards under the card played are considered underneath that card and are immediately untapped.
-    \item All cards underneath another card remain on the field.
-    \item Cards underneath another card cannot be tapped or have their effects activated.
-    \item Cards underneath another do not count towards the field unit limit.
+    \item All cards under the card played are considered underneath that card and are immediately untapped. These are commonly called dormant cards.
+    \item All dormant card remain on the field.
+    \item Dormant cards cannot be tapped or have their effects activated, unless an effect states otherwise.
+    \item dormant cards do not count towards the field unit limit.
 \end{itemize}
 
 
@@ -200,7 +201,7 @@
     \item When a unit attacks, the attack value is used to determine its strength.
     \item When a unit is defending, the defense value is used to determine its strength.
     \item During an attack, whichever unit has the higher attack prevails, and the other is destroyed (unless a card states otherwise) and sent to the discard pile.
-    \item When a card is destroyed in battle, the card directly underneath it becomes an active card.
+    \item When a card is destroyed in battle or by an effect, the dormant card directly underneath it becomes an active card.
 \end{itemize}
 
 
@@ -229,7 +230,7 @@
 \subsection{Field Limitations}
 \begin{itemize}
     \item A players field is split into two parts (upper for units, and lower for spell cards).
-    \item Cards under other cards (within stacks) don’t count toward unit or spell limits.
+    \item Dormant cards (cards under other cards within stacks) don’t count toward unit or spell limits.
     \item A players upper field can support a maximum of 5 unit card stacks.
     \item A players lower field can support a maximum of 5 spell card stacks.
 \end{itemize}

@@ -31,13 +31,13 @@ Styles are defined in `ttcg_constants.VALID_OVERLAY_STYLES`:
 - `None`
 - `continuous`
 - `counter`
-- `dormant`
+- `primed`
 - `latent`
 - `passive`
 - `equip`
 - `overload`
 - `echo`
-- `pulse`
+- `surge`
 
 Each style (except `None`) should have a `.txt` file here.
 
