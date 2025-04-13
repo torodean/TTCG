@@ -551,38 +551,35 @@ usage: create_card.py [-h] [-l {1,2,3,4,5}] [-t TYPE] [-n NAME]
 Create a TTCG trading card.
 
 options:
-  -h, --help            show this help message and exit
-  -l {1,2,3,4,5}, --level {1,2,3,4,5}
-                        Card level (1-5)
-  -t TYPE, --type TYPE  Card type (e.g., earth, air, fire, water, etc)
-  -n NAME, --name NAME  Card name.
-  -s SUBTYPE [SUBTYPE ...], --subtype SUBTYPE [SUBTYPE ...]
-                        Subtypes (space-separated, e.g., Dragon Spirit)
-  -1 EFFECT1, --effect1 EFFECT1
-                        First effect text.
-  --effect1_style EFFECT1_STYLE
-                        First effect style. Valid styles are ['continuous',
-                        'counter', 'dormant', 'latent', 'passive', 'equip']
-  -2 EFFECT2, --effect2 EFFECT2
-                        Second effect text.
-  --effect2_style EFFECT2_STYLE
-                        Second effect style. Valid styles same as effect1_style.
-  -a ATTACK, --attack ATTACK
-                        Attack value (defaults to random based on level).
-  -d DEFENSE, --defense DEFENSE
-                        Defense value (defaults to random based on level, sums with
-                        atk to level*500)
-  -i IMAGE, --image IMAGE
-                        The image file for this card.
-  -o OUTPUT, --output OUTPUT
-                        The folder to output images to.
-  --serial SERIAL       The serial number for the card.
-  -T TRANSLUCENCY, --translucency TRANSLUCENCY
-                        The translucency of some card art fields (valid options are
-                        50, 60, 75, and 100).
-  -S SPREADSHEET, --spreadsheet SPREADSHEET
-                        Create's all cards loaded from a spreadsheet (in dev).
-
+	-h, --help            show this help message and exit
+	-l {1,2,3,4,5}, --level {1,2,3,4,5}
+					Card level (1-5)
+	-t TYPE, --type TYPE  Card type (e.g., earth, air, fire, water, etc)
+	-n NAME, --name NAME  Card name.
+	-s SUBTYPE [SUBTYPE ...], --subtype SUBTYPE [SUBTYPE ...]
+					Subtypes (space-separated, e.g., Dragon Spirit)
+	-1 EFFECT1, --effect1 EFFECT1
+					First effect text.
+	--effect1_style EFFECT1_STYLE
+					First effect style. Valid styles are [None, 'continuous', 'counter', 'primed', 'latent',
+	'passive', 'equip', 'overload', 'echo', 'surge']
+	-2 EFFECT2, --effect2 EFFECT2
+					Second effect text.
+	--effect2_style EFFECT2_STYLE
+					Second effect style. Valid styles same as effect1_style.
+	-a ATTACK, --attack ATTACK
+					Attack value (defaults to random based on level).
+	-d DEFENSE, --defense DEFENSE
+					Defense value (defaults to random based on level, sums with atk to level*500)
+	-i IMAGE, --image IMAGE
+					The image file for this card.
+	-o OUTPUT, --output OUTPUT
+					The folder to output images to.
+	--serial SERIAL       The serial number for the card.
+	-T TRANSLUCENCY, --translucency TRANSLUCENCY
+					The translucency of some card art fields (valid options are 50, 60, 75, and 100).
+	-S SPREADSHEET, --spreadsheet SPREADSHEET
+					Create's all cards loaded from a spreadsheet.
 \end{lstlisting}
 Defaults include \texttt{"fire"} type, level 1, and random stats, which is primarily used for testing.
 
