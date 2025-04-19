@@ -8,6 +8,8 @@ from tkinter import filedialog
 from pathlib import Path
 import threading
 
+import sv_ttk
+
 # Used for randomly generating effects.
 from generate_random_effects import load_and_filter_csv
 from generate_random_effects import get_random_effect
@@ -1227,10 +1229,13 @@ def main():
     
     root = tk.Tk()
     root.title("Game Card Creator")
+    
+    # Dark mode
+    sv_ttk.set_theme("dark")
 
     DPI = 96
-    PREVIEW_WIDTH = int(400)
-    PREVIEW_HEIGHT = int(580)
+    PREVIEW_WIDTH = int(399)
+    PREVIEW_HEIGHT = int(579)
 
     main_frame = ttk.Frame(root, padding="15")
     main_frame_column = 0  # Default column for main_frame
