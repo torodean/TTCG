@@ -16,6 +16,7 @@ if [[ $(uname) == Linux ]]; then
     pip3 install argparse
     pip3 install pytest
     pip3 install tqdm
+    pip3 install sv-ttk
 
 else
     echo "Setup not yet configured for your system!"
