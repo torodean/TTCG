@@ -1,5 +1,5 @@
 # TTCG
-A True TCG concept design.
+True Trading Card Game (TTCG) is a revolutionary tabletop card game designed to recapture the essence of trading card games for former TCG enthusiasts frustrated by escalating costs, power creep, and meta-driven gameplay. TTCG emphasizes strategic depth, player-driven trading, and creative freedom, featuring a vibrant pool of units and spells with dual one-sentence effects that enable countless combinations. Unlike traditional TCGs, it eliminates artificial scarcity, gambling-like pack mechanics, and set rotations by ensuring every card has equal abundance and timeless balance, making trading the cornerstone of deck-building. With innovative mechanics like the Cardscape system for lore and tracking, TTCG offers fast-paced, community-focused duels that reward skill and synergy over spending, appealing to both new players and seasoned veterans seeking a balanced, accessible, and socially engaging experience.
 
 ## Website
 https://truetradingcardgame.github.io/
