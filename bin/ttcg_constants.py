@@ -35,6 +35,8 @@ EFFECT_STYLE_TEXT_FOLDER = "effect_style_text"
 DEFAULT_CARD_ELEMENTS_FOLDER = "../images/card pngs"
 DEFAULT_SERIAL_LIST_FILE = "card_list/serials.txt"
 DEFAULT_FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+DEFAULT_GENERATED_CARDS_FOLDER = "../images/generated_cards"
+DEFAULT_GENERATED_CARDS_PDF = "../images/generated_cards/output.pdf"
 
 # Characters to be used in serial number generation. These are all values that show up nicely without 
 # having to worry about what letters are what or the font effecting the serial number display size.
