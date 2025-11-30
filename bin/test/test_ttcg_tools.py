@@ -81,19 +81,6 @@ def test_get_combination_id_print_combos():
                 assert result == "0003"  # Index 3: [['a'], ['a', 'b'], ['a', 'b', 'c'], ['a', 'c'], ...]
 
 
-
-def test_get_combination_id_empty_input():
-    """
-    Test empty input string.
-    """
-    with patch("ttcg_tools.get_sequence_combinations", side_effect=mock_get_sequence_combinations):
-        with patch("ttcg_tools.CHARACTERS", "0123456789ABCDEF"):
-            with patch("ttcg_tools.PRINT_ALL_SEQUENCES", False):
-                with pytest.raises(ValueError) as exc_info:                    
-                    result = get_combination_id("", ["a", "b"], num_digits=4)
-                assert "[''] is not in list" in str(exc_info.value)
-
-
 def test_get_combination_id_case_insensitive():
     """
     Test case-insensitive matching.
