@@ -43,4 +43,4 @@ DEFAULT_GENERATED_CARDS_PDF = "../images/generated_cards/output.pdf"
 CHARACTERS = "0123456789AaBbCcDdEeFfGHhiKkLMmNnoPRrSsTtUuVvWwXxYZz"
 
 # These are extra keywords to be displayed in the UI search box.
-EXTRA_EFFECT_KEYWORDS = ["Discard", "Destroy", "Draw", "Mill", "Counter", "Equip", "Destroy this", "Add"]
+EXTRA_EFFECT_KEYWORDS = ["Discard", "Destroy", "Draw", "Mill", "Counter", "Equip", "Destroy this", "Add", "Play"]
