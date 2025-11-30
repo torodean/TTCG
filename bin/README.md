@@ -54,6 +54,22 @@ The `bin` directory serves as the central hub for executable scripts used in the
 
 
 
+### `compile_pdf.py`
+- **Purpose**: Generates a PDF from images, arranging them in a 3x3 grid with no gaps, scaled to Magic: The Gathering card size (2.5 × 3.5 inches) for TTCG card sheets.
+- **Key Features**:
+    - Places images in a 3x3 grid (9 per page) with no gaps, centered on letter or A4 pages.
+    - Scales images to 2.5 × 3.5 inches (180 × 252 points at 72 DPI).
+    - Shows progress with tqdm and styled messages via ttcg_tools.output_text.
+    - Validates grid fit on the page, with error handling for invalid images or folders.
+- **Usage**: python3 compile_pdf.py [--input-folder INPUT] [--output-file OUTPUT] [--page-size {letter,A4}]
+    - `--input-folder`: Input image folder (defaults to ttcg_constants.DEFAULT_GENERATED_CARDS_FOLDER).
+    - `--output-file`: Output PDF path (defaults to ttcg_constants.DEFAULT_GENERATED_CARDS_PDF).
+    - `--page-size`: Page size (defaults to letter).
+- **Dependencies**: Pillow, reportlab, tqdm, custom TTCG modules (ttcg_tools, ttcg_constants).
+- **Notes**: Processes .png, .jpg, .jpeg images, typically from create_card.py. Images are stretched to MTG size; non-MTG aspect ratios may distort.
+
+
+
 
 ### `flip_image.py`
 - **Purpose**: Flips an image horizontally and saves the result, optionally overwriting the original file.
